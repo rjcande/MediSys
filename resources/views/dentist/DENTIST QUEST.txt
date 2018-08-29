@@ -1,0 +1,34 @@
+LIST OF REMOVED PHP
+C_dentist_dental_chart - OK 
+C_dentist_dental_chart_edit - Di needed kasi kada consultation pwedeng madagdag/mabago.
+C_dentist_dental_chart_view - OK
+C_dentist_patient_consultation - OK -OUTSIDE REFERRAL NA LANG MAY PROBLEMA
+C_dentist_dental_form(a.k.a. DENTAL HISTORY) - OK
+C-dentist-patient-view-history - OK
+C-dentist-patient-edit-history - OK
+C-dentist-patient-certification - OK
+C_dentist_index - OK
+C_dentist_medical_log - OK 
+C_dentist_medical_log_each - semi-okay na? I guess.
+C-dentist-medical-log-edit(dentist-patient-medical-log-edit) -OK - GENERATE PDF NA LANG
+C-dentist-medical-log-more-info(dentist-patient-more-info) - OK
+C-dentist-patient-list - OK
+C-dentist-patient-prescription - OK
+C-dentist-patient-record - OK
+C-dentist-patient-view-more-info - OK
+C-dentist-sidebar - OK
+C-dentist-top-navigation - OK
+
+
+Dental form, nangyayari lang kapag first time ni patient sa dental clinic pero kapag meron na dental form, pupunta sa patient Prescription. NOTE -DONE
+
+NOTE: TREATMENT KELANGAN NAKACHECKBOX NA, DENTAL EXAMINATION, ORAL PROPHYLAXIS, RESTORATION(FILLING TOOTH NO.____), EXTRACTION TOOTH NO.___ (CHECK SCAN.JPG) FOR CERTIFICATION FORM. - DONE!!!
+NOTE: SYMPTOMS ILAGAY MO NA SA TREATMENT. SA SUSUNOD NA UPDATE!!! (URGENT) - DONE!!!
+NOTE: KELANGAN UNG VITAL SIGNS NG PATIENT MAKUKUHA NA DIN NI DENTIST, ILAGAY KO HABANG NASA DENTAL CHART. (URGENT) - DONE!!
+NOTE: KELANGAN YUNG DENTAL FORM NAKA FORM WIZARD NA(URGENT) -DONE!!!
+NOTE: DASHBOARD, CALENDAR. LAHAT NG SCHEDULED APPOINTMENT MAKIKITA. -GINAGAWA NI IGDA
+
+
+2015-04542-MN-0
+
+NOTE PATIENT VIEW HISTORY BLADE /dentist/dentalchart/show SA <A> DENTALCHART</A>
