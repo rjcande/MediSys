@@ -94,10 +94,4 @@ class MedicalSuppliesController extends Controller
 
         return response::json($medicalSupply);
     }
-    public function getMedicalSupplyDChief()
-    {
-        $medicalSupply = MedicalSupply::where('medSupName', '=', Input::get('medSupplyName'))->get();
-
-        return response::json($medicalSupply);
-    }
 }

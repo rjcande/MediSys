@@ -1,4 +1,4 @@
-@extends('dentist.layout.dentist')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -6,7 +6,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Medicine Prescribed Statistics</h3>
+        <h3>Medical Supplies Used Statistics</h3>
       </div>
     </div>
 
@@ -21,12 +21,12 @@
                   <tbody>
                      <tr>
                         <th style="width:37%;">
-                           <p>Most Common Medicine Prescribed within the Week</p>
+                           <p>Most Common Medical Supplies Used within the Week</p>
                         </th>
 
                         <th>
                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                              <p>Medicine</p>
+                              <p>Medical Supply</p>
                            </div>
                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                               <p>Percentage</p>
@@ -38,33 +38,33 @@
                         <td>
                            <iframe class="chartjs-hidden-iframe" style="margin: 0px; border: 0px; border-image: none; left: 0px; top: 0px; width: 100%; height: 0px; right: 0px; bottom: 0px; display: block; position: absolute;">
                            </iframe>
-                           <canvas width="175" height="175" id="medicine_weekly" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
+                           <canvas width="175" height="175" id="medicalSupplies_weekly" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
                            </canvas>
                         </td>
                         <td>
                            <table class="tile_info">
-                              <tbody>
+                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $top_weekly[0]['genericName'] }} </p>
+                                       <p><i class="fa fa-square blue"></i>{{ $top_weekly[0]['medSupName'] }} </p>
                                     </td>
                                     <td>{{ $top1_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['genericName'] }} </p>
+                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['medSupName'] }} </p>
                                     </td>
                                     <td>{{ $top2_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['genericName'] }} </p>
+                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['medSupName'] }} </p>
                                     </td>
                                     <td>{{ $top3_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['genericName'] }} </p>
+                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['medSupName'] }} </p>
                                     </td>
                                     <td>{{ $top4_weekly }}%</td>
                                  </tr>
@@ -89,11 +89,11 @@
                   <tbody>
                      <tr>
                         <th style="width:37%;">
-                           <p>Most Common Medicine Prescribed within the Month</p>
+                           <p>Most Common Medical Supplies Used within the Month</p>
                         </th>
                         <th>
                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                              <p>Medicine</p>
+                              <p>Medical Supply</p>
                            </div>
                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                               <p>Percentage</p>
@@ -104,7 +104,7 @@
                         <td>
                            <iframe class="chartjs-hidden-iframe" style="margin: 0px; border: 0px; border-image: none; left: 0px; top: 0px; width: 100%; height: 0px; right: 0px; bottom: 0px; display: block; position: absolute;">
                            </iframe>
-                           <canvas width="175" height="175" id="medicine_month" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
+                           <canvas width="175" height="175" id="medicalSupplies_month" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
                           </canvas>
                         </td>
                         <td>
@@ -112,25 +112,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_month[0]->genericName }} </p>
+                                       <p><i class="fa fa-square blue"></i>{{ $percent_month[0]->medSupName }} </p>
                                     </td>
                                     <td>{{ $top1_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $percent_month[1]->genericName }} </p>
+                                       <p><i class="fa fa-square green"></i>{{ $percent_month[1]->medSupName }} </p>
                                     </td>
                                     <td>{{ $top2_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $percent_month[2]->genericName }} </p>
+                                       <p><i class="fa fa-square purple"></i>{{ $percent_month[2]->medSupName }} </p>
                                     </td>
                                     <td>{{ $top3_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->genericName }} </p>
+                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->medSupName }} </p>
                                     </td>
                                     <td>{{ $top4_month }}%</td>
                                  </tr>
@@ -149,17 +149,17 @@
             </div>
          </div>
 
-         <div style="float: left; height: 25%; width: 32%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%;">
+         <div style="float: left; height: 25%; width: 32%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%">
             <div class="x_content">
                <table style="width:100%">
                   <tbody>
                      <tr>
                         <th style="width:37%;">
-                           <p>Most Common Medicine Prescribed within the Year</p>
+                           <p>Most Common Medical Supplies Used within the Year</p>
                         </th>
                         <th>
                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                              <p>Medicine</p>
+                              <p>Medical Supply</p>
                            </div>
                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                               <p>Percentage</p>
@@ -170,7 +170,7 @@
                         <td>
                            <iframe class="chartjs-hidden-iframe" style="margin: 0px; border: 0px; border-image: none; left: 0px; top: 0px; width: 100%; height: 0px; right: 0px; bottom: 0px; display: block; position: absolute;">
                            </iframe>
-                           <canvas width="175" height="175" id="medicine_year" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
+                           <canvas width="175" height="175" id="medicalSupplies_year" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;">
                            </canvas>
                         </td>
                         <td>
@@ -178,25 +178,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_year[0]->genericName }} </p>
+                                       <p><i class="fa fa-square blue"></i>{{ $percent_year[0]->medSupName }} </p>
                                     </td>
                                     <td>{{ $top1_year }}%</td>
                                  </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square green"></i>{{ $percent_year[1]->genericName }} </p>
+                                    <p><i class="fa fa-square green"></i>{{ $percent_year[1]->medSupName }} </p>
                                  </td>
                                  <td>{{ $top2_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square purple"></i>{{ $percent_year[2]->genericName }} </p>
+                                    <p><i class="fa fa-square purple"></i>{{ $percent_year[2]->medSupName }} </p>
                                  </td>
                                  <td>{{ $top3_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->genericName }} </p>
+                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->medSupName }} </p>
                                  </td>
                                  <td>{{ $top4_year }}%</td>
                               </tr>
@@ -216,11 +216,11 @@
       </div>
 
       <!----------------------------------------------------COLLAPSIBLE---------------------------------------------------->
-      <div style="margin-top: 20px; float: left; width: 100%">
+      <div>
          <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
             <div class="panel">
                <a class="panel-heading collapsed" id="headingOne1" role="tab" aria-expanded="false" aria-controls="collapseOne" href="#collapseOne1" data-toggle="collapse" data-parent="#accordion1">
-                  <h4 class="panel-title">Weekly (As of {{ date('F') }}, {{ date('Y') }})</h4>
+                  <h4 class="panel-title">Weekly (As of Month, Year)</h4>
                </a>
                <div class="panel-collapse collapse" id="collapseOne1" role="tabpanel" aria-expanded="false" aria-labelledby="headingOne" style="height: 0px;">
                   <div class="panel-body">
@@ -246,7 +246,7 @@
                                  $active = 5;
                               }
                            @endphp
-                           <li role="presentation" class="@if($active == 1){{ 'active' }}@endif">
+                           <li class="@if($active == 1){{ 'active' }}@endif" role="presentation">
                               <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab">Week 1</a>
                            </li>
                            <li role="presentation" class="@if($active == 2){{ 'active' }}@endif">
@@ -269,9 +269,9 @@
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
                                        <tr class="headings">
-                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                          <header style="display: inline;">Number of Medicine Prescribed a Day</header>
-                                          <th class="column-title" style="width: 20%">Brand Name</th>
+                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                          <header style="display: inline;">Number of Medical Supply Used a Day</header>
+                                          <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                           <th class="column-title">Day 1</th>
                                           <th class="column-title">Day 2</th>
                                           <th class="column-title">Day 3</th>
@@ -283,68 +283,68 @@
                                     </thead>
 
                                     <tbody>
-                                       @foreach($results as $key => $medicine)
-                                       <tr class="even-pointer">
-                                          <td class=" ">
-                                             @foreach($prescriptions as $prescription)
-                                                @if($prescription->medicineID == $key && $prescription->month == date('m'))
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
-                                                 @break
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 1 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 2 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 3 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 4 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 5 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 6 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 7 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                       </tr>
-                                
-                                    @endforeach
+                                       @foreach($results as $key => $supply)
+                                          <tr class="even-pointer">
+                                             <td class=" ">
+                                                @foreach($usedMedSupps as $medicalSupply)
+                                                   @if($medicalSupply->medSupplyID == $key && $medicalSupply->month == date('m'))
+                                                      {{ $medicalSupply->medSupName }} {{ $medicalSupply->brand }}
+                                                    @break
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 1 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 2 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 3 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 4 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 5 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 6 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 7 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                          </tr>
+                                   
+                                       @endforeach
                                     </tbody>
                                  </table>
                               </div>
@@ -355,9 +355,9 @@
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
                                        <tr class="headings">
-                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                          <header style="display: inline;">Number of Medicine Prescribed a Day</header>
-                                          <th class="column-title" style="width: 20%">Brand Name</th>
+                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                          <header style="display: inline;">Number of Medical Supply Used a Day</header>
+                                          <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                           <th class="column-title">Day 1</th>
                                           <th class="column-title">Day 2</th>
                                           <th class="column-title">Day 3</th>
@@ -369,68 +369,68 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach($results as $key => $medicine)
-                                       <tr class="even-pointer">
-                                          <td class=" ">
-                                             @foreach($prescriptions as $prescription)
-                                                @if($prescription->medicineID == $key && $prescription->month == date('m'))
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
-                                                 @break
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 8 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 9 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 10 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 11 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 12 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 13 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 14 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                       </tr>
-                                
-                                    @endforeach
+                                        @foreach($results as $key => $supply)
+                                          <tr class="even-pointer">
+                                             <td class=" ">
+                                                @foreach($usedMedSupps as $medicalSupply)
+                                                   @if($medicalSupply->medSupplyID == $key && $medicalSupply->month == date('m'))
+                                                      {{ $medicalSupply->medSupName }} {{ $medicalSupply->brand }}
+                                                    @break
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 8 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 9 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 10 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 11 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 12 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 13 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 14 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                          </tr>
+                                   
+                                       @endforeach
                                     </tbody>
                                  </table>
                               </div>
@@ -441,9 +441,9 @@
                                 <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
                                     <tr class="headings">
-                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                       <header style="display: inline;">Number of Medicine Prescribed a Day</header>
-                                       <th class="column-title" style="width: 20%">Brand Name</th>
+                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                       <header style="display: inline;">Number of Medical Supply Used a Day</header>
+                                       <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                        <th class="column-title">Day 1</th>
                                        <th class="column-title">Day 2</th>
                                        <th class="column-title">Day 3</th>
@@ -455,68 +455,68 @@
                                  </thead>
 
                                  <tbody>
-                                     @foreach($results as $key => $medicine)
-                                       <tr class="even-pointer">
-                                          <td class=" ">
-                                             @foreach($prescriptions as $prescription)
-                                                @if($prescription->medicineID == $key && $prescription->month == date('m'))
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
-                                                 @break
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 15 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 16 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 17 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 18 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 19 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 20 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 21 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                       </tr>
-                                
-                                    @endforeach
+                                     @foreach($results as $key => $supply)
+                                          <tr class="even-pointer">
+                                             <td class=" ">
+                                                @foreach($usedMedSupps as $medicalSupply)
+                                                   @if($medicalSupply->medSupplyID == $key && $medicalSupply->month == date('m'))
+                                                      {{ $medicalSupply->medSupName }} {{ $medicalSupply->brand }}
+                                                    @break
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 15 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 16 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 17 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 18 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 19 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 20 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 21 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                          </tr>
+                                   
+                                       @endforeach
                                  </tbody>
                               </table>
                            </div>
@@ -527,9 +527,9 @@
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
                                     <tr class="headings">
-                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                       <header style="display: inline;">Number of Medicine Prescribed a Day</header>
-                                       <th class="column-title" style="width: 20%">Brand Name</th>
+                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                       <header style="display: inline;">Number of Medical Supply Used a Day</header>
+                                       <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                        <th class="column-title">Day 1</th>
                                        <th class="column-title">Day 2</th>
                                        <th class="column-title">Day 3</th>
@@ -541,81 +541,82 @@
                                  </thead>
 
                                  <tbody>
-                                    @foreach($results as $key => $medicine)
-                                       <tr class="even-pointer">
-                                          <td class=" ">
-                                             @foreach($prescriptions as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
-                                                   @break
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 22 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 23 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 24 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 25 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 26 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 27 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                          <td class=" ">
-                                             @foreach($medicine as $index => $value)
-                                                @if($value['day'] == 28 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
-                                                @endif
-                                             @endforeach
-                                          </td>
-                                       </tr>
-                                
-                                    @endforeach
+                                     @foreach($results as $key => $supply)
+                                          <tr class="even-pointer">
+                                             <td class=" ">
+                                                @foreach($usedMedSupps as $medicalSupply)
+                                                   @if($medicalSupply->medSupplyID == $key && $medicalSupply->month == date('m'))
+                                                      {{ $medicalSupply->medSupName }} {{ $medicalSupply->brand }}
+                                                    @break
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 22 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 23 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 24 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 25 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 26 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 27 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                             <td class=" ">
+                                                @foreach($supply as $index => $value)
+                                                   @if($value['day'] == 28 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                                                      {{ $value['total'] }}
+                                                   @endif
+                                                @endforeach
+                                             </td>
+                                          </tr>
+                                   
+                                       @endforeach
                                  </tbody>
                               </table>
                            </div>
                         </div>
+
                         <div class="tab-pane fade @if($active==5){{'active in'}}@endif" id="tab_content16" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
                                     <tr class="headings">
-                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                       <header style="display: inline;">Number of Medicine Prescribed a Day</header>
-                                       <th class="column-title" style="width: 20%">Brand Name</th>
-                                       @if($maxDays == 29)
+                                       <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                       <header style="display: inline;">Number of Medical Supply Used a Day</header>
+                                       <th class="column-title" style="width: 20%">Medical Supply Name</th>
+                                        @if($maxDays == 29)
                                           <th class="column-title">Day 1</th>
                                        @elseif($maxDays == 30)
                                           <th class="column-title">Day 1</th>
@@ -625,23 +626,23 @@
                                           <th class="column-title">Day 2</th>
                                           <th class="column-title">Day 3</th>
                                        @endif
-                                    </tr>
+                                   
                                  </thead>
 
                                  <tbody>
-                                    @foreach($results as $key => $medicine)
+                                    @foreach($results as $key => $supply)
                                        <tr class="even-pointer">
                                              <td class=" ">
-                                                @foreach($prescriptions as $prescription)
-                                                   @if($prescription->medicineID == $key)
-                                                      {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @foreach($usedMedSupps as $medicalSupply)
+                                                   @if($medicalSupply->medSupplyID == $key)
+                                                      {{ $medicalSupply->medSupName }} {{ $medicalSupply->brand }}
                                                       @break
                                                    @endif
                                                 @endforeach
                                              </td>
                                           @if($maxDays == 29)
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 29 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
@@ -649,14 +650,14 @@
                                              </td>
                                           @elseif($maxDays == 30)
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 29 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
                                                 @endforeach
                                              </td>
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 30 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
@@ -664,21 +665,21 @@
                                              </td>
                                           @elseif($maxDays == 31)
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 29 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
                                                 @endforeach
                                              </td>
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 30 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
                                                 @endforeach
                                              </td>
                                              <td class="">
-                                                @foreach($medicine as $index => $value)
+                                                @foreach($supply as $index => $value)
                                                    @if($value['day'] == 31 && $value['month'] == date('m') && $value['year'] == date('Y'))
                                                       {{ $value['total'] }}
                                                    @endif
@@ -701,7 +702,7 @@
 
             <div class="panel">
                <a class="panel-heading collapsed" id="headingTwo1" role="tab" aria-expanded="false" aria-controls="collapseTwo" href="#collapseTwo1" data-toggle="collapse" data-parent="#accordion1">
-                  <h4 class="panel-title">Monthly (As of {{ date('Y') }})</h4>
+                  <h4 class="panel-title">Monthly (As of Year)</h4>
                </a>
                <div class="panel-collapse collapse" id="collapseTwo1" role="tabpanel" aria-expanded="false" aria-labelledby="headingTwo" style="height: 0px;">
                   <div class="panel-body">
@@ -752,9 +753,9 @@
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
                                        <tr class="headings">
-                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
-                                          <header style="display: inline;">Number of Medicine Prescribed a Week</header>
-                                          <th class="column-title" style="width: 20%">Brand Name</th>
+                                          <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
+                                          <header style="display: inline;">Number of Medical Supply Used a Week</header>
+                                          <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                           <th class="column-title">Week 1</th>
                                           <th class="column-title">Week 2</th>
                                           <th class="column-title">Week 3</th>
@@ -773,8 +774,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -856,7 +857,7 @@
                               </div>
                            </div>
 
-                           <div class="tab-pane fade" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -882,8 +883,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -965,7 +966,7 @@
                               </div>
                            </div>
 
-                           <div class="tab-pane fade" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                 <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -991,8 +992,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1074,7 +1075,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
+                       <div class="tab-pane fade" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1100,8 +1101,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1209,8 +1210,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1318,8 +1319,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1427,8 +1428,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1536,8 +1537,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1645,8 +1646,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1754,8 +1755,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1863,8 +1864,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -1972,8 +1973,8 @@
                                        <tr class="even-pointer">
                                           <td class=" ">
                                              @foreach($percentagePrescription_weekly as $prescription)
-                                                @if($prescription->medicineID == $key)
-                                                   {{ $prescription->genericName }} {{ $prescription->brand }}
+                                                @if($prescription->medSupplyID == $key)
+                                                   {{ $prescription->medSupName }} {{ $prescription->brand }}
                                                    @break
                                                 @endif
                                              @endforeach
@@ -2074,9 +2075,9 @@
    $(document).ready(function(){
       //Chart for Most Common Medicine Prescribed within the Month
       function init_chartMonth_doughnut(){
-         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_month").length)){
-            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->genericName }}","{{ $percent_month[2]->genericName }}","Other","{{ $percent_month[1]->genericName }}","{{ $percent_month[0]->genericName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
-            $("#medicine_month").each(function(){
+         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_month").length)){
+            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->medSupName }}","{{ $percent_month[2]->medSupName }}","Other","{{ $percent_month[1]->medSupName }}","{{ $percent_month[0]->medSupName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
+            $("#medicalSupplies_month").each(function(){
                var b=$(this);new Chart(b,a)
             })
          }
@@ -2084,23 +2085,23 @@
 
       //Chart for Most Common Medicine Prescribed within the Year
       function init_chartYear_doughnut(){
-         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_year").length)){
+         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_year").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->genericName }}","{{ $percent_year[2]->genericName }}","Other","{{ $percent_year[1]->genericName }}","{{ $percent_year[0]->genericName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->medSupName }}","{{ $percent_year[2]->medSupName }}","Other","{{ $percent_year[1]->medSupName }}","{{ $percent_year[0]->medSupName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
-            $("#medicine_year").each(function(){
+            $("#medicalSupplies_year").each(function(){
                var b=$(this);new Chart(b,a)
             })
          }
       }
 
-      //Chart for Most Common Medicine Prescribed Weekly
+     //Chart for Most Common Medicine Prescribed Weekly
       function init_chartWeekly_doughnut(){
-         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_weekly").length)){
+         if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_weekly").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['genericName'] }}","{{ $top_weekly[2]['genericName'] }}","Other","{{ $top_weekly[1]['genericName'] }}","{{ $top_weekly[0]['genericName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['medSupName'] }}","{{ $top_weekly[2]['medSupName'] }}","Other","{{ $top_weekly[1]['medSupName'] }}","{{ $top_weekly[0]['medSupName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
-            $("#medicine_weekly").each(function(){
+            $("#medicalSupplies_weekly").each(function(){
                var b=$(this);new Chart(b,a)
             })
          }

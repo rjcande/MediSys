@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -18,8 +18,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                 <div class="x_title">
-                    <label class="col-md-10 col-sm-12 col-xs-12"><h4>{{Session::get('patientInfo.patientID')}} - <em>{{Session::get('patientInfo.patientName')}}</em></h4></label>
-                 
+                    <!-- <label class="col-md-10 col-sm-12 col-xs-12"><h4>{{Session::get('patientInfo.patientID')}} - <em>{{Session::get('patientInfo.patientName')}}</em></h4></label>
+                  -->
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">

@@ -392,9 +392,15 @@ Route::get('dentist/dental/supplies/reports', function(){
 ///////////////// BAGO
 
 //Routes
-Route::get('/dentist/Dashboard', function(){
-	return view('dentist.C_dentist_dashboard');
-});
+// Route::get('/dentist/dashboard', function(){
+// 	return view('dentist.C_dentist_dashboard');
+// });
+
+Route::get('/dentist/dashboard', 'DashboardController@dentistDashboard');
+
+Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
+
+Route::get('/dentist/medicine/reports', 'DashboardController@dentistReports');
 
 //Controllers
 Route::get('/dentist/dentalchart','DentalChartsController@create')->name('dentist.dentalchart');
@@ -498,109 +504,97 @@ Route::get('/nurseMedicalLog', 'PatientController@index');
 
 
 
-//DENTAL CHIEF--------------------------------------------------------------------------------------------------------------
-Route::get('dchief/patient/condition/reports', function(){
-	return view('dchief.C_dchief_patient_condition_records');
-});
+/////////////////////////DENTAL CHIEF
 
-Route::get('dchief/medicine/reports', function(){
-	return view('dchief.C_dchief_reports');
-});
+Route::get('/dchief/dashboard', 'DashboardController@dentistDashboard');
 
-Route::get('dchief/supplies/reports', function(){
-	return view('dchief.C_dchief_medical_reports');
-});
 
-Route::get('/dchief/dashboard', function(){
-	return view('dchief.C_dchief_dashboard');
-});
+Route::get('/dchief/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
 
-Route::get('/dchief/dentalchart','DentalChartsController@dChiefCreate')->name('dchief.dentalchart');
+Route::get('/dchief/medicine/reports', 'DashboardController@dentistReports');
 
-Route::get('/dchief/dentalchart/each/{toothNum}','DentalChartsController@eachtoothDChief')->name('dchief.dentalchart.each');
 
-Route::get('/dchief/dentalchart/view/{id}', 'DentalChartsController@dChiefView')->name('dchief.dentalchart.view');
 
-Route::get('/dchief/dentalchart/deleteToothCondition/{id}','DentalChartsController@dChiefDelete')->name('dchief.dentalchart.deleteToothCon');
 
-Route::post('/dchief/dentalchart/store/{id}','DentalChartsController@dChiefStore')->name('dchief.dentalchart.store');
+Route::get('/dchief/PatientRecord', 'DentalPatientController@dchiefDentalPatientRecords');
 
-Route::get('/dchief/PatientList','DentalPatientController@indexOfDentalChief');
+Route::get('/dchief/patient/ViewMore/{id}', 'DentalPatientController@dchiefShow')->name('dchief.patientList.viewMore');
 
-Route::get('/dchief/PatientRecord', 'DentalPatientController@dentalPatientRecordsDChief');
+Route::get('/dchief/patient/consultations/{id}', 'DentalPatientController@dchiefPatientConsultations')->name('dchief.patient.consultations');
 
-Route::get('/dchief/patient/ViewMore/{id}', 'DentalPatientController@dChiefShow')->name('dchief.patientList.viewMore');
+Route::get('/dchief/PatientList', 'DentalPatientController@dchiefIndex');
 
-Route::get('/dchief/DentalLog','DentalLogController@indexOfDentalChief');
+Route::get('/dchief/create/patientRecord', 'DentalPatientController@dchiefCreate')->name('dchief.create.patient');
 
-Route::get('/dchief/create/patientRecord', 'DentalPatientController@dChiefCreate')->name('create.patient');
+Route::post('/dchief/add/patient', 'DentalPatientController@dchiefStore')->name('dchief.add.patient');
 
-Route::post('/dchief/add/patient', 'DentalPatientController@dChiefStore')->name('dchief.add.patient');
 
-Route::get('/dchief/patient/prescription/{id}', 'DentalLogController@patientPrescriptionDChief')->name('patient.prescription');
 
-Route::get('/dchief/DentalForm/Autocomplete', 'DentalHistoryController@autocompleteDChief');
+Route::get('/dchief/DentalLog', 'DentalLogController@dchiefIndex');
 
-Route::get('/dchief/dentalform/autocomplete/name', 'DentalHistoryController@autocompleteNameDChief');
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('/dchief/show/consultations/{id}', 'DentalLogController@dchiefShowAllConsultations')->name('dchief.show.all.consultations');
 
-Route::get('/dchief/select/concern', 'DentalLogController@redirectConcernDChief')->name('redirect.via.concern');
+Route::get('/dchief/dental/log/each/{id}', 'DentalLogController@dchiefConsultationsAllDentists')->name('dchief.consultation.to.all.dentists');
 
-Route::get('/dchief/log/patient', 'DentalLogController@dChiefStore')->name('dchief.log.patient');
+Route::get('/dchief/select/concern', 'DentalLogController@dchiefRedirectConcern')->name('dchief.redirect.via.concern');
 
-Route::get('/dchief/patient/certification', 'DentalLogController@requestLetterCertificationDChief')->name('letter.requesting');
+Route::get('/dchief/patient/prescription/{id}', 'DentalLogController@dchiefPatientPrescription')->name('dchief.patient.prescription');
 
-Route::get('/dchief/dental/certificate', 'DentalCertificateController@dChiefShow')->name('dchief.dental.certification');
+Route::get('/dchief/delete/dental/log/{id}','DentalLogController@dchiefDestroy')->name('dchief.delete.dental.log');
 
-Route::get('/dchief/outside/referralSlip', 'DentalCertificateController@showOutsideReferDChief')->name('dchief.referral.slip');
+Route::get('/dchief/log/patient/store', 'DentalLogController@dchiefStore')->name('dchief.log.patient.store');
 
-Route::get('/dchief/log/patient/redir', 'DentalLogController@redirectPatientDChief')->name('dchief.redirect.patient');
+Route::get('/dchief/log/timeOut/{id}', 'DentalLogController@dchiefTimeout')->name('dchief.dentalLog.timeOut');
 
-Route::get('/dchief/log/patient/each', 'DentalLogController@medicalLogCreateDChief')->name('dchief.each.log.create');
+Route::get('/dchief/DentalLog/MoreInfo/{id}', 'DentalLogController@dchiefShow')->name('dchief.dentalLog.moreInfo');
 
-Route::get('/dchief/log/patient/store', 'DentalLogController@dChiefStore')->name('dchief.log.patient.store');
+Route::get('/dchief/DentalLog/edit/{id}', 'DentalLogController@dchiefEdit')->name('dchief.dentalLog.edit');
 
-Route::get('/dchief/delete/dental/log/{id}','DentalLogController@dChiefDestroy')->name('dchief.delete.dental.log');
+Route::get('/dchief/DentalLog/update/{id}', 'DentalLogController@dchiefUpdate');//PROTOTYPE
 
-Route::get('/dchief/DentalLog/MoreInfo/{id}', 'DentalLogController@dChiefShow')->name('dchief.dentalLog.moreInfo');
+Route::get('/dchief/log/patient/redir', 'DentalLogController@dchiefRedirectPatient')->name('dchief.redirect.patient');// MADE THIS FOR REDIRECTION AFTER DENTAL HISTORY
 
-Route::get('/dchief/DentalLog/edit/{id}', 'DentalLogController@dChiefEdit')->name('dchief.dentalLog.edit');
+Route::get('/dchief/patient/certification', 'DentalLogController@dchiefRequestLetterCertification')->name('dchief.letter.requesting');
 
-Route::get('/dchief/DentalLog/update/{id}', 'DentalLogController@dChiefUpdate');
+Route::get('/dchief/dental/certificate/save', 'DentalLogController@dchiefSaveRequestLetterCertification')->name('dchief.save.letter.request');
 
-Route::get('/dchief/Prescription/{id}', 'PrescriptionController@indexOfDentalChief')->name('dentalLog.store');
 
-Route::post('/updateLogPatient', 'PrescriptionController@dChiefUpdate');
 
-Route::get('/get/medicine/brand', 'MedicineController@getBrandNameDChief');
+Route::get('/dchief/vital/signs/{id}', 'VitalSignsController@dchiefEdit')->name('dchief.vitalSigns.index');
 
-Route::get('/get/medSupply/brand', 'MedicalSuppliesController@getMedicalSupplyDChief');
+Route::get('/dchief/vital/store', 'VitalSignsController@dchiefStore')->name('dchief.vitalSigns.store');
 
-Route::get('/dchief/dental/log/each/{id}', 'DentalLogController@consultationsAllDentistsDChief')->name('dchief.consultation.to.all.dentists');
 
-Route::get('/dchief/patient/consultations/{id}', 'DentalPatientController@patientConsultationsDChief')->name('dchief.patient.consultations');
+Route::get('/dchief/dentalchart','DentalChartsController@dchiefCreate')->name('dchief.dentalchart');
 
-Route::get('/dchief/dental/HistoryForm/view/{id}', 'DentalHistoryController@showDentalHistoryDChief')->name('dchief.view.dental.history');
+Route::get('/dchief/dentalchart/each/{toothNum}','DentalChartsController@dchiefEachtooth')->name('dchief.dentalchart.each');
 
-Route::get('/dchief/dental/HistoryForm', 'DentalHistoryController@indexOfDentalChief');
+Route::get('/dchief/dentalchart/view/{id}', 'DentalChartsController@dchiefView')->name('dchief.dentalchart.view');
 
-Route::get('/dchief/dental/HistoryForm/store', 'DentalHistoryController@dChiefStore')->name('HistoryForm.store');
+Route::get('/dchief/dentalchart/deleteToothCondition/{id}','DentalChartsController@dchartDelete')->name('dchief.dentalchart.deleteToothCon');
 
-Route::get('/dchief/dental/HistoryForm/edit/{id}', 'DentalHistoryController@dChiefEdit')->name('dchief.HistoryForm.edit');
+Route::post('/dchief/dentalchart/store/{id}','DentalChartsController@dchiefStore')->name('dchief.dentalchart.store');
 
-Route::get('/dchief/dental/HistoryForm/update/{id}', 'DentalHistoryController@dChiefUpdate')->name('HistoryForm.update');
 
-Route::get('/dental/log/timeOut/{id}', 'DentalLogController@timeoutDChief')->name('dentalLog.timeOut');
 
-Route::get('/dchief/vital/signs/{id}', 'VitalSignsController@dChiefEdit')->name('vitalSigns.index');
+Route::get('/dchief/DentalForm/Autocomplete', 'DentalHistoryController@dchiefAutocomplete');
 
-Route::get('/dchief/vital/store', 'VitalSignsController@dChiefStore')->name('vitalSigns.store');
+Route::get('/dchief/dentalform/autocomplete/name', 'DentalHistoryController@dchiefAutocompleteName');
 
-Route::get('/dchief/show/consultations/{id}', 'DentalLogController@showAllConsultationsDChief')->name('dchief.show.all.consultations');
+Route::get('/dchief/dental/HistoryForm/view/{id}', 'DentalHistoryController@dchiefShowDentalHistory')->name('dchief.view.dental.history');
 
-Route::get('/dchief/dental/certificate/save', 'DentalLogController@saveRequestLetterCertificationDChief')->name('dchief.save.letter.request');
+Route::get('/dchief/dental/HistoryForm/store', 'DentalHistoryController@dchiefStore')->name('dchief.HistoryForm.store');
 
-Route::get('/dchief/generate/prescription/{id}', 'DentalCertificateController@dchiefgeneratePdf')->name('dchief.generate.prescription');
+Route::get('/dchief/dental/HistoryForm/edit/{id}', 'DentalHistoryController@dchiefEdit')->name('dchief.HistoryForm.edit');
+
+Route::get('/dchief/dental/HistoryForm/update/{id}', 'DentalHistoryController@dchiefUpdate')->name('dchief.HistoryForm.update');
+
+
+Route::get('/dchief/generate/prescription/{id}', 'DentalCertificateController@dchiefGeneratePdf')->name('dchief.generate.prescription');
+
+Route::get('/dchief/outside/referralSlip', 'DentalCertificateController@dchiefShowOutsideRefer')->name('dchief.referral.slip');
+
+Route::get('/dchief/dental/certificate', 'DentalCertificateController@dchiefShow')->name('dchief.dental.certification');
 
 //===========================================================================================================================
 

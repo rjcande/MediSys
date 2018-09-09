@@ -126,7 +126,7 @@
                                     </div>
 
                                     <div style="float: left;">
-                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second"><br>
+                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second" min='1' data-parsley-error-message="should be greater than or equal to 1"><br>
                                     </div>
                                   </div>
                                   
@@ -180,7 +180,7 @@
                                       
                                   </div>
                                 
-                                  <button class="btn btn-success" style="float: right; margin-right:13%" name="btnMedAdd" id="btnMedAdd">ADD</button>  
+                                  <button class="btn btn-success" style="float: right; margin-right:13%" name="btnMedAdd" id="btnMedAdd" type="button">ADD</button>  
                                 </div>  
                              
 
@@ -227,7 +227,7 @@
                                     </div>
 
                                     <div style="float: left;">
-                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity">
+                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity" min='1' data-parsley-error-message="should be greater than or equal to 1">
                                     </div>
                                     
                                   </div>
@@ -638,7 +638,7 @@
     $('#btnMedAdd').click( function(event) {
       event.preventDefault();
       // Validate all Medicine fields.
-      
+
       $('#saveForm').parsley().validate('second');
       
       if ($('#saveForm').parsley().isValid('second')) {
@@ -862,9 +862,9 @@
     }
 
     //Set Interval For Symptoms
-    setInterval(function(){
+    {{-- setInterval(function(){
       var treatment;
-      var symptoms = {!! json_encode($clinicLogInfo->symptoms) !!}
+
       if ('{{ $recommendation["treatmentDescription"] }}' == '') {
         treatment = null;
       }
@@ -872,13 +872,13 @@
         treatment = '{{ $recommendation["treatmentDescription"] }}';
       }
       $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
-         if (data['symptoms'].symptoms != symptoms  || '{{ $prescription["prescriptionID"] }}' < data['prescription'].prescriptionID || treatment != data['treatment'].treatmentDescription) {
+         if ('{{ $prescription["prescriptionID"] }}' < data['prescription'].prescriptionID || treatment != data['treatment'].treatmentDescription)) {
             location.reload(true);
              console.log('{{ $recommendation["treatmentDescription"] }}');
              console.log(data['treatment'].treatmentDescription);
          }
       });
-    }, 2000);
+    }, 2000); --}}
      
 
   });

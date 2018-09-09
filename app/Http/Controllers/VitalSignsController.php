@@ -52,8 +52,8 @@ class VitalSignsController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        
+    
         // dd($request->all());
             $vitalSigns = new VitalSigns;
 
@@ -69,12 +69,13 @@ class VitalSignsController extends Controller
             $vitalSigns->save();
 
         return Response::json(['message' => 'Successfully Added!']);
+       
     }
 
-    public function dChiefStore(Request $request)
+    public function dchiefStore(Request $request)
     {
-
-
+        
+    
         // dd($request->all());
             $vitalSigns = new VitalSigns;
 
@@ -90,6 +91,7 @@ class VitalSignsController extends Controller
             $vitalSigns->save();
 
         return Response::json(['message' => 'Successfully Added!']);
+       
     }
 
     /**
@@ -123,7 +125,7 @@ class VitalSignsController extends Controller
         return view('dentist.C_dentist_vital_signs')->with(['vitalSignsInfo' => $vitalSignsInfo, 'vitalSigns' => $vitalSigns]);
     }
 
-    public function dChiefEdit($id)
+    public function dchiefEdit($id)
     {
         $vitalSigns = VitalSigns::find($id);
 
@@ -149,7 +151,7 @@ class VitalSignsController extends Controller
         try {
 
             $idVitalSign = VitalSigns::select('vitalSignsID')->where('clinicLogID', '=', $id)->first();
-
+    
             $vitalSigns = VitalSigns::find($idVitalSign)->first();
 
             $vitalSigns->bloodPressure = Input::get('bloodPressure');
@@ -166,7 +168,7 @@ class VitalSignsController extends Controller
             return Response::json(['message' => 'Successfully Saved']);
 
         } catch (Exception $e) {
-
+            
         }
     }
 

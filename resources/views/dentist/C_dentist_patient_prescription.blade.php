@@ -109,7 +109,7 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Quantity</header>
                                     </div>
                                     <div style="float: left;">
-                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second"><br>
+                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second" min="1" data-parsley-error-message = "Should be greater than or equal to 1"><br>
                                     </div>
                                   </div>
 
@@ -214,7 +214,7 @@
                                       <header style="margin-bottom:12px; margin-left:10px;"> Quantity</header>
                                     </div>
                                     <div style="float: left;">
-                                      <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third"><br>
+                                      <input type="number" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third" min="1" data-parsley-error-message = "Should be greater than or equal to 1"><br>
                                     </div>
                                   </div>
 
@@ -428,7 +428,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><input type="submit" class="btn btn-success"></center>
+        <center><input type="submit" class="btn btn-success" value="Save and Print"></center>
       </div>
       </form>
     </div>

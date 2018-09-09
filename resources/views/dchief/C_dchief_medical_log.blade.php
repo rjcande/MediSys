@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -364,7 +364,7 @@
       e.preventDefault();
 
       $.ajax({
-        url: '/dental/log/timeOut/' + $(this).data('id'),
+        url: '/dchief/log/timeOut/' + $(this).data('id'),
         type: 'get',
         success: function(output){
           swal({

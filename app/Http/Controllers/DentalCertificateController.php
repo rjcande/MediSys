@@ -81,6 +81,24 @@ class DentalCertificateController extends Controller
         $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
+    public function dchiefShow()
+    {
+        $certDate = Input::get('certDate');
+        $certPatientName = Input::get('certPatientName');
+        $certDentalExam = Input::get('certDentalExam');
+        $certOralProphylaxis = Input::get('certOralProphylaxis');
+        $certRestorationChk = Input::get('certRestorationChk');
+        $certRestorationTxt = Input::get('certRestorationTxt');
+        $certExtractionChk = Input::get('certExtractionChk');
+        $certExtractionTxt = Input::get('certExtractionTxt');
+        $certOthersChk = Input::get('certOthersChk');
+        $certOthersTextArea = Input::get('certOthersTextArea');
+        $certRecommendations = Input::get('certRecommendations');
+        $certDentistSigned = Input::get('certDentistSigned');
+
+        $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+        return $pdf->stream('dental_certificate.pdf');
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -116,7 +134,7 @@ class DentalCertificateController extends Controller
         //
     }
     public function showOutsideRefer()
-    {
+    {   
         $outsideReferrals = new OutsideReferrals;
 
         $referral = Input::get('addressedDentist');
@@ -136,6 +154,29 @@ class DentalCertificateController extends Controller
         // dd($referral);
 
         $pdf = PDF::loadview('dentist.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
+        return $pdf->stream('dental_outside_refer.pdf');
+    }
+    public function dchiefShowOutsideRefer()
+    {   
+        $outsideReferrals = new OutsideReferrals;
+
+        $referral = Input::get('addressedDentist');
+        $outsideReferrals->referToOthers = $referral;
+        $remarks = Input::get('remarks');
+        $outsideReferrals->dentistRemarks = $remarks;
+        $date = date('y-m-d');
+        $outsideReferrals->referralDate = $date;
+        $patientName = Session::get('patientInfo.patientName');
+        $lastName = Session::get('accountInfo.lastName');
+        $firstName = Session::get('accountInfo.firstName');
+        $middleName = Session::get('accountInfo.middleName');
+        $quantifier = Session::get('accountInfo.quantifier');
+
+        $outsideReferrals->save();
+
+        // dd($referral);
+
+        $pdf = PDF::loadview('dchief.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
 
@@ -162,7 +203,7 @@ class DentalCertificateController extends Controller
         return $pdf->stream('dentist.prescription-pdf');
 
     }
-    public function dchiefgeneratePdf($id)
+    public function dchiefGeneratePdf($id)
     {
         $dentalLogInfo = DentalLog::join('patients','patients.patientID', '=','cliniclogs.patientID')
                                   ->select('cliniclogs.*', 'patients.*')

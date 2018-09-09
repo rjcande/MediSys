@@ -56,23 +56,34 @@
                      
                    </div>
                    <!-- HEIGHT -->
+                   @php
+                              if($vitalSignsInfo['height']){
+                                $height = preg_split('# #', $vitalSignsInfo['height']);
+                              }
+
+                    @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Height: </label>
-                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="{{$vitalSignsInfo['height']}}" name="height" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign"  data-parsley-errors-container="#error-height">
+                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['height']){{ $height[0] }}@endif" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign"  data-parsley-errors-container="#error-height">
                    <select name="heightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
-                     <option value="cm">centimeters</option>
-                     <option value="ft">feet</option>
-                     <option value="in">inches</option>
+                      <option value="cm">centimeters</option>
+                      <option value="ft">feet</option>
+                      <option value="in">inches</option>
                    </select>
                    <br>
                    <div id="error-height" >
                                
                    </div>
                    <!-- WEIGHT -->
+                   @php
+                              if($vitalSignsInfo['weight']){
+                                $weight = preg_split('# #', $vitalSignsInfo['weight']);
+                              }
+                    @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Weight: </label>
-                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="{{$vitalSignsInfo['weight']}}" name="weight" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-weight">
+                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['weight']){{ $weight[0] }}@endif" name="weight" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-weight">
                    <select name="weightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
-                     <option value="kg">kilograms</option>
-                     <option value="lb">pounds</option>
+                      <option value="kg">kilograms</option>
+                      <option value="lb">pounds</option>
                    </select>
                    <br>
                    <div id="error-weight" >
@@ -87,12 +98,30 @@
                    <!-- BODY MASS INDEX RANGE -->
                    <label style="display: inline-block;width: 190px; margin-bottom:10px; margin-left: 25px;font-size: 20px">BMI Range: </label>
 
-                   <input type="radio" name ="bmiRange" value="0" data-parsley-group="vitalSign">&nbsp Underweight
-                   <input type="radio" name ="bmiRange" value="1" data-parsley-group="vitalSign">&nbsp Normal
-                   <input type="radio" name ="bmiRange" value="2" data-parsley-group="vitalSign">&nbsp Overweight
-                   <input type="radio" name ="bmiRange" value="3" data-parsley-group="vitalSign">&nbsp Obese Class I
-                   <input type="radio" name ="bmiRange" value="4" data-parsley-group="vitalSign">&nbsp Obese Class II
-                   <input type="radio" name ="bmiRange" value="5" data-parsley-group="vitalSign">&nbsp Obese Class III
+                   <input type="radio" name ="bmiRange" value="0" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '0')
+                              {{ 'checked' }}
+                   @endif>&nbsp Underweight
+                   <input type="radio" name ="bmiRange" value="1" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '1')
+                              {{ 'checked' }}
+                   @endif>&nbsp Normal
+                   <input type="radio" name ="bmiRange" value="2" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '2')
+                              {{ 'checked' }}
+                   @endif>&nbsp Overweight
+                   <input type="radio" name ="bmiRange" value="3" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '3')
+                              {{ 'checked' }}
+                   @endif>&nbsp Obese Class I
+                   <input type="radio" name ="bmiRange" value="4" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '4')
+                              {{ 'checked' }}
+                   @endif>&nbsp Obese Class II
+                   <input type="radio" name ="bmiRange" value="5" data-parsley-group="vitalSign"
+                   @if($vitalSignsInfo['bmiRange'] == '5')
+                              {{ 'checked' }}
+                   @endif>&nbsp Obese Class III
 
                     <div style="float:left;text-align: center;width: 100%;">
                       <button type="submit" name="btnSave" class="btn btn-success" id="btnSave">SAVE</button>

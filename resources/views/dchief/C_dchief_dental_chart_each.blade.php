@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -109,7 +109,7 @@
                         </table>
                       </div>
                       <div>
-                        <a href="{{ route('dchief.dentalchart') }}"><button type="button" class="btn btn-default" data-dismiss="modal" style="float: right">BACK</button></a>
+                        <a href="{{url()->previous()}}"><button type="button" class="btn btn-default" data-dismiss="modal" style="float: right">BACK</button></a>
                       </div>
                     <!-- /Content -->
                   </div>

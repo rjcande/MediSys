@@ -40,19 +40,7 @@ class DentalHistoryController extends Controller
 
         return view ('dentist.C_dentist_dental_form')->with('patientInfo',$patientInfo);
     }
-    public function indexOfDentalChief()
-    {
-        $patientInfo = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                ->orderBy('cliniclogs.created_at', 'desc')
-                                ->select('patients.*','cliniclogs.*')
-                                ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
-                                ->first();
 
-
-        // dd($patientInfo);
-
-        return view ('dchief.C_dchief_dental_form')->with('patientInfo',$patientInfo);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -163,7 +151,7 @@ class DentalHistoryController extends Controller
        }
     }
 
-    public function dChiefStore(Request $request)
+    public function dchiefStore(Request $request)
     {
        try{
 
@@ -256,6 +244,7 @@ class DentalHistoryController extends Controller
 
        }
     }
+
     /**
      * Display the specified resource.
      *
@@ -286,7 +275,7 @@ class DentalHistoryController extends Controller
 
         return view('dentist.C_dentist_patient_edit_history')->with(['patientHistoryInfo' => $patientHistoryInfo, 'dentalHistory' => $dentalHistory]);
     }
-    public function dChiefEdit($id)
+    public function dchiefEdit($id)
     {
         $dentalHistory = DentalHistory::find($id);
 
@@ -299,6 +288,7 @@ class DentalHistoryController extends Controller
 
         return view('dchief.C_dchief_patient_edit_history')->with(['patientHistoryInfo' => $patientHistoryInfo, 'dentalHistory' => $dentalHistory]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -384,7 +374,8 @@ class DentalHistoryController extends Controller
 
         $dentalHistory->save();
     }
-    public function dChiefUpdate(Request $request, $id)
+
+    public function dchiefUpdate(Request $request, $id)
     {
 
         $dentalHistory = DentalHistory::find($id);
@@ -462,6 +453,7 @@ class DentalHistoryController extends Controller
 
         $dentalHistory->save();
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -490,21 +482,7 @@ class DentalHistoryController extends Controller
         return Response::json($results);
 
     }
-    public function autocompleteDChief()
-    {
-        $patients = Patient::where('isDeleted', '=', '0')
-                           ->where('patientNumber', 'LIKE', '%' . Input::get('input') . '%')
-                           ->get();
-        $results ['suggestions'] = [];
-        foreach ($patients as $patient)
-        {
-            array_push( $results['suggestions'], array("value" => "$patient->patientNumber", "data" => "$patient->lastName, $patient->firstName $patient->middleName $patient->quantifier", "id" => "$patient->patientID", "number"=>"$patient->patientNumber"));
-        }
 
-        // $patientID = array("suggestions" => $results);
-
-        return Response::json($results);
-    }
     public function autocompleteName()
     {
         $patients = Patient::where('isDeleted', '=', '0')
@@ -519,7 +497,26 @@ class DentalHistoryController extends Controller
 
         return Response::json($results);
     }
-    public function autocompleteNameDChief()
+
+    //IMPROVED AUTOCOMPLETE (PATIENT ID/PATIENT NUMBER)
+    public function dchiefAutocomplete()
+    {
+        $patients = Patient::where('isDeleted', '=', '0')
+                           ->where('patientNumber', 'LIKE', '%' . Input::get('input') . '%')
+                           ->get();
+        $results ['suggestions'] = [];
+        foreach ($patients as $patient)
+        {
+            array_push( $results['suggestions'], array("value" => "$patient->patientNumber", "data" => "$patient->lastName, $patient->firstName $patient->middleName $patient->quantifier", "id" => "$patient->patientID", "number"=>"$patient->patientNumber"));
+        }
+
+        // $patientID = array("suggestions" => $results);
+
+        return Response::json($results);
+
+    }
+
+    public function dchiefAutocompleteName()
     {
         $patients = Patient::where('isDeleted', '=', '0')
                     ->where(DB::raw("CONCAT(patients.lastName,', ', patients.firstName,' ',IFNULL(patients.middleName, ''),' ', IFNULL(patients.quantifier, ''))"), 'LIKE' , '%' . Input::get('input')  . '%')
@@ -533,6 +530,7 @@ class DentalHistoryController extends Controller
 
         return Response::json($results);
     }
+
 
     public function showDentalHistory($id)
     {
@@ -551,7 +549,7 @@ class DentalHistoryController extends Controller
 
         return view('dentist.C_dentist_patient_view_history')->with(['chosenHistory'=> $chosenHistory, 'patientInfo'=>$patientInfo]);
     }
-    public function showDentalHistoryDChief($id)
+    public function dchiefShowDentalHistory($id)
     {
         $chosenHistory = DentalHistory::find($id);
 

@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -365,32 +365,6 @@
       }
     });
 
-    //SAVING FUNCTION
-
-    // $('#saveForm').parsley();
-
-    // $('#saveForm').submit(function(e){
-    //   e.preventDefault();
-    //   $.ajax({
-    //     url: '/dentist/dental/HistoryForm/store',
-    //     type: 'get',
-    //     data: $('#saveForm').serialize(),
-    //     success: function(output){
-    //       swal({
-    //         title: "Record Saved!",
-    //         text: "Dental History Record Saved!",
-    //         icon: "success",
-    //         button: "confirm",
-    //       })
-    //       .then((willRoute)=>{
-    //         if(willRoute){
-    //           window.location.href = "/dentist/dentalchart";
-    //         }
-    //       });
-    //     }
-    //   });
-    // });
-
     // Step show event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
        //alert("You are on step "+stepNumber+" now");
@@ -405,7 +379,8 @@
 
       if($('button.sw-btn-next').hasClass('disabled')){
         $('.sw-btn-group-extra').show(); // show the button extra only in the last page
-      }else{
+      }
+      else{
         $('.sw-btn-group-extra').hide();        
       }
     });
@@ -421,7 +396,7 @@
 
                         if ($('#saveForm').parsley().isValid("first")) {
                             $.ajax({
-                              url: '/dchief/dental/HistoryForm/update/' + {{$patientHistoryInfo['dentalHistoryID']}},
+                              url: '/dchief/dental/HistoryForm/update/' + '{{$patientHistoryInfo['dentalHistoryID']}}',
                               type: 'get',
                               data: $('#saveForm').serialize(),
                               success: function(output){
@@ -433,13 +408,15 @@
                                 })
                                 .then((willRoute)=>{
                                   if(willRoute){
-                                    window.location.href = '/dchief/dental/HistoryForm/view/' + {{$patientHistoryInfo['dentalHistoryID']}} ;
+                                    window.location.href = '/dchief/dental/HistoryForm/view/' + '{{$patientHistoryInfo['dentalHistoryID']}}';
                                   }
                                 });
                               }
                             });
                         }
                       });
+
+
     var btnCancel = $('<button></button>').text('Cancel')
                                      .addClass('btn btn-danger')
                                      .on('click', function(){ $('#smartwizard').smartWizard("reset"); });

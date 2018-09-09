@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -35,7 +35,7 @@
 
                   <div style="float:left; margin-left:50px; font-size:18px; width:50%;">
                     <input type="checkbox" name="dentalCertChk" class="radio-past" style="margin-bottom:12px;" value="1" /><label style="margin-left: 5px;">Dental Certificate</label>
-                    <button id="viewDocuBtn" style="margin-left: 45%" disabled data-target="#dentalCertModal" data-toggle="modal">View Document</button>
+                    <button type="button" id="viewDocuBtn" style="margin-left: 45%" disabled data-target="#dentalCertModal" data-toggle="modal">View Document</button>
                     <br>
                     <!-- <input type="checkbox" name="outsideReferChk" class="radio-past" style="margin-bottom:12px;" value="1" /><label style="margin-left: 5px;">Outside Referral Slip</label>
                     <button id="viewReferBtn" style="margin-left: 40%" data-target="#outsideReferModal" data-toggle="modal">View Document</button> -->
@@ -46,10 +46,11 @@
                   </div>
 
                       <div style="margin-top: 25px;float: left;text-align: center;width: 100%">
-                        <button class="btn btn-success">SAVE</button>
-                        </form>
-                        <a href="{{url('/dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CLOSE</button></a>
+                        <button type="submit" class="btn btn-success">SAVE</button>
+                      
+                        <a href="{{url('/dentist/DentalLog')}}"><button type="button" class="btn btn-danger">CLOSE</button></a>
                       </div>
+                        </form>
                   <!-- /Content -->
                 </div>
               </div>

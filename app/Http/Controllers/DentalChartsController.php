@@ -23,11 +23,12 @@ class DentalChartsController extends Controller
             $dentalchart->save();
         }
         $dentalchart = DentalChart::where('patientID', $patientid)->orderBy('created_at', 'desc')->first();
-        $toothconditions = ToothCondition::where('dentalChartID', $dentalchart->dentalChartID)->where('isRecent',"1")->where('isDeleted',0)->get();
+        $toothconditions = ToothCondition::where('dentalChartID', $dentalchart->dentalChartID)->where('isRecent',"1")->where('isDeleted',0)->get();        
         Session::put('dentalchartid',$dentalchart['dentalChartID']);
         return view('dentist.C_dentist_dental_chart')->with(['dentalchart' => $dentalchart, 'toothconditions' => $toothconditions]);
     }
-    public function dChiefCreate()
+
+    public function dchiefCreate()
     {
         $patientid = Session::get('patientInfo.patientID');
         $dentalchart = DentalChart::where('patientID', $patientid)->first();
@@ -37,7 +38,7 @@ class DentalChartsController extends Controller
             $dentalchart->save();
         }
         $dentalchart = DentalChart::where('patientID', $patientid)->orderBy('created_at', 'desc')->first();
-        $toothconditions = ToothCondition::where('dentalChartID', $dentalchart->dentalChartID)->where('isRecent',"1")->where('isDeleted',0)->get();
+        $toothconditions = ToothCondition::where('dentalChartID', $dentalchart->dentalChartID)->where('isRecent',"1")->where('isDeleted',0)->get();        
         Session::put('dentalchartid',$dentalchart['dentalChartID']);
         return view('dchief.C_dchief_dental_chart')->with(['dentalchart' => $dentalchart, 'toothconditions' => $toothconditions]);
     }
@@ -48,7 +49,7 @@ class DentalChartsController extends Controller
                 $txtbox = 'txtBox' . $x;
                 $txtboxa = $txtbox . 'a';
                 $txtboxb = $txtbox . 'b';
-
+				
                 if ($request->$txtboxa != '') {
                     $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->where('toothstatusA','!=',null)->orderBy('created_at','desc')->first();
                     if (!empty($hasRecord)) {
@@ -78,7 +79,7 @@ class DentalChartsController extends Controller
                 $txtbox = '';
             }
         }
-
+        
         Session::put('diagnosis', $request->diagnosisTextArea);
 
         Session::put('dentalchartid', $dentalchartid);
@@ -91,14 +92,15 @@ class DentalChartsController extends Controller
         );
         return Redirect::route('dentist.patient.prescription',Session::get('patientInfo.patientID'));
     }
-    public function dChiefStore(Request $request, $dentalchartid)
+
+    public function dchiefStore(Request $request, $dentalchartid)
     {
         for ($x = 11; $x <= 81; $x++) {
             if (($x >= 11 && $x <= 18) || ($x >= 21 && $x <= 28) || ($x >= 31 && $x <= 38) || ($x >= 41 && $x <= 48) || ($x >= 51 && $x <= 55) || ($x >= 61 && $x <= 65) || ($x >= 71 && $x <= 75) || ($x >= 81 && $x <= 85)) {
                 $txtbox = 'txtBox' . $x;
                 $txtboxa = $txtbox . 'a';
                 $txtboxb = $txtbox . 'b';
-
+                
                 if ($request->$txtboxa != '') {
                     $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->where('toothstatusA','!=',null)->orderBy('created_at','desc')->first();
                     if (!empty($hasRecord)) {
@@ -128,7 +130,7 @@ class DentalChartsController extends Controller
                 $txtbox = '';
             }
         }
-
+        
         Session::put('diagnosis', $request->diagnosisTextArea);
 
         Session::put('dentalchartid', $dentalchartid);
@@ -139,7 +141,7 @@ class DentalChartsController extends Controller
             'dentalchart' => $dchart,
             'toothconditions' => $toothconditions,
         );
-        return Redirect::route('patient.prescription',Session::get('patientInfo.patientID'));
+        return Redirect::route('dchief.patient.prescription',Session::get('patientInfo.patientID'));
     }
     public function eachtooth($toothNum)
     {
@@ -156,10 +158,11 @@ class DentalChartsController extends Controller
         );
         return view('dentist.C_dentist_dental_chart_each')->with($data);
     }
-    public function eachtoothDChief($toothNum)
+
+    public function dchiefEachtooth($toothNum)
     {
         $dchart = DentalChart::where('patientID',Session::get('patientInfo.patientID'))->first();
-        $toothconditions = ToothCondition::where('dentalChartID', $dchart->dentalChartID)
+        $toothconditions = ToothCondition::where('dentalChartID', $dchart['dentalChartID'])
             ->where('toothNum',$toothNum)
             ->where('isDeleted',0)
             ->where('deleted_at',null)
@@ -171,6 +174,7 @@ class DentalChartsController extends Controller
         );
         return view('dchief.C_dchief_dental_chart_each')->with($data);
     }
+
     public function delete($toothconditionID){
         $toothcondition = ToothCondition::find($toothconditionID);
         $toothcondition->isDeleted = 1;
@@ -179,7 +183,7 @@ class DentalChartsController extends Controller
         $toothcondition->save();
         return Redirect::route('dentist.dentalchart.each',$toothcondition->toothNum);
     }
-    public function dChiefDelete($toothconditionID){
+    public function dchartDelete($toothconditionID){
         $toothcondition = ToothCondition::find($toothconditionID);
         $toothcondition->isDeleted = 1;
         $toothcondition->isRecent = 0;
@@ -187,6 +191,7 @@ class DentalChartsController extends Controller
         $toothcondition->save();
         return Redirect::route('dchief.dentalchart.each',$toothcondition->toothNum);
     }
+
     public function view($patientID){
 
         $dchart = DentalChart::where('patientID', '=', $patientID)->first();
@@ -199,7 +204,8 @@ class DentalChartsController extends Controller
         return view('dentist.C_dentist_dental_chart_view')->with($data);
         // dd($toothconditions);
     }
-    public function dChiefView($patientID){
+
+    public function dchiefView($patientID){
 
         $dchart = DentalChart::where('patientID', '=', $patientID)->first();
         $toothconditions = ToothCondition::where('dentalChartID', $dchart['dentalChartID'])->where('isRecent',"1")->get();

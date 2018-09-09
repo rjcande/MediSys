@@ -14,19 +14,19 @@
 
             <div class="row">
               <!-- form input mask -->
-               <div class="col-md-6 col-sm-6 col-xs-12">
+               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Frequency of Patient's Visit (Year)</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="lineChart"></canvas>
+                    <canvas id="lineChartPatient"></canvas>
                   </div>
                   <div style="float: right;">
-                    <a href="{{ url('/dentist/patient/condition/reports') }}">
+                   <!--  <a href="{{ url('/physician/patient/condition/reports') }}">
                       <button class="btn btn-info">Patients' Conditions Statistics</button>
-                    </a>
+                    </a> -->
                   </div>
                 </div>
               </div>
@@ -51,18 +51,18 @@
                 </div>
               </div> -->
 
-              <div class="col-md-6 col-sm-6 col-xs-12" style="position: absolute; margin-top: 28%; width: 42%">
+              <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Dental Supplies Report</h2>
+                    <h2>Medical Supplies Report</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <a href="{{ url('/dentist/medicine/reports') }}">
                       <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
                     </a>
-                    <a href="{{ url('/dentist/dental/supplies/reports') }}">
-                      <button type="button" class="btn btn-primary btn-block">Dental Supplies Report</button>
+                    <a href="{{ url('/dentist/medical/supplies/reports') }}">
+                      <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
                     </a>
                   </div>
                 </div>
@@ -80,14 +80,24 @@
                         <thead>
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
-                            <th class="column-title">Dentist </th>
+                            <th class="column-title">Physician </th>
                             <th class="column-title">Date </th>
                             </th>
                           </tr>
                         </thead>
 
                         <tbody>
-                          
+                          @foreach($patientNames as $name)
+                            @foreach($physicians as $physician)
+                              @if($name->appointmentID == $physician->appointmentID)
+                                <tr class="even-pointer" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                                  <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
+                                  <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
+                                  <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
+                                </tr>
+                              @endif
+                            @endforeach
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -212,6 +222,79 @@
         } 
       });
     });
+
+    var totalPatientJanuary = 0;
+     var totalPatientFebruary = 0;
+     var totalPatientMarch = 0;
+     var totalPatientApril = 0;
+     var totalPatientMay = 0;
+     var totalPatientJune = 0;
+     var totalPatientJuly = 0;
+     var totalPatientAugust = 0;
+     var totalPatientSeptember = 0;
+     var totalPatientOctober = 0;
+     var totalPatientNovember = 0;
+     var totalPatientDecember = 0;
+
+     var array = {!! json_encode($totalPatient) !!};
+
+     for (var i = 0; i < array.length; i++) {
+        if (array[i].month == 1) {
+              totalPatientJanuary = array[i].total;
+          }
+
+          if (array[i].month == 2) {
+              totalPatientFebruary = array[i].total;
+          }
+
+          if (array[i].month == 3) {
+              totalPatientMarch = array[i].total;
+          }
+
+          if (array[i].month == 4) {
+              totalPatientApril = array[i].total;
+          }
+
+          if (array[i].month == 5) {
+              totalPatientMay = array[i].total;
+          }
+
+          if (array[i].month == 6) {
+              totalPatientJune = array[i].total;
+          }
+
+          if (array[i].month == 7) {
+              totalPatientJuly = array[i].total;
+          }
+
+          if (array[i].month == 8) {
+              totalPatientAugust =array[i].total;
+          }
+
+          if (array[i].month == 9) {
+              totalPatientSeptember = array[i].total;
+          }
+
+          if (array[i].month == 10) {
+              totalPatientOctober = array[i].total;
+          }
+
+          if (array[i].month == 11) {
+              totalPatientNovember = array[i].total;
+          }
+
+          if (array[i].month == 12) {
+              totalPatientDecember = array[i].total;
+          }
+     }
+
+
+   
+
+    if($("#lineChartPatient").length){
+        var f=document.getElementById("lineChartPatient");
+        new Chart(f,{type:"line",data:{labels:["January","February","March","April","May","June","July","August","September","October","November", "December"],datasets:[{label:"Patient",backgroundColor:"rgba(38, 185, 154, 0.31)",borderColor:"rgba(38, 185, 154, 0.7)",pointBorderColor:"rgba(38, 185, 154, 0.7)",pointBackgroundColor:"rgba(38, 185, 154, 0.7)",pointHoverBackgroundColor:"#fff",pointHoverBorderColor:"rgba(220,220,220,1)",pointBorderWidth:1,data:[totalPatientJanuary,totalPatientFebruary,totalPatientMarch,totalPatientApril,totalPatientMay,totalPatientJune,totalPatientJuly,totalPatientAugust,totalPatientSeptember,totalPatientOctober,totalPatientNovember,totalPatientDecember]}]}})
+    }
 
 
   });

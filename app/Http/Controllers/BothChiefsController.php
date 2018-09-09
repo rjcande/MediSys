@@ -50,10 +50,10 @@ class BothChiefsController extends Controller
 
                 elseif($loggedUser['position'] == 4){
                     if($loggedUser['isVerified'] == 2){
-                        return Redirect::to('/dentist/Dashboard');
+                        return Redirect::to('/dentist/dashboard');
                     }
                     else{
-                        return back()->withErrors(['login' => 'Invalid Username or Password!']);
+                        return redirect()->route('verifySingleAccount',$loggedUser['id']);
                     }
                 }
 
@@ -120,8 +120,22 @@ class BothChiefsController extends Controller
     }
 
     public function verifySingleAccount($userID){
-        $verification = UserVerification::where('userID',$userID)->first();
-        return view('accounts.verification')->withVerification($verification);
+        // $verification = UserVerification::where('userID',$userID)->first();
+        // return view('accounts.verification')->withVerification($verification);
+        $lastCreatedUser = Account::find($userID);
+        if($lastCreatedUser['isVerified'] == 0){
+            return view('accounts.pending');
+        }
+        elseif($lastCreatedUser['isVerified'] == 1){
+            $verification = UserVerification::where('userID',$lastCreatedUser['id'])->first();
+            return view('accounts.verification')->withVerification($verification);
+        }
+        elseif($lastCreatedUser['isVerified'] == 2){
+            return view('accounts.canLog');
+        }
+        elseif($lastCreatedUser['isVerified'] == 3){
+            return view('accounts.unverified');
+        }
     }
 
     public function verifyAccount(){

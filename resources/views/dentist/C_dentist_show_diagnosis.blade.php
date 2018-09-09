@@ -251,7 +251,7 @@
 
 <script>
   $('#btnBack').click(function(e){
-    window.location.href = '/patient/consultations/' + $('#btnBack').data('id');
+    window.location.href = '/dentist/patient/consultations/' + $('#btnBack').data('id');
   });
 </script>
 

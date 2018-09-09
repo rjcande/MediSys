@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -46,17 +46,22 @@
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                         <div style="display: inline-block;width: 95%;">
-                          <input style="margin-left: 25%;" type="checkbox" value="1" readonly name="dentalExam"
+                          <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="dentalExam"
                             @if($treatment['dentalExamination'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspDental Examination</label>
-                          <input style="margin-left: 20%;" type="checkbox" value="1" readonly name="oralProphylaxis"
+                          <input style="margin-left: 39.9%;" type="checkbox" value="1" readonly name="oralProphylaxis"
                             @if($treatment['oralProphylaxis'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspOral Prophylaxis</label>
                           <br>
+                          <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="othersTreatment"
+                            @if($treatment['othersTreatment'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspOthers:</label>
                           <input style="margin-left: 10%" type="checkbox" value="1" readonly name="restorationChk"
                             @if($treatment['restoration'] == 1)
                             {{"checked"}}
@@ -69,11 +74,7 @@
                             @endif
                           ><label>&nbspExtraction:</label>
                           <input style="width: 10%" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
-                          <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="othersTreatment"
-                            @if($treatment['othersTreatment'] == 1)
-                            {{"checked"}}
-                            @endif
-                          ><label>&nbspOthers:</label>
+                          
                           <textarea rows="7" class="form-control" readonly style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
                         </div>
                       </div>

@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 	
@@ -40,7 +40,7 @@
                         <header style="width: 150px"> Student/Faculty Number *</header>
                       </div>
                       <div style="float: left;">
-                        <input type="text" name="studFacID" minlength="15" style="width:300px; border-radius:8px; margin-bottom:20px;margin-top: 10px;" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" value="{{ Session::get('patientInfo.patientNumber') }}">
+                        <input type="text" name="studFacID" minlength="15" style="width:300px; border-radius:8px; margin-bottom:20px;margin-top: 10px;" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" value="{{ Session::get('patientNumber') }}">
                       </div>
                     </div>
 

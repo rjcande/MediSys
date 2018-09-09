@@ -1,6 +1,7 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
+
 	 <div class="right_col" role="main">
         <div class="">
             <div class="page-title">

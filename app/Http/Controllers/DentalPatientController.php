@@ -35,11 +35,12 @@ class DentalPatientController extends Controller
         $patientList = Patient::all();
         return view('dentist.C_dentist_patient_list')->with('patient', $patientList);
     }
-    public function indexOfDentalChief()
+    public function dchiefIndex()
     {
         $patientList = Patient::all();
         return view('dchief.C_dchief_patient_list')->with('patient', $patientList);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,12 +52,13 @@ class DentalPatientController extends Controller
 
         return view('dentist.C_dentist_register_patient');
     }
-    public function dChiefCreate(Request $request)
+    public function dchiefCreate(Request $request)
     {
-        Session::put('patientNumber', $request->patientNumber);
+        // Session::put('patientNumber', $request->patientNumber);
 
         return view('dchief.C_dchief_register_patient');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -113,10 +115,8 @@ class DentalPatientController extends Controller
             return Redirect::back()->with('errors', $error);
 
         }
-
-
     }
-    public function dChiefStore(Request $request)
+    public function dchiefStore(Request $request)
     {
         try{
 
@@ -154,7 +154,7 @@ class DentalPatientController extends Controller
 
         Session::flash('message', 'successfully added!');
 
-        return Redirect::route('consultation.to.all.dentists', $patientID);
+        return Redirect::route('dchief.consultation.to.all.dentists', $patientID);
 
         dd(Session::get('accountInfo.id'));
 
@@ -167,6 +167,7 @@ class DentalPatientController extends Controller
 
         }
     }
+
     /**
      * Display the specified resource.
      *
@@ -179,12 +180,13 @@ class DentalPatientController extends Controller
 
         return view ('dentist.C_dentist_patient_view_more_info')->with('patientInfo', $patientInfo);
     }
-    public function dChiefShow($id)
+    public function dchiefShow($id)
     {
         $patientInfo = Patient::find($id);
 
         return view ('dchief.C_dchief_patient_view_more_info')->with('patientInfo', $patientInfo);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -220,7 +222,7 @@ class DentalPatientController extends Controller
     }
 
     public function dentalPatientRecords()
-    {
+    { 
         // GATHERING DENTAL HISTORIES PER PATIENT
         $patientRecord = DentalLog::join('patients','patients.patientID','=','cliniclogs.patientID')
                                   ->join('dentalhistories','dentalhistories.patientID','=','patients.patientID')
@@ -229,11 +231,11 @@ class DentalPatientController extends Controller
                                   ->groupBy('patients.patientID')
                                   ->get();
 
-
+                                
         return view('dentist.C_dentist_patient_record')->with(['patientRecord'=>$patientRecord]);
     }
-    public function dentalPatientRecordsDChief()
-    {
+    public function dchiefDentalPatientRecords()
+    { 
         // GATHERING DENTAL HISTORIES PER PATIENT
         $patientRecord = DentalLog::join('patients','patients.patientID','=','cliniclogs.patientID')
                                   ->join('dentalhistories','dentalhistories.patientID','=','patients.patientID')
@@ -242,9 +244,10 @@ class DentalPatientController extends Controller
                                   ->groupBy('patients.patientID')
                                   ->get();
 
-
-                                  return view('dchief.C_dchief_patient_record')->with(['patientRecord'=>$patientRecord, 'prototype'=>$prototype]);
+                                
+        return view('dchief.C_dchief_patient_record')->with(['patientRecord'=>$patientRecord]);
     }
+
     public function patientConsultations($id)
     {
 
@@ -270,30 +273,31 @@ class DentalPatientController extends Controller
         // dd($consultInfo);
         return view('dentist.C_dentist_patients_consultations')->with(['dentalLog' => $dentalLogs, 'vitalSigns' =>$vitalSigns, 'attendingDentist'=>$attendingDentist,  'certifications'=>$certifications]);
     }
-    // public function patientConsultationsDChief($id)
-    // {
+    
+    public function dchiefPatientConsultations($id)
+    {
 
-    //     $dentalLogs = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
-    //                            ->join('diagnoses', 'diagnoses.clinicLogID', '=', 'cliniclogs.clinicLogID')
-    //                            ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
-    //                            ->select('users.*', 'diagnoses.*', 'treatments.*')
-    //                            ->where('cliniclogs.patientID', '=', $id)
-    //                            ->where('cliniclogs.clinicType', '=', 'D')
-    //                            ->get();
+        $dentalLogs = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                               ->join('diagnoses', 'diagnoses.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                               ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                               ->select('users.*', 'diagnoses.*', 'treatments.*')
+                               ->where('cliniclogs.patientID', '=', $id)
+                               ->where('cliniclogs.clinicType', '=', 'D')
+                               ->get();
 
-    //     $certifications = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-    //                                ->select('patients.*', 'cliniclogs.*')
-    //                                ->where('cliniclogs.patientID', '=', $id)
-    //                                ->where('cliniclogs.clinicType', '=', 'D')
-    //                                ->where('cliniclogs.reqForDentalCert', '=', '1')
-    //                                ->get();
+        $certifications = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                                   ->select('patients.*', 'cliniclogs.*')
+                                   ->where('cliniclogs.patientID', '=', $id)
+                                   ->where('cliniclogs.clinicType', '=', 'D')
+                                   ->where('cliniclogs.reqForDentalCert', '=', '1')
+                                   ->get();
 
-    //     $vitalSigns = VitalSigns::where('isDeleted', '=', '0')->get();
+        $vitalSigns = VitalSigns::where('isDeleted', '=', '0')->get();
 
-    //     $attendingDentist = Account::where('isActive', '=', '1')->get();
+        $attendingDentist = Account::where('isActive', '=', '1')->get();
 
-    //     // dd($consultInfo);
-    //     return view('dchief.C_dchief_patients_consultations')->with(['dentalLog' => $dentalLogs, 'vitalSigns' =>$vitalSigns, 'attendingDentist=']);
-    // }
+        // dd($consultInfo);
+        return view('dchief.C_dchief_patients_consultations')->with(['dentalLog' => $dentalLogs, 'vitalSigns' =>$vitalSigns, 'attendingDentist'=>$attendingDentist,  'certifications'=>$certifications]);
+    }
 
 }

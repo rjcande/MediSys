@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -716,10 +716,10 @@
                         </div>
 
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
-                            <a href="C_dchief_dental_form.php"><button class="btn btn-primary">BACK</button></a>
+                            <!-- <a href="C_dentist_dental_form.php"><button class="btn btn-primary">BACK</button></a> -->
                             <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>    
-                            <a href="{{url('dchief/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a>
+                            <a href="{{url('dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CANCEL</button></a>
                         </div>
                     </div>
                     

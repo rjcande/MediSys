@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -61,20 +61,22 @@
                               {{
                                   'Admin/Dept'
                               }}
-                              @endif</td>
+                              @endif
+                              </td>
                               <td class=" last">
                               <a href="{{ route('dchief.view.dental.history', $patientRecords->dentalHistoryID)}}">
                               <button class='btn btn-success' name='btnViewHistory' type="submit" style='background-color:#218c74; color:white;'>View History</button></a>
                               <a href="{{ route('dchief.patient.consultations', $patientRecords->patientID) }}">  
                                 <button class='btn btn-default' type="submit" title='View More Info'>Concerns</button>
                               </a>
-                              <button class='btn btn-danger'><i class='fa fa-trash'></i></button></td>
-                              </td>
+                              <!-- <button class='btn btn-danger'><i class='fa fa-trash'></i></button></td> -->
                             </tr>
                           @endforeach
                         </tbody>
                       </table>
-                    </div>  
+                    </div> 
+
+                  
                   <!--Content -->
               </div> <!-- name="x_content" -->
               </div> <!-- name="x_panel" -->

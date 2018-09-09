@@ -23,25 +23,25 @@
                         <header style="margin-bottom:12px; margin-left:25px;">Medical Supply Name:</header>
                       </div>
                       <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupName" data-parsley-required="true">   
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupName" data-parsley-required="true">
                       </div>
-                        
+
                     </div>
                     <div>
                       <div style="float: left; width: 200px;">
                         <header style="margin-bottom:12px; margin-left:25px;">Brand Name:</header>
                       </div>
                       <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupBrandName" data-parsley-required="true">    
-                      </div>     
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupBrandName" data-parsley-required="true">
+                      </div>
                     </div>
                     <div>
                       <div style="float: left; width: 200px;">
                         <header style="margin-bottom:12px; margin-left:25px;">Unit:</header>
                       </div>
                       <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupUnit" data-parsley-required="true">    
-                      </div>     
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupUnit" data-parsley-required="true">
+                      </div>
                     </div>
                     <div style="float: left; display: flex; justify-content: center; width: 100%">
                       <button type="submit" class="btn btn-success" id="btnAdd">ADD</button>
@@ -99,16 +99,16 @@
                                 <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $supply->medSupName }}" data-brand="{{ $supply->brand }}" data-unit="{{ $supply->unit }}" data-id="{{ $supply->medSupID }}">
                                   <i class="fa fa-pencil"></i>
                                 </button>
-                               
+
                                 <button type="submit" class="btn btn-danger medicine-details" id="btnDelete" data-id="{{ $supply->medSupID }}">
                                   <i class="fa fa-trash"></i>
                                 </button>
-                           
-                               
-                                
+
+
+
                               </td>
-                            </tr> 
-                          @endforeach 
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -116,7 +116,7 @@
                 </div>
               </div>
 
-            
+
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="unit" name="unit">
             </div>
-          </div>      
+          </div>
       </div>
       <div class="modal-footer">
         <input type="hidden" name="medicineID">
@@ -207,7 +207,7 @@
             }
           });
         }
-       
+
       });
 
       $('#editMedForm').submit(function(e){
@@ -233,7 +233,7 @@
         }
       });
 
-      
+
     //button clicks
     $('#btnReset').on('click', function(){
       $('#saveMedForm')[0].reset();

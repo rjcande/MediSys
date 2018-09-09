@@ -102,6 +102,9 @@ class AccountController extends Controller
             elseif ($accountInfos['position'] == 4) {
                 return Redirect::to('/dentist/Dashboard');
             }
+            elseif ($accountInfos['position'] == 2){
+                return Redirect::to('/dchief/Dashboard');
+            }
         }
         else{
             return back()->withErrors(['login' => 'Incorrect Username or Password']);

@@ -49,11 +49,11 @@
 		</center>
 	</div>
 	<div class="date">
-		<label for="dateTxt">Date: {{$date}}</label>
+		<label for="dateTxt">Date: <u>{{$date}}</u></label>
 	</div>
 	<div class="body">
 		<br><br>
-		<p>TO:</p>
+		<p>TO: {{$referral}}</p>
 		<p>Remark/s:</p>
 		<textarea style="width: 100%; height: 200px; font-family:Arial;">{{$remarks}}</textarea>
 		<br><br><br>

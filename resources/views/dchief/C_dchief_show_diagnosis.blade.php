@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -39,7 +39,38 @@
 
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
-                        <textarea rows="7" class="form-control" readonly style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
+                        <div style="display: inline-block;width: 95%;">
+                          <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="dentalExam"
+                            @if($treatment['dentalExamination'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspDental Examination</label>
+                          <input style="margin-left: 39.9%;" type="checkbox" value="1" readonly name="oralProphylaxis"
+                            @if($treatment['oralProphylaxis'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspOral Prophylaxis</label>
+                          <br>
+                          <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="othersTreatment"
+                            @if($treatment['othersTreatment'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspOthers:</label>
+                          <input style="margin-left: 10%" type="checkbox" value="1" readonly name="restorationChk"
+                            @if($treatment['restoration'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspRestoration(Filling Tooth):</label>
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['restorationTooth']}}" readonly name="restorationTxt">
+                          <input style="margin-left: 10%" type="checkbox" value="1" name="extractionChk"
+                            @if($treatment['extraction'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspExtraction:</label>
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
+                          
+                          <textarea rows="7" class="form-control" readonly style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
+                        </div>
                       </div>
                       <br><br>
                 
@@ -221,7 +252,7 @@
 
 <script>
   $('#btnBack').click(function(e){
-    window.location.href = '/patient/consultations/' + $('#btnBack').data('id');
+    window.location.href = '/dchief/patient/consultations/' + $('#btnBack').data('id');
   });
 </script>
 

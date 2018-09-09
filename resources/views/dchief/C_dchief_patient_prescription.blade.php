@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -6,7 +6,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Dashboard</h3>
+              <h3>Dental Log</h3>
             </div>
           </div>
 
@@ -49,14 +49,15 @@
                                     <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                                       height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                                     <div style="display: inline-block;width: 95%;">
-                                      <input style="margin-left: 25%;" type="checkbox" value="1" data-parsley-group="first" name="dentalExam"><label>&nbspDental Examination</label>
-                                      <input style="margin-left: 20%;" type="checkbox" value="1" data-parsley-group="first" name="oralProphylaxis"><label>&nbspOral Prophylaxis</label>
+                                      <input style="margin-left: 10%;" type="checkbox" value="1" data-parsley-group="first" name="dentalExam"><label>&nbspDental Examination</label>
+                                      <input style="margin-left: 42.4%;" type="checkbox" value="1" data-parsley-group="first" name="oralProphylaxis"><label>&nbspOral Prophylaxis</label>
                                       <br>
-                                      <input style="margin-left: 10%" type="checkbox" value="1" data-parsley-group="first" name="restorationChk"><label>&nbspRestoration(Filling Tooth):</label>
-                                      <input style="width: 10%" type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="restorationTxt">
-                                      <input style="margin-left: 10%" type="checkbox" value="1" data-parsley-group="first" name="extractionChk"><label>&nbspExtraction:</label>
-                                      <input style="width: 10%" type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="extractionTxt">
-                                      <input style="margin-left: 15%;" type="checkbox" value="1" data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
+                                      <input style="margin-left: 10%;" type="checkbox" value="1" data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
+                                      <input style="margin-left: 6.5%" type="checkbox" value="1" data-parsley-group="first" name="restorationChk"><label>&nbspRestoration(Filling Tooth):</label>
+                                      <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="restorationTxt">
+                                      <input style="margin-left: 8%" type="checkbox" value="1" data-parsley-group="first" name="extractionChk"><label>&nbspExtraction:</label>
+                                      <input style="width:150px; border-radius:8px; margin-left:1%;"  type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="extractionTxt">
+                                      
                                       <textarea name="treatment" id="treatment" rows="7" data-parsley-group="first" disabled class="form-control" placeholder="Enter treatment done here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;  margin-bottom: 20px"></textarea>
                                     </div>
                                   </div>
@@ -108,7 +109,7 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Quantity</header>
                                     </div>
                                     <div style="float: left;">
-                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second"><br>
+                                      <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second" min="1" data-parsley-error-message = "Should be greater than or equal to 1" ><br>
                                     </div>
                                   </div>
 
@@ -213,7 +214,7 @@
                                       <header style="margin-bottom:12px; margin-left:10px;"> Quantity</header>
                                     </div>
                                     <div style="float: left;">
-                                      <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third"><br>
+                                      <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third" min="1" data-parsley-error-message="Should be greater than or equal to 1"><br>
                                     </div>
                                   </div>
 
@@ -333,7 +334,7 @@
                             </div>
                             <div id="step-3" class="">
                               <!-- STEP 3 OPENING -->
-                                <div id="emergency" style="float:left; margin-top: 10px; width: 100%">
+                                <!-- <div id="emergency" style="float:left; margin-top: 10px; width: 100%">
                                   <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                                     height:30px; border-radius:8px;">&nbsp<b>Referral</b></p>
                                   
@@ -344,18 +345,9 @@
                                     <label><header style="margin-bottom:0px; margin-left:25px;"> To</header>
                                     </label>
                                   </div>
-                                  <!-- <div style="float:left; margin-left:10px; font-size:18px; width:50px;">
-                                    <select style="width:250px; border-radius:8px; margin-bottom:0px; 172px;height: 25px;" name="referTo" data-parsley-required="true" id="referTo">
-                                      <option value="" disabled selected></option>
-                                      <option value="0">Ortho-Surgeon of Choice</option>
-                                      <option value="1">Pulmonologist of Choice</option>
-                                      <option value="2">Cardiologist of Choice</option>
-                                      <option value="3">Other</option>
-                                    </select><br>
-                                  </div> -->
+                                  
                                   <div style="float:left; margin-left:10px%;">
-                                    <!-- <label style="font-size:13px; color: #ff3f34;"><em>if other, please specify</em></label> -->
-                                    <input type="text" name="referToOthers" data-parsley-group="referral" style="width:350px; border-radius:8px; margin-bottom:12px;
+                                    <input type="text" id="referToOthers" name="referToOthers" data-parsley-group="referral" style="width:350px; border-radius:8px; margin-bottom:12px;
                                       margin-left: 20px; height: 25px; font-size: 18px">
                                   </div>
                                 </div>
@@ -364,8 +356,10 @@
                                   <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
                                       background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">&nbsp Remarks</label>
                                   <textarea rows="7" class="form-control" placeholder="Enter remark/s here"
-                                    style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-bottom: 20px ; margin-left: 30px; width: 95%;" name="remark" data-parsley-group="referral" id="remark"></textarea>
-                                  <a href="{{route('dchief.referral.slip')}}" target="_blank"><button type="button" id="referralSlip" class="btn btn-success" style="margin-left: 50%"><i class="fa fa-download"></i> Referral Slip</button></a>
+                                    style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-bottom: 20px ; margin-left: 30px; width: 95%;" name="remark" data-parsley-group="referral" id="remark"></textarea> -->
+                                    <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
+                                      background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">View Referral Slip</label>
+                                   <button type="button" data-target="#outsideReferModal" data-toggle="modal" class="btn btn-success" style="margin-left: 50%"><i class="fa fa-download"></i> Referral Slip</button>
 
                                 </div>
                               <!-- STEP 3 CLOSING -->
@@ -382,6 +376,66 @@
           </div>
         </div>
       </div>
+
+
+<!-- MODAL OUTSIDE REFERRAL -->
+<div id="outsideReferModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 50%; height: auto; color: black;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body" id="">
+        <form method="get" target="_blank" action="{{route('dchief.referral.slip', ['patientID' => Session::get('patientInfo.patientID'), 'date' => Session::get('patientInfo.date')])}}">
+          @csrf
+        <div style="font-family: Arial; font-size: 20px; /*border: 1px solid black;*/">
+          <center>
+            POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
+            <b>DENTAL SERVICES</b><br>
+            <em>STA. MESA, MANILA</em><br>
+            <br>
+            <b style="font-size: 30px ; ">REFERRAL SLIP</b>
+          </center>
+        </div>
+        <div style="margin-left: 75%; margin-top: 20px; font-family: Arial; font-size: 15px;">
+          <label>Date: </label>
+          <input style="width: 63%" type="text" name="certDate" value="{{Session::get('patientInfo.date')}}">
+        </div>
+        <div style="font-size: 18px; font-family: Arial; margin-left: 5%;">
+          <br><br>
+          <p>TO: <input type="text" name="addressedDentist"></p>
+          <p>Remark/s:</p>
+          &nbsp&nbsp&nbsp&nbsp<textarea style=";width: 90%; height: 200px" name="remarks"></textarea>
+          <br><br><br><br>
+          <input style="width: 42%; margin-left: 54%" name="certDentistSigned" value="{{Session::get('accountInfo.lastName')}}, {{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.quantifier')}}" type="text">
+          <br>
+          <label style="width: 35%; margin-left: 63%;">Referring Dentist</label><br><br>
+          <div style="width: 50%; float: right; margin-right: 29px">
+            <input type="text" style="float:right; width: 50%" name="licenseNumber" value="{{Session::get('accountInfo.licenseNumber')}}">
+            <label style="width: 35%; float: right">License No.:</label>
+          </div>
+        </div><br><br><br>
+        <div style="font-size: 18px; font-family: Arial; margin-left: 5%;">
+          <input type="text" style="width: 40%" name="patientName" id="patientName" value="{{Session::get('patientInfo.patientName')}}"><br>
+          <label>&emsp;&emsp;&emsp;Name of Patient</label>
+        </div>
+
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <center><input type="submit" class="btn btn-success" value="Save and Print"></center>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<!-- /MODAL -->
 
 <script>
 $(document).ready(function(){
@@ -427,16 +481,24 @@ $(document).ready(function(){
   });
   
   // FUNCTION IN TAKING THE REMARKS AND REFER TO
-  // $('#referralSlip').on('click',function(e){
-  //   var referred = $('input[name=referToOthers]').text();
-  //   var remark = $('#remark').text();
+  // $('#referralSlip').on('click', function(e){
+  //   var referred = $('input[name=referToOthers]').val();
+  //   var remark = $('#remark').val();
 
   //   $.ajax({
   //     type: 'get',
   //     url: '/dentist/outside/referralSlip',
-  //     data: '',
+  //     data: { referred: referred,
+  //             remark: remark
+  //             // _token: $('meta[name=csrf-token]').attr('content')
+  //           },
   //     success:function(output){
+  //        // window.open('/dentist/outside/referralSlip', '_blank');
+  //        window.open('_blank', '/dentist/outside/referralSlip');
+  //        // window.location.href = "_blank";
+  //        // window.location.href = '/dentist/outside/referralSlip';
   //     }
+
 
   //   });
   // });
