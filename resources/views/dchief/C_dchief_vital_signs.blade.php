@@ -64,10 +64,25 @@
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Height: </label>
                    <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['height']){{ $height[0] }}@endif" name="height" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign"  data-parsley-errors-container="#error-height">
-                   <select name="heightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
-                    <option value="cm">centimeters</option>
-                    <option value="ft">feet</option>
-                    <option value="in">inches</option>
+                   <select name="heightUnit" id="heightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
+                    <option value="cm"
+                      @if($vitalSignsInfo['height'])
+                        @if($height[1] == 'cm')
+                          {{"selected"}}
+                        @endif
+                      @endif>centimeters</option>
+                    <option value="ft"
+                      @if($vitalSignsInfo['height'])
+                        @if($height[1] == 'ft')
+                          {{"selected"}}
+                        @endif
+                      @endif>feet</option>
+                    <option value="in"
+                      @if($vitalSignsInfo['height'])
+                        @if($height[1] == 'in')
+                          {{"selected"}}
+                        @endif
+                      @endif>inches</option>
                    </select>
                    <br>
                    <div id="error-height" >
@@ -81,7 +96,7 @@
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Weight: </label>
                    <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['weight']){{ $weight[0] }}@endif" name="weight" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-weight">
-                   <select name="weightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
+                   <select name="weightUnit" id="weightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
                       <option value="kg">kilograms</option>
                       <option value="lb">pounds</option>
                    </select>
@@ -167,8 +182,8 @@
          var heartRate = $('input[name=heartRate]').val();
          var respiratoryRate = $('input[name=respiratoryRate]').val();
          var temperature = $('input[name=temperature]').val();
-         var height = $('input[name=height]').val();
-         var weight = $('input[name=weight]').val();
+         var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
          var bmi = $('input[name=bmi]').val();
          var bmiRange = $('input[name=bmiRange]:checked').val();
 
@@ -184,6 +199,7 @@
         }
 
         console.log(id);
+        // alert( $('input[name=height]').val() + ' ' + $('#heightUnit').val())
         
         $.ajax({
           url: '/dchief/vital/store',
