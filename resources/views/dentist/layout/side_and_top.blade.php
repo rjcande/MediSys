@@ -38,6 +38,7 @@
               <li><a href="{{  url('/dentist/PatientRecord')  }}"><i class="fa fa-folder-open"></i>Patient Records</a></li>
             </ul>
           </li>
+        <li><a href="{{ url('dentist/dentalchart/prototype')}}"> Dental Chart</a></li>
        
         </ul>
       </div>
