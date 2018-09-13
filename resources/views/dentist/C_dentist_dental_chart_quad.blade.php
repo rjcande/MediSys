@@ -125,8 +125,7 @@
                                 <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
                                 <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
                                 <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
-                                <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
-                                " width="300px" class="imgTeeth"></a>
+                                <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;" width="300px" class="imgTeeth"></a>
                                 <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
                                 " width="300px" class="imgTeeth"></a> -->
                                 <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
@@ -148,7 +147,7 @@
                                 <input placeholder=""  type="text"    name="txtBox63b" class="text-input" style="width:55px;">
                                 <input placeholder=""  type="text"    name="txtBox64b" class="text-input" style="width:55px;">
                                 <input placeholder=""  type="text"    name="txtBox65b" class="text-input" style="width:55px;"><br>
-                                <!-- <img src="{{ asset('images/part2_61-65.png') }}" width="300px"> -->
+                                {{-- <!-- <img src="{{ asset('images/part2_61-65.png') }}" width="300px"> -->
                                 <a href=""><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">61
                                 </button></a>
                                 <a href=""><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">62
@@ -158,7 +157,13 @@
                                 <a href=""><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">64
                                 </button></a>
                                 <a href=""><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">65
-                                </button></a>
+                                </button></a> --}}
+                                {{-------------------------------------- TOOTH NUMBER 61 ---------------------------------------------}}
+                                <a href=""><img src="{{asset('images/leftTooth.png')}}" style="margin-top: 4px" class="imgTeeth"></a>
+                                <a href=""><img src="{{asset('images/topTooth.png')}}" style="margin-left: -54px; margin-top: 4px" width="300px" class="imgTeeth"></a>
+                                <a href=""><img src="{{asset('images/rightTooth.png')}}" style="margin-left: -54px; margin-top: 4px" width="300px" class="imgTeeth"></a>
+                                <a href=""><img src="{{asset('images/bottomTooth.png')}}" style="margin-left:-54px; margin-top:4px" width="300px" class="imgTeeth"></a>
+                                <a href=""><img src="{{asset('images/midTooth.png')}}" style="margin-left:-54px; margin-top:4px" width="300px" class="imgMidTeeth"></a>
                             </div>
                         
                         <div style="margin-top: 150px; margin-left: 180px">
@@ -167,6 +172,14 @@
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">53</button></a>
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">52</button></a>
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">51</button></a>
+                            
+                            <div>
+                                <a href=""><button class="btn btn-warning">55</button></a>
+                                <a href=""><button class="btn btn-warning" style="margin-left: 10px;">54</button></a>
+                                <a href=""><button class="btn btn-warning" style="margin-left: 10px;">53</button></a>
+                                <a href=""><button class="btn btn-warning" style="margin-left: 10px;">52</button></a>
+                                <a href=""><button class="btn btn-warning" style="margin-left: 10px;">51</button></a>
+                            </div>
                         </div>
                             <!--18 TO 11 A AND B-->
                             <div style="float: left; margin-top: 25px;">
