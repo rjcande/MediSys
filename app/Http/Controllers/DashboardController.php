@@ -40,12 +40,11 @@ class DashboardController extends Controller
     								->where('appointments.isDeleted', '=', 0)
     								->get();
          $totalPatient = ClinicLog::select(DB::raw("COUNT(clinicLogID) as total"), DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month, DAY(created_at) day'))
+                                    ->where('clinicType', '=', 'M')
                                     ->groupBy('month','year')
                                     ->get();
 
         $count = count($totalPatient);
-
-    	//dd($patientName);
 		return view('nurse.dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient]);
     }
 

@@ -40,6 +40,7 @@ class LogReferralsController extends Controller
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
+                ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 
         //dd($referral);
         $lastReferralID = LogReferrals::select('logReferralID')
@@ -61,6 +62,7 @@ class LogReferralsController extends Controller
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
+                ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 
         //dd($referral);
         $lastReferralID = LogReferrals::select('logReferralID')

@@ -367,6 +367,31 @@
             </div>
           </div>
         </div>
+@if(count($hasAppointment) > 0)
+  <script>
+      $(document).ready(function(){
+          swal({
+              title: "Appointment",
+              text: "You have an appointment today!",
+              icon: "info",
+              buttons: true,
+          }).then((ok)=>{
+          if (ok) {
+            $.ajax({
+              url:'/nurse/hasAppointment/' + '{{ $hasAppointment["appointmentID"] }}',
+              type:'get',
+              success: function(output){
+                
+              }
+            });
+          }
+          else{
+
+          }
+    });
+      });
+  </script>
+@endif
 <script>
   $(document).ready(function(){
     //variables to use for getting the medicine

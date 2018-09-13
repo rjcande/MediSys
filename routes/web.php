@@ -133,6 +133,8 @@ Route::get('/nurse/get/medical/certificate', 'LogReferralsController@medicalCert
 
 Route::get('/nurse/generate/pdf/prescription/{id}', 'PrescriptionController@generatePdf')->name('nurse.generate.pdf.prescription');
 
+Route::get('/nurse/hasAppointment/{id}', 'AppointmentsController@update');
+
 
 /*
  * Physician Route
@@ -176,7 +178,7 @@ Route::get('/physician/create/medical/history/{id}', 'MedicalHistoriesController
 
 Route::get('/physician/update/medical/history/{id}', 'MedicalHistoriesController@update');
 
-Route::get('/physician/refer/patient/outside', 'OutsideReferralsController@store');
+Route::get('/physician/refer/patient/outside/{id}', 'OutsideReferralsController@update');
 
 Route::get('/physician/edit/history', function(){
 	return view('physician.C_physician_patient_edit_history');
@@ -395,13 +397,7 @@ Route::get('dentist/dental/supplies/reports', function(){
 // Route::get('/dentist/dashboard', function(){
 // 	return view('dentist.C_dentist_dashboard');
 // });
-///// DENTAL CHART TEST
 
-Route::get('dentist/dentalchart/prototype', function(){
-	return view('dentist.C_dentist_dental_chart_quad');
-});
-
-///TEST
 Route::get('/dentist/dashboard', 'DashboardController@dentistDashboard');
 
 Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupplyReports');

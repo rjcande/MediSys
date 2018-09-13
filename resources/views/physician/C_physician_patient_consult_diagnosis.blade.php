@@ -60,7 +60,7 @@
                             </label>
                             <div style="float: left; width: 95%; margin-left: 20px;margin-top: 10px;">
                               <textarea rows="7" class="form-control" placeholder="Notes" style="border-radius:12px;
-                              border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;" name="notes">{{ $consultInfo->notes }}</textarea>
+                              border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;" name="notes" readonly>{{ $consultInfo->notes }}</textarea>
                             </div>
                            
                         </div>
@@ -409,7 +409,7 @@
                         </div>
                         <div style="float:left; margin-left:10px; font-size:18px; width:50px;">
                           <select style="width:250px; border-radius:8px; margin-bottom:0px; 172px;height: 25px;" name="referTo" data-parsley-required="true" id="referTo">
-                            <option value="" disabled selected></option>
+                            <option value="" selected></option>
                             <option value="0">Ortho-Surgeon of Choice</option>
                             <option value="1">Pulmonologist of Choice</option>
                             <option value="2">Cardiologist of Choice</option>
@@ -419,7 +419,7 @@
                         <div style="float:left; margin-left:22%;">
                           <label style="font-size:13px; color: #ff3f34;"><em>if other, please specify</em></label>
                           <input type="text" name="referToOthers" data-parsley-group="referral" style="width:350px; border-radius:8px; margin-bottom:12px;
-                            margin-left: 20px; height: 25px; font-size: 18px">
+                            margin-left: 20px; height: 25px; font-size: 18px" disabled id="referToOthers">
                         </div>
                       </div>
 
@@ -761,6 +761,13 @@
     //make remarks required in outside referral
     $('#referTo').on('change', function(){
       $('#remark').prop('required', true);
+
+      if ($('#referTo').val() == '3') {
+        $('#referToOthers').prop('disabled', false);
+      }
+      else{
+        $('#referToOthers').prop('disabled', true);
+      }
     })
 
   });
