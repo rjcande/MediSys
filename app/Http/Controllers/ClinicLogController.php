@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Input;
 
 use App\VitalSigns;
 
+use App\Appointment;
+
 //use Exception;
 
 use DB;
@@ -144,7 +146,18 @@ class ClinicLogController extends Controller
         $physicians = Accounts::where('position', '=', '5')
                                 ->orWhere('position', '=', '3')
                                 ->get();
-        return view('nurse.C_nurse_patient_prescription')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName]);
+        $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->where('cliniclogs.patientID', '=',  Session::get('request.patientID'))
+                                    ->where('isAppointed', '=', '0')
+                                    ->where('appointmentDate', '=', date('y-m-d'))
+                                    ->first();
+        //dd($appointment);
+        // if (count($appointment) > 0) {
+            
+        // }
+        //dd($appointment);
+        return view('nurse.C_nurse_patient_prescription')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName, 'hasAppointment' => $appointment]);
         //return view('nurse.sample')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName]);
     }
 

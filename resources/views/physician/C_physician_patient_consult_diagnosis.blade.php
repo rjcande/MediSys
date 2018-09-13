@@ -698,7 +698,8 @@
                               medSuppID: medSuppID,
                               medSuppQuantity: medSuppQuantity,
                               isPrescribed: isPrescribed,
-                              dosage: dosage
+                              dosage: dosage,
+                              patientID: '{{ $consultInfo->patientID }}'
                             };
                             $.ajax({
                               url: '/physician/save/diagnosis',

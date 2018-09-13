@@ -74,7 +74,7 @@
 					<div style="float:left; margin-left:22%; width:50%;">
 						<label style="font-size:13px; color: #ff3f34;"><em>if other, please specify</em></label>
 						<input type="text" name="referToOthers" style="width:350px; border-radius:8px; margin-bottom:12px;
-							margin-left: 20px; height: 25px; font-size: 18px" value="{{ $details['referToOthers'] }}" id="referToOthers" class="input-text">
+							margin-left: 20px; height: 25px; font-size: 18px" value="{{ $details['referToOthers'] }}" id="referToOthers" class="input-text" disabled>
 					</div>
 				</div>
 

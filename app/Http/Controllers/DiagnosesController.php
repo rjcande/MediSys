@@ -18,7 +18,7 @@ use App\OutsideReferrals;
 
 use App\UsedMedSupply;
 
-use App\Appointments;
+use App\Appointment;
 
 use Session;
 
@@ -167,7 +167,7 @@ class DiagnosesController extends Controller
 
 
             if ($request->nextConsultation) {
-                $appointment = new Appointments;
+                $appointment = new Appointment;
 
                 $appointment->clinicLogID = $request->clinicLogID;
                 $appointment->logReferralID = Input::get('logReferralID');
@@ -177,7 +177,7 @@ class DiagnosesController extends Controller
                 $appointment->save();
             }
 
-             $outsideReferral = new OutsideReferrals;
+            $outsideReferral = new OutsideReferrals;
 
             $outsideReferral->treatmentID = $request->treatmentID;
             $outsideReferral->referralDescription = $request->remark;
@@ -202,6 +202,19 @@ class DiagnosesController extends Controller
             $outsideReferral->otherRequest = $request->otherRequest;
 
             $outsideReferral->save();
+
+            $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->where('cliniclogs.patientID', '=',  $request->patientID)
+                                    ->where('isAppointed', '=', '0')
+                                    ->where('appointmentDate', '=', date('y-m-d'))
+                                    ->first();
+
+            $updateAppointment = Appointment::find($appointment['appointmentID']);
+
+            $updateAppointment->isAppointed = 2;
+
+            $updateAppointment->save();
 
             Session::flash('message', 'Successfully Saved!');
 

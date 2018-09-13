@@ -32,7 +32,7 @@ class DashboardController extends Controller
     {
     	$patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
     								->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
-    								->where('appointments.isDeleted', '=', 0)
+    								->where('appointments.isAppointed', '=', 0)
     								->get();
     	$physician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
     								->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
@@ -52,7 +52,9 @@ class DashboardController extends Controller
     {
     	$patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
                                     ->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
-                                    ->where('appointments.isDeleted', '=', 0)
+                                    ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                                    ->where('appointments.isAppointed', '=', 0)
+                                    ->where('physicianID', '=', Session::get('accountInfo.id'))
                                     ->get();
         $physician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
                                     ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
@@ -64,6 +66,8 @@ class DashboardController extends Controller
                                     ->groupBy('month','year')
                                     ->get();
         $count = count($totalPatient);
+
+        //dd($patientName);
 		return view('physician.C_physician_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
     }
 
@@ -72,8 +76,11 @@ class DashboardController extends Controller
     {
         $patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
                                     ->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
-                                    ->where('appointments.isDeleted', '=', 0)
+                                    ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                                    ->where('appointments.isAppointed', '=', 0)
+                                    ->where('physicianID', '=', Session::get('accountInfo.id'))
                                     ->get();
+                                    
         $physician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
                                     ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
                                     ->join('users', 'users.id', '=', 'logreferrals.physicianID')
