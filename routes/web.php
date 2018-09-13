@@ -395,7 +395,13 @@ Route::get('dentist/dental/supplies/reports', function(){
 // Route::get('/dentist/dashboard', function(){
 // 	return view('dentist.C_dentist_dashboard');
 // });
+///// DENTAL CHART TEST
 
+Route::get('dentist/dentalchart/prototype', function(){
+	return view('dentist.C_dentist_dental_chart_quad');
+});
+
+///TEST
 Route::get('/dentist/dashboard', 'DashboardController@dentistDashboard');
 
 Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
