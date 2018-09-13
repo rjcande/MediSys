@@ -50,7 +50,7 @@
                             </div> <br><br>
                             <div style="float: left;width: 100%; margin-top: 20px;">
                               <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>         
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                             </div>
                           </div>
                         </div>
@@ -343,7 +343,7 @@
                                 <button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button>
                               </a>
                               <button type="button" class="btn btn-success btn-save" name="btnSave">SAVE</button>         
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                             </div>
                             <div style="float: left; width: 100%">
                               <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 100%;
@@ -370,7 +370,7 @@
                             <div style="float: left;width: 100%; margin-top: 20px;">
                               <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>
                             
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                             </div>
                          </form>
                           </div>
@@ -509,7 +509,7 @@
                             
                              <div style="float: left; width: 100%; margin-top: 20px; text-align: center;">
                                 <button type="submit" class="btn btn-success">SAVE</button>
-                                <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                                <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                              </div>
                              
                           </form>
@@ -861,24 +861,13 @@
       
     }
 
-    //Set Interval For Symptoms
-    {{-- setInterval(function(){
-      var treatment;
-
-      if ('{{ $recommendation["treatmentDescription"] }}' == '') {
-        treatment = null;
-      }
-      else{
-        treatment = '{{ $recommendation["treatmentDescription"] }}';
-      }
+    //Set Interval For the reloading of page
+    setInterval(function(){
+  
       $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
-         if ('{{ $prescription["prescriptionID"] }}' < data['prescription'].prescriptionID || treatment != data['treatment'].treatmentDescription)) {
-            location.reload(true);
-             console.log('{{ $recommendation["treatmentDescription"] }}');
-             console.log(data['treatment'].treatmentDescription);
-         }
+      
       });
-    }, 2000); --}}
+    }, 2000);
      
 
   });
