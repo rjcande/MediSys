@@ -35,6 +35,7 @@ class DentalLogController extends Controller
 
         $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                ->select('cliniclogs.*', 'patients.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
                                ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
                                ->get();
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
@@ -48,6 +49,7 @@ class DentalLogController extends Controller
 
         $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                ->select('cliniclogs.*', 'patients.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
                                ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
                                ->get();
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
@@ -141,12 +143,17 @@ class DentalLogController extends Controller
             $patientTreatment->save();
             $patientTreatmentID = $patientTreatment->treatmentID;
 
+            
             $outsideReferral = OutsideReferrals::orderBy('created_at', 'desc')
                                                ->where('outsidereferrals.isDeleted', '<>', '1')
                                                ->first();
 
+            if(!empty($outsideReferral)){
             $outsideReferral->treatmentID = $patientTreatmentID;
             $outsideReferral->save();
+            }
+            
+            
 
             for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
 

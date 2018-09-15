@@ -228,7 +228,7 @@
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">65</button></a>
                         </div>
                         
-                        <!--18 TO 11 A AND B-->
+                        <!--18 TO 11 AND 21 TO 28 A AND B-->
                         <div style="float: left; margin-top: 30px; margin-left: 120px;">
                             <input placeholder=""  type="text"    name="txtBox18a" class="text-input" style="width:55px;">
                             <input placeholder=""  type="text"    name="txtBox17a" class="text-input" style="width:55px;">
@@ -511,6 +511,7 @@
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">28</button></a>
                         </div>
 
+                        <!--48 TO 41 AND 31 TO 38 A AND B-->
                         <div style="margin-top: 25px; margin-left: 120px;">
                             <a href=""><button class="btn btn-warning">48</button></a>
                             <a href=""><button class="btn btn-warning" style="margin-left: 10px;">47</button></a>

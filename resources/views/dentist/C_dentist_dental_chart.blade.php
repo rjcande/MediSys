@@ -440,6 +440,7 @@
                             <h1 style="text-align: center;">DENTAL RECORD CHART</h1>
                             <h2>INTRAORAL EXAMINATION</h2>
                             <!--55 TO 51 A AND B-->
+                            
                             <div style="float: left;margin-top: 25px;">
                                 <label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
                                 

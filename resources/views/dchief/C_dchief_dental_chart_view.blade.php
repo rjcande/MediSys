@@ -454,8 +454,7 @@
                                 <input value="{{ $status51b }}" type="text" readonly name="txtBox51b" class="text-input" style="width:55px;">
                                 <br>
                                 <!--<img src="{{ asset('images/part1.png') }}" style="margin-left: 177px;" width="300px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button type="button" class="btnTeeth" style="margin-left: 180px; margin-top: 5px;">55
-                                </button></a>
+                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button class="btn btn-warning">55</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',54)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">54
                                 </button></a>
                                 <a href="{{ route('dchief.dentalchart.each',53)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">53

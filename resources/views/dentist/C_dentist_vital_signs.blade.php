@@ -31,7 +31,7 @@
                         $bloodPressure = preg_split('#/#', $vitalSignsInfo['bloodPressure']);
                       }
                    @endphp
-                   <input type="text" name="systolic" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[0]}}@endif" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center; margin-right: 5px;" data-parsley-max="190"data-parsley-pattern="^\d{1,3}" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="systolic should not be greater than 190" data-parsley-group="vitalSign" >
+                   <input type="text" name="systolic" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[0]}}@endif" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center; margin-right: 5px;" data-parsley-max="190"data-parsley-pattern="^\d{1,3}" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="systolic should not be greater than 190" data-parsley-group="vitalSign" placeholder="systolic">
                    <label style="font-size: 20px;">/</label>
                    <input type="text" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[1]}}@endif" style="border-radius:6px; width:100px; margin-left: 5px; text-align: center;" name="bloodPressureDiastolic" data-parsley-group="vitalSign"  data-parsley-max="100" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="diastolic should not be greater than 100" data-parsley-pattern="^\d{1,3}" placeholder="diastolic"><br>
                    <div id="error-bloodPressure" >

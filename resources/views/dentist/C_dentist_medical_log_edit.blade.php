@@ -286,7 +286,8 @@
 
                             <tbody id="medicineTableBody">
                               @foreach($medsGiven as $meds)
-                              <tr class="even pointer">                                
+                              <tr class="even pointer">  
+                                <td></td>                               
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
                                 <td>{{$meds->quantity}}</td>
