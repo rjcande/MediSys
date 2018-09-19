@@ -274,8 +274,10 @@ class DentalLogController extends Controller
                                                ->where('outsidereferrals.isDeleted', '<>', '1')
                                                ->first();
 
+            if(!empty($outsideReferral)){
             $outsideReferral->treatmentID = $patientTreatmentID;
             $outsideReferral->save();
+            }
 
             for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
 

@@ -1,4 +1,4 @@
-@extends('dentist.layout.dentist')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
