@@ -1086,7 +1086,7 @@ class DentalLogController extends Controller
 
         $timeout = DentalLog::find($id);
 
-        $date = date("Y-m-d h:i:s a");
+        $date = date("Y-m-d H:i:s A");
 
         $timeout->timeOut = $date;
 
@@ -1098,7 +1098,7 @@ class DentalLogController extends Controller
 
         $timeout = DentalLog::find($id);
 
-        $date = date("Y-m-d h:i:s a");
+        $date = date("Y-m-d H:i:s A");
 
         $timeout->timeOut = $date;
 

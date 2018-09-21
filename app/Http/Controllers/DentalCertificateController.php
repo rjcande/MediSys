@@ -227,4 +227,19 @@ class DentalCertificateController extends Controller
 
     }
 
+    public function generateDentalTable()
+    {
+        $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                               ->select('cliniclogs.*', 'patients.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
+                               ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
+                               ->get();
+        $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                ->select('users.*')
+                                ->first();
+        $pdf = PDF::loadView('dentist.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('dentist.dentalLogtable-pdf');
+    }
+
 }

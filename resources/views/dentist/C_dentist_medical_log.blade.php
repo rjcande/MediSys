@@ -78,7 +78,7 @@
                           <td class="a-center">
                             <input type="checkbox" class="flat" name="table_records">
                           </td>
-                          <td class=" ">{{$dentalLog->clinicLogID}}</td>
+                          <td class=" ">{{$ctr}}</td>
                           <td class=" ">{{$dentalLog->patientID}}</td>
                           <td class=" ">{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>
                           <td class=" ">
@@ -128,6 +128,9 @@
                         @endforeach
                       </tbody>
                     </table>
+                    <a target="_blank" href="{{route('dentist.generate.dentalTable')}}">
+                      <button type="button" class="btn btn-primary"><span class="fa fa-print"> Print</span></button>
+                    </a>
                     </div>
                 <!--Content -->
               </div name="x_content">
