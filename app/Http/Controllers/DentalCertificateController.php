@@ -179,7 +179,7 @@ class DentalCertificateController extends Controller
         $pdf = PDF::loadview('dchief.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
-
+ 
     public function generatePdf($id)
     {
         $dentalLogInfo = DentalLog::join('patients','patients.patientID', '=','cliniclogs.patientID')

@@ -604,7 +604,7 @@ Route::get('/dchief/outside/referralSlip', 'DentalCertificateController@dchiefSh
 Route::get('/dchief/dental/certificate', 'DentalCertificateController@dchiefShow')->name('dchief.dental.certification');
 
 Route::get('/dchief/generate/logTable', 'DentalCertificateController@generateDentalTable')->name('dchief.generate.dentalTable');
-
+ 
 //===========================================================================================================================
 
 // Dental Chief Routes

@@ -90,7 +90,7 @@
            @endforeach
           </tbody>
         </table>
-
+ 
         <div style="width:100%;text-align: right; position: absolute; bottom: 0">
           <div style="text-align: center; margin-left: 500px;">
             <header style="font-size: 18px; margin-top: 40px;"><u>{{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.lastName')}} {{Session::get('accountInfo.quantifier')}}</u> M.D.</header>

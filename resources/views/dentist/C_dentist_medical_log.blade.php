@@ -132,7 +132,7 @@
                       <button type="button" class="btn btn-primary"><span class="fa fa-print"> Print</span></button>
                     </a>
                     </div>
-                <!--Content -->
+                <!--Content --> 
               </div name="x_content">
               </div name="x_panel">
             </div>

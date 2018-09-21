@@ -1082,7 +1082,7 @@ class DentalLogController extends Controller
     }
 
     public function timeout($id)
-    {
+    { 
 
         $timeout = DentalLog::find($id);
 
