@@ -71,9 +71,6 @@ class MedicineController extends Controller
     {
         try {
 
-            // $genericName = strtolower(Input::get('_genericName'));
-            // $brandName = strtolower(Input::get('_brandName'));
-            // $medUnit = strtolower(Input::get('_medUnit'));
             $dosage = strtolower(Input::get('_dosage'));
 
             $isExisting = false;

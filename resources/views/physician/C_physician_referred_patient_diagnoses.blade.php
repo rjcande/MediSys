@@ -33,20 +33,29 @@
           @if($diagnosis)
           <form id="saveForm">
           @csrf()
+           <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
+              <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
+                  height:30px; border-radius:8px;">&nbsp<b>Symptoms</b>
+              </p>
+            </div>
+            <div id="symptoms" style="float:left; margin-top: 10px; margin-bottom: 25px; width: 100%">
+              <textarea rows="7" class="form-control" name="symptoms" placeholder="Enter symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required></textarea>
+            </div>
+
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                   height:30px; border-radius:8px;">&nbsp<b>Diagnosis</b>
               </p>
             </div>
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
-              <textarea rows="7" class="form-control" name="diagnosis" placeholder="Enter diagnosis here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->diagnosisDescription }}</textarea>
+              <textarea rows="7" class="form-control" name="diagnosis" placeholder="Enter diagnosis here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;  margin-bottom: 25px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->diagnosisDescription }}</textarea>
             </div>
 
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                   height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b>
               </p>
-              <textarea rows="7" class="form-control" name="treatment" placeholder="Enter treatment here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->treatmentDescription }}</textarea>
+              <textarea rows="7" class="form-control" name="treatment" placeholder="Enter treatment here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; margin-bottom: 25px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->treatmentDescription }}</textarea>
             </div>
 
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">

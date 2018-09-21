@@ -84,7 +84,7 @@
             "bFilter": true,
             "bInfo": false,
             "bAutoWidth": false,
-            "dom": 't' 
+            "dom": '<"top"i>rt<"bottom"p><"clear">' 
         });
 
         $('#search').keyup(function(){

@@ -216,7 +216,7 @@
       </div>
 
       <!----------------------------------------------------COLLAPSIBLE---------------------------------------------------->
-      <div>
+      <div style="margin-top: 20px; float: left; width: 100%">
          <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
             <div class="panel">
                <a class="panel-heading collapsed" id="headingOne1" role="tab" aria-expanded="false" aria-controls="collapseOne" href="#collapseOne1" data-toggle="collapse" data-parent="#accordion1">
@@ -358,13 +358,13 @@
                                           <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                           <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                           <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
-                                          <th class="column-title">Day 4</th>
-                                          <th class="column-title">Day 5</th>
-                                          <th class="column-title">Day 6</th>
-                                          <th class="column-title">Day 7</th>
+                                          <th class="column-title">Day 8</th>
+                                          <th class="column-title">Day 9</th>
+                                          <th class="column-title">Day 10</th>
+                                          <th class="column-title">Day 11</th>
+                                          <th class="column-title">Day 12</th>
+                                          <th class="column-title">Day 13</th>
+                                          <th class="column-title">Day 14</th>
                                        </tr>
                                     </thead>
 
@@ -444,13 +444,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 15</th>
+                                       <th class="column-title">Day 16</th>
+                                       <th class="column-title">Day 17</th>
+                                       <th class="column-title">Day 18</th>
+                                       <th class="column-title">Day 19</th>
+                                       <th class="column-title">Day 20</th>
+                                       <th class="column-title">Day 21</th>
                                     </tr>
                                  </thead>
 
@@ -530,13 +530,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 22</th>
+                                       <th class="column-title">Day 23</th>
+                                       <th class="column-title">Day 24</th>
+                                       <th class="column-title">Day 25</th>
+                                       <th class="column-title">Day 26</th>
+                                       <th class="column-title">Day 27</th>
+                                       <th class="column-title">Day 28</th>
                                     </tr>
                                  </thead>
 
@@ -617,14 +617,14 @@
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                         @if($maxDays == 29)
-                                          <th class="column-title">Day 1</th>
+                                          <th class="column-title">Day 29</th>
                                        @elseif($maxDays == 30)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
                                        @elseif($maxDays == 31)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
+                                          <th class="column-title">Day 31</th>
                                        @endif
                                    
                                  </thead>
@@ -707,48 +707,57 @@
                <div class="panel-collapse collapse" id="collapseTwo1" role="tabpanel" aria-expanded="false" aria-labelledby="headingTwo" style="height: 0px;">
                   <div class="panel-body">
                      <!--------------------------------------------MONTHLY TABS------------------------------------------->
+                     @php
+                        $months = [1,2,3,4,5,6,7,8,9,10,11,12];
+                        $activeMonth = 0;
+                        foreach($months as $month){
+                           if(date('m') == $month){
+                              $activeMonth = $month;
+                           }
+                        }
+                     @endphp
                      <div role="tabpanel" data-example-id="togglable-tabs">
                         <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                           <li class="active" role="presentation">
-                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">January</a>
+                           <li class="@if($activeMonth == 1){{ 'active' }}@endif" role="presentation">
+                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">Jan</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">February</a>
+                           <li class="@if($activeMonth == 2){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">Feb</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">March</a>
+                           <li class="@if($activeMonth == 3){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">Mar</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">April</a>
+                           <li class="@if($activeMonth == 4){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">Apr</a>
                            </li>
-                           <li role="presentation">
+                           <li class="@if($activeMonth == 5){{ 'active' }}@endif" role="presentation">
                               <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content5" data-toggle="tab">May</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">June</a>
+                           <li class="@if($activeMonth == 6){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">Jun</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">July</a>
+                           <li class="@if($activeMonth == 7){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">Jul</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">August</a>
+                           <li class="@if($activeMonth == 8){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">Aug</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">September</a>
+                           <li class="@if($activeMonth == 9){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">Sep</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">October</a>
+                           <li class="@if($activeMonth == 10){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">Oct</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">November</a>
+                           <li class="@if($activeMonth == 11){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">Nov</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">December</a>
+                           <li class="@if($activeMonth == 12){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">Dec</a>
                            </li>
                         </ul>
 
                         <div class="tab-content" id="myTabContent">
-                           <div class="tab-pane fade active in" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
+                           <div class="tab-pane fade @if($activeMonth == 1){{ 'active in' }}@endif" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -857,7 +866,7 @@
                               </div>
                            </div>
 
-                          <div class="tab-pane fade" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade @if($activeMonth == 2){{ 'active in' }}@endif" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -966,7 +975,7 @@
                               </div>
                            </div>
 
-                          <div class="tab-pane fade" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade @if($activeMonth == 3){{ 'active in' }}@endif" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                 <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1075,7 +1084,7 @@
                            </div>
                         </div>
 
-                       <div class="tab-pane fade" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
+                       <div class="tab-pane fade @if($activeMonth == 4){{ 'active in' }}@endif" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1184,7 +1193,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 5){{ 'active in' }}@endif" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1293,7 +1302,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 6){{ 'active in' }}@endif" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1402,7 +1411,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 7){{ 'active in' }}@endif" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1511,7 +1520,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 8){{ 'active in' }}@endif" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1620,7 +1629,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 9){{ 'active in' }}@endif" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1729,7 +1738,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 10){{ 'active in' }}@endif" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1838,7 +1847,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 11){{ 'active in' }}@endif" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1947,7 +1956,7 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 12){{ 'active in' }}@endif" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -2066,7 +2075,11 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
-      
+      <a href="{{ url('/print/medical/reports') }}" target="_blank">
+         <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+            <i class="fa fa-print"></i> Print Reports
+         </button>
+      </a>
     </div>
   </div>
 </div>

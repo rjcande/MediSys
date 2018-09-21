@@ -519,6 +519,9 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
+                    <a href="{{ url('nurse/medical/log') }}" title="">
+                      <button type="button" class="btn btn-primary" style="float: right; margin-top: 20px;">BACK</button>
+                    </a>
                     <!-- /Content -->
                   </div>
                 </div>

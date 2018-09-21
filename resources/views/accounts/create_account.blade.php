@@ -151,7 +151,11 @@
       </div>
     </div>
   </body>
-
+<script>
+  $(document).ready(function(){
+    $('#registerForm').parsley();
+  });
+</script>
 {{--  <script>
   $('#registerForm').parsley();
 

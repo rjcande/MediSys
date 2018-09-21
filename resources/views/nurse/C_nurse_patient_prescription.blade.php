@@ -367,7 +367,7 @@
             </div>
           </div>
         </div>
-@if(count($hasAppointment) > 0)
+<!-- @if(count($hasAppointment) > 0)
   <script>
       $(document).ready(function(){
           swal({
@@ -391,7 +391,7 @@
     });
       });
   </script>
-@endif
+@endif -->
 <script>
   $(document).ready(function(){
     //variables to use for getting the medicine

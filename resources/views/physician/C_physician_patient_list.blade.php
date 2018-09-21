@@ -16,6 +16,14 @@
               <!-- form input mask -->
                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
+                  <div class="x_title">
+                   
+                    <div class="col-md-5 col-sm-12 col-xs-12" style="float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                  </div>
                   <div class="x_content">
                     <div class="">
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
@@ -77,11 +85,17 @@
 
 <script>
   $(document).ready(function(){
-    $('#patientTable').DataTable({
+    var table = $('#patientTable').DataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false });
+        "bAutoWidth": false,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
   });
 </script>
 @endsection

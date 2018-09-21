@@ -42,17 +42,19 @@
 						<label><header style="margin-bottom:0px; margin-left:25px;"> To</header>
 						</label>
 					</div>
-
 					<div style="float:left; margin-left:10px; font-size:18px; width:50px;">
 						<select style="width:250px; border-radius:8px; margin-bottom:0px; 172px;height: 25px;" name="referTo" data-parsley-required="true" id="referTo">
-							<option value="" selected></option>
+							<option value="" 
+							@if($details['referTo']) == null)
+								{{ "selected" }}
+							@endif></option>
 							<option value="0"
-							@if($details['referTo'] == 0)
+							@if($details['referTo'] == '0')
 								{{ "selected" }}
 							@endif
 							>Ortho-Surgeon of Choice</option>
 							<option value="1"
-							@if($details['referTo'] == 1)
+							@if($details['referTo'] == '1')
 								{{ "selected" }}
 							@endif
 							>Pulmonologist of Choice</option>

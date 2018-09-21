@@ -73,8 +73,6 @@
                                   {{ "Consultation" }}
                                 @elseif($clinicLog->concern == 1)
                                   {{ "Letter/Certification" }}
-                                @elseif($clinicLog->concern == 2)
-                                  {{ "Dental" }}
                                 @endif
                               </td>
                               <td class=" ">
@@ -85,7 +83,7 @@
                               </td>
                               <td class=" ">
                                 @if(empty($clinicLog->timeOut))
-                                  <button class="btn btn-success" name="time_out" data-id="{{ $clinicLog->clinicLogID }}">
+                                  <button class="btn btn-success" name="time_out" data-id="{{ $clinicLog->clinicLogID }}" data-toggle="modal" data-target="#timeOut" id="time_out">
                                     <i class="fa fa-check"></i>
                                   </button>
                                 @else
@@ -111,6 +109,12 @@
                           @endforeach
                         </tbody>
                       </table>
+                      <a href="{{ url('/print/medical/log') }}" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-print"></i> Print
+                        </button>
+                      </a>
+                      
                     </div>
                     <!--/Content-->
                   </div>
@@ -246,12 +250,41 @@
         </div>
       
         <div class="modal-footer" style="margin-right:0%">
-          <a href="{{ url('/nurseMedicalLog') }}"><button class="btn btn-success">DONE</button>
+          <button class="btn btn-success">DONE</button>
         </div>
             </div>
         </div>
   </div>
     <!--END Modal-->
+
+<!-- Edit Modal -->
+<div id="timeOut" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <form id="timeOutForm" class="form-horizontal form-label-left">
+          @csrf()
+          <label style="font-size: 16px">Time Out: </label>
+          <input type="time" name="usr_time" style="width:150px; border-radius:8px; margin-bottom:13px; 172px;height: 30px;">
+        
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" name="medicineID">
+        <button type="submit" class="btn btn-success">Save</button>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+       </form>
+    </div>
+
+  </div>
+</div>
 
 <!-- Messages -->
 @if(Session::has('message'))
@@ -268,7 +301,7 @@
 @endif
 
 <!-- Pass to Dental -->
-@if(Session::has('passToDental'))
+<!-- @if(Session::has('passToDental'))
   <script>
     $(document).ready(function(){
       swal({
@@ -278,7 +311,7 @@
       });
     });
   </script>
-@endif
+@endif -->
 
 <script>
   $(document).ready(function(){
@@ -287,7 +320,7 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": 't' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
     });
 
     $('#search').keyup(function(){
@@ -376,7 +409,7 @@
     $('.delete-button').on('click', function(){
      swal({
           title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          text: "Once deleted, you will not be able to recover this record!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -424,12 +457,15 @@
     });
 
     //Time out button is clicked
-    $('button[name=time_out]').on('click', function(e){
+    $('#timeOutForm').submit(function(e){
         e.preventDefault();
-
+        var time = $('input[name=usr_time]').val();
         $.ajax({
-          url: "/nurse/set/timeout/" + $(this).data('id'),
+          url: "/nurse/set/timeout/" + $('#time_out').data('id'),
           type: "get",
+          data: {
+                  timeOut: time,
+                },
           success: function(output){
             swal({
               title: 'SUCCESS',

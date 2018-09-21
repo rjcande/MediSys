@@ -203,18 +203,18 @@ class DiagnosesController extends Controller
 
             $outsideReferral->save();
 
-            $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
-                                    ->where('cliniclogs.patientID', '=',  $request->patientID)
-                                    ->where('isAppointed', '=', '0')
-                                    ->where('appointmentDate', '=', date('y-m-d'))
-                                    ->first();
+            // $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                         ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+            //                         ->where('cliniclogs.patientID', '=',  $request->patientID)
+            //                         ->where('isAppointed', '=', '0')
+            //                         ->where('appointmentDate', '=', date('y-m-d'))
+            //                         ->first();
 
-            $updateAppointment = Appointment::find($appointment['appointmentID']);
+            // $updateAppointment = Appointment::find($appointment['appointmentID']);
 
-            $updateAppointment->isAppointed = 2;
+            // $updateAppointment->isAppointed = 2;
 
-            $updateAppointment->save();
+            // $updateAppointment->save();
 
             Session::flash('message', 'Successfully Saved!');
 

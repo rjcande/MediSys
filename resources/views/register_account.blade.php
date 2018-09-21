@@ -154,7 +154,7 @@
 
   $('#registerForm').submit(function(e){
       e.preventDefault();
-
+      alert();
       if ($(this).parsley().isValid()) {
         $.ajax({
           url: '/save/account',

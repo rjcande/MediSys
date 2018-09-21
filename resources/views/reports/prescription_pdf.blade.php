@@ -20,9 +20,6 @@
     th{
       text-align: left;
     }
-    tr:nth-child(even){
-      background-color: #dddddd;
-    }
     caption{
       font-family:verdana;
       font-size: 160%;

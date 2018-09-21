@@ -195,15 +195,26 @@
             type: 'get',
             data: $(this).serialize(),
             success: function(output){
-              swal({
-                title: "Good job!",
-                text: output.message,
-                icon: "success",
-                button: "OK",
-              })
-              .then((value)=>{
-                location.reload(true);
-              });
+              if (output.message == "Medical Supply is already existing!") {
+                swal({
+                  title: "WARNING!",
+                  text: output.message,
+                  icon: "warning",
+                  button: "OK",
+                });
+              }
+              else{
+                swal({
+                  title: "Good job!",
+                  text: output.message,
+                  icon: "success",
+                  button: "OK",
+                })
+                .then((value)=>{
+                  location.reload(true);
+                });
+              }
+
             }
           });
         }

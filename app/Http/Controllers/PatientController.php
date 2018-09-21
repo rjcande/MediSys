@@ -16,6 +16,8 @@ use Session;
 
 use Response;
 
+use PDF;
+
 class PatientController extends Controller
 {
     /**
@@ -220,5 +222,26 @@ class PatientController extends Controller
             dd($error);
             // return Redirect::back()->with('error', $error);
         }
+    }
+
+    public function printPatientList()
+    {
+        $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->get();
+
+        $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->get();
+
+        $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->get();        
+
+        $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->get();
+        $pdf = PDF::loadView('reports.patient_list', compact('patientListStudent', 'patientListFaculty', 'patientListAdmin', 'patientListVisitor'))->setPaper('legal', 'landscape');
+        return $pdf->stream('reports.patient_list');
     }
 }

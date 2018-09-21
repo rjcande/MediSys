@@ -66,7 +66,7 @@
 					
 				</div>
 				<div style="float:left; font-size:15px; width:45%;">
-					<a href="{{ route('mchief.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank">
+					<a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank">
 						<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;">View Document</button><br>
 					</a>
 					<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCert">View Document</button><br>
@@ -124,7 +124,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<a href="{{ url('/physicianCertification') }}"><button class="btn btn-success">SAVE & PRINT</button></a>
+					<a href=""><button class="btn btn-success">SAVE & PRINT</button></a>
 					<button class="btn btn-danger" data-dismiss="modal">DONE</button>
 				</div>
             </div>

@@ -461,7 +461,13 @@ class LogReferralsController extends Controller
         $patientID = $id;
 
         $logReferral = LogReferrals::find($logReferralID);
-        return view('physician.C_physician_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        if (Session::get('accountInfo.position') == 5) {
+            return view('physician.C_physician_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        }
+        elseif (Session::get('accountInfo.position') == 3) {
+            return view('chief.C_mchief_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        }
+        
     }
 
     public function medCertEnrollmentMChief($patientName, $id, $logReferralID)

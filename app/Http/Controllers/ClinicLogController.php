@@ -1017,13 +1017,15 @@ class ClinicLogController extends Controller
         return view('chief.C_mchief_referred_patient_diagnosis')->with(['clinicLogs' => $clinicLogs, 'attendingPhysicians' => $attendingPhysician, 'vitalSigns' => $vitalSigns, 'patient' => $patient, 'certifications' => $certifications]);
     }
 
-    public function timeOut($id)
+    public function timeOut(Request $request,$id)
     {
+
         try {
 
             $timeOut = ClinicLog::find($id);
 
-            $date = date('Y-m-d h:i:s a');
+            $time = Input::get('timeOut'); //$request->input('')
+            $date = date('y-m-d H:i:s', strtotime($time));
             $timeOut->timeOut = $date;
 
             $timeOut->save();
@@ -1035,5 +1037,18 @@ class ClinicLogController extends Controller
         }
     }
 
+    public function printMedicalLog(){
+        $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
+        return $pdf->stream('reports.medical_log');
+
+        //return view('reports.medical_log')->with(['clinicLogs' => $clinicLogs]);
+    }
    
 }

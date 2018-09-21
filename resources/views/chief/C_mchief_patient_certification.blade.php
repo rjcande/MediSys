@@ -124,14 +124,14 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<a href="{{ route('mchief.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-success">SAVE & PRINT</button></a>
+					<a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-success">SAVE & PRINT</button></a>
 					<button class="btn btn-danger" data-dismiss="modal">DONE</button>
 				</div>
             </div>
         </div>
 	</div>
     <!--END Modal-->
-<form id="certOffCampus" action="{{ route('mchief.generate.pdf.medical.cert.ojt.off_campus', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
+<form id="certOffCampus" action="{{ route('physician.generate.pdf.medical.cert.ojt.off_campus', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
 	@csrf()
 <div id="modalCertOffCampus" class="modal fade" role="dialog">
     	<div class="modal-dialog" style="width:80%">
@@ -180,7 +180,7 @@
     <!--END Modal-->
 </form>
 
-<form id="certAdmin" action="{{ route('mchief.generate.pdf.medical.cert.admin', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
+<form id="certAdmin" action="{{ route('physician.generate.pdf.medical.cert.admin', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
 <div id="modalCertAdmin" class="modal fade" role="dialog">
     	<div class="modal-dialog" style="width:80%">
         <!-- Modal content -->
@@ -226,7 +226,7 @@
     <!--END Modal-->
 </form>
 
-<form id="excuseLetter" action="{{ route('mchief.generate.pdf.excuse.letter', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
+<form id="excuseLetter" action="{{ route('physician.generate.pdf.excuse.letter', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
 <div id="modalCertExcuse" class="modal fade" role="dialog">
     	<div class="modal-dialog" style="width:80%">
         <!-- Modal content -->
@@ -271,7 +271,7 @@
 	</div>
     <!--END Modal-->
 </form>
-<form id="waver" action="{{ route('mchief.generate.pdf.waver', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
+<form id="waver" action="{{ route('physician.generate.pdf.waver', [$logReferral['logReferralID'], $patientName]) }}" method="get" data-parsley-errors-messages-disabled target="_blank">
 <div id="modalCertWaver" class="modal fade" role="dialog">
     	<div class="modal-dialog" style="width:80%">
         <!-- Modal content -->

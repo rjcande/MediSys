@@ -43,23 +43,7 @@
     
 
     </div>
-    <!-- /sidebar menu -->
-      {{--  <!-- /menu footer buttons -->
-    <div class="sidebar-footer hidden-small">
-      <a data-toggle="tooltip" data-placement="top" title="Settings">
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="Lock">
-        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ url('/logout')}}">
-        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-      </a>
-    </div>
-    <!-- /menu footer buttons -->  --}}
+   
   </div>
 </div>
 
@@ -76,12 +60,12 @@
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src={{asset("images/physician.ico")}}>
             @if(Session::get('accountInfo.position') == 6)
-            {{ Session::get('accountInfo.firstName') }} {{Session::get('accountInfo.middleName') }} {{Session::get('accountInfo.lastName') }} {{Session::get('accountInfo.quantifier') }}
+              {{ Session::get('accountInfo.firstName') }} {{Session::get('accountInfo.middleName') }} {{Session::get('accountInfo.lastName') }} {{Session::get('accountInfo.quantifier') }}
             @endif
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li><a href="javascript:;"> Profile</a></li>
+            <li><a href="{{ url('/nurse/profile') }}"> Profile</a></li>
          
             <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
           </ul>

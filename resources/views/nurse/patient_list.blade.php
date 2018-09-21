@@ -84,6 +84,11 @@
                           @endforeach 
                         </tbody>
                       </table>
+                      <a href="{{ url('/print/patient/list') }}" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-print"></i> Print
+                        </button>
+                      </a>
                     </div>
                     <!-- /Content -->
                   </div>
@@ -120,7 +125,7 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": 't'  
+        "dom": '<"top"i>rt<"bottom"p><"clear">'  
     });
 
     $('#search').keyup(function(){
@@ -130,7 +135,7 @@
     $('.delete-button').on('click', function(e){
       swal({
           title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          text: "Once deleted, you will not be able to view this record!",
           icon: "warning",
           buttons: true,
           dangerMode: true,

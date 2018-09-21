@@ -75,22 +75,32 @@ class MedicalSupplyController extends Controller
             elseif (Session::get('accountInfo.position') == 2) {
                 $supply->supType = 'd';
             }
-            $supply->medSupName = Input::get('medSupName');
-            $supply->brand = Input::get('medSupBrandName');
-            $supply->unit = Input::get('medSupUnit');
 
-            $supply->save();
+            if ($isExisting == false) {
+                 $supply = new MedicalSupply;
+                if(Session::get('accountInfo.position') == 3){
+                    $supply->supType = 'm';
+                }elseif (Session::get('accountInfo.position') == 2) {
+                    $supply->supType = 'd';
+                }
+                $supply->medSupName = Input::get('medSupName');
+                $supply->brand = Input::get('medSupBrandName');
+                $supply->unit = Input::get('medSupUnit');
+                $supply->save();
 
             return Response::json(array('message' => 'Successfully Added!', 'logo'=>'success', 'title'=>'Good Job'));
+            }
         }
         else{
             return Response::json(array('message' => 'A Medical Supply has already been entered!!', 'logo'=>'warning', 'title'=>'WARNING'));
         }
 
-        } catch (Exception $e) {
-
-        }
+        
     }
+     catch (Exception $e) {
+
+    }
+}
 
     /**
      * Display the specified resource.

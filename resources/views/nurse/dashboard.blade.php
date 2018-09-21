@@ -14,7 +14,7 @@
 
             <div class="row">
               <!-- form input mask -->
-               <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Frequency of Patient's Visit (Year)</h2>
@@ -50,33 +50,18 @@
                   </div>
                 </div>
               </div> -->
-
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Medical Supplies Report</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <a href="{{ url('/nurse/medicine/reports') }}">
-                      <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
-                    </a>
-                    <a href="{{ url('/nurse/medical/supplies/reports') }}">
-                      <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-sm-6 col-xs-12">
+               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel" style="height: 100%">
                   <div class="x_title">
                     <h2>Appointment Schedule</h2>
+                    <div class="col-md-7 col-sm-12 col-xs-12" style="float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="">
-                      <table class="table table-striped table-bordered jambo_table bulk_action">
+                      <table class="table table-striped table-bordered jambo_table bulk_action" id="appointmentTable">
                         <thead>
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
@@ -104,6 +89,25 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Medical Supplies Report</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <a href="{{ url('/nurse/medicine/reports') }}">
+                      <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
+                    </a>
+                    <a href="{{ url('/nurse/medical/supplies/reports') }}">
+                      <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+             
               <!-- /form input mask -->  
 
             </div>
@@ -146,10 +150,12 @@
             <label class="col-md-7 col-sm-3 col-xs-3" id="date"></label>
             <input type="hidden" id="appointmentID" name="appointmentID" value="">
           </div>  
+          
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="btnDelete">Delete Appointment</button>
-        <button type="button" class="btn btn-success" id="btnDone">Appointment Done</button>
+        <button type="button" class="btn btn-primary" id="btnDone">No Show</button>
+        <button type="button" class="btn btn-success" id="">Refer To Physician</button>
+        <button type="button" class="btn btn-danger" id="btnDelete">Cancel Appointment</button>
       </div>
          </form>
     </div>
@@ -163,6 +169,20 @@
 
 <script>
   $(document).ready(function(){
+    var table = $('#appointmentTable').DataTable({
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        "pageLength": 5,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
+
+
     $('.even-pointer').click(function(){
       $('#appointmentModal').modal('show');
     });
@@ -293,7 +313,7 @@
 
     if($("#lineChartPatient").length){
         var f=document.getElementById("lineChartPatient");
-        new Chart(f,{type:"line",data:{labels:["January","February","March","April","May","June","July","August","September","October","November", "December"],datasets:[{label:"Patient",backgroundColor:"rgba(38, 185, 154, 0.31)",borderColor:"rgba(38, 185, 154, 0.7)",pointBorderColor:"rgba(38, 185, 154, 0.7)",pointBackgroundColor:"rgba(38, 185, 154, 0.7)",pointHoverBackgroundColor:"#fff",pointHoverBorderColor:"rgba(220,220,220,1)",pointBorderWidth:1,data:[totalPatientJanuary,totalPatientFebruary,totalPatientMarch,totalPatientApril,totalPatientMay,totalPatientJune,totalPatientJuly,totalPatientAugust,totalPatientSeptember,totalPatientOctober,totalPatientNovember,totalPatientDecember]}]}})
+        new Chart(f,{type:"line",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov", "Dec"],datasets:[{label:"Patient",backgroundColor:"rgba(38, 185, 154, 0.31)",borderColor:"rgba(38, 185, 154, 0.7)",pointBorderColor:"rgba(38, 185, 154, 0.7)",pointBackgroundColor:"rgba(38, 185, 154, 0.7)",pointHoverBackgroundColor:"#fff",pointHoverBorderColor:"rgba(220,220,220,1)",pointBorderWidth:1,data:[totalPatientJanuary,totalPatientFebruary,totalPatientMarch,totalPatientApril,totalPatientMay,totalPatientJune,totalPatientJuly,totalPatientAugust,totalPatientSeptember,totalPatientOctober,totalPatientNovember,totalPatientDecember]}]}})
     }
   });
 </script>

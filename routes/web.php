@@ -33,14 +33,29 @@ Route::get('/save/account', 'AccountsController@store');
 
 Route::post('/login/user', 'AccountsController@show');
 
+Route::get('/print/medical/log', 'ClinicLogController@printMedicalLog');
+
+Route::get('/print/patient/list', 'PatientController@printPatientList');
+
+Route::get('/print/medicine/reports/{month}', 'DashboardController@printMedicineReports');
+
+Route::get('/print/medicine/reports/{week}', 'DashboardController@printMedicineReportsWeek');
+
+Route::get('/print/medical/reports', 'DashboardController@printMedicalReports');
+
+
 /*
  * Nurse Route
  *
  */
 
+Route::get('/nurse/profile', function(){
+	return view('nurse.C_nurse_profile');
+});
 
+Route::post('/edit/profile/{id}', 'AccountsController@update');
 
-Route::get('/nurse/dashboard', 'DashboardController@nurseDashboard');
+Route::get('/nurse/dashboard', 'DashboardController@dashboard');
 
 Route::get('/nurse/medical/supplies/reports', 'DashboardController@nurseSuppliesReports');
 
@@ -135,12 +150,15 @@ Route::get('/nurse/generate/pdf/prescription/{id}', 'PrescriptionController@gene
 
 Route::get('/nurse/hasAppointment/{id}', 'AppointmentsController@update');
 
-
 /*
  * Physician Route
  *
  */
-Route::get('/physician/dashboard', 'DashboardController@physicianDashboard');
+Route::get('/physician/profile', function(){
+	return view('physician.C_physician_profile');
+});
+
+Route::get('/physician/dashboard', 'DashboardController@dashboard');
 
 Route::get('/physician/delete/appointment/{id}', 'DashboardController@destroy');
 
@@ -241,7 +259,11 @@ Route::get('/physician/generate/outside/referral/{id}/{patientName}', 'OutsideRe
 // Route::get('/chief/patient/more/info/{id}', 'PatientController@showOfPhysician')->name('chief.patient.more.info');
 
 // -------------------------------------------------------------------------------------------------------------------------
-Route::get('/mchief/dashboard', 'DashboardController@mChiefDashboard');
+Route::get('/mchief/profile', function(){
+	return view('chief.C_mchief_profile');
+});
+
+Route::get('/mchief/dashboard', 'DashboardController@dashboard');
 
 Route::get('/mchief/medicine/reports', 'DashboardController@mChiefReports');
 
@@ -398,7 +420,7 @@ Route::get('dentist/dental/supplies/reports', function(){
 // 	return view('dentist.C_dentist_dashboard');
 // });
 
-Route::get('/dentist/dashboard', 'DashboardController@dentistDashboard');
+Route::get('/dentist/dashboard', 'DashboardController@dashboard');
 
 Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
 
@@ -510,7 +532,7 @@ Route::get('/nurseMedicalLog', 'PatientController@index');
 
 /////////////////////////DENTAL CHIEF
 
-Route::get('/dchief/dashboard', 'DashboardController@dentistDashboard');
+Route::get('/dchief/dashboard', 'DashboardController@dashboard');
 
 
 Route::get('/dchief/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
