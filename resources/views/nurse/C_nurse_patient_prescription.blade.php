@@ -102,6 +102,7 @@
                               <div style="float:left; margin-left:40px; font-size:18px; width:300px;">
                                 <select name="attendingPhysician" style="width:250px; border-radius:8px; margin-bottom:12px;height: 25px;">
                                     <option value="" disabled selected>Select Physician</option>
+                                    <option value=""></option>
                                     @foreach($physicians as $physician)
                                       <option value="{{ $physician->id }}">
                                         {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}
@@ -292,7 +293,7 @@
                                   <thead>
                                     <tr class="headings">
                                       <th>
-                                        <input type="checkbox" id="check-all" class="flat">
+                                        
                                       </th>
                                       <th class="column-title">Generic Name </th>
                                       <th class="column-title">Brand </th>
@@ -322,7 +323,7 @@
                                   <thead>
                                     <tr class="headings">
                                       <th>
-                                        <input type="checkbox" id="check-all" class="flat">
+                                      
                                       </th>
                                       <th class="column-title">Supply Name </th>
                                       <th class="column-title">Brand </th>

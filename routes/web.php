@@ -271,7 +271,7 @@ Route::get('/mchief/medical/supplies/reports', 'DashboardController@mChiefSupply
 
 Route::get('/mchief/patient/condition/reports', 'DashboardController@mChiefPatientReports');
 
-Route::get('/mchief/delete/appointment/{id}', 'DashboardController@mChiefDestroy');
+Route::get('/mchief/delete/appointment/{id}/{status}', 'DashboardController@mChiefDestroy');
 
 Route::get('/mchief/patient/list', 'PatientController@indexOfMChief');
 

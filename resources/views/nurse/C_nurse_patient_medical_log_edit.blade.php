@@ -865,12 +865,12 @@
     }
 
     //Set Interval For the reloading of page
-    setInterval(function(){
+    // setInterval(function(){
   
-      $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
+    //   $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
       
-      });
-    }, 2000);
+    //   });
+    // }, 2000);
      
 
   });

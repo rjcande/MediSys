@@ -247,6 +247,16 @@ class ClinicLogController extends Controller
                 $usedMedSupply->save();
             }
 
+            if (array_key_exists('hasAppointment', $medicalLogInfo)) {
+                if ($medicalLogInfo['hasAppointment'] == 1) {
+                    $appointment = Appointment::find($medicalLogInfo['appointmentID']);
+
+                    $appointment->isAppointed = 4;
+
+                    $appointment->save();
+                } 
+            }
+
             Session::flash('message', 'Successfully Saved!');
             return Response::json(array('clinicLogID' => $clinicLogID));
         } catch (Exception $e) {
@@ -479,6 +489,11 @@ class ClinicLogController extends Controller
         $diagnosis = Diagnoses::select('diagnosisID')
                             ->where('logReferralID', '=', $logReferralID['logReferralID'])
                             ->first();
+        $clinicLog = ClinicLog::find($id);
+
+        $clinicLog->symptoms = Input::get('symptoms');
+
+        $clinicLog->save();
 
         $edit = Diagnoses::find($diagnosis['diagnosisID']);
 
@@ -749,8 +764,7 @@ class ClinicLogController extends Controller
             Session::flash('patientNumber', $request->patientNumber);
             return Response::json(array('redirect' => '/register/patient'));
         }
-   
-        
+ 
     }
 
     public function requestLetterCertification()
@@ -830,7 +844,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
@@ -893,7 +907,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 

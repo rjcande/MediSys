@@ -66,7 +66,7 @@
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
                             <th class="column-title">Physician </th>
-                            <th class="column-title">Date </th>
+                            <th class="column-title">Date </th> 
                             </th>
                           </tr>
                         </thead>
@@ -107,6 +107,8 @@
                 </div>
               </div>
 
+
+
              
               <!-- /form input mask -->  
 
@@ -131,13 +133,15 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
             <div>
-              <label class="col-md-1 col-sm-3 col-xs-3" id="patientID"></label>
+              <label class="col-md-1 col-sm-3 col-xs-3" id="patientID_label"></label>
+              <input type="hidden" name="patientID" id="patientID">
             </div>
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
-            <label class="col-md-7 col-sm-3 col-xs-3" id="patientName"></label>
+            <label class="col-md-7 col-sm-3 col-xs-3" id="patientName_label"></label>
+            <input type="hidden" name="patientName" id="patientName">
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
@@ -153,9 +157,9 @@
           
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="btnDone">No Show</button>
-        <button type="button" class="btn btn-success" id="">Refer To Physician</button>
-        <button type="button" class="btn btn-danger" id="btnDelete">Cancel Appointment</button>
+        <button type="button" class="btn btn-primary" id="btnNoShow">No Show</button>
+        <button type="button" class="btn btn-success" id="btnReferToPhysician">Refer To Physician</button>
+        <button type="button" class="btn btn-danger" id="btnCancelAppointment">Cancel Appointment</button>
       </div>
          </form>
     </div>
@@ -183,7 +187,7 @@
     });
 
 
-    $('.even-pointer').click(function(){
+    $('#appointmentTable').on('click', '.even-pointer',function(){
       $('#appointmentModal').modal('show');
     });
 
@@ -197,17 +201,20 @@
         var date = $('.even-pointer').data('date');
 
         var modal = $(this);
-        modal.find('.modal-body #patientName').text(name);
-        modal.find('.modal-body #patientID').text(id);
+        modal.find('.modal-body #patientName_label').text(name);
+        modal.find('.modal-body #patientID_label').text(id);
         modal.find('.modal-body #physician').text(physician);
         modal.find('.modal-body #date').text(date);
         modal.find('.modal-body #appointmentID').val(apptid);
+        modal.find('.modal-body #patientName').val(name);
+        modal.find('.modal-body #patientID').val(id);
+        
 
     });
 
-     $('#btnDelete').click(function(){
+    $('#btnNoShow').click(function(){
       $.ajax({
-        url: '/mchief/delete/appointment/' + $('#appointmentID').val() ,
+        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'no_show',
         type: 'get',
         data: $(this).serialize(),
         success: function(output){
@@ -224,9 +231,9 @@
       });
     });
 
-     $('#btnDone').click(function(){
+     $('#btnCancelAppointment').click(function(){
       $.ajax({
-        url: '/mchief/delete/appointment/' + $('#appointmentID').val() ,
+        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'cancel_appointment',
         type: 'get',
         data: $(this).serialize(),
         success: function(output){
@@ -240,6 +247,24 @@
                 location.reload(true);
               });
         } 
+      });
+    });
+
+    $('#btnReferToPhysician').click(function(){
+      var checkRecord = 1;
+      var hasRecord = { 
+                        hasRecord: checkRecord,
+                        hasAppointment: 1,
+                        appointmentID: $('#appointmentID').val(),
+                      };
+      console.log($('#logPatientForm').serialize());
+      $.ajax({
+        url:'/nurse/log/patient',
+        type:'get',
+        data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
+        success: function(output){
+            window.location.href = output.redirect;
+        }
       });
     });
 

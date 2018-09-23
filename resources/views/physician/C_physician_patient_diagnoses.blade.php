@@ -21,7 +21,7 @@
 
                 <div>
                   @if($diagnosis)
-                    <label class="col-md-10 col-sm-12 col-xs-12"><h4>{{ $diagnosis->patientID }} - <em>{{ $diagnosis->lastName }}, {{ $diagnosis->firstName }} {{ $diagnosis->middleName }} {{ $diagnosis->quantifier }}</em></h4></label>
+                    <label class="col-md-10 col-sm-12 col-xs-12"><h4>{{ $diagnosis['patientID'] }} - <em>{{ $diagnosis['lastName'] }}, {{ $diagnosis->firstName }} {{ $diagnosis->middleName }} {{ $diagnosis['quantifier'] }}</em></h4></label>
                   @endif
               </div>
                  
@@ -33,20 +33,29 @@
           @if($diagnosis)
           <form id="saveForm">
           @csrf()
+           <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
+              <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
+                  height:30px; border-radius:8px;">&nbsp<b>Symptoms</b>
+              </p>
+            </div>
+            <div id="symptoms" style="float:left; margin-top: 10px; margin-bottom: 25px; width: 100%">
+              <textarea rows="7" class="form-control" name="symptoms" placeholder="Enter symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->symptoms }}</textarea>
+            </div>
+
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                   height:30px; border-radius:8px;">&nbsp<b>Diagnosis</b>
               </p>
             </div>
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
-              <textarea rows="7" class="form-control" name="diagnosis" placeholder="Enter diagnosis here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->diagnosisDescription }}</textarea>
+              <textarea rows="7" class="form-control" name="diagnosis" placeholder="Enter diagnosis here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;  margin-bottom: 25px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->diagnosisDescription }}</textarea>
             </div>
 
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                   height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b>
               </p>
-              <textarea rows="7" class="form-control" name="treatment" placeholder="Enter treatment here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->treatmentDescription }}</textarea>
+              <textarea rows="7" class="form-control" name="treatment" placeholder="Enter treatment here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; margin-bottom: 25px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->treatmentDescription }}</textarea>
             </div>
 
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
@@ -96,7 +105,7 @@
               </div>
 
               <div style="float: left;">
-                <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second" min='1' data-parsley-error-message = "should be greater than or equal to 1"><br>
+                <input type="number" name="medQuantity" id="medQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="second" min='1' data-parsley-error-message="should be greater than or equal to 1"><br>
               </div>
             </div>
             
@@ -194,7 +203,7 @@
               </div>
 
               <div style="float: left;">
-                <input type="number" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third" min = '1' data-parsley-error-message="should be greater than or equal to 1"><br>
+                <input type="number" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third" min='1' data-parsley-error-message = "should be greater than or equal to 1"><br>
               </div>
             </div>
            
@@ -567,7 +576,7 @@
           };
           //console.log($('#saveForm').serialize() + '&' + $.param(data));
           $.ajax({
-            url: '/physician/referred/patient/diagnoses/edit/' + '{{ $diagnosis->clinicLogID }}',
+            url: '/physician/referred/patient/diagnoses/edit/' + '{{ $diagnosis["clinicLogID"] }}',
             type: 'get',
             data: $('#saveForm').serialize() + '&' + $.param(data),
             success: function(output){
@@ -576,7 +585,7 @@
                 icon: 'success'
               })
               .then((value)=>{
-                window.location.href = '/physician/patient/diagnoses/' + '{{ $diagnosis->patientID }}';
+                window.location.href = '/physician/referred/patient/diagnoses/' + '{{ $diagnosis["patientID"] }}';
               });
             }
           });

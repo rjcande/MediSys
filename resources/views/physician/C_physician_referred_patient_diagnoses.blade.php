@@ -39,7 +39,7 @@
               </p>
             </div>
             <div id="symptoms" style="float:left; margin-top: 10px; margin-bottom: 25px; width: 100%">
-              <textarea rows="7" class="form-control" name="symptoms" placeholder="Enter symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required></textarea>
+              <textarea rows="7" class="form-control" name="symptoms" placeholder="Enter symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" data-parsley-group="first" required>{{ $diagnosis->symptoms }}</textarea>
             </div>
 
             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">

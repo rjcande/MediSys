@@ -60,7 +60,7 @@
         </table>
 
         <div style="width:100%;text-align: right; position: absolute; bottom: 0">
-          <div style="text-align: center; margin-left: 500px;">
+          <div style="text-align: center; margin-left: 450px;">
             <header style="font-size: 18px; margin-top: 40px;"><u>{{ $attendingPhysician['firstName'] }} {{ $attendingPhysician['middleName'] }} {{ $attendingPhysician['lastName'] }} {{ $attendingPhysician['quantifier'] }}</u> M.D.</header>
             <header style="font-size: 18px;">Clinic Physician</header>   
             <header style="font-size: 18px; margin-top: 20px; text-align: right;"><u style="text-align: center; padding: 0 0 4px;">{{ $attendingPhysician['licenseNumber'] }}</u> Lic. No.</header>

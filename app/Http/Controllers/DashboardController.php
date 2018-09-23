@@ -100,11 +100,16 @@ class DashboardController extends Controller
     	return Response::json(array('message' => 'Success'));
     }
 
-    public function mChiefDestroy($id)
+    public function mChiefDestroy($id, $status)
     {
         $delete = Appointments::find($id);
 
-        $delete->isDeleted = 1;
+        if ($status == "no_show") {
+            $delete->isAppointed = 1;
+        }
+        elseif ($status == "cancel_appointment") {
+            $delete->isAppointed = 2;
+        }
 
         $delete->save();
 
