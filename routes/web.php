@@ -39,9 +39,11 @@ Route::get('/print/patient/list', 'PatientController@printPatientList');
 
 Route::get('/print/medicine/reports/{month}', 'DashboardController@printMedicineReports');
 
-Route::get('/print/medicine/reports/{week}', 'DashboardController@printMedicineReportsWeek');
+Route::get('/print/medicine/reports/week/{week}', 'DashboardController@printMedicineReportsWeek');
 
-Route::get('/print/medical/reports', 'DashboardController@printMedicalReports');
+Route::get('/print/medical/reports/{month}', 'DashboardController@printMedicalReports');
+
+Route::get('/print/medical/reports/week/{week}', 'DashboardController@printMedicalReportsWeek');
 
 
 /*

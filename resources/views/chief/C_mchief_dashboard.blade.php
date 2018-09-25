@@ -192,11 +192,12 @@
      //Opening Edit Modal
     $('#appointmentModal').on('show.bs.modal', function(e){
 
-        var id = $('.even-pointer').data('id');
-        var apptid = $('.even-pointer').data('apptid');
-        var name = $('.even-pointer').data('name');
-        var physician = $('.even-pointer').data('physician');
-        var date = $('.even-pointer').data('date');
+        var sourceElement = $(e.relatedTarget);
+        var id = sourceElement.data('id');
+        var apptid = sourceElement.data('apptid');
+        var name = sourceElement.data('name');
+        var physician = sourceElement.data('physician');
+        var date = sourceElement.data('date');
 
         var modal = $(this);
         modal.find('.modal-body #patientName').text(name);

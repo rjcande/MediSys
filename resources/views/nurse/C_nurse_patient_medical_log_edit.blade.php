@@ -340,7 +340,7 @@
                               </div>
                              <div style="float: left;width: 100%; margin-top: 20px; text-align: center">
                               <a href="{{ route('nurse.generate.pdf.prescription', $clinicLogInfo->clinicLogID) }}" target="_blank">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button>
+                                <button type="button" class="btn btn-primary" id="printPrescription"><i class="fa fa-download"></i> GENERATE PDF</button>
                               </a>
                               <button type="button" class="btn btn-success btn-save" name="btnSave">SAVE</button>         
                               <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
@@ -658,6 +658,18 @@
         var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medGenericName+"</td><td class=' '>"+medBrand+"</td><td class=' '>"+medQuantity[medQuantity.length-1]+"</td><td class=' last'>"+medUnit+"</td><td>"+dosage[dosage.length-1]+"</td><td>"+medication[medication.length - 1]+"</td></tr>";
 
           $(tr).prependTo('#tbodyMedicine');
+          $('#printPrescription').prop('disabled', true);
+          //Reset Med Fields
+          $('select[name=medGenericName]').prop('selectedIndex', 0);
+          $('select[name=medBrand]').prop('selectedIndex', 0);
+          $('select[name=medUnit]').prop('selectedIndex', 0);
+          $('select[name=medBrand]').prop('disabled', true);
+          $('select[name=medUnit]').prop('disabled', true);
+          $('input[name=medQuantity]').val(this.defaultValue);
+          $('input[name=medication]').val(this.defaultValue);
+          $('input[name=dosage]').val(this.defaultValue);
+          $('input[name=hrs_day]').val(this.defaultValue);
+          $('input[name=week]').val(this.defaultValue);
 
       }
     });
@@ -679,6 +691,14 @@
         var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medSuppName+"</td><td class=' '>"+medSuppBrand+"</td><td class=' '>"+medSuppQuantity[medSuppQuantity.length-1]+"</td><td class=' last'>"+medSuppUnit+"</td></tr>";
 
         $(tr).prependTo('#tbodyMedSupp');
+
+        //Reset Medical Supply Fields
+        $('select[name=medSuppName]').prop('selectedIndex', 0);
+        $('select[name=medSuppBrand]').prop('selectedIndex', 0);
+        $('select[name=medSuppUnit]').prop('selectedIndex', 0);
+        $('select[name=medSuppBrand]').prop('disabled', true);
+        $('select[name=medSuppUnit]').prop('disabled', true);
+        $('input[name=medSuppQuantity]').val(this.defaultValue);
 
       }
     });
@@ -744,13 +764,29 @@
       e.preventDefault();
 
       if ($(this).parsley().isValid()) {
+        var height;
+        var weight;
+
+        if ($('input[name=height]').val() != '') {
+          height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+        }
+        else{
+          height = null;
+        }
+
+        if ($('input[name=weight]').val() != '') {
+          weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+        }
+        else{
+          weight = null;
+        }
         var data = {       
           bloodPressure: $('input[name=bloodPressureSystolic]').val() + "/" + $('input[name=bloodPressureDiastolic]').val(),   
           heartRate: $('input[name=heartRate]').val(),
           respiratoryRate: $('input[name=respiratoryRate]').val(),
           temperature: $('input[name=temperature]').val(),
-          height: $('input[name=height]').val() + ' ' + $('#heightUnit').val(),
-          weight: $('input[name=weight]').val() + ' ' + $('#weightUnit').val(),
+          height: height,
+          weight: weight,
           bmi: $('input[name=bmi]').val(),
           bmiRange: $('input[name=bmiRange]:checked').val()
         }

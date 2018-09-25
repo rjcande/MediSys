@@ -75,7 +75,7 @@
                           @foreach($patientNames as $name)
                             @foreach($physicians as $physician)
                               @if($name->appointmentID == $physician->appointmentID)
-                                <tr class="even-pointer" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
                                   <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
                                   <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
@@ -186,19 +186,14 @@
       table.search($(this).val()).draw();
     });
 
-
-    $('#appointmentTable').on('click', '.even-pointer',function(){
-      $('#appointmentModal').modal('show');
-    });
-
      //Opening Edit Modal
     $('#appointmentModal').on('show.bs.modal', function(e){
-
-        var id = $('.even-pointer').data('id');
-        var apptid = $('.even-pointer').data('apptid');
-        var name = $('.even-pointer').data('name');
-        var physician = $('.even-pointer').data('physician');
-        var date = $('.even-pointer').data('date');
+        var sourceElement = $(e.relatedTarget);
+        var id = sourceElement.data('id');
+        var apptid = sourceElement.data('apptid');
+        var name = sourceElement.data('name');
+        var physician = sourceElement.data('physician');
+        var date = sourceElement.data('date');
 
         var modal = $(this);
         modal.find('.modal-body #patientName_label').text(name);

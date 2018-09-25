@@ -43,7 +43,11 @@
         <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
         <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
         <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
-        <h1>Medicine Reports ({{ date('F') }})</h1>
+        @php
+          $dateObj   = DateTime::createFromFormat('!m', $month);
+          $monthName = $dateObj->format('F');
+        @endphp
+        <h1>Medicine Reports ({{ $monthName }})</h1>
       </center>
        @php
           $date = date('Y-m-t');   
@@ -74,7 +78,7 @@
                         $sumFirstWeek = 0;
                      @endphp
                      @foreach($medicine as $index => $value)
-                        @if($value['week'] == 1 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                        @if($value['week'] == 1 && $value['month'] == $month && $value['year'] == date('Y'))
                            @php
                               $sumFirstWeek +=$value['total'];
                            @endphp
@@ -87,7 +91,7 @@
                         $sumSecondWeek = 0;
                      @endphp
                      @foreach($medicine as $index => $value)
-                        @if($value['week'] == 2 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                        @if($value['week'] == 2 && $value['month'] == $month && $value['year'] == date('Y'))
                            @php
                               $sumSecondWeek +=$value['total'];
                            @endphp
@@ -100,7 +104,7 @@
                         $sumThirdWeek = 0;
                      @endphp
                      @foreach($medicine as $index => $value)
-                        @if($value['week'] == 3 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                        @if($value['week'] == 3 && $value['month'] == $month && $value['year'] == date('Y'))
                            @php
                               $sumThirdWeek +=$value['total'];
                            @endphp
@@ -113,7 +117,7 @@
                         $sumFourthWeek = 0;
                      @endphp
                      @foreach($medicine as $index => $value)
-                        @if($value['week'] == 4 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                        @if($value['week'] == 4 && $value['month'] == $month && $value['year'] == date('Y'))
                            @php
                               $sumFourthWeek +=$value['total'];
                            @endphp
@@ -128,7 +132,7 @@
                            $sumFifthWeek = 0;
                         @endphp
                         @foreach($medicine as $index => $value)
-                           @if($value['week'] == 5 && $value['month'] == date('m') && $value['year'] == date('Y'))
+                           @if($value['week'] == 5 && $value['month'] == $month && $value['year'] == date('Y'))
                               @php
                                  $sumFifthWeek +=$value['total'];
                               @endphp

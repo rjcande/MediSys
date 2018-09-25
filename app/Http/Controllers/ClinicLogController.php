@@ -440,7 +440,7 @@ class ClinicLogController extends Controller
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'treatments.*', 'genericName', 'brand', 'unit')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
@@ -702,7 +702,7 @@ class ClinicLogController extends Controller
                 $prescription->medicineID = Input::get('medicineID')[$i];
                 $prescription->quantity = Input::get('medQuantity')[$i];
                 $prescription->medication = Input::get('medication')[$i];
-                $prescription->dosage = Input::get('dosage');
+                $prescription->dosage = Input::get('_dosage')[$i];
 
                 $prescription->save();
             }

@@ -348,6 +348,11 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medicine/reports/week', 1) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -434,6 +439,11 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medicine/reports/week', 2) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -520,7 +530,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                             
+                              <a href="{{ url('/print/medicine/reports/week', 3) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -607,6 +621,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medicine/reports/week', 4) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
                         <div class="tab-pane fade @if($active==5){{'active in'}}@endif" id="tab_content16" role="tabpanel" aria-labelledby="profile-tab">
@@ -691,6 +710,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medicine/reports/week', 5) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -2136,6 +2160,9 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
+      <a href="{{ url('/nurse/dashboard') }}">
+         <button type="button" class="btn btn-primary" style="margin-top: 20px; float: right;">BACK</button>
+      </a>
     </div>
   </div>
 </div>
