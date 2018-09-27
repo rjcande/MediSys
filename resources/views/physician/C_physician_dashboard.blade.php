@@ -75,7 +75,7 @@
                           @foreach($patientNames as $name)
                             @foreach($physicians as $physician)
                               @if($name->appointmentID == $physician->appointmentID)
-                                <tr class="even-pointer" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
                                   <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
                                   <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
@@ -150,14 +150,11 @@
             <label class="col-md-7 col-sm-3 col-xs-3" id="date"></label>
             <input type="hidden" id="appointmentID" name="appointmentID" value="">
           </div>  
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="col-md-3 col-sm-3 col-xs-3">Status: </label>
-            <label class="col-md-7 col-sm-3 col-xs-3"></label>
-          </div>  
+      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" id="btnDone">Consult</button>
-        <button type="button" class="btn btn-danger" id="btnDelete">Cancel Appointment</button>
+        <!-- <button type="button" class="btn btn-success" id="btnDone">Consult</button> -->
+        <button type="button" class="btn btn-danger" id="btnCancelAppointment">Cancel Appointment</button>
       </div>
          </form>
     </div>
@@ -184,11 +181,6 @@
       table.search($(this).val()).draw();
     });
 
-
-    $('.even-pointer').click(function(){
-      $('#appointmentModal').modal('show');
-    });
-
      //Opening Edit Modal
     $('#appointmentModal').on('show.bs.modal', function(e){
 
@@ -206,6 +198,25 @@
         modal.find('.modal-body #date').text(date);
         modal.find('.modal-body #appointmentID').val(apptid);
 
+    });
+
+    $('#btnCancelAppointment').click(function(){
+      $.ajax({
+        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'cancel_appointment',
+        type: 'get',
+        data: $(this).serialize(),
+        success: function(output){
+            swal({
+                title: "Good job!",
+                text: output.message,
+                icon: "success",
+                button: "OK",
+              })
+              .then((value)=>{
+                location.reload(true);
+              });
+        } 
+      });
     });
 
      $('#btnDelete').click(function(){

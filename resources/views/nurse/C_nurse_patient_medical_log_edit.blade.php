@@ -578,8 +578,8 @@
     //If Medicine button delete is clicked
     $('#btnDeleteMed').on('click', function(e){
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          title: "DELETE",
+          text: "Are you sure you want to delete this?",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -609,8 +609,8 @@
     //If Medical button delete is clicked
     $('#btnMedSupDelete').on('click', function(e){
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          title: "DELETE",
+          text: "Are  you sure you want to delete this?",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -728,6 +728,15 @@
         $('#medUnit').prop('disabled', false);
         $('#medUnit').empty();
         $('#medUnit').append('<option value="'+ data[0]['medicineID'] +'">'+data[0]['unit']+'</option>')
+        var str = data[0]['dosage'];
+        var splitted = str.split(" ");
+        $('#dosage').val(splitted[0]);
+        if (splitted[1] == "mg") {
+          $('#dosageUnit').val("mg");
+        }
+        else if(splitted[1] == "ml"){
+          $('#dosageUnit').val("ml");
+        }
       });      
     });
 

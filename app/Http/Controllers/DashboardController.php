@@ -958,7 +958,7 @@ class DashboardController extends Controller
                         ->limit(4)
                         ->get();
         $totalPrescription_year =  UsedMedSupply::select(DB::raw("SUM(quantity) as total"), 'medsuppliesused.*')
-                        ->whereMonth('medsuppliesused.created_at', '=', $month)
+                        ->whereYear('medsuppliesused.created_at', '=', $year)
                         ->first();
 
 
@@ -1117,7 +1117,7 @@ class DashboardController extends Controller
                         ->limit(4)
                         ->get();
         $totalPrescription_year =  UsedMedSupply::select(DB::raw("SUM(quantity) as total"), 'medsuppliesused.*')
-                        ->whereMonth('medsuppliesused.created_at', '=', $month)
+                        ->whereYear('medsuppliesused.created_at', '=', $year)
                         ->first();
 
 
@@ -1281,7 +1281,7 @@ class DashboardController extends Controller
                         ->limit(4)
                         ->get();
         $totalPrescription_year =  UsedMedSupply::select(DB::raw("SUM(quantity) as total"), 'medsuppliesused.*')
-                        ->whereMonth('medsuppliesused.created_at', '=', $month)
+                        ->whereYear('medsuppliesused.created_at', '=', $year)
                         ->first();
 
 
