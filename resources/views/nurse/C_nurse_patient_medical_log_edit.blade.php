@@ -293,7 +293,7 @@
                                           @endforeach
                                       </tbody>
                                   </table>
-                                   <button class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                                   <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                     <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;" id="btnDeleteMed">DELETE</button>
                                   </div>
                                 </div>
@@ -910,12 +910,16 @@
     }
 
     //Set Interval For the reloading of page
-    // setInterval(function(){
+    setInterval(function(){
   
-    //   $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
-      
-    //   });
-    // }, 2000);
+      $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
+          if ('{{ $recommendation['treatmentDescription'] }}' == '') {
+            if(data['treatment']['treatmentDescription'] != null){
+              location.reload(true);
+            }
+          }
+      });
+    }, 2000);
      
 
   });

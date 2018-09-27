@@ -74,6 +74,11 @@
                           @endforeach 
                         </tbody>
                       </table>
+                       <a href="{{ url('/print/patient/list') }}" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-print"></i> Print
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>

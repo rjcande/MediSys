@@ -130,6 +130,11 @@
                           @endforeach
                         </tbody>
                       </table>
+                       <a href="{{ url('/print/medical/log') }}" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-print"></i> Print
+                        </button>
+                      </a>
                     </div>
                     <!--/Content-->
                   </div>
@@ -230,6 +235,34 @@
 
     $('#search').keyup(function(){
       table.search($(this).val()).draw();
+    });
+
+    $('.delete-button').on('click', function(){
+     swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this record!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+     .then((willDelete)=>{
+        if (willDelete) {
+          $.ajax({
+            url: '/nurse/delete/clinic/log/' + $(this).data('id'),
+            type: 'get',
+            success: function(output){
+              swal({
+                title: "",
+                text: output.message,
+                icon: "success",
+              })
+              .then((value)=>{
+                location.reload(true);
+              });
+            }
+          });
+        }
+     })
     });
 
   });

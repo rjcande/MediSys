@@ -74,7 +74,11 @@
                 </td>
                 <td> {{ date("F d, Y", strtotime($log->clinicLogDateTime)) }}</td>
                 <td>{{ date("h:i a", strtotime($log->clinicLogDateTime)) }}</td>
-                <td>{{ date('h:i a', strtotime($log->timeOut)) }}</td>
+                <td>
+                  @if($log->timeOut)
+                    {{ date('h:i a', strtotime($log->timeOut)) }}
+                  @endif
+                </td>
               </tr>
               @php($ctr++)
            @endforeach

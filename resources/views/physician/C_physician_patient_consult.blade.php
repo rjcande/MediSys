@@ -627,7 +627,7 @@
                             .on('click', function(e){ 
                             	//When Save button is clicked	
 								e.preventDefault();
-
+								this.disabled = true;
 								if ($('#saveForm').parsley().isValid() && $('#saveForm').data('rec') == 0){
 									$.ajax({
 										url: '/physician/create/medical/history/' + $('#saveForm').data('id'),

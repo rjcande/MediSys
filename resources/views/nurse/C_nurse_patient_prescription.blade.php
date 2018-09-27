@@ -402,6 +402,7 @@
    var medSuppQuantity = new Array();
    var medication = new Array();
    var dosage = new Array();
+   var deleteFlag = 1;
    //variables for storing vital signs
    var bloodPressureSystolic;
    var bloodPressureDiastolic;
@@ -440,7 +441,7 @@
                     .addClass('btn btn-info')
                     .on('click', function(e){ 
                      e.preventDefault();
-
+                     this.disabled = true;
                       $('#saveForm').parsley().validate('first');
 
                       if($('#saveForm').parsley().isValid('first')){
@@ -572,6 +573,15 @@
             $('#medUnit').prop('disabled', false);
             $('#medUnit').empty();
             $('#medUnit').append('<option value="'+ data[0]['medicineID'] +'">'+data[0]['unit']+'</option>')
+            var str = data[0]['dosage'];
+            var splitted = str.split(" ");
+            $('#dosage').val(splitted[0]);
+            if (splitted[1] == "mg") {
+              $('#dosageUnit').val("mg");
+            }
+            else if(splitted[1] == "ml"){
+              $('#dosageUnit').val("ml");
+            }
           });      
         });
 

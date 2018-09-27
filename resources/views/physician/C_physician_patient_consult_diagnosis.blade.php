@@ -516,6 +516,15 @@
         $('#medUnit').prop('disabled', false);
         $('#medUnit').empty();
         $('#medUnit').append('<option value="'+ data[0]['medicineID'] +'">'+data[0]['unit']+'</option>')
+        var str = data[0]['dosage'];
+        var splitted = str.split(" ");
+        $('#dosage').val(splitted[0]);
+        if (splitted[1] == "mg") {
+          $('#dosageUnit').val("mg");
+        }
+        else if(splitted[1] == "ml"){
+          $('#dosageUnit').val("ml");
+        }
       });      
     });
 
@@ -686,7 +695,7 @@
                       .on('click', function(e){
                         //On form submit
                         e.preventDefault();
-
+                        this.disabled = true;
                         $('#saveForm').parsley().validate("first");
                         $('#saveForm').parsley().validate("referral");
 

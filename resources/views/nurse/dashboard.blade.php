@@ -53,8 +53,8 @@
                <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel" style="height: 100%">
                   <div class="x_title">
-                    <h2>Appointment Schedule</h2>
-                    <div class="col-md-7 col-sm-12 col-xs-12" style="float: right;">
+                    <h2>Patients' Appointment Schedule</h2>
+                    <div class="col-md-5 col-sm-12 col-xs-12" style="float: right;">
                       <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
                     </div>
                     <div class="clearfix"></div>
