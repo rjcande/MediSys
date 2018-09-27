@@ -71,19 +71,46 @@ class MedicineController extends Controller
     {
         try {
 
-            $medicine = new Medicine;
-            if(Session::get('accountInfo.position') == 3){
-                $medicine->medType = 'm';
-            }elseif (Session::get('accountInfo.position') == 2) {
-                $medicine->medType = 'd';
+            // $genericName = strtolower(Input::get('_genericName'));
+            // $brandName = strtolower(Input::get('_brandName'));
+            // $medUnit = strtolower(Input::get('_medUnit'));
+            $dosage = strtolower(Input::get('_dosage'));
+
+            $isExisting = false;
+
+            //QUERY FOR SEARCHING IF THE MEDICINE ENTERED EXISTS
+            $existingMedicine = Medicine::select('medicines.genericName', 'medicines.brand', 'medicines.unit', 'medicines.dosage')->where('medicines.isDeleted', '=', '0')->get();
+
+            foreach($existingMedicine as $key => $value)
+                {
+                    if(strtolower($value->genericName) == strtolower(Input::get('genericName')) && strtolower($value->brand) == strtolower(Input::get('brandName')) && strtolower($value->unit) == strtolower(Input::get('unit')) && strtolower($value->dosage) == $dosage)
+                    {
+                        $isExisting = true;
+                    }
+                }
+            
+            if($isExisting == false){
+                $medicine = new Medicine;
+                if(Session::get('accountInfo.position') == 3){
+                    $medicine->medType = 'm';
+                }elseif (Session::get('accountInfo.position') == 2) {
+                    $medicine->medType = 'd';
+                }
+                $medicine->genericName = Input::get('genericName');
+                $medicine->brand = Input::get('brandName');
+                $medicine->unit = Input::get('unit');
+                $medicine->dosage = Input::get('_dosage');
+
+                $medicine->save();
+
+                return Response::json(array('message' => 'Successfully Added!', 'logo'=>'success', 'title'=>'Good Job'));
             }
-            $medicine->genericName = Input::get('genericName');
-            $medicine->brand = Input::get('brandName');
-            $medicine->unit = Input::get('unit');
+            elseif($isExisting == true){
+                
+                return Response::json(array('message' => 'A medicine has already been entered!!', 'logo'=>'warning', 'title'=>'WARNING'));
 
-            $medicine->save();
-
-            return Response::json(array('message' => 'Successfully Added!'));
+            }
+            
         } catch (Exception $e) {
 
         }

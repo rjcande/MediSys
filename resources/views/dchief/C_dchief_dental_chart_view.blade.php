@@ -541,7 +541,7 @@
                                         <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
                                         <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
         
-                                        <!--TOOTH NUMBER 61----------------------------------------------------------------------->
+                                    <!--TOOTH NUMBER 61----------------------------------------------------------------------->
                                         <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
                                         <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
                                         <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
@@ -610,8 +610,8 @@
                                         " width="300px" class="imgTeeth"></a> -->
                                         <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
                                         <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
-                                    </div>
                                 </div>
+                            </div>
                             <div style="margin-top: 150px; margin-left: 180px">
                                 <a href="{{ route('dchief.dentalchart.each',55)}}"><button class="btn btn-warning">55</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',54)}}"><button class="btn btn-warning" style="margin-left: 10px;">54</button></a>
@@ -635,14 +635,14 @@
                                 <input value="{{ $status13a }}" type="text" readonly name="txtBox13a" class="text-input" style="width:55px;">
                                 <input value="{{ $status12a }}" type="text" readonly name="txtBox12a" class="text-input" style="width:55px;">
                                 <input value="{{ $status11a }}" type="text" readonly name="txtBox11a" class="text-input" style="width:55px;">
-                                <input value="{{ $status28a }}" type="text" readonly name="txtBox21a" class="text-input" style="width:55px;">
-                                <input value="{{ $status27a }}" type="text" readonly name="txtBox22a" class="text-input" style="width:55px;">
-                                <input value="{{ $status26a }}" type="text" readonly name="txtBox23a" class="text-input" style="width:55px;">
-                                <input value="{{ $status25a }}" type="text" readonly name="txtBox24a" class="text-input" style="width:55px;">
-                                <input value="{{ $status24a }}" type="text" readonly name="txtBox25a" class="text-input" style="width:55px;">
-                                <input value="{{ $status23a }}" type="text" readonly name="txtBox26a" class="text-input" style="width:55px;">
-                                <input value="{{ $status22a }}" type="text" readonly name="txtBox27a" class="text-input" style="width:55px;">
-                                <input value="{{ $status21a }}" type="text" readonly name="txtBox28a" class="text-input" style="width:55px;">
+                                <input value="{{ $status21a }}" type="text" readonly name="txtBox21a" class="text-input" style="width:55px;">
+                                <input value="{{ $status22a }}" type="text" readonly name="txtBox22a" class="text-input" style="width:55px;">
+                                <input value="{{ $status23a }}" type="text" readonly name="txtBox23a" class="text-input" style="width:55px;">
+                                <input value="{{ $status24a }}" type="text" readonly name="txtBox24a" class="text-input" style="width:55px;">
+                                <input value="{{ $status25a }}" type="text" readonly name="txtBox25a" class="text-input" style="width:55px;">
+                                <input value="{{ $status26a }}" type="text" readonly name="txtBox26a" class="text-input" style="width:55px;">
+                                <input value="{{ $status27a }}" type="text" readonly name="txtBox27a" class="text-input" style="width:55px;">
+                                <input value="{{ $status28a }}" type="text" readonly name="txtBox28a" class="text-input" style="width:55px;">
                                 <br>
                                 <input value="{{ $status18b }}" type="text" readonly name="txtBox18b" class="text-input" style="width:55px;">
                                 <input value="{{ $status17b }}" type="text" readonly name="txtBox17b" class="text-input" style="width:55px;">
@@ -652,14 +652,14 @@
                                 <input value="{{ $status13b }}" type="text" readonly name="txtBox13b" class="text-input" style="width:55px;">
                                 <input value="{{ $status12b }}" type="text" readonly name="txtBox12b" class="text-input" style="width:55px;">
                                 <input value="{{ $status11b }}" type="text" readonly name="txtBox11b" class="text-input" style="width:55px;">
-                                <input value="{{ $status28b }}" type="text" readonly name="txtBox21b" class="text-input" style="width:55px;">
-                                <input value="{{ $status27b }}" type="text" readonly name="txtBox22b" class="text-input" style="width:55px;">
-                                <input value="{{ $status26b }}" type="text" readonly name="txtBox23b" class="text-input" style="width:55px;">
-                                <input value="{{ $status25b }}" type="text" readonly name="txtBox24b" class="text-input" style="width:55px;">
-                                <input value="{{ $status24b }}" type="text" readonly name="txtBox25b" class="text-input" style="width:55px;">
-                                <input value="{{ $status23b }}" type="text" readonly name="txtBox26b" class="text-input" style="width:55px;">
-                                <input value="{{ $status22b }}" type="text" readonly name="txtBox27b" class="text-input" style="width:55px;">
-                                <input value="{{ $status21b }}" type="text" readonly name="txtBox28b" class="text-input" style="width:55px;"><br>
+                                <input value="{{ $status21b }}" type="text" readonly name="txtBox21b" class="text-input" style="width:55px;">
+                                <input value="{{ $status22b }}" type="text" readonly name="txtBox22b" class="text-input" style="width:55px;">
+                                <input value="{{ $status23b }}" type="text" readonly name="txtBox23b" class="text-input" style="width:55px;">
+                                <input value="{{ $status24b }}" type="text" readonly name="txtBox24b" class="text-input" style="width:55px;">
+                                <input value="{{ $status25b }}" type="text" readonly name="txtBox25b" class="text-input" style="width:55px;">
+                                <input value="{{ $status26b }}" type="text" readonly name="txtBox26b" class="text-input" style="width:55px;">
+                                <input value="{{ $status27b }}" type="text" readonly name="txtBox27b" class="text-input" style="width:55px;">
+                                <input value="{{ $status28b }}" type="text" readonly name="txtBox28b" class="text-input" style="width:55px;"><br>
                                 <!-- <img src="{{ asset('images/part3_12-18.png') }}" width="470px"> -->
                                 <div style="margin-top: 5px;">
                                     <!--TOOTH NUMBER 18--------------------------------------------------------------------------->
@@ -907,7 +907,6 @@
                         
                             <!--48 TO 41 AND 31 TO 38 A AND B-->
                             <div style="float: left;">
-                                <!-- <img src="{{ asset('images/part5_41-48.png') }}" width="470px"> -->
                                 <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">48</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">47</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">46</button></a>
@@ -1187,7 +1186,6 @@
                         
                             <!--71 TO 75 A AND B-->
                             <div style="float: left;margin-top: 25px;">
-                                <!-- <img src="{{ asset('images/part7_71-75.png') }}" width="300px" style="margin-left: 177px;"> -->
                                 <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="margin-left: 185px; margin-top: 5px;">71</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">72</button></a>
                                 <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">73</button></a>
@@ -1341,28 +1339,28 @@
                                     <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
                                 </div>
                                 <label style="display: inline-block;width:100px;font-size: 12px; margin-left:75px;">STATUS RIGHT</label>
-                                <input placeholder=""  type="text"    name="txtBox71a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox72a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox73a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox74a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox75a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input placeholder=""  type="text"    name="txtBox84a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox83a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox82a" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox81a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status71a}}" type="text" name="txtBox71a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status72a}}" type="text" name="txtBox72a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status73a}}" type="text" name="txtBox73a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status74a}}" type="text" name="txtBox74a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status75a}}" type="text" name="txtBox75a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status85a}}" type="text" name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
+                                <input placeholder="{{$status84a}}" type="text" name="txtBox84a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status83a}}" type="text" name="txtBox83a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status82a}}" type="text" name="txtBox82a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status81a}}" type="text" name="txtBox81a" class="text-input" style="width:55px;">
                                 <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
                                 <br>
-                                <input placeholder=""  type="text"    name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
-                                <input placeholder=""  type="text"    name="txtBox72b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox73b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox74b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox75b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input placeholder=""  type="text"    name="txtBox84b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox83b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox82b" class="text-input" style="width:55px;">
-                                <input placeholder=""  type="text"    name="txtBox81b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status71b}}" type="text" name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
+                                <input placeholder="{{$status72b}}" type="text" name="txtBox72b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status73b}}" type="text" name="txtBox73b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status74b}}" type="text" name="txtBox74b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status75b}}" type="text" name="txtBox75b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status85b}}" type="text" name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
+                                <input placeholder="{{$status84b}}" type="text" name="txtBox84b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status83b}}" type="text" name="txtBox83b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status82b}}" type="text" name="txtBox82b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status81b}}" type="text" name="txtBox81b" class="text-input" style="width:55px;">
                                 <br>
                             </div>
                     

@@ -339,6 +339,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -389,6 +390,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -446,6 +448,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -503,6 +506,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -716,6 +720,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -770,6 +775,7 @@ class DentalLogController extends Controller
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
@@ -899,15 +905,29 @@ class DentalLogController extends Controller
 
     public function patientPrescription(Request $request)
     {
-      $medicines = Medicine::all();
-      $medSupplies = MedicalSupply::all();
+      $medicines = Medicine::select('medicines.*')
+                            ->where('medicines.medType', '=', 'd')
+                            ->where('medicines.isDeleted', '=', '0')         
+                            ->get();               
+                           
+      $medSupplies = MedicalSupply::select('medsupplies.*')
+                                  ->where('medsupplies.isDeleted', '=', '0')
+                                  ->where('medsupplies.supType', '=', 'd')
+                                  ->get();
 
       return view('dentist.C_dentist_patient_prescription')->with(['medicines'=>$medicines, 'medSupplies'=>$medSupplies]);
     }
     public function dchiefPatientPrescription(Request $request)
     {
-      $medicines = Medicine::all();
-      $medSupplies = MedicalSupply::all();
+      $medicines = Medicine::select('medicines.*')
+                            ->where('medicines.medType', '=', 'd')
+                            ->where('medicines.isDeleted', '=', '0')         
+                            ->get();               
+                           
+      $medSupplies = MedicalSupply::select('medsupplies.*')
+                                  ->where('medsupplies.isDeleted', '=', '0')
+                                  ->where('medsupplies.supType', '=', 'd')
+                                  ->get();
 
       return view('dchief.C_dchief_patient_prescription')->with(['medicines'=>$medicines, 'medSupplies'=>$medSupplies]);
     }

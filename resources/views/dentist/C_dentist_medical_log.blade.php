@@ -300,11 +300,34 @@
       },
       autoSelectFirst: true,
       onSearchComplete: function (input, suggestions) {
-        if(!suggestions.length){
+        if(suggestions.length == 0){
             console.log('no suggestion');
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
+            swal({
+            title: "No Record Found",
+            text: "Record Not Found! Do you want to Create a record?",
+            icon: "warning",
+            buttons: true,
+          })
+          .then((willCreate)=>{
+            if(willCreate){
+              var hasRecord = {hasRecord: checkRecord};
+              $.ajax({
+                url: '/dentist/select/concern',
+                type: 'get',
+                data: $(this).serialize() + '&' + $.param(hasRecord),
+                success: function(output){
+                  if(output.redirect){
+                  	if(output.redirect){
+                    	window.location.href = output.redirect;
+                    }
+                  }
+                }
+              });
+            }
+          });
         }
       }
     });

@@ -25,7 +25,7 @@
                       <div class="x_panel">
                         <div class="x_content" style="text-align: center;">
                           <p class="alert alert-info" style="color: black;">You Need To Login First to View This Content</p>
-                          <a href="{{ url('/') }}" title=""><u>LOGIN</u></a>
+                          <a href="{{url('/')}}"><button class="btn btn-primary">LOGIN</button></a>
                         </div>
                       </div>
                     </div>

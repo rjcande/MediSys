@@ -43,6 +43,19 @@
                         <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="unit" data-parsley-required="true">    
                       </div>     
                     </div>
+                    <div>
+                      <div style="float: left; width: 150px;">
+                        <header style="margin-bottom:12px; margin-left:25px;">Dosage:</header>
+                      </div>
+                      <div style="float: left;">
+                        <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" data-parsley-required="true">
+                        <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true">
+                          <option value="mg">mg</option>
+                          <option value="g">g</option>
+                          <option value="oz">oz</option>
+                        </select>
+                      </div>     
+                    </div>
                     <div style="float: left; display: flex; justify-content: center; width: 100%">
                       <button type="submit" class="btn btn-success" id="btnAdd">ADD</button>
                       <button type="reset" class="btn btn-warning" id="btnReset">CLEAR</button>
@@ -78,6 +91,7 @@
                             <th class="column-title">Generic Name</th>
                             <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
+                            <th class="column-title">Dosage</th>
                             <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
                             <th class="bulk-actions" colspan="8">
@@ -95,6 +109,7 @@
                               <td class=" ">{{ $medicine->genericName }}</td>
                               <td class=" ">{{ $medicine->brand }}</td>
                               <td class=" ">{{ $medicine->unit }}</td>
+                              <td class=" ">{{ $medicine->dosage }}</td>
                               <td class="last">
                                 <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-id="{{ $medicine->medicineID }}">
                                   <i class="fa fa-pencil"></i>
@@ -188,17 +203,29 @@
       //Submitting of Form
       $('#saveMedForm').submit(function(e){
         e.preventDefault();
+        
+        // var genericname = $('input[name=genericName]').val();
+        // var brandname = $('input[name=brandName]').val();
+        // var medunit = $('input[name=unit]').val();
+        var dosage = $('input[name=dosage]').val() + ' ' + $('#dosageUnit').val();
 
+        var id = {
+          // _genericName: genericname,
+          // _brandName: brandname,
+          // _medUnit :medunit,
+          _dosage: dosage
+        }
+        // alert();
         if ($(this).parsley().isValid()) {
           $.ajax({
             url: '/save/medicine',
             type: 'get',
-            data: $(this).serialize(),
+            data: $(this).serialize() + "&" + $.param(id),
             success: function(output){
               swal({
-                title: "Good job!",
+                title: output.title,
                 text: output.message,
-                icon: "success",
+                icon: output.logo,
                 button: "OK",
               })
               .then((value)=>{

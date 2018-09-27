@@ -58,30 +58,41 @@
                    <!-- HEIGHT -->
                    @php
                       if($vitalSignsInfo['height']){
-                        $height = preg_split('# #', $vitalSignsInfo['height']);
-                      }
-
+                        $height = preg_split('# #', $vitalSignsInfo['height'], 0, PREG_SPLIT_NO_EMPTY);
+                      }                                 
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Height: </label>
-                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['height']){{ $height[0] }}@endif" name="height" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-height">
+                   <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['height']){{ $height[0] }}@endif" name="height" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign"  data-parsley-errors-container="#error-height">
                    <select name="heightUnit" id="heightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
-                      <option value="cm"
+                    <option value="cm"
                       @if($vitalSignsInfo['height'])
+                      {
                         @if($height[1] == 'cm')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{"selected"}}
                         @endif
+                      }
                       @endif>centimeters</option>
-                      <option value="ft"
+                    <option value="ft"
                       @if($vitalSignsInfo['height'])
-                        @if( $height[1] == 'ft' )
+                      {
+                        @if($height[1] == 'ft')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{" "}}
                         @endif
+                      }
                       @endif>feet</option>
-                      <option value="in"
+                    <option value="in"
                       @if($vitalSignsInfo['height'])
-                        @if($height[1]  == 'in')
+                      {
+                        @if($height[1] == 'in')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{" "}}
                         @endif
+                      }
                       @endif>inches</option>
                    </select>
                    <br>
@@ -91,24 +102,32 @@
                    <!-- WEIGHT -->
                    @php
                       if($vitalSignsInfo['weight']){
-                        $weight = preg_split('# #', $vitalSignsInfo['weight']);
+                        $weight = preg_split('# #', $vitalSignsInfo['weight'], 0, PREG_SPLIT_NO_EMPTY);
                       }
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Weight: </label>
                    <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['weight']){{ $weight[0] }}@endif" name="weight" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-weight">
                    <select name="weightUnit" id="weightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
                       <option value="kg"
-                      @if($vitalSignsInfo['weight'])
-                        @if($weight[1] == 'kg')
-                          {{"selected"}}
-                        @endif
-                      @endif>kilograms</option>
-                      <option value="lb"
-                      @if($vitalSignsInfo['weight'])
-                        @if($weight[1] == 'lb')
-                          {{"selected"}}
-                        @endif
-                      @endif>pounds</option> 
+                        @if($vitalSignsInfo['weight'])
+                        {
+                          @if($weight[1] == 'kg')
+                            {{"selected"}}
+                          @elseif($weight[0] == '')
+                            {{" "}}
+                          @endif
+                        }
+                        @endif>kilograms</option>
+                      <option value="lbs"
+                        @if($vitalSignsInfo['weight'])
+                        {
+                          @if($weight[1] == 'lbs')
+                            {{"selected"}}
+                          @elseif($weight[0] == '')
+                            {{" "}}
+                          @endif
+                        }
+                        @endif>pounds</option>
                    </select>
                    <br>
                    <div id="error-weight" >
@@ -162,6 +181,7 @@
         </div>
       </div>
 
+      
 <script>
 
    // var bloodPressureSystolic;
@@ -189,11 +209,32 @@
            var bloodPressure = '';
           }
           
+         if($('input[name=height').val() != '' && $('#heightUnit').val() == 'cm'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else if($('input[name=height').val() != '' && $('#heightUnit').val() == 'ft'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else if($('input[name=height').val() != '' && $('#heightUnit').val() == 'in'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else{
+           var height = '';
+         }
+
+         if($('input[name=weight]').val() != '' && $('#weightUnit').val() == 'kg'){
+          var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+         }
+         else if($('input[name=weight]').val() != '' && $('#weightUnit').val() == 'lbs'){
+          var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+         }
+         else{
+           var height = '';
+         }
+
          var heartRate = $('input[name=heartRate]').val();
          var respiratoryRate = $('input[name=respiratoryRate]').val();
          var temperature = $('input[name=temperature]').val();
-         var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
-         var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
          var bmi = $('input[name=bmi]').val();
          var bmiRange = $('input[name=bmiRange]:checked').val();
 
@@ -209,7 +250,7 @@
         }
 
         console.log(id);
-        // alert($('input[name=height]').val());
+        // alert( $('input[name=height]').val() + ' ' + $('#heightUnit').val())
         
         $.ajax({
           url: '/dentist/vital/store',
@@ -224,7 +265,6 @@
             })
             .then((willRoute)=>{
               if(willRoute){
-                // alert($('input[name=height]').val());
                 window.location.href = "/dentist/dentalchart";
               }
             });

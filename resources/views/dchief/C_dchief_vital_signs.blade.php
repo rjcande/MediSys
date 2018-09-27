@@ -31,7 +31,7 @@
                         $bloodPressure = preg_split('#/#', $vitalSignsInfo['bloodPressure']);
                       }
                    @endphp
-                   <input type="text" name="systolic" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[0]}}@endif" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center; margin-right: 5px;" data-parsley-max="190"data-parsley-pattern="^\d{1,3}" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="systolic should not be greater than 190" data-parsley-group="vitalSign" >
+                   <input type="text" name="systolic" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[0]}}@endif" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center; margin-right: 5px;" data-parsley-max="190"data-parsley-pattern="^\d{1,3}" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="systolic should not be greater than 190" data-parsley-group="vitalSign" placeholder="systolic">
                    <label style="font-size: 20px;">/</label>
                    <input type="text" value="@if($vitalSignsInfo['bloodPressure']){{$bloodPressure[1]}}@endif" style="border-radius:6px; width:100px; margin-left: 5px; text-align: center;" name="bloodPressureDiastolic" data-parsley-group="vitalSign"  data-parsley-max="100" data-parsley-errors-container="#error-bloodPressure" data-parsley-error-message="diastolic should not be greater than 100" data-parsley-pattern="^\d{1,3}" placeholder="diastolic"><br>
                    <div id="error-bloodPressure" >
@@ -57,31 +57,42 @@
                    </div>
                    <!-- HEIGHT -->
                    @php
-                              if($vitalSignsInfo['height']){
-                                $height = preg_split('# #', $vitalSignsInfo['height']);
-                              }
-
+                      if($vitalSignsInfo['height']){
+                        $height = preg_split('# #', $vitalSignsInfo['height'], 0, PREG_SPLIT_NO_EMPTY);
+                      }                                 
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Height: </label>
                    <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['height']){{ $height[0] }}@endif" name="height" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign"  data-parsley-errors-container="#error-height">
                    <select name="heightUnit" id="heightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
                     <option value="cm"
                       @if($vitalSignsInfo['height'])
+                      {
                         @if($height[1] == 'cm')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{"selected"}}
                         @endif
+                      }
                       @endif>centimeters</option>
                     <option value="ft"
                       @if($vitalSignsInfo['height'])
+                      {
                         @if($height[1] == 'ft')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{" "}}
                         @endif
+                      }
                       @endif>feet</option>
                     <option value="in"
                       @if($vitalSignsInfo['height'])
+                      {
                         @if($height[1] == 'in')
                           {{"selected"}}
+                        @elseif($height[0] == '')
+                          {{" "}}
                         @endif
+                      }
                       @endif>inches</option>
                    </select>
                    <br>
@@ -90,15 +101,33 @@
                    </div>
                    <!-- WEIGHT -->
                    @php
-                              if($vitalSignsInfo['weight']){
-                                $weight = preg_split('# #', $vitalSignsInfo['weight']);
-                              }
+                      if($vitalSignsInfo['weight']){
+                        $weight = preg_split('# #', $vitalSignsInfo['weight'], 0, PREG_SPLIT_NO_EMPTY);
+                      }
                     @endphp
                    <label style="display: inline-block;width: 170px; margin-bottom:10px; margin-left: 25px;font-size: 20px">Weight: </label>
                    <input type="text" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;" value="@if($vitalSignsInfo['weight']){{ $weight[0] }}@endif" name="weight" data-parsley-pattern="[0-9]*[.,]?[0-9]+" data-parsley-group="vitalSign" data-parsley-errors-container="#error-weight">
                    <select name="weightUnit" id="weightUnit" style="border-radius:6px; width:100px; margin-left: 25px; text-align: center;">
-                      <option value="kg">kilograms</option>
-                      <option value="lb">pounds</option>
+                      <option value="kg"
+                        @if($vitalSignsInfo['weight'])
+                        {
+                          @if($weight[1] == 'kg')
+                            {{"selected"}}
+                          @elseif($weight[0] == '')
+                            {{" "}}
+                          @endif
+                        }
+                        @endif>kilograms</option>
+                      <option value="lbs"
+                        @if($vitalSignsInfo['weight'])
+                        {
+                          @if($weight[1] == 'lbs')
+                            {{"selected"}}
+                          @elseif($weight[0] == '')
+                            {{" "}}
+                          @endif
+                        }
+                        @endif>pounds</option>
                    </select>
                    <br>
                    <div id="error-weight" >
@@ -180,11 +209,32 @@
            var bloodPressure = '';
           }
           
+         if($('input[name=height').val() != '' && $('#heightUnit').val() == 'cm'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else if($('input[name=height').val() != '' && $('#heightUnit').val() == 'ft'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else if($('input[name=height').val() != '' && $('#heightUnit').val() == 'in'){
+          var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+         }
+         else{
+           var height = '';
+         }
+
+         if($('input[name=weight]').val() != '' && $('#weightUnit').val() == 'kg'){
+          var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+         }
+         else if($('input[name=weight]').val() != '' && $('#weightUnit').val() == 'lbs'){
+          var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+         }
+         else{
+           var height = '';
+         }
+
          var heartRate = $('input[name=heartRate]').val();
          var respiratoryRate = $('input[name=respiratoryRate]').val();
          var temperature = $('input[name=temperature]').val();
-         var height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
-         var weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
          var bmi = $('input[name=bmi]').val();
          var bmiRange = $('input[name=bmiRange]:checked').val();
 

@@ -134,10 +134,10 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Dosage</header>
                                     </div>
                                     <div style="float:left;">
-                                      <input type="text" style="width:150px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" data-parsley-group="second" name="dosage" id="dosage" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
-                                      <select name="dosageUnit" style="width: 95px; border-radius:8px; margin-bottom:12px; 172px;height: 25px; text-align: center" id="dosageUnit" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage">
-                                        <option value="mg">mg</option>
-                                        <option value="ml">ml</option>
+                                      <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                                        @foreach($medicines as $medicine)
+                                          <option value="{{$medicine->dosage}}">{{$medicine->dosage}}</option>
+                                        @endforeach
                                       </select>
                                       <br>
                                     </div><br>
@@ -674,9 +674,9 @@ $(document).ready(function(){
           medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
           medicineUnit = $('select#medicineUnit option:selected').text();
           id_medicineUnit = $('select#medicineUnit').val();
-          // dosage[dosage.length] = $('#dosage').val();
+          dosage[dosage.length] = $('#dosage').val();
           // medication[medication.length] = $('#medication').val();
-          dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+          // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
           medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
           isPrescribed[isPrescribed.length] = 0;
           isGiven[isGiven.length] = 1;
@@ -729,9 +729,9 @@ $(document).ready(function(){
                 medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
                 medicineUnit = $('select#medicineUnit option:selected').text();
                 id_medicineUnit = $('select#medicineUnit').val();
-                // dosage[dosage.length] = $('#dosage').val();
+                dosage[dosage.length] = $('#dosage').val();
                 // medication[medication.length] = $('#medication').val();
-                dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+                // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
                 medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
                 isPrescribed[isPrescribed.length] = 1;
                 isGiven[isGiven.length] = 0
