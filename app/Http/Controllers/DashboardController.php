@@ -97,8 +97,8 @@ class DashboardController extends Controller
                                     ->where('appointments.isDeleted', '=', 0)
                                     ->get();
         $physician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
-                                    ->join('users', 'users.id', '=', 'logreferrals.physicianID')
+                                    // ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                     ->where('appointments.isDeleted', '=', 0)
                                     ->get();
 
@@ -109,7 +109,7 @@ class DashboardController extends Controller
         $count = count($totalPatient);
 
        // dd($totalPatient);
-       if(Session::get('accountInfo.position') == 4){
+       if(Session::get('accountInfo.position') == 4){ 
         return view('dentist.C_dentist_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
        }
        elseif(Session::get('accountInfo.position') == 2){

@@ -192,8 +192,7 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-3">Date: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="date" readonly 
-              value="{{ date('Y/m/d') }}">
+              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="date" readonly value="{{ date('Y/m/d') }}">
             </div>
           </div>
 
@@ -201,8 +200,7 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-3">Time: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="time" readonly 
-              value="{{ date('h:i a') }}">
+              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="time" readonly value="{{ date('h:i a') }}">
             </div>
           </div>
 

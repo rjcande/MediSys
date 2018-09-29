@@ -17,6 +17,7 @@ use App\Diagnosis;
 use App\DentalPhotos;
 use App\VitalSigns;
 use App\OutsideReferrals;
+use App\Appointments;
 // use Carbon\Carbon;
 use Response;
 use Redirect;
@@ -120,6 +121,14 @@ class DentalLogController extends Controller
             $vitalSigns->clinicLogID = $clinicLogID['clinicLogID'];
             $vitalSigns->save();
 
+            //SAVE CLINICLOGID TO APPOINTMENTS
+            $appointments = new Appointments;
+
+            $appointments->clinicLogID = $clinicLogID['clinicLogID'];
+            $appointments->appointmentType = 2;
+            $appointments->appointmentDesc = $request->appointmentDesc;
+            $appointments->appointmentDate = $request->appointmentDate;
+            $appointments->save();
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')
@@ -178,18 +187,6 @@ class DentalLogController extends Controller
                 $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
                 $usedMedSupply->save();
             }
-
-            // //SAVING OF OUTSIDE REFERRAL
-            // $outsideReferral = new OutsideReferrals;
-
-            // $outsideReferral->treatmentID = $patientTreatmentID;
-            // $outsideReferral->dentistRemarks = $request->remark;
-            // $outsideReferral->referToOthers = $request->referToOthers;
-            // $outsideReferral->referralDate = date('y-m-d');
-
-            // $outsideReferral->save();
-
-
 
             return Response::json(['message' => 'Successfully Added!']);
 
@@ -247,6 +244,15 @@ class DentalLogController extends Controller
             $vitalSigns->clinicLogID = $clinicLogID['clinicLogID'];
             $vitalSigns->save();
 
+            //SAVE CLINICLOGID TO APPOINTMENTS
+            $appointments = new Appointments;
+
+            $appointments->clinicLogID = $clinicLogID['clinicLogID'];
+            $appointments->appointmentType = 2;
+            $appointments->appointmentDesc = $request->appointmentDesc;
+            $appointments->appointmentDate = $request->appointmentDate;
+            $appointments->save();
+
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')
@@ -302,18 +308,6 @@ class DentalLogController extends Controller
                 $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
                 $usedMedSupply->save();
             }
-
-            // //SAVING OF OUTSIDE REFERRAL
-            // $outsideReferral = new OutsideReferrals;
-
-            // $outsideReferral->treatmentID = $patientTreatmentID;
-            // $outsideReferral->dentistRemarks = $request->remark;
-            // $outsideReferral->referToOthers = $request->referToOthers;
-            // $outsideReferral->referralDate = date('y-m-d');
-
-            // $outsideReferral->save();
-
-
 
             return Response::json(['message' => 'Successfully Added!']);
 
