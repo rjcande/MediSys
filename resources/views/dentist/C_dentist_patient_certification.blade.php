@@ -46,7 +46,7 @@
                   </div>
 
                       <div style="margin-top: 25px;float: left;text-align: center;width: 100%">
-                        <button type="submit" class="btn btn-success">SAVE</button>
+                        <button type="submit" class="btn btn-success" id="btnSave" disabled>SAVE</button>
                       
                         <a href="{{url('/dentist/DentalLog')}}"><button type="button" class="btn btn-danger">CLOSE</button></a>
                       </div>
@@ -134,9 +134,11 @@ $(document).ready(function(){
   $('input[name=dentalCertChk]').change(function(){
     if(this.checked){
       $('#viewDocuBtn').prop('disabled', false);
+      $('#btnSave').prop('disabled', false);
     }
     else{
       $('#viewDocuBtn').prop('disabled', true);
+      $('#btnSave').prop('disabled', true);
     }
   });
 

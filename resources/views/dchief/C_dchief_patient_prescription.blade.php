@@ -30,7 +30,7 @@
                           <li><a href="#step-1">Step 1<br />Symptoms and Treatments</a></li>
                           <li><a href="#step-2">Step 2<br />Prescriptions</a></li>
                           <li><a href="#step-3">Step 3<br/>Schedule Next Appointment(Optional)</a></li>
-                          <li><a href="#step-4">Step 3<br />Outside Referral(Optional)</a></li>
+                          <li><a href="#step-4">Step 4<br />Outside Referral(Optional)</a></li>
                         </ul>
                      
                         <div>
@@ -521,7 +521,7 @@ $(document).ready(function(){
                                         .on('click', function(e){ 
                                           //On form submit
                                           e.preventDefault();/////////////////
-
+                                          this.disabled == true;
                                           $('#saveForm').parsley().validate('first');/////////////////
                                           if($('#saveForm').parsley().isValid('first')){/////////////////
                                             var id = {///////////////

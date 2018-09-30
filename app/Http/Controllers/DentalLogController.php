@@ -446,8 +446,15 @@ class DentalLogController extends Controller
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
-        $medicines = Medicine::all();
-        $medSupplies = MedicalSupply::all();
+        $medicines = Medicine::select('medicines.*')
+                            ->where('medicines.medType', '=', 'd')
+                            ->where('medicines.isDeleted', '=', '0')         
+                            ->get();               
+                           
+        $medSupplies = MedicalSupply::select('medsupplies.*')
+                                  ->where('medsupplies.isDeleted', '=', '0')
+                                  ->where('medsupplies.supType', '=', 'd')
+                                  ->get();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
@@ -504,8 +511,15 @@ class DentalLogController extends Controller
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
 
-        $medicines = Medicine::all();
-        $medSupplies = MedicalSupply::all();
+        $medicines = Medicine::select('medicines.*')
+                            ->where('medicines.medType', '=', 'd')
+                            ->where('medicines.isDeleted', '=', '0')         
+                            ->get();               
+                           
+        $medSupplies = MedicalSupply::select('medsupplies.*')
+                                  ->where('medsupplies.isDeleted', '=', '0')
+                                  ->where('medsupplies.supType', '=', 'd')
+                                  ->get();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
