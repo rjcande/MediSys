@@ -68,11 +68,11 @@
 
 				<div style="float:left; font-size:15px; width:45%;">
 					<!--<a href="{{ url('/physicianMedCertEnrollment') }}"><button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;">View Document</button></a><br>-->
-					<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertEnrollment">View Document</button><br>
-					<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertOffCampus">View Document</button><br>
-					<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;"data-toggle="modal" data-target="#modalCertAdmin">View Document</button><br>
-					<button class"btn btn-default" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertExcuse">View Document</button><br>
-					<button class"btn btn-default" style="border-radius: 8px" data-toggle="modal" data-target="#modalCertWaver">View Document</button><br>
+					<button class"btn btn-default" id="certEnrollment" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertEnrollment">View Document</button><br>
+					<button class"btn btn-default" id="certOffCampus" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertOffCampus">View Document</button><br>
+					<button class"btn btn-default" id="certAdmin" style="border-radius: 8px; margin-bottom:8px;"data-toggle="modal" data-target="#modalCertAdmin">View Document</button><br>
+					<button class"btn btn-default" id="certExcuse" style="border-radius: 8px; margin-bottom:8px;" data-toggle="modal" data-target="#modalCertExcuse">View Document</button><br>
+					<button class"btn btn-default" id="certWaiver" style="border-radius: 8px" data-toggle="modal" data-target="#modalCertWaver">View Document</button><br>
 				</div>
 
 				<div style="margin-top: 25px;float: left;text-align: center;width: 100%">
@@ -357,6 +357,24 @@
 	    		}
 	    	});
 	    });
+
+	    //Disable view document button if not requested
+		if ('{{$logReferral['reqForMedCertEnrol']}}' == 0) {
+			$('#certEnrollment').prop('disabled', true);
+		}
+		if ('{{ $logReferral['reqForMedCertOffOJT'] }}' == 0) {
+			$('#certOffCampus').prop('disabled', true);
+		}
+		if ('{{ $logReferral['reqForMedCertAdminFaculty'] }}' == 0) {
+			$('#certAdmin').prop('disabled', true);
+		}
+		if ('{{ $logReferral['reqForExcuseLetter'] }}' == 0) {
+			$('#certExcuse').prop('disabled', true);
+		}
+		if ('{{ $logReferral['reqForWaver'] }}' == 0) {
+			$('#certWaiver').prop('disabled', true);
+		}
+
 	});
 </script>
 @endsection

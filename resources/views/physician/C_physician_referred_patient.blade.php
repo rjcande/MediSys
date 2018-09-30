@@ -112,7 +112,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @elseif($referral->logReferralStatus == 2 && $referral->concern == 0)
@@ -130,7 +130,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @endif
@@ -139,7 +139,7 @@
                                 {{--  <button class="btn btn-info" data-toggle="tooltip" title="View More Info" id="btnViewMore">
                                   <i class="fa fa-angle-double-right"></i>
                                 </button>  --}}
-                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}" type="button"><i class="fa fa-trash"></i></button>
                               </td>
                             </tr>
                             @php($ctr++)
@@ -254,7 +254,7 @@
 
 
     //on btn decline
-    $(".btn-delete").on('click', function(){
+    $(".btn-decline").on('click', function(){
       swal({
         title: "WARNING",
         text: "Are you sure you want to decline the referral?",
@@ -273,6 +273,34 @@
           });
         }
       });
+    });
+    //When delete button is clicked
+    $('.btn-delete').on('click', function(){
+      swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this record!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                  $.ajax({
+                    url: '/nurse/delete/logReferral/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                      swal({
+                        title: "SUCCESS",
+                        text: output.message,
+                        icon: "success",
+                      })
+                      .then((value)=>{
+                        location.reload(true);
+                      });
+                    }
+                  });
+                }
+             })
     });
 
 

@@ -39,6 +39,7 @@ class LogReferralsController extends Controller
                 ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                ->where('logreferrals.isDeleted', '=', '0')
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
                 ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 
@@ -171,7 +172,13 @@ class LogReferralsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $logReferral = LogReferrals::find($id);
+
+        $logReferral->isDeleted = 1;
+
+        $logReferral->save();
+
+        return Response::json(array('message' => 'Record Successfully Deleted'));
     }
 
     public function decline($id)

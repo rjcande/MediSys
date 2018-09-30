@@ -120,6 +120,8 @@ Route::get('/nurse/delete/medical/supply', 'MedicalSupplyController@destroy');
 
 Route::get('/nurse/delete/clinic/log/{id}', 'ClinicLogController@destroy');
 
+Route::get('/nurse/delete/logReferral/{id}', 'LogReferralsController@destroy');
+
 Route::get('/nurse/patient/medical/log/edit/save/{id}', 'ClinicLogController@update')->name('nurse.patient.medical.log.edit.save');
 
 Route::get('/update/patient/info/{id}', 'PatientController@edit')->name('update.patient.info');

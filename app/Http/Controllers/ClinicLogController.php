@@ -783,6 +783,7 @@ class ClinicLogController extends Controller
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
                         ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -799,6 +800,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $attendingPhysician = Accounts::where('isActive', '=', '1')->get();
@@ -814,6 +816,7 @@ class ClinicLogController extends Controller
                         ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -830,6 +833,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $attendingPhysician = Accounts::where('isActive', '=', '1')->get();
@@ -973,6 +977,7 @@ class ClinicLogController extends Controller
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
                         ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -987,6 +992,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $patient = Patient::find($id); 
@@ -1006,6 +1012,7 @@ class ClinicLogController extends Controller
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
                         ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -1020,6 +1027,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $patient = Patient::find($id); 

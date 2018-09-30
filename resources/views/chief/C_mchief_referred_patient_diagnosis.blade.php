@@ -85,7 +85,7 @@
                                             </a>
                                         </td>
                                         <td class=" " style="width: 120px;">
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger btn-delete" type="button" data-id="{{ $clinicLog->logReferralID }}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                  @endif
@@ -171,7 +171,7 @@
                                             </ul>
                                         </td>
                                         <td class=" " style="width: 120px;">
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger  btn-delete-cert" data-id="{{ $certificate->logReferralID }}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                @endforeach
@@ -260,6 +260,63 @@
             modal.find('.modal-body input[name=bmi]').val(bmi);
             modal.find(".modal-body input[name=bmi_range]").val([bmiRange]);
 
+        });
+
+        $('.btn-delete').on('click', function(){
+            
+            swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this record!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                  $.ajax({
+                    url: '/nurse/delete/logReferral/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                      swal({
+                        title: "SUCCESS",
+                        text: output.message,
+                        icon: "success",
+                      })
+                      .then((value)=>{
+                        location.reload(true);
+                      });
+                    }
+                  });
+                }
+             });
+        });
+
+        $('.btn-delete-cert').on('click', function(){
+             swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this record!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                  $.ajax({
+                    url: '/nurse/delete/logReferral/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                      swal({
+                        title: "SUCCESS",
+                        text: output.message,
+                        icon: "success",
+                      })
+                      .then((value)=>{
+                        location.reload(true);
+                      });
+                    }
+                  });
+                }
+             })
         });
     });
 </script>       

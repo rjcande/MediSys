@@ -147,7 +147,7 @@
             type: 'get',
             success: function(output){
                swal({
-                title: "",
+                title: "SUCCESS",
                 text: output.message,
                 icon: "success",
                })
