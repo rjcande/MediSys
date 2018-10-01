@@ -48,7 +48,7 @@
                       <div style="margin-top: 25px;float: left;text-align: center;width: 100%">
                         <button type="submit" class="btn btn-success" id="btnSave" disabled>SAVE</button>
                       
-                        <a href="{{url('/dentist/DentalLog')}}"><button type="button" class="btn btn-danger">CLOSE</button></a>
+                        <a href="{{url('/dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CLOSE</button></a>
                       </div>
                         </form>
                   <!-- /Content -->
@@ -86,12 +86,12 @@
         </div>
         <div style="margin-left: 75%; margin-top: 20px; font-family: Arial; font-size: 15px;">
           <label>Date: </label>
-          <input style="width: 63%" type="text" name="certDate" value="{{Session::get('patientInfo.date')}}">
+          <input style="width: 63%" type="text" name="certDate" readonly value="{{Session::get('patientInfo.date')}}">
         </div>
         <div style="font-size: 18px; font-family: Arial; margin-left: 5%;">
           <br><br>
           <p>To Whom it may Concern:</p>
-          <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspThis is to certify that Mr./Ms. <input type="text" value="{{Session::get('patientInfo.patientName')}}" style="width: 70%" name="certPatientName"></p>
+          <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspThis is to certify that Mr./Ms. <input type="text" readonly value="{{Session::get('patientInfo.patientName')}}" style="width: 70%" name="certPatientName"></p>
           <p>Has Undergone:
             <input style="margin-left: 10.5%" type="checkbox" value="1" name="certDentalExam">
             <label>&nbsp Dental Examination</label>
@@ -99,20 +99,20 @@
             <label>&nbsp Oral Prophylaxis</label>
             <div>
               <input style="margin-left: 22.5%" type="checkbox" value="1" name="certRestorationChk">
-              <label>&nbsp Restoration &nbsp<input type="text" style="width:67%" placeholder="Tooth Number" name="certRestorationTxt"></label>
+              <label>&nbsp Restoration &nbsp<input type="text" disabled style="width:67%" placeholder="Tooth Number" name="certRestorationTxt" id="certRestorationTxt"></label>
               <input style="margin-left: 3%" type="checkbox" value="1" name="certExtractionChk">
-              <label>&nbsp Extraction &nbsp <input type="text" style="width:67%" placeholder="Tooth Number" name="certExtractionTxt"></label>
+              <label>&nbsp Extraction &nbsp <input type="text" disabled style="width:67%" placeholder="Tooth Number" name="certExtractionTxt" id="certExtractionTxt"></label>
             </div>
             <div>
               <input style="margin-left: 22.5%" type="checkbox" value="1" name="certOthersChk">
-              <label>&nbsp Others: &nbsp</label><textarea style="width: 62%; height: 90px" name="certOthersTextArea"></textarea>
+              <label>&nbsp Others: &nbsp</label><textarea style="width: 62%; height: 90px" disabled name="certOthersTextArea" id="certOthersTextArea"></textarea>
             </div>
           </p>
           <p>Recommendation/s:</p>
           &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea style=";width: 90%; height: 100px" name="certRecommendations"></textarea>
           <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <em>This certification is being issued upon request of the above-named patient for whatever purpose it may <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp serve except medico-legal standards</em></p>
           <br>
-          <input style="width: 27%; margin-left: 60%" name="certDentistSigned" value="{{Session::get('accountInfo.lastName')}}, {{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.quantifier')}}" type="text">
+          <input style="width: 27%; margin-left: 60%" readonly name="certDentistSigned" value="{{Session::get('accountInfo.lastName')}}, {{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.quantifier')}}" type="text">
           <label>D.M.D</label>
         </div>
 
@@ -142,14 +142,33 @@ $(document).ready(function(){
     }
   });
 
-  $('input[name=outsideReferChk]').change(function(){
+  $('input[name=certRestorationChk]').change(function(){
     if(this.checked){
-      $('#viewReferBtn').prop('disabled', false);
+      $('#certRestorationTxt').prop('disabled', false);
     }
     else{
-      $('#viewReferBtn').prop('disabled', true);
+      $('#certRestorationTxt').prop('disabled', true);
     }
   });
+
+  $('input[name=certExtractionChk]').change(function(){
+    if(this.checked){
+      $('#certExtractionTxt').prop('disabled', false);
+    }
+    else{
+      $('#certExtractionTxt').prop('disabled', true);
+    }
+  });
+
+  $('input[name=certOthersChk]').change(function(){
+    if(this.checked){
+      $('#certOthersTextArea').prop('disabled', false);
+    }
+    else{
+      $('#certOthersTextArea').prop('disabled', true);
+    }
+  });
+
 });
 
 </script>

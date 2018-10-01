@@ -78,6 +78,20 @@ class DentalCertificateController extends Controller
         $certRecommendations = Input::get('certRecommendations');
         $certDentistSigned = Input::get('certDentistSigned');
 
+        $treatment = new Treatment;
+
+        $treatment->dentalExamination = $certDentalExam;
+        $treatment->oralProphylaxis = $certOralProphylaxis;
+        $treatment->restoration = $certRestorationChk;
+        $treatment->restorationTooth = $certRestorationTxt;
+        $treatment->extraction = $certExtractionChk;
+        $treatment->extractionTooth = $certExtractionTxt;
+        $treatment->othersTreatment = $certOthersChk;
+        $treatment->treatmentDescription = $certOthersChk;
+        $treatment->recommendations = $certRecommendations;
+
+        $treatment->save();
+
         $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
@@ -95,6 +109,20 @@ class DentalCertificateController extends Controller
         $certOthersTextArea = Input::get('certOthersTextArea');
         $certRecommendations = Input::get('certRecommendations');
         $certDentistSigned = Input::get('certDentistSigned');
+
+        $treatment = new Treatment;
+
+        $treatment->dentalExamination = $certDentalExam;
+        $treatment->oralProphylaxis = $certOralProphylaxis;
+        $treatment->restoration = $certRestorationChk;
+        $treatment->restorationTooth = $certRestorationTxt;
+        $treatment->extraction = $certExtractionChk;
+        $treatment->extractionTooth = $certExtractionTxt;
+        $treatment->othersTreatment = $certOthersChk;
+        $treatment->treatmentDescription = $certOthersChk;
+        $treatment->recommendations = $certRecommendations;
+
+        $treatment->save();
 
         $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
