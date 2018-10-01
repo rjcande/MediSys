@@ -78,6 +78,20 @@ class DentalCertificateController extends Controller
         $certRecommendations = Input::get('certRecommendations');
         $certDentistSigned = Input::get('certDentistSigned');
 
+        $treatment = new Treatment;
+
+        $treatment->dentalExamination = $certDentalExam;
+        $treatment->oralProphylaxis = $certOralProphylaxis;
+        $treatment->restoration = $certRestorationChk;
+        $treatment->restorationTooth = $certRestorationTxt;
+        $treatment->extraction = $certExtractionChk;
+        $treatment->extractionTooth = $certExtractionTxt;
+        $treatment->othersTreatment = $certOthersChk;
+        $treatment->treatmentDescription = $certOthersChk;
+        $treatment->recommendations = $certRecommendations;
+
+        $treatment->save();
+
         $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
@@ -95,6 +109,20 @@ class DentalCertificateController extends Controller
         $certOthersTextArea = Input::get('certOthersTextArea');
         $certRecommendations = Input::get('certRecommendations');
         $certDentistSigned = Input::get('certDentistSigned');
+
+        $treatment = new Treatment;
+
+        $treatment->dentalExamination = $certDentalExam;
+        $treatment->oralProphylaxis = $certOralProphylaxis;
+        $treatment->restoration = $certRestorationChk;
+        $treatment->restorationTooth = $certRestorationTxt;
+        $treatment->extraction = $certExtractionChk;
+        $treatment->extractionTooth = $certExtractionTxt;
+        $treatment->othersTreatment = $certOthersChk;
+        $treatment->treatmentDescription = $certOthersChk;
+        $treatment->recommendations = $certRecommendations;
+
+        $treatment->save();
 
         $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
@@ -179,7 +207,7 @@ class DentalCertificateController extends Controller
         $pdf = PDF::loadview('dchief.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
-
+ 
     public function generatePdf($id)
     {
         $dentalLogInfo = DentalLog::join('patients','patients.patientID', '=','cliniclogs.patientID')
@@ -225,6 +253,21 @@ class DentalCertificateController extends Controller
         $pdf = PDF::loadView('dchief.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
         return $pdf->stream('dchief.prescription-pdf');
 
+    }
+
+    public function generateDentalTable()
+    {
+        $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                               ->select('cliniclogs.*', 'patients.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
+                               ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
+                               ->get();
+        $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                ->select('users.*')
+                                ->first();
+        $pdf = PDF::loadView('dentist.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('dentist.dentalLogtable-pdf');
     }
 
 }

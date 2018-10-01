@@ -78,7 +78,7 @@
                           <td class="a-center">
                             <input type="checkbox" class="flat" name="table_records">
                           </td>
-                          <td class=" ">{{$dentalLog->clinicLogID}}</td>
+                          <td class=" ">{{$ctr}}</td>
                           <td class=" ">{{$dentalLog->patientID}}</td>
                           <td class=" ">{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>
                           <td class=" ">
@@ -128,8 +128,11 @@
                         @endforeach
                       </tbody>
                     </table>
+                    <a target="_blank" href="{{route('dentist.generate.dentalTable')}}">
+                      <button type="button" class="btn btn-primary"><span class="fa fa-print"> Print</span></button>
+                    </a>
                     </div>
-                <!--Content -->
+                <!--Content --> 
               </div name="x_content">
               </div name="x_panel">
             </div>
@@ -189,8 +192,7 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-3">Date: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="date" readonly 
-              value="{{ date('Y/m/d') }}">
+              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="date" readonly value="{{ date('Y/m/d') }}">
             </div>
           </div>
 
@@ -198,8 +200,7 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-3">Time: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="time" readonly 
-              value="{{ date('h:i a') }}">
+              <input type="text" class="form-control" style="border-radius:8px;" required="required" name="time" readonly value="{{ date('h:i a') }}">
             </div>
           </div>
 
@@ -297,11 +298,34 @@
       },
       autoSelectFirst: true,
       onSearchComplete: function (input, suggestions) {
-        if(!suggestions.length){
+        if(suggestions.length == 0){
             console.log('no suggestion');
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
+            swal({
+            title: "No Record Found",
+            text: "Record Not Found! Do you want to Create a record?",
+            icon: "warning",
+            buttons: true,
+          })
+          .then((willCreate)=>{
+            if(willCreate){
+              var hasRecord = {hasRecord: checkRecord};
+              $.ajax({
+                url: '/dentist/select/concern',
+                type: 'get',
+                data: $(this).serialize() + '&' + $.param(hasRecord),
+                success: function(output){
+                  if(output.redirect){
+                  	if(output.redirect){
+                    	window.location.href = output.redirect;
+                    }
+                  }
+                }
+              });
+            }
+          });
         }
       }
     });

@@ -489,6 +489,8 @@ Route::get('/dentist/show/consultations/{id}', 'DentalLogController@showAllConsu
 
 Route::get('/dentist/generate/prescription/{id}', 'DentalCertificateController@generatePdf')->name('dentist.generate.prescription');
 
+Route::get('/dentist/generate/logTable', 'DentalCertificateController@generateDentalTable')->name('dentist.generate.dentalTable');
+
 /////////////NURSE
 
 //Routes
@@ -598,6 +600,8 @@ Route::get('/dchief/outside/referralSlip', 'DentalCertificateController@dchiefSh
 
 Route::get('/dchief/dental/certificate', 'DentalCertificateController@dchiefShow')->name('dchief.dental.certification');
 
+Route::get('/dchief/generate/logTable', 'DentalCertificateController@generateDentalTable')->name('dchief.generate.dentalTable');
+ 
 //===========================================================================================================================
 
 // Dental Chief Routes

@@ -53,10 +53,26 @@ class MedicalSupplyController extends Controller
     public function store(Request $request)
     {
         try {
+
+        $isExisting = false;
+
+        //QUERY FOR SEARCHING IF THE MEDICINE ENTERED EXISTS
+        $existingSupply = MedicalSupply::select('medsupplies.medSupName', 'medsupplies.brand', 'medsupplies.unit')->where('medsupplies.isDeleted', '=', '0')->get();
+        foreach($existingSupply as $key => $value)
+        {
+            if(strtolower($value->medSupName) == strtolower(Input::get('medSupName')) && strtolower($value->brand) == strtolower(Input::get('medSupBrandName')) && strtolower($value->unit) == strtolower(Input::get('medSupUnit')))
+            {
+                $isExisting = true;
+            }
+        }
+
+        if($isExisting == false)
+        {
             $supply = new MedicalSupply;
             if(Session::get('accountInfo.position') == 3){
                 $supply->supType = 'm';
-            }elseif (Session::get('accountInfo.position') == 2) {
+            }
+            elseif (Session::get('accountInfo.position') == 2) {
                 $supply->supType = 'd';
             }
             $supply->medSupName = Input::get('medSupName');
@@ -65,7 +81,12 @@ class MedicalSupplyController extends Controller
 
             $supply->save();
 
-            return Response::json(array('message' => 'Successfully Added!'));
+            return Response::json(array('message' => 'Successfully Added!', 'logo'=>'success', 'title'=>'Good Job'));
+        }
+        else{
+            return Response::json(array('message' => 'A Medical Supply has already been entered!!', 'logo'=>'warning', 'title'=>'WARNING'));
+        }
+
         } catch (Exception $e) {
 
         }

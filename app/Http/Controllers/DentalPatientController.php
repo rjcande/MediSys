@@ -41,7 +41,7 @@ class DentalPatientController extends Controller
         return view('dchief.C_dchief_patient_list')->with('patient', $patientList);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -255,12 +255,14 @@ class DentalPatientController extends Controller
                                ->join('diagnoses', 'diagnoses.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                ->select('users.*', 'diagnoses.*', 'treatments.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
                                ->where('cliniclogs.patientID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->get();
 
         $certifications = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                    ->select('patients.*', 'cliniclogs.*')
+                                   ->orderBy('cliniclogs.created_at', 'desc')
                                    ->where('cliniclogs.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
                                    ->where('cliniclogs.reqForDentalCert', '=', '1')
@@ -281,12 +283,14 @@ class DentalPatientController extends Controller
                                ->join('diagnoses', 'diagnoses.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                ->select('users.*', 'diagnoses.*', 'treatments.*')
+                               ->orderBy('cliniclogs.created_at', 'desc')
                                ->where('cliniclogs.patientID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->get();
 
         $certifications = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                    ->select('patients.*', 'cliniclogs.*')
+                                   ->orderBy('cliniclogs.created_at', 'desc')
                                    ->where('cliniclogs.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
                                    ->where('cliniclogs.reqForDentalCert', '=', '1')

@@ -47,8 +47,8 @@
                         <tbody>
                            @foreach($dentalLog as $dentalLogs)
                                 <tr class="even pointer">
-                                    <td class=" ">{{ date('F d, Y', strtotime($dentalLogs->clinicLogDateTime)) }}</td>
-                                    <td class=" ">{{ date('h:i a', strtotime($dentalLogs->clinicLogDateTime)) }}</td>
+                                    <td class=" ">{{ date('F d, Y', strtotime($dentalLogs->created_at)) }}</td>
+                                    <td class=" ">{{ date('h:i a', strtotime($dentalLogs->created_at)) }}</td>
                                     <td class=" ">
                                         {{ $dentalLogs->lastName }}, {{ $dentalLogs->firstName }} {{ $dentalLogs->middleName }} {{ $dentalLogs->quantifier }}
                                     </td>
@@ -97,8 +97,8 @@
                         <tbody>
                            @foreach($certifications as $certificate)
                                 <tr class="even pointer">
-                                    <td class=" ">{{ date('F d, Y', strtotime($certificate->clinicLogDateTime)) }}</td>
-                                    <td class=" ">{{ date('h:i a', strtotime($certificate->clinicLogDateTime)) }}</td>
+                                    <td class=" ">{{ date('F d, Y', strtotime($certificate->created_at)) }}</td>
+                                    <td class=" ">{{ date('h:i a', strtotime($certificate->created_at)) }}</td>
                                     <td class=" ">
                                         @foreach($attendingDentist as $dentist)
                                             @if($dentist->id == $certificate->dentistID)

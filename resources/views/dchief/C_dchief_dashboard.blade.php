@@ -71,7 +71,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel" style="height: 100%">
                   <div class="x_title">
-                    <h2>Appointment Schedule</h2>
+                    <h2>Patients' Appointment Schedule</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">

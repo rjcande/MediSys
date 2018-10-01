@@ -11,8 +11,13 @@
     }
     .imgTeeth
     {
-        width: 35px;
-        height: 35px;
+        width: 50px;
+        height: 50px;
+    }
+    .imgMidTeeth
+    {
+        width: 51px;
+        height: 51px;
     }
 </style>
 
@@ -438,6 +443,7 @@
                             <h1 style="text-align: center;">DENTAL RECORD CHART</h1>
                             <h2>INTRAORAL EXAMINATION</h2>
                             <!--55 TO 51 A AND B-->
+                            
                             <div style="float: left;margin-top: 25px;">
                                 <label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
                                 
@@ -446,50 +452,177 @@
                                 <input value="{{ $status53a }}" type="text" readonly name="txtBox53a" class="text-input" style="width:55px;">
                                 <input value="{{ $status52a }}" type="text" readonly name="txtBox52a" class="text-input" style="width:55px;">
                                 <input value="{{ $status51a }}" type="text" readonly name="txtBox51a" class="text-input" style="width:55px;">
+                                <input value="{{ $status61a }}" type="text" readonly name="txtBox61a" class="text-input" style="width:55px;">
+                                <input value="{{ $status62a }}" type="text" readonly name="txtBox62a" class="text-input" style="width:55px;">
+                                <input value="{{ $status63a }}" type="text" readonly name="txtBox63a" class="text-input" style="width:55px;">
+                                <input value="{{ $status64a }}" type="text" readonly name="txtBox64a" class="text-input" style="width:55px;">
+                                <input value="{{ $status65a }}" type="text" readonly name="txtBox65a" class="text-input" style="width:55px;">
+                                <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
                                 <br>
                                 <input value="{{ $status55b }}" type="text" readonly name="txtBox55b" class="text-input" style="width:55px;margin-left: 179px;">
                                 <input value="{{ $status54b }}" type="text" readonly name="txtBox54b" class="text-input" style="width:55px;">
                                 <input value="{{ $status53b }}" type="text" readonly name="txtBox53b" class="text-input" style="width:55px;">
                                 <input value="{{ $status52b }}" type="text" readonly name="txtBox52b" class="text-input" style="width:55px;">
                                 <input value="{{ $status51b }}" type="text" readonly name="txtBox51b" class="text-input" style="width:55px;">
+                                <input value="{{ $status61b }}" type="text" readonly name="txtBox61b" class="text-input" style="width:55px;">
+                                <input value="{{ $status62b }}" type="text" readonly name="txtBox62b" class="text-input" style="width:55px;">
+                                <input value="{{ $status63b }}" type="text" readonly name="txtBox63b" class="text-input" style="width:55px;">
+                                <input value="{{ $status64b }}" type="text" readonly name="txtBox64b" class="text-input" style="width:55px;">
+                                <input value="{{ $status65b }}" type="text" readonly name="txtBox65b" class="text-input" style="width:55px;">
                                 <br>
-                                <!--<img src="{{ asset('images/part1.png') }}" style="margin-left: 177px;" width="300px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button type="button" class="btnTeeth" style="margin-left: 180px; margin-top: 5px;">55
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',54)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">54
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',53)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">53
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',52)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">52
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',51)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">51
-                                </button></a>
+                                <div style="margin-top: 5px;">
+                                    <!--TOOTH NUMBER 55--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 177px;" width="300px" class="imgTeeth"></a>
+                                        {{-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 177px;" width="300px" class="imgTeeth"></a> --}}
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 54--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 52--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 51--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 61----------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 62--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 63--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 64--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 65--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+                                </div>
                             </div>
-                        
-                            <!--61 TO 65 A AND B-->
-                            <div style="float: left;margin-top: 25px;">
-                                <input value="{{ $status61a }}" type="text" name="txtBox61a" class="text-input" style="width:55px;">
-                                <input value="{{ $status62a }}" type="text" name="txtBox62a" class="text-input" style="width:55px;">
-                                <input value="{{ $status63a }}" type="text" name="txtBox63a" class="text-input" style="width:55px;">
-                                <input value="{{ $status64a }}" type="text" name="txtBox64a" class="text-input" style="width:55px;">
-                                <input value="{{ $status65a }}" type="text" name="txtBox65a" class="text-input" style="width:55px;">
-                                <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label><br>
-                                <input value="{{ $status61b }}" type="text" name="txtBox61b" class="text-input" style="width:55px;">
-                                <input value="{{ $status62b }}" type="text" name="txtBox62b" class="text-input" style="width:55px;">
-                                <input value="{{ $status63b }}" type="text" name="txtBox63b" class="text-input" style="width:55px;">
-                                <input value="{{ $status64b }}" type="text" name="txtBox64b" class="text-input" style="width:55px;">
-                                <input value="{{ $status65b }}" type="text" name="txtBox65b" class="text-input" style="width:55px;"><br>
-                                <!-- <img src="{{ asset('images/part2_61-65.png') }}" width="300px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',61)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">61
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',62)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">62
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',63)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">63
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',64)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">64
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',65)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">65
-                                </button></a>
+                            <div style="margin-top: 150px; margin-left: 180px">
+                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button class="btn btn-warning">55</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',54)}}"><button class="btn btn-warning" style="margin-left: 10px;">54</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',53)}}"><button class="btn btn-warning" style="margin-left: 10px;">53</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',52)}}"><button class="btn btn-warning" style="margin-left: 10px;">52</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',51)}}"><button class="btn btn-warning" style="margin-left: 10px;">51</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',61)}}"><button class="btn btn-warning" style="margin-left: 5px;">61</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',62)}}"><button class="btn btn-warning" style="margin-left: 10px;">62</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',63)}}"><button class="btn btn-warning" style="margin-left: 10px;">63</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',64)}}"><button class="btn btn-warning" style="margin-left: 10px;">64</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',65)}}"><button class="btn btn-warning" style="margin-left: 10px;">65</button></a>
                             </div>
                         
                             <!--18 TO 11 A AND B-->
@@ -502,6 +635,14 @@
                                 <input value="{{ $status13a }}" type="text" readonly name="txtBox13a" class="text-input" style="width:55px;">
                                 <input value="{{ $status12a }}" type="text" readonly name="txtBox12a" class="text-input" style="width:55px;">
                                 <input value="{{ $status11a }}" type="text" readonly name="txtBox11a" class="text-input" style="width:55px;">
+                                <input value="{{ $status21a }}" type="text" readonly name="txtBox21a" class="text-input" style="width:55px;">
+                                <input value="{{ $status22a }}" type="text" readonly name="txtBox22a" class="text-input" style="width:55px;">
+                                <input value="{{ $status23a }}" type="text" readonly name="txtBox23a" class="text-input" style="width:55px;">
+                                <input value="{{ $status24a }}" type="text" readonly name="txtBox24a" class="text-input" style="width:55px;">
+                                <input value="{{ $status25a }}" type="text" readonly name="txtBox25a" class="text-input" style="width:55px;">
+                                <input value="{{ $status26a }}" type="text" readonly name="txtBox26a" class="text-input" style="width:55px;">
+                                <input value="{{ $status27a }}" type="text" readonly name="txtBox27a" class="text-input" style="width:55px;">
+                                <input value="{{ $status28a }}" type="text" readonly name="txtBox28a" class="text-input" style="width:55px;">
                                 <br>
                                 <input value="{{ $status18b }}" type="text" readonly name="txtBox18b" class="text-input" style="width:55px;">
                                 <input value="{{ $status17b }}" type="text" readonly name="txtBox17b" class="text-input" style="width:55px;">
@@ -510,60 +651,503 @@
                                 <input value="{{ $status14b }}" type="text" readonly name="txtBox14b" class="text-input" style="width:55px;">
                                 <input value="{{ $status13b }}" type="text" readonly name="txtBox13b" class="text-input" style="width:55px;">
                                 <input value="{{ $status12b }}" type="text" readonly name="txtBox12b" class="text-input" style="width:55px;">
-                                <input value="{{ $status11b }}" type="text" readonly name="txtBox11b" class="text-input" style="width:55px;"><br>
+                                <input value="{{ $status11b }}" type="text" readonly name="txtBox11b" class="text-input" style="width:55px;">
+                                <input value="{{ $status21b }}" type="text" readonly name="txtBox21b" class="text-input" style="width:55px;">
+                                <input value="{{ $status22b }}" type="text" readonly name="txtBox22b" class="text-input" style="width:55px;">
+                                <input value="{{ $status23b }}" type="text" readonly name="txtBox23b" class="text-input" style="width:55px;">
+                                <input value="{{ $status24b }}" type="text" readonly name="txtBox24b" class="text-input" style="width:55px;">
+                                <input value="{{ $status25b }}" type="text" readonly name="txtBox25b" class="text-input" style="width:55px;">
+                                <input value="{{ $status26b }}" type="text" readonly name="txtBox26b" class="text-input" style="width:55px;">
+                                <input value="{{ $status27b }}" type="text" readonly name="txtBox27b" class="text-input" style="width:55px;">
+                                <input value="{{ $status28b }}" type="text" readonly name="txtBox28b" class="text-input" style="width:55px;"><br>
                                 <!-- <img src="{{ asset('images/part3_12-18.png') }}" width="470px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',18)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">18</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',17)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">17</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',16)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">16</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',15)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">15</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',14)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">14</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',13)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">13</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',12)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">12</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',11)}}"><button type="button" class="btnTeeth" style="margin-left: 4px; margin-top: 5px;">11</button></a>
+                                <div style="margin-top: 5px;">
+                                    <!--TOOTH NUMBER 18--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 17--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 16--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 15--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 14--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 13--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 12--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 11--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 21--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 22--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 23--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 24--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 25--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 26--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 27--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+        
+                                    <!--TOOTH NUMBER 28--------------------------------------------------------------------------->
+                                        <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                        " width="300px" class="imgTeeth"></a> -->
+                                        <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                        <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+                                
+                                </div>
+                                <a href="{{ route('dchief.dentalchart.each',18)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">18</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',17)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">17</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',16)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">16</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',15)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">15</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',14)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">14</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',13)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">13</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',12)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">12</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',11)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">11</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',21)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px">21</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',22)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">22</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',23)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">23</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',24)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">24</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',25)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">25</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',26)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">26</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',27)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">27</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',28)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">28</button></a>
                             </div>
                         
-                            <!--21 TO 28 A AND B-->
-                            <div style="float: left;margin-top: 25px;">
-                                <input value="{{ $status28a }}" type="text" readonly name="txtBox21a" class="text-input" style="width:55px;">
-                                <input value="{{ $status27a }}" type="text" readonly name="txtBox22a" class="text-input" style="width:55px;">
-                                <input value="{{ $status26a }}" type="text" readonly name="txtBox23a" class="text-input" style="width:55px;">
-                                <input value="{{ $status25a }}" type="text" readonly name="txtBox24a" class="text-input" style="width:55px;">
-                                <input value="{{ $status24a }}" type="text" readonly name="txtBox25a" class="text-input" style="width:55px;">
-                                <input value="{{ $status23a }}" type="text" readonly name="txtBox26a" class="text-input" style="width:55px;">
-                                <input value="{{ $status22a }}" type="text" readonly name="txtBox27a" class="text-input" style="width:55px;">
-                                <input value="{{ $status21a }}" type="text" readonly name="txtBox28a" class="text-input" style="width:55px;">
-                                <br>
-                                <input value="{{ $status28b }}" type="text" readonly name="txtBox21b" class="text-input" style="width:55px;">
-                                <input value="{{ $status27b }}" type="text" readonly name="txtBox22b" class="text-input" style="width:55px;">
-                                <input value="{{ $status26b }}" type="text" readonly name="txtBox23b" class="text-input" style="width:55px;">
-                                <input value="{{ $status25b }}" type="text" readonly name="txtBox24b" class="text-input" style="width:55px;">
-                                <input value="{{ $status24b }}" type="text" readonly name="txtBox25b" class="text-input" style="width:55px;">
-                                <input value="{{ $status23b }}" type="text" readonly name="txtBox26b" class="text-input" style="width:55px;">
-                                <input value="{{ $status22b }}" type="text" readonly name="txtBox27b" class="text-input" style="width:55px;">
-                                <input value="{{ $status21b }}" type="text" readonly name="txtBox28b" class="text-input" style="width:55px;"><br>
-                                <!-- <img src="{{ asset('images/part4_21-28.png') }}" width="470px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',28)}}"><button type="button" class="btnTeeth" style="margin-left: 1px; margin-top: 5px;">21</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',27)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">22</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',26)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">23</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',25)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">24</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',24)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">25</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',23)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">26</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',22)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">27</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',21)}}"><button type="button" class="btnTeeth" style="margin-left: 4px; margin-top: 5px;">28</button></a>
-                            </div>
-                        
-                            <!--48 TO 41 A AND B-->
+                            <!--48 TO 41 AND 31 TO 38 A AND B-->
                             <div style="float: left;">
-                                <!-- <img src="{{ asset('images/part5_41-48.png') }}" width="470px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btnTeeth" style="margin-left: 1px; margin-top: 30px;">48</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">47</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">46</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',45)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">45</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',44)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">44</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',43)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">43</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',42)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">42</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',41)}}"><button type="button" class="btnTeeth" style="margin-left: 4px; margin-top: 30px;">41</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">48</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">47</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">46</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',45)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">45</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',44)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">44</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',43)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">43</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',42)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">42</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',41)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">41</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',31)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 30px;">31</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',32)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">32</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',33)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">33</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',34)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">34</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',35)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">35</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',36)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">36</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',37)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">37</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',38)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">38</button></a>
                                 <br>
+                                <div style="margin-top: 5px;">
+                                <!--TOOTH NUMBER 48--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 47--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 46--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 45--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 44--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 43--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 42--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 41--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+                                <!--TOOTH NUMBER 31--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 32--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 33--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 34--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 35--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 36--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 37--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+
+                                <!--TOOTH NUMBER 38--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+                                </div>
                                 <input value="{{ $status48a }}" type="text" readonly name="txtBox48a" class="text-input" style="width:55px;">
                                 <input value="{{ $status47a }}" type="text" readonly name="txtBox47a" class="text-input" style="width:55px;">
                                 <input value="{{ $status46a }}" type="text" readonly name="txtBox46a" class="text-input" style="width:55px;">
@@ -572,6 +1156,15 @@
                                 <input value="{{ $status43a }}" type="text" readonly name="txtBox43a" class="text-input" style="width:55px;">
                                 <input value="{{ $status42a }}" type="text" readonly name="txtBox42a" class="text-input" style="width:55px;">
                                 <input value="{{ $status41a }}" type="text" readonly name="txtBox41a" class="text-input" style="width:55px;">
+                                <input value="{{ $status31a }}" type="text" readonly name="txtBox31a" class="text-input" style="width:55px;">
+                                <input value="{{ $status32a }}" type="text" readonly name="txtBox32a" class="text-input" style="width:55px;">
+                                <input value="{{ $status33a }}" type="text" readonly name="txtBox33a" class="text-input" style="width:55px;">
+                                <input value="{{ $status34a }}" type="text" readonly name="txtBox34a" class="text-input" style="width:55px;">
+                                <input value="{{ $status35a }}" type="text" readonly name="txtBox35a" class="text-input" style="width:55px;">
+                                <input value="{{ $status36a }}" type="text" readonly name="txtBox36a" class="text-input" style="width:55px;">
+                                <input value="{{ $status37a }}" type="text" readonly name="txtBox37a" class="text-input" style="width:55px;">
+                                <input value="{{ $status38a }}" type="text" readonly name="txtBox38a" class="text-input" style="width:55px;">
+                                
                                 <br>
                                 <input value="{{ $status48b }}" type="text" readonly name="txtBox48b" class="text-input" style="width:55px;">
                                 <input value="{{ $status47b }}" type="text" readonly name="txtBox47b" class="text-input" style="width:55px;">
@@ -581,93 +1174,196 @@
                                 <input value="{{ $status43b }}" type="text" readonly name="txtBox43b" class="text-input" style="width:55px;">
                                 <input value="{{ $status42b }}" type="text" readonly name="txtBox42b" class="text-input" style="width:55px;">
                                 <input value="{{ $status41b }}" type="text" readonly name="txtBox41b" class="text-input" style="width:55px;">
-                            </div>
-                        
-                            <!--31 TO 38 A AND B-->
-                            <div style="float: left;">
-                                <!-- <img src="{{ asset('images/part6_31-38.png') }}" width="470px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',38)}}"><button type="button" class="btnTeeth" style="margin-left: 1px; margin-top: 30px;">31</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',37)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">32</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',36)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">33</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',35)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">34</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',34)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">35</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',33)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">36</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',32)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 30px;">37</button></a>
-                                <a href="{{ route('dchief.dentalchart.each',31)}}"><button type="button" class="btnTeeth" style="margin-left: 4px; margin-top: 30px;">38</button></a>
-                                <br>
-                                <input value="{{ $status38a }}" type="text" readonly name="txtBox31a" class="text-input" style="width:55px;">
-                                <input value="{{ $status37a }}" type="text" readonly name="txtBox32a" class="text-input" style="width:55px;">
-                                <input value="{{ $status36a }}" type="text" readonly name="txtBox33a" class="text-input" style="width:55px;">
-                                <input value="{{ $status35a }}" type="text" readonly name="txtBox34a" class="text-input" style="width:55px;">
-                                <input value="{{ $status34a }}" type="text" readonly name="txtBox35a" class="text-input" style="width:55px;">
-                                <input value="{{ $status33a }}" type="text" readonly name="txtBox36a" class="text-input" style="width:55px;">
-                                <input value="{{ $status32a }}" type="text" readonly name="txtBox37a" class="text-input" style="width:55px;">
-                                <input value="{{ $status31a }}" type="text" readonly name="txtBox38a" class="text-input" style="width:55px;">
-                                <br>
-                                <input value="{{ $status38b }}" type="text" readonly name="txtBox31b" class="text-input" style="width:55px;">
-                                <input value="{{ $status37b }}" type="text" readonly name="txtBox32b" class="text-input" style="width:55px;">
-                                <input value="{{ $status36b }}" type="text" readonly name="txtBox33b" class="text-input" style="width:55px;">
-                                <input value="{{ $status35b }}" type="text" readonly name="txtBox34b" class="text-input" style="width:55px;">
-                                <input value="{{ $status34b }}" type="text" readonly name="txtBox35b" class="text-input" style="width:55px;">
-                                <input value="{{ $status33b }}" type="text" readonly name="txtBox36b" class="text-input" style="width:55px;">
-                                <input value="{{ $status32b }}" type="text" readonly name="txtBox37b" class="text-input" style="width:55px;">
-                                <input value="{{ $status31b }}" type="text" readonly name="txtBox38b" class="text-input" style="width:55px;"><br>
+                                <input value="{{ $status31b }}" type="text" readonly name="txtBox31b" class="text-input" style="width:55px;">
+                                <input value="{{ $status32b }}" type="text" readonly name="txtBox32b" class="text-input" style="width:55px;">
+                                <input value="{{ $status33b }}" type="text" readonly name="txtBox33b" class="text-input" style="width:55px;">
+                                <input value="{{ $status34b }}" type="text" readonly name="txtBox34b" class="text-input" style="width:55px;">
+                                <input value="{{ $status35b }}" type="text" readonly name="txtBox35b" class="text-input" style="width:55px;">
+                                <input value="{{ $status36b }}" type="text" readonly name="txtBox36b" class="text-input" style="width:55px;">
+                                <input value="{{ $status37b }}" type="text" readonly name="txtBox37b" class="text-input" style="width:55px;">
+                                <input value="{{ $status38b }}" type="text" readonly name="txtBox38b" class="text-input" style="width:55px;">
                             </div>
                         
                             <!--71 TO 75 A AND B-->
                             <div style="float: left;margin-top: 25px;">
-                                <!-- <img src="{{ asset('images/part7_71-75.png') }}" width="300px" style="margin-left: 177px;"> -->
-                                <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btnTeeth" style="margin-left: 180px; margin-top: 5px;">71
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">72
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">73
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',74)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">74
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',75)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">75
-                                </button></a>
+                                <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="margin-left: 185px; margin-top: 5px;">71</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">72</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">73</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',74)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">74</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',75)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">75</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',85)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px;">85</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',84)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">84</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',83)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">83</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',82)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">82</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',81)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">81</button></a>
                                 <br>
+                                <div style="margin-top: 5px;">
+                                <!--TOOTH NUMBER 71--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 177px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 177px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 72--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 73--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 74--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 75--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 85----------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 0px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 84--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 83--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 82--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+    
+                                <!--TOOTH NUMBER 81--------------------------------------------------------------------------->
+                                    <a href=""><img src="{{ asset('images/leftTooth.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/leftToothDis.png') }}" style="margin-left: 5px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/topTooth.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/topToothDis.png') }}" style="margin-left: -53px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/rightTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/rightToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/bottomTooth.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/bottomToothDis.png') }}" style="margin-left: -53.5px;
+                                    " width="300px" class="imgTeeth"></a> -->
+                                    <a href=""><img src="{{ asset('images/midTooth.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a>
+                                    <!-- <a href=""><img src="{{ asset('images/midToothDis.png') }}" style="margin-left: -54px;" width="300px" class="imgMidTeeth"></a> -->
+                                </div>
                                 <label style="display: inline-block;width:100px;font-size: 12px; margin-left:75px;">STATUS RIGHT</label>
-                                <input value="{{ $status71a }}" type="text" readonly name="txtBox71a" class="text-input" style="width:55px;">
-                                <input value="{{ $status72a }}" type="text" readonly name="txtBox72a" class="text-input" style="width:55px;">
-                                <input value="{{ $status73a }}" type="text" readonly name="txtBox73a" class="text-input" style="width:55px;">
-                                <input value="{{ $status74a }}" type="text" readonly name="txtBox74a" class="text-input" style="width:55px;">
-                                <input value="{{ $status75a }}" type="text" readonly name="txtBox75a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status71a}}" type="text" name="txtBox71a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status72a}}" type="text" name="txtBox72a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status73a}}" type="text" name="txtBox73a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status74a}}" type="text" name="txtBox74a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status75a}}" type="text" name="txtBox75a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status85a}}" type="text" name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
+                                <input placeholder="{{$status84a}}" type="text" name="txtBox84a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status83a}}" type="text" name="txtBox83a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status82a}}" type="text" name="txtBox82a" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status81a}}" type="text" name="txtBox81a" class="text-input" style="width:55px;">
+                                <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
                                 <br>
-                                <input value="{{ $status71b }}" type="text" readonly name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
-                                <input value="{{ $status72b }}" type="text" readonly name="txtBox72b" class="text-input" style="width:55px;">
-                                <input value="{{ $status73b }}" type="text" readonly name="txtBox73b" class="text-input" style="width:55px;">
-                                <input value="{{ $status74b }}" type="text" readonly name="txtBox74b" class="text-input" style="width:55px;">
-                                <input value="{{ $status75b }}" type="text" readonly name="txtBox75b" class="text-input" style="width:55px;"><br>
-                            </div>
-                        
-                            <!--85 TO 81 A AND B-->
-                            <div style="float: left;margin-top: 25px;margin-right: 150px;">
-                                <!-- <img src="{{ asset('images/part8_81-85.png') }}" width="300px"> -->
-                                <a href="{{ route('dchief.dentalchart.each',81)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">85
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',82)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">84
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',83)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">83
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',84)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">82
-                                </button></a>
-                                <a href="{{ route('dchief.dentalchart.each',85)}}"><button type="button" class="btnTeeth" style="margin-left: 6px; margin-top: 5px;">81
-                                </button></a>
+                                <input placeholder="{{$status71b}}" type="text" name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
+                                <input placeholder="{{$status72b}}" type="text" name="txtBox72b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status73b}}" type="text" name="txtBox73b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status74b}}" type="text" name="txtBox74b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status75b}}" type="text" name="txtBox75b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status85b}}" type="text" name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
+                                <input placeholder="{{$status84b}}" type="text" name="txtBox84b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status83b}}" type="text" name="txtBox83b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status82b}}" type="text" name="txtBox82b" class="text-input" style="width:55px;">
+                                <input placeholder="{{$status81b}}" type="text" name="txtBox81b" class="text-input" style="width:55px;">
                                 <br>
-                                <input value="{{ $status81a }}" type="text" readonly name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input value="{{ $status82a }}" type="text" readonly name="txtBox84a" class="text-input" style="width:55px;">
-                                <input value="{{ $status83a }}" type="text" readonly name="txtBox83a" class="text-input" style="width:55px;">
-                                <input value="{{ $status84a }}" type="text" readonly name="txtBox82a" class="text-input" style="width:55px;">
-                                <input value="{{ $status85a }}" type="text" readonly name="txtBox81a" class="text-input" style="width:55px;">
-                                <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label><br>
-                                <input value="{{ $status71b }}" type="text" readonly name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input value="{{ $status72b }}" type="text" readonly name="txtBox84b" class="text-input" style="width:55px;">
-                                <input value="{{ $status73b }}" type="text" readonly name="txtBox83b" class="text-input" style="width:55px;">
-                                <input value="{{ $status74b }}" type="text" readonly name="txtBox82b" class="text-input" style="width:55px;">
-                                <input value="{{ $status75b }}" type="text" readonly name="txtBox81b" class="text-input" style="width:55px;"><br>
                             </div>
+                    
 
                             <div style="float: left; margin-top: 30px; margin-left: 70px;">
                                 <div style="float: left; margin-top: 25px;">
@@ -711,7 +1407,7 @@
                             <a href="{{url('/dchief/PatientRecord')}}"><button class="btn btn-danger">CLOSE</button></a>
                             <!-- <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>     -->
-                            <!-- <a href="{{url('dentist/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a> -->
+                            <!-- <a href="{{url('dchief/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a> -->
                         </div>
                     </div>
                     

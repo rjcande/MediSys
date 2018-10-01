@@ -67,13 +67,13 @@
                             {{"checked"}}
                             @endif
                           ><label>&nbspRestoration(Filling Tooth):</label>
-                          <input style="width: 10%" type="text" value="{{$treatment['restorationTooth']}}" readonly name="restorationTxt">
-                          <input style="margin-left: 10%" type="checkbox" value="1" name="extractionChk"
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['restorationTooth']}}" readonly name="restorationTxt">
+                          <input style="margin-left: 6%" type="checkbox" value="1" name="extractionChk"
                             @if($treatment['extraction'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspExtraction:</label>
-                          <input style="width: 10%" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
                           
                           <textarea rows="7" class="form-control" readonly style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
                         </div>

@@ -78,7 +78,7 @@
                           <td class="a-center">
                             <input type="checkbox" class="flat" name="table_records">
                           </td>
-                          <td class=" ">{{$dentalLog->clinicLogID}}</td>
+                          <td class=" ">{{$ctr}}</td>
                           <td class=" ">{{$dentalLog->patientID}}</td>
                           <td class=" ">{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>
                           <td class=" ">
@@ -128,6 +128,9 @@
                         @endforeach
                       </tbody>
                     </table>
+                    <a target="_blank" href="{{route('dchief.generate.dentalTable')}}">
+                      <button type="button" class="btn btn-primary"><span class="fa fa-print"> Print</span></button>
+                    </a>
                     </div>
                 <!--Content -->
               </div name="x_content">
@@ -297,11 +300,35 @@
       },
       autoSelectFirst: true,
       onSearchComplete: function (input, suggestions) {
-        if(!suggestions.length){
+        if(suggestions.length == 0){
             console.log('no suggestion');
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
+            swal({
+              title: "No Record Found",
+              text: "Record Not Found! Do you want to Create a record?",
+              icon: "warning",
+              buttons: true,
+            })
+            .then((willCreate)=>{
+              if(willCreate){
+                var hasRecord = {hasRecord: checkRecord};
+                $.ajax({
+                  url: '/dchief/select/concern',
+                  type: 'get',
+                  data: $(this).serialize() + '&' + $.param(hasRecord),
+                  success: function(output){
+                    if(output.redirect){
+                      if(output.redirect){
+                        window.location.href = output.redirect;
+                      }
+                    }
+                  }
+                });
+              }
+            });
+
         }
       }
     });

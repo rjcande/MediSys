@@ -35,24 +35,24 @@
                       <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                             height:30px; border-radius:8px;">&nbsp<b>Symptoms</b></p>
-                        <textarea rows="7" name="symptoms" id="symptoms" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;">{{$patientDentalLog->symptoms}}</textarea>
+                        <textarea required rows="7" name="symptoms" id="symptoms" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;">{{$patientDentalLog->symptoms}}</textarea>
                       </div>
                     
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                             height:30px; border-radius:8px;">&nbsp<b>Diagnosis</b></p>
-                        <textarea rows="7" name="diagnosisTextArea" id="diagnosisTextArea" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;">{{$diagnosis['diagnosisDescription']}}</textarea>
+                        <textarea required rows="7" name="diagnosisTextArea" id="diagnosisTextArea" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;">{{$diagnosis['diagnosisDescription']}}</textarea>
                       </div>
 
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                         <div style="display: inline-block;width: 95%;">
-                          <input style="margin-left: 25%;" type="checkbox" data-parsley-group="first" value="1" name="dentalExam"
+                          <input style="margin-left: 15%;" type="checkbox" data-parsley-group="first" value="1" name="dentalExam"
                             @if($treatment['dentalExamination'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspDental Examination</label>
-                          <input style="margin-left: 20%;" type="checkbox" data-parsley-group="first" value="1" name="oralProphylaxis"
+                          <input style="margin-left: 42.4%;" type="checkbox" data-parsley-group="first" value="1" name="oralProphylaxis"
                             @if($treatment['oralProphylaxis'] == 1)
                             {{"checked"}}
                             @endif
@@ -69,7 +69,7 @@
                             @endif
                           ><label>&nbspRestoration(Filling Tooth):</label>
                           <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['restorationTooth']}}" disabled name="restorationTxt">
-                          <input style="margin-left: 10%" type="checkbox" data-parsley-group="first" value="1" name="extractionChk"
+                          <input style="margin-left: 8.5%" type="checkbox" data-parsley-group="first" value="1" name="extractionChk"
                             @if($treatment['extraction'] == 1)
                             {{"checked"}}
                             @endif
@@ -156,10 +156,10 @@
                               <header style="margin-bottom:12px; margin-left:25px;"> Dosage</header>
                             </div>
                             <div style="float:left;">
-                              <input type="text" style="width:150px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" data-parsley-group="second" name="dosage" id="dosage" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
-                              <select name="dosageUnit" style="width: 95px; border-radius:8px; margin-bottom:12px; 172px;height: 25px; text-align: center" id="dosageUnit" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage">
-                                <option value="mg">mg</option>
-                                <option value="ml">ml</option>
+                              <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                                @foreach($medicines as $medicine)
+                                  <option value="{{$medicine->dosage}}">{{$medicine->dosage}}</option>
+                                @endforeach
                               </select>
                               <br>
                             </div><br>
@@ -500,9 +500,9 @@ $(document).ready(function(){
         medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
         medicineUnit = $('select#medicineUnit option:selected').text();
         id_medicineUnit = $('select#medicineUnit').val();
-        // dosage[dosage.length] = $('#dosage').val();
+        dosage[dosage.length] = $('#dosage').val();
         // medication[medication.length] = $('#medication').val(); 
-        dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+        // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
         medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
         isPrescribed[isPrescribed.length] = 0;
         isGiven[isGiven.length] = 1;
@@ -551,9 +551,9 @@ $(document).ready(function(){
           medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
           medicineUnit = $('select#medicineUnit option:selected').text();
           id_medicineUnit = $('select#medicineUnit').val();
-          // dosage[dosage.length] = $('#dosage').val();
+          dosage[dosage.length] = $('#dosage').val();
           // medication[medication.length] = $('#medication').val();
-          dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+          // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
           medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
           isPrescribed[isPrescribed.length] = 1;
           isGiven[isGiven.length] = 0

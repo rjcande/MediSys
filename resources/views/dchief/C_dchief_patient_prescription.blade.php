@@ -27,9 +27,10 @@
                   <!-- Content -->
                     <div id="smartwizard">
                         <ul>
-                            <li><a href="#step-1">Step 1<br />Symptoms and Treatments</a></li>
-                            <li><a href="#step-2">Step 2<br />Prescriptions</a></li>
-                            <li><a href="#step-3">Step 3<br />Outside Referral(Optional)</a></li>
+                          <li><a href="#step-1">Step 1<br />Symptoms and Treatments</a></li>
+                          <li><a href="#step-2">Step 2<br />Prescriptions</a></li>
+                          <li><a href="#step-3">Step 3<br/>Schedule Next Appointment(Optional)</a></li>
+                          <li><a href="#step-4">Step 4<br />Outside Referral(Optional)</a></li>
                         </ul>
                      
                         <div>
@@ -134,10 +135,10 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Dosage</header>
                                     </div>
                                     <div style="float:left;">
-                                      <input type="text" style="width:150px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" data-parsley-group="second" name="dosage" id="dosage" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
-                                      <select name="dosageUnit" style="width: 95px; border-radius:8px; margin-bottom:12px; 172px;height: 25px; text-align: center" id="dosageUnit" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage">
-                                        <option value="mg">mg</option>
-                                        <option value="ml">ml</option>
+                                      <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                                        @foreach($medicines as $medicine)
+                                          <option value="{{$medicine->dosage}}">{{$medicine->dosage}}</option>
+                                        @endforeach
                                       </select>
                                       <br>
                                     </div><br>
@@ -334,35 +335,20 @@
                             </div>
                             <div id="step-3" class="">
                               <!-- STEP 3 OPENING -->
-                                <!-- <div id="emergency" style="float:left; margin-top: 10px; width: 100%">
-                                  <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
-                                    height:30px; border-radius:8px;">&nbsp<b>Referral</b></p>
-                                  
-                                  <br>
-                                </div>
-                                <div id="emergencyReferral" style="float: left; width:100%;">
-                                  <div style="float:left; margin-left:10px; font-size:18px; width:50px;">
-                                    <label><header style="margin-bottom:0px; margin-left:25px;"> To</header>
-                                    </label>
-                                  </div>
-                                  
-                                  <div style="float:left; margin-left:10px%;">
-                                    <input type="text" id="referToOthers" name="referToOthers" data-parsley-group="referral" style="width:350px; border-radius:8px; margin-bottom:12px;
-                                      margin-left: 20px; height: 25px; font-size: 18px">
-                                  </div>
-                                </div>
-
-                                <div id="recommendation" style="float:left; margin-top: 10px; width: 100%">
-                                  <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
-                                      background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">&nbsp Remarks</label>
-                                  <textarea rows="7" class="form-control" placeholder="Enter remark/s here"
-                                    style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-bottom: 20px ; margin-left: 30px; width: 95%;" name="remark" data-parsley-group="referral" id="remark"></textarea> -->
-                                    <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
-                                      background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">View Referral Slip</label>
-                                   <button type="button" data-target="#outsideReferModal" data-toggle="modal" class="btn btn-success" style="margin-left: 50%"><i class="fa fa-download"></i> Referral Slip</button>
-
-                                </div>
+                                <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%; background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">  Next Appointment</label>
+                                <br>
+                                <label for="appointmentDate" style="margin-left:25px;font-size:18px">Enter Next Appointment date:  </label>
+                                <input type="date" id="appointmentDate" name="appointmentDate" style="width:300px; border-radius:8px; font-size:18px; margin-bottom:12px;margin-left:5px" data-parsley-group="first">
+                                <br>
+                                <textarea name="appointmentDesc" id="appointmentDesc" rows="7" data-parsley-group="first" class="form-control" placeholder="Enter Appointment Reason Here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%; height:100px;  margin-bottom: 20px"></textarea>
                               <!-- STEP 3 CLOSING -->
+                            </div>
+                            <div id="step-4" class="">
+                              <!-- STEP 4 OPENING -->
+                                <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
+                                  background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">View Referral Slip</label>
+                                <button type="button" data-target="#outsideReferModal" data-toggle="modal" class="btn btn-success" style="margin-left: 50%"><i class="fa fa-download"></i> Referral Slip</button>
+                              <!-- STEP 4 CLOSING -->
                             </div>
                             
                         </div>
@@ -522,7 +508,7 @@ $(document).ready(function(){
        //    $('.sw-btn-group-extra').hide();        
        //  }
 
-        if(stepNumber == 1 || stepNumber == 2){
+        if(stepNumber == 1 || stepNumber == 2 || stepNumber == 3){
           $('.sw-btn-group-extra').show();
         }
         else{
@@ -535,7 +521,7 @@ $(document).ready(function(){
                                         .on('click', function(e){ 
                                           //On form submit
                                           e.preventDefault();/////////////////
-
+                                          this.disabled == true;
                                           $('#saveForm').parsley().validate('first');/////////////////
                                           if($('#saveForm').parsley().isValid('first')){/////////////////
                                             var id = {///////////////
@@ -674,9 +660,9 @@ $(document).ready(function(){
           medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
           medicineUnit = $('select#medicineUnit option:selected').text();
           id_medicineUnit = $('select#medicineUnit').val();
-          // dosage[dosage.length] = $('#dosage').val();
+          dosage[dosage.length] = $('#dosage').val();
           // medication[medication.length] = $('#medication').val();
-          dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+          // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
           medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
           isPrescribed[isPrescribed.length] = 0;
           isGiven[isGiven.length] = 1;
@@ -729,9 +715,9 @@ $(document).ready(function(){
                 medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
                 medicineUnit = $('select#medicineUnit option:selected').text();
                 id_medicineUnit = $('select#medicineUnit').val();
-                // dosage[dosage.length] = $('#dosage').val();
+                dosage[dosage.length] = $('#dosage').val();
                 // medication[medication.length] = $('#medication').val();
-                dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+                // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
                 medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
                 isPrescribed[isPrescribed.length] = 1;
                 isGiven[isGiven.length] = 0

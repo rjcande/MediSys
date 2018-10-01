@@ -414,7 +414,7 @@
                             });
                         }
                       });
-    var btnCancel = $('<button></button>').text('Cancel')
+    var btnCancel = $('<button></button>').text('Reset')
                                      .addClass('btn btn-danger')
                                      .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
 

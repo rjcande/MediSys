@@ -96,8 +96,8 @@ class DashboardController extends Controller
                                     ->where('appointments.isDeleted', '=', 0)
                                     ->get();
         $physician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
-                                    ->join('users', 'users.id', '=', 'logreferrals.physicianID')
+                                    // ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                     ->where('appointments.isDeleted', '=', 0)
                                     ->get();
 
@@ -108,10 +108,10 @@ class DashboardController extends Controller
         $count = count($totalPatient);
 
        // dd($totalPatient);
-       if(Session::get('accountInfo.position') == 4){
+       if(Session::get('accountInfo.position') == 4){ 
         return view('dentist.C_dentist_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
        }
-       else{
+       elseif(Session::get('accountInfo.position') == 2){
         return view('dchief.C_dchief_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
        }
     }
@@ -910,7 +910,7 @@ class DashboardController extends Controller
     if(Session::get('accountInfo.position') == 4){
         return view('dentist.C_dentist_medical_reports')->with(['usedMedSupps' => $usedMedicalSupply, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);
     }
-    else{
+    elseif(Session::get('accountInfo.position') == 2){
         return view('dchief.C_dchief_medical_reports')->with(['usedMedSupps' => $usedMedicalSupply, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);
     }
     }
