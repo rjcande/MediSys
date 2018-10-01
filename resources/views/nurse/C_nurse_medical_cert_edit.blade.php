@@ -65,7 +65,7 @@
                                     
                                     </div>
 
-                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> PRINT</button></a>
+                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> SAVE & PRINT</button></a>
                                   </div>
                                 </div>
                               </div>
