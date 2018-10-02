@@ -238,6 +238,7 @@
 
               <tbody id="tbodyMedicine">
                 @foreach($prescriptionInfo as $medicine)
+                  @if($medicine->isPrescribed == 0)
                   <tr class="even pointer">
                     <td class="a-center ">
                       <input type="checkbox">
@@ -249,6 +250,7 @@
                     <td class=" ">{{ $medicine->dosage }}</td>
                     <td class=" ">{{ $medicine->medication }}</td>
                   </tr>
+                  @endif
                 @endforeach
               </tbody>
             </table>

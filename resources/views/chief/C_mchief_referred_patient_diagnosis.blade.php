@@ -71,14 +71,14 @@
                                             @endforeach
                                         </td>
                                         <td class=" " style="text-align:center;">
-                                            <a href="{{ route('physician.referred.patient.diagnosis', $clinicLog->clinicLogID) }}">
+                                            <a href="{{ route('mchief.referred.patient.diagnosis', $clinicLog->clinicLogID) }}">
                                                 <button class="btn btn-default"
                                                     style="background-color:#9AECDB; width:70%;">View
                                                 </button>
                                             </a>
                                         </td>
                                         <td class=" " style="text-align: center;">
-                                            <a href="{{ route('physician.referred.patient.referrals', $clinicLog->clinicLogID) }}">
+                                            <a href="{{ route('mchief.referred.patient.referrals', $clinicLog->clinicLogID) }}">
                                                 <button class="btn btn-default"
                                                     style="background-color:#9AECDB;">View
                                                 </button>

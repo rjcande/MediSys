@@ -295,7 +295,7 @@ class DiagnosesController extends Controller
 
 
             if ($request->nextConsultation) {
-                $appointment = new Appointments;
+                $appointment = new Appointment;
 
                 $appointment->clinicLogID = $request->clinicLogID;
                 $appointment->logReferralID = Input::get('logReferralID');

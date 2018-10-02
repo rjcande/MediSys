@@ -782,7 +782,6 @@ class ClinicLogController extends Controller
                         ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
-                        ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
                         ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();

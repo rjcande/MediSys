@@ -42,6 +42,12 @@ class DashboardController extends Controller
     								->join('users', 'users.id', '=', 'logreferrals.physicianID')
     								->where('appointments.isAppointed', '=', 0)
                                     ->get();
+        $currentPhysician = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->join('users', 'users.id', '=', 'logreferrals.physicianID')
+                                    ->where('appointments.isAppointed', '=', 0)
+                                    ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                                    ->get();
                                     
         $dentist = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
                                ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
@@ -69,12 +75,12 @@ class DashboardController extends Controller
         }
         elseif (Session::get('accountInfo.position') == 5) {
             
-            return view('physician.C_physician_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
+            return view('physician.C_physician_dashboard')->with(['patientNames' => $patientName, 'physicians' => $currentPhysician, 'totalPatient' => $totalPatient, 'count' => $count]);
 
         }
         elseif (Session::get('accountInfo.position') == 3) {
             
-            return view('chief.C_mchief_dashboard')->with(['patientNames' => $patientName, 'physicians' => $physician, 'totalPatient' => $totalPatient, 'count' => $count]);
+            return view('chief.C_mchief_dashboard')->with(['patientNames' => $patientName, 'physicians' => $currentPhysician, 'totalPatient' => $totalPatient, 'count' => $count]);
 
         }
         elseif(Session::get('accountInfo.position') == 4){
