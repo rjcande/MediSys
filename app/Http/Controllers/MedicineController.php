@@ -96,7 +96,7 @@ class MedicineController extends Controller
                 $medicine->genericName = Input::get('genericName');
                 $medicine->brand = Input::get('brandName');
                 $medicine->unit = Input::get('unit');
-                $medicine->dosage = Input::get('_dosage');
+                $medicine->dosage = Input::get('_dosage'). ' '. Input::get('dosageUnit');
 
                 $medicine->save();
 

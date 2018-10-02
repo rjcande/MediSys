@@ -48,7 +48,7 @@
                         <header style="margin-bottom:12px; margin-left:25px;">Dosage:</header>
                       </div>
                       <div style="float: left;">
-                        <input type="number" style="width:190px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" data-parsley-required="true" data-parsley-errors-container="#error-dosage" min="1">
+                        <input type="number" style="width:190px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="_dosage" data-parsley-required="true" data-parsley-errors-container="#error-dosage" min="1">
                         <select name="dosageUnit" style="border-radius:8px; margin-bottom:12px; 172px;height: 25px; text-align: center">
                           <option value="mg">mg</option>
                           <option value="ml">ml</option>
@@ -212,26 +212,15 @@
             type: 'get',
             data: $(this).serialize(),
             success: function(output){
-              if (output.message == "Medicine is already existing!") {
                 swal({
-                  title: "WARNING!",
+                  title: output.title,
                   text: output.message,
-                  icon: "warning",
-                  button: "OK",
-                });
-              }
-              else{
-                swal({
-                  title: "Good job!",
-                  text: output.message,
-                  icon: "success",
+                  icon: output.logo,
                   button: "OK",
                 })
                 .then((value)=>{
                   location.reload(true);
-                });
-              }
-              
+                });    
             }
           });
         }

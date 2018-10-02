@@ -34,7 +34,12 @@
       <br>
       <label><p>Remarks:</p></label>
       <textarea rows="1" class="form-control" placeholder="Other Request" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="otherRequest"> {{ $outsideReferral['referralDescription'] }}</textarea>
-      <label>Laboratory Referral:</label>
+      <label>Laboratory Referral</label>
+      <br><br>
+      <label>Request for:</label>
+      <br><br>
+      <label>Chest X-Ray</label>
+      <br>
             <input type="checkbox" name="chestXrayPA" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
                     @if($outsideReferral['chestXrayPA'] == 1)
                       {{ "checked" }}
@@ -103,7 +108,7 @@
                       {{ "checked" }}
                     @endif> Serum Glutamic-Pyruvic Transaminase (SGPT)<br><br>
             </div>
-            
+            <br>
             <div style="text-align: center; margin-left: 450px; position: absolute; bottom: 0">
             <header style="font-size: 18px; margin-top: 40px;"><u>{{ Session::get('accountInfo.firstName') }} {{ Session::get('accountInfo.middleName') }} {{ Session::get('accountInfo.lastName') }} {{ Session::get('quantifier') }}</u> M.D.</header>
             <header style="font-size: 18px;">Clinic Physician</header>   
