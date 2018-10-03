@@ -169,6 +169,7 @@ class ClinicLogController extends Controller
      */
     public function store(Request $request)
     {
+   
         try {
             //variable for the last inserted ID of treatments table
             $treatmentID;
@@ -222,15 +223,15 @@ class ClinicLogController extends Controller
             $treatmentID = $treatment->treatmentID;
 
         
-            for ($i=0; $i < sizeof(Input::get('_medicineID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
                 $prescription = new Prescription;
                 $prescription->treatmentID =  $treatmentID;
-                $prescription->medicineID = Input::get('_medicineID')[$i];
-                $prescription->quantity = Input::get('_medQuantity')[$i];
-                $prescription->medication = Input::get('_medication')[$i];
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
                 $prescription->isGiven = '1';
-                $prescription->dosage = Input::get('_dosage')[$i];
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
                 $prescription->save();
 
