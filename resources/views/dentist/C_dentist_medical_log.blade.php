@@ -110,15 +110,17 @@
                           </td>
                           <td class=" ">
                             <a href="{{ route('dentist.dentalLog.moreInfo', $dentalLog->clinicLogID) }}">
-                              <button type='submit' class='btn btn-info' name='btnViewMore' title ='View More Info'>
+                              <button type='submit' class='btn btn-info' name='btnViewMore' id="btnViewMore" title ='View More Info'>
                                 <i class='fa fa-angle-double-right'></i>
                               </button>
                             </a>
-                            <a href="{{route('dentist.dentalLog.edit', $dentalLog->clinicLogID)}}">
-                              <button type='submit' name='btnEdit' class='btn btn-primary'>
-                                <i class='fa fa-pencil'></i>
-                              </button>
-                            </a>
+                              @if($dentalLog->concern == 1)                                
+                                <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
+                              @elseif($dentalLog->concern == 0)
+                                <a href="{{route('dentist.dentalLog.edit', $dentalLog->clinicLogID)}}">
+                                  <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
+                                </a>
+                              @endif
                               <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLog->clinicLogID}}">
                                 <i class='fa fa-trash'></i>
                               </button>
@@ -129,7 +131,7 @@
                       </tbody>
                     </table>
                     <a target="_blank" href="{{route('dentist.generate.dentalTable')}}">
-                      <button type="button" class="btn btn-primary"><span class="fa fa-print"> Print</span></button>
+                      <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
                     </a>
                     </div>
                 <!--Content --> 
@@ -303,29 +305,7 @@
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
-            swal({
-            title: "No Record Found",
-            text: "Record Not Found! Do you want to Create a record?",
-            icon: "warning",
-            buttons: true,
-          })
-          .then((willCreate)=>{
-            if(willCreate){
-              var hasRecord = {hasRecord: checkRecord};
-              $.ajax({
-                url: '/dentist/select/concern',
-                type: 'get',
-                data: $(this).serialize() + '&' + $.param(hasRecord),
-                success: function(output){
-                  if(output.redirect){
-                  	if(output.redirect){
-                    	window.location.href = output.redirect;
-                    }
-                  }
-                }
-              });
-            }
-          });
+           
         }
       }
     });
@@ -416,6 +396,17 @@
   $(window).bind("pageshow", function() {
     $('#logPatientForm')[0].reset();
   });
+
+  //Script for not clicking the edit button when the patient only asks for dental certificate
+  // $.each($dentalLogs, $dentalLog)
+  // {
+  //   if($dentalLog->concern == 1){
+  //     $('#btnEdit').prop('disabled', true);
+  //   }
+  //   else{
+  //     $('#btnEdit').prop('disabled', false);
+  //   }
+  // }
   
 </script>
 

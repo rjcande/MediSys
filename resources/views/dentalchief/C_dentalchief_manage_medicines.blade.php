@@ -48,7 +48,7 @@
                         <header style="margin-bottom:12px; margin-left:25px;">Dosage:</header>
                       </div>
                       <div style="float: left;">
-                        <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" data-parsley-required="true">
+                        <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" id="dosage" data-parsley-required="true">
                         <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true">
                           <option value="mg">mg</option>
                           <option value="g">g</option>
