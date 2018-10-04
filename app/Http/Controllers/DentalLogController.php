@@ -374,12 +374,19 @@ class DentalLogController extends Controller
         $patientDentalLog = DentalLog::find($id);
 
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                      ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                      ->select('patients.*', 'cliniclogs.*', 'users.*')
+                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
                                       ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
+
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('cliniclogs.clinicLogID', '=', $id)
+                            ->first();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
@@ -425,7 +432,7 @@ class DentalLogController extends Controller
                 return view('dentist.C_dentist_patient_more_info')->with(['patientDentalLogs'=>$patientDentalLogs, 'dentalLogEach'=>$patientDentalLog, 'diagnosis'=>$diagnosis, 'treatment'=>$treatment, 'medsGiven'=>$medsGiven ,'prescribed'=>$prescribed, 'medSupp'=>$medSupp]);
             }
             elseif($dentalLog->reqForDentalCert == 1){
-                return view('dentist.C_dentist_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment]);
+                return view('dentist.C_dentist_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment, 'dentist'=>$dentist]);
             }
         }
     }
@@ -434,12 +441,19 @@ class DentalLogController extends Controller
         $patientDentalLog = DentalLog::find($id);
 
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                      ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                      ->select('patients.*', 'cliniclogs.*', 'users.*')
+                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
                                       ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
+
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('cliniclogs.clinicLogID', '=', $id)
+                            ->first();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
@@ -485,7 +499,7 @@ class DentalLogController extends Controller
                 return view('dchief.C_dchief_patient_more_info')->with(['patientDentalLogs'=>$patientDentalLogs, 'dentalLogEach'=>$patientDentalLog, 'diagnosis'=>$diagnosis, 'treatment'=>$treatment, 'medsGiven'=>$medsGiven ,'prescribed'=>$prescribed, 'medSupp'=>$medSupp]);
             }
             elseif($dentalLog->reqForDentalCert == 1){
-                return view('dchief.C_dchief_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment]);
+                return view('dchief.C_dchief_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment, 'dentist'=>$dentist]);
             }
         }
     }

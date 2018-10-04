@@ -270,4 +270,40 @@ class DentalCertificateController extends Controller
         return $pdf->stream('dentist.dentalLogtable-pdf');
     }
 
+    public function viewMoreCertificate($id)
+    {
+        $treatments = Treatment::find($id);
+        $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                            //    ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                               ->select('cliniclogs.*', 'patients.*')
+                               ->where('cliniclogs.clinicLogID', '=', $treatments->clinicLogID)
+                               ->first();
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.clinicLogID', '=', $treatments->clinicLogID)
+                            ->first();
+
+        $certDate = date("F d, Y", strtotime($treatments['created_at'])) ;
+        $certPatientName = $dentalLogs['lastName'] . ", " . $dentalLogs['firstName'] . " " . $dentalLogs['middleName'] . " " . $dentalLogs['quantifier'];
+        $certDentalExam = $treatments['dentalExamination'];
+        $certOralProphylaxis = $treatments['oralProphylaxis'];
+        $certRestorationChk = $treatments['restoration'];
+        $certRestorationTxt = $treatments['restorationTooth'];
+        $certExtractionChk = $treatments['extraction'];
+        $certExtractionTxt = $treatments['extractionTooth'];
+        $certOthersChk = $treatments['othersTreatment'];
+        $certOthersTextArea = $treatments['treatmentDescription'];
+        $certRecommendations = $treatments['recommendations'];
+        $certDentistSigned = $dentist['lastName'] . ", " . $dentist['firstName'] . " " . $dentist['middleName'] . " " . $dentist['quantifier'];
+
+        if(Session::get('accountInfo.position') == 4){
+            $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            return $pdf->stream('dental_certificate.pdf');
+        }
+        else if(Session::get('accountInfo.position') == 2){
+            $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            return $pdf->stream('dental_certificate.pdf');
+        }
+    }
+
 }
