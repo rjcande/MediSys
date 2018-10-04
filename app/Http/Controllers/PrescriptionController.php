@@ -130,7 +130,7 @@ class PrescriptionController extends Controller
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.genericName','medicines.brand', 'treatments.*')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();

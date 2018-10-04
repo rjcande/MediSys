@@ -237,13 +237,13 @@ class ClinicLogController extends Controller
 
             }
 
-            for ($i=0; $i < sizeof(Input::get('_medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
                 $usedMedSupply = new UsedMedSupply;
 
                 $usedMedSupply->treatmentID = $treatmentID;
-                $usedMedSupply->medSupplyID = Input::get('_medSuppID')[$i];
-                $usedMedSupply->quantity = Input::get('_medSuppQuantity')[$i];
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
                 $usedMedSupply->save();
             }
@@ -459,7 +459,7 @@ class ClinicLogController extends Controller
             ->get();
 
         $medicineList = Medicine::all();
-        $medicineName = Medicine::groupBy('genericName')->get();
+        $medicineName = Medicine::where('isDeleted', '=', 0)->groupBy('genericName')->get();
         $medicalSupplyList = MedicalSupply::all();
 
         $vitalSigns = ClinicLog::join('vitalSigns', 'vitalSigns.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -517,39 +517,64 @@ class ClinicLogController extends Controller
 
         $treatmentID = $treatment->treatmentID;
 
-        for ($i=0; $i < count(Input::get('medicineID')); $i++) { 
+        for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
-            $prescription = new Prescription;
+                $prescription = new Prescription;
 
-            $prescription->treatmentID = $treatmentID;
-            $prescription->medicineID = Input::get('medicineID')[$i];
-            $prescription->quantity = Input::get('medQuantity')[$i];
+                $prescription->treatmentID = $treatmentID;
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
 
-            if (Input::get('isPrescribed')[$i] == 0) {
-                $prescription->isPrescribed = 0;
-                $prescription->isGiven = 1;
+                if (Input::get('isPrescribed')[$i] == 0) {
+                    $prescription->isPrescribed = 0;
+                    $prescription->isGiven = 1;
+                }
+                elseif (Input::get('isPrescribed')[$i] == 1) {
+                    $prescription->isPrescribed = 1;
+                    $prescription->isGiven = 0;
+                }
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
+
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+
+                $prescription->save();
             }
-            elseif (Input::get('isPrescribed')[$i] == 1) {
-                $prescription->isPrescribed = 1;
-                $prescription->isGiven = 0;
+
+            for ($i=0; $i < sizeof(Input::get('_medPrescribedArray')); $i++) { 
+
+                $prescription = new Prescription;
+
+                $prescription->treatmentID = $treatmentID;
+                $prescription->medicineID = Input::get('_medPrescribedArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medPrescribedArray')[$i]['medicineQuantity'];
+
+                if (Input::get('isPrescribed_other')[$i] == 0) {
+                    $prescription->isPrescribed = 0;
+                    $prescription->isGiven = 1;
+                }
+                elseif (Input::get('isPrescribed_other')[$i] == 1) {
+                    $prescription->isPrescribed = 1;
+                    $prescription->isGiven = 0;
+                }
+                $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
+
+                $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->save();
             }
-            $prescription->dosage = Input::get('dosage')[$i];
 
-            $prescription->medication = Input::get('medication')[$i];
-
-            $prescription->save();
-        }
-
-        for ($i=0; $i < count(Input::get('medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
-            $usedMedSupply = new UsedMedSupply;
+                $usedMedSupply = new UsedMedSupply;
 
-            $usedMedSupply->treatmentID = $treatmentID;
-            $usedMedSupply->medSupplyID = Input::get('medSuppID')[$i];
-            $usedMedSupply->quantity = Input::get('medSuppQuantity')[$i];
+                $usedMedSupply->treatmentID = $treatmentID;
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
-            $usedMedSupply->save();
-        }
+                $usedMedSupply->save();
+            }
+
+
         Session::flash('message', 'Successfully Saved!');
                 
     }
@@ -695,26 +720,27 @@ class ClinicLogController extends Controller
             $treatmentID = $treatment->treatmentID;
 
           
-            for ($i=0; $i < count(Input::get('medicineID')); $i++) { 
+             for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
                 $prescription = new Prescription;
-
-                $prescription->treatmentID = $treatmentID;
-                $prescription->medicineID = Input::get('medicineID')[$i];
-                $prescription->quantity = Input::get('medQuantity')[$i];
-                $prescription->medication = Input::get('medication')[$i];
-                $prescription->dosage = Input::get('_dosage')[$i];
+                $prescription->treatmentID =  $treatmentID;
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+                $prescription->isGiven = '1';
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
                 $prescription->save();
+
             }
 
-            for ($i=0; $i < count(Input::get('medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
                 $usedMedSupply = new UsedMedSupply;
 
                 $usedMedSupply->treatmentID = $treatmentID;
-                $usedMedSupply->medSupplyID = Input::get('medSuppID')[$i];
-                $usedMedSupply->quantity = Input::get('medSuppQuantity')[$i];
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
                 $usedMedSupply->save();
             }
@@ -855,7 +881,7 @@ class ClinicLogController extends Controller
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.genericName','medicines.brand','medicines.unit', 'treatments.*')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
@@ -868,8 +894,8 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::all();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('isDeleted', '=', 0)->get();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)->get();
 
         return view('physician.C_physician_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
@@ -918,7 +944,7 @@ class ClinicLogController extends Controller
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.genericName','medicines.brand','medicines.unit', 'treatments.*')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();

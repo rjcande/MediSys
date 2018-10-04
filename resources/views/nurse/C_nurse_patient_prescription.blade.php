@@ -311,7 +311,6 @@
                                    
                                   </tbody>
                                 </table>
-                                 <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                   <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                 </div>
                               </div>
@@ -340,7 +339,6 @@
                                    
                                   </tbody>
                                 </table>
-                                 <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                   <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                               </div>
                             </div>
@@ -403,7 +401,9 @@
    var dosage = new Array();
    var deleteFlag = 1;
    var array_med = {};
+   var array_supp = {};
    var ctr = 0;
+   var ctr_supp = 0;
    //variables for storing vital signs
    var bloodPressureSystolic;
    var bloodPressureDiastolic;
@@ -443,6 +443,7 @@
                       
                         var id = {
                           _medArray: array_med,
+                          _suppArray: array_supp, 
                           _bloodPressure: bloodPressure,
                           _heartRate: heartRate,
                           _respiratoryRate: respiratoryRate,
@@ -643,24 +644,7 @@
                   displayTableRow();
                 }
 
-            }
-
-            
-
-            
-
-            // var medGenericName = $('select[name=medGenericName] option:selected').text();
-            // var _idMedGenericName = $('select[name=medGenericName]').val();
-            // var medBrand = $('select[name=medBrand] option:selected').text();
-            // _idMedBrand[_idMedBrand.length] = $('select[name=medBrand]').val();
-            // medQuantity[medQuantity.length] = $('input[name=medQuantity]').val();
-            // var medUnit = $('select[name=medUnit] option:selected').text();
-            // var _idMedUnit = $('select[name=medUnit]').val();
-            // medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
-            // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
-            // var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medGenericName+"</td><td class=' '>"+medBrand+"</td><td class=' '>"+medQuantity[medQuantity.length-1]+"</td><td class=' '>"+medUnit+"</td><td>"+dosage[dosage.length-1]+"</td><td>"+medication[medication.length-1]+"</td></tr>";
-            // $(tr).prependTo('#tbodyMedicine');
-            //Reset Med Fields
+            }      
             resetFields();
             console.log(Object.keys(array_med).length);
             console.log(array_med);
@@ -692,33 +676,84 @@
             $('input[name=hrs_day]').val(this.defaultValue);
             $('input[name=week]').val(this.defaultValue);
         }
+        
         $('#btnSuppAdd').click(function(event){
           event.preventDefault();
           // Validate all Medical Supply fields.
           $('#saveForm').parsley().validate('third');
           
           if ($('#saveForm').parsley().isValid('third')) {
-            var medSuppName = $('select[name=medSuppName] option:selected').text();
-            var _idMedSuppName = $('select[name=medSuppName]').val();
-            var medSuppBrand = $('select[name=medSuppBrand] option:selected').text();
-            _idMedSuppBrand[_idMedSuppBrand.length] = $('select[name=medSuppBrand]').val();
-            medSuppQuantity[medSuppQuantity.length] = $('input[name=medSuppQuantity]').val();
-            var medSuppUnit = $('select[name=medSuppUnit] option:selected').text();
-            var _idMedSuppUnit = $('select[name=medSuppUnit]').val();
-            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medSuppName+"</td><td class=' '>"+medSuppBrand+"</td><td class=' '>"+medSuppQuantity[medSuppQuantity.length-1]+"</td><td class=' last'>"+medSuppUnit+"</td></tr>";
-            $(tr).prependTo("#tbodyMedicalSupply");
+
+            if (Object.keys(array_supp).length == 0) {
+                array_supp[ctr_supp] = {
+                    suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                    suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                    suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                    suppID:  $('select[name=medSuppBrand]').val(),
+                    suppQuantity: $('input[name=medSuppQuantity]').val()
+                };
+                $('#medSuppTable tbody').empty();
+                displayTableRowSupp();
+            }
+            else{
+                var isEqual = false;
+                var key;
+                for (var i = 0; i < Object.keys(array_supp).length; i++) {
+                
+                    if (array_supp[i].suppID == $('select[name=medSuppBrand]').val()) {
+                        isEqual = true;
+                        key = i;
+                    }
+                    
+                }
+
+                if (isEqual == true) {
+                  array_supp[key].suppQuantity = parseInt(array_supp[key].suppQuantity) + parseInt($('input[name=medSuppQuantity]').val());
+                  $('#medSuppTable tbody').empty();
+                  displayTableRowSupp();
+                }
+                else if(isEqual == false){
+                  ctr_supp++;
+                  array_supp[ctr_supp] = {
+                    suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                    suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                    suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                    suppID:  $('select[name=medSuppBrand]').val(),
+                    suppQuantity: $('input[name=medSuppQuantity]').val()
+                  };
+                  $('#medSuppTable tbody').empty();
+                  displayTableRowSupp();
+                }
+
+            }
+
             //Reset Medical Supply Fields
-            $('select[name=medSuppName]').prop('selectedIndex', 0);
-            $('select[name=medSuppBrand]').prop('selectedIndex', 0);
-            $('select[name=medSuppUnit]').prop('selectedIndex', 0);
-            $('select[name=medSuppBrand]').prop('disabled', true);
-            $('select[name=medSuppUnit]').prop('disabled', true);
-            $('input[name=medSuppQuantity]').val(this.defaultValue);
+            resetSuppFields();
        
           }
         });
       }
     });
+    
+    function displayTableRowSupp(){
+      for (var i = 0; i < Object.keys(array_supp).length; i++) {
+
+                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+
+                $(tr).prependTo('#tbodyMedicalSupply');
+                console.log(array_supp);
+
+      }
+    }
+
+    function resetSuppFields(){
+      $('select[name=medSuppName]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('selectedIndex', 0);
+      $('select[name=medSuppUnit]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('disabled', true);
+      $('select[name=medSuppUnit]').prop('disabled', true);
+      $('input[name=medSuppQuantity]').val(this.defaultValue);
+    }
     //Compute for the BMI
     var height;
     var weight;

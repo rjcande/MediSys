@@ -31,6 +31,14 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+
+        $logReferralNotifNurse = LogReferrals::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'logreferrals.clinicLogID')
+                                    ->join('users', 'users.id', '=', 'cliniclogs.nurseID')
+                                    ->where('logreferrals.notif' , '=', 0)
+                                    ->get();
+
+        dd($logReferralNotifNurse);
+
     	$patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
     								->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
     								->where('appointments.isAppointed', '=', 0)

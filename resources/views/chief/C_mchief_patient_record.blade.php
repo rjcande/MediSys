@@ -60,7 +60,7 @@
                                         <a href="{{ route('mchief.referred.patient.diagnoses', $info->patientID) }}"><button
                                             class="btn btn-default" style="background-color:#33d9b2; color:white;">Concerns</button>
                                         </a>
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                                      <!--   <button class="btn btn-danger"><i class="fa fa-trash"></i></button></td> -->
                                 </tr>
                             @endforeach
                         </tbody>     
