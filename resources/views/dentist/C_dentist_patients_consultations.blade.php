@@ -63,12 +63,13 @@
                                     </td>
                                     <td class=" " style="text-align:center;">
                                         <a href="{{ route('dentist.show.all.consultations', $dentalLogs->clinicLogID) }}">
-                                            <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View
-                                            </button>
+                                            <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View </button>
                                         </a>
                                     </td>
                                     <td class=" " style="width: 120px;">
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLogs->clinicLogID}}">
+                                            <i class='fa fa-trash'></i>
+                                        </button>
                                     </td>
                                 </tr>
                            @endforeach
@@ -116,7 +117,9 @@
                                         </ul>
                                     </td>
                                     <td class=" " style="width: 120px;">
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$certificate->clinicLogID}}">
+                                            <i class='fa fa-trash'></i>
+                                        </button>
                                     </td>
                                 </tr>
                            @endforeach
@@ -179,7 +182,7 @@
     <!--END Modal-->
 
 <script>
-    $(window).load(function(){
+    $(document).ready(function(){
         $('#modalVitalSigns').on('show.bs.modal', function(e){
             var button = $(e.relatedTarget);
 
@@ -204,6 +207,35 @@
             modal.find(".modal-body input[name=bmi_range]").val([bmiRange]);
 
         });
+
+        //delete button is clicked
+            $('.delete-button').on('click', function(){
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                $.ajax({
+                    url: '/dentist/delete/dental/log/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                    swal({
+                        title: "",
+                        text: output.message,
+                        icon: "success",
+                    })
+                    .then((value)=>{
+                        location.reload(true);
+                    });
+                    }
+                });
+                }
+            })
+            });
     });
 </script>       
 
