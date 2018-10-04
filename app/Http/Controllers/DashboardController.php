@@ -29,16 +29,84 @@ use Session;
 use PDF;
 class DashboardController extends Controller
 {
-    public function dashboard()
-    {
 
+    public function notificationNurse()
+    {
+        $notification = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
+                                    ->where('logreferrals.notif' , '=', 0)
+                                    ->where('logreferrals.isDeleted', '=', 0)
+                                    ->orderBy('logreferrals.created_at', 'desc')
+                                    ->get();
+        dd($notification);
+        $array = [];
+        $ctr = 0;
+        $status = "";
+        foreach ($notification as $key => $value) {
+            if ($value['logReferralStatus'] == 2) {
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." accepted your referral</span></a></a></li>";    
+            }
+            elseif ($value['logReferralStatus'] == 3) {
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." declined your referral</span></a></a></li>";
+            }
+
+            $array[$ctr] = $text; 
+            $ctr++;
+            
+        }
+
+        return Response::json(array('logReferralNotifNurse' => $notification, 'text' => $array));
+    } 
+
+    public function notification()
+    {
         $logReferralNotifNurse = LogReferrals::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'logreferrals.clinicLogID')
                                     ->join('users', 'users.id', '=', 'cliniclogs.nurseID')
                                     ->where('logreferrals.notif' , '=', 0)
+                                    ->where('physicianID', '=', Session::get('accountInfo.id'))
+                                    ->where('logreferrals.isDeleted', '=', 0)
+                                    ->orderBy('logreferrals.created_at', 'desc')
                                     ->get();
 
-        dd($logReferralNotifNurse);
+        $array = [];
+        $ctr = 0;
+        $concern = "";
+        foreach ($logReferralNotifNurse as $key => $value) {
+            if ($value['concern'] == 0) {
+                $concern = "consultation";
+            }
+            elseif ($value['concern'] == 1) {
+                $concern = "letter/certification";
+            }
+            if (Session::get('accountInfo.position') == 5) {
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." referred a patient for ". $concern ."</span></a></a></li>";
+            }
+            elseif (Session::get('accountInfo.position') == 3) {
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/mchief/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." referred a patient for ". $concern ."</span></a></a></li>";
+            }
+            
+            $array[$ctr] = $text; 
+            $ctr++;
+        }
 
+        
+
+        return Response::json(array('logReferralNotifNurse' => $logReferralNotifNurse, 'text' => $array));
+
+
+    }
+
+    public function notificationClicked($id)
+    {
+        $logreferrals = LogReferrals::find($id);
+
+        $logreferrals->notif = 1;
+
+        $logreferrals->save();
+    }
+
+    public function dashboard()
+    {
+        //dd(Session::get('notification'));
     	$patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
     								->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
     								->where('appointments.isAppointed', '=', 0)

@@ -83,34 +83,57 @@
         <li role="presentation" class="dropdown">
           <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-bell-o"></i>
-            <span class="badge bg-blue">0</span>
+            <span class="badge bg-blue" id="notifNumber"></span>
           </a>
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-            <li>
-              <a>
-                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                <span>
-                  <!-- <span>John Smith</span>
-                  <span class="time">3 mins ago</span> -->
-                </span>
-                <span class="message">
-                <!--   Film festivals used to be do-or-die moments for movie makers. They were where... -->
-                </span>
-              </a>
-            </li>
-            
-            <li>
-              <div class="text-center">
-                <a>
-                <!--   <strong>See All Alerts</strong>
-                  <i class="fa fa-angle-right"></i> -->
-                </a>
-              </div>
-            </li>
+          
           </ul>
         </li>
       </ul>
     </nav>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $.ajax({
+          url: '/get/notification',
+          type: 'get',
+          success: function(output){
+              
+              $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
+              $('#menu1').empty();
+              for (var i = 0; i <Object.keys(output.text).length ; i++) {
+                $('#menu1').append(output.text[i]);
+              }
+
+          }
+      });
+    setInterval(function(){
+        $.ajax({
+          url: '/get/notification',
+          type: 'get',
+          success: function(output){
+              
+              $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
+              $('#menu1').empty();
+              for (var i = 0; i <Object.keys(output.text).length ; i++) {
+                $('#menu1').append(output.text[i]);
+              }
+
+          }
+        });
+    }, 1000);
+      
+    $('#menu1').on('click','.notification', function(){
+        $.ajax({
+          url: '/notification/clicked/' + $(this).data('id'),
+          type: 'get',
+          success:function(){
+
+          }
+        });
+    });
+
+  });
+</script> 
 <!-- /top navigation -->

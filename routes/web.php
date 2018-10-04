@@ -15,9 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/sample', function(){
-	return view('nurse.sample');
-});
+Route::get('/sample', 'DashboardController@notificationNurse');
 
 Route::get('/', function(){
 	return view('login');
@@ -28,6 +26,12 @@ Route::get('/logout', 'AccountsController@logout');
 Route::get('/create/new/account', function(){
 	return view('register_account');
 });
+
+Route::get('/get/notification', 'DashboardController@notification');
+
+Route::get('/get/notification/nurse', 'DashboardController@notificationNurse');
+
+Route::get('/notification/clicked/{id}', 'DashboardController@notificationClicked');
 
 Route::get('/save/account', 'AccountsController@store');
 
