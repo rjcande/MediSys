@@ -92,7 +92,7 @@ class DentalCertificateController extends Controller
 
         $treatment->save();
 
-        $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+        $pdf = PDF::loadview('dentist.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
     public function dchiefShow()
@@ -124,7 +124,7 @@ class DentalCertificateController extends Controller
 
         $treatment->save();
 
-        $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+        $pdf = PDF::loadview('dchief.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
 
@@ -181,7 +181,7 @@ class DentalCertificateController extends Controller
 
         // dd($referral);
 
-        $pdf = PDF::loadview('dentist.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
+        $pdf = PDF::loadview('dentist.printables.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
     public function dchiefShowOutsideRefer()
@@ -204,7 +204,7 @@ class DentalCertificateController extends Controller
 
         // dd($referral);
 
-        $pdf = PDF::loadview('dchief.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
+        $pdf = PDF::loadview('dchief.printables.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
  
@@ -227,7 +227,7 @@ class DentalCertificateController extends Controller
                                 ->get();
 
 
-        $pdf = PDF::loadView('dentist.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
+        $pdf = PDF::loadView('dentist.printables.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
         return $pdf->stream('dentist.prescription-pdf');
 
     }
@@ -250,7 +250,7 @@ class DentalCertificateController extends Controller
                                 ->get();
 
 
-        $pdf = PDF::loadView('dchief.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
+        $pdf = PDF::loadView('dchief.printables.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
         return $pdf->stream('dchief.prescription-pdf');
 
     }
@@ -265,7 +265,7 @@ class DentalCertificateController extends Controller
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                 ->select('users.*')
                                 ->first();
-        $pdf = PDF::loadView('dentist.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
+        $pdf = PDF::loadView('dentist.printables.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
         $pdf->setPaper('legal', 'landscape');
         return $pdf->stream('dentist.dentalLogtable-pdf');
     }
@@ -297,13 +297,53 @@ class DentalCertificateController extends Controller
         $certDentistSigned = $dentist['lastName'] . ", " . $dentist['firstName'] . " " . $dentist['middleName'] . " " . $dentist['quantifier'];
 
         if(Session::get('accountInfo.position') == 4){
-            $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            $pdf = PDF::loadview('dentist.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
             return $pdf->stream('dental_certificate.pdf');
         }
         else if(Session::get('accountInfo.position') == 2){
-            $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            $pdf = PDF::loadview('dchief.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
             return $pdf->stream('dental_certificate.pdf');
         }
+    }
+
+    public function generatePatientList()
+    {
+        $patientRecords = Patient::select('patients.*')
+                                ->where('isDeleted', '=', '0')
+                                ->get();
+        
+        if(Session::get('accountInfo.position') == 4){
+            $pdf = PDF::loadview('dentist.printables.patientList-pdf', compact('patientRecords'));
+            $pdf->setPaper('legal', 'landscape');
+            return $pdf->stream('patientList-pdf');
+        }
+        elseif(Session::get('accountInfo.position') == 2){
+            $pdf = PDF::loadview('dchief.printables.patientList-pdf', compact('patientRecords'));
+            $pdf->setPaper('legal', 'landscape');
+            return $pdf->stream('patientList-pdf');
+        }
+    }
+
+    public function generateMedicineList()
+    {
+        $medicineList = Medicine::select('medicines.*')
+                                ->where([['medicines.isDeleted', '<>', '1'], ['medicines.medType', '=', 'D']])
+                                ->get();
+        
+        $pdf = PDF::loadview('dchief.printables.medicinesList-pdf', compact('medicineList'));
+        // $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('medicineList-pdf');
+    }
+
+    public function generateMedicalSupplyList()
+    {
+        $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                                        ->where([['medsupplies.isDeleted', '<>', '1'], ['medsupplies.supType', '=', 'D']])
+                                        ->get();
+                                        
+        $pdf = PDF::loadview('dchief.printables.medicalSupplyList-pdf', compact('medicalSupplyList'));
+        // $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('medicalSupplyList-pdf');
     }
 
 }

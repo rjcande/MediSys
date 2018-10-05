@@ -69,6 +69,9 @@
                         @endforeach
                         </tbody>   
                         </table>
+                        <a target="_blank" href="{{route('dchief.generate.patientList')}}">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                        </a>
                       </div>
                     <!-- /Content -->
                   </div>

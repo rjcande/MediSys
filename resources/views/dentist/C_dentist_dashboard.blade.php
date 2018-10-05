@@ -14,7 +14,7 @@
 
             <div class="row">
               <!-- form input mask -->
-               <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Frequency of Patient's Visit (Year)</h2>
@@ -51,22 +51,6 @@
                 </div>
               </div> -->
 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Medical Supplies Report</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <a href="{{ url('/dentist/medicine/reports') }}">
-                      <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
-                    </a>
-                    <a href="{{ url('/dentist/medical/supplies/reports') }}">
-                      <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
-                    </a>
-                  </div>
-                </div>
-              </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel" style="height: 100%">
@@ -82,7 +66,6 @@
                             <th class="column-title">Patient Name </th>
                             <th class="column-title">Physician </th>
                             <th class="column-title">Date </th>
-                            </th>
                           </tr>
                         </thead>
 
@@ -104,6 +87,26 @@
                   </div>
                 </div>
               </div>
+
+              
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Medical Supplies Report</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <a href="{{ url('/dentist/medicine/reports') }}">
+                      <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
+                    </a>
+                    <a href="{{ url('/dentist/medical/supplies/reports') }}">
+                      <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
               <!-- /form input mask -->  
 
             </div>

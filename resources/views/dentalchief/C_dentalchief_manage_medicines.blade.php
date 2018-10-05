@@ -117,15 +117,15 @@
                                
                                 <button type="submit" class="btn btn-danger medicine-details" id="btnDelete" data-id="{{ $medicine->medicineID }}">
                                   <i class="fa fa-trash"></i>
-                                </button>
-                           
-                               
-                                
+                                </button>                               
                               </td>
                             </tr> 
                           @endforeach 
                         </tbody>
                       </table>
+                      <a target="_blank" href="{{route('dchief.generate.medicineList')}}">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                      </a>
                     </div>
                   </div>
                 </div>
