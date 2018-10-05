@@ -37,7 +37,7 @@ class DashboardController extends Controller
                                     ->where('logreferrals.isDeleted', '=', 0)
                                     ->orderBy('logreferrals.created_at', 'desc')
                                     ->get();
-        dd($notification);
+        
         $array = [];
         $ctr = 0;
         $status = "";

@@ -122,7 +122,7 @@
 
           }
         });
-    }, 1000);
+    }, 2000);
       
     $('#menu1').on('click','.notification', function(){
         $.ajax({

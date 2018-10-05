@@ -1085,18 +1085,98 @@ class ClinicLogController extends Controller
         }
     }
 
-    public function printMedicalLog(){
-        $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+    public function printMedicalLog(Request $request){
+        //dd($request->all());
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
                         ->orderBy('cliniclogs.clinicLogID', 'DESC')
                         ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+     
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+        
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }    
+
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }  
 
         $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
         return $pdf->stream('reports.medical_log');
 
-        //return view('reports.medical_log')->with(['clinicLogs' => $clinicLogs]);
+        return view('reports.medical_log')->with(['clinicLogs' => $clinicLogs]);
     }
    
 }

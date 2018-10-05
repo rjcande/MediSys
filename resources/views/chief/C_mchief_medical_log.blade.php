@@ -107,14 +107,7 @@
                                 {{ date("h:i a", strtotime($clinicLog->clinicLogDateTime)) }}
                               </td>
                               </td>
-                              <td class=" last">
-                        
-                                {{--  <a href="">
-                                  <button class="btn btn-primary" data-toggle="tooltip" title="View More Info">
-                                    <i class="fa fa-angle-double-right"></i>
-                                  </button>
-                                </a>  --}}
-                                
+                              <td class=" last">              
                                   <button class="btn btn-danger delete-button" data-toggle="tooltip" title="Delete"  data-id="{{ $clinicLog->clinicLogID }}">
                                     <i class="fa fa-trash"></i>
                                   </button>
@@ -125,12 +118,10 @@
                             {{ Session::put('number', $ctr) }}
                           @endforeach
                         </tbody>
-                      </table>
-                       <a href="{{ url('/print/medical/log') }}" target="_blank">
-                        <button type="button" class="btn btn-primary">
+                      </table> 
+                        <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#printModal">
                           <i class="fa fa-print"></i> Print
                         </button>
-                      </a>
                     </div>
                     <!--/Content-->
                   </div>
@@ -142,82 +133,82 @@
           </div>
         </div>
 
-<div id="medicalLogMoreInfo" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="printModal">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
+
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Medical Log Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Print Medical Log</h4>
       </div>
-      <div class="modal-body">
-        <form id="logPatientForm" class="form-horizontal form-label-left">
+      <form id="printMedicalLog" action="{{ url('/print/medical/log') }}" target="_blank" method="get">
           @csrf()
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">No.:<span class="required">*</span></label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-               <label class="control-label col-md-1 col-sm-3 col-xs-3">3</label>
-            </div>
+      <div class="modal-body">
+        <div class="col-md-4">
+            <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
+        </div>
+        <div class="col-md-4">
+            <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+        </div>
+        <div class="col-md-4">
+            <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
+        </div>
+        <div style="width: 100%" id="error_container">
+          
+        </div>
+        <br><br>
+        <div style="width: 100%">
+          <div class="form-group">
+            <label style="margin-left: 5px; width: 50px">Date: </label>
+            <input type="date" name="date" style="width: 70%" disabled id="date">
           </div>
+            
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Month: </label>
+            <select name="month" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+              <option value="" selected></option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
 
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientID" required>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientName" required>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Assisting Nurse: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" readonly>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Date: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" readonly value="{{ date('F d, Y') }}">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Time: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" readonly value="{{ date('h:i a') }}">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <select name="" style="border-radius:8px;" class="form-control" required>
-                <option value="" disabled selected>Concern</option>
-                <option value="1">Consultation</option>
-                <option value="2">Letter/Certification</option>
-              </select>
-             
-            </div>
-          </div>
-      
+            <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_month">
+          
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Year: </label>
+            <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_year">
+          
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Next</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="modal-footer" style="text-align: center;">
+        <button type="submit" class="btn btn-success">Continue</button>
       </div>
-       </form>
+      </form>
+
     </div>
-
   </div>
 </div>
+
 
 <script>
   $(document).ready(function(){
@@ -254,6 +245,66 @@
           });
         }
      })
+    });
+
+      //Printing of Medical Log
+    $('#printMedicalLog').parsley();
+    $('#printMedicalLog').submit(function(){
+      $('#printModal').modal('hide');
+
+    });
+    
+    //drop down of year
+    for (i = new Date().getFullYear(); i > 1999; i--)
+    {
+        $('.year').append($('<option />').val(i).html(i));
+    }
+    //Validation For Printing of Medical Log
+    $('#daily').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#date').prop('disabled', false);
+        $('#date').prop('required', true);
+      }
+      else{
+        $('#date').prop('disabled', true);
+        $('#date').prop('required', false);
+      }
+    });
+    $('#monthly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#month').prop('disabled', false);
+        $('#month').prop('required', true);
+        $('#year-month').prop('disabled', false);
+        $('#year-month').prop('required', true);
+      }
+      else{
+        $('#month').prop('disabled', true);
+        $('#month').prop('required', false);
+        $('#year-month').prop('disabled', true);
+        $('#year-month').prop('required', false);
+      }
+    });
+    $('#yearly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#year').prop('disabled', false);
+        $('#year').prop('required', true);
+      }
+      else{
+        $('#year').prop('disabled', true);
+        $('#year').prop('required', false);
+      }
+    });
+
+    $('#printModal').on('hidden.bs.modal', function () {
+      $('#printMedicalLog')[0].reset();
+      $('#date').prop('disabled', true);
+      $('#month').prop('disabled', true);
+      $('#year-month').prop('disabled', true);
+      $('#year').prop('disabled', true);
+      $('#date').prop('required', false);
+      $('#month').prop('required', false);
+      $('#year-month').prop('required', false);
+      $('#year').prop('required', false);
     });
 
   });
