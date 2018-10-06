@@ -208,7 +208,7 @@
         <div class="modal-body" style="font-size:18px;">
           <label style="display: inline-block;width: 80px; margin-bottom:10px;">Month </label>
           <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;
-            width: 170px;"><br>
+            width: 170px;" id="filterMonth"><br>
             <option value="" disabled selected></option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -225,32 +225,34 @@
           </select>
           <label style="display: inline-block; width: 50px; margin-bottom:10px; margin-left: 40px;">Day </label>
           <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
-              solid gray;">
+              solid gray;" id="filterDays">
             <option value="" disabled selected></option>
               @for($days = 1; $days < 32; $days++)
-            <option value="$days">{{ $days }}</option>
+                <option value="{{ $days }}">{{ $days }}</option>
               @endfor
           </select>
           <label style="display: inline-block; width: 60px; margin-bottom:10px; margin-left: 50px;">Year </label>
           <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
-              solid gray;">
+              solid gray;" id="filterYear">
             <option value="" disabled selected></option>
-              @for($years = 2018; $years > 1903; $years--)
-            <option value="$years">{{ $years }}</option>
+              @for($years = 2018; $years > 1998; $years--)
+                <option value="{{ $years }}">{{ $years }}</option>
               @endfor
           </select><br>
           <label style="display: inline-block; width: 80px; margin-bottom:10px;">Concern
           </label>
           <select style="height: 32px; font-size:15px; border-radius: 12px; width: 170px;
-              border: 1.5px solid gray;">
+              border: 1.5px solid gray;" id="filterConcern">
             <option value="" disabled selected></option>
-            <option value="0">Consultation</option>
-            <option value="1">Letter/Certificate</option>
+            <option value="consultation">Consultation</option>
+            <option value="letter/certification">Letter/Certificate</option>
           </select>
         </div>
       
         <div class="modal-footer" style="margin-right:0%">
-          <button class="btn btn-success">DONE</button>
+          <button class="btn btn-primary" id="btnReset">Reset Filter</button>
+          <button class="btn btn-success" id="btnDone" data-dismiss="modal">DONE</button>
+          
         </div>
             </div>
         </div>
@@ -401,6 +403,41 @@
 
     $('#search').keyup(function(){
       table.search($(this).val()).draw();
+    });
+
+    //Filtering of Data Table
+    $('select').on('change', function(){
+      var month = $('#filterMonth').val();
+      var days = $('#filterDays').val();
+      var year = $('#filterYear').val();
+      var concern = $('#filterConcern').val();
+      if (month == null) {
+        month = ' ';
+      }
+      if (days == null) {
+        days = ' ';
+      }
+      if (year == null) {
+        year = ' ';
+      }
+      if (concern == null) {
+        concern = ' ';
+      }
+      var date = month + ' ' + days + ' ' + year;
+
+      table.column(4).search(date).draw();
+      table.column(3).search(concern).draw();
+   
+
+    });
+
+    $('#btnReset').click(function(){
+      $('#filterConcern').val('');
+      $('#filterYear').val('');
+      $('#filterDays').val('');
+      $('#filterMonth').val('');
+      table.column(4).search('').draw();
+      table.column(3).search('').draw();
     });
 
     //Printing of Medical Log

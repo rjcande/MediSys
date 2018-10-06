@@ -18,9 +18,9 @@
                 <div class="x_panel">
                   <div class="x_title">
                    
-                    <div class="col-md-5 col-sm-12 col-xs-12" style="float: right;">
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
                       <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                    </div>
+                    </div>  
                     
                     <div class="clearfix"></div>
                   </div>

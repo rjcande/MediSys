@@ -16,6 +16,14 @@
               <!-- form input mask -->
                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
+                  <div class="x_title">
+                   
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>  
+                    
+                    <div class="clearfix"></div>
+                  </div>
                   <div class="x_content">
                     <div class="">
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
@@ -86,7 +94,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel2">Print Medical Log</h4>
+        <h4 class="modal-title" id="myModalLabel2">Print Patient List</h4>
       </div>
       <form id="printMedicalLog" action="{{ url('/print/patient/list') }}" target="_blank" method="get">
           @csrf()
@@ -156,11 +164,17 @@
 </div>
 <script>
   $(document).ready(function(){
-    $('#patientTable').DataTable({
+    var table = $('#patientTable').DataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false });
+        "bAutoWidth": false,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
      //Printing of Medical Log
     $('#printMedicalLog').parsley();
     $('#printMedicalLog').submit(function(){

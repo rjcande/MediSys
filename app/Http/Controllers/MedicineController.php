@@ -16,6 +16,8 @@ use DB;
 
 use Session;
 
+use PDF;
+
 class MedicineController extends Controller
 {
 
@@ -151,6 +153,7 @@ class MedicineController extends Controller
             $medicine->genericName = Input::get('genericName');
             $medicine->brand = Input::get('brandName');
             $medicine->unit = Input::get('unit');
+            $medicine->dosage = Input::get('dosage');
 
             $medicine->save();
 
@@ -201,6 +204,84 @@ class MedicineController extends Controller
         }
     }
 
+    public function printMedicineList(Request $request)
+    {
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->whereDate('created_at', '=', $request->date)
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->whereMonth('created_at', '=', $request->month)
+                        ->whereYear('created_at', '=', $request->year_month)
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->whereYear('created_at', '=', $request->year)
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+     
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }
+        
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                        })
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }    
+
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+            $medicines = Medicine::where('isDeleted', '=', '0')
+                        ->where('medType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicineID', 'DESC')
+                        ->get();
+        }  
+
+        $pdf = PDF::loadView('reports.medicine_list', compact('medicines'))->setPaper('legal', 'landscape');
+        return $pdf->stream('reports.medicine_list');
+
+    }
 	// ***********************************************************************
     public function getBrandName()
     {

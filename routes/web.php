@@ -49,6 +49,10 @@ Route::get('/print/medical/reports/{month}', 'DashboardController@printMedicalRe
 
 Route::get('/print/medical/reports/week/{week}', 'DashboardController@printMedicalReportsWeek');
 
+Route::get('/print/medicine/list', 'MedicineController@printMedicineList');
+
+Route::get('/print/medical/supply/list', 'MedicalSupplyController@printMedicalList');
+
 
 /*
  * Nurse Route

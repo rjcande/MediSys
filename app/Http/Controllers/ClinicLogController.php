@@ -1176,7 +1176,6 @@ class ClinicLogController extends Controller
         $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
         return $pdf->stream('reports.medical_log');
 
-        return view('reports.medical_log')->with(['clinicLogs' => $clinicLogs]);
     }
    
 }

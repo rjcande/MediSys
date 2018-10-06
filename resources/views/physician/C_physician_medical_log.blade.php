@@ -18,41 +18,13 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>{{date('F, Y')}}</h2>
-                    <div style="float: right;">
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled="" selected="">Month</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled selected>Day</option>
-                        @for($days = 1;$days < 32; $days++)
-                          <option value="{{ $days }}">{{ $days }}</option>
-                        @endfor
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option>Year</option>
-                        <option>2018-1940</option>
-                      </select>
-                      <button class="btn btn-round btn-primary">GO</button>
-                      <button class="btn btn-round btn-default"><i class="fa fa-filter"></i>Filter</button>
-                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>  
                     <div class="clearfix"></div>
 
                   </div>
-                  <div class="col-md-4 col-sm-12 col-xs-12" style="float: right;">
-                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                  </div>
+                  
                   <div class="x_content">
                     <!--Content-->
 
