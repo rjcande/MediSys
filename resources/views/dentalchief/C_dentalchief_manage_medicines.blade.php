@@ -111,7 +111,7 @@
                               <td class=" ">{{ $medicine->unit }}</td>
                               <td class=" ">{{ $medicine->dosage }}</td>
                               <td class="last">
-                                <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-id="{{ $medicine->medicineID }}">
+                              <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-id="{{ $medicine->medicineID }}" >
                                   <i class="fa fa-pencil"></i>
                                 </button>
                                
@@ -175,7 +175,15 @@
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="unit" name="unit">
             </div>
-          </div>      
+          </div> 
+          
+          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-3">Dosage: </label>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <input type="text" class="form-control" style="border-radius:8px;" id="dosage" name="dosage"  value="{{ $medicine->dosage }}">
+              </div>
+          </div>
+
       </div>
       <div class="modal-footer">
         <input type="hidden" name="medicineID">

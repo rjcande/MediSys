@@ -206,7 +206,28 @@ class DashboardController extends Controller
     {
         $delete = Appointments::find($id);
 
-        $delete->isDeleted = 1;
+        if ($status == "no_show") {
+            $delete->isAppointed = 1;
+        }
+        elseif ($status == "cancel_appointment") {
+            $delete->isAppointed = 2;
+        }
+
+        $delete->save();
+
+        return Response::json(array('message' => 'Success'));
+    }
+
+    public function dentistDestroy($id)
+    {
+        $delete = Appointments::find($id);
+
+        if ($status == "no_show") {
+            $delete->isAppointed = 1;
+        }
+        elseif ($status == "cancel_appointment") {
+            $delete->isAppointed = 2;
+        }
 
         $delete->save();
 

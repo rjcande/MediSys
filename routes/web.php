@@ -438,6 +438,8 @@ Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupp
 
 Route::get('/dentist/medicine/reports', 'DashboardController@dentistReports');
 
+Route::get('/dentist/delete/appointment/{id}', 'DashboardController@dentistDestroy');
+
 //Controllers
 Route::get('/dentist/dentalchart','DentalChartsController@create')->name('dentist.dentalchart');
 

@@ -347,6 +347,9 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                               </div>
                            </div>
 
@@ -433,6 +436,9 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                               </div>
                            </div>
 
@@ -519,6 +525,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                            </div>
                         </div>
 
@@ -605,6 +614,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                            </div>
                         </div>
                         <div class="tab-pane fade @if($active==5){{'active in'}}@endif" id="tab_content16" role="tabpanel" aria-labelledby="profile-tab">
@@ -689,6 +701,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                            </div>
                         </div>
 
@@ -853,6 +868,9 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}
                               </div>
                            </div>
 
@@ -962,6 +980,9 @@
                                     @endforeach
                                     </tbody>
                                  </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                                                                  
                               </div>
                            </div>
 
@@ -1071,6 +1092,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1180,6 +1204,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1289,6 +1316,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1398,6 +1428,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1507,6 +1540,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1616,6 +1652,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1725,6 +1764,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1834,6 +1876,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 
@@ -1943,6 +1988,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                                                            
                            </div>
                         </div>
 
@@ -2052,6 +2100,9 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                              {{-- </a> --}}                              
                            </div>
                         </div>
 

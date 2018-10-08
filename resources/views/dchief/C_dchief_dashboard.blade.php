@@ -73,11 +73,11 @@
 
                         <tbody>
                           @foreach($patientNames as $name)
-                            @foreach($physicians as $physician)
-                              @if($name->appointmentID == $physician->appointmentID)
-                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                            @foreach($dentists as $dentist)
+                              @if($name->appointmentID == $dentist->appointmentID)
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
-                                  <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
+                                  <td class=" ">{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}</td>
                                   <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
                                 </tr>
                               @endif
@@ -245,23 +245,23 @@
       });
     });
 
-    $('#btnReferToPhysician').click(function(){
-      var checkRecord = 1;
-      var hasRecord = { 
-                        hasRecord: checkRecord,
-                        hasAppointment: 1,
-                        appointmentID: $('#appointmentID').val(),
-                      };
-      console.log($('#logPatientForm').serialize());
-      $.ajax({
-        url:'/nurse/log/patient',
-        type:'get',
-        data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
-        success: function(output){
-            window.location.href = output.redirect;
-        }
-      });
-    });
+    // $('#btnReferToPhysician').click(function(){
+    //   var checkRecord = 1;
+    //   var hasRecord = { 
+    //                     hasRecord: checkRecord,
+    //                     hasAppointment: 1,
+    //                     appointmentID: $('#appointmentID').val(),
+    //                   };
+    //   console.log($('#logPatientForm').serialize());
+    //   $.ajax({
+    //     url:'/nurse/log/patient',
+    //     type:'get',
+    //     data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
+    //     success: function(output){
+    //         window.location.href = output.redirect;
+    //     }
+    //   });
+    // });
 
      var totalPatientJanuary = 0;
      var totalPatientFebruary = 0;
