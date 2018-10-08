@@ -92,7 +92,7 @@
           type: 'get',
           success: function(output){
               
-              $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
+              $('#notifNumber').text(output.number);
               $('#menu1').empty();
               for (var i = 0; i <Object.keys(output.text).length ; i++) {
                 $('#menu1').append(output.text[i]);
@@ -106,7 +106,7 @@
           type: 'get',
           success: function(output){
               
-              $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
+              $('#notifNumber').text(output.number);
               $('#menu1').empty();
               for (var i = 0; i <Object.keys(output.text).length ; i++) {
                 $('#menu1').append(output.text[i]);

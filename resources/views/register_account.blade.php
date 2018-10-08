@@ -65,8 +65,8 @@
               <div style="float: left; width: 100%; margin-bottom: 15px;">
                 <select class="form-control" name="position" data-parsley-required="true">
                   <option value="" disabled selected>Position</option>
-                  <option value="2">Chief Dental</option>
-                  <option value="3">Chief Medical</option>
+                  <option value="2">Dental Chief</option>
+                  <option value="3">Medical Chief</option>
                   <option value="4">Dentist</option>
                   <option value="5">Physician</option>
                   <option value="6">Nurse</option>

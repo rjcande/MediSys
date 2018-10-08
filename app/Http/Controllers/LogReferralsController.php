@@ -151,6 +151,7 @@ class LogReferralsController extends Controller
         $logReferral = LogReferrals::find($id);
 
         $logReferral->logReferralStatus = Input::get('status');
+        $logReferral->notif = 2;
 
         $logReferral->save();
     }
@@ -186,6 +187,7 @@ class LogReferralsController extends Controller
         $logReferral = LogReferrals::find($id);
 
         $logReferral->logReferralStatus = "3";
+        $logReferral->notif = 2;
 
         $logReferral->save();
     }
@@ -195,6 +197,7 @@ class LogReferralsController extends Controller
         $logReferral = LogReferrals::find($id);
 
         $logReferral->logReferralStatus = "3";
+        $logReferral->notif = 2;
 
         $logReferral->save();
     }

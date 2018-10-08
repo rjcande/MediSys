@@ -128,6 +128,7 @@ class DiagnosesController extends Controller
             $logReferral = LogReferrals::find(Input::get('logReferralID'));
 
             $logReferral->logReferralStatus = 2;
+            $logReferral->notif = 2;
 
             $logReferral->save();
 
@@ -279,6 +280,7 @@ class DiagnosesController extends Controller
             $logReferral = LogReferrals::find(Input::get('logReferralID'));
 
             $logReferral->logReferralStatus = 2;
+            $logReferral->notif = 2;
 
             $logReferral->save();
 
