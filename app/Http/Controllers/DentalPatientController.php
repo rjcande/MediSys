@@ -257,6 +257,7 @@ class DentalPatientController extends Controller
                                ->select('users.*', 'diagnoses.*', 'treatments.*')
                                ->orderBy('cliniclogs.created_at', 'desc')
                                ->where('cliniclogs.patientID', '=', $id)
+                               ->where('cliniclogs.isDeleted', '=', 0)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->get();
 
@@ -265,6 +266,7 @@ class DentalPatientController extends Controller
                                    ->orderBy('cliniclogs.created_at', 'desc')
                                    ->where('cliniclogs.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
+                                   ->where('cliniclogs.isDeleted', '=', 0)
                                    ->where('cliniclogs.reqForDentalCert', '=', '1')
                                    ->get();
 
@@ -285,6 +287,7 @@ class DentalPatientController extends Controller
                                ->select('users.*', 'diagnoses.*', 'treatments.*')
                                ->orderBy('cliniclogs.created_at', 'desc')
                                ->where('cliniclogs.patientID', '=', $id)
+                               ->where('cliniclogs.isDeleted', '=', 0)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->get();
 
@@ -293,6 +296,7 @@ class DentalPatientController extends Controller
                                    ->orderBy('cliniclogs.created_at', 'desc')
                                    ->where('cliniclogs.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
+                                   ->where('cliniclogs.isDeleted', '=', 0)
                                    ->where('cliniclogs.reqForDentalCert', '=', '1')
                                    ->get();
 

@@ -121,14 +121,16 @@ class DentalLogController extends Controller
             $vitalSigns->clinicLogID = $clinicLogID['clinicLogID'];
             $vitalSigns->save();
 
-            //SAVE CLINICLOGID TO APPOINTMENTS
-            $appointments = new Appointments;
+            if(Input::get('appointmentDate') != ''){
+                //SAVE CLINICLOGID TO APPOINTMENTS
+                $appointments = new Appointments;
 
-            $appointments->clinicLogID = $clinicLogID['clinicLogID'];
-            $appointments->appointmentType = 2;
-            $appointments->appointmentDesc = $request->appointmentDesc;
-            $appointments->appointmentDate = $request->appointmentDate;
-            $appointments->save();
+                $appointments->clinicLogID = $clinicLogID['clinicLogID'];
+                $appointments->appointmentType = 2;
+                $appointments->appointmentDesc = $request->appointmentDesc;
+                $appointments->appointmentDate = $request->appointmentDate;
+                $appointments->save();
+            }
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')
@@ -164,30 +166,49 @@ class DentalLogController extends Controller
             
             
 
-            for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
+            for ($i=0; $i < count(Input::get('medArray')) ; $i++) {
 
                 $prescription = new Prescription;
                 $prescription->treatmentID = $patientTreatmentID;
-                $prescription->medicineID = Input::get('medicineID')[$i];
-                $prescription->quantity = Input::get('medQuantity')[$i];
-                $prescription->medicineUnit = Input::get('medicineUnit')[$i];
-                $prescription->medication = Input::get('medication')[$i];
-                $prescription->dosage = Input::get('dosage')[$i];
-                $prescription->isPrescribed = Input::get('isPrescribed')[$i];
-                $prescription->isGiven = Input::get('isGiven')[$i];
+                // $prescription->medicineID = Input::get('medicineID')[$i];
+                // $prescription->quantity = Input::get('medQuantity')[$i];
+                // $prescription->medicineUnit = Input::get('medicineUnit')[$i];
+                // $prescription->medication = Input::get('medication')[$i];
+                // $prescription->dosage = Input::get('dosage')[$i];
+                // $prescription->isPrescribed = Input::get('isPrescribed')[$i];
+                // $prescription->isGiven = Input::get('isGiven')[$i];
+                $prescription->medicineID = Input::get('medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('medArray')[$i]['medicineQuantity'];
+                $prescription->dosage = Input::get('medArray')[$i]['medicineDosage'];
+                $prescription->medication = Input::get('medArray')[$i]['medicineMedication'];
+                $prescription->isPrescribed = Input::get('medArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('medArray')[$i]['isGiven'];
                 $prescription->save();
             }
 
-            for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
+            for ($i=0; $i < count(Input::get('prescribedArray')) ; $i++) {
+
+                $prescription = new Prescription;
+                $prescription->treatmentID = $patientTreatmentID;
+                $prescription->medicineID = Input::get('prescribedArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('prescribedArray')[$i]['medicineQuantity'];
+                $prescription->dosage = Input::get('prescribedArray')[$i]['medicineDosage'];
+                $prescription->medication = Input::get('prescribedArray')[$i]['medicineMedication'];
+                $prescription->isPrescribed = Input::get('prescribedArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('prescribedArray')[$i]['isGiven'];
+                $prescription->save();
+            }
+
+            for ($i=0; $i < count(Input::get('suppArray')) ; $i++){
 
                 $usedMedSupply = new UsedMedSupply;
                 $usedMedSupply->treatmentID = $patientTreatmentID;
-                $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
-                $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
-                $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
+                $usedMedSupply->medSupplyID = Input::get('suppArray')[$i]['medicalSupplyID'];
+                $usedMedSupply->quantity = Input::get('suppArray')[$i]['medicalSupplyQuantity'];
+                $usedMedSupply->suppliesUnit = Input::get('suppArray')[$i]['medicalSupplyUnit'];
                 $usedMedSupply->save();
             }
-
+            
             return Response::json(['message' => 'Successfully Added!']);
 
         } catch (Exception $e) {
@@ -244,14 +265,17 @@ class DentalLogController extends Controller
             $vitalSigns->clinicLogID = $clinicLogID['clinicLogID'];
             $vitalSigns->save();
 
-            //SAVE CLINICLOGID TO APPOINTMENTS
-            $appointments = new Appointments;
+            if(Input::get('appointmentDate') != ''){
+                //SAVE CLINICLOGID TO APPOINTMENTS
+                $appointments = new Appointments;
 
-            $appointments->clinicLogID = $clinicLogID['clinicLogID'];
-            $appointments->appointmentType = 2;
-            $appointments->appointmentDesc = $request->appointmentDesc;
-            $appointments->appointmentDate = $request->appointmentDate;
-            $appointments->save();
+                $appointments->clinicLogID = $clinicLogID['clinicLogID'];
+                $appointments->appointmentType = 2;
+                $appointments->appointmentDesc = $request->appointmentDesc;
+                $appointments->appointmentDate = $request->appointmentDate;
+                $appointments->save();
+            }
+           
 
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
@@ -285,27 +309,46 @@ class DentalLogController extends Controller
             $outsideReferral->save();
             }
 
-            for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
+            for ($i=0; $i < count(Input::get('medArray')) ; $i++) {
 
                 $prescription = new Prescription;
                 $prescription->treatmentID = $patientTreatmentID;
-                $prescription->medicineID = Input::get('medicineID')[$i];
-                $prescription->quantity = Input::get('medQuantity')[$i];
-                $prescription->medicineUnit = Input::get('medicineUnit')[$i];
-                $prescription->medication = Input::get('medication')[$i];
-                $prescription->dosage = Input::get('dosage')[$i];
-                $prescription->isPrescribed = Input::get('isPrescribed')[$i];
-                $prescription->isGiven = Input::get('isGiven')[$i];
+                // $prescription->medicineID = Input::get('medicineID')[$i];
+                // $prescription->quantity = Input::get('medQuantity')[$i];
+                // $prescription->medicineUnit = Input::get('medicineUnit')[$i];
+                // $prescription->medication = Input::get('medication')[$i];
+                // $prescription->dosage = Input::get('dosage')[$i];
+                // $prescription->isPrescribed = Input::get('isPrescribed')[$i];
+                // $prescription->isGiven = Input::get('isGiven')[$i];
+                $prescription->medicineID = Input::get('medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('medArray')[$i]['medicineQuantity'];
+                $prescription->dosage = Input::get('medArray')[$i]['medicineDosage'];
+                $prescription->medication = Input::get('medArray')[$i]['medicineMedication'];
+                $prescription->isPrescribed = Input::get('medArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('medArray')[$i]['isGiven'];
                 $prescription->save();
             }
 
-            for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
+            for ($i=0; $i < count(Input::get('prescribedArray')) ; $i++) {
+
+                $prescription = new Prescription;
+                $prescription->treatmentID = $patientTreatmentID;
+                $prescription->medicineID = Input::get('prescribedArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('prescribedArray')[$i]['medicineQuantity'];
+                $prescription->dosage = Input::get('prescribedArray')[$i]['medicineDosage'];
+                $prescription->medication = Input::get('prescribedArray')[$i]['medicineMedication'];
+                $prescription->isPrescribed = Input::get('prescribedArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('prescribedArray')[$i]['isGiven'];
+                $prescription->save();
+            }
+
+            for ($i=0; $i < count(Input::get('suppArray')) ; $i++){
 
                 $usedMedSupply = new UsedMedSupply;
                 $usedMedSupply->treatmentID = $patientTreatmentID;
-                $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
-                $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
-                $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
+                $usedMedSupply->medSupplyID = Input::get('suppArray')[$i]['medicalSupplyID'];
+                $usedMedSupply->quantity = Input::get('suppArray')[$i]['medicalSupplyQuantity'];
+                $usedMedSupply->suppliesUnit = Input::get('suppArray')[$i]['medicalSupplyUnit'];
                 $usedMedSupply->save();
             }
 
@@ -331,12 +374,19 @@ class DentalLogController extends Controller
         $patientDentalLog = DentalLog::find($id);
 
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                      ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                      ->select('patients.*', 'cliniclogs.*', 'users.*')
+                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
                                       ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
+
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('cliniclogs.clinicLogID', '=', $id)
+                            ->first();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
@@ -382,7 +432,7 @@ class DentalLogController extends Controller
                 return view('dentist.C_dentist_patient_more_info')->with(['patientDentalLogs'=>$patientDentalLogs, 'dentalLogEach'=>$patientDentalLog, 'diagnosis'=>$diagnosis, 'treatment'=>$treatment, 'medsGiven'=>$medsGiven ,'prescribed'=>$prescribed, 'medSupp'=>$medSupp]);
             }
             elseif($dentalLog->reqForDentalCert == 1){
-                return view('dentist.C_dentist_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment]);
+                return view('dentist.C_dentist_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment, 'dentist'=>$dentist]);
             }
         }
     }
@@ -391,12 +441,19 @@ class DentalLogController extends Controller
         $patientDentalLog = DentalLog::find($id);
 
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                      ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                      ->select('patients.*', 'cliniclogs.*', 'users.*')
+                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.isDeleted', '=', '0')
                                       ->where('cliniclogs.clinicType', '=', 'D')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();
+
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('cliniclogs.clinicLogID', '=', $id)
+                            ->first();
 
         $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
                               ->select('diagnoses.*')
@@ -442,7 +499,7 @@ class DentalLogController extends Controller
                 return view('dchief.C_dchief_patient_more_info')->with(['patientDentalLogs'=>$patientDentalLogs, 'dentalLogEach'=>$patientDentalLog, 'diagnosis'=>$diagnosis, 'treatment'=>$treatment, 'medsGiven'=>$medsGiven ,'prescribed'=>$prescribed, 'medSupp'=>$medSupp]);
             }
             elseif($dentalLog->reqForDentalCert == 1){
-                return view('dchief.C_dchief_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment]);
+                return view('dchief.C_dchief_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment, 'dentist'=>$dentist]);
             }
         }
     }

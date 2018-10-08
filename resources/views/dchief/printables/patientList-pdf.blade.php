@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Prescription</title>
+  <title>Patient List</title>
   <link rel="stylesheet" href="">
   <style type="text/css" media="screen">
     table{
@@ -19,7 +19,7 @@
     }
     th{
       text-align: left;
-    } 
+    }
     tr:nth-child(even){
       background-color: #dddddd;
     }
@@ -32,72 +32,58 @@
 <body>
     <div>
       <center>
-        <header style="font-size: 15px;">Republic of the Philippines</header><br>
-        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
-        <h1>Dental Log Records</h1>
+        <header style="font-size: 18px;">Republic of the Philippines</header><br>
+        <header style="font-size: 18px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
+        <header style="font-size: 18px;">MEDICAL SERVICES DEPARTMENT</header><br>
+        <header style="font-size: 18px;">Sta. Mesa, Manila</header><br>
+        <h1>Patient List</h1>
       </center>
       {{-- <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
       <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
 
-      <table style = "width:100%">
-        <caption>Dental Logs
-        </caption>
+      <table style = "width:100%; page-break-inside: auto;" >
+        {{-- <caption>Dental Logs</caption> --}}
+        <thead>
           <tr>
-            <th>No</th>
+            <th>Student/Faculty Number</th>
             <th>Patient ID</th>
             <th>Patient Name</th>
             <th>Type</th>
-            <th>Attending Dentist</th>
-            <th>Date</th>
-            <th>Time In</th>
-            <th>Time Out</th>
-          </tr>      
+          </tr>
+        </thead>      
           <tbody>
-          @php($ctr = 1)
-          {{ Session::put('number', $ctr)}}
-           @foreach($dentalLogs as $dentalLog)
+           @foreach($patientRecords as $patients)
               <tr>
-                <td>{{ $ctr }}</td>
-                <td>{{ $dentalLog->patientID }}</td>
-                <td>{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>
+                <td>{{ $patients->patientNumber }}</td>
+                <td>{{ $patients->patientID }}</td>
+                <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
                 <td class=" ">
-                    @if($dentalLog->patientType == 1)
+                    @if($patients->patientType == 1)
                     {{
                         'Student'
                     }}
-                    @elseif($dentalLog->patientType == 2)
+                    @elseif($patients->patientType == 2)
                     {{
                         'Faculty/College'
                     }}
-                    @elseif($dentalLog->patientType == 3)
+                    @elseif($patients->patientType == 3)
                     {{
                         'Admin/Dept'
                     }}
                     @endif
                 </td>
-                <td>{{$attendingDentist['lastName']}}, {{$attendingDentist['firstName']}} {{$attendingDentist['middleName']}} {{$attendingDentist['quantifier']}}</td>
-                <td>{{ date("F d, Y", strtotime($dentalLog->clinicLogDateTime)) }}</td>
-                <td>{{ date("h:i a", strtotime($dentalLog->clinicLogDateTime)) }}</td>
-                @if(empty($dentalLog->timeOut))
-                  <td></td>
-                @else
-                  <td>{{ date("h:i a", strtotime($dentalLog->timeOut))}}</td>
-                @endif
               </tr>
-           @php($ctr++)
            @endforeach
           </tbody>
         </table>
-
-        <div style="width:100%;text-align: right; position: absolute; bottom: 0">
+ 
+        {{-- <div style="width:100%;text-align: right; position: absolute; ">
           <div style="text-align: center; margin-left: 500px;">
             <header style="font-size: 18px; margin-top: 40px;"><u>{{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.lastName')}} {{Session::get('accountInfo.quantifier')}}</u> M.D.</header>
-            <header style="font-size: 18px;">Clinic Physician</header>   
+            <header style="font-size: 18px;">Clinic Dentist</header>   
             <header style="font-size: 18px; margin-top: 20px; text-align: right;"><u style="text-align: center; padding: 0 0 4px;">{{Session::get('accountInfo.licenseNumber')}}</u> Lic. No.</header>
           </div>
-        </div>
+        </div> --}}
     </div>
 </body>
 </html>

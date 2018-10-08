@@ -19,6 +19,7 @@
                   <div class="x_title">
                     <h2>{{ Session::get('patientInfo.patientID') }}, {{ Session::get('patientInfo.patientName')}}</h2>
                     <button class="btn btn-success btn-round" style="float: right;" data-toggle="modal" data-target="#uploadImageModal" id="btnUpload">Upload Image</button>
+                    {{-- <button class="btn btn-primary btn-round" style="float: right;" data-toggle="modal" data-target="#outsideReferModal" id="btnOutsideRefer">Refer Patient</button> --}}
                     <div class="clearfix"></div>
                   </div>
                   <form id="saveForm" data-id="{{Session::get('patientInfo.patientID')}}">
@@ -29,8 +30,8 @@
                         <ul>
                             <li><a href="#step-1">Step 1<br />Symptoms and Treatments</a></li>
                             <li><a href="#step-2">Step 2<br />Prescriptions</a></li>
-                            <li><a href="#step-3">Step 3<br/>Schedule Next Appointment(Optional)</a></li>
-                            <li><a href="#step-4">Step 4<br />Outside Referral(Optional)</a></li>
+                            <li><a href="#step-3">Step 3<br/>Next Appointment(Optional)</a></li>
+                            {{-- <li><a href="#step-4">Step 4<br />Outside Referral(Optional)</a></li> --}}
                         </ul>
                      
                         <div>
@@ -50,14 +51,14 @@
                                     <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                                       height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                                     <div style="display: inline-block;width: 95%;">
-                                      <input style="margin-left: 15%;" type="checkbox" value="1" data-parsley-group="first" name="dentalExam"><label>&nbspDental Examination</label>
-                                      <input style="margin-left: 42.4%;" type="checkbox" value="1" data-parsley-group="first" name="oralProphylaxis"><label>&nbspOral Prophylaxis</label>
-                                      <br>
-                                      <input style="margin-left: 15%;" type="checkbox" value="1" data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
-                                      <input style="margin-left: 10%" type="checkbox" value="1" data-parsley-group="first" name="restorationChk"><label>&nbspRestoration(Filling Tooth):</label>
+                                      <input style="margin-left: 6%;" type="checkbox" value="1" data-parsley-group="first" name="dentalExam"><label>&nbspDental Examination</label>
+                                      <input style="margin-left: 5%;" type="checkbox" value="1" data-parsley-group="first" name="oralProphylaxis"><label>&nbspOral Prophylaxis</label>
+                                      <input style="margin-left: 5%" type="checkbox" value="1" data-parsley-group="first" name="restorationChk"><label>&nbspRestoration(Filling Tooth):</label>
                                       <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="restorationTxt">
-                                      <input style="margin-left: 8%" type="checkbox" value="1" data-parsley-group="first" name="extractionChk"><label>&nbspExtraction:</label>
-                                      <input style="width:150px; border-radius:8px; margin-left:1%;"  type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="extractionTxt">
+                                      <input style="margin-left: 5%" type="checkbox" value="1" data-parsley-group="first" name="extractionChk"><label>&nbspExtraction:</label>
+                                      <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" placeholder="Tooth Number" data-parsley-group="first" disabled name="extractionTxt">
+                                      <br>
+                                      <input style="margin-left: 6%;" type="checkbox" value="1" data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
                                       <textarea name="treatment" id="treatment" rows="7" data-parsley-group="first" disabled class="form-control" placeholder="Enter treatment done here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;  margin-bottom: 20px"></textarea>
                                     </div>
                                   </div>
@@ -79,7 +80,7 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Generic Name</header>
                                     </div>
                                     <div style="float: left;">
-                                      <select style="width:250px; border-radius:8px; margin-bottom:12px;height: 25px;" name="genericName" id="genericName"   data-parsley-required="true" data-parsley-group="second">
+                                      <select style="width:250px; border-radius:8px; margin-bottom:12px;height: 25px;" name="genericName" id="genericName" data-parsley-required="true" data-parsley-group="second">
                                         <option value="" disabled selected hidden>Select Generic Name</option>
                                         @foreach($medicines as $medicine)
                                           <option value="{{ $medicine->medicineID }}">{{ $medicine->genericName }}</option>
@@ -134,10 +135,16 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Dosage</header>
                                     </div>
                                     <div style="float:left;">
-                                      <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                                      {{-- <select name="dosage" id="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
                                         @foreach($medicines as $medicine)
                                           <option value="{{$medicine->dosage}}">{{$medicine->dosage}}</option>
                                         @endforeach
+                                      </select> --}}
+                                      <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" id="dosage" data-parsley-group="second" data-parsley-required="true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                                      <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="second" data-parsley-required="true" data-parsley-errors-container="#error-dosage">
+                                        <option value="mg">mg</option>
+                                        <option value="g">g</option>
+                                        <option value="oz">oz</option>
                                       </select>
                                       <br>
                                     </div><br>
@@ -154,10 +161,10 @@
                                     </div>
                                     <div style="float:left; width: 300px; font-size: 15px;">
                                       <header style="display: inline;">every</header>
-                                      <input type="number" name="hrs_day" style="width: 20%; border-radius: 10px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="hrs/day is required">
+                                      <input type="number" name="hrs_day" min="1" style="width: 20%; border-radius: 10px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="hrs/day is required">
                                       <header style="display: inline;">hrs/day</header>
                                       <header style="display: inline;">for</header>
-                                      <input type="number" name="week" style="width: 20%; border-radius: 10px; display: inline;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="week/s is required">
+                                      <input type="number" name="week" min="1" style="width: 20%; border-radius: 10px; display: inline;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="week/s is required">
                                       <header style="display: inline;">week/s</header>
                                       <br>
                                     </div><br><br>
@@ -184,7 +191,7 @@
                                       <header style="margin-bottom:12px; margin-left:10px;"> Medical Supply Name</header>
                                     </div>
                                     <div style="float: left;">
-                                      <select style="width:250px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" name="medSuppName"  id="medSuppName" data-parsley-required="true" data-parsley-group="third">
+                                      <select style="width:250px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" name="medSuppName" id="medSuppName" data-parsley-required="true" data-parsley-group="third">
                                         <option value="" disabled="" selected="">Select Supply Name</option>
                                         @foreach($medSupplies as $medSupply)
                                           <option value="{{$medSupply->medSupID}}">{{$medSupply->medSupName}}</option>
@@ -304,7 +311,7 @@
                               <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 970px;">
                                 <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                                 <div class="table-responsive">
-                                  <table class="table table-striped table-bordered jambo_table bulk_action">
+                                  <table class="table table-striped table-bordered jambo_table bulk_action" id="prescriptionTable">
                                     <thead>
                                       <tr class="headings">
                                         <th>
@@ -336,19 +343,19 @@
                               <!-- STEP 3 OPENING -->
                                 <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%; background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">  Next Appointment</label>
                                 <br>
-                                <label for="appointmentDate" style="margin-left:25px;font-size:18px">Enter Next Appointment date:  </label>
+                                <label style="margin-left:25px;font-size:18px"> Next Appointment date:  </label>
                                 <input type="date" id="appointmentDate" name="appointmentDate" style="width:300px; border-radius:8px; font-size:18px; margin-bottom:12px;margin-left:5px" data-parsley-group="first">
                                 <br>
                                 <textarea name="appointmentDesc" id="appointmentDesc" rows="7" data-parsley-group="first" class="form-control" placeholder="Enter Appointment Reason Here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%; height:100px;  margin-bottom: 20px"></textarea>
                               <!-- STEP 3 CLOSING -->
                             </div>
-                            <div id="step-4" class="">
+                            {{-- <div id="step-4" class="">
                               <!-- STEP 4 OPENING -->
                                 <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 90%;
                                   background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">View Referral Slip</label>
                                 <button type="button" data-target="#outsideReferModal" data-toggle="modal" class="btn btn-success" style="margin-left: 50%"><i class="fa fa-download"></i> Referral Slip</button>
                               <!-- STEP 4 CLOSING -->
-                            </div>
+                            </div> --}}
 
                             
                         </div>
@@ -414,7 +421,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><input type="submit" class="btn btn-success" value="Save and Print"></center>
+        <center><button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> Save And Print</button></center>
       </div>
       </form>
     </div>
@@ -436,6 +443,12 @@ $(document).ready(function(){
   var isPrescribed = new Array();
   var medicineUnit = new Array();
   var id_medicineUnit = new Array();
+  var array_med = {};
+  var array_prescribed = {};
+  var array_supp = {};
+  var ctr_med = 0;
+  var ctr_prescribed = 0;
+  var ctr_supp = 0;
 
   //FUNCTION IN ENABLING THE TEXTAREA FOR THE TREATMENT
   $('input[name=othersTreatment]').change(function(){
@@ -525,13 +538,9 @@ $(document).ready(function(){
                                           $('#saveForm').parsley().validate('first');/////////////////
                                           if($('#saveForm').parsley().isValid('first')){/////////////////
                                             var id = {///////////////
-                                              medicineID: id_medBrandName,///////////////
-                                              medQuantity: medicineQuantity,/////////////////
-                                              medicineUnit: medicineUnit,///////////
-                                              medSupplyID: id_medSuppBrandName,///////////////
-                                              medSupplyQuantity: medSuppQuantity,///////////////
-                                              medication: medication,///////////////
-                                              dosage: dosage,///////////////
+                                              medArray: array_med,/////////////
+                                              prescribedArray: array_prescribed,//////////
+                                              suppArray:array_supp,
                                               isPrescribed: isPrescribed,///////////////
                                               isGiven: isGiven,///////////////
                                             }///////////////
@@ -565,6 +574,13 @@ $(document).ready(function(){
                                           $('#smartwizard').smartWizard("reset"); 
                                         });
 
+  var btnRefer = $('<button type="button"></button>').text('REFER')
+                                      .addClass('btn btn-primary')
+                                      .attr('id', 'btnOutsideRefer')
+                                      .on('click', function(){
+                                        $('#outsideReferModal').modal('show');
+                                      });
+
 
   $('#smartwizard').smartWizard({
     selected: 0,
@@ -577,7 +593,7 @@ $(document).ready(function(){
                       toolbarButtonPosition: 'end',
                       showNextButton: true,
                       showPreviousButton: true,
-                      toolbarExtraButtons: [btnFinish, btnCancel]
+                      toolbarExtraButtons: [btnFinish, btnCancel, btnRefer]
                     },
     anchorSettings:{ 
       anchorClickable: true,
@@ -617,11 +633,28 @@ $(document).ready(function(){
         var medicineName = $(this).find("option:selected").text();
         // alert();
         $.get('/get/medicine/brand?medicineName=' + medicineName, function(data){
-          console.log(data);
+          // console.log(data);
           $('#medicineBrand').empty();
           $('#medicineUnit').empty();
           $('#medicineBrand').prop("disabled", false);
           $('#medicineUnit').prop("disabled", false);
+          
+          var str = data[0]['dosage'];
+          var splitted = str.split(" ");
+
+          $('#dosage').val(splitted[0]);
+          if(splitted[1] == 'mg'){
+            $('#dosageUnit').val("mg");
+          }
+          else if(splitted[1] == 'ml'){
+            $('#dosageUnit').val("ml");
+          }
+          else if(splitted[1] == 'g'){
+            $('#dosageUnit').val("g");
+          }
+          else if(splitted[1] == 'oz'){
+            $('#dosageUnit').val("oz");
+          }
 
           $.each(data, function(index, medBrand){
             $('#medicineBrand').append('<option value="'+medBrand.medicineID+'">'+medBrand.brand+'</option>');
@@ -634,7 +667,7 @@ $(document).ready(function(){
       $('#medSuppName').on('change', function(e){
         var medSupplyName = $(this).find("option:selected").text();
         $.get('/get/medSupply/brand?medSupplyName=' + medSupplyName, function(data){
-          console.log(data);
+          // console.log(data);
           $('#medSuppBrand').empty();
           $('#medSuppUnit').empty();
           $('#medSuppBrand').prop("disabled", false);
@@ -653,25 +686,57 @@ $(document).ready(function(){
         // alert();
         $('#saveForm').parsley().validate('second');
         if ($('#saveForm').parsley().isValid('second')){
-          var genericName = $('select#genericName option:selected').text();
-          var id_genericName = $('select#genericName').val();
-          var medBrandName = $('select#medicineBrand option:selected').text();
-          id_medBrandName[id_medBrandName.length] = $('select#medicineBrand').val();
-          medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
-          medicineUnit = $('select#medicineUnit option:selected').text();
-          id_medicineUnit = $('select#medicineUnit').val();
-          dosage[dosage.length] = $('#dosage').val();
-          // medication[medication.length] = $('#medication').val();
-          // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
-          medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
-          isPrescribed[isPrescribed.length] = 0;
-          isGiven[isGiven.length] = 1;
-
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+genericName+"</td><td class=' '>"+medBrandName+"</td><td class=' '>"+medicineQuantity[medicineQuantity.length-1]+"</td><td class=' '>"+medicineUnit+"</td><td class= ' '>"+medication[medication.length-1]+"</td><td class= ' '>"+dosage[dosage.length-1]+"</td></tr>";
-
-          // $('#medicineTableBody').append(tr);
-          $(tr).prependTo('#medicineTableBody');
-
+          if(Object.keys(array_med).length == 0){
+            array_med[ctr_med] = {
+              medicineGenericName: $('select#genericName option:selected').text(),
+              medicineBrandName: $('select#medicineBrand option:selected').text(),
+              medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              medicineUnit: $('select#medicineUnit option:selected').text(),
+              medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
+              medicineID: $('select#medicineBrand option:selected').val(),
+              medicineQuantity: $('#medQuantity').val(),
+              isGiven: 1,
+              isPrescribed: 0
+            };
+            $('#medicineTable tbody').empty();
+            displayTableRow();
+          }
+          
+          else{
+            var isEqual = false;
+            var key;
+            
+            for(var i = 0; i < Object.keys(array_med).length; i++){
+              if(array_med[i].medicineID == $('select#medicineBrand').val()){
+                isEqual = true;
+                key = i;
+              }
+            }
+            
+            if(isEqual == true){
+              array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('#medQuantity').val());
+              $('#medicineTable tbody').empty();
+              displayTableRow(); 
+            }
+            
+            else if(isEqual == false){
+              ctr_med++;
+              array_med[ctr_med] = {
+                medicineGenericName: $('select#genericName option:selected').text(),
+                medicineBrandName: $('select#medicineBrand option:selected').text(),
+                medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                medicineUnit: $('select#medicineUnit option:selected').text(),
+                medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
+                medicineID: $('select#medicineBrand option:selected').val(),
+                medicineQuantity: $('#medQuantity').val(),
+                isGiven: 1,
+                isPrescribed: 0
+              };
+              $('#medicineTable tbody').empty();
+              displayTableRow();
+            }
+          
+          }
         }
         else{
           return false;
@@ -684,18 +749,48 @@ $(document).ready(function(){
         //VARIABLE FOR VALIDATION OF ALL THE FIELDS
         $('#saveForm').parsley().validate('third');
         if ($('#saveForm').parsley().isValid('third')){
-          var medSuppName = $('select[name=medSuppName] option:selected').text();
-          var id_medSuppName = $('select[name=medSuppName]').val();
-          var medSuppBrandName = $('select[name=medSuppBrand] option:selected').text();
-          id_medSuppBrandName[id_medSuppBrandName.length] = $('select[name=medSuppBrand]').val();
-          medSuppQuantity[medSuppQuantity.length] = $('input[name=medSuppQuantity]').val();
-          var medSuppUnit = $('select[name=medSuppUnit] option:selected').text();
-          var id_medSuppUnit = $('select[name=medSuppUnit]').val();
+          if(Object.keys(array_supp).length == 0){
+            array_supp[ctr_supp] = {
+              medicalSupplyName: $('#medSuppName option:selected').text(),
+              medicalSupplyBrand: $('#medSuppBrand option:selected').text(),
+              medicalSupplyQuantity: $('#medSuppQuantity').val(),
+              medicalSupplyUnit: $('#medSuppUnit option:selected').text(),
+              medicalSupplyID: $('select#medSuppBrand option:selected').val(),
+            };
+            $('#medSuppTable tbody').empty();
+            displaySuppliesRow();
+          }
 
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+medSuppName+"</td><td class=' '>"+medSuppBrandName+"</td><td class=' '>"+medSuppQuantity[medSuppQuantity.length-1]+"</td><td class=' '>"+medSuppUnit+"</td></tr>";
+          else{
+            var isEqual = false;
+            var key;
 
-          $('#medSuppTable').append(tr);
-          
+            for(i = 0; i < Object.keys(array_supp).length; i++){
+              if(array_supp[i].medicalSupplyID == $('select#medSuppBrand').val()){
+                isEqual = true;
+                key = i;
+              }
+            }
+
+            if(isEqual == true){
+              array_supp[key].medicalSupplyQuantity = parseInt(array_supp[key].medicalSupplyQuantity) + parseInt($('#medSuppQuantity').val());
+              $('#medSuppTable tbody').empty();
+              displaySuppliesRow();
+            }
+
+            else if(isEqual == false){
+              ctr_supp++;
+              array_supp[ctr_supp] = {
+                medicalSupplyName: $('#medSuppName option:selected').text(),
+                medicalSupplyBrand: $('#medSuppBrand option:selected').text(),
+                medicalSupplyQuantity: $('#medSuppQuantity').val(),
+                medicalSupplyUnit: $('#medSuppUnit option:selected').text(),
+                medicalSupplyID: $('select#medSuppBrand option:selected').val(),
+              };
+              $('#medSuppTable tbody').empty();
+              displaySuppliesRow();
+            }
+          }
         }
         else{
           return false;
@@ -703,35 +798,93 @@ $(document).ready(function(){
       });
 
       //VALIDATION IN PRESCRIBING MEDICINE
-            $('#btnPrescribe').click(function(event){
-              event.preventDefault();
-              // alert();
-              $('#saveForm').parsley().validate('second');
-              if ($('#saveForm').parsley().isValid('second')){
-                var genericName = $('select#genericName option:selected').text();
-                var id_genericName = $('select#genericName').val();
-                var medBrandName = $('select#medicineBrand option:selected').text();
-                id_medBrandName[id_medBrandName.length] = $('select#medicineBrand').val();
-                medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
-                medicineUnit = $('select#medicineUnit option:selected').text();
-                id_medicineUnit = $('select#medicineUnit').val();
-                dosage[dosage.length] = $('#dosage').val();
-                // medication[medication.length] = $('#medication').val();
-                // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
-                medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
-                isPrescribed[isPrescribed.length] = 1;
-                isGiven[isGiven.length] = 0
-
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+genericName+"</td><td class=' '>"+medBrandName+"</td><td class=' '>"+medicineQuantity[medicineQuantity.length-1]+"</td><td class=' '>"+medicineUnit+"</td><td class= ' '>"+medication[medication.length-1]+"</td><td class=' '>"+dosage[dosage.length-1]+"</tr>";
-
-                $('#prescribedMedTable').append(tr);
-
+      $('#btnPrescribe').click(function(event){
+        event.preventDefault();
+        // alert();
+        $('#saveForm').parsley().validate('second');
+        if ($('#saveForm').parsley().isValid('second')){
+          if(Object.keys(array_prescribed).length == 0){
+            array_prescribed[ctr_prescribed] = {
+              medicineGenericName: $('select#genericName option:selected').text(),
+              medicineBrandName: $('select#medicineBrand option:selected').text(),
+              medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              medicineUnit: $('select#medicineUnit option:selected').text(),
+              medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
+              medicineID: $('select#medicineBrand option:selected').val(),
+              medicineQuantity: $('#medQuantity').val(),
+              isGiven: 0,
+              isPrescribed: 1
+            };
+            $('#prescriptionTable tbody').empty();
+            displayPrescribedTableRow();
+          }
+          
+          else{
+            var isEqual = false;
+            var key;
+            
+            for(var i = 0; i < Object.keys(array_prescribed).length; i++){
+              if(array_prescribed[i].medicineID == $('select#medicineBrand').val()){
+                isEqual = true;
+                key = i;
               }
-              else{
-                return false;
-              }
-            });
+            }
+            
+            if(isEqual == true){
+              array_prescribed[key].medicineQuantity = parseInt(array_prescribed[key].medicineQuantity) + parseInt($('#medQuantity').val());
+              $('#prescriptionTable tbody').empty();
+              displayPrescribedTableRow(); 
+            }
+            
+            else if(isEqual == false){
+              ctr_prescribed++;
+              array_prescribed[ctr_prescribed] = {
+                medicineGenericName: $('select#genericName option:selected').text(),
+                medicineBrandName: $('select#medicineBrand option:selected').text(),
+                medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                medicineUnit: $('select#medicineUnit option:selected').text(),
+                medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
+                medicineID: $('select#medicineBrand option:selected').val(),
+                medicineQuantity: $('#medQuantity').val(),
+                isGiven: 0,
+                isPrescribed: 1
+              };
+              $('#prescriptionTable tbody').empty();
+              displayPrescribedTableRow();
+            }
+          
+          }
+        }
+        else{
+          return false;
+        }
+      });
+    
+    function displayTableRow(){
+        for(var i = 0; i < Object.keys(array_med).length; i++){
+          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrandName+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td class= ' '>"+array_med[i].medicineDosage +"</td><td class=' '>"+array_med[i].medicineMedication+"</td></tr>";
+          $(tr).prependTo('#medicineTableBody');
+        }
+    }
+    function displaySuppliesRow(){
+      console.log(array_supp)
+        for(var i = 0; i < Object.keys(array_supp).length; i++){
+          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicalSupplyTable'></td><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
+          $(tr).prependTo('#medSuppTableBody');
+        }
+    }
 
+    function displayPrescribedTableRow(){
+      // console.log(array_prescribed)
+        for(var i = 0; i < Object.keys(array_prescribed).length; i++){
+          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
+          $(tr).prependTo('#prescribedMedTable');
+        }
+    }
+
+    // $('#appointmentDate').datetimepicker({
+    //     minDate: moment()
+    // });
 
 });
 </script>

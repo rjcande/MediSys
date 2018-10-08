@@ -6,7 +6,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3></h3>
+            <h3>Dashboard</h3>
           </div>
         </div>
 
@@ -29,6 +29,12 @@
                   <div class="">
                     <br>
                     <div id="diagnosis">
+            
+                      <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
+                        <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
+                            height:30px; border-radius:8px;">&nbsp<b>Symptoms</b></p>
+                        <textarea rows="7" name="diagnosisTextArea" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" readonly>{{$patientDentalLog->symptoms}}</textarea>
+                      </div>
                     
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
@@ -39,7 +45,7 @@
 
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
-                        <div style="display: inline-block;width: 95%;">
+                        {{-- <div style="display: inline-block;width: 95%;">
                           <input style="margin-left: 15%;" type="checkbox" value="1" readonly name="dentalExam"
                             @if($treatment['dentalExamination'] == 1)
                             {{"checked"}}
@@ -61,16 +67,43 @@
                             {{"checked"}}
                             @endif
                           ><label>&nbspRestoration(Filling Tooth):</label>
-                          <input style="width: 10%" type="text" value="{{$treatment['restorationTooth']}}" readonly name="restorationTxt">
-                          <input style="margin-left: 10%" type="checkbox" value="1" name="extractionChk"
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['restorationTooth']}}" readonly name="restorationTxt">
+                          <input style="margin-left: 6%" type="checkbox" value="1" name="extractionChk"
                             @if($treatment['extraction'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspExtraction:</label>
-                          <input style="width: 10%" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
-                          
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" readonly name="extractionTxt">
                           <textarea rows="7" class="form-control" readonly style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
-                        </div>                      </div>
+                        </div> --}}
+                        <div style="display: inline-block;width: 95%;">
+                          <input style="margin-left: 6%;" type="checkbox" value="1" readonly data-parsley-group="first" name="dentalExam"
+                            @if($treatment['dentalExamination'] == 1)
+                            {{"checked"}}
+                            @endif`     
+                          ><label>&nbspDental Examination</label>
+                          <input style="margin-left: 5%;" type="checkbox" value="1" readonly data-parsley-group="first" name="oralProphylaxis"
+                            @if($treatment['oralProphylaxis'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspOral Prophylaxis</label>
+                          <input style="margin-left: 5%" type="checkbox" value="1" readonly data-parsley-group="first" name="restorationChk"
+                            @if($treatment['restoration'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspRestoration(Filling Tooth):</label>
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" readonly value="{{$treatment['restorationTooth']}}" data-parsley-group="first" readonly name="restorationTxt">
+                          <input style="margin-left: 5%" type="checkbox" value="1" readonly data-parsley-group="first" name="extractionChk"
+                            @if($treatment['extraction'] == 1)
+                            {{"checked"}}
+                            @endif
+                          ><label>&nbspExtraction:</label>
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" data-parsley-group="first" readonly name="extractionTxt">
+                          <br>
+                          <input style="margin-left: 6%;" type="checkbox" value="1" readonly data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
+                          <textarea name="treatment" id="treatment" readonly rows="7" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;  margin-bottom: 20px">{{$treatment['treatmentDescription']}}</textarea>
+                        </div>
+                      </div>
                       <br><br>
                 
                       <div id="prescription" style="float:left; margin-top: 50px; width: 100%">
@@ -106,8 +139,8 @@
                               </tr>
                             </thead>
 
-                            <tbody>
-                              @foreach($medsGiven as $meds)
+                            @foreach($medsGiven as $meds)
+                              <tbody>
                                 <td></td>
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
@@ -115,8 +148,8 @@
                                 <td>{{$meds->unit}}</td>
                                 <td>{{$meds->medication}}</td>
                                 <td>{{$meds->dosage}}</td>
-                              @endforeach
                             </tbody>
+                          @endforeach
                           </table>
                         </div>
                       </div>
@@ -134,26 +167,25 @@
                                 <th class="column-title" style="padding-right:50px;">Brand </th>
                                 <th class="column-title">Quantity Used </th>
                                 <th class="column-title">Unit </th> 
-                                <th class="column-title"></th>  
                               </tr>
                             </thead>
 
-                            <tbody>
-                              @foreach($medSupp as $medSupps)
+                            @foreach($medSupp as $medSupps)
+                              <tbody>
                                 <td></td>
                                 <td>{{$medSupps->medSupName}}</td>
                                 <td>{{$medSupps->brand}}</td>
                                 <td>{{$medSupps->quantity}}</td>
                                 <td>{{$medSupps->unit}}</td>
-                              @endforeach
-                            </tbody>
+                              </tbody>
+                            @endforeach
                           </table>
                         </div>
                       </div>
 
                       <!-- PRESCRIBED MEDICINE TABLE -->
                     <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 970px;">
-                        <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
+                      <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                         <div class="table-responsive">
                           <table class="table table-striped table-bordered jambo_table bulk_action">
                             <thead>
@@ -170,8 +202,8 @@
                               </tr>
                             </thead>
 
-                            <tbody>
-                              @foreach($prescribed as $prescribedMeds)
+                            @foreach($prescribed as $prescribedMeds)
+                              <tbody>
                                 <td></td>
                                 <td>{{$prescribedMeds->genericName}}</td>
                                 <td>{{$prescribedMeds->brand}}</td>
@@ -179,8 +211,8 @@
                                 <td>{{$prescribedMeds->unit}}</td>
                                 <td>{{$prescribedMeds->medication}}</td>
                                 <td>{{$prescribedMeds->dosage}}</td>
-                              @endforeach
-                            </tbody>
+                              </tbody>
+                            @endforeach
                           </table>
                           <button type="button" class="btn btn-default"
                             style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
@@ -190,52 +222,9 @@
                       </div>
 
                 
-                      <div style="margin-top: 25px;float: left;text-align: right;width: 100%">
-                        <form method="post">
-                          <!-- <button type="submit" class="btn btn-default" name="btnViewMore" style="background-color:#00d2d3; color:white;">VIEW MORE</button> -->
-                          <input type="hidden" name="patientID">
-                        </form>
-                        <!--IF VIEW MORE BUTTON IS PRESSED -->
-                        <!--<?php    
-                          /*if(isset($_POST['btnViewMore']))
-                          {
-                            //$patientID = $_POST['patientID'];
-                            //THIS MUST FIRST SEARCH FOR ANY EXISTING DENTAL PATIENT HISTORY IN THIS RECORD
-                            //QUERY TO SEARCH FOR AN EXISTING DENTAL PATIENT HISTORY
-
-                            $searchQuery = "SELECT DISTINCT patientID FROM dentalpatienthistory dp WHERE EXISTS (SELECT patientID FROM cliniclog cl WHERE cl.patientID = dp.patientID AND cl.patientID = '$displayPatientID')";
-                            $searchResult = mysqli_query($conn,$searchQuery);
-                             $num = mysqli_affected_rows($conn);
-                              if ($num == 0) 
-                              {
-                                echo "<script>alert('There was no Patient History Record found!!')</script>";
-                                echo "<script>if(window.confirm('Do you want to create a Patient History Record?'))
-                                { 
-                                  window.location.href ='C_dentist_dental_form.php?patientID=$displayPatientID&patientName=$patientName';
-                                  exit();
-                                }</script>";
-                              }
-                              elseif ($num > 0)
-                              {
-                              $_SESSION['currentPatientID'] = $_POST['patientID'];
-                              echo "<script>window.location.href ='C_dentist_patient_view_history.php'</script>";
-                              exit();
-                              }
-                            }
-                            
-
-                            /*
-                            elseif($searchResult))
-                            {
-                              echo "<script>alert('There was no Patient History Record found!!')</script>";
-                              echo "<script>if(window.confirm('Do you want to create a Patient History Record?'))
-                              {
-                                window.location.href ='C_dentist_dental_form.php';
-                                exit();
-                              }</script>";
-                            }*/
-                        ?>-->
-                        <button data-id="{{$patientDentalLog->patientID}}" id="btnBack" class="btn btn-primary">BACK</button>
+                      <div style="margin-left: 50%;margin-top: 25px;float: left;;width: 50%">
+                        {{-- <a href="{{route('dentist.dentalLog.edit', $patientDentalLog->clinicLogID)}}"><button class="btn btn-warning">EDIT</button></a> --}}
+                        <a href="{{url('/dentist/DentalLog')}}"><button class="btn btn-primary">BACK</button></a>
                       </div>
                         
                     </div>
@@ -248,11 +237,5 @@
         </div>
       </div>
     </div>
-
-<script>
-  $('#btnBack').click(function(e){
-    window.location.href = '/dentist/patient/consultations/' + $('#btnBack').data('id');
-  });
-</script>
 
 @endsection

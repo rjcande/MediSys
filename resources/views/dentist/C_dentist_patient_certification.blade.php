@@ -117,7 +117,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><input type="submit" class="btn btn-success"></center>
+        <center><button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> SAVE AND PRINT</button></center>
       </div>
       </form>
     </div>

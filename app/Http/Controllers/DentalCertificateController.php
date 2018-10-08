@@ -92,7 +92,7 @@ class DentalCertificateController extends Controller
 
         $treatment->save();
 
-        $pdf = PDF::loadview('dentist.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+        $pdf = PDF::loadview('dentist.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
     public function dchiefShow()
@@ -124,7 +124,7 @@ class DentalCertificateController extends Controller
 
         $treatment->save();
 
-        $pdf = PDF::loadview('dchief.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+        $pdf = PDF::loadview('dchief.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
         return $pdf->stream('dental_certificate.pdf');
     }
 
@@ -181,7 +181,7 @@ class DentalCertificateController extends Controller
 
         // dd($referral);
 
-        $pdf = PDF::loadview('dentist.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
+        $pdf = PDF::loadview('dentist.printables.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
     public function dchiefShowOutsideRefer()
@@ -204,7 +204,7 @@ class DentalCertificateController extends Controller
 
         // dd($referral);
 
-        $pdf = PDF::loadview('dchief.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
+        $pdf = PDF::loadview('dchief.printables.dental_outside_refer', compact('referral', 'remarks', 'date', 'patientName', 'lastName', 'firstName', 'middleName', 'quantifier'));
         return $pdf->stream('dental_outside_refer.pdf');
     }
  
@@ -227,7 +227,7 @@ class DentalCertificateController extends Controller
                                 ->get();
 
 
-        $pdf = PDF::loadView('dentist.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
+        $pdf = PDF::loadView('dentist.printables.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
         return $pdf->stream('dentist.prescription-pdf');
 
     }
@@ -250,24 +250,342 @@ class DentalCertificateController extends Controller
                                 ->get();
 
 
-        $pdf = PDF::loadView('dchief.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
+        $pdf = PDF::loadView('dchief.printables.prescription-pdf', compact('prescribed', 'dentalLogInfo'));
         return $pdf->stream('dchief.prescription-pdf');
 
     }
 
-    public function generateDentalTable()
+    public function generateDentalLogTable(Request $request)
     {
-        $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                               ->select('cliniclogs.*', 'patients.*')
-                               ->orderBy('cliniclogs.created_at', 'desc')
-                               ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
-                               ->get();
-        $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+        // $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+        //                        ->select('cliniclogs.*', 'patients.*')
+        //                        ->orderBy('cliniclogs.created_at', 'desc')
+        //                        ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
+        //                        ->get();
+        // $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+        //                         ->select('users.*')
+        //                         ->first();
+
+        // dd($request->all());
+
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->whereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                 ->select('users.*')
                                 ->first();
-        $pdf = PDF::loadView('dentist.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->whereMonth('cliniclogs.clinicLogDateTime', '=', $request->mon)
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->yearMonth)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+            
+        $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+     
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->mon)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->yearMonth)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+            
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+        
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->mon)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->yearMonth);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }    
+
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('cliniclogs.clinicLogDateTime', '=', $request->mon)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->yearMonth)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'd')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+
+        $pdf = PDF::loadView('dentist.printables.dentalLogTable-pdf', compact('dentalLogs', 'attendingDentist'));
         $pdf->setPaper('legal', 'landscape');
         return $pdf->stream('dentist.dentalLogtable-pdf');
+    }
+
+    public function viewMoreCertificate($id)
+    {
+        $treatments = Treatment::find($id);
+        $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                            //    ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                               ->select('cliniclogs.*', 'patients.*')
+                               ->where('cliniclogs.clinicLogID', '=', $treatments->clinicLogID)
+                               ->first();
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.clinicLogID', '=', $treatments->clinicLogID)
+                            ->first();
+
+        $certDate = date("F d, Y", strtotime($treatments['created_at'])) ;
+        $certPatientName = $dentalLogs['lastName'] . ", " . $dentalLogs['firstName'] . " " . $dentalLogs['middleName'] . " " . $dentalLogs['quantifier'];
+        $certDentalExam = $treatments['dentalExamination'];
+        $certOralProphylaxis = $treatments['oralProphylaxis'];
+        $certRestorationChk = $treatments['restoration'];
+        $certRestorationTxt = $treatments['restorationTooth'];
+        $certExtractionChk = $treatments['extraction'];
+        $certExtractionTxt = $treatments['extractionTooth'];
+        $certOthersChk = $treatments['othersTreatment'];
+        $certOthersTextArea = $treatments['treatmentDescription'];
+        $certRecommendations = $treatments['recommendations'];
+        $certDentistSigned = $dentist['lastName'] . ", " . $dentist['firstName'] . " " . $dentist['middleName'] . " " . $dentist['quantifier'];
+
+        if(Session::get('accountInfo.position') == 4){
+            $pdf = PDF::loadview('dentist.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            return $pdf->stream('dental_certificate.pdf');
+        }
+        else if(Session::get('accountInfo.position') == 2){
+            $pdf = PDF::loadview('dchief.printables.dental_certificate', compact('certDate', 'certPatientName', 'certDentalExam', 'certOralProphylaxis', 'certRestorationChk', 'certRestorationTxt', 'certExtractionChk', 'certExtractionTxt', 'certOthersChk', 'certOthersTextArea', 'certRecommendations', 'certDentistSigned'));
+            return $pdf->stream('dental_certificate.pdf');
+        }
+    }
+
+    public function generatePatientList(Request $request)
+    {
+        // $patientRecords = Patient::select('patients.*')
+        //                         ->where('isDeleted', '=', '0')
+        //                         ->get();
+
+        // if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+        //     $patientRecords = Patient::select('patients.*')
+        //                 ->whereDate('patients.created_at', '=', $request->date)
+        //                 ->orderBy('patients.patientID', 'DESC')
+        //                 ->get();
+
+        // }
+
+        if ($request->monthly == 1 && $request->yearly == 1) {
+     
+            $patientRecords = Patient::select('patients.*')
+                                    ->where('patients.isDeleted', '=', '0')
+                                    // ->where('cliniclogs.clinicType','=', 'd')
+                                    ->where(function($query) use ($request){
+                                        $query->whereMonth('patients.created_at', '=', $request->mon)
+                                        ->whereYear('patients.created_at', '=', $request->yearMonth)
+                                        ->orwhereYear('patients.created_at', '=', $request->year);
+                                    })
+                                    ->orderBy('patients.patientID', 'DESC')
+                                    ->get();
+            
+        }
+        
+        if ($request->monthly == 1 && $request->yearly == '') {
+            $patientRecords = Patient::select('patients.*')
+                                        ->where('patients.isDeleted', '=', '0')
+                                        // ->where('cliniclogs.clinicType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereMonth('patients.created_at', '=', $request->mon)
+                                            ->whereYear('patients.created_at', '=', $request->yearMonth);
+                                        })
+                                        ->orderBy('patients.patientID', 'DESC')
+                                        ->get();
+
+        }    
+
+        if ($request->monthly == '' && $request->yearly == 1) {
+            $patientRecords = Patient::select('patients.*')
+                                        ->where('patients.isDeleted', '=', '0')
+                                        // ->where('cliniclogs.clinicType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereYear('patients.created_at', '=', $request->year);
+                                        })
+                                        ->orderBy('patients.patientID', 'DESC')
+                                        ->get();
+        }
+
+        if(Session::get('accountInfo.position') == 4){
+            $pdf = PDF::loadview('dentist.printables.patientList-pdf', compact('patientRecords'));
+            $pdf->setPaper('legal', 'landscape');
+            return $pdf->stream('patientList-pdf');
+        }
+        elseif(Session::get('accountInfo.position') == 2){
+            $pdf = PDF::loadview('dchief.printables.patientList-pdf', compact('patientRecords'));
+            $pdf->setPaper('legal', 'landscape');
+            return $pdf->stream('patientList-pdf');
+        }
+    }
+
+    public function generateMedicineList(Request $request)
+    {
+        // $medicineList = Medicine::select('medicines.*')
+        //                         ->where([['medicines.isDeleted', '<>', '1'], ['medicines.medType', '=', 'D']])
+        //                         ->get();
+
+        if ($request->monthly == 1 && $request->yearly == 1) {
+     
+            $medicineList = Medicine::select('medicines.*')
+                                    ->where('medicines.isDeleted', '=', '0')
+                                    ->where('medicines.medType','=', 'd')
+                                    ->where(function($query) use ($request){
+                                        $query->whereMonth('medicines.created_at', '=', $request->mon)
+                                        ->whereYear('medicines.created_at', '=', $request->yearMonth)
+                                        ->orwhereYear('medicines.created_at', '=', $request->year);
+                                    })
+                                    ->orderBy('medicines.medicineID', 'DESC')
+                                    ->get();
+            
+        }
+        
+        if ($request->monthly == 1 && $request->yearly == '') {
+            $medicineList = Medicine::select('medicines.*')
+                                        ->where('medicines.isDeleted', '=', '0')
+                                        ->where('medicines.medType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereMonth('medicines.created_at', '=', $request->mon)
+                                            ->whereYear('medicines.created_at', '=', $request->yearMonth);
+                                        })
+                                        ->orderBy('medicines.medicineID', 'DESC')
+                                        ->get();
+
+        }    
+
+        if ($request->monthly == '' && $request->yearly == 1) {
+            $medicineList = Medicine::select('medicines.*')
+                                        ->where('medicines.isDeleted', '=', '0')
+                                        ->where('medicines.medType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereYear('medicines.created_at', '=', $request->year);
+                                        })
+                                        ->orderBy('medicines.medicineID', 'DESC')
+                                        ->get();
+        }
+        
+        $pdf = PDF::loadview('dchief.printables.medicinesList-pdf', compact('medicineList'));
+        // $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('medicineList-pdf');
+    }
+
+    public function generateMedicalSupplyList(Request $request)
+    {
+        // $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+        //                                 ->where([['medsupplies.isDeleted', '<>', '1'], ['medsupplies.supType', '=', 'D']])
+        //                                 ->get();
+
+        if ($request->monthly == 1 && $request->yearly == 1) {
+     
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                                    ->where('medsupplies.isDeleted', '=', '0')
+                                    ->where('medsupplies.supType','=', 'd')
+                                    ->where(function($query) use ($request){
+                                        $query->whereMonth('medsupplies.created_at', '=', $request->mon)
+                                        ->whereYear('medsupplies.created_at', '=', $request->yearMonth)
+                                        ->orwhereYear('medsupplies.created_at', '=', $request->year);
+                                    })
+                                    ->orderBy('medsupplies.medSupID', 'DESC')
+                                    ->get();
+            
+        }
+        
+        if ($request->monthly == 1 && $request->yearly == '') {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                                        ->where('medsupplies.isDeleted', '=', '0')
+                                        ->where('medsupplies.supType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereMonth('medsupplies.created_at', '=', $request->mon)
+                                            ->whereYear('medsupplies.created_at', '=', $request->yearMonth);
+                                        })
+                                        ->orderBy('medsupplies.medSupID', 'DESC')
+                                        ->get();
+
+        }    
+
+        if ($request->monthly == '' && $request->yearly == 1) {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                                        ->where('medsupplies.isDeleted', '=', '0')
+                                        ->where('medsupplies.supType','=', 'd')
+                                        ->where(function($query) use ($request){
+                                            $query->whereYear('medsupplies.created_at', '=', $request->year);
+                                        })
+                                        ->orderBy('medsupplies.medSupID', 'DESC')
+                                        ->get();
+        }
+                                        
+        $pdf = PDF::loadview('dchief.printables.medicalSupplyList-pdf', compact('medicalSupplyList'));
+        // $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('medicalSupplyList-pdf');
     }
 
 }

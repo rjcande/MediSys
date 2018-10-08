@@ -47,35 +47,31 @@
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                         <div style="display: inline-block;width: 95%;">
-                          <input style="margin-left: 15%;" type="checkbox" data-parsley-group="first" value="1" name="dentalExam"
+                          <input style="margin-left: 6%;" type="checkbox" value="1" data-parsley-group="first" name="dentalExam"
                             @if($treatment['dentalExamination'] == 1)
                             {{"checked"}}
-                            @endif
+                            @endif`     
                           ><label>&nbspDental Examination</label>
-                          <input style="margin-left: 42.4%;" type="checkbox" data-parsley-group="first" value="1" name="oralProphylaxis"
+                          <input style="margin-left: 5%;" type="checkbox" value="1" data-parsley-group="first" name="oralProphylaxis"
                             @if($treatment['oralProphylaxis'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspOral Prophylaxis</label>
-                          <br>
-                          <input style="margin-left: 15%;" type="checkbox" data-parsley-group="first" value="1" name="othersTreatment"
-                            @if($treatment['othersTreatment'] == 1)
-                            {{"checked"}}
-                            @endif
-                          ><label>&nbspOthers:</label>
-                          <input style="margin-left: 10%" type="checkbox" data-parsley-group="first" value="1" name="restorationChk"
+                          <input style="margin-left: 5%" type="checkbox" value="1" data-parsley-group="first" name="restorationChk"
                             @if($treatment['restoration'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspRestoration(Filling Tooth):</label>
-                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['restorationTooth']}}" disabled name="restorationTxt">
-                          <input style="margin-left: 8.5%" type="checkbox" data-parsley-group="first" value="1" name="extractionChk"
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" disabled value="{{$treatment['restorationTooth']}}" data-parsley-group="first" name="restorationTxt">
+                          <input style="margin-left: 5%" type="checkbox" value="1" data-parsley-group="first" name="extractionChk"
                             @if($treatment['extraction'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspExtraction:</label>
-                          <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" disabled name="extractionTxt">
-                          <textarea rows="7" class="form-control" data-parsley-group="first" id="treatment" disabled name="treatment" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;">{{$treatment['treatmentDescription']}}</textarea>
+                          <input style="width:150px; border-radius:8px; margin-left:1%;" disabled type="text" value="{{$treatment['extractionTooth']}}" data-parsley-group="first" name="extractionTxt">
+                          <br>
+                          <input style="margin-left: 6%;" type="checkbox" value="1" data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
+                          <textarea name="treatment" id="treatment" disabled rows="7" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;  margin-bottom: 20px">{{$treatment['treatmentDescription']}}</textarea>
                         </div>
                       </div>
                       <br><br>
