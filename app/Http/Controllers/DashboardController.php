@@ -33,11 +33,14 @@ class DashboardController extends Controller
     public function notificationNurse()
     {
         $notification = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
+                                    ->join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'logreferrals.clinicLogID')
+                                    ->where('cliniclogs.nurseID', '=', Session::get('accountInfo.id'))
                                     ->where('logreferrals.notif' , '=', 0)
                                     ->where('logreferrals.isDeleted', '=', 0)
                                     ->orderBy('logreferrals.created_at', 'desc')
                                     ->get();
-        dd($notification);
+        //dd($notification);
+        
         $array = [];
         $ctr = 0;
         $status = "";
@@ -48,6 +51,7 @@ class DashboardController extends Controller
             elseif ($value['logReferralStatus'] == 3) {
                 $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." declined your referral</span></a></a></li>";
             }
+           
 
             $array[$ctr] = $text; 
             $ctr++;
