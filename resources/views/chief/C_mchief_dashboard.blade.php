@@ -14,7 +14,7 @@
 
             <div class="row">
               <!-- form input mask -->
-               <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Frequency of Patient's Visit (Year)</h2>
@@ -24,7 +24,7 @@
                     <canvas id="lineChartPatient"></canvas>
                   </div>
                   <div style="float: right;">
-                    <!-- <a href="{{ url('/mchief/patient/condition/reports') }}">
+                   <!--  <a href="{{ url('/mchief/patient/condition/reports') }}">
                       <button class="btn btn-info">Patients' Conditions Statistics</button>
                     </a> -->
                   </div>
@@ -50,6 +50,45 @@
                   </div>
                 </div>
               </div> -->
+               <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel" style="height: 100%">
+                  <div class="x_title">
+                    <h2>Patients' Appointment Schedule</h2>
+                    <div class="col-md-5 col-sm-12 col-xs-12" style="float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="">
+                      <table class="table table-striped table-bordered jambo_table bulk_action" id="appointmentTable">
+                        <thead>
+                          <tr class="headings">
+                            <th class="column-title">Patient Name </th>
+                            <th class="column-title">Physician </th>
+                            <th class="column-title">Date </th>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          @foreach($patientNames as $name)
+                            @foreach($physicians as $physician)
+                              @if($name->appointmentID == $physician->appointmentID)
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                                  <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
+                                  <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
+                                  <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
+                                </tr>
+                              @endif
+                            @endforeach
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
@@ -68,42 +107,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel" style="height: 100%">
-                  <div class="x_title">
-                    <h2>Appointment Schedule</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="">
-                      <table class="table table-striped table-bordered jambo_table bulk_action">
-                        <thead>
-                          <tr class="headings">
-                            <th class="column-title">Patient Name </th>
-                            <th class="column-title">Physician </th>
-                            <th class="column-title">Date </th>
-                            </th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          @foreach($patientNames as $name)
-                            @foreach($physicians as $physician)
-                              @if($name->appointmentID == $physician->appointmentID)
-                                <tr class="even-pointer" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
-                                  <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
-                                  <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
-                                  <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
-                                </tr>
-                              @endif
-                            @endforeach
-                          @endforeach
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
+             
               <!-- /form input mask -->  
 
             </div>
@@ -146,10 +150,10 @@
             <label class="col-md-7 col-sm-3 col-xs-3" id="date"></label>
             <input type="hidden" id="appointmentID" name="appointmentID" value="">
           </div>  
+      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="btnDelete">Delete Appointment</button>
-        <button type="button" class="btn btn-success" id="btnDone">Appointment Done</button>
+       <button type="button" class="btn btn-danger" id="btnCancelAppointment">Cancel Appointment</button>
       </div>
          </form>
     </div>
@@ -163,18 +167,47 @@
 
 <script>
   $(document).ready(function(){
-    $('.even-pointer').click(function(){
-      $('#appointmentModal').modal('show');
+    var table = $('#appointmentTable').DataTable({
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        "pageLength": 5,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
+
+    $('#btnCancelAppointment').click(function(){
+      $.ajax({
+        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'cancel_appointment',
+        type: 'get',
+        data: $(this).serialize(),
+        success: function(output){
+            swal({
+                title: "Good job!",
+                text: output.message,
+                icon: "success",
+                button: "OK",
+              })
+              .then((value)=>{
+                location.reload(true);
+              });
+        } 
+      });
     });
 
      //Opening Edit Modal
     $('#appointmentModal').on('show.bs.modal', function(e){
 
-        var id = $('.even-pointer').data('id');
-        var apptid = $('.even-pointer').data('apptid');
-        var name = $('.even-pointer').data('name');
-        var physician = $('.even-pointer').data('physician');
-        var date = $('.even-pointer').data('date');
+        var sourceElement = $(e.relatedTarget);
+        var id = sourceElement.data('id');
+        var apptid = sourceElement.data('apptid');
+        var name = sourceElement.data('name');
+        var physician = sourceElement.data('physician');
+        var date = sourceElement.data('date');
 
         var modal = $(this);
         modal.find('.modal-body #patientName').text(name);
@@ -293,7 +326,7 @@
 
     if($("#lineChartPatient").length){
         var f=document.getElementById("lineChartPatient");
-        new Chart(f,{type:"line",data:{labels:["January","February","March","April","May","June","July","August","September","October","November", "December"],datasets:[{label:"Patient",backgroundColor:"rgba(38, 185, 154, 0.31)",borderColor:"rgba(38, 185, 154, 0.7)",pointBorderColor:"rgba(38, 185, 154, 0.7)",pointBackgroundColor:"rgba(38, 185, 154, 0.7)",pointHoverBackgroundColor:"#fff",pointHoverBorderColor:"rgba(220,220,220,1)",pointBorderWidth:1,data:[totalPatientJanuary,totalPatientFebruary,totalPatientMarch,totalPatientApril,totalPatientMay,totalPatientJune,totalPatientJuly,totalPatientAugust,totalPatientSeptember,totalPatientOctober,totalPatientNovember,totalPatientDecember]}]}})
+        new Chart(f,{type:"line",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov", "Dec"],datasets:[{label:"Patient",backgroundColor:"rgba(38, 185, 154, 0.31)",borderColor:"rgba(38, 185, 154, 0.7)",pointBorderColor:"rgba(38, 185, 154, 0.7)",pointBackgroundColor:"rgba(38, 185, 154, 0.7)",pointHoverBackgroundColor:"#fff",pointHoverBorderColor:"rgba(220,220,220,1)",pointBorderWidth:1,data:[totalPatientJanuary,totalPatientFebruary,totalPatientMarch,totalPatientApril,totalPatientMay,totalPatientJune,totalPatientJuly,totalPatientAugust,totalPatientSeptember,totalPatientOctober,totalPatientNovember,totalPatientDecember]}]}})
     }
   });
 </script>

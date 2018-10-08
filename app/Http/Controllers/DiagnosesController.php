@@ -18,7 +18,7 @@ use App\OutsideReferrals;
 
 use App\UsedMedSupply;
 
-use App\Appointments;
+use App\Appointment;
 
 use Session;
 
@@ -131,13 +131,13 @@ class DiagnosesController extends Controller
 
             $logReferral->save();
 
-            for ($i=0; $i < count(Input::get('medicineID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
                 $prescription = new Prescription;
 
                 $prescription->treatmentID = Input::get('treatmentID');
-                $prescription->medicineID = Input::get('medicineID')[$i];
-                $prescription->quantity = Input::get('medQuantity')[$i];
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
 
                 if (Input::get('isPrescribed')[$i] == 0) {
                     $prescription->isPrescribed = 0;
@@ -147,27 +147,50 @@ class DiagnosesController extends Controller
                     $prescription->isPrescribed = 1;
                     $prescription->isGiven = 0;
                 }
-                $prescription->dosage = Input::get('dosage')[$i];
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
-                $prescription->medication = Input::get('medication')[$i];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
 
                 $prescription->save();
             }
 
-            for ($i=0; $i < count(Input::get('medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_medPrescribedArray')); $i++) { 
+
+                $prescription = new Prescription;
+
+                $prescription->treatmentID = Input::get('treatmentID');
+                $prescription->medicineID = Input::get('_medPrescribedArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medPrescribedArray')[$i]['medicineQuantity'];
+
+                if (Input::get('isPrescribed_other')[$i] == 0) {
+                    $prescription->isPrescribed = 0;
+                    $prescription->isGiven = 1;
+                }
+                elseif (Input::get('isPrescribed_other')[$i] == 1) {
+                    $prescription->isPrescribed = 1;
+                    $prescription->isGiven = 0;
+                }
+                $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
+
+                $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->save();
+            }
+
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
                 $usedMedSupply = new UsedMedSupply;
 
                 $usedMedSupply->treatmentID = Input::get('treatmentID');
-                $usedMedSupply->medSupplyID = Input::get('medSuppID')[$i];
-                $usedMedSupply->quantity = Input::get('medSuppQuantity')[$i];
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
                 $usedMedSupply->save();
             }
 
 
             if ($request->nextConsultation) {
-                $appointment = new Appointments;
+                $appointment = new Appointment;
 
                 $appointment->clinicLogID = $request->clinicLogID;
                 $appointment->logReferralID = Input::get('logReferralID');
@@ -177,7 +200,7 @@ class DiagnosesController extends Controller
                 $appointment->save();
             }
 
-             $outsideReferral = new OutsideReferrals;
+            $outsideReferral = new OutsideReferrals;
 
             $outsideReferral->treatmentID = $request->treatmentID;
             $outsideReferral->referralDescription = $request->remark;
@@ -202,6 +225,19 @@ class DiagnosesController extends Controller
             $outsideReferral->otherRequest = $request->otherRequest;
 
             $outsideReferral->save();
+
+            // $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                         ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+            //                         ->where('cliniclogs.patientID', '=',  $request->patientID)
+            //                         ->where('isAppointed', '=', '0')
+            //                         ->where('appointmentDate', '=', date('y-m-d'))
+            //                         ->first();
+
+            // $updateAppointment = Appointment::find($appointment['appointmentID']);
+
+            // $updateAppointment->isAppointed = 2;
+
+            // $updateAppointment->save();
 
             Session::flash('message', 'Successfully Saved!');
 
@@ -282,7 +318,7 @@ class DiagnosesController extends Controller
 
 
             if ($request->nextConsultation) {
-                $appointment = new Appointments;
+                $appointment = new Appointment;
 
                 $appointment->clinicLogID = $request->clinicLogID;
                 $appointment->logReferralID = Input::get('logReferralID');

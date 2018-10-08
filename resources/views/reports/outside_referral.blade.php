@@ -6,27 +6,6 @@
   <title>Prescription</title>
   <link rel="stylesheet" href="">
   <style type="text/css" media="screen">
-    table{
-      font-family: verdana,arial;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td,th{
-      border: 1px solid black;
-      text-align: left;
-      padding: 15px;
-    }
-    th{
-      text-align: left;
-    }
-    tr:nth-child(even){
-      background-color: #dddddd;
-    }
-    caption{
-      font-family:verdana;
-      font-size: 160%;
-    }
   </style>
 </head>
 <body>
@@ -39,6 +18,7 @@
         <h1>Outside Referral</h1>
       </center>
       <p>Name: {{ $name }}</p>
+      <p>Date: {{ date('F d, Y') }}</p>
       
       <label>To:</label>
           @if($outsideReferral['referTo'] == 0)
@@ -52,12 +32,14 @@
           @endif
 
       <br>
-      <label>Remarks:</label>
-            {{ $outsideReferral['referralDescription'] }}
+      <label><p>Remarks:</p></label>
+      <textarea rows="1" class="form-control" placeholder="Other Request" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="otherRequest"> {{ $outsideReferral['referralDescription'] }}</textarea>
+      <label>Laboratory Referral</label>
+      <br><br>
+      <label>Request for:</label>
+      <br><br>
+      <label>Chest X-Ray</label>
       <br>
-      <br>
-      <br>
-      <label>Laboratory Referral:</label>
             <input type="checkbox" name="chestXrayPA" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
                     @if($outsideReferral['chestXrayPA'] == 1)
                       {{ "checked" }}
@@ -80,7 +62,8 @@
             @if($outsideReferral['fecalysis'] == 1)
                       {{ "checked" }}
                     @endif> Fecalysis<br>
-            <input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <div style="float: left; width: 50%">
+                 <input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
             @if($outsideReferral['cbc'] == 1)
                       {{ "checked" }}
                     @endif> Complete Blood Count (CBC)<br>
@@ -100,7 +83,11 @@
             @if($outsideReferral['cholesterol'] == 1)
                       {{ "checked" }}
                     @endif> Total Cholesterol<br>
-            <input type="checkbox" name="triglycerides" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+               <label style="margin-right:15px;">Others:</label>
+                {{ $outsideReferral['otherRequest'] }}
+            </div>
+            <div style="float: left; width: 50%">
+                      <input type="checkbox" name="triglycerides" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
             @if($outsideReferral['triglycerides'] == 1)
                       {{ "checked" }}
                     @endif> Triglycerides<br>
@@ -120,9 +107,14 @@
             @if($outsideReferral['sgpt'] == 1)
                       {{ "checked" }}
                     @endif> Serum Glutamic-Pyruvic Transaminase (SGPT)<br><br>
-            <label style="margin-right:15px;">Others:</label>
-            <textarea rows="4" class="form-control" placeholder="Other Request"
-              style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="otherRequest">{{ $outsideReferral['otherRequest'] }}</textarea>
+            </div>
+            <br>
+            <div style="text-align: center; margin-left: 450px; position: absolute; bottom: 0">
+            <header style="font-size: 18px; margin-top: 40px;"><u>{{ Session::get('accountInfo.firstName') }} {{ Session::get('accountInfo.middleName') }} {{ Session::get('accountInfo.lastName') }} {{ Session::get('quantifier') }}</u> M.D.</header>
+            <header style="font-size: 18px;">Clinic Physician</header>   
+            <header style="font-size: 18px; margin-top: 20px; text-align: right;"><u style="text-align: center; padding: 0 0 4px;">{{ Session::get('accountInfo.licenseNumber') }}</u> Lic. No.</header>
+          </div>
+            
     </div>
 </body>
 </html>

@@ -130,7 +130,21 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $account = Accounts::find($id);
+        $account->firstName = Input::get('firstName');
+        $account->middleName = Input::get('middleName');
+        $account->lastName = Input::get('lastName');
+        $account->quantifier = Input::get('quantifier');
+        $account->position = Input::get('position');
+        $account->licenseNumber = Input::get('licenseNumber');
+        $account->specialization = Input::get('specialization');
+        $account->email = Input::get('email');
+        $account->contactNumber = Input::get('contactNumber');
+        $account->username = Input::get('username');
+        $account->password = Input::get('password');
+
+        $account->save();
+        return Response::json(['message' => 'Successfully Updated']);
     }
 
     /**

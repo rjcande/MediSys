@@ -139,7 +139,6 @@ class OutsideReferralsController extends Controller
         $treatment = Treatments::where('clinicLogID', '=', $id)->first();
 
         $outsideReferralDetails = OutsideReferrals::where('treatmentID', '=', $treatment['treatmentID'])->first();
-
         return view('physician.C_physician_referred_patient_referrals')->with(['clinicLogInfo' => $clinicLogInfo, 'treatment' => $treatment, 'details' => $outsideReferralDetails]);
     }
 
@@ -210,7 +209,32 @@ class OutsideReferralsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $outsideReferral = OutsideReferrals::find($id);
+        $outsideReferral->referralDescription = $request->remark;
+        $outsideReferral->referTo = $request->referTo;
+        $outsideReferral->referToOthers = $request->referToOthers;
+        $outsideReferral->chestXrayPA = $request->chestXrayPA;
+        $outsideReferral->chestXrayAP_LAT = $request->chestXrayAP_LAT;
+        $outsideReferral->electrocardiography = $request->electrocardiography;
+        $outsideReferral->urinalysis = $request->urinalysis;
+        $outsideReferral->fecalysis = $request->fecalysis;
+        $outsideReferral->cbc = $request->cbc;
+        $outsideReferral->fbs = $request->fbs;
+        $outsideReferral->bun = $request->bun;
+        $outsideReferral->creatinine = $request->creatinine;
+        $outsideReferral->cholesterol = $request->cholesterol;
+        $outsideReferral->triglycerides = $request->triglycerides;
+        $outsideReferral->hdl = $request->hdl;
+        $outsideReferral->ldl = $request->ldl;
+        $outsideReferral->uricAcid = $request->uricAcid;
+        $outsideReferral->sgpt = $request->sgpt;
+        $outsideReferral->otherRequest = $request->otherRequest;
+
+        $outsideReferral->save();
+
+        return Response::json(array('message' => 'Success'));
+
     }
 
     /**

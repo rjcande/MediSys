@@ -18,38 +18,16 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>{{date('F, Y')}}</h2>
-                    <div style="float: right;">
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled="" selected="">Month</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled selected>Day</option>
-                        @for($days = 1;$days < 32; $days++)
-                          <option value="{{ $days }}">{{ $days }}</option>
-                        @endfor
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option>Year</option>
-                        <option>2018-1940</option>
-                      </select>
-                      <button class="btn btn-round btn-primary">GO</button>
-
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 70px; float: right">
+                      <button class="btn btn-round btn-default" data-toggle="modal" data-target="#modalFilter"><i class="fa fa-filter"></i>Filter</button>
                     </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>  
                     <div class="clearfix"></div>
 
                   </div>
+                  
                   <div class="x_content">
                     <!--Content-->
                     <div class="table-responsive">
@@ -109,7 +87,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @elseif($referral->logReferralStatus == 2 && $referral->concern == 0)
@@ -127,7 +105,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @endif
@@ -136,7 +114,7 @@
                                 {{--  <button class="btn btn-info" data-toggle="tooltip" title="View More Info" id="btnViewMore">
                                   <i class="fa fa-angle-double-right"></i>
                                 </button>  --}}
-                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}" type="button"><i class="fa fa-trash"></i></button>
                               </td>
                             </tr>
                             @php($ctr++)
@@ -231,13 +209,117 @@
   </div>
 </div>
 
+<!-- FILTER -->
+ <!-- MODAL -->
+  <div id="modalFilter" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width:680px">
+        <!-- Modal content -->
+            <div class="modal-content" style="background-color: #f7f1e3">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss = "modal">&times;</button>
+            <h4 class="modal-title">Filter</h4>
+        </div>
+
+        <div class="modal-body" style="font-size:18px;">
+          <label style="display: inline-block;width: 80px; margin-bottom:10px;">Month </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;
+            width: 170px;" id="filterMonth"><br>
+            <option value="" disabled selected></option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <label style="display: inline-block; width: 50px; margin-bottom:10px; margin-left: 40px;">Day </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterDays">
+            <option value="" disabled selected></option>
+              @for($days = 1; $days < 32; $days++)
+                <option value="{{ $days }}">{{ $days }}</option>
+              @endfor
+          </select>
+          <label style="display: inline-block; width: 60px; margin-bottom:10px; margin-left: 50px;">Year </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterYear">
+            <option value="" disabled selected></option>
+              @for($years = 2018; $years > 1998; $years--)
+                <option value="{{ $years }}">{{ $years }}</option>
+              @endfor
+          </select><br>
+          <label style="display: inline-block; width: 80px; margin-bottom:10px;">Concern
+          </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; width: 170px;
+              border: 1.5px solid gray;" id="filterConcern">
+            <option value="" disabled selected></option>
+            <option value="consultation">Consultation</option>
+            <option value="letter/certification">Letter/Certificate</option>
+          </select>
+        </div>
+      
+        <div class="modal-footer" style="margin-right:0%">
+          <button class="btn btn-primary" id="btnReset">Reset Filter</button>
+          <button class="btn btn-success" id="btnDone" data-dismiss="modal">DONE</button>
+          
+        </div>
+            </div>
+        </div>
+  </div>
+
 <script>
   $(document).ready(function(){
-    $('#patientTable').dataTable({
+    var table = $('#patientTable').DataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false });
+        "bAutoWidth": false,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
+
+     //Filtering of Data Table
+    $('select').on('change', function(){
+      var month = $('#filterMonth').val();
+      var days = $('#filterDays').val();
+      var year = $('#filterYear').val();
+      var concern = $('#filterConcern').val();
+      if (month == null) {
+        month = ' ';
+      }
+      if (days == null) {
+        days = ' ';
+      }
+      if (year == null) {
+        year = ' ';
+      }
+      if (concern == null) {
+        concern = ' ';
+      }
+      var date = month + ' ' + days + ' ' + year;
+      table.column(5).search(date).draw();
+      table.column(4).search(concern).draw();
+   
+
+    });
+
+    $('#btnReset').click(function(){
+      $('#filterConcern').val('');
+      $('#filterYear').val('');
+      $('#filterDays').val('');
+      $('#filterMonth').val('');
+      table.column(5).search('').draw();
+      table.column(4).search('').draw();
+    });
 
     $('#btnViewMore').on('click', function(){
       $('#medicalLogMoreInfo').modal('show');
@@ -245,7 +327,7 @@
 
 
     //on btn decline
-    $(".btn-delete").on('click', function(){
+    $(".btn-decline").on('click', function(){
       swal({
         title: "WARNING",
         text: "Are you sure you want to decline the referral?",
@@ -264,6 +346,34 @@
           });
         }
       });
+    });
+    //When delete button is clicked
+    $('.btn-delete').on('click', function(){
+      swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this record!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                  $.ajax({
+                    url: '/nurse/delete/logReferral/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                      swal({
+                        title: "SUCCESS",
+                        text: output.message,
+                        icon: "success",
+                      })
+                      .then((value)=>{
+                        location.reload(true);
+                      });
+                    }
+                  });
+                }
+             })
     });
 
 

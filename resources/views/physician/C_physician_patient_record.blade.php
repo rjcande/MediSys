@@ -60,7 +60,7 @@
                                         <a href="{{ route('physician.referred.patient.diagnoses', $info->patientID) }}"><button
                                             class="btn btn-default" style="background-color:#33d9b2; color:white;">Concerns</button>
                                         </a>
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                                   
                                 </tr>
                             @endforeach
                         </tbody>     
@@ -84,7 +84,7 @@
             "bFilter": true,
             "bInfo": false,
             "bAutoWidth": false,
-            "dom": 't' 
+            "dom": '<"top"i>rt<"bottom"p><"clear">' 
         });
 
         $('#search').keyup(function(){

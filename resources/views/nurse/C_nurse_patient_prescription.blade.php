@@ -102,6 +102,7 @@
                               <div style="float:left; margin-left:40px; font-size:18px; width:300px;">
                                 <select name="attendingPhysician" style="width:250px; border-radius:8px; margin-bottom:12px;height: 25px;">
                                     <option value="" disabled selected>Select Physician</option>
+                                    <option value=""></option>
                                     @foreach($physicians as $physician)
                                       <option value="{{ $physician->id }}">
                                         {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}
@@ -288,11 +289,11 @@
                               <div id="medicineTable"class="row"
                               style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 30px;width: 45%"><h4 style="margin-bottom:5px; margin-left:5px;"> Given Medicine</h4>
                               <div class="table-responsive">
-                                <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
+                                <table class="table table-striped table-bordered jambo_table bulk_action" id="medTable">
                                   <thead>
                                     <tr class="headings">
                                       <th>
-                                        <input type="checkbox" id="check-all" class="flat">
+                                        
                                       </th>
                                       <th class="column-title">Generic Name </th>
                                       <th class="column-title">Brand </th>
@@ -310,7 +311,6 @@
                                    
                                   </tbody>
                                 </table>
-                                 <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                   <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                 </div>
                               </div>
@@ -322,7 +322,7 @@
                                   <thead>
                                     <tr class="headings">
                                       <th>
-                                        <input type="checkbox" id="check-all" class="flat">
+                                      
                                       </th>
                                       <th class="column-title">Supply Name </th>
                                       <th class="column-title">Brand </th>
@@ -339,7 +339,6 @@
                                    
                                   </tbody>
                                 </table>
-                                 <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                   <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                               </div>
                             </div>
@@ -367,6 +366,30 @@
             </div>
           </div>
         </div>
+<!-- @if(count($hasAppointment) > 0)
+  <script>
+      $(document).ready(function(){
+          swal({
+              title: "Appointment",
+              text: "You have an appointment today!",
+              icon: "info",
+              buttons: true,
+          }).then((ok)=>{
+          if (ok) {
+            $.ajax({
+              url:'/nurse/hasAppointment/' + '{{ $hasAppointment["appointmentID"] }}',
+              type:'get',
+              success: function(output){
+                
+              }
+            });
+          }
+          else{
+          }
+    });
+      });
+  </script>
+@endif -->
 <script>
   $(document).ready(function(){
     //variables to use for getting the medicine
@@ -376,6 +399,11 @@
    var medSuppQuantity = new Array();
    var medication = new Array();
    var dosage = new Array();
+   var deleteFlag = 1;
+   var array_med = {};
+   var array_supp = {};
+   var ctr = 0;
+   var ctr_supp = 0;
    //variables for storing vital signs
    var bloodPressureSystolic;
    var bloodPressureDiastolic;
@@ -386,9 +414,6 @@
    var weight;
    var bmi;
    var bmiRange;
-
-
-
     $('#saveForm').parsley();
      // Step show event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
@@ -401,31 +426,24 @@
            $("#prev-btn").removeClass('disabled');
            $("#next-btn").removeClass('disabled');
        }
-
       if($('button.sw-btn-next').hasClass('disabled')){
         $('.sw-btn-group-extra').show(); // show the button extra only in the last page
       }else{
         $('.sw-btn-group-extra').hide();        
       }
     });
-
     // Toolbar extra buttons
     var btnFinish = $('<button></button>').text('Finish')
                     .addClass('btn btn-info')
                     .on('click', function(e){ 
                      e.preventDefault();
-
+                     this.disabled = true;
                       $('#saveForm').parsley().validate('first');
-
                       if($('#saveForm').parsley().isValid('first')){
                       
                         var id = {
-                          _medicineID: _idMedBrand,
-                          _medQuantity: medQuantity,
-                          _medSuppID: _idMedSuppBrand,
-                          _medSuppQuantity: medSuppQuantity,
-                          _dosage: dosage,
-                          _medication: medication,
+                          _medArray: array_med,
+                          _suppArray: array_supp, 
                           _bloodPressure: bloodPressure,
                           _heartRate: heartRate,
                           _respiratoryRate: respiratoryRate,
@@ -437,7 +455,6 @@
                         }
                        // console.log(id);
                         $.ajax({
-
                           url: '/nurse/log/patient/save',
                           type:'get',
                           data:$('#saveForm').serialize() + "&" + $.param(id),
@@ -447,7 +464,6 @@
                           }
                         });
                       }
-
                   });
     var btnCancel = $('<button></button>').text('Cancel')
                                      .addClass('btn btn-danger')
@@ -455,8 +471,6 @@
                                       //window.location.href = '/nurse/log/patient/create';
                                      $('#smartwizard').smartWizard("reset"); 
                                    });
-
-
     $('#smartwizard').smartWizard({
       selected: 0,
       theme: 'arrows',
@@ -473,7 +487,6 @@
           enableAllAnchors: true, // Activates all anchors clickable all times
       },
     });
-
         // Initialize the leaveStep event
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
       if (stepNumber == 0) {
@@ -515,9 +528,7 @@
       else if(stepNumber == 1 && stepDirection == 'backward'){
         return true;
       }
-
     });
-
     // Initialize the showStep event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
       if (stepNumber == 2) {
@@ -529,14 +540,12 @@
             $('#medBrand').empty();
             $('#medUnit').empty();
             $('#medBrand').prop('disabled', false);
-
             $('#medBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
             $.each(data, function(index, brandObj){
               $('#medBrand').append('<option value="'+ brandObj.medicineID +'">'+brandObj.brand+'</option>');
             });
           });      
         });
-
         //On change of Med Brand
         $('#medBrand').on('change', function(){
           var mbrand = $(this).find("option:selected").text();
@@ -546,9 +555,17 @@
             $('#medUnit').prop('disabled', false);
             $('#medUnit').empty();
             $('#medUnit').append('<option value="'+ data[0]['medicineID'] +'">'+data[0]['unit']+'</option>')
+            var str = data[0]['dosage'];
+            var splitted = str.split(" ");
+            $('#dosage').val(splitted[0]);
+            if (splitted[1] == "mg") {
+              $('#dosageUnit').val("mg");
+            }
+            else if(splitted[1] == "ml"){
+              $('#dosageUnit').val("ml");
+            }
           });      
         });
-
         //On change of Medical Supply Name
         $('#medSuppName').on('change', function(e){
           var mName = $(this).find("option:selected").text();
@@ -556,14 +573,12 @@
             $('#medSuppBrand').empty();
             $('#medSuppUnit').empty();
             $('#medSuppBrand').prop('disabled', false);
-
             $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
             $.each(data, function(index, brandObj){
               $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
             });
           });      
         });
-
         //On change of Medical Supply Name
         $('#medSuppBrand').on('change', function(e){
           var mBrand = $(this).find("option:selected").text();
@@ -575,28 +590,81 @@
             
           });      
         });
-
         //Validation For adding Medicine
+        
         $('#btnMedAdd').click( function(event) {
           event.preventDefault();
           
           // Validate all Medicine fields.
           $('#saveForm').parsley().validate('second');     
           if ($('#saveForm').parsley().isValid('second')) {
-            var medGenericName = $('select[name=medGenericName] option:selected').text();
-            var _idMedGenericName = $('select[name=medGenericName]').val();
-            var medBrand = $('select[name=medBrand] option:selected').text();
-            _idMedBrand[_idMedBrand.length] = $('select[name=medBrand]').val();
-            medQuantity[medQuantity.length] = $('input[name=medQuantity]').val();
-            var medUnit = $('select[name=medUnit] option:selected').text();
-            var _idMedUnit = $('select[name=medUnit]').val();
-            medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
-            dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+            
+            if (Object.keys(array_med).length == 0) {
+                array_med[ctr] = {
+                    medicineGenericName: $('select[name=medGenericName] option:selected').text(),
+                    medicineBrand: $('select[name=medBrand] option:selected').text(),
+                    medicineUnit: $('select[name=medUnit] option:selected').text(),
+                    medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                    medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
+                    medicineID:  $('select[name=medBrand]').val(),
+                    medicineQuantity: $('input[name=medQuantity]').val()
+                };
+                $('#medTable tbody').empty();
+                displayTableRow();
+            }
+            else{
+                var isEqual = false;
+                var key;
+                for (var i = 0; i < Object.keys(array_med).length; i++) {
+                
+                    if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                        isEqual = true;
+                        key = i;
+                    }
+                    
+                }
 
-            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medGenericName+"</td><td class=' '>"+medBrand+"</td><td class=' '>"+medQuantity[medQuantity.length-1]+"</td><td class=' '>"+medUnit+"</td><td>"+dosage[dosage.length-1]+"</td><td>"+medication[medication.length-1]+"</td></tr>";
+                if (isEqual == true) {
+                  array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('input[name=medQuantity]').val());
+                  $('#medTable tbody').empty();
+                  displayTableRow();
+                }
+                else if(isEqual == false){
+                  ctr++;
+                  array_med[ctr] = {
+                      medicineGenericName: $('select[name=medGenericName] option:selected').text(),
+                      medicineBrand: $('select[name=medBrand] option:selected').text(),
+                      medicineUnit: $('select[name=medUnit] option:selected').text(),
+                      medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                      medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
+                      medicineID:  $('select[name=medBrand]').val(),
+                      medicineQuantity: $('input[name=medQuantity]').val()
+                  };
+                  $('#medTable tbody').empty();
+                  displayTableRow();
+                }
 
-            $(tr).prependTo('#tbodyMedicine');
-            //Reset Med Fields
+            }      
+            resetFields();
+            console.log(Object.keys(array_med).length);
+            console.log(array_med);
+          }
+          else{
+            return false
+          }
+        });
+        
+        function displayTableRow(){
+            for (var i = 0; i < Object.keys(array_med).length; i++) {
+
+                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+
+                $(tr).prependTo('#tbodyMedicine');
+
+            }
+        }
+
+        function resetFields(){
             $('select[name=medGenericName]').prop('selectedIndex', 0);
             $('select[name=medBrand]').prop('selectedIndex', 0);
             $('select[name=medUnit]').prop('selectedIndex', 0);
@@ -607,46 +675,85 @@
             $('input[name=dosage]').val(this.defaultValue);
             $('input[name=hrs_day]').val(this.defaultValue);
             $('input[name=week]').val(this.defaultValue);
-          }
-          else{
-            return false
-          }
-        });
-
+        }
+        
         $('#btnSuppAdd').click(function(event){
           event.preventDefault();
-
           // Validate all Medical Supply fields.
           $('#saveForm').parsley().validate('third');
           
           if ($('#saveForm').parsley().isValid('third')) {
-            var medSuppName = $('select[name=medSuppName] option:selected').text();
-            var _idMedSuppName = $('select[name=medSuppName]').val();
-            var medSuppBrand = $('select[name=medSuppBrand] option:selected').text();
-            _idMedSuppBrand[_idMedSuppBrand.length] = $('select[name=medSuppBrand]').val();
-            medSuppQuantity[medSuppQuantity.length] = $('input[name=medSuppQuantity]').val();
-            var medSuppUnit = $('select[name=medSuppUnit] option:selected').text();
-            var _idMedSuppUnit = $('select[name=medSuppUnit]').val();
 
-            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medSuppName+"</td><td class=' '>"+medSuppBrand+"</td><td class=' '>"+medSuppQuantity[medSuppQuantity.length-1]+"</td><td class=' last'>"+medSuppUnit+"</td></tr>";
+            if (Object.keys(array_supp).length == 0) {
+                array_supp[ctr_supp] = {
+                    suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                    suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                    suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                    suppID:  $('select[name=medSuppBrand]').val(),
+                    suppQuantity: $('input[name=medSuppQuantity]').val()
+                };
+                $('#medSuppTable tbody').empty();
+                displayTableRowSupp();
+            }
+            else{
+                var isEqual = false;
+                var key;
+                for (var i = 0; i < Object.keys(array_supp).length; i++) {
+                
+                    if (array_supp[i].suppID == $('select[name=medSuppBrand]').val()) {
+                        isEqual = true;
+                        key = i;
+                    }
+                    
+                }
 
-            $(tr).prependTo("#tbodyMedicalSupply");
+                if (isEqual == true) {
+                  array_supp[key].suppQuantity = parseInt(array_supp[key].suppQuantity) + parseInt($('input[name=medSuppQuantity]').val());
+                  $('#medSuppTable tbody').empty();
+                  displayTableRowSupp();
+                }
+                else if(isEqual == false){
+                  ctr_supp++;
+                  array_supp[ctr_supp] = {
+                    suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                    suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                    suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                    suppID:  $('select[name=medSuppBrand]').val(),
+                    suppQuantity: $('input[name=medSuppQuantity]').val()
+                  };
+                  $('#medSuppTable tbody').empty();
+                  displayTableRowSupp();
+                }
+
+            }
 
             //Reset Medical Supply Fields
-            $('select[name=medSuppName]').prop('selectedIndex', 0);
-            $('select[name=medSuppBrand]').prop('selectedIndex', 0);
-            $('select[name=medSuppUnit]').prop('selectedIndex', 0);
-            $('select[name=medSuppBrand]').prop('disabled', true);
-            $('select[name=medSuppUnit]').prop('disabled', true);
-            $('input[name=medSuppQuantity]').val(this.defaultValue);
+            resetSuppFields();
        
-
           }
         });
-
       }
     });
+    
+    function displayTableRowSupp(){
+      for (var i = 0; i < Object.keys(array_supp).length; i++) {
 
+                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+
+                $(tr).prependTo('#tbodyMedicalSupply');
+                console.log(array_supp);
+
+      }
+    }
+
+    function resetSuppFields(){
+      $('select[name=medSuppName]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('selectedIndex', 0);
+      $('select[name=medSuppUnit]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('disabled', true);
+      $('select[name=medSuppUnit]').prop('disabled', true);
+      $('input[name=medSuppQuantity]').val(this.defaultValue);
+    }
     //Compute for the BMI
     var height;
     var weight;
@@ -657,7 +764,6 @@
       height = $('input[name=height]').val();
       computeBMI(height, weight);
     });
-
     $('input[name=weight]').on('keyup', function(){
       weight = $('input[name=weight]').val();
       computeBMI(height, weight);
@@ -681,10 +787,8 @@
       else if ($('select[name=weightUnit]').val() == 'lb') {
         kilograms = weight * 0.453592;
       }
-
       //calculate BMI
       bmi = Math.round((kilograms / (meters * meters)) * 100) / 100;
-
       if (!isNaN(bmi)) {
         $('input[name=bmi]').val(bmi.toFixed(2));
       }
@@ -692,28 +796,22 @@
       if (bmi >= 0 && bmi <= 18.50) {
         $('input[name=bmiRange]').val([0]);
       }
-
       else if(bmi > 18.49 && bmi <= 24.99){
         $('input[name=bmiRange]').val([1]);
       }
-
       else if(bmi >= 25.00 && bmi <=29.99){
         $('input[name=bmiRange]').val([2]);
       }
-
       else if(bmi >=30.00 && bmi <=34.99){
         $('input[name=bmiRange]').val([3]);
       }
-
       else if(bmi >= 35.00 && bmi <=39.99){
         $('input[name=bmiRange]').val([4]);
       }
-
       else if(bmi >= 40.00){
         $('input[name=bmiRange]').val([5]);
       }
      
-
     }
     
   });

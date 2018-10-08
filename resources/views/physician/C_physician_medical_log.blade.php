@@ -18,40 +18,19 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>{{date('F, Y')}}</h2>
-                    <div style="float: right;">
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled="" selected="">Month</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option value="" disabled selected>Day</option>
-                        @for($days = 1;$days < 32; $days++)
-                          <option value="{{ $days }}">{{ $days }}</option>
-                        @endfor
-                      </select>
-                      <select style="width: 150px; height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
-                        <option>Year</option>
-                        <option>2018-1940</option>
-                      </select>
-                      <button class="btn btn-round btn-primary">GO</button>
-                      <button class="btn btn-round btn-default"><i class="fa fa-filter"></i>Filter</button>
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 70px; float: right">
+                      <button class="btn btn-round btn-default" data-toggle="modal" data-target="#modalFilter"><i class="fa fa-filter"></i>Filter</button>
                     </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>  
                     <div class="clearfix"></div>
 
                   </div>
+                  
                   <div class="x_content">
                     <!--Content-->
+
                     <div class="table-responsive">
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
                         <thead>
@@ -108,13 +87,6 @@
                               </td>
                               </td>
                               <td class=" last">
-
-                                {{--  <a href="">
-                                  <button class="btn btn-primary" data-toggle="tooltip" title="View More Info">
-                                    <i class="fa fa-angle-double-right"></i>
-                                  </button>
-                                </a>  --}}
-
                                   <button class="btn btn-danger delete-button" data-toggle="tooltip" title="Delete"  data-id="{{ $clinicLog->clinicLogID }}">
                                     <i class="fa fa-trash"></i>
                                   </button>
@@ -126,6 +98,11 @@
                           @endforeach
                         </tbody>
                       </table>
+                      
+                        <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#printModal">
+                          <i class="fa fa-print"></i> Print
+                        </button>
+                  
                     </div>
                     <!--/Content-->
                   </div>
@@ -137,90 +114,279 @@
           </div>
         </div>
 
-<div id="medicalLogMoreInfo" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="printModal">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
+
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Medical Log Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Print Medical Log</h4>
       </div>
-      <div class="modal-body">
-        <form id="logPatientForm" class="form-horizontal form-label-left">
+      <form id="printMedicalLog" action="{{ url('/print/medical/log') }}" target="_blank" method="get">
           @csrf()
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">No.:<span class="required">*</span></label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-               <label class="control-label col-md-1 col-sm-3 col-xs-3">3</label>
-            </div>
+      <div class="modal-body">
+        <div class="col-md-4">
+            <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
+        </div>
+        <div class="col-md-4">
+            <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+        </div>
+        <div class="col-md-4">
+            <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
+        </div>
+        <div style="width: 100%" id="error_container">
+          
+        </div>
+        <br><br>
+        <div style="width: 100%">
+          <div class="form-group">
+            <label style="margin-left: 5px; width: 50px">Date: </label>
+            <input type="date" name="date" style="width: 70%" disabled id="date">
           </div>
+            
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Month: </label>
+            <select name="month" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+              <option value="" selected></option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
 
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientID" required>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientName" required>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Assisting Nurse: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" readonly>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Date: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" readonly value="{{ date('F d, Y') }}">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Time: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" required="required" readonly value="{{ date('h:i a') }}">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <select name="" style="border-radius:8px;" class="form-control" required>
-                <option value="" disabled selected>Concern</option>
-                <option value="1">Consultation</option>
-                <option value="2">Letter/Certification</option>
-              </select>
-
-            </div>
-          </div>
-
+            <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_month">
+          
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Year: </label>
+            <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_year">
+          
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Next</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="modal-footer" style="text-align: center;">
+        <button type="submit" class="btn btn-success">Continue</button>
       </div>
-       </form>
+      </form>
+
     </div>
-
   </div>
 </div>
 
+<!-- FILTER -->
+ <!-- MODAL -->
+  <div id="modalFilter" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width:680px">
+        <!-- Modal content -->
+            <div class="modal-content" style="background-color: #f7f1e3">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss = "modal">&times;</button>
+            <h4 class="modal-title">Filter</h4>
+        </div>
+
+        <div class="modal-body" style="font-size:18px;">
+          <label style="display: inline-block;width: 80px; margin-bottom:10px;">Month </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;
+            width: 170px;" id="filterMonth"><br>
+            <option value="" disabled selected></option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <label style="display: inline-block; width: 50px; margin-bottom:10px; margin-left: 40px;">Day </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterDays">
+            <option value="" disabled selected></option>
+              @for($days = 1; $days < 32; $days++)
+                <option value="{{ $days }}">{{ $days }}</option>
+              @endfor
+          </select>
+          <label style="display: inline-block; width: 60px; margin-bottom:10px; margin-left: 50px;">Year </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterYear">
+            <option value="" disabled selected></option>
+              @for($years = 2018; $years > 1998; $years--)
+                <option value="{{ $years }}">{{ $years }}</option>
+              @endfor
+          </select><br>
+         <!--  <label style="display: inline-block; width: 80px; margin-bottom:10px;">Concern
+          </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; width: 170px;
+              border: 1.5px solid gray;" id="filterConcern">
+            <option value="" disabled selected></option>
+            <option value="consultation">Consultation</option>
+            <option value="letter/certification">Letter/Certificate</option>
+          </select> -->
+        </div>
+      
+        <div class="modal-footer" style="margin-right:0%">
+          <button class="btn btn-primary" id="btnReset">Reset Filter</button>
+          <button class="btn btn-success" id="btnDone" data-dismiss="modal">DONE</button>
+          
+        </div>
+            </div>
+        </div>
+  </div>
 <script>
   $(document).ready(function(){
-    $('#patientTable').DataTable({
+    var table = $('#patientTable').DataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false
+        "bAutoWidth": false,
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
+
+     //Filtering of Data Table
+    $('select').on('change', function(){
+      var month = $('#filterMonth').val();
+      var days = $('#filterDays').val();
+      var year = $('#filterYear').val();
+      //var concern = $('#filterConcern').val();
+      if (month == null) {
+        month = ' ';
+      }
+      if (days == null) {
+        days = ' ';
+      }
+      if (year == null) {
+        year = ' ';
+      }
+      // if (concern == null) {
+      //   concern = ' ';
+      // }
+      var date = month + ' ' + days + ' ' + year;
+      table.column(5).search(date).draw();
+      //table.column(3).search(concern).draw();
+   
+
+    });
+
+    $('#btnReset').click(function(){
+      $('#filterConcern').val('');
+      $('#filterYear').val('');
+      $('#filterDays').val('');
+      $('#filterMonth').val('');
+      table.column(4).search('').draw();
+      table.column(3).search('').draw();
+    });
+
+    $('.delete-button').on('click', function(){
+     swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this record!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+     .then((willDelete)=>{
+        if (willDelete) {
+          $.ajax({
+            url: '/nurse/delete/clinic/log/' + $(this).data('id'),
+            type: 'get',
+            success: function(output){
+              swal({
+                title: "SUCCESS",
+                text: output.message,
+                icon: "success",
+              })
+              .then((value)=>{
+                location.reload(true);
+              });
+            }
+          });
+        }
+     })
+    });
+
+     //Printing of Medical Log
+    $('#printMedicalLog').parsley();
+    $('#printMedicalLog').submit(function(){
+      $('#printModal').modal('hide');
+
+    });
+    
+    //drop down of year
+    for (i = new Date().getFullYear(); i > 1999; i--)
+    {
+        $('.year').append($('<option />').val(i).html(i));
+    }
+    //Validation For Printing of Medical Log
+    $('#daily').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#date').prop('disabled', false);
+        $('#date').prop('required', true);
+      }
+      else{
+        $('#date').prop('disabled', true);
+        $('#date').prop('required', false);
+      }
+    });
+    $('#monthly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#month').prop('disabled', false);
+        $('#month').prop('required', true);
+        $('#year-month').prop('disabled', false);
+        $('#year-month').prop('required', true);
+      }
+      else{
+        $('#month').prop('disabled', true);
+        $('#month').prop('required', false);
+        $('#year-month').prop('disabled', true);
+        $('#year-month').prop('required', false);
+      }
+    });
+    $('#yearly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#year').prop('disabled', false);
+        $('#year').prop('required', true);
+      }
+      else{
+        $('#year').prop('disabled', true);
+        $('#year').prop('required', false);
+      }
+    });
+
+    $('#printModal').on('hidden.bs.modal', function () {
+      $('#printMedicalLog')[0].reset();
+      $('#date').prop('disabled', true);
+      $('#month').prop('disabled', true);
+      $('#year-month').prop('disabled', true);
+      $('#year').prop('disabled', true);
+      $('#date').prop('required', false);
+      $('#month').prop('required', false);
+      $('#year-month').prop('required', false);
+      $('#year').prop('required', false);
     });
 
   });

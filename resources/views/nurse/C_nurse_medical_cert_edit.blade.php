@@ -65,7 +65,7 @@
                                     
                                     </div>
 
-                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> PRINT</button></a>
+                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> SAVE & PRINT</button></a>
                                   </div>
                                 </div>
                               </div>
@@ -235,6 +235,9 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
+                    <a href="{{ url('nurse/medical/log') }}" title="">
+                      <button type="button" class="btn btn-primary" style="float: right; margin-top: 20px;">BACK</button>
+                    </a>
                     <!-- /Content -->
                   </div>
                 </div>

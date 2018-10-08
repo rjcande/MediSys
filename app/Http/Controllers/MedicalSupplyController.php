@@ -16,6 +16,8 @@ use DB;
 
 use Session;
 
+use PDF;
+
 class MedicalSupplyController extends Controller
 {
     /**
@@ -75,22 +77,32 @@ class MedicalSupplyController extends Controller
             elseif (Session::get('accountInfo.position') == 2) {
                 $supply->supType = 'd';
             }
-            $supply->medSupName = Input::get('medSupName');
-            $supply->brand = Input::get('medSupBrandName');
-            $supply->unit = Input::get('medSupUnit');
 
-            $supply->save();
+            if ($isExisting == false) {
+                 $supply = new MedicalSupply;
+                if(Session::get('accountInfo.position') == 3){
+                    $supply->supType = 'm';
+                }elseif (Session::get('accountInfo.position') == 2) {
+                    $supply->supType = 'd';
+                }
+                $supply->medSupName = Input::get('medSupName');
+                $supply->brand = Input::get('medSupBrandName');
+                $supply->unit = Input::get('medSupUnit');
+                $supply->save();
 
             return Response::json(array('message' => 'Successfully Added!', 'logo'=>'success', 'title'=>'Good Job'));
+            }
         }
         else{
             return Response::json(array('message' => 'A Medical Supply has already been entered!!', 'logo'=>'warning', 'title'=>'WARNING'));
         }
 
-        } catch (Exception $e) {
-
-        }
+        
     }
+     catch (Exception $e) {
+
+    }
+}
 
     /**
      * Display the specified resource.
@@ -194,5 +206,83 @@ class MedicalSupplyController extends Controller
                 ->get();
 
         return Response::json($unit);
+    }
+
+    public function printMedicalList(Request $request)
+    {
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->whereDate('created_at', '=', $request->date)
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->whereMonth('created_at', '=', $request->month)
+                        ->whereYear('created_at', '=', $request->year_month)
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->whereYear('created_at', '=', $request->year)
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+     
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }
+        
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                        })
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }    
+
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+            $supply = MedicalSupply::where('isDeleted', '=', '0')
+                        ->where('supType','=', 'm')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('created_at', '=', $request->date)
+                            ->orwhereYear('created_at', '=', $request->year);
+                        })
+                        ->orderBy('medSupID', 'DESC')
+                        ->get();
+        }  
+
+        $pdf = PDF::loadView('reports.medical_supply_list', compact('supply'))->setPaper('legal', 'landscape');
+        return $pdf->stream('reports.medical_supply_list');
     }
 }

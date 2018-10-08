@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Input;
 
 use App\VitalSigns;
 
+use App\Appointment;
+
 //use Exception;
 
 use DB;
@@ -144,7 +146,18 @@ class ClinicLogController extends Controller
         $physicians = Accounts::where('position', '=', '5')
                                 ->orWhere('position', '=', '3')
                                 ->get();
-        return view('nurse.C_nurse_patient_prescription')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName]);
+        $appointment = Appointment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+                                    ->join('logreferrals', 'logreferrals.logReferralID', '=', 'appointments.logReferralID')
+                                    ->where('cliniclogs.patientID', '=',  Session::get('request.patientID'))
+                                    ->where('isAppointed', '=', '0')
+                                    ->where('appointmentDate', '=', date('y-m-d'))
+                                    ->first();
+        //dd($appointment);
+        // if (count($appointment) > 0) {
+            
+        // }
+        //dd($appointment);
+        return view('nurse.C_nurse_patient_prescription')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName, 'hasAppointment' => $appointment]);
         //return view('nurse.sample')->with(['medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'physicians' => $physicians, 'medicineName' => $medicineName]);
     }
 
@@ -156,6 +169,7 @@ class ClinicLogController extends Controller
      */
     public function store(Request $request)
     {
+   
         try {
             //variable for the last inserted ID of treatments table
             $treatmentID;
@@ -209,29 +223,39 @@ class ClinicLogController extends Controller
             $treatmentID = $treatment->treatmentID;
 
         
-            for ($i=0; $i < sizeof(Input::get('_medicineID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
                 $prescription = new Prescription;
                 $prescription->treatmentID =  $treatmentID;
-                $prescription->medicineID = Input::get('_medicineID')[$i];
-                $prescription->quantity = Input::get('_medQuantity')[$i];
-                $prescription->medication = Input::get('_medication')[$i];
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
                 $prescription->isGiven = '1';
-                $prescription->dosage = Input::get('_dosage')[$i];
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
                 $prescription->save();
 
             }
 
-            for ($i=0; $i < sizeof(Input::get('_medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
                 $usedMedSupply = new UsedMedSupply;
 
                 $usedMedSupply->treatmentID = $treatmentID;
-                $usedMedSupply->medSupplyID = Input::get('_medSuppID')[$i];
-                $usedMedSupply->quantity = Input::get('_medSuppQuantity')[$i];
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
                 $usedMedSupply->save();
+            }
+
+            if (array_key_exists('hasAppointment', $medicalLogInfo)) {
+                if ($medicalLogInfo['hasAppointment'] == 1) {
+                    $appointment = Appointment::find($medicalLogInfo['appointmentID']);
+
+                    $appointment->isAppointed = 4;
+
+                    $appointment->save();
+                } 
             }
 
             Session::flash('message', 'Successfully Saved!');
@@ -417,7 +441,7 @@ class ClinicLogController extends Controller
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'treatments.*', 'genericName', 'brand', 'unit')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
@@ -435,7 +459,7 @@ class ClinicLogController extends Controller
             ->get();
 
         $medicineList = Medicine::all();
-        $medicineName = Medicine::groupBy('genericName')->get();
+        $medicineName = Medicine::where('isDeleted', '=', 0)->groupBy('genericName')->get();
         $medicalSupplyList = MedicalSupply::all();
 
         $vitalSigns = ClinicLog::join('vitalSigns', 'vitalSigns.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -466,6 +490,11 @@ class ClinicLogController extends Controller
         $diagnosis = Diagnoses::select('diagnosisID')
                             ->where('logReferralID', '=', $logReferralID['logReferralID'])
                             ->first();
+        $clinicLog = ClinicLog::find($id);
+
+        $clinicLog->symptoms = Input::get('symptoms');
+
+        $clinicLog->save();
 
         $edit = Diagnoses::find($diagnosis['diagnosisID']);
 
@@ -488,39 +517,64 @@ class ClinicLogController extends Controller
 
         $treatmentID = $treatment->treatmentID;
 
-        for ($i=0; $i < count(Input::get('medicineID')); $i++) { 
+        for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
-            $prescription = new Prescription;
+                $prescription = new Prescription;
 
-            $prescription->treatmentID = $treatmentID;
-            $prescription->medicineID = Input::get('medicineID')[$i];
-            $prescription->quantity = Input::get('medQuantity')[$i];
+                $prescription->treatmentID = $treatmentID;
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
 
-            if (Input::get('isPrescribed')[$i] == 0) {
-                $prescription->isPrescribed = 0;
-                $prescription->isGiven = 1;
+                if (Input::get('isPrescribed')[$i] == 0) {
+                    $prescription->isPrescribed = 0;
+                    $prescription->isGiven = 1;
+                }
+                elseif (Input::get('isPrescribed')[$i] == 1) {
+                    $prescription->isPrescribed = 1;
+                    $prescription->isGiven = 0;
+                }
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
+
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+
+                $prescription->save();
             }
-            elseif (Input::get('isPrescribed')[$i] == 1) {
-                $prescription->isPrescribed = 1;
-                $prescription->isGiven = 0;
+
+            for ($i=0; $i < sizeof(Input::get('_medPrescribedArray')); $i++) { 
+
+                $prescription = new Prescription;
+
+                $prescription->treatmentID = $treatmentID;
+                $prescription->medicineID = Input::get('_medPrescribedArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medPrescribedArray')[$i]['medicineQuantity'];
+
+                if (Input::get('isPrescribed_other')[$i] == 0) {
+                    $prescription->isPrescribed = 0;
+                    $prescription->isGiven = 1;
+                }
+                elseif (Input::get('isPrescribed_other')[$i] == 1) {
+                    $prescription->isPrescribed = 1;
+                    $prescription->isGiven = 0;
+                }
+                $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
+
+                $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->save();
             }
-            $prescription->dosage = Input::get('dosage')[$i];
 
-            $prescription->medication = Input::get('medication')[$i];
-
-            $prescription->save();
-        }
-
-        for ($i=0; $i < count(Input::get('medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
-            $usedMedSupply = new UsedMedSupply;
+                $usedMedSupply = new UsedMedSupply;
 
-            $usedMedSupply->treatmentID = $treatmentID;
-            $usedMedSupply->medSupplyID = Input::get('medSuppID')[$i];
-            $usedMedSupply->quantity = Input::get('medSuppQuantity')[$i];
+                $usedMedSupply->treatmentID = $treatmentID;
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
-            $usedMedSupply->save();
-        }
+                $usedMedSupply->save();
+            }
+
+
         Session::flash('message', 'Successfully Saved!');
                 
     }
@@ -666,26 +720,27 @@ class ClinicLogController extends Controller
             $treatmentID = $treatment->treatmentID;
 
           
-            for ($i=0; $i < count(Input::get('medicineID')); $i++) { 
+             for ($i=0; $i < sizeof(Input::get('_medArray')); $i++) { 
 
                 $prescription = new Prescription;
-
-                $prescription->treatmentID = $treatmentID;
-                $prescription->medicineID = Input::get('medicineID')[$i];
-                $prescription->quantity = Input::get('medQuantity')[$i];
-                $prescription->medication = Input::get('medication')[$i];
-                $prescription->dosage = Input::get('dosage');
+                $prescription->treatmentID =  $treatmentID;
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+                $prescription->isGiven = '1';
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
                 $prescription->save();
+
             }
 
-            for ($i=0; $i < count(Input::get('medSuppID')); $i++) { 
+            for ($i=0; $i < sizeof(Input::get('_suppArray')); $i++) { 
                 
                 $usedMedSupply = new UsedMedSupply;
 
                 $usedMedSupply->treatmentID = $treatmentID;
-                $usedMedSupply->medSupplyID = Input::get('medSuppID')[$i];
-                $usedMedSupply->quantity = Input::get('medSuppQuantity')[$i];
+                $usedMedSupply->medSupplyID = Input::get('_suppArray')[$i]['suppID'];
+                $usedMedSupply->quantity = Input::get('_suppArray')[$i]['suppQuantity'];
 
                 $usedMedSupply->save();
             }
@@ -736,8 +791,7 @@ class ClinicLogController extends Controller
             Session::flash('patientNumber', $request->patientNumber);
             return Response::json(array('redirect' => '/register/patient'));
         }
-   
-        
+ 
     }
 
     public function requestLetterCertification()
@@ -755,7 +809,7 @@ class ClinicLogController extends Controller
                         ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
-                        ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -772,6 +826,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $attendingPhysician = Accounts::where('isActive', '=', '1')->get();
@@ -787,6 +842,7 @@ class ClinicLogController extends Controller
                         ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -803,6 +859,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $attendingPhysician = Accounts::where('isActive', '=', '1')->get();
@@ -817,14 +874,14 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.genericName','medicines.brand','medicines.unit', 'treatments.*')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
@@ -837,8 +894,8 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::all();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('isDeleted', '=', 0)->get();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)->get();
 
         return view('physician.C_physician_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
@@ -880,14 +937,14 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
             ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
-            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.*', 'treatments.*')
+            ->select('prescriptions.*', 'cliniclogs.*', 'medicines.genericName','medicines.brand','medicines.unit', 'treatments.*')
             ->where('prescriptions.isDeleted' , '=', '0')
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
@@ -946,6 +1003,7 @@ class ClinicLogController extends Controller
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
                         ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -960,6 +1018,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $patient = Patient::find($id); 
@@ -979,6 +1038,7 @@ class ClinicLogController extends Controller
                         ->select('cliniclogs.*', 'users.*', 'logreferrals.*')
                         ->where('cliniclogs.patientID', '=', $id)
                         ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogDateTime', 'desc')
                         ->get();
 
@@ -993,6 +1053,7 @@ class ClinicLogController extends Controller
                             ->orWhere('logreferrals.reqForWaver', '=', '1')
                             ->orWhere('logreferrals.reqForExcuseLetter', '=', '1');
                         })
+                        ->where('logreferrals.isDeleted', '=', '0')
                         ->get();
 
         $patient = Patient::find($id); 
@@ -1004,13 +1065,15 @@ class ClinicLogController extends Controller
         return view('chief.C_mchief_referred_patient_diagnosis')->with(['clinicLogs' => $clinicLogs, 'attendingPhysicians' => $attendingPhysician, 'vitalSigns' => $vitalSigns, 'patient' => $patient, 'certifications' => $certifications]);
     }
 
-    public function timeOut($id)
+    public function timeOut(Request $request,$id)
     {
+
         try {
 
             $timeOut = ClinicLog::find($id);
 
-            $date = date('Y-m-d h:i:s a');
+            $time = Input::get('timeOut'); //$request->input('')
+            $date = date('y-m-d H:i:s', strtotime($time));
             $timeOut->timeOut = $date;
 
             $timeOut->save();
@@ -1022,5 +1085,97 @@ class ClinicLogController extends Controller
         }
     }
 
+    public function printMedicalLog(Request $request){
+        //dd($request->all());
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year)
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+     
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+        
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }    
+
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
+                            ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }
+
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
+                        })
+                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->get();
+        }  
+
+        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
+        return $pdf->stream('reports.medical_log');
+
+    }
    
 }

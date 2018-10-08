@@ -36,7 +36,7 @@
                             </div>  
                             
                             <div style="float:left; margin-left:40px; font-size:18px; width:300px;margin-top: 20px;">
-                              <select style="width:250px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" name="attendingPhysician">
+                              <select style="width:250px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" name="attendingPhysician" disabled>
                                 <option value="" disabled selected>Select Physician</option>
                                 @foreach($physicians as $physician)
                                   <option value="{{ $physician->id }}" @if($physician->id == $attendingPhysician['id']){{ "selected" }} @endif>{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</option>
@@ -46,11 +46,11 @@
                             </div>  
                             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);height:30px; border-radius:8px;">&nbsp<b>Symptoms</b></p>
-                              <textarea rows="7" class="form-control" placeholder="Enter Symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="symptoms" required data-parsley-group="first">{{ $clinicLogInfo->symptoms }}</textarea>
+                              <textarea rows="7" class="form-control" placeholder="Enter Symptoms here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="symptoms" required data-parsley-group="first" readonly>{{ $clinicLogInfo->symptoms }}</textarea>
                             </div> <br><br>
                             <div style="float: left;width: 100%; margin-top: 20px;">
-                              <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>         
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <!-- <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>         
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a> -->
                             </div>
                           </div>
                         </div>
@@ -65,7 +65,7 @@
                             
                             <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
-                              <textarea rows="7" class="form-control" placeholder="Enter treatment done here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="treatment" data-parsley-group="first">{{ $recommendation['treatmentDescription'] }}</textarea>
+                              <textarea rows="7" class="form-control" placeholder="Enter treatment done here" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="treatment" data-parsley-group="first" readonly>{{ $recommendation['treatmentDescription'] }}</textarea>
                             </div> <br>
                           </div>
                         </div>
@@ -259,11 +259,11 @@
                                 <div id="medicineTable"class="row"
                                 style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 30px;width: 45%"><h4 style="margin-bottom:5px; margin-left:5px;"> Given Medicine</h4>
                                 <div class="table-responsive" style="width:100%;">
-                                  <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
+                                  <table class="table table-striped table-bordered jambo_table bulk_action" id="medTable">
                                    <thead>
                                         <tr class="headings">
                                           <th>
-                                            <input type="checkbox" id="check-all" class="flat">
+                                            <input type="checkbox" id="check-all">
                                           </th>
                                           <th class="column-title">Generic Name </th>
                                           <th class="column-title">Brand </th>
@@ -271,7 +271,7 @@
                                           <th class="column-title">Unit</th>
                                           <th class="column-title">Dosage</th>
                                           <th class="column-title no-link last"><span class="nobr">Medication</span></th>
-                                          <th class="bulk-actions" colspan="8">
+                                          <th class="bulk-actions" colspan="6">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                           </th>
                                         </tr>
@@ -293,7 +293,6 @@
                                           @endforeach
                                       </tbody>
                                   </table>
-                                   <button class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                     <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;" id="btnDeleteMed">DELETE</button>
                                   </div>
                                 </div>
@@ -301,11 +300,11 @@
                                 <div id="medicineTable"class="row"
                                 style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
                                 <div class="table-responsive" style="width: 100%;">
-                                <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
+                                <table class="table table-striped table-bordered jambo_table bulk_action" id="suppTable">
                                    <thead>
                                     <tr class="headings">
                                       <th>
-                                        <input type="checkbox" id="check-all" class="flat">
+                                        <input type="checkbox" id="check-all-supp">
                                       </th>
                                       <th class="column-title">Medical Supply Name </th>
                                       <th class="column-title">Brand </th>
@@ -333,23 +332,22 @@
                                    
                                   </tbody>
                                 </table>
-                                 <button class="btn btn-default" type="button" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                                   <button class="btn btn-default" type="button" style="float: right; background-color:#fdcb6e; color:white;" id="btnMedSupDelete">DELETE</button>
                               </div>
                               </div>
                               </div>
                              <div style="float: left;width: 100%; margin-top: 20px; text-align: center">
                               <a href="{{ route('nurse.generate.pdf.prescription', $clinicLogInfo->clinicLogID) }}" target="_blank">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button>
+                                <button type="button" class="btn btn-primary" id="printPrescription"><i class="fa fa-download"></i> GENERATE PDF</button>
                               </a>
                               <button type="button" class="btn btn-success btn-save" name="btnSave">SAVE</button>         
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                             </div>
                             <div style="float: left; width: 100%">
                               <label style="color:white; font-size:18px; margin-left: 25px; margin-top: 15px; width: 100%;
                                     background: linear-gradient(to right, #192856, white); height:30px; border-radius:8px;">&nbsp Recommendation</label>
                               <textarea rows="7" class="form-control" placeholder="Enter recommendation/s here"
-                                style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="recommendation">{{ $recommendation['recommendations'] }}</textarea> 
+                                style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="recommendation" readonly>{{ $recommendation['recommendations'] }}</textarea> 
                             </div>
                           </div>
                         </div>
@@ -364,13 +362,13 @@
                               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                                 height:30px; border-radius:8px;">&nbsp<b>Notes (for Physician)</b></p>
                               <textarea rows="7" class="form-control" placeholder="Enter recommendation/s here"
-                                style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="notes">{{ $clinicLogInfo->notes }}</textarea>
+                                style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="notes" readonly>{{ $clinicLogInfo->notes }}</textarea>
                             </div>
 
                             <div style="float: left;width: 100%; margin-top: 20px;">
-                              <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>
+                              <!-- <button type="button" class="btn btn-success btn-save" name="btnSave" style="margin-left: 40%">SAVE</button>
                             
-                              <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                              <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a> -->
                             </div>
                          </form>
                           </div>
@@ -509,7 +507,7 @@
                             
                              <div style="float: left; width: 100%; margin-top: 20px; text-align: center;">
                                 <button type="submit" class="btn btn-success">SAVE</button>
-                                <a href="{{url('/nurse/medical/Log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
+                                <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>
                              </div>
                              
                           </form>
@@ -519,6 +517,9 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
+                    <a href="{{ url('nurse/medical/log') }}" title="">
+                      <button type="button" class="btn btn-primary" style="float: right; margin-top: 20px;">BACK</button>
+                    </a>
                     <!-- /Content -->
                   </div>
                 </div>
@@ -551,6 +552,11 @@
     var medSuppQuantity = new Array();
     var medication = new Array();
     var dosage = new Array();
+    var array_med = {};
+    var array_supp = {};
+    var ctr = 0;
+    var ctr_supp = 0;
+
     //selected medicine
     var checkBoxMedID = new Array();
     var checkBoxMedSupID = new Array();
@@ -575,8 +581,8 @@
     //If Medicine button delete is clicked
     $('#btnDeleteMed').on('click', function(e){
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          title: "DELETE",
+          text: "Are you sure you want to delete this?",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -606,8 +612,8 @@
     //If Medical button delete is clicked
     $('#btnMedSupDelete').on('click', function(e){
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to .......!",
+          title: "DELETE",
+          text: "Are  you sure you want to delete this?",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -637,48 +643,200 @@
     //Validation For adding Medicine
     $('#btnMedAdd').click( function(event) {
       event.preventDefault();
-      // Validate all Medicine fields.
-
-      $('#saveForm').parsley().validate('second');
       
+      // Validate all Medicine fields.
+      $('#saveForm').parsley().validate('second');     
       if ($('#saveForm').parsley().isValid('second')) {
-        var medGenericName = $('select[name=medGenericName] option:selected').text();
-        var _idMedGenericName = $('select[name=medGenericName]').val();
-        var medBrand = $('select[name=medBrand] option:selected').text();
-        _idMedBrand[_idMedBrand.length] = $('select[name=medBrand]').val();
-        medQuantity[medQuantity.length] = $('input[name=medQuantity]').val();
-        var medUnit = $('select[name=medUnit] option:selected').text();
-        var _idMedUnit = $('select[name=medUnit]').val();
-        medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
-        dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+        
+        if (Object.keys(array_med).length == 0) {
+            array_med[ctr] = {
+                medicineGenericName: $('select[name=medGenericName] option:selected').text(),
+                medicineBrand: $('select[name=medBrand] option:selected').text(),
+                medicineUnit: $('select[name=medUnit] option:selected').text(),
+                medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
+                medicineID:  $('select[name=medBrand]').val(),
+                medicineQuantity: $('input[name=medQuantity]').val()
+            };
+            $('#medTable tbody').empty();
+            displayTableRow();
+        }
+        else{
+            var isEqual = false;
+            var key;
+            for (var i = 0; i < Object.keys(array_med).length; i++) {
+            
+                if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                    isEqual = true;
+                    key = i;
+                }
+                
+            }
 
-        var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medGenericName+"</td><td class=' '>"+medBrand+"</td><td class=' '>"+medQuantity[medQuantity.length-1]+"</td><td class=' last'>"+medUnit+"</td><td>"+dosage[dosage.length-1]+"</td><td>"+medication[medication.length - 1]+"</td></tr>";
+            if (isEqual == true) {
+              array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('input[name=medQuantity]').val());
+              $('#medTable tbody').empty();
+              displayTableRow();
+            }
+            else if(isEqual == false){
+              ctr++;
+              array_med[ctr] = {
+                  medicineGenericName: $('select[name=medGenericName] option:selected').text(),
+                  medicineBrand: $('select[name=medBrand] option:selected').text(),
+                  medicineUnit: $('select[name=medUnit] option:selected').text(),
+                  medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                  medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
+                  medicineID:  $('select[name=medBrand]').val(),
+                  medicineQuantity: $('input[name=medQuantity]').val()
+              };
+              $('#medTable tbody').empty();
+              displayTableRow();
+            }
 
-          $(tr).prependTo('#tbodyMedicine');
-
+        }      
+        resetFields();
+        console.log(Object.keys(array_med).length);
+        console.log(array_med);
+      }
+      else{
+        return false
       }
     });
+
+    function displayTableRow(){
+        for (var i = 0; i < Object.keys(array_med).length; i++) {
+
+            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+
+            $(tr).prependTo('#tbodyMedicine');
+
+            $('#printPrescription').prop('disabled', true);
+        }
+    }
+
+    function resetFields(){
+        $('select[name=medGenericName]').prop('selectedIndex', 0);
+        $('select[name=medBrand]').prop('selectedIndex', 0);
+        $('select[name=medUnit]').prop('selectedIndex', 0);
+        $('select[name=medBrand]').prop('disabled', true);
+        $('select[name=medUnit]').prop('disabled', true);
+        $('input[name=medQuantity]').val(this.defaultValue);
+        $('input[name=medication]').val(this.defaultValue);
+        $('input[name=dosage]').val(this.defaultValue);
+        $('input[name=hrs_day]').val(this.defaultValue);
+        $('input[name=week]').val(this.defaultValue);
+    }
 
     $('#btnSuppAdd').click(function(event){
-      event.preventDefault();
-      // Validate all Medical Supply fields.
-      $('#saveForm').parsley().validate('third');
-      
-      if ($('#saveForm').parsley().isValid('third')) {
-        var medSuppName = $('select[name=medSuppName] option:selected').text();
-        var _idMedSuppName = $('select[name=medSuppName]').val();
-        var medSuppBrand = $('select[name=medSuppBrand] option:selected').text();
-        _idMedSuppBrand[_idMedSuppBrand.length] = $('select[name=medSuppBrand]').val();
-        medSuppQuantity[medSuppQuantity.length] = $('input[name=medSuppQuantity]').val();
-        var medSuppUnit = $('select[name=medSuppUnit] option:selected').text();
-        var _idMedSuppUnit = $('select[name=medSuppUnit]').val();
+        event.preventDefault();
+        // Validate all Medical Supply fields.
+        $('#saveForm').parsley().validate('third');
+        
+        if ($('#saveForm').parsley().isValid('third')) {
 
-        var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+medSuppName+"</td><td class=' '>"+medSuppBrand+"</td><td class=' '>"+medSuppQuantity[medSuppQuantity.length-1]+"</td><td class=' last'>"+medSuppUnit+"</td></tr>";
+          if (Object.keys(array_supp).length == 0) {
+              array_supp[ctr_supp] = {
+                  suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                  suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                  suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                  suppID:  $('select[name=medSuppBrand]').val(),
+                  suppQuantity: $('input[name=medSuppQuantity]').val()
+              };
+              $('#suppTable tbody').empty();
+              displayTableRowSupp();
+          }
+          else{
+              var isEqual = false;
+              var key;
+              for (var i = 0; i < Object.keys(array_supp).length; i++) {
+              
+                  if (array_supp[i].suppID == $('select[name=medSuppBrand]').val()) {
+                      isEqual = true;
+                      key = i;
+                  }
+                  
+              }
 
-        $(tr).prependTo('#tbodyMedSupp');
+              if (isEqual == true) {
+                array_supp[key].suppQuantity = parseInt(array_supp[key].suppQuantity) + parseInt($('input[name=medSuppQuantity]').val());
+                $('#suppTable tbody').empty();
+                displayTableRowSupp();
+              }
+              else if(isEqual == false){
+                ctr_supp++;
+                array_supp[ctr_supp] = {
+                  suppGenericName: $('select[name=medSuppName] option:selected').text(),
+                  suppBrand: $('select[name=medSuppBrand] option:selected').text(),
+                  suppUnit: $('select[name=medSuppUnit] option:selected').text(),
+                  suppID:  $('select[name=medSuppBrand]').val(),
+                  suppQuantity: $('input[name=medSuppQuantity]').val()
+                };
+                $('#suppTable tbody').empty();
+                displayTableRowSupp();
+              }
+
+          }
+
+          //Reset Medical Supply Fields
+          resetSuppFields();
+     
+        }
+    });
+
+    function displayTableRowSupp(){
+      for (var i = 0; i < Object.keys(array_supp).length; i++) {
+
+                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+
+                $(tr).prependTo('#tbodyMedSupp');
+                console.log(array_supp);
 
       }
+    }
+
+    function resetSuppFields(){
+      $('select[name=medSuppName]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('selectedIndex', 0);
+      $('select[name=medSuppUnit]').prop('selectedIndex', 0);
+      $('select[name=medSuppBrand]').prop('disabled', true);
+      $('select[name=medSuppUnit]').prop('disabled', true);
+      $('input[name=medSuppQuantity]').val(this.defaultValue);
+    }
+
+    var $selectAll = $('#check-all'); // main checkbox inside table thead
+    var $table = $('#medTable'); // table selector 
+    var $tdCheckbox = $table.find('tbody input:checkbox'); // checkboxes inside table body
+    var $tdCheckboxChecked = []; // checked checbox arr
+
+    //Select or deselect all checkboxes on main checkbox change
+    $selectAll.on('click', function () {
+        $tdCheckbox.prop('checked', this.checked).change();
     });
+
+    //Switch main checkbox state to checked when all checkboxes inside tbody tag is checked
+    $tdCheckbox.on('change', function(){
+        $tdCheckboxChecked = $table.find('tbody input:checkbox:checked');//Collect all checked checkboxes from tbody tag
+        //if length of already checked checkboxes inside tbody tag is the same as all tbody checkboxes length, then set property of main checkbox to "true", else set to "false"
+        $selectAll.prop('checked', ($tdCheckboxChecked.length == $tdCheckbox.length));
+    })
+
+
+    var $selectAll = $('#check-all-supp'); // main checkbox inside table thead
+    var $table = $('#suppTable'); // table selector 
+    var $tdCheckbox = $table.find('tbody input:checkbox'); // checkboxes inside table body
+    var $tdCheckboxChecked = []; // checked checbox arr
+
+    //Select or deselect all checkboxes on main checkbox change
+    $selectAll.on('click', function () {
+        $tdCheckbox.prop('checked', this.checked).change();
+    });
+
+    //Switch main checkbox state to checked when all checkboxes inside tbody tag is checked
+    $tdCheckbox.on('change', function(){
+        $tdCheckboxChecked = $table.find('tbody input:checkbox:checked');//Collect all checked checkboxes from tbody tag
+        //if length of already checked checkboxes inside tbody tag is the same as all tbody checkboxes length, then set property of main checkbox to "true", else set to "false"
+        $selectAll.prop('checked', ($tdCheckboxChecked.length == $tdCheckbox.length));
+    })
 
      //On change of Medicine Name
     $('#medGenericName').on('change', function(e){
@@ -705,6 +863,15 @@
         $('#medUnit').prop('disabled', false);
         $('#medUnit').empty();
         $('#medUnit').append('<option value="'+ data[0]['medicineID'] +'">'+data[0]['unit']+'</option>')
+        var str = data[0]['dosage'];
+        var splitted = str.split(" ");
+        $('#dosage').val(splitted[0]);
+        if (splitted[1] == "mg") {
+          $('#dosageUnit').val("mg");
+        }
+        else if(splitted[1] == "ml"){
+          $('#dosageUnit').val("ml");
+        }
       });      
     });
 
@@ -741,13 +908,29 @@
       e.preventDefault();
 
       if ($(this).parsley().isValid()) {
+        var height;
+        var weight;
+
+        if ($('input[name=height]').val() != '') {
+          height = $('input[name=height]').val() + ' ' + $('#heightUnit').val();
+        }
+        else{
+          height = null;
+        }
+
+        if ($('input[name=weight]').val() != '') {
+          weight = $('input[name=weight]').val() + ' ' + $('#weightUnit').val();
+        }
+        else{
+          weight = null;
+        }
         var data = {       
           bloodPressure: $('input[name=bloodPressureSystolic]').val() + "/" + $('input[name=bloodPressureDiastolic]').val(),   
           heartRate: $('input[name=heartRate]').val(),
           respiratoryRate: $('input[name=respiratoryRate]').val(),
           temperature: $('input[name=temperature]').val(),
-          height: $('input[name=height]').val() + ' ' + $('#heightUnit').val(),
-          weight: $('input[name=weight]').val() + ' ' + $('#weightUnit').val(),
+          height: height,
+          weight: weight,
           bmi: $('input[name=bmi]').val(),
           bmiRange: $('input[name=bmiRange]:checked').val()
         }
@@ -769,13 +952,8 @@
 
       if($('#saveForm').parsley().isValid('first')){
         var id = {
-          medicineID: _idMedBrand,
-          medQuantity: medQuantity,
-          medSuppID: _idMedSuppBrand,
-          medSuppQuantity: medSuppQuantity,
-          medication: medication,
-          _dosage: dosage,
-
+          _medArray: array_med,
+          _suppArray: array_supp,
         }
 
         $.ajax({
@@ -861,24 +1039,17 @@
       
     }
 
-    //Set Interval For Symptoms
-    {{-- setInterval(function(){
-      var treatment;
-
-      if ('{{ $recommendation["treatmentDescription"] }}' == '') {
-        treatment = null;
-      }
-      else{
-        treatment = '{{ $recommendation["treatmentDescription"] }}';
-      }
+    //Set Interval For the reloading of page
+    setInterval(function(){
+  
       $.get('/nurse/patient/medical/log/edit/clinicLogID/' + '{{ $clinicLogInfo->clinicLogID }}', function(data){
-         if ('{{ $prescription["prescriptionID"] }}' < data['prescription'].prescriptionID || treatment != data['treatment'].treatmentDescription)) {
-            location.reload(true);
-             console.log('{{ $recommendation["treatmentDescription"] }}');
-             console.log(data['treatment'].treatmentDescription);
-         }
+          if ('{{ $recommendation['treatmentDescription'] }}' == '') {
+            if(data['treatment']['treatmentDescription'] != null){
+              location.reload(true);
+            }
+          }
       });
-    }, 2000); --}}
+    }, 2000);
      
 
   });

@@ -39,7 +39,9 @@ class LogReferralsController extends Controller
                 ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                ->where('logreferrals.isDeleted', '=', '0')
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
+                ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 
         //dd($referral);
         $lastReferralID = LogReferrals::select('logReferralID')
@@ -61,6 +63,7 @@ class LogReferralsController extends Controller
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
+                ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 
         //dd($referral);
         $lastReferralID = LogReferrals::select('logReferralID')
@@ -169,7 +172,13 @@ class LogReferralsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $logReferral = LogReferrals::find($id);
+
+        $logReferral->isDeleted = 1;
+
+        $logReferral->save();
+
+        return Response::json(array('message' => 'Record Successfully Deleted'));
     }
 
     public function decline($id)
@@ -459,7 +468,13 @@ class LogReferralsController extends Controller
         $patientID = $id;
 
         $logReferral = LogReferrals::find($logReferralID);
-        return view('physician.C_physician_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        if (Session::get('accountInfo.position') == 5) {
+            return view('physician.C_physician_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        }
+        elseif (Session::get('accountInfo.position') == 3) {
+            return view('chief.C_mchief_patient_certification')->with(['patientName' => $patientName, 'id' => $id, 'logReferral' => $logReferral]);
+        }
+        
     }
 
     public function medCertEnrollmentMChief($patientName, $id, $logReferralID)

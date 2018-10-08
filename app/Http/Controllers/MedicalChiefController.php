@@ -18,7 +18,7 @@ class MedicalChiefController extends Controller
 
         $id = DB::table('INFORMATION_SCHEMA.TABLES')
                 ->select('AUTO_INCREMENT as id')
-                ->where('TABLE_SCHEMA','medisysdb')
+                ->where('TABLE_SCHEMA','safemedisysdb')
                 ->where('TABLE_NAME','medsupplies')
                 ->first();
         $supplies = MedicalSupply::where('isDeleted', '=', '0')->where('supType','m')->get();
@@ -29,7 +29,7 @@ class MedicalChiefController extends Controller
 
         $id = DB::table('INFORMATION_SCHEMA.TABLES')
                 ->select('AUTO_INCREMENT as id')
-                ->where('TABLE_SCHEMA','medisysdb')
+                ->where('TABLE_SCHEMA','safemedisysdb')
                 ->where('TABLE_NAME','medicines')
                 ->first();
         $medicines = Medicine::where('isDeleted', '=', '0')->where('medType','m')->get();

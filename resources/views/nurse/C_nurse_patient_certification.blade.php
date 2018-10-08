@@ -53,18 +53,23 @@
 
 				<div style="float:left; margin-left:50px; font-size:18px; width:50%;">
 				
-					<input type="checkbox" name="medCertEnrollment" class="radio-past" style="margin-bottom:12px;" value="1" /><label style="margin-left: 5px;">Medical Certificate for Enrollment</label>
+					<input type="checkbox" name="medCertEnrollment" class="radio-past" style="margin-bottom:12px;" value="1" data-parsley-multiple="certification" required data-parsley-error-message="Please select at least 1 of the certificates" data-parsley-errors-container="#error_container"/><label style="margin-left: 5px;">Medical Certificate for Enrollment</label>
 					<br>
-					<input type="checkbox" name="medCertOffOjt" class="radio-past" style="margin-bottom:12px;" value="1"><label style="margin-left: 5px;">Medical Certificate for OJT or Off-Campus Activity</label> 
+					<input type="checkbox" name="medCertOffOjt" class="radio-past" style="margin-bottom:12px;" value="1" data-parsley-multiple="certification">
+					<label style="margin-left: 5px;" >Medical Certificate for OJT or Off-Campus Activity</label> 
 					<br>
-					<input type="checkbox" name="medCertAdminFaculty" class="radio-past" style="margin-bottom:12px;" value="1"><label style="margin-left: 5px;">Medical Certificate for Administrative or Faculty</label>  <br>
-					<input type="checkbox" name="medCertExcuseLetter" class="radio-past" style="margin-bottom:12px;" value="1"><label style="margin-left: 5px;">Excuse Letter for Student</label> <br>
-					<input type="checkbox" name="medCertWaver" class="radio-past" style="margin-bottom:12px;" value="1"><label style="margin-left: 5px;">Waiver</label> 
+					<input type="checkbox" name="medCertAdminFaculty" class="radio-past" style="margin-bottom:12px;" value="1" data-parsley-multiple="certification"><label style="margin-left: 5px;">Medical Certificate for Administrative or Faculty</label>  <br>
+					<input type="checkbox" name="medCertExcuseLetter" class="radio-past" style="margin-bottom:12px;" value="1" data-parsley-multiple="certification"><label style="margin-left: 5px;">Excuse Letter for Student</label> <br>
+					<input type="checkbox" name="medCertWaver" class="radio-past" style="margin-bottom:12px;" value="1" data-parsley-multiple="certification"><label style="margin-left: 5px;">Waiver</label> 
 					<br>
 					<input type="hidden" name="patientID" value="{{ Session::get('request.patientID') }}">
 					<input type="hidden" class="form-control" style="border-radius:8px;" value="{{ date('Y-m-d') }}" name="clinicLogDate">
 
           			<input type="hidden" class="form-control" style="border-radius:8px;" value="{{ date('h:i A') }}" name="clinicLogTime">
+
+          			<div id="error_container">
+          				
+          			</div>
 					
 				</div>
 

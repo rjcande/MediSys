@@ -60,7 +60,7 @@
                             </label>
                             <div style="float: left; width: 95%; margin-left: 20px;margin-top: 10px;">
                               <textarea rows="7" class="form-control" placeholder="Notes" style="border-radius:12px;
-                              border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;" name="notes">{{ $consultInfo->notes }}</textarea>
+                              border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px;" name="notes" readonly>{{ $consultInfo->notes }}</textarea>
                             </div>
                            
                         </div>
