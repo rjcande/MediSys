@@ -28,10 +28,10 @@
         <header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <u>{{ $purpose }}</u> purpose.</header>
       </div>
      
-      <div style="width:100%;text-align: right;">
-        <div style="text-align: center; margin-left: 500px;">
-          <header style="font-size: 18px; margin-top: 40px;"><u>{{ $physicianDetails->firstName }} {{ $physicianDetails->middleName }} {{ $physicianDetails->lastName }} {{ $physicianDetails->quantifier }}</u> M.D.</header>
-          <header style="font-size: 18px;">Clinic Physician</header>   
+      <div style="width:100%; position: absolute; bottom: 0">
+        <div>
+          <header style="font-size: 18px; margin-top: 40px; text-align: right;"><u>{{ $physicianDetails->firstName }} {{ $physicianDetails->middleName }} {{ $physicianDetails->lastName }} {{ $physicianDetails->quantifier }}</u> M.D.</header>
+          <header style="font-size: 18px; text-align: right;">Clinic Physician</header>   
           
         </div>
       </div>

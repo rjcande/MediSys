@@ -161,7 +161,7 @@
 
 	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been examined by the undersigned and found to be physically fit at the time of examination.</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="certOffCampusPurpose" style="display: inline; width: 500px;" required=""> purpose.
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="certOffCampusPurpose" style="display: inline; width: 500px;" required> purpose.
 	        		</header>
 
 

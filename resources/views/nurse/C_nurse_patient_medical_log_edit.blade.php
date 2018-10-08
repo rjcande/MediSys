@@ -811,6 +811,7 @@
     //Select or deselect all checkboxes on main checkbox change
     $selectAll.on('click', function () {
         $tdCheckbox.prop('checked', this.checked).change();
+        
     });
 
     //Switch main checkbox state to checked when all checkboxes inside tbody tag is checked
@@ -821,21 +822,21 @@
     })
 
 
-    var $selectAll = $('#check-all-supp'); // main checkbox inside table thead
-    var $table = $('#suppTable'); // table selector 
-    var $tdCheckbox = $table.find('tbody input:checkbox'); // checkboxes inside table body
-    var $tdCheckboxChecked = []; // checked checbox arr
+    var $selectAllSupp = $('#check-all-supp'); // main checkbox inside table thead
+    var $tableSupp = $('#suppTable'); // table selector 
+    var $tdCheckboxSupp = $tableSupp.find('tbody input:checkbox'); // checkboxes inside table body
+    var $tdCheckboxCheckedSupp = []; // checked checbox arr
 
     //Select or deselect all checkboxes on main checkbox change
-    $selectAll.on('click', function () {
-        $tdCheckbox.prop('checked', this.checked).change();
+    $selectAllSupp.on('click', function () {
+        $tdCheckboxSupp.prop('checked', this.checked).change();
     });
 
     //Switch main checkbox state to checked when all checkboxes inside tbody tag is checked
-    $tdCheckbox.on('change', function(){
-        $tdCheckboxChecked = $table.find('tbody input:checkbox:checked');//Collect all checked checkboxes from tbody tag
+    $tdCheckboxSupp.on('change', function(){
+        $tdCheckboxCheckedSupp = $tableSupp.find('tbody input:checkbox:checked');//Collect all checked checkboxes from tbody tag
         //if length of already checked checkboxes inside tbody tag is the same as all tbody checkboxes length, then set property of main checkbox to "true", else set to "false"
-        $selectAll.prop('checked', ($tdCheckboxChecked.length == $tdCheckbox.length));
+        $selectAllSupp.prop('checked', ($tdCheckboxCheckedSupp.length == $tdCheckboxSupp.length));
     })
 
      //On change of Medicine Name

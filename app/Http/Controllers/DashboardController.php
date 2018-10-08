@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $notification = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                                     ->join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'logreferrals.clinicLogID')
                                     ->where('cliniclogs.nurseID', '=', Session::get('accountInfo.id'))
-                                    ->where('logreferrals.notif' , '=', 0)
+                                    ->where('logreferrals.notif' , '=', 2)
                                     ->where('logreferrals.isDeleted', '=', 0)
                                     ->orderBy('logreferrals.created_at', 'desc')
                                     ->get();
@@ -43,22 +43,27 @@ class DashboardController extends Controller
         
         $array = [];
         $ctr = 0;
+        $notificationCounter = 0;
         $status = "";
         foreach ($notification as $key => $value) {
             if ($value['logReferralStatus'] == 2) {
-                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." accepted your referral</span></a></a></li>";    
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a><span class='message'>".$value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." accepted your referral</span></a></a></li>";   
+                $notificationCounter++; 
             }
             elseif ($value['logReferralStatus'] == 3) {
-                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/physician/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." declined your referral</span></a></a></li>";
+                $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a><span class='message'>".$value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." declined your referral</span></a></a></li>";
+                $notificationCounter++;
             }
-           
+            else{
+                $text = "";
+            }
 
             $array[$ctr] = $text; 
             $ctr++;
             
         }
 
-        return Response::json(array('logReferralNotifNurse' => $notification, 'text' => $array));
+        return Response::json(array('logReferralNotifNurse' => $notification, 'text' => $array, 'number' => $notificationCounter));
     } 
 
     public function notification()
@@ -417,10 +422,36 @@ class DashboardController extends Controller
                         ->whereMonth('prescriptions.created_at', '=', $month)
                         ->first();
 
-        $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
-        $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
-        $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
-        $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+       if (isset($percentagePrescription[0]->total)) {
+            $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopOne_month = 0;
+        }
+
+        if (isset($percentagePrescription[1]->total)) {
+            $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopTwo_month = 0;
+        }
+        
+        if (isset($percentagePrescription[2]->total)) {
+            $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
+        }
+        
+        else{
+            $percentTopThree_month = 0;
+        }
+       
+        if (isset($percentagePrescription[3]->total)) {
+            $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+        }
+
+        else{
+            $percentTopFour_month = 0;
+        }
+       
         $percentOther_month = intval(100 - ($percentTopOne_month + $percentTopTwo_month + $percentTopThree_month + $percentTopFour_month));
 
         //Percentage Year
@@ -435,11 +466,41 @@ class DashboardController extends Controller
                         ->whereYear('prescriptions.created_at', '=', $year)
                         ->first();
 
-        $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
-        $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
-        $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
-        $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        $percentTopOne_year = 0;
+        $percentTopTwo_year = 0;
+        $percentTopThree_year = 0;
+        $percentTopFour_year = 0;
+        $percentOther_year = 0;
+
+        if (isset($percentagePrescription_year[0])) {
+            $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopOne_year = 0;
+        }
+        
+        if (isset($percentagePrescription_year[1]->total)) {
+            $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopTwo_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[2]->total)) {
+            $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopThree_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[3]->total)) {
+            $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopFour_year = 0;
+        }
         $percentOther_year = intval(100 - ($percentTopOne_year + $percentTopTwo_year + $percentTopThree_year+ $percentTopFour_year));
+
 
 
 
@@ -534,11 +595,31 @@ class DashboardController extends Controller
                 }
             }
         }
-        //dd($top_weekly);
-        $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
-        $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
-        $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
-        $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        
+        if (isset($top_weekly[0]['total'])) {
+            $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopOne_weekly = 0;
+        }
+        if (isset($top_weekly[1]['total'])) {
+            $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopTwo_weekly = 0;
+        }    
+        if (isset($top_weekly[2]['total'])) {
+            $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopThree_weekly = 0;
+        }
+        if (isset($top_weekly[3]['total'])) {
+            $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        }     
+        else{
+            $percentTopFour_weekly = 0;
+        }
         $percentOther_weekly = intval(100 - ($percentTopOne_weekly + $percentTopTwo_weekly + $percentTopThree_weekly+ $percentTopFour_weekly));
         //dd($percentTopOne_weekly);
         return view('physician.C_physician_reports')->with(['prescriptions' => $prescription, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);
@@ -569,10 +650,36 @@ class DashboardController extends Controller
                         ->whereMonth('prescriptions.created_at', '=', $month)
                         ->first();
 
-        $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
-        $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
-        $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
-        $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+       if (isset($percentagePrescription[0]->total)) {
+            $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopOne_month = 0;
+        }
+
+        if (isset($percentagePrescription[1]->total)) {
+            $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopTwo_month = 0;
+        }
+        
+        if (isset($percentagePrescription[2]->total)) {
+            $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
+        }
+        
+        else{
+            $percentTopThree_month = 0;
+        }
+       
+        if (isset($percentagePrescription[3]->total)) {
+            $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+        }
+
+        else{
+            $percentTopFour_month = 0;
+        }
+       
         $percentOther_month = intval(100 - ($percentTopOne_month + $percentTopTwo_month + $percentTopThree_month + $percentTopFour_month));
 
         //Percentage Year
@@ -587,11 +694,41 @@ class DashboardController extends Controller
                         ->whereYear('prescriptions.created_at', '=', $year)
                         ->first();
 
-        $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
-        $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
-        $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
-        $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        $percentTopOne_year = 0;
+        $percentTopTwo_year = 0;
+        $percentTopThree_year = 0;
+        $percentTopFour_year = 0;
+        $percentOther_year = 0;
+
+        if (isset($percentagePrescription_year[0])) {
+            $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopOne_year = 0;
+        }
+        
+        if (isset($percentagePrescription_year[1]->total)) {
+            $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopTwo_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[2]->total)) {
+            $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopThree_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[3]->total)) {
+            $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopFour_year = 0;
+        }
         $percentOther_year = intval(100 - ($percentTopOne_year + $percentTopTwo_year + $percentTopThree_year+ $percentTopFour_year));
+
 
 
 
@@ -686,11 +823,31 @@ class DashboardController extends Controller
                 }
             }
         }
-        //dd($top_weekly);
-        $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
-        $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
-        $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
-        $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        
+        if (isset($top_weekly[0]['total'])) {
+            $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopOne_weekly = 0;
+        }
+        if (isset($top_weekly[1]['total'])) {
+            $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopTwo_weekly = 0;
+        }    
+        if (isset($top_weekly[2]['total'])) {
+            $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopThree_weekly = 0;
+        }
+        if (isset($top_weekly[3]['total'])) {
+            $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        }     
+        else{
+            $percentTopFour_weekly = 0;
+        }
         $percentOther_weekly = intval(100 - ($percentTopOne_weekly + $percentTopTwo_weekly + $percentTopThree_weekly+ $percentTopFour_weekly));
         //dd($percentTopOne_weekly);
         return view('chief.C_mchief_reports')->with(['prescriptions' => $prescription, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);
@@ -721,10 +878,36 @@ class DashboardController extends Controller
                         ->whereMonth('prescriptions.created_at', '=', $month)
                         ->first();
 
-        $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
-        $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
-        $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
-        $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+       if (isset($percentagePrescription[0]->total)) {
+            $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopOne_month = 0;
+        }
+
+        if (isset($percentagePrescription[1]->total)) {
+            $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopTwo_month = 0;
+        }
+        
+        if (isset($percentagePrescription[2]->total)) {
+            $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
+        }
+        
+        else{
+            $percentTopThree_month = 0;
+        }
+       
+        if (isset($percentagePrescription[3]->total)) {
+            $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+        }
+
+        else{
+            $percentTopFour_month = 0;
+        }
+       
         $percentOther_month = intval(100 - ($percentTopOne_month + $percentTopTwo_month + $percentTopThree_month + $percentTopFour_month));
 
         //Percentage Year
@@ -745,12 +928,35 @@ class DashboardController extends Controller
         $percentTopFour_year = 0;
         $percentOther_year = 0;
 
-        $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
+        if (isset($percentagePrescription_year[0])) {
+            $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopOne_year = 0;
+        }
         
-        $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
-        $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
-        $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        if (isset($percentagePrescription_year[1]->total)) {
+            $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopTwo_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[2]->total)) {
+            $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopThree_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[3]->total)) {
+            $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopFour_year = 0;
+        }
         $percentOther_year = intval(100 - ($percentTopOne_year + $percentTopTwo_year + $percentTopThree_year+ $percentTopFour_year));
+
 
 
 
@@ -845,28 +1051,33 @@ class DashboardController extends Controller
                 }
             }
         }
-        // $percentTopOne_weekly = 0;
-        // $percentTopTwo_weekly = 0;
-        // $percentTopThree_weekly = 0;
-        // $percentTopFour_weekly = 0;
-        // $percentOther_weekly = 0;
-
-       // if (array_key_exists(0, $top_weekly)) {
+        
+        if (isset($top_weekly[0]['total'])) {
             $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
-      //  }
-       // if (array_key_exists(1, $top_weekly)) {
+        }
+        else{
+            $percentTopOne_weekly = 0;
+        }
+        if (isset($top_weekly[1]['total'])) {
             $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
-      //  }
-       // if (array_key_exists(2, $top_weekly)) {
+        }
+        else{
+            $percentTopTwo_weekly = 0;
+        }    
+        if (isset($top_weekly[2]['total'])) {
             $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
-      //  }
-       // if (array_key_exists(3, $top_weekly)) {
+        }
+        else{
+            $percentTopThree_weekly = 0;
+        }
+        if (isset($top_weekly[3]['total'])) {
             $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
-       // }
-
-     //   if (count($top_weekly) > 4) {
-            $percentOther_weekly = intval(100 - ($percentTopOne_weekly + $percentTopTwo_weekly + $percentTopThree_weekly+ $percentTopFour_weekly));
-       // }
+        }     
+        else{
+            $percentTopFour_weekly = 0;
+        }
+        $percentOther_weekly = intval(100 - ($percentTopOne_weekly + $percentTopTwo_weekly + $percentTopThree_weekly+ $percentTopFour_weekly));
+     
         
         return view('nurse.C_nurse_reports')->with(['prescriptions' => $prescription, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);
     }

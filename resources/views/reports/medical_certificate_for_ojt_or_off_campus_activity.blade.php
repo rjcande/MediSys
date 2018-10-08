@@ -29,10 +29,10 @@
 
       </div>
      
-     <div style="width:100%;text-align: right;">
-        <div style="text-align: center; margin-left: 500px;">
-          <header style="font-size: 18px; margin-top: 40px;"><u>{{ $physicianDetails->firstName }} {{ $physicianDetails->middleName }} {{ $physicianDetails->lastName }} {{ $physicianDetails->quantifier }}</u> M.D.</header>
-          <header style="font-size: 18px;">Clinic Physician</header>   
+     <div style="width:100%; position: absolute; bottom: 0">
+        <div style="">
+          <header style="font-size: 18px; margin-top: 40px; text-align: right;"><u>{{ $physicianDetails->firstName }} {{ $physicianDetails->middleName }} {{ $physicianDetails->lastName }} {{ $physicianDetails->quantifier }}</u> M.D.</header>
+          <header style="font-size: 18px; text-align: right;">Clinic Physician</header>   
           <header style="font-size: 18px; margin-top: 20px; text-align: right;"><u style="text-align: center; padding: 0 0 4px;">{{ $physicianDetails->licenseNumber }}</u> Lic. No.</header>
         </div>
       </div>

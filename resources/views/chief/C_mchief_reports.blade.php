@@ -1,3 +1,4 @@
+
 @extends('chief.layout.chief')
 
 @section('content')
@@ -53,19 +54,19 @@
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['genericName'] }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($top_weekly[1]['genericName'])){{ $top_weekly[1]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top2_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['genericName'] }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($top_weekly[2]['genericName'])){{ $top_weekly[2]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top3_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['genericName'] }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($top_weekly[3]['genericName'])){{ $top_weekly[3]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top4_weekly }}%</td>
                                  </tr>
@@ -131,7 +132,7 @@
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->genericName }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($percent_month[3]->genericName)){{ $percent_month[3]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top4_month }}%</td>
                                  </tr>
@@ -197,7 +198,7 @@
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->genericName }} </p>
+                                    <p><i class="fa fa-square aero"></i>@if(isset($percent_year[3]->genericName)){{ $percent_year[3]->genericName }}@endif </p>
                                  </td>
                                  <td>{{ $top4_year }}%</td>
                               </tr>
@@ -2172,7 +2173,7 @@
       //Chart for Most Common Medicine Prescribed within the Month
       function init_chartMonth_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_month").length)){
-            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->genericName }}","{{ $percent_month[2]->genericName }}","Other","{{ $percent_month[1]->genericName }}","{{ $percent_month[0]->genericName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
+            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->genericName)){{ $percent_month[3]->genericName }}@endif","@if(isset($percent_month[2]->genericName)){{ $percent_month[2]->genericName }}@endif","Other","@if(isset($percent_month[1]->genericName)){{ $percent_month[1]->genericName }}@endif","@if(isset($percent_month[0]->genericName)){{ $percent_month[0]->genericName }}@endif"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
             $("#medicine_month").each(function(){
                var b=$(this);new Chart(b,a)
             })
@@ -2183,7 +2184,7 @@
       function init_chartYear_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_year").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->genericName }}","{{ $percent_year[2]->genericName }}","Other","{{ $percent_year[1]->genericName }}","{{ $percent_year[0]->genericName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_year[3]->genericName)){{ $percent_year[3]->genericName }}@endif","@if(isset($percent_year[2]->genericName)){{ $percent_year[2]->genericName }}@endif","Other","@if(isset($percent_year[1]->genericName)){{ $percent_year[1]->genericName }}@endif","@if(isset($percent_year[0]->genericName)){{ $percent_year[0]->genericName }}@endif"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicine_year").each(function(){
                var b=$(this);new Chart(b,a)
@@ -2195,7 +2196,7 @@
       function init_chartWeekly_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_weekly").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['genericName'] }}","{{ $top_weekly[2]['genericName'] }}","Other","{{ $top_weekly[1]['genericName'] }}","{{ $top_weekly[0]['genericName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset( $top_weekly[3]['genericName'])){{ $top_weekly[3]['genericName'] }}@endif","@if(isset($top_weekly[2]['genericName'])){{ $top_weekly[2]['genericName'] }}@endif","Other","@if(isset($top_weekly[1]['genericName'])){{ $top_weekly[1]['genericName'] }}@endif","@if(isset($top_weekly[0]['genericName'])){{ $top_weekly[0]['genericName'] }}@endif"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicine_weekly").each(function(){
                var b=$(this);new Chart(b,a)

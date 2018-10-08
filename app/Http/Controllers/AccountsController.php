@@ -14,6 +14,8 @@ use Redirect;
 
 use Session;
 
+use App\LogReferrals;
+
 class AccountsController extends Controller
 {
     /**
@@ -159,6 +161,16 @@ class AccountsController extends Controller
     }
 
     public function logout(){
+        $logReferral = LogReferrals::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'logreferrals.clinicLogID')
+                        ->where('notif', '=', 2)
+                        ->where('cliniclogs.nurseID', '=', Session::get('accountInfo.id'))
+                        ->get();
+
+        foreach ($logReferral as $key) {
+            $key->notif = 1;
+            $key->save();
+        }
+
         Session::flush();
 
         return Redirect::to('/');
