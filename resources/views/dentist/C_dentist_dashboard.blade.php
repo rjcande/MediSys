@@ -64,7 +64,7 @@
                         <thead>
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
-                            <th class="column-title">Physician </th>
+                            <th class="column-title">Dentist </th>
                             <th class="column-title">Date </th>
                           </tr>
                         </thead>
