@@ -251,6 +251,7 @@ class DashboardController extends Controller
                         ->groupBy('day', 'month', 'year')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'd')
                         ->get();
         //percentage month
         $percentagePrescription = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
@@ -258,16 +259,45 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'd')
                         ->limit(4)
                         ->get();
-        $totalPrescription =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'd')
                         ->first();
 
-        $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
-        $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
-        $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
-        $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+       if (isset($percentagePrescription[0]->total)) {
+            $percentTopOne_month = intval(($percentagePrescription[0]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopOne_month = 0;
+        }
+
+        if (isset($percentagePrescription[1]->total)) {
+            $percentTopTwo_month = intval(($percentagePrescription[1]->total / $totalPrescription->total) * 100);
+        }
+        else{
+            $percentTopTwo_month = 0;
+        }
+        
+        if (isset($percentagePrescription[2]->total)) {
+            $percentTopThree_month = intval(($percentagePrescription[2]->total / $totalPrescription->total) * 100);
+        }
+        
+        else{
+            $percentTopThree_month = 0;
+        }
+       
+        if (isset($percentagePrescription[3]->total)) {
+            $percentTopFour_month = intval(($percentagePrescription[3]->total / $totalPrescription->total) * 100);
+        }
+
+        else{
+            $percentTopFour_month = 0;
+        }
+       
         $percentOther_month = intval(100 - ($percentTopOne_month + $percentTopTwo_month + $percentTopThree_month + $percentTopFour_month));
 
         //Percentage Year
@@ -276,25 +306,59 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'd')
                         ->limit(4)
                         ->get();
-        $totalPrescription_year =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription_year =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'd')
                         ->first();
 
-        $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
-        $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
-        $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
-        $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        $percentTopOne_year = 0;
+        $percentTopTwo_year = 0;
+        $percentTopThree_year = 0;
+        $percentTopFour_year = 0;
+        $percentOther_year = 0;
+
+        if (isset($percentagePrescription_year[0])) {
+            $percentTopOne_year = intval(($percentagePrescription_year[0]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopOne_year = 0;
+        }
+        
+        if (isset($percentagePrescription_year[1]->total)) {
+            $percentTopTwo_year = intval(($percentagePrescription_year[1]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopTwo_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[2]->total)) {
+            $percentTopThree_year = intval(($percentagePrescription_year[2]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopThree_year = 0;
+        }
+
+        if (isset($percentagePrescription_year[3]->total)) {
+            $percentTopFour_year = intval(($percentagePrescription_year[3]->total / $totalPrescription_year->total) * 100);
+        }
+        else{
+            $percentTopFour_year = 0;
+        }
         $percentOther_year = intval(100 - ($percentTopOne_year + $percentTopTwo_year + $percentTopThree_year+ $percentTopFour_year));
+
 
 
 
         $numberOfDays = date('t');
         //get the medicineID of prescribed medicine
-        $medicineID = Prescription::select('medicineID')
-                            ->groupBy('medicineID')
+        $medicineID = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->groupBy('prescriptions.medicineID')
                             ->whereMonth('prescriptions.created_at', '=', $month)
+                            ->where('medicines.medType', '=', 'd')
                             ->get();
         $results = array();
         $id = array();
@@ -318,6 +382,7 @@ class DashboardController extends Controller
                         ->groupBy('prescriptions.medicineID')
                         ->groupBy('month', 'year')
                         ->orderBy('total', 'desc')
+                        ->where('medicines.medType', '=', 'd')
                         ->get();
 
         $id_for_month = array();
@@ -381,13 +446,32 @@ class DashboardController extends Controller
                 }
             }
         }
-        //dd($top_weekly);
-        $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
-        $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
-        $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
-        $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        
+        if (isset($top_weekly[0]['total'])) {
+            $percentTopOne_weekly = intval(($top_weekly[0]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopOne_weekly = 0;
+        }
+        if (isset($top_weekly[1]['total'])) {
+            $percentTopTwo_weekly = intval(($top_weekly[1]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopTwo_weekly = 0;
+        }    
+        if (isset($top_weekly[2]['total'])) {
+            $percentTopThree_weekly = intval(($top_weekly[2]['total'] / $total_weekly) * 100);
+        }
+        else{
+            $percentTopThree_weekly = 0;
+        }
+        if (isset($top_weekly[3]['total'])) {
+            $percentTopFour_weekly = intval(($top_weekly[3]['total'] / $total_weekly) * 100);
+        }     
+        else{
+            $percentTopFour_weekly = 0;
+        }
         $percentOther_weekly = intval(100 - ($percentTopOne_weekly + $percentTopTwo_weekly + $percentTopThree_weekly+ $percentTopFour_weekly));
-        //dd($percentTopOne_weekly);
 
         if(Session::get('accountInfo.position') == 4){
             return view('dentist.C_dentist_reports')->with(['prescriptions' => $prescription, 'maxDays' => $numberOfDays, 'results' => $results, 'top1_month' => $percentTopOne_month, 'top2_month' => $percentTopTwo_month, 'top3_month' => $percentTopThree_month, 'top4_month' => $percentTopFour_month, 'topOther_month' => $percentOther_month, 'percent_month' => $percentagePrescription, 'top1_year' => $percentTopOne_year, 'top2_year' => $percentTopTwo_year, 'top3_year' => $percentTopThree_year, 'top4_year' => $percentTopFour_year, 'topOther_year' => $percentOther_year, 'percent_year' => $percentagePrescription_year, 'results_for_month' => $results_for_month,'percentagePrescription_weekly' => $percentagePrescription_weekly, 'top1_weekly' => $percentTopOne_weekly, 'top2_weekly' => $percentTopTwo_weekly, 'top3_weekly' => $percentTopThree_weekly, 'top4_weekly' => $percentTopFour_weekly, 'topOther_weekly' => $percentOther_weekly, 'top_weekly' => $top_weekly]);

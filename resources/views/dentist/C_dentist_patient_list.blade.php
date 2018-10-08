@@ -55,6 +55,10 @@
                               {{
                                   'Admin/Dept'
                               }}
+                              @elseif($patients->patientType == 4)
+                              {{
+                                  'Visitor'
+                              }}
                               @endif
                             </td>
                             <td class=" ">
