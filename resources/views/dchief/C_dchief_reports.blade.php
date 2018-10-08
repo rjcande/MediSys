@@ -1,3 +1,4 @@
+
 @extends('dentalchief.layout.dentalchief')
 
 @section('content')
@@ -14,6 +15,7 @@
       <div class="row">
               
       <!-- form input mask -->
+      @if(count($top_weekly) >= 4)
       <div style="margin-bottom: 25%">
          <div style="float: left; height: 25%; width: 32%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%">
             <div class="x_content">
@@ -52,19 +54,19 @@
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['genericName'] }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($top_weekly[1]['genericName'])){{ $top_weekly[1]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top2_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['genericName'] }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($top_weekly[2]['genericName'])){{ $top_weekly[2]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top3_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['genericName'] }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($top_weekly[3]['genericName'])){{ $top_weekly[3]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top4_weekly }}%</td>
                                  </tr>
@@ -130,7 +132,7 @@
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->genericName }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($percent_month[3]->genericName)){{ $percent_month[3]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top4_month }}%</td>
                                  </tr>
@@ -196,7 +198,7 @@
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->genericName }} </p>
+                                    <p><i class="fa fa-square aero"></i>@if(isset($percent_year[3]->genericName)){{ $percent_year[3]->genericName }}@endif </p>
                                  </td>
                                  <td>{{ $top4_year }}%</td>
                               </tr>
@@ -214,7 +216,7 @@
             </div>
          </div>
       </div>
-
+      @endif
       <!----------------------------------------------------COLLAPSIBLE---------------------------------------------------->
       <div style="margin-top: 20px; float: left; width: 100%">
          <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
@@ -222,7 +224,7 @@
                <a class="panel-heading collapsed" id="headingOne1" role="tab" aria-expanded="false" aria-controls="collapseOne" href="#collapseOne1" data-toggle="collapse" data-parent="#accordion1">
                   <h4 class="panel-title">Weekly (As of {{ date('F') }}, {{ date('Y') }})</h4>
                </a>
-               <div class="panel-collapse collapse" id="collapseOne1" role="tabpanel" aria-expanded="false" aria-labelledby="headingOne" style="height: 0px;">
+               <div class="panel-collapse collapse " id="collapseOne1" role="tabpanel" aria-expanded="false" aria-labelledby="headingOne" style="height: 0px;">
                   <div class="panel-body">
 
                   <!----------------------------------------------WEEKLY TABS--------------------------------------------->
@@ -347,9 +349,11 @@
                                     @endforeach
                                     </tbody>
                                  </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                                 <a href="{{ url('/print/medicine/reports/week', 1) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -361,13 +365,13 @@
                                           <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
                                           <header style="display: inline;">Number of Medicine Prescribed a Day</header>
                                           <th class="column-title" style="width: 20%">Brand Name</th>
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
-                                          <th class="column-title">Day 4</th>
-                                          <th class="column-title">Day 5</th>
-                                          <th class="column-title">Day 6</th>
-                                          <th class="column-title">Day 7</th>
+                                          <th class="column-title">Day 8</th>
+                                          <th class="column-title">Day 9</th>
+                                          <th class="column-title">Day 10</th>
+                                          <th class="column-title">Day 11</th>
+                                          <th class="column-title">Day 12</th>
+                                          <th class="column-title">Day 13</th>
+                                          <th class="column-title">Day 14</th>
                                        </tr>
                                     </thead>
 
@@ -436,9 +440,11 @@
                                     @endforeach
                                     </tbody>
                                  </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                                 <a href="{{ url('/print/medicine/reports/week', 2) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -450,13 +456,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
                                        <header style="display: inline;">Number of Medicine Prescribed a Day</header>
                                        <th class="column-title" style="width: 20%">Brand Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 15</th>
+                                       <th class="column-title">Day 16</th>
+                                       <th class="column-title">Day 17</th>
+                                       <th class="column-title">Day 18</th>
+                                       <th class="column-title">Day 19</th>
+                                       <th class="column-title">Day 20</th>
+                                       <th class="column-title">Day 21</th>
                                     </tr>
                                  </thead>
 
@@ -525,9 +531,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                              <a href="{{ url('/print/medicine/reports/week', 3) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -539,13 +547,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medicine</header>
                                        <header style="display: inline;">Number of Medicine Prescribed a Day</header>
                                        <th class="column-title" style="width: 20%">Brand Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 22</th>
+                                       <th class="column-title">Day 23</th>
+                                       <th class="column-title">Day 24</th>
+                                       <th class="column-title">Day 25</th>
+                                       <th class="column-title">Day 26</th>
+                                       <th class="column-title">Day 27</th>
+                                       <th class="column-title">Day 28</th>
                                     </tr>
                                  </thead>
 
@@ -614,9 +622,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                              <a href="{{ url('/print/medicine/reports/week', 4) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
                         <div class="tab-pane fade @if($active==5){{'active in'}}@endif" id="tab_content16" role="tabpanel" aria-labelledby="profile-tab">
@@ -628,14 +638,14 @@
                                        <header style="display: inline;">Number of Medicine Prescribed a Day</header>
                                        <th class="column-title" style="width: 20%">Brand Name</th>
                                        @if($maxDays == 29)
-                                          <th class="column-title">Day 1</th>
+                                          <th class="column-title">Day 29</th>
                                        @elseif($maxDays == 30)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
                                        @elseif($maxDays == 31)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
+                                          <th class="column-title">Day 31</th>
                                        @endif
                                     </tr>
                                  </thead>
@@ -701,9 +711,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                              <a href="{{ url('/print/medicine/reports/week', 5) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -721,48 +733,57 @@
                <div class="panel-collapse collapse" id="collapseTwo1" role="tabpanel" aria-expanded="false" aria-labelledby="headingTwo" style="height: 0px;">
                   <div class="panel-body">
                      <!--------------------------------------------MONTHLY TABS------------------------------------------->
+                     @php
+                        $months = [1,2,3,4,5,6,7,8,9,10,11,12];
+                        $activeMonth = 0;
+                        foreach($months as $month){
+                           if(date('m') == $month){
+                              $activeMonth = $month;
+                           }
+                        }
+                     @endphp
                      <div role="tabpanel" data-example-id="togglable-tabs">
                         <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                           <li class="active" role="presentation">
-                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">January</a>
+                           <li class="@if($activeMonth == 1){{ 'active' }}@endif" role="presentation">
+                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">Jan</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">February</a>
+                           <li class="@if($activeMonth == 2){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">Feb</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">March</a>
+                           <li class="@if($activeMonth == 3){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">Mar</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">April</a>
+                           <li class="@if($activeMonth == 4){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">Apr</a>
                            </li>
-                           <li role="presentation">
+                           <li class="@if($activeMonth == 5){{ 'active' }}@endif" role="presentation">
                               <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content5" data-toggle="tab">May</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">June</a>
+                           <li class="@if($activeMonth == 6){{ 'active' }}@endif"  role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">Jun</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">July</a>
+                           <li class="@if($activeMonth == 7){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">Jul</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">August</a>
+                           <li class="@if($activeMonth == 8){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">Aug</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">September</a>
+                           <li class="@if($activeMonth == 9){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">Sept</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">October</a>
+                           <li class="@if($activeMonth == 10){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">Oct</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">November</a>
+                           <li class="@if($activeMonth == 11){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">Nov</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">December</a>
+                           <li class="@if($activeMonth == 12){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">Dec</a>
                            </li>
                         </ul>
 
                         <div class="tab-content" id="myTabContent">
-                           <div class="tab-pane fade active in" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
+                           <div class="tab-pane fade @if($activeMonth == 1){{ 'active in' }}@endif" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -868,13 +889,15 @@
                                     @endforeach
                                     </tbody>
                                  </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}
+                                 <a href="{{ url('/print/medicine/reports', 1) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
-                           <div class="tab-pane fade" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
+                           <div class="tab-pane fade @if($activeMonth == 2){{ 'active in' }}@endif" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -980,13 +1003,15 @@
                                     @endforeach
                                     </tbody>
                                  </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                                                                  
+                                 <a href="{{ url('/print/medicine/reports', 2) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
-                           <div class="tab-pane fade" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
+                           <div class="tab-pane fade @if($activeMonth == 3){{ 'active in' }}@endif" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                 <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1092,13 +1117,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 3) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 4){{ 'active in' }}@endif" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1204,13 +1231,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 4) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 5){{ 'active in' }}@endif" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1316,13 +1345,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 5) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 6){{ 'active in' }}@endif" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1428,13 +1459,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 6) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 7){{ 'active in' }}@endif" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1540,13 +1573,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 7) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 8){{ 'active in' }}@endif" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1652,13 +1687,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 8) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 9){{ 'active in' }}@endif" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1764,13 +1801,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 9) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 10){{ 'active in' }}@endif" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1876,13 +1915,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 10) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 11){{ 'active in' }}@endif" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1895,7 +1936,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('YDec-t');   
+                                             $date = date('Y-11-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1988,13 +2029,15 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                                                            
+                              <a href="{{ url('/print/medicine/reports', 11) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 12){{ 'active in' }}@endif" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -2100,9 +2143,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              {{-- <a target="_blank" href="{{route('dentist.generate.medicineReport')}}"> --}}
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
-                              {{-- </a> --}}                              
+                              <a href="{{ url('/print/medicine/reports', 12) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
@@ -2116,7 +2161,9 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
-      
+      <a href="{{ url('/dchief/dashboard') }}">
+         <button type="button" class="btn btn-primary" style="margin-top: 20px; float: right;">BACK</button>
+      </a>
     </div>
   </div>
 </div>
@@ -2126,7 +2173,7 @@
       //Chart for Most Common Medicine Prescribed within the Month
       function init_chartMonth_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_month").length)){
-            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->genericName }}","{{ $percent_month[2]->genericName }}","Other","{{ $percent_month[1]->genericName }}","{{ $percent_month[0]->genericName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
+            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->genericName)){{ $percent_month[3]->genericName }}@endif","@if(isset($percent_month[2]->genericName)){{ $percent_month[2]->genericName }}@endif","Other","@if(isset($percent_month[1]->genericName)){{ $percent_month[1]->genericName }}@endif","@if(isset($percent_month[0]->genericName)){{ $percent_month[0]->genericName }}@endif"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
             $("#medicine_month").each(function(){
                var b=$(this);new Chart(b,a)
             })
@@ -2137,7 +2184,7 @@
       function init_chartYear_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_year").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->genericName }}","{{ $percent_year[2]->genericName }}","Other","{{ $percent_year[1]->genericName }}","{{ $percent_year[0]->genericName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_year[3]->genericName)){{ $percent_year[3]->genericName }}@endif","@if(isset($percent_year[2]->genericName)){{ $percent_year[2]->genericName }}@endif","Other","@if(isset($percent_year[1]->genericName)){{ $percent_year[1]->genericName }}@endif","@if(isset($percent_year[0]->genericName)){{ $percent_year[0]->genericName }}@endif"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicine_year").each(function(){
                var b=$(this);new Chart(b,a)
@@ -2149,7 +2196,7 @@
       function init_chartWeekly_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicine_weekly").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['genericName'] }}","{{ $top_weekly[2]['genericName'] }}","Other","{{ $top_weekly[1]['genericName'] }}","{{ $top_weekly[0]['genericName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset( $top_weekly[3]['genericName'])){{ $top_weekly[3]['genericName'] }}@endif","@if(isset($top_weekly[2]['genericName'])){{ $top_weekly[2]['genericName'] }}@endif","Other","@if(isset($top_weekly[1]['genericName'])){{ $top_weekly[1]['genericName'] }}@endif","@if(isset($top_weekly[0]['genericName'])){{ $top_weekly[0]['genericName'] }}@endif"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicine_weekly").each(function(){
                var b=$(this);new Chart(b,a)

@@ -7,7 +7,7 @@
         @include('nurse.layout.side_and_top')
 
         <!-- page content -->
-        @if(Session::get('accountInfo') && Session::get('accountInfo.position') == 6)
+        @if(Session::get('accountInfo.position') == 6)
           @yield('content')
         @else
           <div class="right_col" role="main">
