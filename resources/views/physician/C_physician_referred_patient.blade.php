@@ -18,6 +18,9 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>{{date('F, Y')}}</h2>
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 70px; float: right">
+                      <button class="btn btn-round btn-default" data-toggle="modal" data-target="#modalFilter"><i class="fa fa-filter"></i>Filter</button>
+                    </div>
                     <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
                       <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
                     </div>  
@@ -206,6 +209,70 @@
   </div>
 </div>
 
+<!-- FILTER -->
+ <!-- MODAL -->
+  <div id="modalFilter" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width:680px">
+        <!-- Modal content -->
+            <div class="modal-content" style="background-color: #f7f1e3">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss = "modal">&times;</button>
+            <h4 class="modal-title">Filter</h4>
+        </div>
+
+        <div class="modal-body" style="font-size:18px;">
+          <label style="display: inline-block;width: 80px; margin-bottom:10px;">Month </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;
+            width: 170px;" id="filterMonth"><br>
+            <option value="" disabled selected></option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+          <label style="display: inline-block; width: 50px; margin-bottom:10px; margin-left: 40px;">Day </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterDays">
+            <option value="" disabled selected></option>
+              @for($days = 1; $days < 32; $days++)
+                <option value="{{ $days }}">{{ $days }}</option>
+              @endfor
+          </select>
+          <label style="display: inline-block; width: 60px; margin-bottom:10px; margin-left: 50px;">Year </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px
+              solid gray;" id="filterYear">
+            <option value="" disabled selected></option>
+              @for($years = 2018; $years > 1998; $years--)
+                <option value="{{ $years }}">{{ $years }}</option>
+              @endfor
+          </select><br>
+          <label style="display: inline-block; width: 80px; margin-bottom:10px;">Concern
+          </label>
+          <select style="height: 32px; font-size:15px; border-radius: 12px; width: 170px;
+              border: 1.5px solid gray;" id="filterConcern">
+            <option value="" disabled selected></option>
+            <option value="consultation">Consultation</option>
+            <option value="letter/certification">Letter/Certificate</option>
+          </select>
+        </div>
+      
+        <div class="modal-footer" style="margin-right:0%">
+          <button class="btn btn-primary" id="btnReset">Reset Filter</button>
+          <button class="btn btn-success" id="btnDone" data-dismiss="modal">DONE</button>
+          
+        </div>
+            </div>
+        </div>
+  </div>
+
 <script>
   $(document).ready(function(){
     var table = $('#patientTable').DataTable({
@@ -218,6 +285,40 @@
 
     $('#search').keyup(function(){
       table.search($(this).val()).draw();
+    });
+
+     //Filtering of Data Table
+    $('select').on('change', function(){
+      var month = $('#filterMonth').val();
+      var days = $('#filterDays').val();
+      var year = $('#filterYear').val();
+      var concern = $('#filterConcern').val();
+      if (month == null) {
+        month = ' ';
+      }
+      if (days == null) {
+        days = ' ';
+      }
+      if (year == null) {
+        year = ' ';
+      }
+      if (concern == null) {
+        concern = ' ';
+      }
+      var date = month + ' ' + days + ' ' + year;
+      table.column(5).search(date).draw();
+      table.column(4).search(concern).draw();
+   
+
+    });
+
+    $('#btnReset').click(function(){
+      $('#filterConcern').val('');
+      $('#filterYear').val('');
+      $('#filterDays').val('');
+      $('#filterMonth').val('');
+      table.column(5).search('').draw();
+      table.column(4).search('').draw();
     });
 
     $('#btnViewMore').on('click', function(){
