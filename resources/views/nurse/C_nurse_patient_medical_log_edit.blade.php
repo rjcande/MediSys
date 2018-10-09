@@ -361,7 +361,7 @@
                             <div id="recommendation" style="width: 100%;float: left;">
                               <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                                 height:30px; border-radius:8px;">&nbsp<b>Notes (for Physician)</b></p>
-                              <textarea rows="7" class="form-control" placeholder="Enter recommendation/s here"
+                              <textarea rows="7" class="form-control" placeholder=""
                                 style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" name="notes" readonly>{{ $clinicLogInfo->notes }}</textarea>
                             </div>
 
@@ -533,7 +533,7 @@
   <script>
     $(document).ready(function(){
       new PNotify({
-        title: "Regular Success",
+        title: "Success",
         text: "{{ Session::get('message') }}",
         type: "success",
         styling: "bootstrap3"

@@ -830,7 +830,7 @@
     });
 
     // Toolbar extra buttons
-    var btnFinish = $('<button></button>').text('Finish')
+    var btnFinish = $('<button></button>').text('Done')
                       .addClass('btn btn-info')
                       .on('click', function(e){
                         //On form submit

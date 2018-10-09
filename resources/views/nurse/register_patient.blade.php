@@ -167,10 +167,10 @@
                         <header style="width: 120px;"> Birthday *</header>
                       </div>
                       <div style="float: left;">
-                        <input type="date" id="birthDay" name="birthDay" style="width:300px; border-radius:8px; margin-bottom:12px;" value="" required >
+                        <input type="date" id="birthDay" max="{{ date('Y-m-d') }}" min="{{ date('Y-m-d', 0) }}" name="birthDay" style="width:300px; border-radius:8px; margin-bottom:12px;" value="" required >
                       </div>
                     </div>
-
+                    
                     <div>
                       <div style="float: left;">
                         <header style="width: 120px;"> Age</header>
@@ -293,6 +293,21 @@
     // Getting the age from the birthday
     $('#birthDay').on("change", submitBirthDay);
 
+    //Set Max Date
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("birthDay").setAttribute("max", today);
+
     function submitBirthDay() {
 
       var birthDay = $('#birthDay').val();
@@ -324,11 +339,12 @@
       if ($(this).val() == 1 || $(this).val() == 2 || $(this).val() == 3) {
         
         $('input[name=studFacID]').prop('required', true);//make student/faculty number required
-
+        $('input[name=studFacID]').prop('disabled', false);
       }
       else if($(this).val() == 4){
 
          $('input[name=studFacID]').prop('required', false);
+         $('input[name=studFacID]').prop('disabled', true);
 
       }
     });

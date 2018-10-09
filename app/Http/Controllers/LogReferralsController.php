@@ -318,7 +318,7 @@ class LogReferralsController extends Controller
             $clinicLog = new ClinicLog;
             $date = $request->clinicLogDate;
             $time = $request->clinicLogTime;
-            $dateTime = date("Y-m-d h:i:s", strtotime($date . $time));
+            $dateTime = date("Y-m-d H:i:s", strtotime($date . $time));
 
             $clinicLog->clinicType = 'M';
             $clinicLog->patientID = $request->patientID;

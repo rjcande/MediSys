@@ -1072,8 +1072,8 @@ class ClinicLogController extends Controller
 
             $timeOut = ClinicLog::find($id);
 
-            $time = Input::get('timeOut'); //$request->input('')
-            $date = date('y-m-d H:i:s', strtotime($time));
+           // $time = Input::get('timeOut'); //$request->input('')
+            $date = date('y-m-d H:i:s');
             $timeOut->timeOut = $date;
 
             $timeOut->save();
@@ -1093,7 +1093,7 @@ class ClinicLogController extends Controller
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
         if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
@@ -1103,7 +1103,7 @@ class ClinicLogController extends Controller
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
                         ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
         if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
@@ -1112,7 +1112,7 @@ class ClinicLogController extends Controller
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
 
@@ -1128,7 +1128,7 @@ class ClinicLogController extends Controller
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
         
@@ -1142,7 +1142,7 @@ class ClinicLogController extends Controller
                             ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }    
 
@@ -1156,7 +1156,7 @@ class ClinicLogController extends Controller
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
 
@@ -1169,7 +1169,7 @@ class ClinicLogController extends Controller
                             $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }  
 

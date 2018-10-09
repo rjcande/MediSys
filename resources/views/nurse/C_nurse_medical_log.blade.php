@@ -51,7 +51,7 @@
                         </thead>
 
                         <tbody>
-                           @php($ctr = 1)
+                           @php($ctr = 50)
                            {{ Session::put('number', $ctr) }}
                           @foreach($clinicLogs as $clinicLog)
                             <tr class="even pointer">
@@ -104,7 +104,7 @@
 
                               </td>
                             </tr>  
-                            @php($ctr++)
+                            @php($ctr--)
                             {{ Session::put('number', $ctr) }}
                           @endforeach
                         </tbody>
@@ -259,35 +259,6 @@
   </div>
     <!--END Modal-->
 
-<!-- Edit Modal -->
-<div id="timeOut" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        <form id="timeOutForm" class="form-horizontal form-label-left">
-          @csrf()
-          <label style="font-size: 16px">Time Out: </label>
-          <input type="time" name="usr_time" style="width:150px; border-radius:8px; margin-bottom:13px; 172px;height: 30px;">
-        
-      </div>
-      <div class="modal-footer">
-        <input type="hidden" name="medicineID">
-        <button type="submit" class="btn btn-success">Save</button>
-        </form>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-       </form>
-    </div>
-
-  </div>
-</div>
-
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="printModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -369,7 +340,7 @@
   <script>
     $(document).ready(function(){
       new PNotify({
-        title: "Regular Success",
+        title: "Success",
         text: "{{ Session::get('message') }}",
         type: "success",
         styling: "bootstrap3"
@@ -398,7 +369,8 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">' ,
+        "order": [[ 0, "desc" ]]
     });
 
     $('#search').keyup(function(){
@@ -551,6 +523,10 @@
         $('#patientNumber').val(suggestion.number);
         $('input[name=patientID]').val(suggestion.id);
         checkRecord = 1;
+        if (suggestion.number == '') {
+          $('#patientNumber').prop('required', false);
+        }
+
       },
       autoSelectFirst: true,
       onSearchComplete: function (input, suggestions) {
@@ -559,7 +535,9 @@
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
+
         }
+
       }
     });
 
@@ -626,6 +604,26 @@
           data: {
                   timeOut: time,
                 },
+          success: function(output){
+            swal({
+              title: 'SUCCESS',
+              text: output.message,
+              icon: 'success'
+            })
+            .then((value)=>{
+              location.reload(true);
+            });
+          }
+        });
+    });
+
+      //Time out button is clicked
+    $('button[name=time_out]').on('click', function(e){
+        e.preventDefault();
+
+        $.ajax({
+          url: "/nurse/set/timeout/" + $(this).data('id'),
+          type: "get",
           success: function(output){
             swal({
               title: 'SUCCESS',

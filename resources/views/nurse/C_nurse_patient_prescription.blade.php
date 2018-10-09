@@ -433,7 +433,7 @@
       }
     });
     // Toolbar extra buttons
-    var btnFinish = $('<button></button>').text('Finish')
+    var btnFinish = $('<button></button>').text('Done')
                     .addClass('btn btn-info')
                     .on('click', function(e){ 
                      e.preventDefault();
@@ -459,7 +459,18 @@
                           type:'get',
                           data:$('#saveForm').serialize() + "&" + $.param(id),
                           success:function(output){
-                            window.location.href = '/nurse/patient/medical/log/edit/' + output.clinicLogID;
+
+                            swal({
+                              title: "Good job!",
+                              text: "Patient has been referred!",
+                              icon: "success",
+                              button: "OK",
+                            })
+                            .then((value)=>{
+                              window.location.href = '/nurse/patient/medical/log/edit/' + output.clinicLogID;
+                            });
+
+                            
                     
                           }
                         });

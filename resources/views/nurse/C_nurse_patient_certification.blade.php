@@ -102,8 +102,8 @@
 					data: $(this).serialize(),
 					success: function(output){
 						swal({
-							title: 'SUCCESS',
-							text: output.message,
+							title: 'Good job!',
+							text: 'Patient has been referred!',
 							icon: 'success'
 						})
 						.then((value)=>{
