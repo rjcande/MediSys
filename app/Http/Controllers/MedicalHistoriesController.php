@@ -438,4 +438,11 @@ class MedicalHistoriesController extends Controller
     {
         //
     }
+
+    public function printMedicalHistory($id)
+    {
+        $medicalHistory = MedicalHistories::where('patientID', '=', $id)->first();
+
+        dd($medicalHistory);
+    }
 }

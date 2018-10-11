@@ -503,6 +503,7 @@
 				}
 				else if (this.checked == false) {
 					pastMedicalHistoryOtherTextArea.value = temp;
+					pastMedicalHistoryOtherTextArea.required = false;
 				}
 				break;
 			case "previousHospitalization":
@@ -510,10 +511,11 @@
 						previousHospitalizationTextArea.disabled = false;
 						previousHospitalizationTextArea.required = true;
 					}
-					else{
+				else{
 					previousHospitalizationTextArea.disabled = true;
 					previousHospitalizationTextArea.value = temp;
-					}
+					previousHospitalizationTextArea.required = false;
+				}
 				break;
 			case "operationSurgery":
 				if (this.id == "operationSurgeryYes") {
@@ -523,6 +525,7 @@
 					else{
 						operationSurgeryTextArea.disabled = true;
 						operationSurgeryTextArea.value = temp;
+						operationSurgeryTextArea.required = false;
 					}
 				break;
 			case "currentMedications":
@@ -533,12 +536,14 @@
 					else{
 						currentMedicationsTextArea.disabled = true;
 						currentMedicationsTextArea.value = temp;
+						currentMedicationsTextArea.required = false;
 					}
 				break;
 			case "famHistoryOther":
 				famHistoryOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					famHistoryOtherTextArea.value = temp;
+					famHistoryOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					famHistoryOtherTextArea.required = true;
@@ -548,6 +553,7 @@
 				eyesWithGlassesTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					eyesWithGlassesTextArea.value = temp;
+					eyesWithGlassesTextArea.required = false;
 				}
 				else if(this.checked == true){
 					eyesWithGlassesTextArea.required = true;
@@ -557,6 +563,7 @@
 				chestOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					chestOtherTextArea.value = temp;
+					chestOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					chestOtherTextArea.required = true;
@@ -566,6 +573,7 @@
 				heartOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					heartOtherTextArea.value = temp;
+					heartOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					heartOtherTextArea.required = true;
@@ -576,10 +584,11 @@
 						vcolumnWithDeformitiesTextArea.disabled = false;
 						vcolumnWithDeformitiesTextArea.required = true;
 					}
-					else{
+				else{
 						vcolumnWithDeformitiesTextArea.disabled = true;
 						vcolumnWithDeformitiesTextArea.value = temp;
-					}
+						vcolumnWithDeformitiesTextArea.required = false;
+				}
 				break;
 			case "xrayState":
 				if (this.id == "xrayStateYes") {
@@ -589,12 +598,14 @@
 					else{
 						xrayWithDeformitiesTextArea.disabled = true;
 						xrayWithDeformitiesTextArea.value = temp;
+						xrayWithDeformitiesTextArea.required = false;
 					}
 				break;
 			case "skinOther":
 				skinOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					skinOtherTextArea.value = temp;
+					skinOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					skinOtherTextArea.required = true;
@@ -627,6 +638,7 @@
                             .on('click', function(e){ 
                             	//When Save button is clicked	
 								e.preventDefault();
+								$('#saveForm').parsley().validate();
 
 								if ($('#saveForm').parsley().isValid() && $('#saveForm').data('rec') == 0){
 									$.ajax({

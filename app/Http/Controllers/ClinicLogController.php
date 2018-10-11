@@ -905,7 +905,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*','cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
@@ -969,7 +969,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
@@ -1086,8 +1086,8 @@ class ClinicLogController extends Controller
     }
 
     public function printMedicalLog(Request $request){
-        //dd($request->all());
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+        $date = $request->all();
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly = '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1096,7 +1096,18 @@ class ClinicLogController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly = 1){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. ' 23:59:59';
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereBetween('cliniclogs.clinicLogDateTime', [$from, $to])
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
+                        ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly = '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1106,7 +1117,7 @@ class ClinicLogController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly = '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1173,7 +1184,7 @@ class ClinicLogController extends Controller
                         ->get();
         }  
 
-        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
+        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs', 'date'))->setPaper('legal', 'landscape');
         return $pdf->stream('reports.medical_log');
 
     }

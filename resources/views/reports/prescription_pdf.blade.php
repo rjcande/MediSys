@@ -35,8 +35,7 @@
         <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
         <h1>Medication Prescription</h1>
       </center>
-      <p>Name: {{ $clinicLogInfo->lastName }}, {{ $clinicLogInfo->firstName }} {{ $clinicLogInfo->middleName }} {{ $clinicLogInfo->quantifier }}</p>
-      <p>Contact Number: {{ $clinicLogInfo->mobileNo }}</p>
+      <p>Patient Name: {{ $clinicLogInfo->lastName }}, {{ $clinicLogInfo->firstName }} {{ $clinicLogInfo->middleName }} {{ $clinicLogInfo->quantifier }}</p>
 
       <table style = "width:100%">
         <caption>Prescriptions

@@ -35,7 +35,20 @@
         <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
         <h1>List of Patients</h1>
       </center>
-      <caption>Student</caption>
+
+      <caption>
+        Student
+        @if(isset($date['daily']) == 1 && !isset($date['yearly'])  && !isset($date['monthly']) && !isset($date['weekly']))
+          ({{ date('F d, Y', strtotime($date['date'])) }})
+        @elseif(!isset($date['daily']) && isset($date['yearly']) == 1  && !isset($date['monthly']) && !isset($date['weekly']))
+          ({{ date('Y', strtotime($date['year'])) }})
+        @elseif(!isset($date['daily']) && !isset($date['yearly'])  && isset($date['monthly']) == 1 && !isset($date['weekly']))
+          ({{ date('F, ', mktime(0, 0, 0, $date['month'], 10)) }} {{$date['year_month']}})
+        @elseif(!isset($date['daily']) && !isset($date['yearly'])  && !isset($date['monthly']) && isset($date['weekly']) == 1)
+          ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+        @endif
+      </caption>
+     
       <table style = "width:100%; margin-bottom: 50px;">
           <tr>
             <th>Student Number</th>
@@ -66,7 +79,18 @@
            @endforeach
           </tbody>
         </table>
-        <caption>Faculty</caption>
+        <caption>
+          Faculty
+          @if(isset($date['daily']) == 1 && !isset($date['yearly'])  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('F d, Y', strtotime($date['date'])) }})
+          @elseif(!isset($date['daily']) && isset($date['yearly']) == 1  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('Y', strtotime($date['year'])) }})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && isset($date['monthly']) == 1 && !isset($date['weekly']))
+            ({{ date('F, ', mktime(0, 0, 0, $date['month'], 10)) }} {{$date['year_month']}})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && !isset($date['monthly']) && isset($date['weekly']) == 1)
+            ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+          @endif
+        </caption>
         <table style = "width:100%; margin-bottom: 50px;">
           <tr>
             <th>Faculty Number</th>
@@ -98,7 +122,18 @@
           </tbody>
         </table>
 
-        <caption>Admin/Dept</caption>
+        <caption>
+          Admin/Dept
+          @if(isset($date['daily']) == 1 && !isset($date['yearly'])  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('F d, Y', strtotime($date['date'])) }})
+          @elseif(!isset($date['daily']) && isset($date['yearly']) == 1  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('Y', strtotime($date['year'])) }})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && isset($date['monthly']) == 1 && !isset($date['weekly']))
+            ({{ date('F, ', mktime(0, 0, 0, $date['month'], 10)) }} {{$date['year_month']}})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && !isset($date['monthly']) && isset($date['weekly']) == 1)
+            ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+          @endif
+        </caption>
         <table style = "width:100%; margin-bottom: 50px;">
           <tr>
             <th>Faculty Number</th>
@@ -129,7 +164,18 @@
            @endforeach
           </tbody>
         </table>
-        <caption>Visitor</caption>
+        <caption>
+          Visitor
+          @if(isset($date['daily']) == 1 && !isset($date['yearly'])  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('F d, Y', strtotime($date['date'])) }})
+          @elseif(!isset($date['daily']) && isset($date['yearly']) == 1  && !isset($date['monthly']) && !isset($date['weekly']))
+            ({{ date('Y', strtotime($date['year'])) }})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && isset($date['monthly']) == 1 && !isset($date['weekly']))
+            ({{ date('F, ', mktime(0, 0, 0, $date['month'], 10)) }} {{$date['year_month']}})
+          @elseif(!isset($date['daily']) && !isset($date['yearly'])  && !isset($date['monthly']) && isset($date['weekly']) == 1)
+            ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+          @endif
+        </caption>
         <table style = "width:100%; margin-bottom: 50px;">
           <tr>
             <th>Patient Number</th>

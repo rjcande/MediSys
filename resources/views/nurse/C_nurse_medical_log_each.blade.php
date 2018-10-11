@@ -129,11 +129,11 @@
                             </td>
                             <td class=" ">
                               @if($physician['lastName'])
-                                {{ $physician['lastName'] }}, {{ $physician['firstName'] }} {{ $physician['middleName'] }} {{ $physician['quantifier'] }}
+                                {{ $physician['lastName'] }}, {{ $physician['firstName'] }} {{ $physician['middleName']{0} }}@if($physician['middleName']){{ '.' }}@endif {{ $physician['quantifier'] }}
                               @endif
                             </td>
                             <td class=" ">
-                               {{ $medicalLog->lastName }}, {{ $medicalLog->firstName }} {{ $medicalLog->middleName }} {{ $medicalLog->quantifer }}
+                               {{ $medicalLog->lastName }}, {{ $medicalLog->firstName }} {{ $medicalLog->middleName{0} }}@if($medicalLog->middleName){{ '.' }}@endif {{ $medicalLog->quantifer }}
                             </td>
                             <td class=" ">
                               {{ date('m-d-Y', strtotime($medicalLog->clinicLogDateTime)) }}
