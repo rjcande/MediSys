@@ -6,7 +6,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Dental Form</h3>
+            <h3>Dental History Form</h3>
           </div>
         </div>
 
@@ -73,7 +73,7 @@
                                 <input type="radio" name="medicalTreatmentRdBtn" value="0" style="margin-left: 15px;">No
                               </p>
                               <p style="font-size:15px; margin-left:25px;"><em>(if so, what is the condition being treated?)</em></p>
-                              <textarea id="medicalTreatmentTextarea" name="medicalTreatmentTextarea" disabled="disabled" style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
+                              <textarea id="medicalTreatmentTextarea" name="medicalTreatmentTextarea" disabled="disabled" required style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
                             </div>
 
                             <!-- SERIOUS ILLNESS OR SURGICAL OPERATION -->
@@ -83,7 +83,7 @@
                                 <input type="radio" name="seriousIllnessRdBtn" value="0" style="margin-left: 15px;">No
                               </p>
                               <p style="font-size:15px; margin-left:25px;"><em>(if so, what illness or operation?)</em></p>
-                              <textarea id="seriousIllnessTextarea" name="seriousIllnessTextarea" disabled="disabled" style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
+                              <textarea id="seriousIllnessTextarea" name="seriousIllnessTextarea" disabled="disabled" required style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
                             </div>
                             
                             <!-- HOSPITALIZED -->
@@ -93,7 +93,7 @@
                                 <input type="radio" name="hospitalizedRdBtn" value="0" style="margin-left: 15px;">No
                               </p>
                               <p style="font-size:15px; margin-left:25px;"><em>(if so, when and why?)</em></p>
-                              <textarea id="hospitalizedTextarea" name="hospitalizedTextarea" disabled="disabled" style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
+                              <textarea id="hospitalizedTextarea" name="hospitalizedTextarea" disabled="disabled" required style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
                             </div>
 
                             <!-- TAKING PRESCRIPTION MEDICATION -->
@@ -103,7 +103,7 @@
                                 <input type="radio" name="medicationRdBtn" value="0" style="margin-left: 15px;">No
                               </p>
                               <p style="font-size:15px; margin-left:25px;"><em>(if so, please specify)</em></p>
-                              <textarea id="medicationTextarea" name="medicationTextarea" disabled="disabled" style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
+                              <textarea id="medicationTextarea" name="medicationTextarea" disabled="disabled" required style="height:50px; margin-left:25px; border-radius:8px; width:900px;"></textarea>
                             </div>
                           </div>
                         </div>
@@ -139,7 +139,7 @@
                                 <div style="float:left; margin-left:25px; font-size:15px; width:300px;">
                                   <input type="checkbox" name="allergyLatex" value="1" class="radio-past" style="margin-bottom:12px;"> Latex<br>
                                   <input type="checkbox" name="allergyOthers" value="1" class="radio-past" style="margin-bottom:12px;"> Other <em>(please specify)</em>
-                                  <textarea id="allergyOthersTextarea" name="allergyOthersTextarea" disabled style="height:50px; width:350px; border-radius:8px;"></textarea>
+                                  <textarea id="allergyOthersTextarea" name="allergyOthersTextarea" disabled required style="height:50px; width:350px; border-radius:8px;"></textarea>
                                 </div>
                               </p>
                             </div>
@@ -150,7 +150,7 @@
                                 <input type="radio" name="bleedingGumsRdBtn" value="1" style="margin-left: 50px;">Yes
                                 <input type="radio" name="bleedingGumsRdBtn" value="0" style="margin-left: 15px;">No
                                 <p style="font-size:15px; margin-left:25px;"><em>(if so, please enter how long)</em></p>
-                                <input type="text" id="bleedingTimeTextbox" name="bleedingTimeTextbox" disabled style="width:350px; border-radius:8px; margin-left:40px;">
+                                <input type="text" id="bleedingTimeTextbox" name="bleedingTimeTextbox" required disabled style="width:350px; border-radius:8px; margin-left:40px;">
                               </p>
                             </div>
                            <!--IF GENDER IS A WOMAN THEN ENABLED-->
@@ -189,7 +189,7 @@
                             <!-- BLOOD TYPE -->
                             <div style="float: left;width:100%; margin-left: 50px; font-size:15px; margin-top:20px;">
                               <p style="font-size:17px;">11. Blood Type
-                                <input type="text" name="bloodTypeTextbox" style="width:350px; border-radius:8px; margin-left:70px;">
+                                <input type="text" name="bloodTypeTextbox" required style="width:350px; border-radius:8px; margin-left:70px;">
                               </p>
                             </div>
 
@@ -249,7 +249,7 @@
                                 <input type="checkbox" name="headInjuriesCheckbox" value="1" class="radio-past" style="margin-bottom:12px;"> Head Injuries<br>
                                 <input type="checkbox" name="arthritisCheckbox" value="1" class="radio-past" style="margin-bottom:12px;"> Arthritis/Rheumatism<br>
                                 <input type="checkbox" name="othersCheckbox" value="1" class="radio-past" style="margin-bottom:12px;"> Other <em>(please specify)</em>
-                                <textarea id="othersCheckboxesTextArea" name="othersCheckboxesTextArea" disabled style="height:80px; width:250px; border-radius:8px;"></textarea>
+                                <textarea id="othersCheckboxesTextArea" name="othersCheckboxesTextArea" required disabled style="height:80px; width:250px; border-radius:8px;"></textarea>
                               </div>
                             </p>
                           </div>
@@ -269,9 +269,9 @@
                     <!-- <a href="{{route('dentist.dentalchart')}}">
                       <button class="btn btn-default" style="background-color:#00d2d3; color:white;">DENTAL CHART</button>
                     </a> --> <!-- NAKALAGAY DIN TONG <A> SA DENTAL CHART BUTTON PERO NGAYON PINASOK KO LANG SA FORM -->
-                      <a href="{{url('/dchief/DentalLog')}}">
+                      {{-- <a href="{{url('/dentist/DentalLog')}}">
                         <button type="button" class="btn btn-danger">CLOSE</button>
-                      </a>
+                      </a> --}}
                     </div>
 
                   </div>
@@ -293,9 +293,12 @@
     $('input[name=medicalTreatmentRdBtn]').click(function(){
       if($('input[name=medicalTreatmentRdBtn]:checked').val()=="1"){
         $('#medicalTreatmentTextarea').prop("disabled", false);
+        $('#medicalTreatmentTextarea').prop("required", true);
       }
       else{
         $('#medicalTreatmentTextarea').prop("disabled", true);
+        $('#medicalTreatmentTextarea').prop("required", false);
+        $('#medicalTreatmentTextarea').val('');
       }
     });
 
@@ -303,9 +306,12 @@
     $('input[name=seriousIllnessRdBtn]').click(function(){
       if($('input[name=seriousIllnessRdBtn]:checked').val()=="1"){
         $("#seriousIllnessTextarea").prop("disabled", false);
+        $('#seriousIllnessTextarea').prop("required", true);
       }
       else{
         $("#seriousIllnessTextarea").prop("disabled", true);
+        $('#seriousIllnessTextarea').prop("required", false);
+        $('#seriousIllnessTextarea').val('');
       }
     });
 
@@ -313,9 +319,12 @@
     $('input[name=hospitalizedRdBtn]').click(function(){
       if($('input[name=hospitalizedRdBtn]:checked').val()=="1"){
         $("#hospitalizedTextarea").prop("disabled", false);
+        $("#hospitalizedTextarea").prop("required", true);
       }
       else{
         $("#hospitalizedTextarea").prop("disabled", true);
+        $("#hospitalizedTextarea").prop("required", false);
+        $('#hospitalizedTextarea').val('');
       }
     });
 
@@ -323,9 +332,12 @@
     $('input[name=medicationRdBtn]').click(function(){
       if($('input[name=medicationRdBtn]:checked').val()=="1"){
         $("#medicationTextarea").prop("disabled", false);
+        $("#medicationTextarea").prop("required", true);
       }
       else{
         $("#medicationTextarea").prop("disabled", true);
+        $("#medicationTextarea").prop("required", false);
+        $('#medicationTextarea').val('');
       }
     });
 
@@ -333,10 +345,13 @@
     $('input[name=allergyOthers]').change(function(){
       if(this.checked){
         $("#allergyOthersTextarea").prop('disabled', false);
+        $("#allergyOthersTextarea").prop("required", true);
       }
       else
       {
         $("#allergyOthersTextarea").prop("disabled",true);
+        $("#allergyOthersTextarea").prop("required", false);
+        $('#allergyOthersTextarea').val('');
       }
     });
 
@@ -345,9 +360,12 @@
       // alert();
       if($('input[name=bleedingGumsRdBtn]:checked').val()=="1"){
         $("#bleedingTimeTextbox").prop('disabled', false);
+        $("#bleedingTimeTextbox").prop("required", true);
       }
       else{
         $("#bleedingTimeTextbox").prop('disabled', true);
+        $("#bleedintTimeTextbox").prop("required", false);
+        $('#bleedingTimeTextbox').val('');
       }
     });
 
@@ -355,9 +373,12 @@
     $('input[name=othersCheckbox]').change(function(){
       if(this.checked){
         $('#othersCheckboxesTextArea').prop('disabled', false);
+        $("#othersCheckboxesTextArea").prop("required", true);
       }
       else{
         $('#othersCheckboxesTextArea').prop('disabled', true);
+        $("#othersCheckboxesTextArea").prop("required", false);
+        $('#othersCheckboxesTextArea').val('');
       }
     });
 
@@ -383,7 +404,7 @@
     });
 
     // Toolbar extra buttons
-    var btnFinish = $('<button></button>').text('Finish')
+    var btnFinish = $('<button></button>').text('Done')
                       .addClass('btn btn-info')
                       .on('click', function(e){
                         //On form submit
@@ -401,7 +422,7 @@
                                   title: "Record Saved!",
                                   text: "Dental History Record Saved!",
                                   icon: "success",
-                                  button: "confirm",
+                                  button: "CONFIRM",
                                 })
                                 .then((willRoute)=>{
                                   if(willRoute){
@@ -414,9 +435,12 @@
                             });
                         }
                       });
-    var btnCancel = $('<button></button>').text('Reset')
+    var btnCancel = $('<button></button>').text('Cancel')
                                      .addClass('btn btn-danger')
                                      .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
+    
+    // var btnClose = $('<a href="{{url('/dentist/DentalLog')}}"><button></button>').text('Close')
+    //                                 .addClass('btn btn-danger');
 
 
     // Smart Wizard

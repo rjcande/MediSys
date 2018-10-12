@@ -31,13 +31,15 @@
 </head>
 <body>
     <div>
-      <center>
-        <header style="font-size: 18px;">Republic of the Philippines</header><br>
-        <header style="font-size: 18px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 18px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 18px;">Sta. Mesa, Manila</header><br>
-        <h1>Lists of Patients</h1>
-      </center>
+        <img src={{asset("images/pup-logo.png")}} style="float: left;" width="100px" height="100px">
+        <center>
+          <header style="font-size: 25px;">Republic of the Philippines</header>
+          <header style="font-size: 25px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header>
+          <header style="font-size: 25px;">MEDICAL SERVICES DEPARTMENT</header>
+          <header style="font-size: 25px;">Sta. Mesa, Manila</header>
+          <hr>
+          <h1>Lists of Patients</h1>
+        </center>
       {{-- <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
       <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
       <caption>
@@ -50,6 +52,8 @@
           ({{ date('F, ', mktime(0,0,0, $date['month'], 10)) }} {{$date['year_month']}})
         @elseif(!isset($date['daily'])  && !isset($date['yearly']) && !isset($date['monthly']) && isset($date['weekly']) == 1)
           ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+
+        
         @endif
       </caption>
       <table style = "width:100%; page-break-inside: auto;" >
@@ -70,13 +74,21 @@
                 <td>{{ $patients->patientNumber }}</td>
                 {{-- <td>{{ $patients->patientID }}</td> --}}
                 <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
-                <td class=" ">{{date('F d, Y', strtotime($patients->birthDate))}}
+                <td class=" ">{{date('F d, Y', strtotime($patients->birthDate))}}</td>
+                <td>
+                  @if($patients->gender == 1)
+                    {{'Male'}}
+                  @elseif($patients->gender == 0)
+                    {{'Female'}}
+                  @endif
                 </td>
+                <td>{{$patients->mobileNo}}</td>
+                <td>{{$patients->address}}</td>
               </tr>
            @endforeach
           </tbody>
         </table>
-
+          <br><br>
         <caption>
             Faculty
             @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
@@ -101,19 +113,27 @@
                   <th>Address</th>
               </tr>
             </thead>      
-              <tbody>
-               @foreach($patientListFaculty as $patients)
+            <tbody>
+              @foreach($patientListStudent as $patients)
                   <tr>
                     <td>{{ $patients->patientNumber }}</td>
-                    <td>{{ $patients->patientID }}</td>
+                    {{-- <td>{{ $patients->patientID }}</td> --}}
                     <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
-                    <td class=" ">
+                    <td class=" ">{{date('F d, Y', strtotime($patients->birthDate))}}</td>
+                    <td>
+                      @if($patients->gender == 1)
+                        {{'Male'}}
+                      @elseif($patients->gender == 0)
+                        {{'Female'}}
+                      @endif
                     </td>
+                    <td>{{$patients->mobileNo}}</td>
+                    <td>{{$patients->address}}</td>
                   </tr>
-               @endforeach
+              @endforeach
               </tbody>
             </table>
-
+            <br><br>
             <caption>
                 Admin/Dept
                 @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
@@ -163,7 +183,7 @@
                    @endforeach
                   </tbody>
                 </table>
-
+                <br><br>
               <caption>
                 Visitor
                 @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
@@ -188,18 +208,25 @@
                       <th>Address</th>
                   </tr>
                 </thead>      
-                  <tbody>
-                   @foreach($patientListVisitor as $patients)
-                      <tr>
-                        <td>{{ $patients->patientNumber }}</td>
-                        <td>{{ $patients->patientID }}</td>
-                        <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
-                        <td class=" ">
-                            
-                        </td>
-                      </tr>
-                   @endforeach
-                  </tbody>
+                <tbody>
+                @foreach($patientListStudent as $patients)
+                    <tr>
+                      <td>{{ $patients->patientNumber }}</td>
+                      {{-- <td>{{ $patients->patientID }}</td> --}}
+                      <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
+                      <td class=" ">{{date('F d, Y', strtotime($patients->birthDate))}}</td>
+                      <td>
+                        @if($patients->gender == 1)
+                          {{'Male'}}
+                        @elseif($patients->gender == 0)
+                          {{'Female'}}
+                        @endif
+                      </td>
+                      <td>{{$patients->mobileNo}}</td>
+                      <td>{{$patients->address}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
                 </table>
  
         {{-- <div style="width:100%;text-align: right; position: absolute; ">

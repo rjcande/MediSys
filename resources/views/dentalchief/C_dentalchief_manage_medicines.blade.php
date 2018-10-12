@@ -125,9 +125,9 @@
                             @endif
                         </tbody>
                       </table>
-                      {{-- <a target="_blank" href="{{route('dchief.generate.medicineList')}}"> --}}
-                        {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medicineListModal"><i class="fa fa-print"></i> Print Medicine List</button>  --}}
-                      {{-- </a> --}}
+                      <a target="_blank" href="{{route('dchief.generate.medicineList')}}">
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medicineListModal"><i class="fa fa-print"></i> Print Medicine List</button> 
+                      </a>
                     </div>
                   </div>
                 </div>

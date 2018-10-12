@@ -250,7 +250,7 @@
     $('#btnConsultPatient').click(function(){
       var checkRecord = 1;
       var consult = 0;
-      var hasRecord = { 
+      var hasRecord = { concern: consult,
                         hasRecord: checkRecord,
                         hasAppointment: 1,
                         appointmentID: $('#appointmentID').val(),

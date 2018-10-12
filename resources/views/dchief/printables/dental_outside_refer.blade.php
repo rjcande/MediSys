@@ -49,7 +49,7 @@
 		</center>
 	</div>
 	<div class="date">
-		<label for="dateTxt">Date: <u>{{$date}}</u></label>
+		<label for="dateTxt">Date: <u>{{date('F d, Y', strtotime($date))}}</u></label>
 	</div>
 	<div class="body">
 		<br><br>

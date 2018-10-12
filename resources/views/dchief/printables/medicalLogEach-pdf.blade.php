@@ -32,16 +32,14 @@
 <body>
     <div>
       <center>
-          <img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
-          <p style="margin-left: 25px">
-          Republic of the Philippines <br>
-          POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
-          <em>Medical Services Department</em><br>
-          <b>DENTAL SERVICES</b><br>
+        <header style="font-size: 15px;">Republic of the Philippines</header><br>
+        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
+        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
+        <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
         <h1>Daily Treatment Record</h1>
       </center>
       {{-- @foreach ($patientDentalLogs as $dentalLogInfo) --}}
-      <p style="font-size: 20px">Patient Name: {{ $patientInfo->lastName }}, {{ $patientInfo->firstName }} {{ $patientInfo->middleName }} {{ $patientInfo->quantifier }}</p>
+      <p>Patient Name: {{ $patientInfo->lastName }}, {{ $patientInfo->firstName }} {{ $patientInfo->middleName }} {{ $patientInfo->quantifier }}</p>
       {{-- @endforeach --}}
       {{-- <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
 

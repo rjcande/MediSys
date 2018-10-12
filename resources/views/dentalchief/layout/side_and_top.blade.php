@@ -45,7 +45,13 @@
                         <li><a href="/dentalchief/medical_supplies_maintenance"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
                     </ul>
                     </li>
-                    <li><a><i class="fa fa-question-circle"></i>Queries <span class="fa fa-chevron-down"></span></a></li>
+                    <li><a><i class="fa fa-question-circle"></i>Queries <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                          <li><a href="/dentalchief/accounts_maintenance_queries"><i class="fa fa-user-md"></i>Accounts</a></li>
+                          <li><a href="/dentalchief/medicines_maintenance_queries"><i class="fa fa-medkit"></i>Medicines</a></li>
+                          <li><a href="/dentalchief/medical_supplies_maintenance_queries"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
+                      </ul>
+                      </li>
                   <li><a><i class="fa fa-archive"></i>Archive <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{ url('/dchief/archived/patient/list') }}"><i class="fa fa-list-alt"></i>Patients List</a></li>

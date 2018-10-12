@@ -215,7 +215,7 @@
         $('#date').prop('required', false);
       }
     });
-    ('#weekly').on('change', function(){
+    $('#weekly').on('change', function(){
       if ($(this).is(':checked')) {
         $('#weekFrom').prop('disabled', false);
         $('#weekFrom').prop('required', true);
@@ -247,6 +247,7 @@
       if ($(this).is(':checked')) {
         $('#year').prop('disabled', false);
         $('#year').prop('required', true);
+        alert();
       }
       else{
         $('#year').prop('disabled', true);
