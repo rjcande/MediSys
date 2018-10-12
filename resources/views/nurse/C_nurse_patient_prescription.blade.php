@@ -565,9 +565,11 @@
             $('#dosage').val(splitted[0]);
             if (splitted[1] == "mg") {
               $('#dosageUnit').val("mg");
+              $('#dosageUnit').prop('disabled', true);
             }
             else if(splitted[1] == "ml"){
               $('#dosageUnit').val("ml");
+              $('#dosageUnit').prop('disabled', true);
             }
           });      
         });
@@ -622,7 +624,7 @@
                 var key;
                 for (var i = 0; i < Object.keys(array_med).length; i++) {
                 
-                    if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                    if (array_med[i].medicineID == $('select[name=medBrand]').val() && array_med[i].medicineMedication == $('#medication').val() && array_med[i].medicineDosage == $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val()) {
                         isEqual = true;
                         key = i;
                     }

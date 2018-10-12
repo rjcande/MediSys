@@ -511,7 +511,7 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
-                    <a href="{{ url('nurse/medical/log') }}" title="">
+                    <a href="{{ URL::previous() }}" title="">
                       <button type="button" class="btn btn-primary" style="float: right; margin-top: 20px;">BACK</button>
                     </a>
                     <!-- /Content -->
@@ -652,7 +652,6 @@
                 medicineID:  $('select[name=medBrand]').val(),
                 medicineQuantity: $('input[name=medQuantity]').val()
             };
-            $('#medTable tbody').empty();
             displayTableRow();
         }
         else{
@@ -660,7 +659,7 @@
             var key;
             for (var i = 0; i < Object.keys(array_med).length; i++) {
             
-                if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                if (array_med[i].medicineID == $('select[name=medBrand]').val() && array_med[i].medicineMedication == $('#medication').val() && array_med[i].medicineDosage == $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val()) {
                     isEqual = true;
                     key = i;
                 }
@@ -669,7 +668,7 @@
 
             if (isEqual == true) {
               array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('input[name=medQuantity]').val());
-              $('#medTable tbody').empty();
+              removeItems();
               displayTableRow();
             }
             else if(isEqual == false){
@@ -683,7 +682,7 @@
                   medicineID:  $('select[name=medBrand]').val(),
                   medicineQuantity: $('input[name=medQuantity]').val()
               };
-              $('#medTable tbody').empty();
+              removeItems();
               displayTableRow();
             }
 
@@ -697,10 +696,13 @@
       }
     });
 
+    function removeItems(){
+      $('#tbodyMedicine .delete-row').remove();
+    }
     function displayTableRow(){
         for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+            var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
 
             $(tr).prependTo('#tbodyMedicine');
 
@@ -736,7 +738,7 @@
                   suppID:  $('select[name=medSuppBrand]').val(),
                   suppQuantity: $('input[name=medSuppQuantity]').val()
               };
-              $('#suppTable tbody').empty();
+              removeSuppItems();
               displayTableRowSupp();
           }
           else{
@@ -753,7 +755,7 @@
 
               if (isEqual == true) {
                 array_supp[key].suppQuantity = parseInt(array_supp[key].suppQuantity) + parseInt($('input[name=medSuppQuantity]').val());
-                $('#suppTable tbody').empty();
+                removeSuppItems();
                 displayTableRowSupp();
               }
               else if(isEqual == false){
@@ -765,7 +767,7 @@
                   suppID:  $('select[name=medSuppBrand]').val(),
                   suppQuantity: $('input[name=medSuppQuantity]').val()
                 };
-                $('#suppTable tbody').empty();
+                removeSuppItems();
                 displayTableRowSupp();
               }
 
@@ -777,10 +779,14 @@
         }
     });
 
+    function removeSuppItems(){
+        $('#tbodyMedSupp .delete-row').remove();
+    }
+
     function displayTableRowSupp(){
       for (var i = 0; i < Object.keys(array_supp).length; i++) {
 
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
 
                 $(tr).prependTo('#tbodyMedSupp');
                 console.log(array_supp);
@@ -863,9 +869,11 @@
         $('#dosage').val(splitted[0]);
         if (splitted[1] == "mg") {
           $('#dosageUnit').val("mg");
+          $('#dosageUnit').prop('disabled', true);
         }
         else if(splitted[1] == "ml"){
           $('#dosageUnit').val("ml");
+          $('#dosageUnit').prop('disabled', true);
         }
       });      
     });

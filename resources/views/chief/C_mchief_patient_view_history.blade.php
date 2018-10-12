@@ -408,9 +408,13 @@
                 
                             
                  <div style="margin-top: 25px;margin-bottom: 30px;float: left;text-align: center;width: 100%">
-                 
+                    @if($medicalHistory != null)
+                    <a href="{{ url('/print/medical/history', $patient['patientID']) }}" target="_blank">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print Medical History</button>
+                    </a>
+                    @endif
                     <a href="{{ URL::previous() }}">
-                        <button class="btn btn-primary" type="button">BACK</button>
+                        <button class="btn btn-warning" type="button">BACK</button>
                     </a>
                 
                 </div>

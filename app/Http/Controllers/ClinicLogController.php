@@ -353,8 +353,9 @@ class ClinicLogController extends Controller
         $patientInfo = Patient::find($id);
 
         $medicalLogs = ClinicLog::join('users', 'users.id', '=', 'cliniclogs.nurseID')
-                        ->select('cliniclogs.*', 'users.*')
-                        ->where('patientID', '=', $id)
+                        ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('cliniclogs.*', 'patients.*')
+                        ->where('cliniclogs.patientID', '=', $id)
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->get();
 
@@ -1087,7 +1088,7 @@ class ClinicLogController extends Controller
 
     public function printMedicalLog(Request $request){
         $date = $request->all();
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly = '') {
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1096,7 +1097,7 @@ class ClinicLogController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly = 1){
+        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly == 1){
             $from = $request->weekFrom;
             $to = $request->weekTo. ' 23:59:59';
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
@@ -1107,7 +1108,7 @@ class ClinicLogController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly = '') {
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1117,7 +1118,7 @@ class ClinicLogController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly = '') {
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -1187,6 +1188,19 @@ class ClinicLogController extends Controller
         $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs', 'date'))->setPaper('legal', 'landscape');
         return $pdf->stream('reports.medical_log');
 
+    }
+
+    public function printMedicalLogEach($id)
+    {
+        $patientInfo = Patient::find($id);
+        $medicalLogs = ClinicLog::join('users', 'users.id', '=', 'cliniclogs.nurseID')
+                        ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('cliniclogs.*', 'patients.*')
+                        ->where('cliniclogs.patientID', '=', $id)
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->get();
+        $pdf = PDF::loadView('reports.medical_log_each', compact('medicalLogs', 'patientInfo'));
+        return $pdf->stream('reports.medical_log_each');
     }
    
 }

@@ -592,9 +592,11 @@
             $('#dosage').val(splitted[0]);
             if (splitted[1] == "mg") {
               $('#dosageUnit').val("mg");
+              $('#dosageUnit').prop('disabled', true);
             }
             else if(splitted[1] == "ml"){
               $('#dosageUnit').val("ml");
+              $('#dosageUnit').prop('disabled', true);
             }
           });      
       });
@@ -626,13 +628,14 @@
           });      
       });
 
-      //Validation For adding Medicine
-      $('#btnMedAdd').click( function(event) {
+     //On click of Medicine Add
+     $('#btnMedAdd').click( function(event) {
           event.preventDefault();
           
           // Validate all Medicine fields.
           $('#saveForm').parsley().validate('second');     
           if ($('#saveForm').parsley().isValid('second')) {
+            
             if (Object.keys(array_med).length == 0) {
                 isPrescribed[isPrescribed.length] = 0;
                 array_med[ctr] = {
@@ -644,7 +647,7 @@
                     medicineID:  $('select[name=medBrand]').val(),
                     medicineQuantity: $('input[name=medQuantity]').val(),
                 };
-                $('#medTable tbody').empty();
+                removeItems();
                 displayTableRow();
             }
             else{
@@ -652,16 +655,16 @@
                 var key;
                 for (var i = 0; i < Object.keys(array_med).length; i++) {
                 
-                    if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                    if (array_med[i].medicineID == $('select[name=medBrand]').val() && array_med[i].medicineMedication == $('#medication').val() && array_med[i].medicineDosage == $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val()) {
                         isEqual = true;
                         key = i;
                     }
                     
                 }
-
+ 
                 if (isEqual == true) {
                   array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('input[name=medQuantity]').val());
-                  $('#medTable tbody').empty();
+                  removeItems();
                   displayTableRow();
                 }
                 else if(isEqual == false){
@@ -676,7 +679,7 @@
                       medicineID:  $('select[name=medBrand]').val(),
                       medicineQuantity: $('input[name=medQuantity]').val()
                   };
-                  $('#medTable tbody').empty();
+                  removeItems();
                   displayTableRow();
                 }
 
@@ -689,11 +692,15 @@
             return false
           }
         });
+
+        function removeItems(){
+          $('#tbodyMedicine .delete-row').remove();
+        }
         
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 
@@ -713,9 +720,9 @@
             $('input[name=week]').val(this.defaultValue);
         }
 
-      //On click of Prescribe
-      $('#btnPrescribe').on('click', function(e){
-        e.preventDefault();
+    //On click of Prescribe
+    $('#btnPrescribe').on('click', function(e){
+      e.preventDefault();
       // Validate all Medicine fields.
           $('#saveForm').parsley().validate('second');     
           if ($('#saveForm').parsley().isValid('second')) {
@@ -731,7 +738,7 @@
                     medicineID:  $('select[name=medBrand]').val(),
                     medicineQuantity: $('input[name=medQuantity]').val(),
                 };
-                $('#prescribeTable tbody').empty();
+                removeItemsPrescribe();
                 displayTableRowPrescribed();
             }
             else{
@@ -739,21 +746,21 @@
                 var key;
                 for (var i = 0; i < Object.keys(array_med_prescribed).length; i++) {
                 
-                    if (array_med_prescribed[i].medicineID == $('select[name=medBrand]').val()) {
+                    if (array_med_prescribed[i].medicineID == $('select[name=medBrand]').val() && array_med_prescribed[i].medicineMedication == $('#medication').val() && array_med_prescribed[i].medicineDosage == $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val()) {
                         isEqual = true;
                         key = i;
                     }
-                    
+                
                 }
 
                 if (isEqual == true) {
                   array_med_prescribed[key].medicineQuantity = parseInt(array_med_prescribed[key].medicineQuantity) + parseInt($('input[name=medQuantity]').val());
-                  $('#prescribeTable tbody').empty();
+                  removeItemsPrescribe();
                   displayTableRowPrescribed();
                 }
                 else if(isEqual == false){
-                  ctr++;
-                  isPrescribed_other[isPrescribed_other.length] = 0;
+                  ctr_prescribed++;
+                  isPrescribed_other[isPrescribed_other.length] = 1;
                   array_med_prescribed[ctr_prescribed] = {
                       medicineGenericName: $('select[name=medGenericName] option:selected').text(),
                       medicineBrand: $('select[name=medBrand] option:selected').text(),
@@ -763,7 +770,7 @@
                       medicineID:  $('select[name=medBrand]').val(),
                       medicineQuantity: $('input[name=medQuantity]').val()
                   };
-                  $('#prescribeTable tbody').empty();
+                  removeItemsPrescribe();
                   displayTableRowPrescribed();
                 }
 
@@ -776,18 +783,26 @@
           }
 
     });
-
+    function removeItemsPrescribe(){
+      $('#tbodyPrescribedMedicine .delete-row').remove();
+    }
     function displayTableRowPrescribed(){
         for (var i = 0; i < Object.keys(array_med_prescribed).length; i++) {
 
-            var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_med_prescribed[i].medicineBrand+"</td><td class=' '>"+array_med_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_med_prescribed[i].medicineUnit+"</td><td>"+array_med_prescribed[i].medicineDosage+"</td><td>"+array_med_prescribed[i].medicineMedication+"</td></tr>";
+            var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_med_prescribed[i].medicineBrand+"</td><td class=' '>"+array_med_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_med_prescribed[i].medicineUnit+"</td><td>"+array_med_prescribed[i].medicineDosage+"</td><td>"+array_med_prescribed[i].medicineMedication+"</td></tr>";
 
             $(tr).prependTo('#tbodyPrescribedMedicine');
 
         }
     }
 
-      $('#btnSuppAdd').click(function(event){
+   //variables for the record of medical supply
+    var medSuppID = new Array();
+    var medSuppName = '';
+    var medSuppBrand = '';
+    var medSuppQuantity = new Array();
+    var medUnit = '';
+    $('#btnSuppAdd').click(function(event){
           event.preventDefault();
           // Validate all Medical Supply fields.
           $('#saveForm').parsley().validate('third');
@@ -802,7 +817,7 @@
                     suppID:  $('select[name=medSuppBrand]').val(),
                     suppQuantity: $('input[name=medSuppQuantity]').val()
                 };
-                $('#suppTable tbody').empty();
+                removeItemsSupp();
                 displayTableRowSupp();
             }
             else{
@@ -819,7 +834,7 @@
 
                 if (isEqual == true) {
                   array_supp[key].suppQuantity = parseInt(array_supp[key].suppQuantity) + parseInt($('input[name=medSuppQuantity]').val());
-                  $('#suppTable tbody').empty();
+                  removeItemsSupp();
                   displayTableRowSupp();
                 }
                 else if(isEqual == false){
@@ -831,7 +846,7 @@
                     suppID:  $('select[name=medSuppBrand]').val(),
                     suppQuantity: $('input[name=medSuppQuantity]').val()
                   };
-                  $('#suppTable tbody').empty();
+                  removeItemsSupp();
                   displayTableRowSupp();
                 }
 
@@ -842,11 +857,13 @@
        
           }
     });
-
+    function removeItemsSupp(){
+      $('#tbodyMedicalSupply .delete-row').remove();
+    }
     function displayTableRowSupp(){
       for (var i = 0; i < Object.keys(array_supp).length; i++) {
 
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
 
                 $(tr).prependTo('#tbodyMedicalSupply');
                 console.log(array_supp);

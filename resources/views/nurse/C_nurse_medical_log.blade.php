@@ -111,7 +111,7 @@
                       </table>
                      <!--  <a href="{{ url('/print/medical/log') }}" target="_blank"> -->
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#printModal">
-                        <i class="fa fa-print"></i> Print
+                        <i class="fa fa-print"></i> Print Medical Log
                       </button>
                    <!--    </a> -->
                       

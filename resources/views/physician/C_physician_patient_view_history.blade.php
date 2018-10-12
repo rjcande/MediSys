@@ -409,7 +409,7 @@
                             
                  <div style="margin-top: 25px;margin-bottom: 30px;float: left;text-align: center;width: 100%">
                     @if($medicalHistory != null)
-                    <a href="{{ url('/print/medical/history', $patient['patientID']) }}">
+                    <a href="{{ url('/print/medical/history', $patient['patientID']) }}" target="_blank">
                         <button type="button" class="btn btn-primary"><i class="fa fa-print"></i> Print Medical History</button>
                     </a>
                     @endif
@@ -656,7 +656,7 @@
                                                 var location = "/physician/consult/diagnosis/";
                                                 var clinicLogID = $('#saveForm').data('cliniclogid')
                                                 var patientID = $('#saveForm').data('id');
-                                                window.location.href= location + clinicLogID + "/" + patientID ;
+                                                window.location.href= "/physician/patient/record";
                                             });
                                         }
                                     });
