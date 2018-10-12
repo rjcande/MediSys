@@ -39,10 +39,12 @@
 
     <div>
       <center>
-        <header style="font-size: 15px;">Republic of the Philippines</header><br>
-        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
+          <img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
+          <p style="margin-left: 25px">
+          Republic of the Philippines <br>
+          POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
+          <em>Medical Services Department</em><br>
+          <b>DENTAL SERVICES</b><br>
       
         <h1>Medicine Reports ({{ date('F') }})</h1>
       </center>

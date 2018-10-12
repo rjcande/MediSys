@@ -167,14 +167,14 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Student/Faculty Number*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Student/Faculty Number: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="patientNumber" maxlength="17" name="patientNumber" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" required data-parsley-group="patientNumber">
             </div>
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="patientName" required name="patientName" placeholder="Last Name, First Name Middle Name">
             </div>
@@ -207,7 +207,7 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <select class="form-control" style="border-radius:8px;" required="required" id="concern" name="concern">
                 <option value="" disabled selected></option>
@@ -625,15 +625,19 @@
     });
     $('#weekly').on('change', function(){
       if ($(this).is(':checked')) {
-        $('#date').prop('disabled', false);
-        $('#date').prop('required', true);
+        $('#weekFrom').prop('disabled', false);
+        $('#weekFrom').prop('required', true);
+        $('#weekTo').prop('disabled', false);
+        $('#weekTo').prop('required', true);
       }
       else{
-        $('#date').prop('disabled', true);
-        $('#date').prop('required', false);
+        $('#weekFrom').prop('disabled', true);
+        $('#weekFrom').prop('required', false);
+        $('#weekTo').prop('disabled', true);
+        $('#weekTo').prop('required', false);
       }
     });
-    $('#monthly').on('change', function(){
+    $('#mon').on('change', function(){
       if ($(this).is(':checked')) {
         $('#month').prop('disabled', false);
         $('#month').prop('required', true);

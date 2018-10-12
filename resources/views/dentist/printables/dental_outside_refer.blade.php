@@ -42,14 +42,18 @@
 <body>
 	<div class="header">
 		<center>
-			POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
-            <b>DENTAL SERVICES</b><br>
-            <em>STA. MESA, MANILA</em><br><br>
+				<img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
+                <p style="margin-left: 25px">
+                Republic of the Philippines <br>
+                POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
+                <em>Medical Services Department</em><br>
+                <b>DENTAL SERVICES</b>
+                </p>
             <b style="font-size: 30px ; ">REFERRAL SLIP</b>
 		</center>
 	</div>
 	<div class="date">
-		<label for="dateTxt">Date: <u>{{$date}}</u></label>
+		<label for="dateTxt">Date: <u>{{date('F d, Y', strtotime($date))}}</u></label>
 	</div>
 	<div class="body">
 		<br><br>

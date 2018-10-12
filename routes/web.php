@@ -540,6 +540,8 @@ Route::get('/dentist/vital/store', 'VitalSignsController@store')->name('dentist.
 
 Route::get('/dentist/show/consultations/{id}', 'DentalLogController@showAllConsultations')->name('dentist.show.all.consultations');
 
+
+
 Route::get('/dentist/generate/prescription/{id}', 'DentalCertificateController@generatePdf')->name('dentist.generate.prescription');
 
 Route::get('/dentist/generate/logTable', 'DentalCertificateController@generateDentalLogTable')->name('dentist.generate.dentalTable');
@@ -696,7 +698,9 @@ Route::get('/dchief/generate/medicinesList', 'DentalCertificateController@genera
 
 Route::get('/dchief/generate/medicalSuppliesList', 'DentalCertificateController@generateMedicalSupplyList')->name('dchief.generate.medicalSupplyList');
 
-Route::get('/dchief/generate/medicinesList', 'DentalCertificateController@generateMedicineList')->name('dchief.generate.medicineList');
+Route::get('/dchief/generate/dentalHistory/{id}', 'DentalCertificateController@generateDentalHistoryPdf')->name('dchief.generate.dentalHistory');
+
+Route::get('/dentalchief/accounts_maintenance_queries', 'AccountsController@dchiefAccountQueries');
  
 //===========================================================================================================================
 

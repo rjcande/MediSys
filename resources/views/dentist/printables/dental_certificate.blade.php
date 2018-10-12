@@ -42,11 +42,13 @@
 <body>
 	<div class="header">
 		<center>
-			Republic of The Philippines<br>
-			POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
-			<b>DENTAL SERVICES</b>
-			<br><br>
-			<b>CERTIFICATION</b>
+				<img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
+                <p style="margin-left: 25px">
+                Republic of the Philippines <br>
+                POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
+                <em>Medical Services Department</em><br>
+				<b>DENTAL SERVICES</b><br>
+				<b style="margin-left: 70px">CERTIFICATION</b>
 		</center>
 	</div>
 	<div class="date">

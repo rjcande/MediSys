@@ -32,10 +32,14 @@
 <body>
     <div>
       <center>
-        <header style="font-size: 18px;">Republic of the Philippines</header><br>
-        <header style="font-size: 18px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 18px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 18px;">Sta. Mesa, Manila</header><br>
+          <img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
+          <p style="margin-left: 25px">
+          Republic of the Philippines <br>
+          POLYTECHNIC UNIVERSITY OF THE PHILIPPINES<br>
+          <em>Medical Services Department</em><br>
+          <b>DENTAL SERVICES</b>
+          </p>
+          <hr>
         <h1>Medical Supplies List</h1>
       </center>
       {{-- <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
