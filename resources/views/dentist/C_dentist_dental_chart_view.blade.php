@@ -441,28 +441,28 @@
                             <div style="float: left;margin-top: 25px;">
                                 <label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
 
-                                <input readonly value="{{ $status55a }}" type="text"  name="txtBox55a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status54a }}" type="text"  name="txtBox54a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status53a }}" type="text"  name="txtBox53a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status52a }}" type="text"  name="txtBox52a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status51a }}" type="text"  name="txtBox51a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status61a }}" type="text"  name="txtBox61a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status62a }}" type="text"  name="txtBox62a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status63a }}" type="text"  name="txtBox63a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status64a }}" type="text"  name="txtBox64a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status65a }}" type="text"  name="txtBox65a" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status55a }}" type="text"  name="txtBox55a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status54a }}" type="text"  name="txtBox54a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status53a }}" type="text"  name="txtBox53a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status52a }}" type="text"  name="txtBox52a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status51a }}" type="text"  name="txtBox51a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status61a }}" type="text"  name="txtBox61a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status62a }}" type="text"  name="txtBox62a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status63a }}" type="text"  name="txtBox63a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status64a }}" type="text"  name="txtBox64a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status65a }}" type="text"  name="txtBox65a" class="text-input" style="width:55px; text-align:center;">
                                 <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
                                 <br>
-                                <input readonly value="{{ $status55b }}" type="text"  name="txtBox55b" class="text-input" style="width:55px;margin-left: 179px;">
-                                <input readonly value="{{ $status54b }}" type="text"  name="txtBox54b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status53b }}" type="text"  name="txtBox53b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status52b }}" type="text"  name="txtBox52b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status51b }}" type="text"  name="txtBox51b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status61b }}" type="text"  name="txtBox61b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status62b }}" type="text"  name="txtBox62b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status63b }}" type="text"  name="txtBox63b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status64b }}" type="text"  name="txtBox64b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status65b }}" type="text"  name="txtBox65b" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status55b }}" type="text"  name="txtBox55b" class="text-input" style="width:55px; text-align:center; margin-left: 179px;">
+                                <input readonly value="{{ $status54b }}" type="text"  name="txtBox54b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status53b }}" type="text"  name="txtBox53b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status52b }}" type="text"  name="txtBox52b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status51b }}" type="text"  name="txtBox51b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status61b }}" type="text"  name="txtBox61b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status62b }}" type="text"  name="txtBox62b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status63b }}" type="text"  name="txtBox63b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status64b }}" type="text"  name="txtBox64b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status65b }}" type="text"  name="txtBox65b" class="text-input" style="width:55px; text-align:center;">
                                 <br>
                                 <div style="margin-top: 5px;">
                                     <!--TOOTH NUMBER 55--------------------------------------------------------------------------->
@@ -611,39 +611,39 @@
 
                             <!--18 TO 11 A AND B-->
                             <div style="float: left;margin-top: 25px;">
-                                <input readonly value="{{ $status18a }}" type="text"  name="txtBox18a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status17a }}" type="text"  name="txtBox17a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status16a }}" type="text"  name="txtBox16a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status15a }}" type="text"  name="txtBox15a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status14a }}" type="text"  name="txtBox14a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status13a }}" type="text"  name="txtBox13a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status12a }}" type="text"  name="txtBox12a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status11a }}" type="text"  name="txtBox11a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status28a }}" type="text"  name="txtBox21a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status27a }}" type="text"  name="txtBox22a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status26a }}" type="text"  name="txtBox23a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status25a }}" type="text"  name="txtBox24a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status24a }}" type="text"  name="txtBox25a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status23a }}" type="text"  name="txtBox26a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status22a }}" type="text"  name="txtBox27a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status21a }}" type="text"  name="txtBox28a" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status18a }}" type="text"  name="txtBox18a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status17a }}" type="text"  name="txtBox17a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status16a }}" type="text"  name="txtBox16a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status15a }}" type="text"  name="txtBox15a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status14a }}" type="text"  name="txtBox14a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status13a }}" type="text"  name="txtBox13a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status12a }}" type="text"  name="txtBox12a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status11a }}" type="text"  name="txtBox11a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status28a }}" type="text"  name="txtBox21a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status27a }}" type="text"  name="txtBox22a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status26a }}" type="text"  name="txtBox23a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status25a }}" type="text"  name="txtBox24a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status24a }}" type="text"  name="txtBox25a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status23a }}" type="text"  name="txtBox26a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status22a }}" type="text"  name="txtBox27a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status21a }}" type="text"  name="txtBox28a" class="text-input" style="width:55px; text-align:center;">
                                 <br>
-                                <input readonly value="{{ $status18b }}" type="text"  name="txtBox18b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status17b }}" type="text"  name="txtBox17b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status16b }}" type="text"  name="txtBox16b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status15b }}" type="text"  name="txtBox15b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status14b }}" type="text"  name="txtBox14b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status13b }}" type="text"  name="txtBox13b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status12b }}" type="text"  name="txtBox12b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status11b }}" type="text"  name="txtBox11b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status28b }}" type="text"  name="txtBox21b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status27b }}" type="text"  name="txtBox22b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status26b }}" type="text"  name="txtBox23b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status25b }}" type="text"  name="txtBox24b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status24b }}" type="text"  name="txtBox25b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status23b }}" type="text"  name="txtBox26b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status22b }}" type="text"  name="txtBox27b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status21b }}" type="text"  name="txtBox28b" class="text-input" style="width:55px;"><br>
+                                <input readonly value="{{ $status18b }}" type="text"  name="txtBox18b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status17b }}" type="text"  name="txtBox17b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status16b }}" type="text"  name="txtBox16b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status15b }}" type="text"  name="txtBox15b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status14b }}" type="text"  name="txtBox14b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status13b }}" type="text"  name="txtBox13b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status12b }}" type="text"  name="txtBox12b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status11b }}" type="text"  name="txtBox11b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status28b }}" type="text"  name="txtBox21b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status27b }}" type="text"  name="txtBox22b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status26b }}" type="text"  name="txtBox23b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status25b }}" type="text"  name="txtBox24b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status24b }}" type="text"  name="txtBox25b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status23b }}" type="text"  name="txtBox26b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status22b }}" type="text"  name="txtBox27b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status21b }}" type="text"  name="txtBox28b" class="text-input" style="width:55px; text-align:center;"><br>
                                 <!-- <img src="{{ asset('images/part3_12-18.png') }}" width="470px"> -->
                                 <div style="margin-top: 3px;">
                                     <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
@@ -1120,40 +1120,40 @@
                                     <input type="number" name="txt38b" id="txt38b" hidden/>
                                     <input type="number" name="txt38m" id="txt38m" hidden/>
                                 </div>
-                                <input readonly value="{{ $status48a }}" type="text"  name="txtBox48a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status47a }}" type="text"  name="txtBox47a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status46a }}" type="text"  name="txtBox46a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status45a }}" type="text"  name="txtBox45a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status44a }}" type="text"  name="txtBox44a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status43a }}" type="text"  name="txtBox43a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status42a }}" type="text"  name="txtBox42a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status41a }}" type="text"  name="txtBox41a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status31a }}" type="text"  name="txtBox31a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status32a }}" type="text"  name="txtBox32a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status33a }}" type="text"  name="txtBox33a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status34a }}" type="text"  name="txtBox34a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status35a }}" type="text"  name="txtBox35a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status36a }}" type="text"  name="txtBox36a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status37a }}" type="text"  name="txtBox37a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status38a }}" type="text"  name="txtBox38a" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status48a }}" type="text"  name="txtBox48a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status47a }}" type="text"  name="txtBox47a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status46a }}" type="text"  name="txtBox46a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status45a }}" type="text"  name="txtBox45a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status44a }}" type="text"  name="txtBox44a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status43a }}" type="text"  name="txtBox43a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status42a }}" type="text"  name="txtBox42a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status41a }}" type="text"  name="txtBox41a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status31a }}" type="text"  name="txtBox31a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status32a }}" type="text"  name="txtBox32a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status33a }}" type="text"  name="txtBox33a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status34a }}" type="text"  name="txtBox34a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status35a }}" type="text"  name="txtBox35a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status36a }}" type="text"  name="txtBox36a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status37a }}" type="text"  name="txtBox37a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status38a }}" type="text"  name="txtBox38a" class="text-input" style="width:55px; text-align:center;">
 
                                 <br>
-                                <input readonly value="{{ $status48b }}" type="text"  name="txtBox48b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status47b }}" type="text"  name="txtBox47b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status46b }}" type="text"  name="txtBox46b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status45b }}" type="text"  name="txtBox45b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status44b }}" type="text"  name="txtBox44b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status43b }}" type="text"  name="txtBox43b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status42b }}" type="text"  name="txtBox42b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status41b }}" type="text"  name="txtBox41b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status31b }}" type="text"  name="txtBox31b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status32b }}" type="text"  name="txtBox32b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status33b }}" type="text"  name="txtBox33b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status34b }}" type="text"  name="txtBox34b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status35b }}" type="text"  name="txtBox35b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status36b }}" type="text"  name="txtBox36b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status37b }}" type="text"  name="txtBox37b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status38b }}" type="text"  name="txtBox38b" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status48b }}" type="text"  name="txtBox48b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status47b }}" type="text"  name="txtBox47b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status46b }}" type="text"  name="txtBox46b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status45b }}" type="text"  name="txtBox45b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status44b }}" type="text"  name="txtBox44b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status43b }}" type="text"  name="txtBox43b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status42b }}" type="text"  name="txtBox42b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status41b }}" type="text"  name="txtBox41b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status31b }}" type="text"  name="txtBox31b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status32b }}" type="text"  name="txtBox32b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status33b }}" type="text"  name="txtBox33b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status34b }}" type="text"  name="txtBox34b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status35b }}" type="text"  name="txtBox35b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status36b }}" type="text"  name="txtBox36b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status37b }}" type="text"  name="txtBox37b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status38b }}" type="text"  name="txtBox38b" class="text-input" style="width:55px; text-align:center;">
                             </div>
 
                             <!--71 TO 75 A AND B-->
@@ -1306,28 +1306,28 @@
 
                                     </div>
                                 <label style="display: inline-block;width:100px;font-size: 12px; margin-left:75px;">STATUS RIGHT</label>
-                                <input readonly value="{{ $status71a }}"  type="text"    name="txtBox71a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status72a }}"  type="text"    name="txtBox72a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status73a }}"  type="text"    name="txtBox73a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status74a }}"  type="text"    name="txtBox74a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status75a }}"  type="text"    name="txtBox75a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status85a }}"  type="text"    name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input readonly value="{{ $status84a }}"  type="text"    name="txtBox84a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status83a }}"  type="text"    name="txtBox83a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status82a }}"  type="text"    name="txtBox82a" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status81a }}"  type="text"    name="txtBox81a" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status71a }}"  type="text"    name="txtBox71a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status72a }}"  type="text"    name="txtBox72a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status73a }}"  type="text"    name="txtBox73a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status74a }}"  type="text"    name="txtBox74a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status75a }}"  type="text"    name="txtBox75a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status85a }}"  type="text"    name="txtBox85a" class="text-input" style="width:55px; text-align:center;" style="margin-left: 54px;">
+                                <input readonly value="{{ $status84a }}"  type="text"    name="txtBox84a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status83a }}"  type="text"    name="txtBox83a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status82a }}"  type="text"    name="txtBox82a" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status81a }}"  type="text"    name="txtBox81a" class="text-input" style="width:55px; text-align:center;">
                                 <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
                                 <br>
                                 <input readonly value="{{ $status71b }}"  type="text"    name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
-                                <input readonly value="{{ $status72b }}"  type="text"    name="txtBox72b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status73b }}"  type="text"    name="txtBox73b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status74b }}"  type="text"    name="txtBox74b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status75b }}"  type="text"    name="txtBox75b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status85b }}"  type="text"    name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                <input readonly value="{{ $status84b }}"  type="text"    name="txtBox84b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status83b }}"  type="text"    name="txtBox83b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status82b }}"  type="text"    name="txtBox82b" class="text-input" style="width:55px;">
-                                <input readonly value="{{ $status81b }}"  type="text"    name="txtBox81b" class="text-input" style="width:55px;">
+                                <input readonly value="{{ $status72b }}"  type="text"    name="txtBox72b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status73b }}"  type="text"    name="txtBox73b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status74b }}"  type="text"    name="txtBox74b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status75b }}"  type="text"    name="txtBox75b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status85b }}"  type="text"    name="txtBox85b" class="text-input" style="width:55px; text-align:center;" style="margin-left: 54px;">
+                                <input readonly value="{{ $status84b }}"  type="text"    name="txtBox84b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status83b }}"  type="text"    name="txtBox83b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status82b }}"  type="text"    name="txtBox82b" class="text-input" style="width:55px; text-align:center;">
+                                <input readonly value="{{ $status81b }}"  type="text"    name="txtBox81b" class="text-input" style="width:55px; text-align:center;">
                                 <br>
                             </div>
 

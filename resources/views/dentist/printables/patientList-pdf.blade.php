@@ -65,7 +65,7 @@
           </tr>
         </thead>      
           <tbody>
-           @foreach($patientRecords as $patients)
+           @foreach($patientListStudent as $patients)
               <tr>
                 <td>{{ $patients->patientNumber }}</td>
                 {{-- <td>{{ $patients->patientID }}</td> --}}
@@ -102,25 +102,12 @@
               </tr>
             </thead>      
               <tbody>
-               @foreach($patientRecords as $patients)
+               @foreach($patientListFaculty as $patients)
                   <tr>
                     <td>{{ $patients->patientNumber }}</td>
                     <td>{{ $patients->patientID }}</td>
                     <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
                     <td class=" ">
-                        @if($patients->patientType == 1)
-                        {{
-                            'Student'
-                        }}
-                        @elseif($patients->patientType == 2)
-                        {{
-                            'Faculty/College'
-                        }}
-                        @elseif($patients->patientType == 3)
-                        {{
-                            'Admin/Dept'
-                        }}
-                        @endif
                     </td>
                   </tr>
                @endforeach
@@ -152,7 +139,7 @@
                   </tr>
                 </thead>      
                   <tbody>
-                   @foreach($patientRecords as $patients)
+                   @foreach($patientListAdmin as $patients)
                       <tr>
                         <td>{{ $patients->patientNumber }}</td>
                         <td>{{ $patients->patientID }}</td>
@@ -202,25 +189,13 @@
                   </tr>
                 </thead>      
                   <tbody>
-                   @foreach($patientRecords as $patients)
+                   @foreach($patientListVisitor as $patients)
                       <tr>
                         <td>{{ $patients->patientNumber }}</td>
                         <td>{{ $patients->patientID }}</td>
                         <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
                         <td class=" ">
-                            @if($patients->patientType == 1)
-                            {{
-                                'Student'
-                            }}
-                            @elseif($patients->patientType == 2)
-                            {{
-                                'Faculty/College'
-                            }}
-                            @elseif($patients->patientType == 3)
-                            {{
-                                'Admin/Dept'
-                            }}
-                            @endif
+                            
                         </td>
                       </tr>
                    @endforeach

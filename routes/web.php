@@ -443,6 +443,7 @@ Route::get('/medicalchief/getLastUserID','MedicalChiefController@getlastUserID')
 // });
 
 Route::get('/dentist/dashboard', 'DashboardController@dashboard');
+Route::get('/dentist/dentalchart/print/{id}', 'PrintableDentalChartController@show');
 
 Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
 
@@ -569,6 +570,25 @@ Route::get('/nurseMedicalLog', 'PatientController@index');
 
 
 /////////////////////////DENTAL CHIEF
+
+
+
+Route::get('/dchief/archived/patient/list', 'ArchivesController@patientsList');
+Route::get('/dchief/archived/patient/list/ViewMore/{id}', 'ArchivesController@patientsList_viewMore');
+Route::get('/dchief/archived/patient/list/viewMore/dental/log/each/{id}', 'ArchivesController@patientsList_viewMore_Logs');
+Route::get('/dchief/archived/patient/list/concerns/{id}', 'ArchivesController@patientsList_concerns');
+Route::get('/dchief/archived/dental/logs', 'ArchivesController@dentalLogs');
+Route::get('/dchief/archived/dental/logs/viewMore/{id}', 'ArchivesController@dentalLogs_viewMore');
+// Route::get('/dchief/archived/dental/logs/viewMore/{id}', 'ArchivesController@dentalLogs_viewMore');
+Route::get('/dchief/archived/accounts', 'ArchivesController@accountsList');
+Route::get('/dchief/archived/medicines', 'ArchivesController@medicines');
+Route::get('/dchief/archived/medicalSupplies', 'ArchivesController@medicalSupplies');
+
+Route::get('/dchief/restore/patient/{id}','ArchivesController@restore_patient');
+Route::get('/dchief/restore/dental/log/{id}','ArchivesController@restore_dental_log');
+Route::get('/dchief/restore/account/{id}','ArchivesController@restore_account');
+Route::get('/dchief/restore/medicine/{id}','ArchivesController@restore_medicine');
+Route::get('/dchief/restore/medicalSupply/{id}','ArchivesController@restore_medicalSupply');
 
 Route::get('/dchief/dashboard', 'DashboardController@dashboard');
 

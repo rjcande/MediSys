@@ -6,54 +6,41 @@
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Medicine</h3><br>
-                <div style="width: 450px; font-size:18px">
-                  <form id="saveMedForm">
+                <h3>Medical Supplies List (Archived)</h3><br>
+                <div style="width: 500px; font-size:18px">
+                  {{--  <form id="saveMedForm">
                     @csrf()
                     <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Medicine ID:</header>
+                      <div style="float: left; width: 200px;">
+                        <header style="margin-bottom:12px; margin-left:25px;">Medical Supply ID:</header>
                       </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medicineID" data-parsley-required="true" value="{{ $id->id }}" readonly>
+                      <div style="float: left; margin-left: 15px;">
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupID" data-parsley-required="true" value="{{ $id->id }}" readonly>
                       </div>
                     </div>
                     <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Generic Name:</header>
+                      <div style="float: left; width: 200px;">
+                        <header style="margin-bottom:12px; margin-left:25px;">Medical Supply Name:</header>
                       </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="genericName" data-parsley-required="true">
+                      <div style="float: left; margin-left: 15px;">
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupName" data-parsley-required="true">
                       </div>
 
                     </div>
                     <div>
-                      <div style="float: left; width: 150px;">
+                      <div style="float: left; width: 200px;">
                         <header style="margin-bottom:12px; margin-left:25px;">Brand Name:</header>
                       </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="brandName" data-parsley-required="true">
+                      <div style="float: left; margin-left: 15px;">
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupBrandName" data-parsley-required="true">
                       </div>
                     </div>
                     <div>
-                      <div style="float: left; width: 150px;">
+                      <div style="float: left; width: 200px;">
                         <header style="margin-bottom:12px; margin-left:25px;">Unit:</header>
                       </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="unit" data-parsley-required="true">
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Dosage:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" id="dosage" data-parsley-required="true">
-                        <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true">
-                          <option value="mg">mg</option>
-                          <option value="g">g</option>
-                          <option value="oz">oz</option>
-                        </select>
+                      <div style="float: left; margin-left: 15px;">
+                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupUnit" data-parsley-required="true">
                       </div>
                     </div>
                     <div style="float: left; display: flex; justify-content: center; width: 100%">
@@ -61,7 +48,7 @@
                       <button type="reset" class="btn btn-warning" id="btnReset">CLEAR</button>
                     </div>
                   </div>
-                </form>
+                </form>  --}}
               </div>
             </div>
 
@@ -70,12 +57,12 @@
             <div class="row">
               <!-- form input mask -->
 
-               <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="col-md-12 col-sm-12 col-xs-12" style="height:78vh;">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>
-                      List of Medicines
-                    </h4>
+                    {{--  <h4>
+                      List of Medical Supply
+                    </h4>  --}}
                     <div class="clearfix">
                     </div>
                   </div>
@@ -88,10 +75,9 @@
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title">Generic Name</th>
-                            <th class="column-title">Brand Name</th>
+                            <th class="column-title">Medical Supply Name</th>
+                          <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
-                            <th class="column-title">Dosage</th>
                             <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
                             <th class="bulk-actions" colspan="8">
@@ -101,32 +87,29 @@
                         </thead>
 
                         <tbody>
-                          @if(count($medicines) > 0)
-                            @foreach($medicines as $medicine)
-                                <tr class="even pointer">
-                                    <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                    </td>
-                                    <td class=" ">{{ $medicine->genericName }}</td>
-                                    <td class=" ">{{ $medicine->brand }}</td>
-                                    <td class=" ">{{ $medicine->unit }}</td>
-                                    <td class=" ">{{ $medicine->dosage }}</td>
-                                    <td class="last">
-                                    <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-dosage="{{ $medicine->dosage }}" data-id="{{ $medicine->medicineID }}" >
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
+                          @foreach($supplies as $supply)
+                            <tr class="even pointer">
+                              <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records">
+                              </td>
+                              <td class=" ">{{ $supply->medSupName }}</td>
+                              <td class=" ">{{ $supply->brand }}</td>
+                              <td class=" ">{{ $supply->unit }}</td>
+                              <td class="last">
+                                {{--  <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $supply->medSupName }}" data-brand="{{ $supply->brand }}" data-unit="{{ $supply->unit }}" data-id="{{ $supply->medSupID }}">
+                                  <i class="fa fa-pencil"></i>
+                                </button>  --}}
 
-                                    <button type="submit" class="btn btn-danger medicine-details" id="btnDelete" data-id="{{ $medicine->medicineID }}">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            @endif
+                                <a href="{!! url('/dchief/restore/medicalSupply',$supply->medSupID) !!}"><button type="submit" class="btn btn-success">
+                                  <i class="fa fa-refresh"></i></button>
+                                </a>
+                              </td>
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
-                      {{-- <a target="_blank" href="{{route('dchief.generate.medicineList')}}"> --}}
-                        {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medicineListModal"><i class="fa fa-print"></i> Print Medicine List</button>  --}}
+                      {{-- <a target="_blank" href="{{route('dchief.generate.medicalSupplyList')}}"> --}}
+                        {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplyListModal"><i class="fa fa-print"></i> Print Medical Supplies</button>  --}}
                       {{-- </a> --}}
                     </div>
                   </div>
@@ -178,14 +161,6 @@
               <input type="text" class="form-control" style="border-radius:8px;" id="unit" name="unit">
             </div>
           </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-3">Dosage: </label>
-              <div class="col-md-9 col-sm-9 col-xs-9">
-                <input type="text" class="form-control" style="border-radius:8px;" id="dosage" name="dosage">
-              </div>
-          </div>
-
       </div>
       <div class="modal-footer">
         <input type="hidden" name="medicineID">
@@ -199,16 +174,16 @@
 </div>
 <!-------------------------------------------------------------/EDIT MODAL---------------------------------------------------------------------->
 
-<!-------------------------------------------------------------GENERATE MEDICINE LIST MODAL---------------------------------------------------------------------->
-<div class="modal fade" id="medicineListModal" role="dialog">
+<!-------------------------------------------------------------GENERATE MEDICAL SUPPLY LIST MODAL---------------------------------------------------------------------->
+<div class="modal fade" id="supplyListModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Print Medicine List</h4>
+        <h4 class="modal-title">Print Medical Supply List</h4>
       </div>
-      <form id="printMedicineList" action="{{route('dchief.generate.medicineList')}}" target="_blank" method="get">
+      <form id="printSupplyList" action="{{route('dchief.generate.medicalSupplyList')}}" target="_blank" method="get">
         @csrf()
         <div class="modal-body">
             <div class="col-md-4">
@@ -267,19 +242,16 @@
     </div>
   </div>
 </div>
-<!-------------------------------------------------------------/GENERATE MEDICINE LIST MODAL---------------------------------------------------------------------->
-
+<!-------------------------------------------------------------/GENERATE MEDICAL SUPPLY LIST MODAL---------------------------------------------------------------------->
 
 <script>
   $(window).load(function(){
       //Data Table
-      var table = $('#medicineTable').dataTable({
+      $('#medicineTable').dataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false
-      });
-
+        "bAutoWidth": false });
       //Form validation
       $('#saveMedForm').parsley();
       $('#editMedForm').parsley();
@@ -287,28 +259,16 @@
       $('#saveMedForm').submit(function(e){
         e.preventDefault();
 
-        // var genericname = $('input[name=genericName]').val();
-        // var brandname = $('input[name=brandName]').val();
-        // var medunit = $('input[name=unit]').val();
-        var dosage = $('input[name=dosage]').val() + ' ' + $('#dosageUnit').val();
-
-        var id = {
-          // _genericName: genericname,
-          // _brandName: brandname,
-          // _medUnit :medunit,
-          _dosage: dosage
-        }
-        // alert();
         if ($(this).parsley().isValid()) {
           $.ajax({
-            url: '/save/medicine',
+            url: '/save/medical/supply',
             type: 'get',
-            data: $(this).serialize() + "&" + $.param(id),
+            data: $(this).serialize(),
             success: function(output){
               swal({
-                title: output.title,
+                title: "Good job!",
                 text: output.message,
-                icon: output.logo,
+                icon: "success",
                 button: "OK",
               })
               .then((value)=>{
@@ -325,7 +285,7 @@
 
         if($(this).parsley().isValid()){
           $.ajax({
-            url: '/edit/medicine',
+            url: '/edit/medical/supply',
             type: 'get',
             data: $(this).serialize(),
             success: function(output){
@@ -360,7 +320,7 @@
       .then((willDelete)=>{
         if (willDelete) {
           $.ajax({
-            url: '/delete/medicine/' + $(this).attr('data-id'),
+            url: '/delete/medical/supply/' + $(this).attr('data-id'),
             type: 'get',
             success: function(output){
               swal({
@@ -384,10 +344,10 @@
         $('.year').append($('<option />').val(i).html(i));
     }
 
-    //Printing of Medicine List
-    $('#printMedicineList').parsley();
-    $('#printMedicineList').submit(function(){
-      $('#medicineListModal').modal('hide');
+    //Printing of Medical Supply List
+    $('#printSupplyList').parsley();
+    $('#printSupplyList').submit(function(){
+      $('#supplyListModal').modal('hide');
 
     });
 
@@ -427,8 +387,8 @@
       }
     });
 
-    $('#medicineListModal').on('hidden.bs.modal', function () {
-      $('#printMedicineList')[0].reset();
+    $('#supplyListModal').on('hidden.bs.modal', function () {
+      $('#printSupplyList')[0].reset();
       $('#date').prop('disabled', true);
       $('#month').prop('disabled', true);
       $('#year-month').prop('disabled', true);
@@ -445,14 +405,12 @@
         var genericName = button.data('genericname');
         var brand = button.data('brand');
         var unit = button.data('unit');
-        var dosage = button.data('dosage');
         var id = button.data('id');
 
         var modal = $(this);
         modal.find('.modal-body #genericName').val(genericName);
         modal.find('.modal-body #brandName').val(brand);
         modal.find('.modal-body #unit').val(unit);
-        modal.find('.modal-body #dosage').val(id);
         modal.find('.modal-body #medicineID').val(id);
         modal.find('.modal-footer input[name=medicineID]').val(id);
     });

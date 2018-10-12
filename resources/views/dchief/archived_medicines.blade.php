@@ -6,9 +6,9 @@
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Medicine</h3><br>
-                <div style="width: 450px; font-size:18px">
-                  <form id="saveMedForm">
+                <h3>Medicines List (Archived)</h3><br>
+                <div style="width: 450px; font-size:18px;">
+                  {{--  <form id="saveMedForm">
                     @csrf()
                     <div>
                       <div style="float: left; width: 150px;">
@@ -61,7 +61,7 @@
                       <button type="reset" class="btn btn-warning" id="btnReset">CLEAR</button>
                     </div>
                   </div>
-                </form>
+                </form>  --}}
               </div>
             </div>
 
@@ -70,17 +70,17 @@
             <div class="row">
               <!-- form input mask -->
 
-               <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="col-md-12 col-sm-12 col-xs-12" style="height:78vh;">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>
+                    {{--  <h4>
                       List of Medicines
-                    </h4>
+                    </h4>  --}}
                     <div class="clearfix">
                     </div>
                   </div>
 
-                  <div class="x_content">
+                  <div class="x_content" >
                     <div class="">
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                         <thead>
@@ -112,13 +112,13 @@
                                     <td class=" ">{{ $medicine->unit }}</td>
                                     <td class=" ">{{ $medicine->dosage }}</td>
                                     <td class="last">
-                                    <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-dosage="{{ $medicine->dosage }}" data-id="{{ $medicine->medicineID }}" >
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
+                                    {{--  <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-dosage="{{ $medicine->dosage }}" data-id="{{ $medicine->medicineID }}" >  --}}
+                                        {{--  <i class="fa fa-pencil"></i>  --}}
+                                    {{--  </button>  --}}
 
-                                    <button type="submit" class="btn btn-danger medicine-details" id="btnDelete" data-id="{{ $medicine->medicineID }}">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    <a href="{!! url('/dchief/restore/medicine',$medicine->medicineID) !!}"><button type="submit" class="btn btn-success">
+                                        <i class="fa fa-refresh"></i>
+                                    </button></a>
                                     </td>
                                 </tr>
                             @endforeach

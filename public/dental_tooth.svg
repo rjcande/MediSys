@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="no"?>
+<svg viewBox="0 0 25 25" version="1.0" xmlns="http://www.w3.org/2000/svg">
+        <path    fill='transparent' stroke='black' id="62l" onclick="isClicked('62l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+        <path    fill='transparent' stroke='black' id="62t" onclick="isClicked('62t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+        <path    fill='transparent' stroke='black' id="62r" onclick="isClicked('62r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+        <path    fill='transparent' stroke='black' id="62b" onclick="isClicked('62b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+        <circle  fill='transparent' stroke='black' id="62m" onclick="isClicked('62m')" cx="12.5" cy="12.5" r="4"                          />
+    </svg>

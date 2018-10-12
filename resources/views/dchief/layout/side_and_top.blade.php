@@ -45,10 +45,19 @@
                       <li><a href="/dentalchief/medical_supplies_maintenance"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
                     </ul>
                   </li>
-               
+                  <li><a><i class="fa fa-archive"></i>Archive <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ url('/dchief/archived/patient/list') }}"><i class="fa fa-list-alt"></i>Patients List</a></li>
+                        <li><a href=""><i class="fa fa-edit"></i>Medicines</a></li>
+                        <li><a href=""><i class="fa fa-user-md"></i>Accounts List</a></li>
+                        <li><a href=""><i class="fa fa-medkit"></i>Medicines List</a></li>
+                        <li><a href=""><i class="fa fa-stethoscope"></i>Medical Supplies List</a></li>
+                    </ul>
+                  </li>
+
                 </ul>
               </div>
-            
+
 
             </div>
             <!-- /sidebar menu -->
@@ -113,7 +122,7 @@
                         </span>
                       </a>
                     </li>
-                    
+
                     <li>
                       <div class="text-center">
                         <a>

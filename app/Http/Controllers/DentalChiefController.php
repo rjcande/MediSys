@@ -54,7 +54,7 @@ class DentalChiefController extends Controller
     }
 
     public function deleteAccount($userID){
-        
+
         $user = Account::find($userID);
         $user->isActive = 0;
         $user->deactivated_at = DB::raw('now()');
@@ -65,7 +65,7 @@ class DentalChiefController extends Controller
     }
     public function generateCode($userID){
         $verificationCode = str_random(6);
-        
+
         $chief = Account::where('isActive',1)->where('position',3)->orderBy('created_at','desc')->first();
         $userVerification = new UserVerification;
         $userVerification->userID = $userID;
@@ -78,7 +78,7 @@ class DentalChiefController extends Controller
         $verifiedUser->save();
         // return view('medicalchief.C_medicalchief_create_verification_code');
         $medicalstaff = Account::leftJoin('userverifications','users.id','=','userverifications.userID')->where('position',4)->get();
-        
+
         return Redirect::to('/dentalchief/accounts_maintenance')->withMedicalStaff($medicalstaff);
     }
 
