@@ -30,10 +30,10 @@
     <div>
      <img src={{asset("images/pup-logo.png")}} style="float: left;" width="100px" height="100px">
       <center>
-        <header style="font-size: 25px;">Republic of the Philippines</header>
-        <header style="font-size: 25px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header>
-        <header style="font-size: 25px;">MEDICAL SERVICES DEPARTMENT</header>
-        <header style="font-size: 25px;">Sta. Mesa, Manila</header>
+        <header style="font-size: 20px;">Republic of the Philippines</header>
+        <header style="font-size: 20px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header>
+        <header style="font-size: 20px;">MEDICAL SERVICES DEPARTMENT</header>
+        <header style="font-size: 20px;">Sta. Mesa, Manila</header>
         <hr>
         <h1>Daily Treatment Record</h1>
       </center>
