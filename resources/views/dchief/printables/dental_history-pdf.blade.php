@@ -28,8 +28,8 @@
             <h3>Patient ID: {{$patientInfo['patientID']}} <br> Patient Name: {{$patientInfo['lastName']}}, {{$patientInfo['firstName']}} {{$patientInfo['middleName']}} {{$patientInfo['quantifier']}}</h3>
             <p style="float:left; width: 300px;">Birthdate: {{ date('F d, Y', strtotime($patientInfo['birthDate'])) }}</p>  <p style="float:left; margin-top:0px">Age: {{$patientInfo['age']}}</p><br>
           </div>
-          <div></div>
-            {{-- <div id="medical-history">
+          
+            <div id="medical-history">
               <p><b>Medical History</b></p><br>
               <div style="float:left; margin-left:25px; font-size:18px;">
                 <label style="margin-bottom:20px;">Name of Physician: </label><label>Dr. {{$patientInfo['physicianName']}}</label>
@@ -37,9 +37,9 @@
                 <label style="margin-bottom:60px;">Office Address: </label><label style="margin-left: 25px">{{$patientInfo['phyOfficeAdd']}}</label>
                 <label style="margin-left:46px;">Office Number: </label><label style="margin-left: 23px">{{$patientInfo['phyOfficeNum']}}</label><br>
               </div>
-            </div> --}}
+            </div>
             
-            {{-- <div style="float: left;margin-top: 45px;width: 100%">
+            <div style="float: left;margin-top: 45px;width: 100%">
               <div style="float: left;width:100%; margin-left: 50px; font-size:15px;">
                 <p style="font-size:17px;">1. Are you in good health?
                   <input type="radio" disabled="disabled" style="margin-left: 300px;" 
@@ -186,8 +186,8 @@
                   </div>
                 </p>
               </div>
-            </div> --}}
-            {{-- <div style="float: left;margin-top: 780px;width: 100%">
+            </div>
+            <div style="float: left;margin-top: 780px;width: 100%">
               <div style="float: left;width:100%; margin-left: 50px; font-size:15px; margin-top:120px;">
                 <p style="font-size:17px;">9. Are the gums bleeding?
                   <input type="radio" name="bleedingGumsRdBtn" disabled value="1" style="margin-left: 300px;"
@@ -324,129 +324,37 @@
                     @endif
                     >Thyroid Problem<br><br>
                   </div>
-                  <div style="float:left; margin-left:240px; font-size:15px; width:300px;">
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasHeartDisease'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Heart Disease<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasHeartMurmur'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Heart Murmur<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasHepaLiverDisease'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Hepatitis/Liver Disease<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasRheumaticFever'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Rheumatic Fever<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasHayfeverAllergies'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Hay fever/Allergies<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasRespiratoryProbs'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Respiratory Problems<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasHepatitisJaundice'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Hepatitis/Jaundice<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasTB'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Tuberculosis<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasSwollenAnkles'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Swollen Ankles<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"
-                    @if($patientInfo['hasKidneyDisease'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Kidney Disease<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasDiabetes'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Diabetes<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasChestPain'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Chest Pain<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasStroke'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Stroke<br><br>
+                  <div style="margin-left:240px; font-size:15px; width:300px;">
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasHeartDisease'] == 1){{"checked"}}@endif>Heart Disease
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasHeartMurmur'] == 1){{"checked"}}@endif>Heart Murmur
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasHepaLiverDisease'] == 1){{"checked"}}@endif>Hepatitis/Liver Disease
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasRheumaticFever'] == 1){{"checked"}}@endif>Rheumatic Fever
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasHayfeverAllergies'] == 1){{"checked"}}@endif>Hay fever/Allergies
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasRespiratoryProbs'] == 1){{"checked"}}@endif>Respiratory Problems
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasHepatitisJaundice'] == 1){{"checked"}}@endif>Hepatitis/Jaundice
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasTB'] == 1){{"checked"}}@endif>Tuberculosis
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasSwollenAnkles'] == 1){{"checked"}}@endif>Swollen Ankles
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"@if($patientInfo['hasKidneyDisease'] == 1){{"checked"}}@endif>Kidney Disease
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasDiabetes'] == 1){{"checked"}}@endif>Diabetes
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasChestPain'] == 1){{"checked"}}@endif>Chest Pain
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasStroke'] == 1){{"checked"}}@endif>Stroke
                   </div>
                   <div style="float:left; margin-left:455px; font-size:15px; width:300px;">
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasCancerTumor'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Cancer/Tumors<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"
-                    @if($patientInfo['hasAnemia'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Anemia<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasAngina'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Angina<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"
-                    @if($patientInfo['hasAsthma'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Asthma<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasEmphysema'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Emphysema<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasBleedingProbs'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Bleeding Problems<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasBloodDisease'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Blood Disease<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"
-                    @if($patientInfo['hasHeadInjuries'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Head Injuries<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasArthritisRheuma'] == 1)
-                    {{"checked"}}
-                    @endif
-                    >Arthritis/Rheumatism<br>
-                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" 
-                    @if($patientInfo['hasOthers'] == 1)
-                    {{"checked"}}
-                    @endif
-                    > Other <!--<em>(please specify)</em>-->
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasCancerTumor'] == 1){{"checked"}}@endif>Cancer/Tumors
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"@if($patientInfo['hasAnemia'] == 1){{"checked"}}@endif>Anemia
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasAngina'] == 1){{"checked"}}@endif>Angina
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"@if($patientInfo['hasAsthma'] == 1){{"checked"}}@endif>Asthma
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasEmphysema'] == 1){{"checked"}}@endif>Emphysema
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasBleedingProbs'] == 1){{"checked"}}@endif>Bleeding Problems
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasBloodDisease'] == 1){{"checked"}}@endif>Blood Disease
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled"@if($patientInfo['hasHeadInjuries'] == 1){{"checked"}}@endif>Head Injuries
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasArthritisRheuma'] == 1){{"checked"}}@endif>Arthritis/Rheumatism
+                    <input type="checkbox" class="radio-past" style="margin-bottom:12px;" disabled="disabled" @if($patientInfo['hasOthers'] == 1){{"checked"}}@endif> Other <!--<em>(please specify)</em>-->
                     <textarea style="height:80px; width:250px; border-radius:8px;" readonly>{{$patientInfo['OtherIssueDetails']}}</textarea>
                   </div>
                 </p>
               </div>
-            </div> --}}
+            </div>
 
         </div>
     </body>

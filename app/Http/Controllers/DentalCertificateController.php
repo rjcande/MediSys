@@ -804,12 +804,12 @@ class DentalCertificateController extends Controller
                                     ->first();
 
         if(Session::get('accountInfo.position') == 4){
-            $pdf = PDF::loadview('dentist.printables.dental_history-pdf', compact('chosenHistory', 'patientInfo'));
+            $pdf = PDF::loadview('dentist.printables.dentalHistory-pdf', compact('chosenHistory', 'patientInfo'));
             $pdf->setPaper('legal', 'portrait');
             return $pdf->stream('dental_history-pdf');
         }
         else if(Session::get('accountInfo.position') == 2){
-            $pdf = PDF::loadview('dchief.printables.dental_history-pdf', compact('chosenHistory', 'patientInfo'));
+            $pdf = PDF::loadview('dchief.printables.dentalHistory-pdf', compact('chosenHistory', 'patientInfo'));
             $pdf->setPaper('legal', 'portrait');
             return $pdf->stream('dental_history-pdf');
         }
