@@ -54,15 +54,21 @@
             </ul>
           </li>
           <li><a><i class="fa fa-archive"></i>Archive <span class="fa fa-chevron-down"></span></a>
-           
+            <ul class="nav child_menu">
+                <li><a href="{{ url('/mchief/archived/patients') }}"><i class="fa fa-list-alt"></i>Patients List</a></li>
+                <li><a href="{{ url('/mchief/archived/medicalLogs') }}"><i class="fa fa-edit"></i>Medical Logs</a></li>
+                <li><a href="{{ url('/mchief/archived/accounts') }}"><i class="fa fa-user-md"></i>Accounts List</a></li>
+              <li><a href="{{ url('/mchief/archived/medicines') }}"><i class="fa fa-medkit"></i>Medicines List</a></li>
+              <li><a href="{{ url('/mchief/archived/medicalSupplies') }}"><i class="fa fa-stethoscope"></i>Medical Supplies List</a></li>
+            </ul>
           </li>
-       
+
         </ul>
       </div>
-    
+
 
     </div>
-   
+
   </div>
 </div>
 
@@ -85,7 +91,7 @@
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
             <li><a href="{{ url('/mchief/profile') }}"> Profile</a></li>
-         
+
             <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
           </ul>
         </li>
@@ -96,7 +102,7 @@
             <span class="badge bg-blue" id="notifNumber"></span>
           </a>
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-          
+
           </ul>
         </li>
       </ul>
@@ -109,7 +115,7 @@
           url: '/get/notification',
           type: 'get',
           success: function(output){
-              
+
               $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
               $('#menu1').empty();
               for (var i = 0; i <Object.keys(output.text).length ; i++) {
@@ -123,7 +129,7 @@
           url: '/get/notification',
           type: 'get',
           success: function(output){
-              
+
               $('#notifNumber').text(Object.keys(output.logReferralNotifNurse).length);
               $('#menu1').empty();
               for (var i = 0; i <Object.keys(output.text).length ; i++) {
@@ -133,7 +139,7 @@
           }
         });
     }, 2000);
-      
+
     $('#menu1').on('click','.notification', function(){
         $.ajax({
           url: '/notification/clicked/' + $(this).data('id'),
@@ -145,5 +151,5 @@
     });
 
   });
-</script> 
+</script>
 <!-- /top navigation -->

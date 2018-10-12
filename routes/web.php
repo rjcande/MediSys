@@ -226,7 +226,7 @@ Route::get('/physician/view/history/{id}/{clinicLogID}', 'MedicalHistoriesContro
 // 	return view('physician.C_physician_referred_patient_diagnosis');
 // });
 
- 
+
 Route::get('/physician/med/cert/enrollment', 'LogReferralsController@medCertEnrollment')->name('physician.med.cert.enrollment');
 
 Route::get('/physician/referred/patient/diagnosis/{id}', 'ClinicLogController@showPhysicianPatientDiagnosis')->name('physician.referred.patient.diagnosis');
@@ -392,6 +392,15 @@ Route::post('/verifyCode', 'BothChiefsController@verifyCode')->name('verifyCode'
 //===========================================================================================================================
 
 // Medical Chief Routes
+
+Route::get('/mchief/archived/accounts', 'MedicalChiefArchivesController@accounts');
+Route::get('/mchief/archived/medicines', 'MedicalChiefArchivesController@medicines');
+Route::get('/mchief/archived/medicalSupplies', 'MedicalChiefArchivesController@medicalSupplies');
+Route::get('/mchief/archived/patients', 'MedicalChiefArchivesController@patients');
+Route::get('/mchief/archived/patients/concerns/{id}', 'MedicalChiefArchivesController@patients_concerns');
+Route::get('/mchief/archived/patients/viewMore/{id}', 'MedicalChiefArchivesController@patients_viewMore');
+Route::get('/mchief/archived/patients/viewMore/medicalLogs/{id}', 'MedicalChiefArchivesController@patients_viewMore_medicalLogs');
+Route::get('/mchief/archived/medicalLogs', 'MedicalChiefArchivesController@medicalLogs');
 
 Route::get('/medicalchief/queries/accounts', 'MedicalChiefController@accountQueries');
 
@@ -701,7 +710,7 @@ Route::get('/dchief/generate/medicalSuppliesList', 'DentalCertificateController@
 Route::get('/dchief/generate/dentalHistory/{id}', 'DentalCertificateController@generateDentalHistoryPdf')->name('dchief.generate.dentalHistory');
 
 Route::get('/dentalchief/accounts_maintenance_queries', 'AccountsController@dchiefAccountQueries');
- 
+
 //===========================================================================================================================
 
 // Dental Chief Routes
