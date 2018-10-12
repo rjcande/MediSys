@@ -1,6 +1,11 @@
-@extends('dentist.layout.dentist')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Printable Dental Chart</title>
+    <link rel="stylesheet" href={{asset("../vendors/bootstrap/dist/css/bootstrap.min.css")}}>
     <style>
         svg {
             width: 55px;
@@ -11,9 +16,12 @@
         svg path,
         svg circle{
             fill: white;
-            stroke: #000;
+            stroke: black;
         }
     </style>
+    <script src={{asset("../vendors/jquery/dist/jquery.min.js")}}></script>
+</head>
+<body>
     <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
@@ -435,7 +443,7 @@
                         @endif
                         <div>
                             <h1 style="text-align: center;">DENTAL RECORD CHART</h1>
-                            <h2>INTRAORAL EXAMINATION</h2>
+                            <h2 style="text-align: center;">INTRAORAL EXAMINATION</h2>
                             <!--55 TO 51 A AND B-->
 
                             <div style="float: left;margin-top: 25px;">
@@ -1372,7 +1380,6 @@
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
                             <a href="{{URL::previous()}}"><button class="btn btn-primary">BACK</button></a>
                             <a href="{{url('/dentist/PatientRecord')}}"><button class="btn btn-danger">CLOSE</button></a>
-                            <a target="_blank" href="{{url('/dentist/dentalchart/print',$dentalchart['patientID'])}}"><button class="btn btn-secondary">PRINT</button></a>
                             <!-- <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>     -->
                             <!-- <a href="{{url('dentist/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a> -->
@@ -1384,35 +1391,33 @@
         </div>
     </div>
 <script>
-        function darkenToothSide($toothSide){
-            document.getElementById($toothSide).style.fill = "#222";
-        }
-        $(document).ready(function(){
-            var toothcons = {!! json_encode($toothconditions) !!};
-            for(i=0; i<toothcons.length; i++){
-                var toothNum = toothcons[i].toothNum;
-                var left = toothNum + 'l';
-                var top = toothNum + 't';
-                var right = toothNum + 'r';
-                var bottom = toothNum + 'b';
-                var middle = toothNum + 'm';
-                if(toothcons[i].leftSide == 1){
-                    darkenToothSide(left);
-                }
-                if(toothcons[i].topSide == 1){
-                    darkenToothSide(top);
-                }
-                if(toothcons[i].rightSide == 1){
-                    darkenToothSide(right);
-                }
-                if(toothcons[i].bottomSide == 1){
-                    darkenToothSide(bottom);
-                }
-                if(toothcons[i].middleSide == 1){
-                    darkenToothSide(middle);
-                }
+    $(document).ready(function(){
+        var toothcons = {!! json_encode($toothconditions) !!};
+        for(i=0; i<toothcons.length; i++){
+            var toothNum = toothcons[i].toothNum;
+            var left = toothNum + 'l';
+            var top = toothNum + 't';
+            var right = toothNum + 'r';
+            var bottom = toothNum + 'b';
+            var middle = toothNum + 'm';
+            if(toothcons[i].leftSide == 1){
+                document.getElementById(left).style.fill = "#222";
             }
+            if(toothcons[i].topSide == 1){
+                document.getElementById(top).style.fill = "#222";
+            }
+            if(toothcons[i].rightSide == 1){
+                document.getElementById(right).style.fill = "#222";
+            }
+            if(toothcons[i].bottomSide == 1){
+                document.getElementById(bottom).style.fill = "#222";
+            }
+            if(toothcons[i].middleSide == 1){
+                document.getElementById(middle).style.fill = "#222";
+            }
+        }
 
     });
 </script>
-@endsection
+</body>
+</html>

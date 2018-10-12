@@ -440,6 +440,10 @@ Route::get('/dentist/medicine/reports', 'DashboardController@dentistReports');
 
 Route::get('/dentist/delete/appointment/{id}', 'DashboardController@dentistDestroy');
 
+Route::get('/dentist/profile', function(){
+	return view('dentist.C_dentist_profile');
+});
+
 //Controllers
 Route::get('/dentist/dentalchart','DentalChartsController@create')->name('dentist.dentalchart');
 
@@ -503,6 +507,8 @@ Route::get('/get/medSupply/brand', 'MedicalSuppliesController@getMedicalSupply')
 
 Route::get('/dentist/dental/log/each/{id}', 'DentalLogController@consultationsAllDentists')->name('dentist.consultation.to.all.dentists');
 
+Route::get('/dentist/dental/log/each/treatment/{id}', 'DentalLogController@dentalLogEachTreatment')->name('dentist.dental.log.each.treatment');
+
 Route::get('/dentist/patient/consultations/{id}', 'DentalPatientController@patientConsultations')->name('dentist.patient.consultations');
 
 Route::get('/dentist/dental/HistoryForm/view/{id}', 'DentalHistoryController@showDentalHistory')->name('dentist.view.dental.history');
@@ -531,6 +537,10 @@ Route::get('/dentist/generate/view/certificate/{id}', 'DentalCertificateControll
 
 Route::get('/dentist/generate/patientlist', 'DentalCertificateController@generatePatientList')->name('dentist.generate.patientList');
 
+Route::get('/dentist/generate/dentalHistory/{id}', 'DentalCertificateController@generateDentalHistoryPdf')->name('dentist.generate.dentalHistory');
+
+Route::get('/dentist/generate/medicalLogEach/{id}', 'DentalCertificateController@generateMedicalLogEachPdf')->name('dentist.generate.medicalLogEach');
+
 /////////////NURSE
 
 //Routes
@@ -553,6 +563,10 @@ Route::get('/nurseMedicalLog', 'PatientController@index');
 Route::get('/dchief/dashboard', 'DashboardController@dashboard');
 
 Route::get('/dchief/delete/appointment/{id}', 'DashboardController@dChiefDestroy');
+
+Route::get('/dchief/profile', function(){
+	return view('dchief.C_dchief_profile');
+});
 
 
 Route::get('/dchief/medical/supplies/reports', 'DashboardController@dentistSupplyReports');
@@ -651,6 +665,8 @@ Route::get('/dchief/generate/patientlist', 'DentalCertificateController@generate
 Route::get('/dchief/generate/medicinesList', 'DentalCertificateController@generateMedicineList')->name('dchief.generate.medicineList');
 
 Route::get('/dchief/generate/medicalSuppliesList', 'DentalCertificateController@generateMedicalSupplyList')->name('dchief.generate.medicalSupplyList');
+
+Route::get('/dchief/generate/medicinesList', 'DentalCertificateController@generateMedicineList')->name('dchief.generate.medicineList');
  
 //===========================================================================================================================
 

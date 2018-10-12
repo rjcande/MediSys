@@ -117,7 +117,8 @@ class DashboardController extends Controller
     {
         //dd(Session::get('notification'));
     	$patientName = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-    								->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
+                                    ->join('patients', 'cliniclogs.patientID', '=', 'patients.patientID')
+                                    ->select('patients.*', 'cliniclogs.*', 'appointments.*')
     								->where('appointments.isAppointed', '=', 0)
                                     ->orderBy("appointmentDate", 'desc')
     								->get();

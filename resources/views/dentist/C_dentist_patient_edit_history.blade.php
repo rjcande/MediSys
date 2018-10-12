@@ -300,6 +300,7 @@
       }
       else{
         $('#medicalTreatmentTextarea').prop("disabled", true);
+        $('#medicalTreatmentTextarea').val('');
       }
     });
 
@@ -310,6 +311,7 @@
       }
       else{
         $("#seriousIllnessTextarea").prop("disabled", true);
+        $('#seriousIllnessTextarea').val('');
       }
     });
 
@@ -320,6 +322,7 @@
       }
       else{
         $("#hospitalizedTextarea").prop("disabled", true);
+        $('#hospitalizedTextarea').val('');
       }
     });
 
@@ -330,6 +333,7 @@
       }
       else{
         $("#medicationTextarea").prop("disabled", true);
+        $('#medicationTextarea').val('');
       }
     });
 
@@ -341,6 +345,7 @@
       else
       {
         $("#allergyOthersTextarea").prop("disabled",true);
+        $('#allergyOthersTextarea').val('');
       }
     });
 
@@ -352,6 +357,7 @@
       }
       else{
         $("#bleedingTimeTextbox").prop('disabled', true);
+        $('#bleedingTimeTextbox').val('');
       }
     });
 
@@ -362,6 +368,7 @@
       }
       else{
         $('#othersCheckboxesTextArea').prop('disabled', true);
+        $('#othersCheckboxesTextArea').val('');
       }
     });
 
@@ -404,7 +411,7 @@
                                   title: "Record Updated!",
                                   text: "Dental History Record Updated!",
                                   icon: "success",
-                                  button: "confirm",
+                                  button: "CONFIRM",
                                 })
                                 .then((willRoute)=>{
                                   if(willRoute){

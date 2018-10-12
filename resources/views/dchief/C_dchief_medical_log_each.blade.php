@@ -49,16 +49,18 @@
                             <thead>
                               <tr class="headings">
                                 <th class="column-title">No </th>
-                                <th class="column-title">Treatment Done </th>
-                                <th class="column-title">Generic Name </th>
+                                <th class="column-title">Symptoms</th>
+                                <th class="column-title">Treatment</th>
+                                {{-- <th class="column-title">Generic Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used </th>
                                 <th class="column-title">Supply Name </th>
                                 <th class="column-title">Brand </th>
-                                <th class="column-title">Quantity Used </th>
+                                <th class="column-title">Quantity Used </th> --}}
                                 <th class="column-title">Attending Dentist </th>
                                 <th class="column-title">Date </th>
-                                <th class="column-title">Time </th>
+                                <th class="column-title">Time In</th>
+                                <th class="column-title">Time Out</th>
                               </tr>
                             </thead>
 
@@ -68,8 +70,14 @@
                               @foreach($patientAllLogs as $dentalLogsAll)
                                 <tr class="even pointer">
                                   <td class="a-center">{{$ctr}}</td>
-                                  <td class=" ">{{$dentalLogsAll->treatmentDescription}}</td>
-                                  <td class=" ">
+                                  <td>{{$dentalLogsAll->symptoms}}</td>
+                                  <td class=" " style="text-align:center;">
+                                      <a href="{{ route('dentist.dental.log.each.treatment', $dentalLogsAll->clinicLogID) }}">
+                                          <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View </button>
+                                      </a>
+                                  </td>
+                                  {{-- <td class=" ">{{$dentalLogsAll->treatmentDescription}}</td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMed as $usedMeds)
                                     @if($usedMeds->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -77,8 +85,8 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
-                                  <td class=" ">
+                                  </td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMed as $usedMeds)
                                     @if($usedMeds->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -86,8 +94,8 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
-                                  <td class=" ">
+                                  </td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMed as $usedMeds)
                                     @if($usedMeds->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -95,8 +103,8 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
-                                  <td class=" ">
+                                  </td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMedSupply as $usedMedSupp)
                                     @if($usedMedSupp->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -104,8 +112,8 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
-                                  <td class=" ">
+                                  </td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMedSupply as $usedMedSupp)
                                     @if($usedMedSupp->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -113,8 +121,8 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
-                                  <td class=" ">
+                                  </td> --}}
+                                  {{-- <td class=" ">
                                     @foreach($usedMedSupply as $usedMedSupp)
                                     @if($usedMedSupp->clinicLogID == $dentalLogsAll->clinicLogID)
                                       <p>
@@ -122,18 +130,23 @@
                                       </p>
                                     @endif
                                     @endforeach
-                                  </td>
+                                  </td> --}}
                                   <td>
                                     @if($attendingDentist['lastName'])
                                       {{$attendingDentist['lastName']}}, {{$attendingDentist['firstName']}} {{$attendingDentist['middleName']}} {{$attendingDentist['quantifier']}}
                                     @endif
                                   </td>
                                   <td>
-                                    {{ date('m-d-Y', strtotime($dentalLogsAll->clinicLogDateTime)) }}
+                                    {{ date('F d, Y', strtotime($dentalLogsAll->clinicLogDateTime)) }}
                                   </td>
-                                  <td class=" last">
+                                  <td >
                                     {{ date('h:i a', strtotime($dentalLogsAll->clinicLogDateTime)) }}
                                   </td>
+                                  @if(empty($dentalLog->timeOut))
+                                    <td>NONE</td>
+                                  @else
+                                    {{ date("h:i a", strtotime($dentalLog->timeOut))}}
+                                  @endif
                                 </tr>
                                 @php($ctr++)
                               @endforeach
@@ -171,9 +184,10 @@
           @csrf
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient ID*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientID" name="patientID" required value="{{$patientInfo->patientID}}">
+              {{-- <input type="text" class="form-control" style="border-radius:8px;" id="patientID" name="patientID" required value="{{$patientInfo->patientID}}"> --}}
+              <label class="control-label col-md-1 col-sm-3 col-xs-3" id="patientID" name="patientID" >{{$patientInfo->patientID}}</label>
             </div>
           </div>
 
@@ -185,7 +199,7 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="patientName" name="patientName" required value="{{$patientInfo->lastName}}, {{$patientInfo->firstName}} {{$patientInfo->middleName}} {{$patientInfo->quantifier}}">
             </div>
@@ -215,10 +229,10 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <select class="form-control" style="border-radius:8px;" required="required" id="concern" name="concern">
-                <option value="" disabled selected>-SELECT CONCERN-</option>
+                <option value="" disabled selected></option>
                 <option value="0">Consultation</option>
                 <option value="1">Letter/Certification</option>
               </select>

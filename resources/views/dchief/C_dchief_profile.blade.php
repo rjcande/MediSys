@@ -1,4 +1,4 @@
-@extends('dentist.layout.dentist')
+@extends('dchief.layout.dchief')
 
 @section('content')
 
@@ -132,8 +132,12 @@
                         </div>
                       
                       </div>
-      
-      
+                    </div>
+                    <div style="text-align: center;">
+                    <button type="submit" class="btn btn-success" name="btnSave">Save</button>
+                    </form>
+                    <a href="{{ url('/nurse/dashboard') }}"><button class="btn btn-danger">Cancel</button></a>
+                    </div>
                     </div>
                   
                     

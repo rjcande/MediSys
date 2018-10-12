@@ -39,7 +39,7 @@
         <h1>Medication Prescription</h1>
       </center>
       <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
-      <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p>
+      {{-- <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
 
       <table style = "width:100%">
         <caption>Prescriptions
