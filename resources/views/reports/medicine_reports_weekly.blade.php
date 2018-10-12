@@ -38,6 +38,7 @@
 <body>
 
     <div>
+      <img src={{asset("images/pup-logo.png")}} style="float: left;" width="100px" height="100px">
       <center>
           <img src="{{asset('images/images/PUPLogo.png')}}" alt="PUP Logo" style="height: 100px; weight: 100px; float: left">
           <p style="margin-left: 25px">
