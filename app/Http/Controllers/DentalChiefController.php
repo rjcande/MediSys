@@ -25,6 +25,12 @@ class DentalChiefController extends Controller
         return view('dentalchief.C_dentalchief_manage_medical_supplies')->with(['supplies' => $supplies, 'id' => $id]);
     }
 
+    public function supplyQueries()
+    {
+        $supplies = MedicalSupply::where('isDeleted', '=', '0')->where('supType','d')->get();
+        return view('dchief.C_dentalchief_manage_medical_supplies_queries')->with(['supplies' => $supplies]);
+    }
+
     public function maintainMedicines(){
 
         $id = DB::table('INFORMATION_SCHEMA.TABLES')
@@ -36,12 +42,27 @@ class DentalChiefController extends Controller
         // return view('nurse.C_nurse_maintenance_medicine')->with(['medicines' => $medicine, 'id' => $id]);
         return view('dentalchief.C_dentalchief_manage_medicines')->with(['medicines' => $medicines, 'id' => $id]);
     }
+    public function medicineQueries()
+    {
+        $medicines = Medicine::where('isDeleted', '=', '0')->where('medType','d')->get();
+        // return view('nurse.C_nurse_maintenance_medicine')->with(['medicines' => $medicine, 'id' => $id]);
+        return view('dchief.C_dentalchief_manage_medicines_queries')->with(['medicines' => $medicines]);
+    }
     public function maintainAccounts(){
         $medicalstaff = Account::leftJoin('userverifications','users.id','=','userverifications.userID')->where('position',4)->where('isActive',1)->get();
 
         $lastUserID = Account::orderBy('created_at','desc')->first();
         Session::put('lastUserID',$lastUserID['id']);
         return view('dentalchief.C_dentalchief_manage_accounts')->withMedicalStaff($medicalstaff);
+    }
+
+    public function accountQueries()
+    {
+        $medicalstaff = Account::leftJoin('userverifications','users.id','=','userverifications.userID')->where('position',4)->where('isActive',1)->get();
+
+        $lastUserID = Account::orderBy('created_at','desc')->first();
+        Session::put('lastUserID',$lastUserID['id']);
+        return view('dchief.C_dentalchief_manage_accounts_queries')->withMedicalStaff($medicalstaff);
     }
 
     public function declineAccount($userID){

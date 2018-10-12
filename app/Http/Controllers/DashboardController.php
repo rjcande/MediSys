@@ -946,10 +946,10 @@ class DashboardController extends Controller
         //query for the total of each prescribed medicine for the current month
         $prescription = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
                         ->select(DB::raw("SUM(quantity) as total"), DB::raw("DATE_FORMAT(prescriptions.created_at, '%m-%d-%Y') new_date"), DB::raw('YEAR(prescriptions.created_at) year, MONTH(prescriptions.created_at) month, DAY(prescriptions.created_at) day'), 'prescriptions.*', 'medicines.*')
-                        ->orderBy('total', 'desc')
+                        ->whereMonth('prescriptions.created_at', '=', $month)
                         ->groupBy('day', 'month', 'year')
                         ->groupBy('prescriptions.medicineID')
-                        ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->orderBy('total', 'desc')
                         ->get();
         //percentage month
         $percentagePrescription = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
