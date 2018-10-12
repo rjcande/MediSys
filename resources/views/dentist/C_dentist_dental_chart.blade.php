@@ -1445,6 +1445,10 @@
             var numero = $num.substr(0,2);
             var side = $num.substr(2,1);
             var isDisabled = false;
+<<<<<<< HEAD
+            for(i=0; i<toothcons.length; i++){
+                if(numero == toothcons[i].toothNum){
+=======
             var inDatabase = false;
 
             var sideClicked = false;
@@ -1452,6 +1456,7 @@
             for(i=0; i<toothcons.length; i++){
                 if(numero == toothcons[i].toothNum){
                     isInDB = true;
+>>>>>>> afa18239e587fdbab8a927edf2980ff4445fee10
                     if(side == 'l'){
                         if(toothcons[i].leftSide == 1){
                             isDisabled = true;

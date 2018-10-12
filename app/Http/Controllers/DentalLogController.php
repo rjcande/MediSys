@@ -40,8 +40,11 @@ class DentalLogController extends Controller
                                ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
                                ->get();
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                ->select('users.*')
-                                ->first();
+                                ->select('users.*', 'cliniclogs.*')
+                                ->get();
+                                // ->first();
+        
+        // dd($dentalLogs);
         return view ('dentist.C_dentist_medical_log')->with(['dentalLogs' => $dentalLogs, 'attendingDentist' => $attendingDentist]);
     }
 
@@ -54,8 +57,9 @@ class DentalLogController extends Controller
                                ->where([['cliniclogs.isDeleted', '<>', '1'], ['cliniclogs.clinicType', '=', 'D']])
                                ->get();
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                ->select('users.*')
-                                ->first();
+                                ->select('users.*', 'cliniclogs.*')
+                                ->get();
+                                // ->first();
         return view ('dchief.C_dchief_medical_log')->with(['dentalLogs' => $dentalLogs, 'attendingDentist' => $attendingDentist]);
     }
 
@@ -132,12 +136,19 @@ class DentalLogController extends Controller
                 $appointments->save();
             }
 
+            // $consultAppointment = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                                     // ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+            //                                     ->select('cliniclogs.*', 'patients.*', 'appointments.*')
+            //                                     ->where('cliniclogs','cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                                     ->where('cliniclogs', 'cliniclogs.patientID', '=')
+            //                                     // ->where('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+            //                                     ->first();
+
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')
                                     ->select('diagnoses.diagnosisID')
                                     ->where('diagnoses.isDeleted', '<>', '1')
                                     ->first();
-
             // SAVE TO TREATMENT
             $patientTreatment = new Treatment;
 
@@ -919,10 +930,11 @@ class DentalLogController extends Controller
                                    ->get();
 
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                     ->select('users.*')
+                                     ->select('users.*', 'cliniclogs.*')
                                      ->where('cliniclogs.patientID','=', $id)
                                      ->where('users.isActive', '=', '1')
-                                     ->first();
+                                     ->get();
+                                    //  ->first();
 
         $usedMedSupply = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                   ->join('medsuppliesused', 'medsuppliesused.treatmentID', '=', 'treatments.treatmentID')
@@ -959,7 +971,7 @@ class DentalLogController extends Controller
                                    ->get();
 
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
-                                     ->select('users.*')
+                                     ->select('users.*', 'cliniclogs.*')
                                      ->where('cliniclogs.patientID','=', $id)
                                      ->where('users.isActive', '=', '1')
                                      ->first();
@@ -984,6 +996,74 @@ class DentalLogController extends Controller
                             ->get();
 
         return view('dchief.C_dchief_medical_log_each')->with(['patientInfo'=>$patientInfo, 'patientAllLogs'=>$patientAllLogs, 'attendingDentist' => $attendingDentist, 'usedMedSupply'=>$usedMedSupply, 'usedMed'=>$usedMed]);
+    }
+
+    public function dentalLogEachTreatment($id)
+    {
+        $patientDentalLog = DentalLog::find($id);
+
+        $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->select('patients.*', 'cliniclogs.*')
+                                      ->where('cliniclogs.isDeleted', '=', '0')
+                                      ->where('cliniclogs.clinicType', '=', 'D')
+                                      ->where('cliniclogs.clinicLogID', '=', $id)
+                                      ->get();
+
+        $dentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                            ->select('users.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('cliniclogs.clinicLogID', '=', $id)
+                            ->first();
+
+        $diagnosis = Diagnosis::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'diagnoses.clinicLogID')
+                              ->select('diagnoses.*')
+                              ->where('diagnoses.isDeleted', '=', '0')
+                              ->where('diagnoses.clinicLogID', '=', $id)
+                              ->first();
+
+        $treatment = Treatment::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'treatments.clinicLogID')
+                              ->select('treatments.*')
+                              ->where('treatments.isDeleted', '=', '0')
+                              ->where('treatments.clinicLogID', '=', $id)
+                              ->first();
+
+        $medsGiven = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                               ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
+                               ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                               ->select('medicines.*', 'prescriptions.*')
+                               ->where('treatments.clinicLogID', '=', $id)
+                               ->where('cliniclogs.clinicType', '=', 'D')
+                               ->where('prescriptions.isGiven', '=', '1')
+                               ->get();
+
+        $prescribed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                               ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
+                               ->join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                               ->select('medicines.*', 'prescriptions.*')
+                               ->where('treatments.clinicLogID', '=', $id)
+                               ->where('cliniclogs.clinicType', '=', 'D')
+                               ->where('prescriptions.isPrescribed', '=', '1')
+                               ->get();
+
+        $medSupp = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                            ->join('medsuppliesused', 'medsuppliesused.treatmentID', '=', 'treatments.treatmentID')
+                            ->join('medsupplies', 'medsupplies.medSupID', '=', 'medsuppliesused.medSupplyID')
+                            ->select('medsupplies.*', 'medsuppliesused.*')
+                            ->where('treatments.clinicLogID', '=', $id)
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->get();
+
+        foreach($patientDentalLogs as $dentalLog)
+        {
+            if($dentalLog->reqForDentalCert == 0){
+                return view('dentist.C_dentist_medical_log_each_treatment')->with(['patientDentalLogs'=>$patientDentalLogs, 'dentalLogEach'=>$patientDentalLog, 'diagnosis'=>$diagnosis, 'treatment'=>$treatment, 'medsGiven'=>$medsGiven ,'prescribed'=>$prescribed, 'medSupp'=>$medSupp]);
+            }
+            elseif($dentalLog->reqForDentalCert == 1){
+                return view('dentist.C_dentist_requested_dental_certificate')->with(['patientDentalLogs'=>$patientDentalLogs, 'treatment'=>$treatment, 'dentist'=>$dentist]);
+            }
+        }
     }
 
     public function patientPrescription(Request $request)
@@ -1066,7 +1146,7 @@ class DentalLogController extends Controller
 
         if(Session::get('patientInfo.concern') == 0)
         {
-
+            // dd(Session::all());
           return Response::json(array('redirect' => '/dentist/log/patient/redir'));
           // return Redirect::route('dentist.redirect.patient');
 

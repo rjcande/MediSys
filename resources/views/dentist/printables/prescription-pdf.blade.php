@@ -38,8 +38,8 @@
         <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
         <h1>Medication Prescription</h1>
       </center>
-      <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
-      <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p>
+      <p>Patient Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
+      {{-- <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
 
       <table style = "width:100%">
         <caption>Prescriptions
@@ -65,7 +65,7 @@
         <div style="width:100%;text-align: right; position: absolute; bottom: 0">
           <div style="text-align: center; margin-left: 500px;">
             <header style="font-size: 18px; margin-top: 40px;"><u>{{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.lastName')}} {{Session::get('accountInfo.quantifier')}}</u> M.D.</header>
-            <header style="font-size: 18px;">Clinic Physician</header>   
+            <header style="font-size: 18px;">Clinic Dentist</header>   
             <header style="font-size: 18px; margin-top: 20px; text-align: right;"><u style="text-align: center; padding: 0 0 4px;">{{Session::get('accountInfo.licenseNumber')}}</u> Lic. No.</header>
           </div>
         </div>

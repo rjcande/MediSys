@@ -1462,7 +1462,6 @@
         </div>
     </div>
 <script>
-
     $(document).ready(function(){
         var toothcons = {!! json_encode($toothconditions) !!};
         for(i=0; i<toothcons.length; i++){

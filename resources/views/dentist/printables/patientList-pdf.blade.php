@@ -36,46 +36,171 @@
         <header style="font-size: 18px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
         <header style="font-size: 18px;">MEDICAL SERVICES DEPARTMENT</header><br>
         <header style="font-size: 18px;">Sta. Mesa, Manila</header><br>
-        <h1>Patient List</h1>
+        <h1>Lists of Patients</h1>
       </center>
       {{-- <p>Name: {{ $dentalLogInfo['lastName'] }}, {{ $dentalLogInfo['firstName'] }} {{ $dentalLogInfo['middleName'] }} {{ $dentalLogInfo['quantifier'] }}</p>
       <p>Contact Number: {{ $dentalLogInfo['mobileNo'] }}</p> --}}
-
+      <caption>
+        Student
+        @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
+          ({{ date('F d, Y', strtotime($date['date'])) }})
+        @elseif(!isset($date['daily'])  && isset($date['yearly']) == 1 && !isset($date['monthly']) && !isset($date['weekly']))
+          ({{ date('Y', strtotime($date['year'])) }})
+        @elseif(!isset($date['daily']) && !isset($date['yearly']) && isset($date['monthly']) == 1 && !isset($date['weekly']))
+          ({{ date('F, ', mktime(0,0,0, $date['month'], 10)) }} {{$date['year_month']}})
+        @elseif(!isset($date['daily'])  && !isset($date['yearly']) && !isset($date['monthly']) && isset($date['weekly']) == 1)
+          ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+        @endif
+      </caption>
       <table style = "width:100%; page-break-inside: auto;" >
         {{-- <caption>Dental Logs</caption> --}}
         <thead>
           <tr>
             <th>Student/Faculty Number</th>
-            <th>Patient ID</th>
             <th>Patient Name</th>
-            <th>Type</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+            <th>Mobile Number</th>
+            <th>Address</th>
           </tr>
         </thead>      
           <tbody>
-           @foreach($patientRecords as $patients)
+           @foreach($patientListStudent as $patients)
               <tr>
                 <td>{{ $patients->patientNumber }}</td>
-                <td>{{ $patients->patientID }}</td>
+                {{-- <td>{{ $patients->patientID }}</td> --}}
                 <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
-                <td class=" ">
-                    @if($patients->patientType == 1)
-                    {{
-                        'Student'
-                    }}
-                    @elseif($patients->patientType == 2)
-                    {{
-                        'Faculty/College'
-                    }}
-                    @elseif($patients->patientType == 3)
-                    {{
-                        'Admin/Dept'
-                    }}
-                    @endif
+                <td class=" ">{{date('F d, Y', strtotime($patients->birthDate))}}
                 </td>
               </tr>
            @endforeach
           </tbody>
         </table>
+
+        <caption>
+            Faculty
+            @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
+              ({{ date('F d, Y', strtotime($date['date'])) }})
+            @elseif(!isset($date['daily'])  && isset($date['yearly']) == 1 && !isset($date['monthly']) && !isset($date['weekly']))
+              ({{ date('Y', strtotime($date['year'])) }})
+            @elseif(!isset($date['daily']) && !isset($date['yearly']) && isset($date['monthly']) == 1 && !isset($date['weekly']))
+              ({{ date('F, ', mktime(0,0,0, $date['month'], 10)) }} {{$date['year_month']}})
+            @elseif(!isset($date['daily'])  && !isset($date['yearly']) && !isset($date['monthly']) && isset($date['weekly']) == 1)
+              ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+            @endif
+        </caption>
+        <table style = "width:100%; page-break-inside: auto;" >
+            {{-- <caption>Dental Logs</caption> --}}
+            <thead>
+              <tr>
+                  <th>Student/Faculty Number</th>
+                  <th>Patient Name</th>
+                  <th>Birthday</th>
+                  <th>Gender</th>
+                  <th>Mobile Number</th>
+                  <th>Address</th>
+              </tr>
+            </thead>      
+              <tbody>
+               @foreach($patientListFaculty as $patients)
+                  <tr>
+                    <td>{{ $patients->patientNumber }}</td>
+                    <td>{{ $patients->patientID }}</td>
+                    <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
+                    <td class=" ">
+                    </td>
+                  </tr>
+               @endforeach
+              </tbody>
+            </table>
+
+            <caption>
+                Admin/Dept
+                @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
+                  ({{ date('F d, Y', strtotime($date['date'])) }})
+                @elseif(!isset($date['daily'])  && isset($date['yearly']) == 1 && !isset($date['monthly']) && !isset($date['weekly']))
+                  ({{ date('Y', strtotime($date['year'])) }})
+                @elseif(!isset($date['daily']) && !isset($date['yearly']) && isset($date['monthly']) == 1 && !isset($date['weekly']))
+                  ({{ date('F, ', mktime(0,0,0, $date['month'], 10)) }} {{$date['year_month']}})
+                @elseif(!isset($date['daily'])  && !isset($date['yearly']) && !isset($date['monthly']) && isset($date['weekly']) == 1)
+                  ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+                @endif
+            </caption>
+            <table style = "width:100%; page-break-inside: auto;" >
+                {{-- <caption>Dental Logs</caption> --}}
+                <thead>
+                  <tr>
+                      <th>Student/Faculty Number</th>
+                      <th>Patient Name</th>
+                      <th>Birthday</th>
+                      <th>Gender</th>
+                      <th>Mobile Number</th>
+                      <th>Address</th>
+                  </tr>
+                </thead>      
+                  <tbody>
+                   @foreach($patientListAdmin as $patients)
+                      <tr>
+                        <td>{{ $patients->patientNumber }}</td>
+                        <td>{{ $patients->patientID }}</td>
+                        <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
+                        <td class=" ">
+                            @if($patients->patientType == 1)
+                            {{
+                                'Student'
+                            }}
+                            @elseif($patients->patientType == 2)
+                            {{
+                                'Faculty/College'
+                            }}
+                            @elseif($patients->patientType == 3)
+                            {{
+                                'Admin/Dept'
+                            }}
+                            @endif
+                        </td>
+                      </tr>
+                   @endforeach
+                  </tbody>
+                </table>
+
+              <caption>
+                Visitor
+                @if(isset($date['daily']) == 1 && !isset($date['yearly']) && !isset($date['monthly']) && !isset($date['weekly']))
+                  ({{ date('F d, Y', strtotime($date['date'])) }})
+                @elseif(!isset($date['daily'])  && isset($date['yearly']) == 1 && !isset($date['monthly']) && !isset($date['weekly']))
+                  ({{ date('Y', strtotime($date['year'])) }})
+                @elseif(!isset($date['daily']) && !isset($date['yearly']) && isset($date['monthly']) == 1 && !isset($date['weekly']))
+                  ({{ date('F, ', mktime(0,0,0, $date['month'], 10)) }} {{$date['year_month']}})
+                @elseif(!isset($date['daily'])  && !isset($date['yearly']) && !isset($date['monthly']) && isset($date['weekly']) == 1)
+                  ({{ date('F d, Y', strtotime($date['weekFrom'])) }} - {{ date('F d, Y', strtotime($date['weekTo'])) }})
+                @endif
+            </caption>
+            <table style = "width:100%; page-break-inside: auto;" >
+                {{-- <caption>Dental Logs</caption> --}}
+                <thead>
+                  <tr>
+                      <th>Student/Faculty Number</th>
+                      <th>Patient Name</th>
+                      <th>Birthday</th>
+                      <th>Gender</th>
+                      <th>Mobile Number</th>
+                      <th>Address</th>
+                  </tr>
+                </thead>      
+                  <tbody>
+                   @foreach($patientListVisitor as $patients)
+                      <tr>
+                        <td>{{ $patients->patientNumber }}</td>
+                        <td>{{ $patients->patientID }}</td>
+                        <td>{{$patients->firstName}} {{$patients->middleName}} {{$patients->lastName}} {{$patients->quantifier}}</td>
+                        <td class=" ">
+                            
+                        </td>
+                      </tr>
+                   @endforeach
+                  </tbody>
+                </table>
  
         {{-- <div style="width:100%;text-align: right; position: absolute; ">
           <div style="text-align: center; margin-left: 500px;">

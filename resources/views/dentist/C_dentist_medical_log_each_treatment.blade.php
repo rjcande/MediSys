@@ -6,7 +6,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Dental Log View More</h3>
+            <h3>Treatments View</h3>
           </div>
         </div>
 
@@ -30,7 +30,7 @@
                     <br>
                     <div id="diagnosis">
             
-                      <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
+                      {{-- <div id="symptoms" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                             height:30px; border-radius:8px;">&nbsp<b>Symptoms</b></p>
                         <textarea rows="7" name="diagnosisTextArea" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" readonly>{{$patientDentalLog->symptoms}}</textarea>
@@ -40,7 +40,7 @@
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
                             height:30px; border-radius:8px;">&nbsp<b>Diagnosis</b></p>
                         <textarea rows="7" name="diagnosisTextArea" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 95%;" readonly>{{$diagnosis['diagnosisDescription']}}</textarea>
-                      </div>
+                      </div> --}}
 
 
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
@@ -223,7 +223,7 @@
 
                 
                       <div style="margin-left: 50%;margin-top: 25px;float: left;;width: 50%">
-                        <a href="{{route('dentist.dentalLog.edit', $patientDentalLog->clinicLogID)}}"><button class="btn btn-warning">EDIT</button></a>
+                        {{-- <a href="{{route('dentist.dentalLog.edit', $patientDentalLog->clinicLogID)}}"><button class="btn btn-warning">EDIT</button></a> --}}
                         {{-- <a href="{{url('/dentist/DentalLog')}}"><button class="btn btn-primary">BACK</button></a> --}}
                         <a href="javascript:history.go(-1)"><button class="btn btn-primary">BACK</button></a>
                       </div>

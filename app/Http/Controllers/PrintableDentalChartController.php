@@ -23,6 +23,6 @@ class PrintableDentalChartController extends Controller
         Session::put('dentalchartid',$dentalchart['dentalChartID']);
         // return view('dentist.printable_dental_chart')->with(['dentalchart' => $dentalchart, 'toothconditions' => $toothconditions]);
         $pdf = PDF::loadView('dentist.printable_dental_chart',compact('dentalchart','toothconditions'));
-        return $pdf->stream('printable_dental_chart');
+        return $pdf->stream('dentist.printable_dental_chart');
     }
 }

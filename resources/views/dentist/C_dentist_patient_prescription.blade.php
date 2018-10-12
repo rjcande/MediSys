@@ -160,17 +160,18 @@
                                       <header style="margin-bottom:12px; margin-left:25px;"> Medication</header>
                                     </div>
                                     <div style="float:left; width: 300px; font-size: 15px;">
-                                      <header style="display: inline;">every</header>
+                                      {{-- <header style="display: inline;">every</header>
                                       <input type="number" name="hrs_day" min="1" style="width: 20%; border-radius: 10px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="hrs/day is required">
                                       <header style="display: inline;">hrs/day</header>
                                       <header style="display: inline;">for</header>
                                       <input type="number" name="week" min="1" style="width: 20%; border-radius: 10px; display: inline;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="week/s is required">
-                                      <header style="display: inline;">week/s</header>
+                                      <header style="display: inline;">week/s</header> --}}
+                                      <input type="text" name="medication" id="medication" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-errors-container="#error-medication" data-parsley-group="second" data-parsley-error-message = "Medication is Required">
                                       <br>
                                     </div><br><br>
                                   </div>
                                   <br>
-                                  <div style="float: left; width: 100%; padding-left: 150px;" id="error-dosageUnit">
+                                  <div style="float: left; width: 100%; padding-left: 150px;" id="error-medication">
                                       
                                   </div>
 
@@ -272,13 +273,13 @@
                                         <!--  -->
                                       </tbody>
                                     </table>
-                                     <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                                     {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                                       <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                   </div>
                                 </div>
                                 
                                 <!-- MEDICAL SUPPLIES GIVEN TABLE -->
-                                <div id="medicineTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
+                                <div id="medSupplyTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
                                   <div class="table-responsive" style="width: 100%; float: left;">
                                   
                                     <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
@@ -301,14 +302,14 @@
                                       <!--  -->
                                       </tbody>
                                     </table>
-                                    <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                                    {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                                     <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                   </div>
                                 </div>
                               </div>
                             
                               <!-- PRESCRIBED MEDICINE TABLE -->
-                              <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 970px;">
+                              <div id="prescriptionTable" class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 970px;">
                                 <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                                 <div class="table-responsive">
                                   <table class="table table-striped table-bordered jambo_table bulk_action" id="prescriptionTable">
@@ -330,8 +331,8 @@
                                   <!-- -->
                                     </tbody>
                                   </table>
-                                  <button type="button" class="btn btn-default"
-                                    style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                                  {{-- <button type="button" class="btn btn-default"
+                                    style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                                   <button type="button" class="btn btn-default"
                                     style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                 </div>
@@ -459,49 +460,33 @@ $(document).ready(function(){
     else{
       $('#treatment').prop("disabled", true);
       $('#treatment').prop('required', false);
+      $('#treatment').val('');
     }
   });
   //FUNCTION IN ENABLING THE TXTBOXES
   $('input[name=restorationChk]').change(function(){
     if(this.checked){
       $('input[name=restorationTxt]').prop('disabled', false);
+      $('input[name=restorationTxt]').attr('required',true);
     }
     else{
       $('input[name=restorationTxt]').prop('disabled',true);
+      $('input[name=restorationTxt]').attr('required',false);
+      $('input[name=restorationTxt]').val('');
     }
   });
   $('input[name=extractionChk]').change(function(){
     if(this.checked){
       $('input[name=extractionTxt]').prop('disabled', false);
+      $('input[name=extractionTxt]').attr('required',true);
     }
     else{
       $('input[name=extractionTxt]').prop('disabled',true);
+      $('input[name=extractionTxt]').attr('required',false);
+      $('input[name=extractionTxt]').val('');
     }
   });
   
-  // FUNCTION IN TAKING THE REMARKS AND REFER TO
-  // $('#referralSlip').on('click', function(e){
-  //   var referred = $('input[name=referToOthers]').val();
-  //   var remark = $('#remark').val();
-
-  //   $.ajax({
-  //     type: 'get',
-  //     url: '/dentist/outside/referralSlip',
-  //     data: { referred: referred,
-  //             remark: remark
-  //             // _token: $('meta[name=csrf-token]').attr('content')
-  //           },
-  //     success:function(output){
-  //        // window.open('/dentist/outside/referralSlip', '_blank');
-  //        window.open('_blank', '/dentist/outside/referralSlip');
-  //        // window.location.href = "_blank";
-  //        // window.location.href = '/dentist/outside/referralSlip';
-  //     }
-
-
-  //   });
-  // });
-
   // Step show event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
        //alert("You are on step "+stepNumber+" now");
@@ -529,7 +514,7 @@ $(document).ready(function(){
         }
     });
 
-  var btnFinish = $('<button></button>').text('Finish')
+  var btnFinish = $('<button></button>').text('Done')
                                         .addClass('btn btn-info')
                                         .on('click', function(e){ 
                                           //On form submit
@@ -556,7 +541,7 @@ $(document).ready(function(){
                                                   title: "Dental Log Saved",///////////////
                                                   text: "Dental Log Saved!!",///////////////
                                                   icon: "success",///////////////
-                                                  buttons: "confirm",///////////////
+                                                  buttons: "CONFIRM",///////////////
                                                 })///////////////
                                                 .then((willRoute)=>{///////////////
                                                     window.location.href = "/dentist/DentalLog";
@@ -690,7 +675,8 @@ $(document).ready(function(){
             array_med[ctr_med] = {
               medicineGenericName: $('select#genericName option:selected').text(),
               medicineBrandName: $('select#medicineBrand option:selected').text(),
-              medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              medicineMedication: $('input[name=medication]').val(),
               medicineUnit: $('select#medicineUnit option:selected').text(),
               medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
               medicineID: $('select#medicineBrand option:selected').val(),
@@ -724,7 +710,8 @@ $(document).ready(function(){
               array_med[ctr_med] = {
                 medicineGenericName: $('select#genericName option:selected').text(),
                 medicineBrandName: $('select#medicineBrand option:selected').text(),
-                medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                medicineMedication: $('input[name=medication]').val(),
                 medicineUnit: $('select#medicineUnit option:selected').text(),
                 medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
                 medicineID: $('select#medicineBrand option:selected').val(),
@@ -807,7 +794,8 @@ $(document).ready(function(){
             array_prescribed[ctr_prescribed] = {
               medicineGenericName: $('select#genericName option:selected').text(),
               medicineBrandName: $('select#medicineBrand option:selected').text(),
-              medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+              medicineMedication: $('input[name=medication]').val(),
               medicineUnit: $('select#medicineUnit option:selected').text(),
               medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
               medicineID: $('select#medicineBrand option:selected').val(),
@@ -832,7 +820,7 @@ $(document).ready(function(){
             
             if(isEqual == true){
               array_prescribed[key].medicineQuantity = parseInt(array_prescribed[key].medicineQuantity) + parseInt($('#medQuantity').val());
-              $('#prescriptionTable tbody').empty();
+              $('#prescriptionTable tbody').empty();                                                                                                                                    
               displayPrescribedTableRow(); 
             }
             
@@ -841,7 +829,8 @@ $(document).ready(function(){
               array_prescribed[ctr_prescribed] = {
                 medicineGenericName: $('select#genericName option:selected').text(),
                 medicineBrandName: $('select#medicineBrand option:selected').text(),
-                medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                medicineMedication: $('input[name=medication]').val(),
                 medicineUnit: $('select#medicineUnit option:selected').text(),
                 medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
                 medicineID: $('select#medicineBrand option:selected').val(),
@@ -877,9 +866,18 @@ $(document).ready(function(){
     function displayPrescribedTableRow(){
       // console.log(array_prescribed)
         for(var i = 0; i < Object.keys(array_prescribed).length; i++){
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
+          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='prescriptionTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
           $(tr).prependTo('#prescribedMedTable');
         }
+    }
+
+    function resetMedFields(){
+      $('select#genericName').prop('selectedIndex', 0);
+      $('select#medicineBrand').prop('selectedIndex', 0);
+      $('select#medicineUnit').prop('selectedIndex', 0);
+      $('#dosage').prop('disabled', true);
+      $('select#dosageUnit').prop('selectedIndex',0);
+
     }
 
     // $('#appointmentDate').datetimepicker({

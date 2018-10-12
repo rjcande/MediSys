@@ -167,7 +167,10 @@
                         <header style="width: 120px;"> Birthday *</header>
                       </div>
                       <div style="float: left;">
-                        <input type="date" id="birthDay" name="birthDay" style="width:300px; border-radius:8px; margin-bottom:12px;" value="" required >
+                        <input type="date" id="birthDay" name="birthDay" min="{{date('Y-m-d', 0)}}" max="{{date('Y-m-d')}}" style="width:300px; border-radius:8px; margin-bottom:12px;" value="" required data-parsley-errors-container="#error-birthday">
+                        <div id="error-birthday">
+                          
+                        </div>
                       </div>
                     </div>
 
@@ -289,6 +292,12 @@
 
     $('#addPatientForm').parsley();
 
+    // $("#birthDay")(){
+    //   if($("#birthDay").val().length() > 8){
+    //     alert();
+    //   }
+    // });
+
     // Getting the age from the birthday
     $('#birthDay').on("change", submitBirthDay);
 
@@ -306,6 +315,9 @@
         $('input[name=parentGuardianName]').prop('disabled', false);
         $('input[name=parentGuardianContactNo]').prop('disabled', false);
       }
+      // else if($('#age').val() < 0){
+      //   $('#birthDay').attr('data-parsley-error-message', 'birthday is invalid');
+      // }
       else{
         $('input[name=parentGuardianName]').prop('required', false);
         $('input[name=parentGuardianContactNo]').prop('required', false);
@@ -323,12 +335,13 @@
       if ($(this).val() == 1 || $(this).val() == 2 || $(this).val() == 3) {
         
         $('input[name=studFacID]').prop('required', true);//make student/faculty number required
-
+        $('input[name=studFacID]').attr('disabled', false);
       }
       else if($(this).val() == 4){
 
-         $('input[name=studFacID]').prop('required', false);
-
+        $('input[name=studFacID]').prop('required', false);
+        $('input[name=studFacID]').prop('disabled', true);
+        $('input[name=studFacID]').val('');
       }
     });
 

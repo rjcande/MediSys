@@ -24,7 +24,7 @@
                     <canvas id="lineChartPatient"></canvas>
                   </div>
                   <div style="float: right;">
-                   <!--  <a href="{{ url('/dentist/patient/condition/reports') }}">
+                   <!--  <a href="{{ url('/mchief/patient/condition/reports') }}">
                       <button class="btn btn-info">Patients' Conditions Statistics</button>
                     </a> -->
                   </div>
@@ -75,7 +75,7 @@
                           @foreach($patientNames as $name)
                             @foreach($dentists as $dentist)
                               @if($name->appointmentID == $dentist->appointmentID)
-                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-patientname="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-patientid="{{ $name->patientID }}" data-dentist="{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
                                   <td class=" ">{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}</td>
                                   <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
@@ -107,7 +107,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+
 
 
              
@@ -134,7 +134,8 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
             <div>
-              <label class="col-md-1 col-sm-3 col-xs-3" id="patientID_label"></label>
+              <label class="col-md-1 col-sm-3 col-xs-3" id="patientID_label">
+              </label>
               <input type="hidden" name="patientID" id="patientID">
             </div>
           </div>
@@ -147,7 +148,7 @@
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="col-md-3 col-sm-3 col-xs-3">Dentist: </label>
-            <label class="col-md-7 col-sm-3 col-xs-3" id="physician"></label>
+            <label class="col-md-7 col-sm-3 col-xs-3" id="dentist"></label>
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
@@ -159,7 +160,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="btnNoShow">No Show</button>
-        {{-- <button type="button" class="btn btn-success" id="btnReferToPhysician">Refer To Physician</button> --}}
+        <button type="button" class="btn btn-success" id="btnConsultPatient"> Consult Patient</button>
         <button type="button" class="btn btn-danger" id="btnCancelAppointment">Cancel Appointment</button>
       </div>
          </form>
@@ -190,20 +191,20 @@
      //Opening Edit Modal
     $('#appointmentModal').on('show.bs.modal', function(e){
         var sourceElement = $(e.relatedTarget);
-        var id = sourceElement.data('id');
-        var apptid = sourceElement.data('apptid');
-        var name = sourceElement.data('name');
-        var physician = sourceElement.data('physician');
+        var patientID = sourceElement.data('patientid');
+        var apptID = sourceElement.data('apptid');
+        var patientName = sourceElement.data('patientname');
+        var dentist = sourceElement.data('dentist');
         var date = sourceElement.data('date');
 
         var modal = $(this);
-        modal.find('.modal-body #patientName_label').text(name);
-        modal.find('.modal-body #patientID_label').text(id);
-        modal.find('.modal-body #physician').text(physician);
+        modal.find('.modal-body #patientName_label').text(patientName);
+        modal.find('.modal-body #patientID_label').text(patientID);
+        modal.find('.modal-body #dentist').text(dentist);
         modal.find('.modal-body #date').text(date);
-        modal.find('.modal-body #appointmentID').val(apptid);
-        modal.find('.modal-body #patientName').val(name);
-        modal.find('.modal-body #patientID').val(id);
+        modal.find('.modal-body #appointmentID').val(apptID);
+        modal.find('.modal-body #patientName').val(patientName);
+        modal.find('.modal-body #patientID').val(patientID);
         
 
     });
@@ -246,23 +247,25 @@
       });
     });
 
-    // $('#btnReferToPhysician').click(function(){
-    //   var checkRecord = 1;
-    //   var hasRecord = { 
-    //                     hasRecord: checkRecord,
-    //                     hasAppointment: 1,
-    //                     appointmentID: $('#appointmentID').val(),
-    //                   };
-    //   console.log($('#logPatientForm').serialize());
-    //   $.ajax({
-    //     url:'/nurse/log/patient',
-    //     type:'get',
-    //     data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
-    //     success: function(output){
-    //         window.location.href = output.redirect;
-    //     }
-    //   });
-    // });
+    $('#btnConsultPatient').click(function(){
+      var checkRecord = 1;
+      var consult = 0;
+      var hasRecord = { 
+                        hasRecord: checkRecord,
+                        hasAppointment: 1,
+                        appointmentID: $('#appointmentID').val(),
+                      };
+      console.log($('#logPatientForm').serialize());
+      $.ajax({
+        // url:'/nurse/log/patient',
+        url:'/dentist/select/concern',
+        type:'get',
+        data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
+        success: function(output){
+            window.location.href = output.redirect;
+        }
+      });
+    });
 
      var totalPatientJanuary = 0;
      var totalPatientFebruary = 0;

@@ -268,7 +268,7 @@ class DentalCertificateController extends Controller
 
         // dd($request->all());
 
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -281,7 +281,9 @@ class DentalCertificateController extends Controller
                                 ->select('users.*')
                                 ->first();
         }
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+
+
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -295,7 +297,7 @@ class DentalCertificateController extends Controller
                         ->select('users.*')
                         ->first();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -309,14 +311,32 @@ class DentalCertificateController extends Controller
                         ->first();
         }
 
-        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
-     
+        if ($request->weekly == 1 && $request->daily == '' && $request->monthly == '' && $request->yearly == ''){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. '23:59:59';
+            $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                         ->select('patients.*', 'cliniclogs.*')
+                         ->where('cliniclogs.isDeleted', '=', '0')
+                         ->where('cliniclogs.clinicType', '=', 'D')
+                         ->whereBetween('cliniclogs.clinicLogDateTime', [$from, $to])
+                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
+                         ->get();
+
+            $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                        ->select('users.*')
+                        ->first();
+        }
+
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1 && $request->weekly == 1) {
+            $from = $request->weekFrom;
+            $to = $request->weekTo. '23:59:59';
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'd')
                         ->where(function($query) use ($request){
                             $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
+                            ->orWhereBetween('cliniclogs.clinicLogDateTime', [$from, $to])
                             ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->mon)
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->yearMonth)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
@@ -437,43 +457,269 @@ class DentalCertificateController extends Controller
 
         // }
 
-        if ($request->monthly == 1 && $request->yearly == 1) {
-     
-            $patientRecords = Patient::select('patients.*')
-                                    ->where('patients.isDeleted', '=', '0')
-                                    // ->where('cliniclogs.clinicType','=', 'd')
-                                    ->where(function($query) use ($request){
-                                        $query->whereMonth('patients.created_at', '=', $request->mon)
-                                        ->whereYear('patients.created_at', '=', $request->yearMonth)
-                                        ->orwhereYear('patients.created_at', '=', $request->year);
-                                    })
-                                    ->orderBy('patients.patientID', 'DESC')
-                                    ->get();
-            
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == ''){
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->whereDate('created_at', '=', $request->date)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->whereDate('created_at', '=', $request->date)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->whereDate('created_at', '=', $request->date)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->whereDate('created_at', '=', $request->date)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
         }
-        
-        if ($request->monthly == 1 && $request->yearly == '') {
-            $patientRecords = Patient::select('patients.*')
-                                        ->where('patients.isDeleted', '=', '0')
-                                        // ->where('cliniclogs.clinicType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereMonth('patients.created_at', '=', $request->mon)
-                                            ->whereYear('patients.created_at', '=', $request->yearMonth);
-                                        })
-                                        ->orderBy('patients.patientID', 'DESC')
-                                        ->get();
+        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly == 1){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. ' 23:59:59';
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->whereBetween('created_at', [$from, $to])
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->whereBetween('created_at', [$from, $to])
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
 
-        }    
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->whereBetween('created_at', [$from, $to])
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
 
-        if ($request->monthly == '' && $request->yearly == 1) {
-            $patientRecords = Patient::select('patients.*')
-                                        ->where('patients.isDeleted', '=', '0')
-                                        // ->where('cliniclogs.clinicType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereYear('patients.created_at', '=', $request->year);
-                                        })
-                                        ->orderBy('patients.patientID', 'DESC')
-                                        ->get();
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->whereBetween('created_at', [$from, $to])
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == ''){
+             $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->whereMonth('created_at', '=', $request->month)
+                       ->whereYear('created_at', '=', $request->year_month)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->whereMonth('created_at', '=', $request->month)
+                       ->whereYear('created_at', '=', $request->year_month)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->whereMonth('created_at', '=', $request->month)
+                       ->whereYear('created_at', '=', $request->year_month)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->whereMonth('created_at', '=', $request->month)
+                       ->whereYear('created_at', '=', $request->year_month)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == ''){
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->whereYear('created_at', '=', $request->year)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+           
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->whereYear('created_at', '=', $request->year)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->whereYear('created_at', '=', $request->year)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->whereYear('created_at', '=', $request->year)
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == ''){
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == ''){
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->where(function($query) use ($request){
+                            $query->whereYear('created_at', '=', $request->year)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->where(function($query) use ($request){
+                            $query->whereYear('created_at', '=', $request->year)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->where(function($query) use ($request){
+                            $query->whereYear('created_at', '=', $request->year)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->where(function($query) use ($request){
+                            $query->whereYear('created_at', '=', $request->year)
+                            ->orWhereMonth('created_at', '=', $request->month)
+                            ->whereYear('created_at', '=', $request->year_month);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+        }
+        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1){
+            $patientListStudent = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '1')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+            $patientListFaculty = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '2')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
+
+            $patientListAdmin = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '3')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();        
+
+            $patientListVisitor = Patient::where('isDeleted', '=', 0)
+                       ->where('patientType', '=', '4')
+                       ->where(function($query) use ($request){
+                            $query->whereDate('created_at', '=', $request->date)
+                            ->orWhereYear('created_at', '=', $request->year);
+                       })
+                       ->orderBy('patientID', 'DESC')
+                       ->get();
         }
 
         if(Session::get('accountInfo.position') == 4){
@@ -586,6 +832,64 @@ class DentalCertificateController extends Controller
         $pdf = PDF::loadview('dchief.printables.medicalSupplyList-pdf', compact('medicalSupplyList'));
         // $pdf->setPaper('legal', 'landscape');
         return $pdf->stream('medicalSupplyList-pdf');
+    }
+
+    public function generateDentalHistoryPdf($id)
+    {
+        $chosenHistory = Patient::find($id);
+
+        $patientInfo = DentalHistory::join('patients', 'patients.patientID', '=', 'dentalhistories.patientID')
+                                    ->select('patients.*', 'dentalhistories.*')
+                                    ->where('dentalhistories.isDeleted', '=', '0')
+                                    ->where('dentalhistories.patientID', '=', $id)
+                                    ->first();
+
+        $pdf = PDF::loadview('dentist.printables.dental_history-pdf', compact('chosenHistory', 'patientInfo'));
+        $pdf->setPaper('legal', 'portrait');
+        return $pdf->stream('dental_history-pdf');
+    }
+
+    public function generateMedicalLogEachPdf($id)
+    {
+        $patientInfo = Patient::find($id);
+
+        $patientAllLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                                   ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                                   ->select('patients.*', 'cliniclogs.*', 'treatments.*')
+                                   ->where('patients.patientID', '=', $id)
+                                   ->where('cliniclogs.clinicType', '=', 'D')
+                                   ->where('cliniclogs.isDeleted', '=', '0')
+                                   ->get();
+
+        $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                     ->select('users.*', 'cliniclogs.*')
+                                     ->where('cliniclogs.patientID','=', $id)
+                                     ->where('users.isActive', '=', '1')
+                                     ->get();
+                                    //  ->first();
+
+        $usedMedSupply = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                                  ->join('medsuppliesused', 'medsuppliesused.treatmentID', '=', 'treatments.treatmentID')
+                                  ->join('medsupplies', 'medsuppliesused.medSupplyID', '=', 'medsupplies.medSupID')
+                                  ->select('medsupplies.*', 'medsuppliesused.*', 'cliniclogs.clinicLogID')
+                                  ->where('cliniclogs.isDeleted', '=', '0')
+                                  ->where('cliniclogs.clinicType', '=', 'D')
+                                  ->where('medsuppliesused.isDeleted', '=', '0')
+                                  ->get();
+
+        $usedMed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                            ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
+                            ->join('medicines' ,'prescriptions.medicineID','=', 'medicines.medicineID')
+                            ->select('treatments.*', 'prescriptions.*','cliniclogs.clinicLogID', 'medicines.*')
+                            ->where('cliniclogs.isDeleted', '=', '0')
+                            ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('prescriptions.isDeleted', '=', '0')
+                            ->where('prescriptions.isGiven', '=', '1')
+                            ->get();
+
+        $pdf = PDF::loadview('dentist.printables.medicalLogEach-pdf', compact('patientInfo','patientAllLogs', 'attendingDentist', 'usedMedSupply', 'usedMed'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('medicalLogEach-pdf');
     }
 
 }

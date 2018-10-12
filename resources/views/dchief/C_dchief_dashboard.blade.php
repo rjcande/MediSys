@@ -65,19 +65,19 @@
                         <thead>
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
-                            <th class="column-title">Physician </th>
-                            <th class="column-title">Date </th>
+                            <th class="column-title">Dentist </th>
+                            <th class="column-title">Date </th> 
                             </th>
                           </tr>
                         </thead>
 
                         <tbody>
                           @foreach($patientNames as $name)
-                            @foreach($dentists as $physician)
-                              @if($name->appointmentID == $physician->appointmentID)
-                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
+                            @foreach($dentists as $dentist)
+                              @if($name->appointmentID == $dentist->appointmentID)
+                                <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
-                                  <td class=" ">{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}</td>
+                                  <td class=" ">{{ $dentist->lastName }}, {{ $dentist->firstName }} {{ $dentist->middleName }} {{ $dentist->quantifier }}</td>
                                   <td class=" ">{{ date('F d, Y', strtotime($name->appointmentDate)) }}</td>
                                 </tr>
                               @endif
@@ -98,10 +98,10 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <a href="{{ url('/nurse/medicine/reports') }}">
+                    <a href="{{ url('/dchief/medicine/reports') }}">
                       <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
                     </a>
-                    <a href="{{ url('/nurse/medical/supplies/reports') }}">
+                    <a href="{{ url('/dchief/medical/supplies/reports') }}">
                       <button type="button" class="btn btn-primary btn-block">Medical Supplies Report</button>
                     </a>
                   </div>
@@ -146,7 +146,7 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="col-md-3 col-sm-3 col-xs-3">Physician: </label>
+            <label class="col-md-3 col-sm-3 col-xs-3">Dentist: </label>
             <label class="col-md-7 col-sm-3 col-xs-3" id="physician"></label>
           </div>
 
@@ -159,7 +159,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="btnNoShow">No Show</button>
-        <button type="button" class="btn btn-success" id="btnReferToPhysician">Refer To Physician</button>
+        {{-- <button type="button" class="btn btn-success" id="btnReferToPhysician">Refer To Physician</button> --}}
         <button type="button" class="btn btn-danger" id="btnCancelAppointment">Cancel Appointment</button>
       </div>
          </form>
@@ -210,7 +210,7 @@
 
     $('#btnNoShow').click(function(){
       $.ajax({
-        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'no_show',
+        url: '/dchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'no_show',
         type: 'get',
         data: $(this).serialize(),
         success: function(output){
@@ -229,7 +229,7 @@
 
      $('#btnCancelAppointment').click(function(){
       $.ajax({
-        url: '/mchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'cancel_appointment',
+        url: '/dchief/delete/appointment/' + $('#appointmentID').val() + '/' + 'cancel_appointment',
         type: 'get',
         data: $(this).serialize(),
         success: function(output){
@@ -246,23 +246,23 @@
       });
     });
 
-    $('#btnReferToPhysician').click(function(){
-      var checkRecord = 1;
-      var hasRecord = {
-                        hasRecord: checkRecord,
-                        hasAppointment: 1,
-                        appointmentID: $('#appointmentID').val(),
-                      };
-      console.log($('#logPatientForm').serialize());
-      $.ajax({
-        url:'/nurse/log/patient',
-        type:'get',
-        data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
-        success: function(output){
-            window.location.href = output.redirect;
-        }
-      });
-    });
+    // $('#btnReferToPhysician').click(function(){
+    //   var checkRecord = 1;
+    //   var hasRecord = { 
+    //                     hasRecord: checkRecord,
+    //                     hasAppointment: 1,
+    //                     appointmentID: $('#appointmentID').val(),
+    //                   };
+    //   console.log($('#logPatientForm').serialize());
+    //   $.ajax({
+    //     url:'/nurse/log/patient',
+    //     type:'get',
+    //     data:$('#logPatientForm').serialize() + '&' + $.param(hasRecord),
+    //     success: function(output){
+    //         window.location.href = output.redirect;
+    //     }
+    //   });
+    // });
 
      var totalPatientJanuary = 0;
      var totalPatientFebruary = 0;

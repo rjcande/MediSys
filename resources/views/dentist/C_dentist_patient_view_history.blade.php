@@ -450,6 +450,7 @@
                     </div>
 
                     <div style="margin-top: 25px;margin-bottom: 30px;float: left;text-align: center;width: 100%">
+                      <a href="{{route('dentist.generate.dentalHistory', $patientInfo['patientID'])}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button></a>
                       <a href="{{url('/dentist/PatientRecord')}}"><button class="btn btn-primary">BACK</button></a>
                       <a href="{{route('dentist.dentalchart.view', $patientInfo['patientID'])}}"><button class="btn btn-default" style="background-color:#00d2d3; color:white;">VIEW DENTAL CHART</button></a>
                       <a href="{{route('dentist.HistoryForm.edit', $patientInfo['dentalHistoryID'])}}"><button class="btn btn-warning">EDIT</button></a>
