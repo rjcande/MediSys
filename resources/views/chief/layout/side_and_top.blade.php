@@ -46,6 +46,16 @@
               <li><a href="{{ url('/medicalchief/medical_supplies_maintenance') }}"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
             </ul>
           </li>
+          <li><a><i class="fa fa-question-circle"></i>Queries <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{ url('/medicalchief/queries/accounts') }}"><i class="fa fa-user-md"></i>Accounts</a></li>
+              <li><a href="{{ url('/medicalchief/queries/medicines') }}"><i class="fa fa-medkit"></i>Medicines</a></li>
+              <li><a href="{{ url('/medicalchief/queries/medical/supply') }}"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
+            </ul>
+          </li>
+          <li><a><i class="fa fa-archive"></i>Archive <span class="fa fa-chevron-down"></span></a>
+           
+          </li>
        
         </ul>
       </div>

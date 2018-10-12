@@ -206,13 +206,7 @@
                                     <header style="margin-bottom:12px; margin-left:25px;"> Medication</header>
                                   </div>
                                   <div style="float:left; width: 300px; font-size: 15px;">
-                                    <header style="display: inline;">every</header>
-                                    <input type="number" name="hrs_day" style="width: 20%; border-radius: 10px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="hrs/day is required">
-                                    <header style="display: inline;">hrs/day</header>
-                                    <header style="display: inline;">for</header>
-                                    <input type="number" name="week" style="width: 20%; border-radius: 10px; display: inline;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="week/s is required">
-                                    <header style="display: inline;">week/s</header>
-                                    <br>
+                                     <input type="text" style="width:250px; border-radius:8px; margin-bottom:12px; 172px;height: 25px;" data-parsley-group="second" name="medication" id="medication" data-parsley-required ="true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="Medication is required">
                                   </div><br><br>
                               </div>
                               <br>
@@ -433,7 +427,7 @@
       }
     });
     // Toolbar extra buttons
-    var btnFinish = $('<button></button>').text('Finish')
+    var btnFinish = $('<button></button>').text('Done')
                     .addClass('btn btn-info')
                     .on('click', function(e){ 
                      e.preventDefault();
@@ -459,7 +453,18 @@
                           type:'get',
                           data:$('#saveForm').serialize() + "&" + $.param(id),
                           success:function(output){
-                            window.location.href = '/nurse/patient/medical/log/edit/' + output.clinicLogID;
+
+                            swal({
+                              title: "Good job!",
+                              text: "Patient has been referred!",
+                              icon: "success",
+                              button: "OK",
+                            })
+                            .then((value)=>{
+                              window.location.href = '/nurse/patient/medical/log/edit/' + output.clinicLogID;
+                            });
+
+                            
                     
                           }
                         });
@@ -560,9 +565,11 @@
             $('#dosage').val(splitted[0]);
             if (splitted[1] == "mg") {
               $('#dosageUnit').val("mg");
+              $('#dosageUnit').prop('disabled', true);
             }
             else if(splitted[1] == "ml"){
               $('#dosageUnit').val("ml");
+              $('#dosageUnit').prop('disabled', true);
             }
           });      
         });
@@ -604,7 +611,7 @@
                     medicineGenericName: $('select[name=medGenericName] option:selected').text(),
                     medicineBrand: $('select[name=medBrand] option:selected').text(),
                     medicineUnit: $('select[name=medUnit] option:selected').text(),
-                    medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                    medicineMedication: $('#medication').val(),
                     medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
                     medicineID:  $('select[name=medBrand]').val(),
                     medicineQuantity: $('input[name=medQuantity]').val()
@@ -617,7 +624,7 @@
                 var key;
                 for (var i = 0; i < Object.keys(array_med).length; i++) {
                 
-                    if (array_med[i].medicineID == $('select[name=medBrand]').val()) {
+                    if (array_med[i].medicineID == $('select[name=medBrand]').val() && array_med[i].medicineMedication == $('#medication').val() && array_med[i].medicineDosage == $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val()) {
                         isEqual = true;
                         key = i;
                     }
@@ -635,7 +642,7 @@
                       medicineGenericName: $('select[name=medGenericName] option:selected').text(),
                       medicineBrand: $('select[name=medBrand] option:selected').text(),
                       medicineUnit: $('select[name=medUnit] option:selected').text(),
-                      medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
+                      medicineMedication: $('#medication').val(),
                       medicineDosage: $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val(),
                       medicineID:  $('select[name=medBrand]').val(),
                       medicineQuantity: $('input[name=medQuantity]').val()

@@ -44,6 +44,31 @@ class MedicalChiefController extends Controller
         return view('medicalchief.C_medicalchief_manage_accounts')->withMedicalStaff($medicalstaff);
     }
 
+    public function medicineQueries()
+    {
+        $medicines = Medicine::where('isDeleted', '=', '0')->where('medType','m')->get();
+        // return view('nurse.C_nurse_maintenance_medicine')->with(['medicines' => $medicine, 'id' => $id]);
+        return view('chief.C_mchief_manage_medicines_queries')->with(['medicines' => $medicines]);
+    }
+
+    public function supplyQueries()
+    {
+        $supplies = MedicalSupply::where('isDeleted', '=', '0')->where('supType','m')->get();
+        return view('chief.C_medicalchief_medical_supplies_query')->with(['supplies' => $supplies]);
+    }
+
+    public function accountQueries()
+    {
+        $medicalstaff = Account::leftJoin('userverifications','users.id','=','userverifications.userID')
+                ->select('users.*', 'userverifications.verificationCode')
+                ->whereIn('position',[5,6])
+                ->where('isActive',1)->get();
+
+        $lastUserID = Account::orderBy('created_at','desc')->first();
+        Session::put('lastUserID',$lastUserID['id']);
+        return view('chief.C_mchief_queries_accounts')->withMedicalStaff($medicalstaff);
+    }
+
     public function declineAccount($userID){
         $user = Account::find($userID);
         $user->isVerified = 3;

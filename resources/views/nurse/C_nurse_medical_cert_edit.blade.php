@@ -51,7 +51,7 @@
                                         <header style="font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px;">This is to certify that <u>{{ $clinicLogInfo->lastName }}, {{ $clinicLogInfo->firstName }} {{ $clinicLogInfo->middleName }} {{ $clinicLogInfo->quantifier }}</u> has been examined by the undersigned and found to be physically fit at the time of examination.
                                         </header>
                                         <header style="font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px;">
-                                          This certification is issued upon the request for <u><strong>ENROLLMENT</strong></u>purpose.
+                                          This certification is issued upon the request for <u><strong>ENROLLMENT</strong></u> purpose.
                                         </header>
                                       </div>
                                      
@@ -235,7 +235,8 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
-                    <a href="{{ url('nurse/medical/log') }}" title="">
+                    
+                    <a href="{{ URL::previous() }}" title="">
                       <button type="button" class="btn btn-primary" style="float: right; margin-top: 20px;">BACK</button>
                     </a>
                     <!-- /Content -->

@@ -48,7 +48,7 @@
                         </thead>
 
                         <tbody>
-                           @php($ctr = 1)
+                           @php($ctr = sizeof($clinicLogs))
                            {{ Session::put('number', $ctr) }}
                           @foreach($clinicLogs as $clinicLog)
                             <tr class="even pointer">
@@ -93,7 +93,7 @@
 
                               </td>
                             </tr>
-                            @php($ctr++)
+                            @php($ctr--)
                             {{ Session::put('number', $ctr) }}
                           @endforeach
                         </tbody>
@@ -126,13 +126,16 @@
       <form id="printMedicalLog" action="{{ url('/print/medical/log') }}" target="_blank" method="get">
           @csrf()
       <div class="modal-body">
-        <div class="col-md-4">
+        <div style="float: left; margin-left: 5px">
             <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
         </div>
-        <div class="col-md-4">
+        <div style="float: left; margin-left: 5px">
+            <input type="checkbox" name="weekly" id="weekly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Weekly</label>
+        </div>
+        <div style="float: left; margin-left: 5px">
             <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
         </div>
-        <div class="col-md-4">
+        <div style="float: left; margin-left: 5px">
             <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
         </div>
         <div style="width: 100%" id="error_container">
@@ -142,13 +145,22 @@
         <div style="width: 100%">
           <div class="form-group">
             <label style="margin-left: 5px; width: 50px">Date: </label>
-            <input type="date" name="date" style="width: 70%" disabled id="date">
+            <input type="date" name="date" style="width: 70%; border-radius:6px" disabled id="date">
           </div>
             
         </div>
         <div style="width: 100%">
+          <label style="margin-left: 5px; width: 50px">Week: </label>
+          <label style="margin-left: 5px;">From: </label>
+          <input type="date" name="weekFrom" style="width: 53%; border-radius:6px" disabled id="weekFrom">
+          <br>
+          <label style="margin-left: 65px; margin-right: 17px">To: </label>
+          <input type="date" name="weekTo" style="width: 53%; border-radius:6px" disabled id="weekTo">
+        </div>
+        <br>
+        <div style="width: 100%">
             <label style="margin-left: 5px;  width: 50px">Month: </label>
-            <select name="month" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+            <select name="month" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required" style="border-radius:6px; width: 47%;">
               <option value="" selected></option>
               <option value="1">January</option>
               <option value="2">February</option>
@@ -164,7 +176,7 @@
               <option value="12">December</option>
             </select>
 
-            <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+            <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required" style="border-radius:6px">
                 <option value="" selected disabled>Year</option>
             </select>
         </div>
@@ -173,7 +185,7 @@
         </div>
         <div style="width: 100%">
             <label style="margin-left: 5px;  width: 50px">Year: </label>
-            <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+            <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required" style="border-radius: 6px; width: 70%; text-align: center;">
                 <option value="" selected disabled>Year</option>
             </select>
         </div>
@@ -260,7 +272,8 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">',
+        "order": [[ 0, "desc" ]]
     });
 
     $('#search').keyup(function(){
@@ -352,6 +365,20 @@
         $('#date').prop('required', false);
       }
     });
+    $('#weekly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#weekFrom').prop('disabled', false);
+        $('#weekFrom').prop('required', true);
+        $('#weekTo').prop('disabled', false);
+        $('#weekTo').prop('required', true);
+      }
+      else{
+        $('#weekFrom').prop('disabled', true);
+        $('#weekFrom').prop('required', false);
+        $('#weekTo').prop('disabled', true);
+        $('#weekTo').prop('required', false);
+      }
+    });
     $('#monthly').on('change', function(){
       if ($(this).is(':checked')) {
         $('#month').prop('disabled', false);
@@ -387,6 +414,10 @@
       $('#month').prop('required', false);
       $('#year-month').prop('required', false);
       $('#year').prop('required', false);
+      $('#weekFrom').prop('disabled', true);
+      $('#weekFrom').prop('required', false);
+      $('#weekTo').prop('disabled', true);
+      $('#weekTo').prop('required', false);
     });
 
   });

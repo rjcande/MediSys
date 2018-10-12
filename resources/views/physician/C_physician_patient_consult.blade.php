@@ -108,7 +108,7 @@
 									</div>
 								</div>
 			                </div>
-			                <div id="step-2" class="">
+			                <div id="step-2" class="" style="border:1px solid">
 			                  	<div id="family-history" style="float:left; margin-top: 10px; width: 100%">
 									<p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white);
 									height:30px; border-radius:8px;">&nbsp<b>Family History</b></p><br>
@@ -131,7 +131,10 @@
 										@if($medicalHistory) @if($medicalHistory->famHistCancer  == 1) {{ 'checked' }} @endif @endif> Cancer<br>
 										<input type="checkbox" name="famHistoryOther" class="radio-fam" style="margin-bottom:12px;" value="1"
 										@if($medicalHistory) @if($medicalHistory->otherFamHist  == 1) {{ 'checked' }} @endif @endif> Other <em>(please specify)</em>
-										<textarea style="height:50px; width:350px; border-radius:8px;" name="famHistoryOtherTextArea" disabled>@if($medicalHistory) {{ $medicalHistory->otherFamHistDetails  }} @endif</textarea>
+										<textarea style="height:50px; width:350px; border-radius:8px;" name="famHistoryOtherTextArea" disabled >@if($medicalHistory) {{ $medicalHistory->otherFamHistDetails  }} @endif</textarea>
+									</div>
+									<div id="error" style="border-bottom: 100px;">
+										
 									</div>
 								</div>
 			                </div>
@@ -478,7 +481,7 @@
 		var skinOther = document.querySelector("input[name=skinOther]");
 		var skinOtherTextArea = document.querySelector("textarea[name=skinOtherTextArea]");
 		//Add event handler
-		pastMedicalHistoryOther.addEventListener("click", enable);
+		pastMedicalHistoryOther.addEventListener("change", enable);
 		famHistoryOther.addEventListener("click", enable);
 		eyesWithGlasses.addEventListener("click", enable);
 		chestOther.addEventListener("click", enable);
@@ -503,6 +506,7 @@
 				}
 				else if (this.checked == false) {
 					pastMedicalHistoryOtherTextArea.value = temp;
+					pastMedicalHistoryOtherTextArea.required = false;	
 				}
 				break;
 			case "previousHospitalization":
@@ -513,6 +517,7 @@
 					else{
 					previousHospitalizationTextArea.disabled = true;
 					previousHospitalizationTextArea.value = temp;
+					previousHospitalizationTextArea.required = false;
 					}
 				break;
 			case "operationSurgery":
@@ -523,6 +528,7 @@
 					else{
 						operationSurgeryTextArea.disabled = true;
 						operationSurgeryTextArea.value = temp;
+						operationSurgeryTextArea.required = false;
 					}
 				break;
 			case "currentMedications":
@@ -533,12 +539,14 @@
 					else{
 						currentMedicationsTextArea.disabled = true;
 						currentMedicationsTextArea.value = temp;
+						currentMedicationsTextArea.required = false;
 					}
 				break;
 			case "famHistoryOther":
 				famHistoryOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					famHistoryOtherTextArea.value = temp;
+					famHistoryOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					famHistoryOtherTextArea.required = true;
@@ -548,6 +556,7 @@
 				eyesWithGlassesTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					eyesWithGlassesTextArea.value = temp;
+					eyesWithGlassesTextArea.required = false;
 				}
 				else if(this.checked == true){
 					eyesWithGlassesTextArea.required = true;
@@ -557,6 +566,7 @@
 				chestOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					chestOtherTextArea.value = temp;
+					chestOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					chestOtherTextArea.required = true;
@@ -566,6 +576,7 @@
 				heartOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					heartOtherTextArea.value = temp;
+					heartOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					heartOtherTextArea.required = true;
@@ -579,6 +590,7 @@
 					else{
 						vcolumnWithDeformitiesTextArea.disabled = true;
 						vcolumnWithDeformitiesTextArea.value = temp;
+						vcolumnWithDeformitiesTextArea.required = false;
 					}
 				break;
 			case "xrayState":
@@ -589,12 +601,14 @@
 					else{
 						xrayWithDeformitiesTextArea.disabled = true;
 						xrayWithDeformitiesTextArea.value = temp;
+						xrayWithDeformitiesTextArea.required = false;
 					}
 				break;
 			case "skinOther":
 				skinOtherTextArea.disabled = !this.checked;
 				if (this.checked == false) {
 					skinOtherTextArea.value = temp;
+					skinOtherTextArea.required = false;
 				}
 				else if(this.checked == true){
 					skinOtherTextArea.required = true;
@@ -622,13 +636,17 @@
         });
 
         // Toolbar extra buttons
-        var btnFinish = $('<button></button>').text('Finish')
+        var btnFinish = $('<button></button>').text('Done')
                             .addClass('btn btn-info')
+                            .attr('id', 'btnFinish')
                             .on('click', function(e){ 
                             	//When Save button is clicked	
 								e.preventDefault();
-								this.disabled = true;
+
+								$('#saveForm').parsley().validate();
+								
 								if ($('#saveForm').parsley().isValid() && $('#saveForm').data('rec') == 0){
+									$('#btnFinish').prop('disabled', true);
 									$.ajax({
 										url: '/physician/create/medical/history/' + $('#saveForm').data('id'),
 										type: 'get',
@@ -668,7 +686,7 @@
 										}
 									});
 								}
-
+								
 									
                             });
         var btnCancel = $('<button></button>').text('Cancel')

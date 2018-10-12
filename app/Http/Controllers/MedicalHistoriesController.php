@@ -14,6 +14,8 @@ use Response;
 
 use Session;
 
+use PDF;
+
 class MedicalHistoriesController extends Controller
 {
     /**
@@ -437,5 +439,14 @@ class MedicalHistoriesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function printMedicalHistory($id)
+    {
+        $medicalHistory = MedicalHistories::join('patients', 'patients.patientID', '=', 'medicalhistories.patientID')
+                          ->where('medicalhistories.patientID', '=', $id)->first();
+       // dd($medicalHistory);
+        $pdf = PDF::loadView('reports.medical_history', compact('medicalHistory'))->setPaper('legal');
+        return $pdf->stream('reports.medical_history');
     }
 }

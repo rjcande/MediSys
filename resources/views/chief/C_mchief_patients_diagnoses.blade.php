@@ -55,12 +55,12 @@
                                         <td class=" ">{{ date('F d, Y', strtotime($clinicLog->clinicLogDateTime)) }}</td>
                                         <td class=" ">{{ date('h:i a', strtotime($clinicLog->clinicLogDateTime)) }}</td>
                                         <td class=" ">
-                                            {{ $clinicLog->lastName }}, {{ $clinicLog->firstName }} {{ $clinicLog->middleName }} {{ $clinicLog->quantifier }}
+                                            {{ $clinicLog->lastName }}, {{ $clinicLog->firstName }} {{ $clinicLog->middleName{0} }}@if($clinicLog->middleName){{'.'}}@endif {{ $clinicLog->quantifier }}
                                         </td>
                                         <td class=" ">
                                             @foreach($attendingPhysicians as $physician)
                                                 @if($physician->id == $clinicLog->physicianID)
-                                                    {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }} 
+                                                    {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName{0} }}@if($physician->middleName){{'.'}}@endif {{ $physician->quantifier }} 
                                                 @endif
                                             @endforeach
                                         </td>
@@ -135,12 +135,12 @@
                                         <td class=" ">{{ date('F d, Y', strtotime($certificate->clinicLogDateTime)) }}</td>
                                         <td class=" ">{{ date('h:i a', strtotime($certificate->clinicLogDateTime)) }}</td>
                                         <td class=" ">
-                                            {{ $certificate->lastName }}, {{ $certificate->firstName }} {{ $certificate->middleName }} {{ $certificate->quantifier }}
+                                            {{ $certificate->lastName }}, {{ $certificate->firstName }} {{ $certificate->middleName{0} }}@if($certificate->middleName){{'.'}}@endif {{ $certificate->quantifier }}
                                         </td>
                                         <td class=" ">
                                             @foreach($attendingPhysicians as $physician)
                                                 @if($physician->id == $certificate->physicianID)
-                                                    {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }} 
+                                                    {{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName{0} }}@if($physician->middleName){{'.'}}@endif {{ $physician->quantifier }} 
                                                 @endif
                                             @endforeach
                                         </td>
@@ -209,24 +209,26 @@
                 </div>
                 <div class="modal-body" style="color:#192a56; font-size:15px;">
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Blood Pressure: </label>
-                    <input type="text" name="bloodPressure" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="bloodPressure" style="border-radius:6px; width:200px; text-align: center;" placeholder="systolic/diastolic" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Heart Rate: </label>
-                    <input type="text" name="heartRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="heartRate" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Respiratory Rate: </label>
-                    <input type="text" name="respiratoryRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="respiratoryRate" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Temperature: </label>
-                    <input type="text" name="temperature" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="temperature" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Height (cm): </label>
-                    <input type="text" name="height" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="height" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Weight (kg): </label>
-                    <input type="text" name="weight" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="weight" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Body Mass Index: </label>
-                    <input type="text" name="bmi" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="bmi" style="border-radius:6px; width:200px; text-align: center;" readonly><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">BMI Range: </label>
                     <input type="radio" name ="bmi_range" value="0" data-parsley-group="vitalSign">&nbsp Underweight
                     <input type="radio" name ="bmi_range" value="1" data-parsley-group="vitalSign">&nbsp Normal
                     <input type="radio" name ="bmi_range" value="2" data-parsley-group="vitalSign">&nbsp Overweight
                     <input type="radio" name ="bmi_range" value="3" data-parsley-group="vitalSign">&nbsp Obese Class I
+                    <br>
+                    <label style="display: inline-block;width: 170px; margin-bottom:10px;"></label>
                     <input type="radio" name ="bmi_range" value="4" data-parsley-group="vitalSign">&nbsp Obese Class II
                     <input type="radio" name ="bmi_range" value="5" data-parsley-group="vitalSign">&nbsp Obese Class III
                 </div>
@@ -262,6 +264,7 @@
             modal.find('.modal-body input[name=weight]').val(w);
             modal.find('.modal-body input[name=bmi]').val(bmi);
             modal.find(".modal-body input[name=bmi_range]").val([bmiRange]);
+            $(':radio:not(:checked)').attr('disabled', true);//disable radio button that is not selected
 
         });
 
