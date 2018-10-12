@@ -6,7 +6,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Dental Log</h3>
+              <h3>Dental Logs (Archived)</h3>
             </div>
           </div>
 
@@ -18,7 +18,7 @@
               <div class="x_panel">
                 <div class="x_title">
                   {{-- <h2>{{date('F, Y')}}</h2> --}}
-                  <button class="btn btn-round btn-success" data-toggle="modal" data-target="#logPatientModal" style="float:left">Log Patient</button>
+                  {{--  <button class="btn btn-round btn-success" data-toggle="modal" data-target="#logPatientModal" style="float:left">Log Patient</button>  --}}
                     <div style="float: right;">
 
                       <div class="col-md-2 col-sm-12 col-xs-12" style="width: 70px; float: right">
@@ -91,29 +91,29 @@
                           <td class=" ">{{ date("h:i a", strtotime($dentalLog->clinicLogDateTime)) }}</td>
                           <td class=" ">
                             @if(empty($dentalLog->timeOut))
-                              <button class="btn btn-success" id="time_out" name="time_out" data-id="{{$dentalLog->clinicLogID}}">
+                              {{--  <button class="btn btn-success" id="time_out" name="time_out" data-id="{{$dentalLog->clinicLogID}}">
                                 <i class="fa fa-check"></i>
-                              </button>
+                              </button>  --}}{{ "NONE" }}
                             @else
                               {{ date("h:i a", strtotime($dentalLog->timeOut))}}
                             @endif
                           </td>
                           <td class=" ">
-                            <a href="{{ route('dchief.dentalLog.moreInfo', $dentalLog->clinicLogID) }}">
+                            <a href="{{ url('/dchief/archived/dental/logs/viewMore', $dentalLog->clinicLogID) }}">
                               <button type='submit' class='btn btn-info' name='btnViewMore' id="btnViewMore" title ='View More Info'>
                                 <i class='fa fa-angle-double-right'></i>
                               </button>
                             </a>
-                              @if($dentalLog->concern == 1)
-                                <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
-                              @elseif($dentalLog->concern == 0)
+                                {{--  <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>  --}}
+                              {{--  @elseif($dentalLog->concern == 0)
                                 <a href="{{route('dchief.dentalLog.edit', $dentalLog->clinicLogID)}}">
                                   <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
+                                </a>  --}}
+                              <a href="{!! url('/dchief/restore/dental/log',$dentalLog->clinicLogID) !!}">
+                                <button class='btn btn-success' title="Restore">
+                                    <i class='fa fa-refresh'></i>
+                                  </button>
                                 </a>
-                              @endif
-                              <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLog->clinicLogID}}">
-                                <i class='fa fa-trash'></i>
-                              </button>
                           </td>
                         </tr>
                         @php($ctr++)
@@ -121,7 +121,7 @@
                       </tbody>
                     </table>
                     {{-- <a target="_blank" href="{{route('dchief.generate.dentalTable')}}"> --}}
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dentalTableModal"><i class="fa fa-print"></i> Print</button>
+                      {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dentalTableModal"><i class="fa fa-print"></i> Print</button>  --}}
                     {{-- </a> --}}
                     </div>
                 <!--Content -->

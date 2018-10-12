@@ -6,7 +6,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Dashboard</h3>
+            <h3>Dental Log View More (Archived)</h3>
           </div>
         </div>
 
@@ -183,17 +183,17 @@
                               </tbody>
                             @endforeach
                           </table>
-                          <button type="button" class="btn btn-default"
+                          {{--  <button type="button" class="btn btn-default"
                             style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                           <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>  --}}
                         </div>
                       </div>
 
 
                       <div style="margin-left: 50%;margin-top: 25px;float: left;;width: 50%">
-                        <a href="{{route('dchief.dentalLog.edit', $patientDentalLog->clinicLogID)}}"><button class="btn btn-warning">EDIT</button></a>
-                        <a href="{{url('/dchief/DentalLog')}}"><button class="btn btn-primary">BACK</button></a>
+                        {{--  <a href="{{route('dchief.dentalLog.edit', $patientDentalLog->clinicLogID)}}"><button class="btn btn-warning">EDIT</button></a>  --}}
+                        <a href="{{url('/dchief/archived/dental/logs')}}"><button class="btn btn-primary">BACK</button></a>
                       </div>
 
                     </div>

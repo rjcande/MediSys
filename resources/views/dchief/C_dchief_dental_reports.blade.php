@@ -1,4 +1,4 @@
-@extends('dchief.layout.dentalchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 
     <div class="clearfix"></div>
       <div class="row">
-              
+
       <!-- form input mask -->
       <div style="margin-bottom: 25%">
          <div style="float: left; height: 25%; width: 30%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%">
@@ -779,7 +779,7 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
-      
+
     </div>
   </div>
 </div>

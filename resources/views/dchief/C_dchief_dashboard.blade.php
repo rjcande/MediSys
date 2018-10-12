@@ -66,14 +66,14 @@
                           <tr class="headings">
                             <th class="column-title">Patient Name </th>
                             <th class="column-title">Physician </th>
-                            <th class="column-title">Date </th> 
+                            <th class="column-title">Date </th>
                             </th>
                           </tr>
                         </thead>
 
                         <tbody>
                           @foreach($patientNames as $name)
-                            @foreach($physicians as $physician)
+                            @foreach($dentists as $physician)
                               @if($name->appointmentID == $physician->appointmentID)
                                 <tr class="even-pointer" data-toggle="modal" data-target="#appointmentModal" style="cursor: pointer;" data-name="{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}" data-apptid="{{ $name->appointmentID }}" data-id="{{ $name->patientID }}" data-physician="{{ $physician->lastName }}, {{ $physician->firstName }} {{ $physician->middleName }} {{ $physician->quantifier }}" data-date="{{ date('F d, Y', strtotime($name->appointmentDate)) }}">
                                   <td class=" ">{{ $name->lastName }}, {{ $name->firstName }} {{ $name->middleName }} {{ $name->quantifier }}</td>
@@ -110,15 +110,15 @@
 
 
 
-             
-              <!-- /form input mask -->  
+
+              <!-- /form input mask -->
 
             </div>
           </div>
         </div>
 
 <div id="appointmentModal" class="modal fade" role="dialog">
-  
+
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -130,7 +130,7 @@
       <div class="modal-body">
           <form id="logPatientForm" class="form-horizontal form-label-left">
           @csrf()
-        
+
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="col-md-3 col-sm-3 col-xs-3">Patient ID: </label>
             <div>
@@ -154,8 +154,8 @@
             <label class="col-md-3 col-sm-3 col-xs-3">Appointment Schedule: </label>
             <label class="col-md-7 col-sm-3 col-xs-3" id="date"></label>
             <input type="hidden" id="appointmentID" name="appointmentID" value="">
-          </div>  
-          
+          </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="btnNoShow">No Show</button>
@@ -164,7 +164,7 @@
       </div>
          </form>
     </div>
-   
+
   </div>
 
 </div>
@@ -180,7 +180,7 @@
         "bInfo": false,
         "bAutoWidth": false,
         "pageLength": 5,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">'
     });
 
     $('#search').keyup(function(){
@@ -204,7 +204,7 @@
         modal.find('.modal-body #appointmentID').val(apptid);
         modal.find('.modal-body #patientName').val(name);
         modal.find('.modal-body #patientID').val(id);
-        
+
 
     });
 
@@ -223,7 +223,7 @@
               .then((value)=>{
                 location.reload(true);
               });
-        } 
+        }
       });
     });
 
@@ -242,13 +242,13 @@
               .then((value)=>{
                 location.reload(true);
               });
-        } 
+        }
       });
     });
 
     $('#btnReferToPhysician').click(function(){
       var checkRecord = 1;
-      var hasRecord = { 
+      var hasRecord = {
                         hasRecord: checkRecord,
                         hasAppointment: 1,
                         appointmentID: $('#appointmentID').val(),
@@ -330,7 +330,7 @@
      }
 
 
-   
+
 
     if($("#lineChartPatient").length){
         var f=document.getElementById("lineChartPatient");

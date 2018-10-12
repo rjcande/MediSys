@@ -6,9 +6,9 @@
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Accounts List</h3>
+                <h3>Accounts List (Archived)</h3>
               </div>
-              <span><a href="/dentalchief/accounts_maintenance" style="float:right"><button class="btn btn-sm btn-primary">Reload Page</button></a></span>
+              {{--  <span><a href="/dentalchief/accounts_maintenance" style="float:right"><button class="btn btn-sm btn-primary">Reload Page</button></a></span>  --}}
             </div>
 
             <div class="clearfix"></div>
@@ -75,7 +75,7 @@
                                     @endif
                                   </span>
                                 </td>
-                                <td><button class="btn btn-danger btn-delete" data-id={{ $staff->id }}><i class="fa fa-trash"></i></button></td>
+                                <td><a href="{!! url('/dchief/restore/account',$staff->id) !!}"><button class="btn btn-success"><i class="fa fa-refresh"></i></button></a></td>
                               </tr>
                           @endforeach
                         </tbody>

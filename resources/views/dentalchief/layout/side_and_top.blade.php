@@ -33,27 +33,37 @@
                   </li>
                   <li><a><i class="fa fa-wheelchair"></i>Patient <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('/dchief/PatientList') }}"><i class="fa fa-list-alt"></i>List of Patients</a></li>
-                      <li><a href="{{ url('/dchief/DentalLog') }}"><i class="fa fa-edit"></i>Dental Log</a></li>
-                      <li><a href="{{ url('/dchief/PatientRecord') }}"><i class="fa fa-folder-open"></i>Patient Records</a></li>
+                        <li><a href="{{ url('/dchief/PatientList') }}"><i class="fa fa-list-alt"></i>List of Patients</a></li>
+                        <li><a href="{{ url('/dchief/DentalLog') }}"><i class="fa fa-edit"></i>Dental Log</a></li>
+                        <li><a href="{{ url('/dchief/PatientRecord') }}"><i class="fa fa-folder-open"></i>Patient Records</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-cogs"></i>Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/dentalchief/accounts_maintenance"><i class="fa fa-user-md"></i>Accounts</a></li>
-                      <li><a href="/dentalchief/medicines_maintenance"><i class="fa fa-medkit"></i>Medicines</a></li>
-                      <li><a href="/dentalchief/medical_supplies_maintenance"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
+                        <li><a href="/dentalchief/accounts_maintenance"><i class="fa fa-user-md"></i>Accounts</a></li>
+                        <li><a href="/dentalchief/medicines_maintenance"><i class="fa fa-medkit"></i>Medicines</a></li>
+                        <li><a href="/dentalchief/medical_supplies_maintenance"><i class="fa fa-stethoscope"></i>Medical Supplies</a></li>
+                    </ul>
+                    </li>
+                    <li><a><i class="fa fa-question-circle"></i>Queries <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a><i class="fa fa-archive"></i>Archive <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ url('/dchief/archived/patient/list') }}"><i class="fa fa-list-alt"></i>Patients List</a></li>
+                        <li><a href="{{ url('/dchief/archived/dental/logs') }}"><i class="fa fa-edit"></i>Dental Logs</a></li>
+                        <li><a href="{{ url('/dchief/archived/accounts') }}"><i class="fa fa-user-md"></i>Accounts List</a></li>
+                        <li><a href="{{ url('/dchief/archived/medicines') }}"><i class="fa fa-medkit"></i>Medicines List</a></li>
+                        <li><a href="{{ url('/dchief/archived/medicalSupplies') }}"><i class="fa fa-stethoscope"></i>Medical Supplies List</a></li>
                     </ul>
                   </li>
-               
+
                 </ul>
               </div>
-            
+
 
             </div>
             <!-- /sidebar menu -->
               <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
+            {{--  <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
@@ -66,7 +76,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ url('/logout')}}">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
-            </div>
+            </div>  --}}
             <!-- /menu footer buttons -->
           </div>
         </div>
@@ -90,7 +100,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Profile</a></li>
-                 
+
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
@@ -113,7 +123,7 @@
                         </span>
                       </a>
                     </li>
-                    
+
                     <li>
                       <div class="text-center">
                         <a>

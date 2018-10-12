@@ -32,16 +32,16 @@ class DentalPatientController extends Controller
      */
     public function index()
     {
-        $patientList = Patient::all();
+        $patientList = Patient::where('isDeleted',0)->get();
         return view('dentist.C_dentist_patient_list')->with('patient', $patientList);
     }
     public function dchiefIndex()
     {
-        $patientList = Patient::all();
+        $patientList = Patient::where('isDeleted',0)->get();
         return view('dchief.C_dchief_patient_list')->with('patient', $patientList);
     }
 
-    /** 
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -222,7 +222,7 @@ class DentalPatientController extends Controller
     }
 
     public function dentalPatientRecords()
-    { 
+    {
         // GATHERING DENTAL HISTORIES PER PATIENT
         $patientRecord = DentalLog::join('patients','patients.patientID','=','cliniclogs.patientID')
                                   ->join('dentalhistories','dentalhistories.patientID','=','patients.patientID')
@@ -231,11 +231,11 @@ class DentalPatientController extends Controller
                                   ->groupBy('patients.patientID')
                                   ->get();
 
-                                
+
         return view('dentist.C_dentist_patient_record')->with(['patientRecord'=>$patientRecord]);
     }
     public function dchiefDentalPatientRecords()
-    { 
+    {
         // GATHERING DENTAL HISTORIES PER PATIENT
         $patientRecord = DentalLog::join('patients','patients.patientID','=','cliniclogs.patientID')
                                   ->join('dentalhistories','dentalhistories.patientID','=','patients.patientID')
@@ -244,7 +244,7 @@ class DentalPatientController extends Controller
                                   ->groupBy('patients.patientID')
                                   ->get();
 
-                                
+
         return view('dchief.C_dchief_patient_record')->with(['patientRecord'=>$patientRecord]);
     }
 
@@ -277,7 +277,7 @@ class DentalPatientController extends Controller
         // dd($consultInfo);
         return view('dentist.C_dentist_patients_consultations')->with(['dentalLog' => $dentalLogs, 'vitalSigns' =>$vitalSigns, 'attendingDentist'=>$attendingDentist,  'certifications'=>$certifications]);
     }
-    
+
     public function dchiefPatientConsultations($id)
     {
 

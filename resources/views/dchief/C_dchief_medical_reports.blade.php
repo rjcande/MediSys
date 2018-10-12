@@ -12,7 +12,7 @@
 
     <div class="clearfix"></div>
       <div class="row">
-              
+
       <!-- form input mask -->
       <div style="margin-bottom: 25%">
          <div style="float: left; height: 25%; width: 32%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%">
@@ -343,7 +343,7 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-                                   
+
                                        @endforeach
                                     </tbody>
                                  </table>
@@ -429,7 +429,7 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-                                   
+
                                        @endforeach
                                     </tbody>
                                  </table>
@@ -515,7 +515,7 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-                                   
+
                                        @endforeach
                                  </tbody>
                               </table>
@@ -601,7 +601,7 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-                                   
+
                                        @endforeach
                                  </tbody>
                               </table>
@@ -626,7 +626,7 @@
                                           <th class="column-title">Day 2</th>
                                           <th class="column-title">Day 3</th>
                                        @endif
-                                   
+
                                  </thead>
 
                                  <tbody>
@@ -761,7 +761,7 @@
                                           <th class="column-title">Week 3</th>
                                           <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-1-t');   
+                                             $date = date('Y-1-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -848,9 +848,9 @@
                                                 {{ $sumJanuaryFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                     </tbody>
                                  </table>
@@ -870,7 +870,7 @@
                                           <th class="column-title">Week 3</th>
                                           <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-2-t');   
+                                             $date = date('Y-2-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -957,9 +957,9 @@
                                                 {{ $sumFebFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                     </tbody>
                                  </table>
@@ -979,7 +979,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                       @php
-                                             $date = date('Y-3-t');   
+                                             $date = date('Y-3-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1066,9 +1066,9 @@
                                                 {{ $sumMarFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1088,7 +1088,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-4-t');   
+                                             $date = date('Y-4-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1175,9 +1175,9 @@
                                                 {{ $sumAprFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1197,7 +1197,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-5-t');   
+                                             $date = date('Y-5-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1284,9 +1284,9 @@
                                                 {{ $sumMayFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1306,7 +1306,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-6-t');   
+                                             $date = date('Y-6-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1393,9 +1393,9 @@
                                                 {{ $sumJunFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1415,7 +1415,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-7-t');   
+                                             $date = date('Y-7-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1502,9 +1502,9 @@
                                                 {{ $sumJulFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1524,7 +1524,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-8-t');   
+                                             $date = date('Y-8-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1611,9 +1611,9 @@
                                                 {{ $sumAugustFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1633,7 +1633,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-9-t');   
+                                             $date = date('Y-9-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1720,9 +1720,9 @@
                                                 {{ $sumSeptFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1742,7 +1742,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-10-t');   
+                                             $date = date('Y-10-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1829,9 +1829,9 @@
                                                 {{ $sumOctFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1851,7 +1851,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('YDec-t');   
+                                             $date = date('YDec-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1938,9 +1938,9 @@
                                                 {{ $sumNovFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -1960,7 +1960,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-12-t');   
+                                             $date = date('Y-12-t');
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -2047,9 +2047,9 @@
                                                 {{ $sumDecFifthWeek }}
                                              </td>
                                           @endif
-                                          
+
                                        </tr>
-                                
+
                                     @endforeach
                                  </tbody>
                               </table>
@@ -2066,7 +2066,7 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
-      
+
     </div>
   </div>
 </div>
