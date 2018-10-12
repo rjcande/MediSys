@@ -53,6 +53,10 @@ Route::get('/print/medicine/list', 'MedicineController@printMedicineList');
 
 Route::get('/print/medical/supply/list', 'MedicalSupplyController@printMedicalList');
 
+Route::get('/print/medical/history/{id}', 'MedicalHistoriesController@printMedicalHistory');
+
+Route::get('/print/medical/log/each/{id}', 'ClinicLogController@printMedicalLogEach');
+
 
 /*
  * Nurse Route
@@ -222,7 +226,7 @@ Route::get('/physician/view/history/{id}/{clinicLogID}', 'MedicalHistoriesContro
 // 	return view('physician.C_physician_referred_patient_diagnosis');
 // });
 
-
+ 
 Route::get('/physician/med/cert/enrollment', 'LogReferralsController@medCertEnrollment')->name('physician.med.cert.enrollment');
 
 Route::get('/physician/referred/patient/diagnosis/{id}', 'ClinicLogController@showPhysicianPatientDiagnosis')->name('physician.referred.patient.diagnosis');
@@ -388,6 +392,12 @@ Route::post('/verifyCode', 'BothChiefsController@verifyCode')->name('verifyCode'
 //===========================================================================================================================
 
 // Medical Chief Routes
+
+Route::get('/medicalchief/queries/accounts', 'MedicalChiefController@accountQueries');
+
+Route::get('/medicalchief/queries/medicines', 'MedicalChiefController@medicineQueries');
+
+Route::get('/medicalchief/queries/medical/supply', 'MedicalChiefController@supplyQueries');
 
 Route::get('/mchief/patient/referrals/{id}', 'OutsideReferralsController@mchiefPatientReferrals')->name('mchief.patient.referrals');
 

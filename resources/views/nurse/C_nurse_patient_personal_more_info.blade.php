@@ -309,7 +309,7 @@
   <script>
     $(window).load(function(){
       new PNotify({
-        title: 'Regular Success',
+        title: 'Success',
         text: '{{ Session::get('message') }}',
         type: 'success',
         styling: 'bootstrap3'

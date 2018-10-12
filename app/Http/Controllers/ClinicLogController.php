@@ -353,8 +353,9 @@ class ClinicLogController extends Controller
         $patientInfo = Patient::find($id);
 
         $medicalLogs = ClinicLog::join('users', 'users.id', '=', 'cliniclogs.nurseID')
-                        ->select('cliniclogs.*', 'users.*')
-                        ->where('patientID', '=', $id)
+                        ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('cliniclogs.*', 'patients.*')
+                        ->where('cliniclogs.patientID', '=', $id)
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->get();
 
@@ -905,7 +906,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*','cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
@@ -969,7 +970,7 @@ class ClinicLogController extends Controller
         $diagnosis = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                     ->leftJoin('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                     ->join('diagnoses', 'diagnoses.diagnosisID', '=', 'treatments.diagnosisID')
-                    ->select('diagnoses.*', 'patients.*', 'treatments.*')
+                    ->select('diagnoses.*', 'patients.*', 'treatments.*', 'cliniclogs.*')
                     ->where('cliniclogs.clinicLogID', '=', $id)
                     ->first();
 
@@ -1072,8 +1073,8 @@ class ClinicLogController extends Controller
 
             $timeOut = ClinicLog::find($id);
 
-            $time = Input::get('timeOut'); //$request->input('')
-            $date = date('y-m-d H:i:s', strtotime($time));
+           // $time = Input::get('timeOut'); //$request->input('')
+            $date = date('y-m-d H:i:s');
             $timeOut->timeOut = $date;
 
             $timeOut->save();
@@ -1086,33 +1087,44 @@ class ClinicLogController extends Controller
     }
 
     public function printMedicalLog(Request $request){
-        //dd($request->all());
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
+        $date = $request->all();
+        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '') {
+        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly == 1){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. ' 23:59:59';
+            $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('patients.*', 'cliniclogs.*')
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->where('cliniclogs.clinicType','=', 'M')
+                        ->whereBetween('cliniclogs.clinicLogDateTime', [$from, $to])
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
+                        ->get();
+        }
+        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
                         ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '') {
+        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == '') {
             $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year)
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
 
@@ -1128,7 +1140,7 @@ class ClinicLogController extends Controller
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
         
@@ -1142,7 +1154,7 @@ class ClinicLogController extends Controller
                             ->orWhereMonth('cliniclogs.clinicLogDateTime', '=', $request->month)
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }    
 
@@ -1156,7 +1168,7 @@ class ClinicLogController extends Controller
                             ->whereYear('cliniclogs.clinicLogDateTime', '=', $request->year_month)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
 
@@ -1169,13 +1181,26 @@ class ClinicLogController extends Controller
                             $query->WhereDate('cliniclogs.clinicLogDateTime', '=', $request->date)
                             ->orwhereYear('cliniclogs.clinicLogDateTime', '=', $request->year);
                         })
-                        ->orderBy('cliniclogs.clinicLogID', 'DESC')
+                        ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }  
 
-        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs'))->setPaper('legal', 'landscape');
+        $pdf = PDF::loadView('reports.medical_log', compact('clinicLogs', 'date'))->setPaper('legal', 'landscape');
         return $pdf->stream('reports.medical_log');
 
+    }
+
+    public function printMedicalLogEach($id)
+    {
+        $patientInfo = Patient::find($id);
+        $medicalLogs = ClinicLog::join('users', 'users.id', '=', 'cliniclogs.nurseID')
+                        ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                        ->select('cliniclogs.*', 'patients.*')
+                        ->where('cliniclogs.patientID', '=', $id)
+                        ->where('cliniclogs.isDeleted', '=', '0')
+                        ->get();
+        $pdf = PDF::loadView('reports.medical_log_each', compact('medicalLogs', 'patientInfo'));
+        return $pdf->stream('reports.medical_log_each');
     }
    
 }

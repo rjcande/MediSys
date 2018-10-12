@@ -52,17 +52,11 @@
                         <thead>
                           <tr class="headings">
                             <th class="column-title">No </th>
-                            <th class="column-title">Symptoms </th>
-                            <th class="column-title">Generic Name </th>
-                            <th class="column-title">Brand </th>
-                            <th class="column-title">Quantity Used </th>
-                            <th class="column-title">Supply Name </th>
-                            <th class="column-title">Brand </th>
-                            <th class="column-title">Quantity Used </th>
-                            <th class="column-title">Attending Physician </th>
-                            <th class="column-title">Assisting Nurse </th>
+                            <th class="column-title">Activity/Concern</th>
                             <th class="column-title">Date </th>
-                            <th class="column-title">Time </th>
+                            <th class="column-title">Time In </th>
+                            <th class="column-title">Time Out</th>
+                            <th class="column-title">Action</th>
                           </tr>
                         </thead>
 
@@ -72,73 +66,39 @@
                         @foreach($medicalLogs as $medicalLog)
                           <tr class="even pointer">
                             <td class="a-center">{{ $ctr }}</td>
-                            <td class="">{{ $medicalLog->symptoms }}</td>
-                            <td class=" ">
-                                @foreach($usedMed as $medicine)
-                                @if($medicine->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $medicine->genericName }}
-                                  </p>
-                                @endif
-                              @endforeach
+                           
+                            <td>
+                              @if($medicalLog->concern == 0)
+                                {{ "Consultation" }}
+                              @elseif($medicalLog->concern == 1)
+                                {{ "Letter/Certification" }}
+                              @endif
+                                
                             </td>
                             <td class=" ">
-                               @foreach($usedMed as $medicine)
-                                @if($medicine->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $medicine->brand }}
-                                  </p>
-                                @endif
-                              @endforeach
+                             {{ date('F d, Y', strtotime($medicalLog->clinicLogDateTime)) }}
                             </td>
                             <td class=" ">
-                               @foreach($usedMed as $medicine)
-                                @if($medicine->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $medicine->quantity }}
-                                  </p>
-                                @endif
-                              @endforeach
+                              {{ date('h:i a', strtotime($medicalLog->clinicLogDateTime)) }}
                             </td>
                             <td class=" ">
-                               @foreach($usedMedSupply as $supply)
-                                @if($supply->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $supply->medSupName }}
-                                  </p>
-                                @endif
-                              @endforeach
-                            </td>
-                            <td class=" ">
-                             @foreach($usedMedSupply as $supply)
-                                @if($supply->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $supply->brand }}
-                                  </p>
-                                @endif
-                              @endforeach
-                            </td>
-                            <td class=" ">
-                              @foreach($usedMedSupply as $supply)
-                                @if($supply->clinicLogID == $medicalLog->clinicLogID)
-                                  <p>
-                                    {{ $supply->quantity }}
-                                  </p>
-                                @endif
-                              @endforeach
-                            </td>
-                            <td class=" ">
-                              @if($physician['lastName'])
-                                {{ $physician['lastName'] }}, {{ $physician['firstName'] }} {{ $physician['middleName'] }} {{ $physician['quantifier'] }}
+                              @if($medicalLog->timeOut)
+                                {{ date('h:i a', strtotime($medicalLog->timeOut)) }}
+                              @else
+                                {{ "NONE" }}
                               @endif
                             </td>
-                            <td class=" ">
-                               {{ $medicalLog->lastName }}, {{ $medicalLog->firstName }} {{ $medicalLog->middleName }} {{ $medicalLog->quantifer }}
-                            </td>
-                            <td class=" ">
-                              {{ date('m-d-Y', strtotime($medicalLog->clinicLogDateTime)) }}
-                            </td>
-                            <td class=" last">{{ date('h:i a', strtotime($medicalLog->clinicLogDateTime)) }}</td>
+                           <td>
+                              <a href="{{ route('nurse.patient.medical.log.edit', $medicalLog->clinicLogID) }}">
+                                  <button class="btn btn-primary" data-toggle="tooltip" title="View More Info">
+                                    <i class="fa fa-angle-double-right"></i>
+                                  </button>
+                                </a>
+                                
+                                  <button class="btn btn-danger delete-button" data-toggle="tooltip" title="Delete"  data-id="{{ $medicalLog->clinicLogID }}">
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+                           </td>
                           </tr> 
                           @php($ctr++)
                         @endforeach
@@ -147,6 +107,10 @@
                     </div>
 
                     <div style="float: right; margin-top:30px;">
+                      <a href="{{ url('/print/medical/log/each', $patientInfo->patientID) }}" target="_blank">
+                          <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print Medical Logs</button>
+                      </a>
+                      
                       <a href="{{ route('personal.info', $patientInfo->patientID) }}"> 
                         <button class="btn btn-primary">BACK</button>
                       </a>
@@ -185,7 +149,7 @@
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-3">Student/Faculty Number: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="patientNumber" name="patientNumber" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" required value="{{ $patientInfo->patientNumber }}">
+              <input type="text" class="form-control" style="border-radius:8px;" id="patientNumber" name="patientNumber" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" value="{{ $patientInfo->patientNumber }}">
             </div>
           </div>
 

@@ -47,7 +47,7 @@
                         </thead>
 
                         <tbody>
-                          @php($ctr = 1)
+                          @php($ctr = sizeof($referrals))
                           @foreach($referrals as $referral)
                             <tr class="even pointer">
                               <td class=" ">
@@ -116,7 +116,7 @@
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                               </td>
                             </tr>
-                            @php($ctr++)
+                            @php($ctr--)
                           @endforeach
                         </tbody>
                       </table>
@@ -280,7 +280,8 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">',
+        "order": [[ 0, "desc" ]]
     });
 
     $('#search').keyup(function(){
