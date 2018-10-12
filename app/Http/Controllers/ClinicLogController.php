@@ -476,7 +476,7 @@ class ClinicLogController extends Controller
             return view('nurse.C_nurse_medical_cert_edit')->with(['clinicLogInfo' => $clinicLogInfo, 'attendingPhysician' => $attendingPhysician, 'logReferral' => $logReferral, 'patientName' =>$patientName]);
         }
         else{
-
+            
             return view('nurse.C_nurse_patient_medical_log_edit')->with(['clinicLogInfo' => $clinicLogInfo, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'attendingPhysician' => $attendingPhysician, 'physicians' => $physicians, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'vitalSign' => $vitalSigns, 'recommendation' => $recommendations, 'medicineName' => $medicineName, 'prescription' => $prescriptionID]);
         }
        
