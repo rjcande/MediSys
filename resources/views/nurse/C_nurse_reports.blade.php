@@ -285,6 +285,7 @@
                                     </thead>
 
                                     <tbody>
+                                     
                                        @foreach($results as $key => $medicine)
                                        <tr class="even-pointer">
                                           <td class=" ">
