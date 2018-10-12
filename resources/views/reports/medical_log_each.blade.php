@@ -35,7 +35,7 @@
         <header style="font-size: 25px;">MEDICAL SERVICES DEPARTMENT</header>
         <header style="font-size: 25px;">Sta. Mesa, Manila</header>
         <hr>
-        <h1>Medical Log</h1>
+        <h1>Daily Treatment Record</h1>
       </center>
       <label>Patient Name:{{ $patientInfo['lastName'] }}, {{ $patientInfo['firstName'] }} {{ $patientInfo['middleName']{0} }}@if($patientInfo['middleName']){{ '.' }}@endif {{ $patientInfo['quantifier'] }} </label><br>
       <label>

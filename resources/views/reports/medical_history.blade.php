@@ -259,6 +259,10 @@
                   <input type="radio" name="immudpt" value="0" @if($medicalHistory->immuDPT == '0') {{ 'checked' }} @endif>None
               </td>
             </tr>
+            <tr>
+              <td><b>Physician's Signature:</b></td>
+              <td></td>
+            </tr>
           </tbody>
       </table>
     </div>

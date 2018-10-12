@@ -97,7 +97,7 @@
                         </tbody>
                       </table> 
                         <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#printModal">
-                          <i class="fa fa-print"></i> Print
+                          <i class="fa fa-print"></i> Print Medical Log
                         </button>
                     </div>
                     <!--/Content-->

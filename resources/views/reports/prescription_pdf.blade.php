@@ -28,11 +28,12 @@
 </head>
 <body>
     <div>
+      <img src={{asset("images/pup-logo.png")}} style="float: left;" width="75px" height="75px">
       <center>
-        <header style="font-size: 15px;">Republic of the Philippines</header><br>
-        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
+        <header style="font-size: 15px;">Republic of the Philippines</header>
+        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header>
+        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header>
+        <header style="font-size: 15px;">Sta. Mesa, Manila</header>
         <h1>Medication Prescription</h1>
       </center>
       <p>Patient Name: {{ $clinicLogInfo->lastName }}, {{ $clinicLogInfo->firstName }} {{ $clinicLogInfo->middleName }} {{ $clinicLogInfo->quantifier }}</p>
