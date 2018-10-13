@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -152,10 +152,16 @@
                               <header style="margin-bottom:12px; margin-left:25px;"> Dosage</header>
                             </div>
                             <div style="float:left;">
-                              <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                              {{-- <select name="dosage" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" id="dosage" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
                                 @foreach($medicines as $medicine)
                                   <option value="{{$medicine->dosage}}">{{$medicine->dosage}}</option>
                                 @endforeach
+                              </select> --}}
+                              <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" id="dosage" data-parsley-group="second" data-parsley-required="true" data-parsley-errors-container="#error-dosage" data-parsley-error-message="dosage is required">
+                              <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="second" data-parsley-required="true" data-parsley-errors-container="#error-dosage">
+                                <option value="mg">mg</option>
+                                <option value="g">g</option>
+                                <option value="oz">oz</option>
                               </select>
                               <br>
                             </div><br>
@@ -171,17 +177,18 @@
                               <header style="margin-bottom:12px; margin-left:25px;"> Medication</header>
                             </div>
                             <div style="float:left; width: 300px; font-size: 15px;">
-                              <header style="display: inline;">every</header>
+                              {{-- <header style="display: inline;">every</header>
                               <input type="number" name="hrs_day" style="width: 20%; border-radius: 10px;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="hrs/day is required">
                               <header style="display: inline;">hrs/day</header>
                               <header style="display: inline;">for</header>
                               <input type="number" name="week" style="width: 20%; border-radius: 10px; display: inline;" data-parsley-group="second" data-parsley-required = "true" data-parsley-errors-container="#error-dosageUnit" data-parsley-error-message="week/s is required">
-                              <header style="display: inline;">week/s</header>
+                              <header style="display: inline;">week/s</header> --}}
+                              <input type="text" name="medication" id="medication" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-errors-container="#error-medication" data-parsley-group="second" data-parsley-error-message = "Medication is Required">
                               <br>
                             </div><br><br>
                           </div>
                           <br>
-                          <div style="float: left; width: 100%; padding-left: 150px;" id="error-dosageUnit">
+                          <div style="float: left; width: 100%; padding-left: 150px;" id="error-medication">
                               
                           </div>
 
@@ -282,8 +289,8 @@
 
                             <tbody id="medicineTableBody">
                               @foreach($medsGiven as $meds)
-                              <tr class="even pointer">
-                                <td></td>                         
+                              <tr class="even pointer">  
+                                <td></td>                               
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
                                 <td>{{$meds->quantity}}</td>
@@ -294,13 +301,13 @@
                               @endforeach
                             </tbody>
                           </table>
-                           <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                           {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                             <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
                       
                       <!-- MEDICAL SUPPLIES GIVEN TABLE -->
-                      <div id="medicineTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
+                      <div id="medSupplyTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
                         <div class="table-responsive" style="width: 100%; float: left;">
                         
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
@@ -331,14 +338,14 @@
                             @endforeach
                           </tbody>
                           </table>
-                          <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                          {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                           <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
                     </div>
 
                       <!-- PRESCRIBED MEDICINE TABLE -->
-                    <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
+                    <div id="prescriptionTable" class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
                         <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                         <div class="table-responsive">
                           <table class="table table-striped table-bordered jambo_table bulk_action">
@@ -370,8 +377,8 @@
                               @endforeach
                             </tbody>
                           </table>
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
+                          {{-- <button type="button" class="btn btn-default"
+                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
                           <button type="button" class="btn btn-default"
                             style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
@@ -380,7 +387,7 @@
                 
                       <div style="margin-left: 40%;margin-top: 25px;float: left;;width: 50%">
                         
-                        <a href="{{route('dentist.generate.prescription', $patientDentalLog->clinicLogID)}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button></a>
+                        <a href="{{route('dchief.generate.prescription', $patientDentalLog->clinicLogID)}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-download"></i>Print Prescription</button></a>
                         <button class="btn btn-success" id="btnSave" type="submit" >SAVE</button>
                         </form>
                         <a href="{{ url('/dchief/DentalLog') }}"><button class="btn btn-primary" type="button">BACK</button></a>
@@ -425,23 +432,30 @@ $(document).ready(function(){
     else{
       $('#treatment').prop("disabled", true);
       $('#treatment').prop('required', false);
+      $('#treatment').val('');
     }
   });
   //FUNCTION IN ENABLING THE TXTBOXES
   $('input[name=restorationChk]').change(function(){
     if(this.checked){
       $('input[name=restorationTxt]').prop('disabled', false);
+      $('input[name=restorationTxt]').attr('required',true);
     }
     else{
       $('input[name=restorationTxt]').prop('disabled',true);
+      $('input[name=restorationTxt]').attr('required',false);
+      $('input[name=restorationTxt]').val('');
     }
   });
   $('input[name=extractionChk]').change(function(){
     if(this.checked){
       $('input[name=extractionTxt]').prop('disabled', false);
+      $('input[name=extractionTxt]').attr('required',true);
     }
     else{
       $('input[name=extractionTxt]').prop('disabled',true);
+      $('input[name=extractionTxt]').attr('required',false);
+      $('input[name=extractionTxt]').val('');
     }
   });
 
@@ -456,6 +470,23 @@ $(document).ready(function(){
         $('#medicineUnit').empty();
         $('#medicineBrand').prop("disabled", false);
         $('#medicineUnit').prop("disabled", false);
+
+        var str = data[0]['dosage'];
+          var splitted = str.split(" ");
+
+          $('#dosage').val(splitted[0]);
+          if(splitted[1] == 'mg'){
+            $('#dosageUnit').val("mg");
+          }
+          else if(splitted[1] == 'ml'){
+            $('#dosageUnit').val("ml");
+          }
+          else if(splitted[1] == 'g'){
+            $('#dosageUnit').val("g");
+          }
+          else if(splitted[1] == 'oz'){
+            $('#dosageUnit').val("oz");
+          }
 
         $.each(data, function(index, medBrand){
           $('#medicineBrand').append('<option value="'+medBrand.medicineID+'">'+medBrand.brand+'</option>');
@@ -496,10 +527,11 @@ $(document).ready(function(){
         medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
         medicineUnit = $('select#medicineUnit option:selected').text();
         id_medicineUnit = $('select#medicineUnit').val();
-        dosage[dosage.length] = $('#dosage').val();
+        // dosage[dosage.length] = $('#dosage').val();
         // medication[medication.length] = $('#medication').val(); 
-        // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
-        medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
+        dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+        // medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
+        medication[medication.length] = $('input[name=medication]').val();
         isPrescribed[isPrescribed.length] = 0;
         isGiven[isGiven.length] = 1;
 
@@ -547,10 +579,11 @@ $(document).ready(function(){
           medicineQuantity[medicineQuantity.length] = $('input#medQuantity').val();
           medicineUnit = $('select#medicineUnit option:selected').text();
           id_medicineUnit = $('select#medicineUnit').val();
-          dosage[dosage.length] = $('#dosage').val();
+          // dosage[dosage.length] = $('#dosage').val();
           // medication[medication.length] = $('#medication').val();
-          // dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
-          medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
+          dosage[dosage.length] = $('input[name=dosage]').val() + " " + $('#dosageUnit option:selected').val();
+          // medication[medication.length] ="Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ";
+          medication[medication.length] = $('input[name=medication]').val();
           isPrescribed[isPrescribed.length] = 1;
           isGiven[isGiven.length] = 0
 
@@ -572,8 +605,7 @@ $(document).ready(function(){
           var id = {///////////////
             medicineID: id_medBrandName,///////////////
             medQuantity: medicineQuantity,/////////////////
-            // medicineUnit: id_medicineUnit,///////////
-            medicineUnit: medicineUnit,
+            medicineUnit: id_medicineUnit,///////////
             medSupplyID: id_medSuppBrandName,///////////////
             medSupplyQuantity: medSuppQuantity,///////////////
             medSuppUnit: id_medSuppUnit,////////////
@@ -594,7 +626,7 @@ $(document).ready(function(){
                 title: "Dental Log Updated",///////////////
                 text: "Dental Log Updated!!",///////////////
                 icon: "success",///////////////
-                buttons: "confirm",///////////////
+                buttons: "CONFIRM",///////////////
               })///////////////
               .then((willRoute)=>{///////////////
                   window.location.href = "/dchief/DentalLog";///////////////

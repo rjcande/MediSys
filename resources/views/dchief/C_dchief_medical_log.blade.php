@@ -20,11 +20,11 @@
                   {{-- <h2>{{date('F, Y')}}</h2> --}}
                   <button class="btn btn-round btn-success" data-toggle="modal" data-target="#logPatientModal" style="float:left">Log Patient</button>
                     <div style="float: right;">
-
+                      
                       <div class="col-md-2 col-sm-12 col-xs-12" style="width: 70px; float: right">
                         <button class="btn btn-round btn-default" data-toggle="modal" data-target="#modalFilter"><i class="fa fa-filter"></i>Filter</button>
                       </div>
-
+  
                       <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
                         <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
                       </div>
@@ -54,7 +54,7 @@
                       </thead>
 
                       <tbody>
-                        @php($ctr = 1)
+                        @php($ctr = sizeof($dentalLogs))
                         {{ Session::put('number', $ctr)}}
                         @foreach ($dentalLogs as $dentalLog)
                         <tr class="even pointer">
@@ -77,15 +77,25 @@
                             {{
                                 'Admin/Dept'
                             }}
+                            @elseif($dentalLog->patientType == 4)
+                            {{
+                                'Visitor'
+                            }}
                             @endif
                           </td>
-                          <td class="">{{$attendingDentist['lastName']}}, {{$attendingDentist['firstName']}} {{$attendingDentist['middleName']}} {{$attendingDentist['quantifier']}}</td>
+                          <td class="">
+                            @foreach($attendingDentist as $dentist)
+                              @if($dentalLog->clinicLogID == $dentist->clinicLogID)
+                                {{$dentist->lastName}}, {{$dentist->firstName}} {{$dentist->middleName}} {{$dentist->quantifier}}
+                              @endif
+                            @endforeach
+                          </td>{{-- <td class="">{{$attendingDentist['id']}}</td> --}}
                           <td class="">
                             @if($dentalLog->concern == 0)
                             {{'Consultation'}}
                             @elseif($dentalLog->concern == 1)
                             {{'Certification'}}
-                            @endif
+                            @endif  
                           </td>
                           <td class=" ">{{ date("F d, Y", strtotime($dentalLog->clinicLogDateTime)) }}</td>
                           <td class=" ">{{ date("h:i a", strtotime($dentalLog->clinicLogDateTime)) }}</td>
@@ -104,7 +114,7 @@
                                 <i class='fa fa-angle-double-right'></i>
                               </button>
                             </a>
-                              @if($dentalLog->concern == 1)
+                              @if($dentalLog->concern == 1)                                
                                 <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                               @elseif($dentalLog->concern == 0)
                                 <a href="{{route('dchief.dentalLog.edit', $dentalLog->clinicLogID)}}">
@@ -116,23 +126,23 @@
                               </button>
                           </td>
                         </tr>
-                        @php($ctr++)
+                        @php($ctr--)
                         @endforeach
                       </tbody>
                     </table>
-                    {{-- <a target="_blank" href="{{route('dchief.generate.dentalTable')}}"> --}}
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dentalTableModal"><i class="fa fa-print"></i> Print</button>
+                    {{-- <a target="_blank" href="{{route('dentist.generate.dentalTable')}}"> --}}
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dentalTableModal"><i class="fa fa-print"></i> Print Dental Log Table</button>
                     {{-- </a> --}}
                     </div>
-                <!--Content -->
+                <!--Content --> 
               </div name="x_content">
               </div name="x_panel">
             </div>
-            <!-- /form input mask -->
+            <!-- /form input mask -->  
           </div>
         </div>
       </div>
-
+  
 <!------------------------------------------------------------- LOG PATIENT MODAL---------------------------------------------------------------------->
 <div id="logPatientModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -144,7 +154,7 @@
         <h4 class="modal-title">Medical Log Information</h4>
       </div>
       <!-- Modal Body -->
-
+        
       <div class="modal-body">
         <form id="logPatientForm" class="form-horizontal form-label-left" method="get">
           @csrf
@@ -157,14 +167,14 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Student/Faculty Number*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Student/Faculty Number: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="patientNumber" maxlength="17" name="patientNumber" data-parsley-pattern="[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]" required data-parsley-group="patientNumber">
             </div>
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Patient Name: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <input type="text" class="form-control" style="border-radius:8px;" id="patientName" required name="patientName" placeholder="Last Name, First Name Middle Name">
             </div>
@@ -197,10 +207,10 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern*: </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Concern: </label>
             <div class="col-md-9 col-sm-9 col-xs-9">
               <select class="form-control" style="border-radius:8px;" required="required" id="concern" name="concern">
-                <option value="" disabled selected>-SELECT CONCERN-</option>
+                <option value="" disabled selected></option>
                 <option value="0">Consultation</option>
                 <option value="1">Letter/Certification</option>
               </select>
@@ -210,7 +220,7 @@
           <input type="hidden" name="patientID" value="">
 
           <!-- SA SUSUNOD NA PAGCOCODE AYUSIN NA YUNG UI, YUNG DATE, TIME, AT YUNG PAGKUHA NG DENTIST IS DAPAT NAKAHIDDEN NA. -->
-
+      
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
@@ -235,33 +245,47 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Print Dental Log</h4>
         </div>
-        <form id="printDentalLog" action="{{route('dentist.generate.dentalTable')}}" target="_blank" method="get">
+        <form id="printDentalLog" action="{{route('dchief.generate.dentalTable')}}" target="_blank" method="get">
           @csrf()
           <div class="modal-body">
-              <div class="col-md-4">
+              <div style="float:left; margin-left: 5px">
                   <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
               </div>
-              <div class="col-md-4">
-                  <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+              <div style="float:left; margin-left: 5px">
+                  <input type="checkbox" name="weekly" id="weekly" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Weekly</label>
               </div>
-              <div class="col-md-4">
+              <div style="float:left; margin-left: 5px">
+                  <input type="checkbox" name="mon" id="mon" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+              </div>
+              <div style="float:left; margin-left: 5px">
                   <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
               </div>
               <div style="100%" id="error_container">
-
+              
               </div>
               <br><br>
-
+              
               <div style="width: 100%">
                 <div class="form-group">
-                    <label style="margin-left: 5px; width: 50px">Date: </label>
-                    <input type="date" name="date" style="width: 70%" disabled id="date">
+                    <label style=" width: 50px">Date: </label>
+                    <input type="date" name="date" style="width: 70%; border-radius: 5px" disabled id="date">
                 </div>
               </div>
 
               <div style="width: 100%">
-                  <label style="margin-left: 5px; width: 50px">Month: </label>
-                  <select name="mon" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+                <div class="form-group">
+                    <label style=" width: 50px">Week: </label>
+                    <label style="margin-left: 4px; width: 50px">From: </label>
+                    <input type="date" name="weekFrom" style="width: 49%; border-radius: 5px" disabled id="weekFrom"><br>
+                    <label style="margin-left: 55px; width: 50px"> To: </label>
+                    <input type="date" name="weekTo" style="width: 50%; border-radius: 5px" disabled id="weekTo">
+
+                </div>
+              </div>
+
+              <div style="width: 100%">
+                  <label style="width: 50px">Month: </label>
+                  <select name="month" id="month" style="border-radius: 5px; width: 50%" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
                       <option value="" selected></option>
                       <option value="1">January</option>
                       <option value="2">February</option>
@@ -277,21 +301,21 @@
                       <option value="12">December</option>
                   </select>
 
-                  <select name="yearMonth" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                  <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
                       <option value="" selected disabled>Year</option>
                   </select>
               </div>
               <div style="100%" id="error_container_month">
-
+              
               </div>
               <div style="width: 100%">
-                  <label style="margin-left: 5px;  width: 50px">Year: </label>
-                  <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+                  <label >Year: </label>
+                  <select name="year" class="year" id="year" style="margin-left:15px ;width: 70%; border-radius: 8%" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
                       <option value="" selected disabled>Year</option>
                   </select>
               </div>
               <div style="width: 100%" id="error_container_year">
-
+                
               </div>
           </div>
 
@@ -359,7 +383,7 @@
           <option value="letter/certification">Letter/Certificate</option>
         </select>
       </div>
-
+    
       <div class="modal-footer" style="margin-right:0%">
         <button class="btn btn-primary" id="btnReset">Reset Filter</button>
         <button class="btn btn-success" id="btnDone" data-dismiss="modal">DONE</button>
@@ -375,7 +399,7 @@
 
 <script>
   $(document).ready(function(){
-
+    
     //testing autocomplete
     var checkRecord;
 
@@ -394,7 +418,6 @@
 
       onSearchComplete: function(input, suggestions){
         if(suggestions.length == 0 && input.length == 15){
-          
           $('#logPatientForm').parsley().validate('patientNumber');
 
           if($('#logPatientForm').parsley().isValid('patientNumber')){
@@ -425,8 +448,8 @@
               });
             }
           });
+          
           }
-
         }
       }
     });
@@ -436,6 +459,9 @@
       serviceUrl:'/dchief/dentalform/autocomplete/name',
       paramName: 'input',
       onSelect: function (suggestion) {
+        if(suggestion.number == ''){
+          $('#patientNumber').prop('required', false);
+        }
         $('#patientID').text(suggestion.id);
         $('#patientNumber').val(suggestion.number);
         $('input[name=patientID]').val(suggestion.id);
@@ -448,7 +474,7 @@
             checkRecord = 0;
             $('#patientNumber').prop('required', false);
             $('#concern').prop('required', false);
-
+           
         }
       }
     });
@@ -474,7 +500,7 @@
     });
 
 		//End test
-
+    
     $('#logPatientForm').parsley();
 
     //delete button is clicked
@@ -531,7 +557,7 @@
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">'
+        "dom": '<"top"i>rt<"bottom"p><"clear">' 
     });
 
     $('#search').keyup(function(){
@@ -560,7 +586,7 @@
 
       table.column(8).search(date).draw();
       table.column(7).search(concern).draw();
-
+   
 
     });
 
@@ -586,7 +612,7 @@
 
     });
 
-    //Validation For Printing of Medical Log
+    //Validation For Printing of Dental Log
     $('#daily').on('change', function(){
       if ($(this).is(':checked')) {
         $('#date').prop('disabled', false);
@@ -597,7 +623,21 @@
         $('#date').prop('required', false);
       }
     });
-    $('#monthly').on('change', function(){
+    $('#weekly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#weekFrom').prop('disabled', false);
+        $('#weekFrom').prop('required', true);
+        $('#weekTo').prop('disabled', false);
+        $('#weekTo').prop('required', true);
+      }
+      else{
+        $('#weekFrom').prop('disabled', true);
+        $('#weekFrom').prop('required', false);
+        $('#weekTo').prop('disabled', true);
+        $('#weekTo').prop('required', false);
+      }
+    });
+    $('#mon').on('change', function(){
       if ($(this).is(':checked')) {
         $('#month').prop('disabled', false);
         $('#month').prop('required', true);
@@ -639,14 +679,15 @@
       $('#year-month').prop('required', false);
       $('#year').prop('required', false);
     });
-
+    
+    
   });
 
   //Reset form on page load
   $(window).bind("pageshow", function() {
     $('#logPatientForm')[0].reset();
   });
-
+  
 </script>
 
 @endsection

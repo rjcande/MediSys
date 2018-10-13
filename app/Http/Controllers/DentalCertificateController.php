@@ -258,7 +258,7 @@ class DentalCertificateController extends Controller
     public function generateDentalLogTable(Request $request)
     {
         $date = $request->all();
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == '') {
+        if ($request->daily == 1 && $request->yearly == '' && $request->mon == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -267,7 +267,7 @@ class DentalCertificateController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly == 1){
+        if ($request->daily == '' && $request->yearly == '' && $request->mon == '' && $request->weekly == 1){
             $from = $request->weekFrom;
             $to = $request->weekTo. ' 23:59:59';
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
@@ -278,7 +278,7 @@ class DentalCertificateController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
+        if ($request->mon == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -288,7 +288,7 @@ class DentalCertificateController extends Controller
                         ->orderBy('cliniclogs.clinicLogID', 'ASC')
                         ->get();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == '') {
+        if ($request->yearly == 1 && $request->mon == '' && $request->daily == '' && $request->weekly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -298,7 +298,7 @@ class DentalCertificateController extends Controller
                         ->get();
         }
 
-        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == 1) {
      
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
@@ -314,7 +314,7 @@ class DentalCertificateController extends Controller
                         ->get();
         }
         
-        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == '') {
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -328,7 +328,7 @@ class DentalCertificateController extends Controller
                         ->get();
         }    
 
-        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == '') {
+        if ($request->mon == 1 && $request->yearly == 1 && $request->daily == '') {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -342,7 +342,7 @@ class DentalCertificateController extends Controller
                         ->get();
         }
 
-        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1) {
+        if ($request->mon == '' && $request->yearly == 1 && $request->daily == 1) {
             $dentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                         ->select('patients.*', 'cliniclogs.*')
                         ->where('cliniclogs.isDeleted', '=', '0')
@@ -404,19 +404,8 @@ class DentalCertificateController extends Controller
 
     public function generatePatientList(Request $request)
     {
-        // $patientRecords = Patient::select('patients.*')
-        //                         ->where('isDeleted', '=', '0')
-        //                         ->get();
 
-        // if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '') {
-        //     $patientRecords = Patient::select('patients.*')
-        //                 ->whereDate('patients.created_at', '=', $request->date)
-        //                 ->orderBy('patients.patientID', 'DESC')
-        //                 ->get();
-
-        // }
-
-        if ($request->daily == 1 && $request->yearly == '' && $request->monthly == '' && $request->weekly == ''){
+        if ($request->daily == 1 && $request->yearly == '' && $request->mon == '' && $request->weekly == ''){
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->whereDate('created_at', '=', $request->date)
@@ -440,7 +429,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->daily == '' && $request->yearly == '' && $request->monthly == '' && $request->weekly == 1){
+        if ($request->daily == '' && $request->yearly == '' && $request->mon == '' && $request->weekly == 1){
             $from = $request->weekFrom;
             $to = $request->weekTo. ' 23:59:59';
             $patientListStudent = Patient::where('isDeleted', '=', 0)
@@ -467,7 +456,7 @@ class DentalCertificateController extends Controller
                        ->get();
         }
 
-        if ($request->monthly == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == ''){
+        if ($request->mon == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == ''){
              $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->whereMonth('created_at', '=', $request->month)
@@ -495,7 +484,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->yearly == 1 && $request->monthly == '' && $request->daily == '' && $request->weekly == ''){
+        if ($request->yearly == 1 && $request->mon == '' && $request->daily == '' && $request->weekly == ''){
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->whereYear('created_at', '=', $request->year)
@@ -520,7 +509,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == 1) {
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == 1) {
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->where(function($query) use ($request){
@@ -564,7 +553,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->daily == 1 && $request->monthly == 1 && $request->yearly == ''){
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == ''){
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->where(function($query) use ($request){
@@ -604,7 +593,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->monthly == 1 && $request->yearly == 1 && $request->daily == ''){
+        if ($request->mon == 1 && $request->yearly == 1 && $request->daily == ''){
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->where(function($query) use ($request){
@@ -644,7 +633,7 @@ class DentalCertificateController extends Controller
                        ->orderBy('patientID', 'DESC')
                        ->get();
         }
-        if ($request->monthly == '' && $request->yearly == 1 && $request->daily == 1){
+        if ($request->mon == '' && $request->yearly == 1 && $request->daily == 1){
             $patientListStudent = Patient::where('isDeleted', '=', 0)
                        ->where('patientType', '=', '1')
                        ->where(function($query) use ($request){
@@ -683,11 +672,13 @@ class DentalCertificateController extends Controller
         
         if(Session::get('accountInfo.position') == 4){
             $pdf = PDF::loadview('dentist.printables.patientList-pdf', compact('patientListStudent', 'patientListAdmin', 'patientListFaculty', 'patientListVisitor'));
+            // $pdf = PDF::loadview('dentist.printables.patientList-pdf')->with(['patientListStudent'=>$patientListStudent, 'patientListAdmin'=>$patientListAdmin, 'patientListFaculty'=>$patientListFaculty,'patientListVisitor'=>$patientListVisitor]);            
             $pdf->setPaper('legal', 'landscape');
             return $pdf->stream('patientList-pdf');
         }
         elseif(Session::get('accountInfo.position') == 2){
-            $pdf = PDF::loadview('dchief.printables.patientList-pdf', compact('patientRecords'));
+            $pdf = PDF::loadview('dchief.printables.patientList-pdf',  compact('patientListStudent', 'patientListAdmin', 'patientListFaculty', 'patientListVisitor'));
+            // $pdf = PDF::loadview('dentist.printables.patientList-pdf')->with(['patientListStudent'=>$patientListStudent, 'patientListAdmin'=>$patientListAdmin, 'patientListFaculty'=>$patientListFaculty,'patientListVisitor'=>$patientListVisitor]);
             $pdf->setPaper('legal', 'landscape');
             return $pdf->stream('patientList-pdf');
         }
@@ -699,14 +690,14 @@ class DentalCertificateController extends Controller
         //                         ->where([['medicines.isDeleted', '<>', '1'], ['medicines.medType', '=', 'D']])
         //                         ->get();
 
-        if ($request->monthly == 1 && $request->yearly == 1) {
+        if ($request->mon == 1 && $request->yearly == 1) {
      
             $medicineList = Medicine::select('medicines.*')
                                     ->where('medicines.isDeleted', '=', '0')
                                     ->where('medicines.medType','=', 'd')
                                     ->where(function($query) use ($request){
-                                        $query->whereMonth('medicines.created_at', '=', $request->mon)
-                                        ->whereYear('medicines.created_at', '=', $request->yearMonth)
+                                        $query->whereMonth('medicines.created_at', '=', $request->month)
+                                        ->whereYear('medicines.created_at', '=', $request->year_month)
                                         ->orwhereYear('medicines.created_at', '=', $request->year);
                                     })
                                     ->orderBy('medicines.medicineID', 'DESC')
@@ -714,20 +705,20 @@ class DentalCertificateController extends Controller
             
         }
         
-        if ($request->monthly == 1 && $request->yearly == '') {
+        if ($request->mon == 1 && $request->yearly == '') {
             $medicineList = Medicine::select('medicines.*')
                                         ->where('medicines.isDeleted', '=', '0')
                                         ->where('medicines.medType','=', 'd')
                                         ->where(function($query) use ($request){
-                                            $query->whereMonth('medicines.created_at', '=', $request->mon)
-                                            ->whereYear('medicines.created_at', '=', $request->yearMonth);
+                                            $query->whereMonth('medicines.created_at', '=', $request->month)
+                                            ->whereYear('medicines.created_at', '=', $request->year_month);
                                         })
                                         ->orderBy('medicines.medicineID', 'DESC')
                                         ->get();
 
         }    
 
-        if ($request->monthly == '' && $request->yearly == 1) {
+        if ($request->mon == '' && $request->yearly == 1) {
             $medicineList = Medicine::select('medicines.*')
                                         ->where('medicines.isDeleted', '=', '0')
                                         ->where('medicines.medType','=', 'd')
@@ -749,14 +740,14 @@ class DentalCertificateController extends Controller
         //                                 ->where([['medsupplies.isDeleted', '<>', '1'], ['medsupplies.supType', '=', 'D']])
         //                                 ->get();
 
-        if ($request->monthly == 1 && $request->yearly == 1) {
+        if ($request->mon == 1 && $request->yearly == 1) {
      
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
                                     ->where('medsupplies.isDeleted', '=', '0')
                                     ->where('medsupplies.supType','=', 'd')
                                     ->where(function($query) use ($request){
-                                        $query->whereMonth('medsupplies.created_at', '=', $request->mon)
-                                        ->whereYear('medsupplies.created_at', '=', $request->yearMonth)
+                                        $query->whereMonth('medsupplies.created_at', '=', $request->month)
+                                        ->whereYear('medsupplies.created_at', '=', $request->year_month)
                                         ->orwhereYear('medsupplies.created_at', '=', $request->year);
                                     })
                                     ->orderBy('medsupplies.medSupID', 'DESC')
@@ -764,20 +755,20 @@ class DentalCertificateController extends Controller
             
         }
         
-        if ($request->monthly == 1 && $request->yearly == '') {
+        if ($request->mon == 1 && $request->yearly == '') {
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
                                         ->where('medsupplies.isDeleted', '=', '0')
                                         ->where('medsupplies.supType','=', 'd')
                                         ->where(function($query) use ($request){
-                                            $query->whereMonth('medsupplies.created_at', '=', $request->mon)
-                                            ->whereYear('medsupplies.created_at', '=', $request->yearMonth);
+                                            $query->whereMonth('medsupplies.created_at', '=', $request->month)
+                                            ->whereYear('medsupplies.created_at', '=', $request->year_month);
                                         })
                                         ->orderBy('medsupplies.medSupID', 'DESC')
                                         ->get();
 
         }    
 
-        if ($request->monthly == '' && $request->yearly == 1) {
+        if ($request->mon == '' && $request->yearly == 1) {
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
                                         ->where('medsupplies.isDeleted', '=', '0')
                                         ->where('medsupplies.supType','=', 'd')
@@ -806,12 +797,12 @@ class DentalCertificateController extends Controller
         if(Session::get('accountInfo.position') == 4){
             $pdf = PDF::loadview('dentist.printables.dentalHistory-pdf', compact('chosenHistory', 'patientInfo'));
             $pdf->setPaper('legal', 'portrait');
-            return $pdf->stream('dental_history-pdf');
+            return $pdf->stream('dentalHistory-pdf');
         }
         else if(Session::get('accountInfo.position') == 2){
             $pdf = PDF::loadview('dchief.printables.dentalHistory-pdf', compact('chosenHistory', 'patientInfo'));
             $pdf->setPaper('legal', 'portrait');
-            return $pdf->stream('dental_history-pdf');
+            return $pdf->stream('dentalHistory-pdf');
         }
     }
 

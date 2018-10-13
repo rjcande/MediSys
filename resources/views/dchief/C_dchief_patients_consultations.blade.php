@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -62,7 +62,7 @@
                                         @endforeach
                                     </td>
                                     <td class=" " style="text-align:center;">
-                                        @if($dentalLogs->reqForDentalCert == 1)
+                                        @if($dentalLogs->concern == 0)
                                         <a href="{{ route('dchief.show.all.consultations', $dentalLogs->clinicLogID) }}">
                                             <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View </button>
                                         </a>
