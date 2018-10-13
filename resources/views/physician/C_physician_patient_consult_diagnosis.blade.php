@@ -915,11 +915,13 @@
 
       if ($('#referTo').val() == '3') {
         $('#referToOthers').prop('disabled', false);
+        $('#referToOthers').prop('required', true);
       }
       else{
         $('#referToOthers').prop('disabled', true);
+        $('#referToOthers').prop('required', false);
       }
-    })
+    });
 
   });
 </script>

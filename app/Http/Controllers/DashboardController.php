@@ -106,11 +106,14 @@ class DashboardController extends Controller
 
     public function notificationClicked($id)
     {
+        $id_cliniclog; 
         $logreferrals = LogReferrals::find($id);
 
         $logreferrals->notif = 1;
-
+        $id_cliniclog = $logreferrals->clinicLogID;
         $logreferrals->save();
+
+        return Response::json(array('id' => $id_cliniclog));
     }
 
     public function dashboard()

@@ -212,9 +212,11 @@ class LogReferralsController extends Controller
                     ->where('logreferrals.clinicLogID', '=', $id)
                     ->first();
 
-        $medicineList = Medicine::all();
-        $medicineName = Medicine::groupBy('genericName')->get();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('medType', '=', 'm')->get();
+        $medicineName = Medicine::where('medtype', '=', 'm')
+                                ->groupBy('genericName')
+                                ->get();
+        $medicalSupplyList = MedicalSupply::where('supType', '=', 'm')->get();
 
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')
@@ -267,9 +269,11 @@ class LogReferralsController extends Controller
                     ->where('logreferrals.clinicLogID', '=', $id)
                     ->first();
 
-        $medicineList = Medicine::all();
-        $medicineName = Medicine::groupBy('genericName')->get();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('medType', '=', 'm')->get();
+        $medicineName = Medicine::where('medtype', '=', 'm')
+                                ->groupBy('genericName')
+                                ->get();
+        $medicalSupplyList = MedicalSupply::where('supType', '=', 'm')->get();
 
         $prescriptionInfo = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('prescriptions', 'prescriptions.treatmentID', '=', 'treatments.treatmentID')

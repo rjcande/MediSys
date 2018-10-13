@@ -6,7 +6,7 @@
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>List Of Medicine</h3><br>
+                <h3>List of Medicine</h3><br>
                 
               </div>
             </div>
@@ -25,6 +25,7 @@
                       <label>To:</label>
                       <input type="date" name="to" id="to" class="date-range-filter" style="height: 35px;">
                       <button type="button" class="btn btn-primary" id="filter">Apply</button>
+                      <button type="button" class="btn btn-warning" id="clearFilter">Clear Filter</button>
                     </center>
                     
                     <div class="clearfix">
@@ -220,6 +221,7 @@
         "buttons": [
             {
                 extend: 'print',
+                text: 'Print List of Medicine',
                 customize: function ( win ) {
                     $(win.document.body)
                         .css( 'background-color', 'white' )
@@ -227,10 +229,19 @@
                     $(win.document.body).find( 'table' )
                         .addClass( 'compact' )
                         .css( 'font-size', 'inherit' );
+                },
+                exportOptions: {
+                  rows: ':visible'
                 }
             }
         ]
     });
+
+  $('#clearFilter').on('click', function(e){
+    e.preventDefault();
+    $.fn.dataTableExt.afnFiltering.length = 0;
+    table.dataTable().fnDraw();
+  });
 
   $('#filter').on('click', function(e){
     e.preventDefault();
@@ -265,11 +276,11 @@
   };
 
   // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
-var normalizeDate = function(dateString) {
-  var date = new Date(dateString);
-  var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
-  return normalized;
-}
+    var normalizeDate = function(dateString) {
+      var date = new Date(dateString);
+      var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
+      return normalized;
+    }
 
     $('#search').keyup(function(){
       table.search($(this).val()).draw();

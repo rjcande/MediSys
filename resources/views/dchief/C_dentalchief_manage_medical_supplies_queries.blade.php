@@ -2,53 +2,12 @@
 
 @section('content')
 
-	 <div class="right_col" role="main">
+   <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Medical Supplies List</h3><br>
-                <div style="width: 500px; font-size:18px">
-                  {{--  <form id="saveMedForm">
-                    @csrf()
-                    <div>
-                      <div style="float: left; width: 200px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Medical Supply ID:</header>
-                      </div>
-                      <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupID" data-parsley-required="true" value="{{ $id->id }}" readonly>
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 200px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Medical Supply Name:</header>
-                      </div>
-                      <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupName" data-parsley-required="true">
-                      </div>
-
-                    </div>
-                    <div>
-                      <div style="float: left; width: 200px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Brand Name:</header>
-                      </div>
-                      <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupBrandName" data-parsley-required="true">
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 200px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Unit:</header>
-                      </div>
-                      <div style="float: left; margin-left: 15px;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medSupUnit" data-parsley-required="true">
-                      </div>
-                    </div>
-                    <div style="float: left; display: flex; justify-content: center; width: 100%">
-                      <button type="submit" class="btn btn-success" id="btnAdd">ADD</button>
-                      <button type="reset" class="btn btn-warning" id="btnReset">CLEAR</button>
-                    </div>
-                  </div>
-                </form>  --}}
+                <h3>List of Medical Supply</h3><br>
+               
               </div>
             </div>
 
@@ -57,12 +16,18 @@
             <div class="row">
               <!-- form input mask -->
 
-               <div class="col-md-12 col-sm-12 col-xs-12" style="height:78vh;">
+               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    {{--  <h4>
-                      List of Medical Supply
-                    </h4>  --}}
+                   
+                    <center>
+                      <label>From:</label>
+                      <input type="date" name="from" id="from" class="date-range-filter" style="height: 35px;">
+                      <label>To:</label>
+                      <input type="date" name="to" id="to" class="date-range-filter" style="height: 35px;">
+                      <button type="button" class="btn btn-primary" id="filter">Apply</button>
+                      <button type="button" class="btn btn-warning" id="clearFilter">Clear Filter</button>
+                    </center>
                     <div class="clearfix">
                     </div>
                   </div>
@@ -72,45 +37,34 @@
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
+                            
                             <th class="column-title">Medical Supply Name</th>
-                          <th class="column-title">Brand Name</th>
+                            <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
-                            <th class="column-title no-link last"><span class="nobr">Action</span>
-                            </th>
-                            <th class="bulk-actions" colspan="8">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                            </th>
+                            <th class="column-title">Date Modified</th>
+                          
                           </tr>
                         </thead>
 
                         <tbody>
                           @foreach($supplies as $supply)
                             <tr class="even pointer">
-                              <td class="a-center ">
-                                <input type="checkbox" class="flat" name="table_records">
-                              </td>
+                              
                               <td class=" ">{{ $supply->medSupName }}</td>
                               <td class=" ">{{ $supply->brand }}</td>
                               <td class=" ">{{ $supply->unit }}</td>
-                              <td class="last">
-                                {{--  <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $supply->medSupName }}" data-brand="{{ $supply->brand }}" data-unit="{{ $supply->unit }}" data-id="{{ $supply->medSupID }}">
-                                  <i class="fa fa-pencil"></i>
-                                </button>  --}}
-
-                                <a href="{!! url('/dchief/restore/medicalSupply',$supply->medSupID) !!}"><button type="submit" class="btn btn-success">
-                                  <i class="fa fa-refresh"></i></button>
-                                </a>
+                              <td class=" ">
+                                @if($supply->updated_at)
+                                  {{ date('Y-m-d', strtotime($supply->updated_at)) }}
+                                @else
+                                  {{ "NONE" }}
+                                @endif
                               </td>
                             </tr>
                           @endforeach
                         </tbody>
                       </table>
-                      {{-- <a target="_blank" href="{{route('dchief.generate.medicalSupplyList')}}"> --}}
-                        {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplyListModal"><i class="fa fa-print"></i> Print Medical Supplies</button>  --}}
-                      {{-- </a> --}}
+                       
                     </div>
                   </div>
                 </div>
@@ -121,137 +75,82 @@
           </div>
         </div>
 
-<!-------------------------------------------------------------EDIT MODAL---------------------------------------------------------------------->
-<div id="medicineEditModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Medicine</h4>
-      </div>
-      <div class="modal-body">
-        <form id="editMedForm" class="form-horizontal form-label-left">
-          @csrf()
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Medicine ID: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="medicineID" readonly>
-            </div>
-          </div>
 
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Generic Name: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="genericName" required name="genericName">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Brand Name: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="brandName" name="brandName">
-            </div>
-          </div>
-
-          <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-3">Unit: </label>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <input type="text" class="form-control" style="border-radius:8px;" id="unit" name="unit">
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <input type="hidden" name="medicineID">
-        <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-       </form>
-    </div>
-
-  </div>
-</div>
-<!-------------------------------------------------------------/EDIT MODAL---------------------------------------------------------------------->
-
-<!-------------------------------------------------------------GENERATE MEDICAL SUPPLY LIST MODAL---------------------------------------------------------------------->
-<div class="modal fade" id="supplyListModal" role="dialog">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Print Medical Supply List</h4>
-      </div>
-      <form id="printSupplyList" action="{{route('dchief.generate.medicalSupplyList')}}" target="_blank" method="get">
-        @csrf()
-        <div class="modal-body">
-            <div class="col-md-4">
-                <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
-            </div>
-            <div class="col-md-4">
-                <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
-            </div>
-            <div style="100%" id="error_container">
-
-            </div>
-            <br><br>
-
-            <div style="width: 100%">
-                <label style="margin-left: 5px; width: 50px">Month: </label>
-                <select name="mon" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
-                    <option value="" selected></option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-
-                <select name="yearMonth" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="100%" id="error_container_month">
-
-            </div>
-            <div style="width: 100%">
-                <label style="margin-left: 5px;  width: 50px">Year: </label>
-                <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="width: 100%" id="error_container_year">
-
-            </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Continue</button>
-        </div>
-
-      </form>
-
-    </div>
-  </div>
-</div>
-<!-------------------------------------------------------------/GENERATE MEDICAL SUPPLY LIST MODAL---------------------------------------------------------------------->
 
 <script>
   $(window).load(function(){
-      //Data Table
-      $('#medicineTable').dataTable({
-        "bLengthChange": false,
-        "bFilter": true,
-        "bInfo": false,
-        "bAutoWidth": false });
+    //Data Table
+    var table = $('#medicineTable').dataTable({
+        
+       'sDom': '<"top">rt<"bottom"B><"clear">',
+        "buttons": [
+            {
+                extend: 'print',
+                text: 'Print List of Medical Supplies',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'background-color', 'white' )
+                        
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                },
+                 exportOptions: {
+                  rows: ':visible'
+                }
+            }
+        ]
+    });
+
+    $('#clearFilter').on('click', function(e){
+      e.preventDefault();
+      $.fn.dataTableExt.afnFiltering.length = 0;
+      table.dataTable().fnDraw();
+    });
+
+    $('#filter').on('click', function(e){
+    e.preventDefault();
+    var startDate = $('#from').val(),
+        endDate = $('#to').val();
+    
+    filterByDate(3, startDate, endDate); // We call our filter function
+    
+    table.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  var filterByDate = function(column, startDate, endDate) {
+  // Custom filter syntax requires pushing the new filter to the global filter array
+    $.fn.dataTableExt.afnFiltering.push(
+        function( oSettings, aData, iDataIndex ) {
+          var rowDate = normalizeDate(aData[column]),
+              start = normalizeDate(startDate),
+              end = normalizeDate(endDate);
+          
+          // If our date from the row is between the start and end
+          if (start <= rowDate && rowDate <= end) {
+            return true;
+          } else if (rowDate >= start && end === '' && start !== ''){
+            return true;
+          } else if (rowDate <= end && start === '' && end !== ''){
+            return true;
+          } else {
+            return false;
+          }
+        }
+    );
+  };
+
+  // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
+var normalizeDate = function(dateString) {
+  var date = new Date(dateString);
+  var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
+  return normalized;
+}
+    
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
       //Form validation
       $('#saveMedForm').parsley();
       $('#editMedForm').parsley();
@@ -265,15 +164,26 @@
             type: 'get',
             data: $(this).serialize(),
             success: function(output){
-              swal({
-                title: "Good job!",
-                text: output.message,
-                icon: "success",
-                button: "OK",
-              })
-              .then((value)=>{
-                location.reload(true);
-              });
+              if (output.message == "Medical Supply is already existing!") {
+                swal({
+                  title: "WARNING!",
+                  text: output.message,
+                  icon: "warning",
+                  button: "OK",
+                });
+              }
+              else{
+                swal({
+                  title: "Good job!",
+                  text: output.message,
+                  icon: "success",
+                  button: "OK",
+                })
+                .then((value)=>{
+                  location.reload(true);
+                });
+              }
+
             }
           });
         }
@@ -312,7 +222,7 @@
     $('.medicine-details').on('click',function(){
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to .......!",
+        text: "Once deleted, you will not be able to recover this record!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -337,21 +247,35 @@
         }
       });
     })
+    //Opening Edit Modal
+    $('#medicineEditModal').on('show.bs.modal', function(e){
+        var button = $(e.relatedTarget);
+        var genericName = button.data('genericname');
+        var brand = button.data('brand');
+        var unit = button.data('unit');
+        var id = button.data('id');
 
+        var modal = $(this);
+        modal.find('.modal-body #genericName').val(genericName);
+        modal.find('.modal-body #brandName').val(brand);
+        modal.find('.modal-body #unit').val(unit);
+        modal.find('.modal-body #medicineID').val(id);
+        modal.find('.modal-footer input[name=medicineID]').val(id);
+    });
+
+    //Printing of Medical Log
+    $('#printMedicalLog').parsley();
+    $('#printMedicalLog').submit(function(){
+      $('#printModal').modal('hide');
+
+    });
+    
     //drop down of year
     for (i = new Date().getFullYear(); i > 1999; i--)
     {
         $('.year').append($('<option />').val(i).html(i));
     }
-
-    //Printing of Medical Supply List
-    $('#printSupplyList').parsley();
-    $('#printSupplyList').submit(function(){
-      $('#supplyListModal').modal('hide');
-
-    });
-
-    //Validation For Printing of Dental Log
+    //Validation For Printing of Medical Log
     $('#daily').on('change', function(){
       if ($(this).is(':checked')) {
         $('#date').prop('disabled', false);
@@ -387,8 +311,8 @@
       }
     });
 
-    $('#supplyListModal').on('hidden.bs.modal', function () {
-      $('#printSupplyList')[0].reset();
+    $('#printModal').on('hidden.bs.modal', function () {
+      $('#printMedicalLog')[0].reset();
       $('#date').prop('disabled', true);
       $('#month').prop('disabled', true);
       $('#year-month').prop('disabled', true);
@@ -397,22 +321,6 @@
       $('#month').prop('required', false);
       $('#year-month').prop('required', false);
       $('#year').prop('required', false);
-    });
-
-    //Opening Edit Modal
-    $('#medicineEditModal').on('show.bs.modal', function(e){
-        var button = $(e.relatedTarget);
-        var genericName = button.data('genericname');
-        var brand = button.data('brand');
-        var unit = button.data('unit');
-        var id = button.data('id');
-
-        var modal = $(this);
-        modal.find('.modal-body #genericName').val(genericName);
-        modal.find('.modal-body #brandName').val(brand);
-        modal.find('.modal-body #unit').val(unit);
-        modal.find('.modal-body #medicineID').val(id);
-        modal.find('.modal-footer input[name=medicineID]').val(id);
     });
 
   });

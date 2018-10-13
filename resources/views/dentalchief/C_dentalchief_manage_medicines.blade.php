@@ -290,7 +290,7 @@
         // var genericname = $('input[name=genericName]').val();
         // var brandname = $('input[name=brandName]').val();
         // var medunit = $('input[name=unit]').val();
-        var dosage = $('input[name=dosage]').val() + ' ' + $('#dosageUnit').val();
+        var dosage = $('input[name=dosage]').val();
 
         var id = {
           // _genericName: genericname,
@@ -352,7 +352,7 @@
     $('.medicine-details').on('click',function(){
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to .......!",
+        text: "Once deleted, you will not be able to view this record!",
         icon: "warning",
         buttons: true,
         dangerMode: true,

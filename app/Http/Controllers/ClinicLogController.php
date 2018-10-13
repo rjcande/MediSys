@@ -140,9 +140,11 @@ class ClinicLogController extends Controller
     public function create()
     {
 
-        $medicineList = Medicine::all();
-        $medicineName = Medicine::groupBy('genericName')->get();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('medType', '=', 'm')->get();
+        $medicineName = Medicine::where('medtype', '=', 'm')
+                                ->groupBy('genericName')
+                                ->get();
+        $medicalSupplyList = MedicalSupply::where('supType', '=', 'm')->get();
         $physicians = Accounts::where('position', '=', '5')
                                 ->orWhere('position', '=', '3')
                                 ->get();
