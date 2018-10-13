@@ -24,6 +24,7 @@
                       <label>To:</label>
                       <input type="date" name="to" id="to" class="date-range-filter" style="height: 35px;">
                       <button type="button" class="btn btn-primary" id="filter">Apply</button>
+                      <button type="button" class="btn btn-warning" id="clearFilter">Clear Filter</button>
                     </center>
                     
                   
@@ -34,7 +35,7 @@
                   </div>
                   <div class="x_content">
                     <div class="">
-                      <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
+                      <table class="table table-striped table-bordered jambo_table bulk_action" id="accountTable">
                         <thead>
                           <tr class="headings">
                             <th class="column-title">Number </th>
@@ -106,56 +107,76 @@
         </div>
 
 <script type="text/javascript">
+  $(window).load(function(){
+     //Data Table
+    var table = $('#accountTable').dataTable({
+        
+       'sDom': '<"top">rt<"bottom"B><"clear">',
+        "buttons": [
+            {
+                extend: 'print',
+                text: 'Print Account List',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'background-color', 'white' )
+                        
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                },
+                 exportOptions: {
+                  rows: ':visible'
+                }
+            }
+        ]
+    });
+    
 
-   var table = $('#patientTable').dataTable({
-        "bLengthChange": false,
-        "bFilter": true,
-        "bInfo": false,
-        "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">'
+    $('#clearFilter').on('click', function(e){
+      e.preventDefault();
+      $.fn.dataTableExt.afnFiltering.length = 0;
+      table.dataTable().fnDraw();
     });
 
+    $('#filter').on('click', function(e){
+      e.preventDefault();
+      var startDate = $('#from').val(),
+          endDate = $('#to').val();
+      
+      filterByDate(6, startDate, endDate); // We call our filter function
+        
+      table.dataTable().fnDraw(); // Manually redraw the table after filtering
+    });
 
-  $('#filter').on('click', function(e){
-    e.preventDefault();
-    var startDate = $('#from').val(),
-        endDate = $('#to').val();
-    
-    filterByDate(6, startDate, endDate); // We call our filter function
-    
-    table.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
-
-  var filterByDate = function(column, startDate, endDate) {
-  // Custom filter syntax requires pushing the new filter to the global filter array
-    $.fn.dataTableExt.afnFiltering.push(
-        function( oSettings, aData, iDataIndex ) {
-          var rowDate = normalizeDate(aData[column]),
-              start = normalizeDate(startDate),
-              end = normalizeDate(endDate);
-          
-          // If our date from the row is between the start and end
-          if (start <= rowDate && rowDate <= end) {
-            return true;
-          } else if (rowDate >= start && end === '' && start !== ''){
-            return true;
-          } else if (rowDate <= end && start === '' && end !== ''){
-            return true;
-          } else {
-            return false;
+    var filterByDate = function(column, startDate, endDate) {
+    // Custom filter syntax requires pushing the new filter to the global filter array
+      $.fn.dataTableExt.afnFiltering.push(
+          function( oSettings, aData, iDataIndex ) {
+            var rowDate = normalizeDate(aData[column]),
+                start = normalizeDate(startDate),
+                end = normalizeDate(endDate);
+            
+            // If our date from the row is between the start and end
+            if (start <= rowDate && rowDate <= end) {
+              return true;
+            } else if (rowDate >= start && end === '' && start !== ''){
+              return true;
+            } else if (rowDate <= end && start === '' && end !== ''){
+              return true;
+            } else {
+              return false;
+            }
           }
-        }
-    );
-  };
+      );
+    };
 
-  // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
-var normalizeDate = function(dateString) {
-  var date = new Date(dateString);
-  var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
-  return normalized;
-}
-
-   setInterval(function() {
+      // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
+    var normalizeDate = function(dateString) {
+      var date = new Date(dateString);
+      var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
+      return normalized;
+    }
+     setInterval(function() {
     $.get('/medicalchief/getLastUserID', function(data){
 
       if ('{{ Session::get('lastUserID') }}' < data['newLastUser'].id) {
@@ -226,5 +247,10 @@ var normalizeDate = function(dateString) {
       }
     });
   });
+
+
+  });
+
+  
 </script>
 @endsection

@@ -709,8 +709,6 @@ Route::get('/dchief/generate/medicalSuppliesList', 'DentalCertificateController@
 
 Route::get('/dchief/generate/dentalHistory/{id}', 'DentalCertificateController@generateDentalHistoryPdf')->name('dchief.generate.dentalHistory');
 
-Route::get('/dentalchief/accounts_maintenance_queries', 'AccountsController@dchiefAccountQueries');
-
 Route::get('/dentalchief/accounts_maintenance_queries', 'DentalChiefController@accountQueries');
 
 Route::get('/dentalchief/medicines_maintenance_queries', 'DentalChiefController@medicineQueries');

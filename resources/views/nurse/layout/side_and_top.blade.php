@@ -77,7 +77,7 @@
             <span class="badge bg-blue" id="notifNumber"></span>
           </a>
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-          
+           
           </ul>
         </li>
       </ul>
@@ -120,8 +120,9 @@
         $.ajax({
           url: '/notification/clicked/' + $(this).data('id'),
           type: 'get',
-          success:function(){
+          success:function(output){
 
+            window.location.href = "/nurse/patient/medical/log/edit/" + output.id;
           }
         });
     });
