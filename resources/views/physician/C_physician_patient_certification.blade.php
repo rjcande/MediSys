@@ -75,6 +75,7 @@
 					<button class"btn btn-default" id="certWaiver" style="border-radius: 8px" data-toggle="modal" data-target="#modalCertWaver">View Document</button><br>
 				</div>
 
+
 				<div style="margin-top: 25px;float: left;text-align: center;width: 100%">
 					<button class="btn btn-success" id="btnDone" data-id="{{ $logReferral['logReferralID'] }}">DONE</button>
 					<a href="{{ URL::previous() }}"><button class="btn btn-danger">CLOSE</button></a>
@@ -110,7 +111,7 @@
 	        			<strong>MEDICAL CLEARANCE</strong>
 	        		</header>
 
-	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date <u>{{ date('F d, Y') }}</u></header>
+	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date <u>{{date('F d, Y',strtotime($logReferral['created_at']))}}</u></header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It 		May Concern:</header>
 
@@ -155,13 +156,13 @@
 	        			<strong>MEDICAL CLEARANCE</strong>
 	        		</header>
 
-	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date <u>{{ date('F d, Y') }}</u></header>
+	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date <u>{{date('F d, Y',strtotime($logReferral['created_at']))}}</u></header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It 		May Concern:</header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been examined by the undersigned and found to be physically fit at the time of examination.</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="certOffCampusPurpose" style="display: inline; width: 500px;" required> purpose.
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="certOffCampusPurpose" style="display: inline; width: 500px;" required value="{{$logReferral['ojtReqFor']}}"> purpose.
 	        		</header>
 
 
@@ -203,11 +204,11 @@
 	        			<strong>MEDICAL CLEARANCE</strong>
 	        		</header>
 
-	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{ date('F d, Y') }}</u></header>
+	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{date('F d, Y',strtotime($logReferral['created_at']))}}</u></header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It 		May Concern:</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been examined by the undersigned at the PUP Medical Clinic on<input type="text" name="certAdminPurpose" style="display: inline; width: 370px;" required="">.</header>
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been examined by the undersigned at the PUP Medical Clinic on<input type="text" name="certAdminPurpose" style="display: inline; width: 370px;" required="" value="{{$logReferral['adminReqFor']}}">.</header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <em><strong>Annual Medical Clearance</strong></em> but not for medico-legal purposes.</header>
 
@@ -249,14 +250,14 @@
 	        			<strong>EXCUSE FORM</strong>
 	        		</header>
 
-	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{ date('F d, Y') }}</u></header>
+	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{date('F d, Y',strtotime($logReferral['created_at']))}}</u></header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It May Concern:</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been treated/is currently being treated for <input type="text" name="excuseReason" style="width: 200px;" required>
-	        		from <input type="text" name="excuseFrom" required> to <input type="text" name="excuseTo" required>.</header>
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $patientName }}</u> has been treated/is currently being treated for <input type="text" name="excuseReason" style="width: 200px;" required value="{{$logReferral['excuseLetterFor']}}">
+	        		from <input type="text" name="excuseFrom" required value="{{$logReferral['excuseLetterFrom']}}"> to <input type="text" name="excuseTo" required value="{{$logReferral['excuseLetterTo']}}">.</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="excusePurpose" style="width: 300px;" required>purpose.</header>
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <input type="text" name="excusePurpose" style="width: 300px;" required value="{{$logReferral['excuseLetterPurpose']}}">purpose.</header>
 
 	        		<header style="float: right; font-size: 18px; margin-top: 40px; text-align: right;margin-right: 10px;"><u>{{ Session::get('accountInfo.lastName') }}, {{ Session::get('accountInfo.firstName') }} {{ Session::get('accountInfo.middleName') }} {{ Session::get('accountInfo.quantifier') }}</u> M.D.</header>
 	        		<header style="float: right; font-size: 18px;text-align: right; margin-right: 115px">Clinic Physician</header>
@@ -294,11 +295,13 @@
 	        			<strong>MEDICAL CLEARANCE</strong>
 	        		</header>
 
-	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{ date('F d, Y') }}</u></header>
+	        		<header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;margin-right: 10px;">Date: <u>{{date('F d, Y',strtotime($logReferral['created_at']))}}</u></header>
 
 	        		<header style="float: left; font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It May Concern:</header>
 
-	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">I, <u>{{ $patientName }}</u> enrolled at the College of <input type="text" name="college" required> Department of <input type="text" name="department" required>, was seen and examined at the PUP Medical Clinic dated <u>{{ date('F m, Y') }}</u> with the diagnosis of <input type="text" name="diagnosis" required>. I promise to come back for a follow-up <br>check-up on <input type="date" name="followUp" required> as advised.</header>
+	        		<header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">I, <u>{{ $patientName }}</u> enrolled at the College of <input type="text" name="college" required value="{{ $logReferral['waiverCollegeOf'] }}"> Department of <input type="text" name="department" required value="{{ $logReferral['waiverDepartmentOf'] }}">, was seen and examined at the PUP Medical Clinic dated <u>@if(isset($logReferral['created_at'])){{date('F d, Y',strtotime($logReferral['created_at']))}}@else{{ date('F d, Y') }}@endif
+</u> with the diagnosis of <input type="text" name="diagnosis" required value="{{ $logReferral['waiverDiagnosis'] }}"
+>. I promise to come back for a follow-up <br>check-up on <input type="date" name="followUp" required value="{{ $logReferral['waiverFollowUp'] }}"> as advised.</header>
 
 	        		<header style="float: right; font-size: 18px; margin-top: 40px; text-align: right;margin-right: 10px;">_______________________________</header>
 	        		<header style="float: right; font-size: 18px;text-align: right; margin-right: 115px">Signature</header>

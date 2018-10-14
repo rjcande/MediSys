@@ -161,6 +161,7 @@ class LogReferralsController extends Controller
         $logReferral = LogReferrals::find($id);
 
         $logReferral->logReferralStatus = Input::get('status');
+        $logReferral->notif = 2;
 
         $logReferral->save();
     }
@@ -361,13 +362,26 @@ class LogReferralsController extends Controller
 
     public function generateMedCertOjtOffCampus($id, $patientName)
     {
+        $logreferrals = LogReferrals::find($id);
+
         $name = $patientName;
-        $purpose = Input::get('certOffCampusPurpose');
+       
         $physicianDetails = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                                         ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose'));
+        if (!isset($logreferrals['ojtReqFor'])) {
+            $purpose = Input::get('certOffCampusPurpose');
+            $save = LogReferrals::find($id);
+
+            $save->ojtReqFor = $purpose;
+
+            $save->save();
+        }
+       
+        
+        //dd($logreferrals);
+        $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose', 'logreferrals'));
         return $pdf->stream('reports.medical_certificate_for_ojt_or_off_campus_activity');
     }
 
@@ -379,19 +393,33 @@ class LogReferralsController extends Controller
                                         ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose'));
+        
+        $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose', 'logreferrals'));
         return $pdf->stream('reports.medical_certificate_for_ojt_or_off_campus_activity');
     }
 
     public function generateMedCertAdmin($id, $patientName)
     {
+        $logreferrals = LogReferrals::find($id);
         $name = $patientName;
-        $purpose = Input::get('certAdminPurpose');
+
+        if (!isset($logreferrals['adminReqFor'])) {
+            $purpose = Input::get('certAdminPurpose');
+
+            $save = LogReferrals::find($id);
+
+            $save->adminReqFor = $purpose;
+
+            $save->save();
+        }
+        
+
         $physicianDetails = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                                         ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_for_admin', compact('name', 'physicianDetails', 'purpose'));
+        // dd($logreferrals);
+        $pdf = PDF::loadView('reports.medical_certificate_for_admin', compact('name', 'physicianDetails', 'purpose', 'logreferrals'));
         return $pdf->stream('reports.medical_certificate_for_admin');
     }
 
@@ -409,16 +437,31 @@ class LogReferralsController extends Controller
 
     public function generateExcuseLetter($id, $patientName)
     {
+        $logreferrals = LogReferrals::find($id);
         $name = $patientName;
-        $reason = Input::get('excuseReason');
-        $from = Input::get('excuseFrom');
-        $to  = Input::get('excuseTo');
-        $purpose = Input::get('excusePurpose');
+        if (!isset($logreferrals['excuseLetterFor']) && !isset($logreferrals['excuseLetterFrom']) && !isset($logreferrals['excuseLetterTo']) && !isset($logreferrals['excuseLetterPurpose'])) {
+            $reason = Input::get('excuseReason');
+            $from = Input::get('excuseFrom');
+            $to  = Input::get('excuseTo');
+            $purpose = Input::get('excusePurpose');
+
+            $save = LogReferrals::find($id);
+
+            $save->excuseLetterFor = $reason;
+            $save->excuseLetterFrom = $from;
+            $save->excuseLetterTo = $to;
+            $save->excuseLetterPurpose = $purpose;
+
+            $save->save();
+
+        }
+        
+
         $physicianDetails = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                                         ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_excuse_letter', compact('name', 'physicianDetails', 'purpose', 'reason', 'from', 'to'));
+        $pdf = PDF::loadView('reports.medical_certificate_excuse_letter', compact('name', 'physicianDetails', 'purpose', 'reason', 'from', 'to', 'logreferrals'));
         return $pdf->stream('reports.medical_certificate_excuse_letter');
     }
 
@@ -439,16 +482,31 @@ class LogReferralsController extends Controller
 
     public function generateWaver($id, $patientName)
     {
+        $logreferrals = LogReferrals::find($id);
         $name = $patientName;
-        $college = Input::get('college');
-        $department = Input::get('department');
-        $diagnosis  = Input::get('diagnosis');
-        $followUp = Input::get('followUp');
+
+        if (!isset($logreferrals['waiverCollegeOf']) && !isset($logreferrals['waiverDepartmentOf']) && !isset($logreferrals['waiverDiagnosis']) && !isset($logreferrals['waiverFollowUp'])) {
+            $college = Input::get('college');
+            $department = Input::get('department');
+            $diagnosis  = Input::get('diagnosis');
+            $followUp = Input::get('followUp');
+
+            $save = LogReferrals::find($id);
+
+            $save->waiverCollegeOf = $college;
+            $save->waiverDepartmentOf = $department;
+            $save->waiverDiagnosis = $diagnosis;
+            $save->waiverFollowUp = $followUp;
+
+            $save->save();
+        }
+        
+
         $physicianDetails = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                                         ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_waver', compact('name', 'physicianDetails', 'college', 'department', 'diagnosis', 'followUp'));
+        $pdf = PDF::loadView('reports.medical_certificate_waver', compact('name', 'physicianDetails', 'college', 'department', 'diagnosis', 'followUp', 'logreferrals'));
 
         return $pdf->stream('reports.medical_certificate_waver');
     }
@@ -497,10 +555,11 @@ class LogReferralsController extends Controller
     {
         $name = $patientName;
         $physicianDetails = LogReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
-                                        ->select('users.*')
                                         ->where('logReferralID', '=', $id)
                                         ->first();
-        $pdf = PDF::loadView('reports.medical_certificate_for_enrollment', compact('name', 'physicianDetails'));
+        $logreferrals = LogReferrals::find($id);
+        // dd($logreferrals);
+        $pdf = PDF::loadView('reports.medical_certificate_for_enrollment', compact('name', 'physicianDetails', 'logreferrals'));
         return $pdf->stream('reports.medical_certificate_for_enrollment');
     }
 
@@ -514,4 +573,6 @@ class LogReferralsController extends Controller
         $pdf = PDF::loadView('reports.medical_certificate_for_enrollment', compact('name', 'physicianDetails'));
         return $pdf->stream('reports.medical_certificate_for_enrollment');
     }
+
+
 }

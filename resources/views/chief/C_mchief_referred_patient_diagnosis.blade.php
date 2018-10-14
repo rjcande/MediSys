@@ -18,7 +18,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                 <div class="x_title">
-                    <h2>{{ $patient['patientID'] }} - {{ $patient['lastName'] }}, {{ $patient['firstName'] }} {{ $patient['middleName'] }} {{ $patient['quantifier'] }}</h2>                 
+                    <h2>{{ $patient['patientID'] }} - {{ $patient['lastName'] }}, {{ $patient['firstName'] }} {{ $patient['middleName'] }} {{ $patient['quantifier'] }}</h2>  
+                    @php($patientName = $patient['lastName']. ', ' .$patient['firstName']. ' '. $patient['middleName']. ' '. $patient['quantifier'])              
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -145,27 +146,35 @@
                                             <ul>
                                                 @if($certificate->reqForMedCertEnrol == '1')
                                                     <li>
-                                                        <p>{{ "Medical Certificate for Enrollment" }}</p>
+                                                        <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$certificate->logReferralID, $patientName]) }}" target="_blank"><u><p>{{ "Medical Certificate for Enrollment" }}</p></u></a>
                                                     </li>
                                                 @endif
                                                 @if($certificate->reqForMedCertOffOJT == '1')
                                                     <li>
-                                                        <p>{{ "Medical Certificate for OJT or Off-Campus Activity" }}</p>
+                                                         <a href="{{ route('physician.generate.pdf.medical.cert.ojt.off_campus', [$certificate->logReferralID, $patientName]) }}" target="_blank">
+                                                            <u><p>{{ "Medical Certificate for OJT or Off-Campus Activity" }}</p></u>
+                                                        </a>
                                                     </li>
                                                 @endif
                                                 @if($certificate->reqForMedCertAdminFaculty == '1')
                                                     <li>
-                                                        <p>{{ "Medical Certificate for Administrative or Faculty" }}</p>
+                                                         <a href="{{ route('physician.generate.pdf.medical.cert.admin', [$certificate->logReferralID, $patientName]) }}" target="_blank">
+                                                            <u><p>{{ "Medical Certificate for Administrative or Faculty" }}</p></u>
+                                                        </a>
                                                     </li>
                                                 @endif
                                                 @if($certificate->reqForWaver == '1')
                                                     <li>
-                                                        <p>{{ "Waiver" }}</p>
+                                                         <a href="{{ route('physician.generate.pdf.waver', [$certificate->logReferralID, $patientName]) }}" target="_blank">
+                                                            <u><p>{{ "Waiver" }}</p></u>
+                                                        </a>
                                                     </li>
                                                 @endif
                                                 @if($certificate->reqForExcuseLetter == '1')
                                                     <li>
-                                                        <p>{{ "Excuse Letter for Student" }}</p>
+                                                         <a href="{{ route('physician.generate.pdf.excuse.letter', [$certificate->logReferralID, $patientName]) }}" target="_blank">
+                                                            <u><p>{{ "Excuse Letter for Student" }}</p></u>
+                                                        </a>
                                                     </li>
                                                 @endif
                                             </ul>
