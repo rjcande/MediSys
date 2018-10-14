@@ -23,10 +23,10 @@
         <h1>EXCUSE FORM</h1>
       </center>
       <div style="width: 100%">
-        <header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;">Date: <u>{{ date('F d, Y') }}</u></header>
+        <header style="float: right; font-size: 18px; margin-top: 30px; text-align: right;">Date: <u>{{ date('F d, Y', strtotime($logreferrals['created_at'])) }}</u></header>
         <header style="font-size: 18px; margin-top: 30px; margin-left: 40px;">To Whom It May Concern:</header>
-        <header style="font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $name }}</u> has been treated/is currently being treated for <u>{{ $reason }}</u> from <u>{{ $from }}</u> to <u>{{ $to }}</u>.</header>
-        <header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <u>{{ $purpose }}</u> purpose.</header>
+        <header style="font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This is to certify that <u>{{ $name }}</u> has been treated/is currently being treated for <u>{{$logreferrals['excuseLetterFor']}}</u> from <u>{{$logreferrals['excuseLetterFrom']}}</u> to <u>{{$logreferrals['excuseLetterTo']}}</u>.</header>
+        <header style="float: left; font-size: 18px; margin-top: 20px; margin-left: 40px; text-indent: 50px; margin-right: 10px;">This certification is issued upon request for <u>{{$logreferrals['excuseLetterPurpose']}}</u> purpose.</header>
       </div>
      
       <div style="width:100%; position: absolute; bottom: 0">

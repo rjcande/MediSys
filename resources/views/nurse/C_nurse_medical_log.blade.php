@@ -51,7 +51,7 @@
                         </thead>
 
                         <tbody>
-                           @php($ctr = 50)
+                           @php($ctr = sizeof($clinicLogs))
                            {{ Session::put('number', $ctr) }}
                           @foreach($clinicLogs as $clinicLog)
                             <tr class="even pointer">
