@@ -30,7 +30,7 @@
                     
             <!--Content-->
                   <!-- SmartWizard html -->
-                   <form id="saveForm" data-id="{{ $patient['patientID'] }}" data-cliniclogid="{{ $clinicLogID }}" data-rec="@if($medicalHistory){{ '1' }}@else{{ '0' }}@endif">
+                   <form id="saveForm" data-id="{{ $patient['patientID'] }}" data-cliniclogid="{{ $clinicLogID }}" data-rec="@if($medicalHistory){{ '1' }}@else{{ '0' }}@endif" data-gender="{{ $patient['gender'] }}">
                     @csrf()
                     <div id="smartwizard">
                         <ul>
@@ -707,6 +707,13 @@
             }
 
          });
+         //Disable div base on patient's gender
+        if ($('#saveForm').data('gender') == 1) {
+            $('#menstrual-history').hide();
+        }
+        else if($('#saveForm').data('gender') == 0){
+            $('#circumcision-history').hide();
+        }
     });
     
 </script>

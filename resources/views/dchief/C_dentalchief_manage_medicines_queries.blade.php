@@ -2,66 +2,12 @@
 
 @section('content')
 
-	 <div class="right_col" role="main">
+   <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Medicines List</h3><br>
-                <div style="width: 450px; font-size:18px;">
-                  {{--  <form id="saveMedForm">
-                    @csrf()
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Medicine ID:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="medicineID" data-parsley-required="true" value="{{ $id->id }}" readonly>
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Generic Name:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="genericName" data-parsley-required="true">
-                      </div>
-
-                    </div>
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Brand Name:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="brandName" data-parsley-required="true">
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Unit:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="text" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="unit" data-parsley-required="true">
-                      </div>
-                    </div>
-                    <div>
-                      <div style="float: left; width: 150px;">
-                        <header style="margin-bottom:12px; margin-left:25px;">Dosage:</header>
-                      </div>
-                      <div style="float: left;">
-                        <input type="number" style="width:145px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" name="dosage" id="dosage" data-parsley-required="true">
-                        <select name="dosageUnit" id="dosageUnit" style="width:100px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true">
-                          <option value="mg">mg</option>
-                          <option value="g">g</option>
-                          <option value="oz">oz</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div style="float: left; display: flex; justify-content: center; width: 100%">
-                      <button type="submit" class="btn btn-success" id="btnAdd">ADD</button>
-                      <button type="reset" class="btn btn-warning" id="btnReset">CLEAR</button>
-                    </div>
-                  </div>
-                </form>  --}}
+                <h3>List of Medicine</h3><br>
+                
               </div>
             </div>
 
@@ -70,64 +16,57 @@
             <div class="row">
               <!-- form input mask -->
 
-               <div class="col-md-12 col-sm-12 col-xs-12" style="height:78vh;">
+               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    {{--  <h4>
-                      List of Medicines
-                    </h4>  --}}
+                    <center>
+                      <label>From:</label>
+                      <input type="date" name="from" id="from" class="date-range-filter" style="height: 35px;">
+                      <label>To:</label>
+                      <input type="date" name="to" id="to" class="date-range-filter" style="height: 35px;">
+                      <button type="button" class="btn btn-primary" id="filter">Apply</button>
+                      <button type="button" class="btn btn-warning" id="clearFilter">Clear Filter</button>
+                    </center>
+                    
                     <div class="clearfix">
                     </div>
                   </div>
 
-                  <div class="x_content" >
+                  <div class="x_content">
                     <div class="">
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
+                          
                             <th class="column-title">Generic Name</th>
                             <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
                             <th class="column-title">Dosage</th>
-                            <th class="column-title no-link last"><span class="nobr">Action</span>
-                            </th>
-                            <th class="bulk-actions" colspan="8">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                            </th>
+                            <th class="column-title">Date Modified</th>
+                          
                           </tr>
                         </thead>
 
                         <tbody>
-                          @if(count($medicines) > 0)
-                            @foreach($medicines as $medicine)
-                                <tr class="even pointer">
-                                    <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                    </td>
-                                    <td class=" ">{{ $medicine->genericName }}</td>
-                                    <td class=" ">{{ $medicine->brand }}</td>
-                                    <td class=" ">{{ $medicine->unit }}</td>
-                                    <td class=" ">{{ $medicine->dosage }}</td>
-                                    <td class="last">
-                                    {{--  <button class="btn btn-primary" id="btnEdit" data-toggle="modal" data-target="#medicineEditModal" data-genericname="{{ $medicine->genericName }}" data-brand="{{ $medicine->brand }}" data-unit="{{ $medicine->unit }}" data-dosage="{{ $medicine->dosage }}" data-id="{{ $medicine->medicineID }}" >  --}}
-                                        {{--  <i class="fa fa-pencil"></i>  --}}
-                                    {{--  </button>  --}}
-
-                                    <a href="{!! url('/dchief/restore/medicine',$medicine->medicineID) !!}"><button type="submit" class="btn btn-success">
-                                        <i class="fa fa-refresh"></i>
-                                    </button></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            @endif
+                          @foreach($medicines as $medicine)
+                            <tr class="even pointer">
+                             
+                              <td class=" ">{{ $medicine->genericName }}</td>
+                              <td class=" ">{{ $medicine->brand }}</td>
+                              <td class=" ">{{ $medicine->unit }}</td>
+                              <td class=" ">{{ $medicine->dosage }}</td>
+                              <td class=" ">
+                                @if($medicine->updated_at)
+                                  {{ date('Y-m-d', strtotime($medicine->updated_at)) }}
+                                @else
+                                  {{ "NONE" }}
+                                @endif
+                              </td>       
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
-                      {{-- <a target="_blank" href="{{route('dchief.generate.medicineList')}}"> --}}
-                        {{--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medicineListModal"><i class="fa fa-print"></i> Print Medicine List</button>  --}}
-                      {{-- </a> --}}
+                    
                     </div>
                   </div>
                 </div>
@@ -138,7 +77,7 @@
           </div>
         </div>
 
-<!-------------------------------------------------------------EDIT MODAL---------------------------------------------------------------------->
+<!-- Edit Modal -->
 <div id="medicineEditModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -180,12 +119,11 @@
           </div>
 
           <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-3">Dosage: </label>
-              <div class="col-md-9 col-sm-9 col-xs-9">
-                <input type="text" class="form-control" style="border-radius:8px;" id="dosage" name="dosage">
-              </div>
+            <label class="control-label col-md-3 col-sm-3 col-xs-3">Dosage: </label>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+              <input type="text" class="form-control" style="border-radius:8px;" id="dosage" name="dosage">
+            </div>
           </div>
-
       </div>
       <div class="modal-footer">
         <input type="hidden" name="medicineID">
@@ -197,89 +135,156 @@
 
   </div>
 </div>
-<!-------------------------------------------------------------/EDIT MODAL---------------------------------------------------------------------->
 
-<!-------------------------------------------------------------GENERATE MEDICINE LIST MODAL---------------------------------------------------------------------->
-<div class="modal fade" id="medicineListModal" role="dialog">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="printModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
 
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Print Medicine List</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Print Medicine List</h4>
       </div>
-      <form id="printMedicineList" action="{{route('dchief.generate.medicineList')}}" target="_blank" method="get">
-        @csrf()
-        <div class="modal-body">
-            <div class="col-md-4">
-                <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
-            </div>
-            <div class="col-md-4">
-                <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
-            </div>
-            <div style="100%" id="error_container">
-
-            </div>
-            <br><br>
-
-            <div style="width: 100%">
-                <label style="margin-left: 5px; width: 50px">Month: </label>
-                <select name="mon" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
-                    <option value="" selected></option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-
-                <select name="yearMonth" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="100%" id="error_container_month">
-
-            </div>
-            <div style="width: 100%">
-                <label style="margin-left: 5px;  width: 50px">Year: </label>
-                <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="width: 100%" id="error_container_year">
-
-            </div>
+      <form id="printMedicalLog" action="{{ url('/print/medicine/list') }}" target="_blank" method="get">
+          @csrf()
+      <div class="modal-body">
+        <div class="col-md-4">
+            <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
         </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Continue</button>
+        <div class="col-md-4">
+            <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
         </div>
+        <div class="col-md-4">
+            <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
+        </div>
+        <div style="width: 100%" id="error_container">
+          
+        </div>
+        <br><br>
+        <div style="width: 100%">
+          <div class="form-group">
+            <label style="margin-left: 5px; width: 50px">Date: </label>
+            <input type="date" name="date" style="width: 70%" disabled id="date">
+          </div>
+            
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Month: </label>
+            <select name="month" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+              <option value="" selected></option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
 
+            <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_month">
+          
+        </div>
+        <div style="width: 100%">
+            <label style="margin-left: 5px;  width: 50px">Year: </label>
+            <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+                <option value="" selected disabled>Year</option>
+            </select>
+        </div>
+        <div style="width: 100%" id="error_container_year">
+          
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <button type="submit" class="btn btn-success">Continue</button>
+      </div>
       </form>
 
     </div>
   </div>
 </div>
-<!-------------------------------------------------------------/GENERATE MEDICINE LIST MODAL---------------------------------------------------------------------->
-
 
 <script>
   $(window).load(function(){
       //Data Table
-      var table = $('#medicineTable').dataTable({
-        "bLengthChange": false,
-        "bFilter": true,
-        "bInfo": false,
-        "bAutoWidth": false
-      });
+     var table = $('#medicineTable').dataTable({
+        
+       'sDom': '<"top">rt<"bottom"B><"clear">',
+        "buttons": [
+            {
+                extend: 'print',
+                text: 'Print List of Medicine',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'background-color', 'white' )
+                        
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                },
+                exportOptions: {
+                  rows: ':visible'
+                }
+            }
+        ]
+    });
 
+  $('#clearFilter').on('click', function(e){
+    e.preventDefault();
+    $.fn.dataTableExt.afnFiltering.length = 0;
+    table.dataTable().fnDraw();
+  });
+
+  $('#filter').on('click', function(e){
+    e.preventDefault();
+    var startDate = $('#from').val(),
+        endDate = $('#to').val();
+    
+    filterByDate(4, startDate, endDate); // We call our filter function
+    
+    table.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  var filterByDate = function(column, startDate, endDate) {
+  // Custom filter syntax requires pushing the new filter to the global filter array
+    $.fn.dataTableExt.afnFiltering.push(
+        function( oSettings, aData, iDataIndex ) {
+          var rowDate = normalizeDate(aData[column]),
+              start = normalizeDate(startDate),
+              end = normalizeDate(endDate);
+          
+          // If our date from the row is between the start and end
+          if (start <= rowDate && rowDate <= end) {
+            return true;
+          } else if (rowDate >= start && end === '' && start !== ''){
+            return true;
+          } else if (rowDate <= end && start === '' && end !== ''){
+            return true;
+          } else {
+            return false;
+          }
+        }
+    );
+  };
+
+  // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
+    var normalizeDate = function(dateString) {
+      var date = new Date(dateString);
+      var normalized = date.getFullYear() + '' + (("0" + (date.getMonth() + 1)).slice(-2)) + '' + ("0" + date.getDate()).slice(-2);
+      return normalized;
+    }
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
+    });
       //Form validation
       $('#saveMedForm').parsley();
       $('#editMedForm').parsley();
@@ -287,33 +292,21 @@
       $('#saveMedForm').submit(function(e){
         e.preventDefault();
 
-        // var genericname = $('input[name=genericName]').val();
-        // var brandname = $('input[name=brandName]').val();
-        // var medunit = $('input[name=unit]').val();
-        var dosage = $('input[name=dosage]').val() + ' ' + $('#dosageUnit').val();
-
-        var id = {
-          // _genericName: genericname,
-          // _brandName: brandname,
-          // _medUnit :medunit,
-          _dosage: dosage
-        }
-        // alert();
         if ($(this).parsley().isValid()) {
           $.ajax({
             url: '/save/medicine',
             type: 'get',
-            data: $(this).serialize() + "&" + $.param(id),
+            data: $(this).serialize(),
             success: function(output){
-              swal({
-                title: output.title,
-                text: output.message,
-                icon: output.logo,
-                button: "OK",
-              })
-              .then((value)=>{
-                location.reload(true);
-              });
+                swal({
+                  title: output.title,
+                  text: output.message,
+                  icon: output.logo,
+                  button: "OK",
+                })
+                .then((value)=>{
+                  location.reload(true);
+                });    
             }
           });
         }
@@ -352,7 +345,7 @@
     $('.medicine-details').on('click',function(){
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to .......!",
+        text: "Once deleted, you will not be able to recover this record!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -377,21 +370,38 @@
         }
       });
     })
+    //Opening Edit Modal
+    $('#medicineEditModal').on('show.bs.modal', function(e){
+        var button = $(e.relatedTarget);
+        var genericName = button.data('genericname');
+        var brand = button.data('brand');
+        var unit = button.data('unit');
+        var id = button.data('id');
+        var dosage = button.data('dosage');
 
+        var modal = $(this);
+        modal.find('.modal-body #genericName').val(genericName);
+        modal.find('.modal-body #brandName').val(brand);
+        modal.find('.modal-body #unit').val(unit);
+        modal.find('.modal-body #dosage').val(dosage);
+        modal.find('.modal-body #medicineID').val(id);
+        modal.find('.modal-footer input[name=medicineID]').val(id);
+
+    });
+
+    //Printing of Medical Log
+    $('#printMedicalLog').parsley();
+    $('#printMedicalLog').submit(function(){
+      $('#printModal').modal('hide');
+
+    });
+    
     //drop down of year
     for (i = new Date().getFullYear(); i > 1999; i--)
     {
         $('.year').append($('<option />').val(i).html(i));
     }
-
-    //Printing of Medicine List
-    $('#printMedicineList').parsley();
-    $('#printMedicineList').submit(function(){
-      $('#medicineListModal').modal('hide');
-
-    });
-
-    //Validation For Printing of Dental Log
+    //Validation For Printing of Medical Log
     $('#daily').on('change', function(){
       if ($(this).is(':checked')) {
         $('#date').prop('disabled', false);
@@ -427,8 +437,8 @@
       }
     });
 
-    $('#medicineListModal').on('hidden.bs.modal', function () {
-      $('#printMedicineList')[0].reset();
+    $('#printModal').on('hidden.bs.modal', function () {
+      $('#printMedicalLog')[0].reset();
       $('#date').prop('disabled', true);
       $('#month').prop('disabled', true);
       $('#year-month').prop('disabled', true);
@@ -437,24 +447,6 @@
       $('#month').prop('required', false);
       $('#year-month').prop('required', false);
       $('#year').prop('required', false);
-    });
-
-    //Opening Edit Modal
-    $('#medicineEditModal').on('show.bs.modal', function(e){
-        var button = $(e.relatedTarget);
-        var genericName = button.data('genericname');
-        var brand = button.data('brand');
-        var unit = button.data('unit');
-        var dosage = button.data('dosage');
-        var id = button.data('id');
-
-        var modal = $(this);
-        modal.find('.modal-body #genericName').val(genericName);
-        modal.find('.modal-body #brandName').val(brand);
-        modal.find('.modal-body #unit').val(unit);
-        modal.find('.modal-body #dosage').val(id);
-        modal.find('.modal-body #medicineID').val(id);
-        modal.find('.modal-footer input[name=medicineID]').val(id);
     });
 
   });

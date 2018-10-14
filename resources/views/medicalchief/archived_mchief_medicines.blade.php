@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-
+      </div>
 <!-- Edit Modal -->
 <div id="medicineEditModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

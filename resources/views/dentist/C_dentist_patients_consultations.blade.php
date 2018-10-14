@@ -43,12 +43,12 @@
                                 <th class="column-title" style="width:1%;">Action</th>
                             </tr>
                         </thead>
-
+ 
                         <tbody>
                            @foreach($dentalLog as $dentalLogs)
                                 <tr class="even pointer">
                                     <td class=" ">{{ date('F d, Y', strtotime($dentalLogs->created_at)) }}</td>
-                                    <td class=" ">{{ date('h:i a', strtotime($dentalLogs->created_at)) }}</td>
+                                    <td class=" ">{{ date('H:i a', strtotime($dentalLogs->created_at)) }}</td>
                                     <td class=" ">
                                         {{ $dentalLogs->lastName }}, {{ $dentalLogs->firstName }} {{ $dentalLogs->middleName }} {{ $dentalLogs->quantifier }}
                                     </td>
@@ -62,9 +62,13 @@
                                         @endforeach
                                     </td>
                                     <td class=" " style="text-align:center;">
+                                        @if($dentalLogs->concern == 0)
                                         <a href="{{ route('dentist.show.all.consultations', $dentalLogs->clinicLogID) }}">
                                             <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View </button>
                                         </a>
+                                        @else
+                                        <button class="btn btn-default" disabled style="background-color:#9AECDB; width:70%;">View </button>
+                                        @endif
                                     </td>
                                     <td class=" " style="width: 120px;">
                                         <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLogs->clinicLogID}}">
@@ -80,7 +84,7 @@
 
             <div id="diagnoses-referrals" style="float:left; margin-top:5%; margin-left:20px; width:98%">
                 <p style="font-size: 20px; color:white; background:
-                    linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Dental Certifications</b>
+                    linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Medical Certifications</b>
                 </p>
 
                 <div style="float:left;margin-top: 10px; margin-left: 15px;width:98%;padding:5px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;">
@@ -90,7 +94,7 @@
                                 <th class="column-title">Date </th>
                                 <th class="column-title">Time</th>
                                 <th class="column-title">Attending Dentist</th>
-                                <th class="column-title">Dental Certificate</th>
+                                <th class="column-title">Medical Certificate</th>
                                 <th class="column-title" style="width:1%;">Action</th>
                             </tr>
                         </thead>
@@ -111,7 +115,7 @@
                                         <ul>
                                             @if($certificate->reqForDentalCert == '1')
                                                 <li>
-                                                    <a href="{{ route('dentist.dentalLog.moreInfo', $certificate->clinicLogID) }}"><u><p>{{ "Dental Certificate" }}</p></u></a>
+                                                    <p>{{ "Dental Certificate" }}</p>
                                                 </li>
                                             @endif
                                         </ul>
@@ -129,7 +133,7 @@
             </div>
 
             <div style="float: left;width: 100%;margin-top: 25px;text-align: right;">
-                <a href="javascript:history.go(-1)">
+                <a href="{{ url('/dentist/PatientList') }}">
                     <button class="btn btn-primary">BACK</button>
                 </a>
             </div>
@@ -154,24 +158,26 @@
                 </div>
                 <div class="modal-body" style="color:#192a56; font-size:15px;">
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Blood Pressure: </label>
-                    <input type="text" readonly name="bloodPressure" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="bloodPressure" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Heart Rate: </label>
-                    <input type="text" readonly name="heartRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="heartRate" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Respiratory Rate: </label>
-                    <input type="text" readonly name="respiratoryRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="respiratoryRate" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Temperature: </label>
-                    <input type="text" readonly name="temperature" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="temperature" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Height (cm): </label>
-                    <input type="text" readonly name="height" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="height" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Weight (kg): </label>
-                    <input type="text" readonly name="weight" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="weight" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Body Mass Index: </label>
-                    <input type="text" readonly name="bmi" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" name="bmi" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">BMI Range: </label>
-                    <input type="radio" readonly name ="bmi_range" required value="0">&nbsp Normal
-                    <input type="radio" readonly name ="bmi_range" value="1">&nbsp Underweight
-                    <input type="radio" readonly name ="bmi_range" value="2">&nbsp Obese Class I
-                    <input type="radio" readonly name ="bmi_range" value="3">&nbsp Obese Class II
+                    <input type="radio" name ="bmiRange" value="0" data-parsley-group="vitalSign">&nbsp Underweight
+                    <input type="radio" name ="bmiRange" value="1" data-parsley-group="vitalSign">&nbsp Normal
+                    <input type="radio" name ="bmiRange" value="2" data-parsley-group="vitalSign">&nbsp Overweight
+                    <input type="radio" name ="bmiRange" value="3" data-parsley-group="vitalSign">&nbsp Obese Class I
+                    <input type="radio" name ="bmiRange" value="4" data-parsley-group="vitalSign">&nbsp Obese Class II
+                    <input type="radio" name ="bmiRange" value="5" data-parsley-group="vitalSign">&nbsp Obese Class III
                 </div>
                 <div class="modal-footer" style="margin-right:0%">
                     <button class="btn btn-success" data-dismiss="modal">DONE</button>
@@ -182,7 +188,7 @@
     <!--END Modal-->
 
 <script>
-    $(document).ready(function(){
+    $(window).load(function(){
         $('#modalVitalSigns').on('show.bs.modal', function(e){
             var button = $(e.relatedTarget);
 
@@ -209,7 +215,7 @@
         });
 
         //delete button is clicked
-            $('.delete-button').on('click', function(){
+        $('.delete-button').on('click', function(){
             swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover this!",

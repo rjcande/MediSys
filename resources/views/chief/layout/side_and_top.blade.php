@@ -140,15 +140,15 @@
         });
     }, 2000);
 
-    $('#menu1').on('click','.notification', function(){
-        $.ajax({
-          url: '/notification/clicked/' + $(this).data('id'),
-          type: 'get',
-          success:function(){
+    // $('#menu1').on('click','.notification', function(){
+    //     $.ajax({
+    //       url: '/notification/clicked/' + $(this).data('id'),
+    //       type: 'get',
+    //       success:function(){
 
-          }
-        });
-    });
+    //       }
+    //     });
+    // });
 
   });
 </script>

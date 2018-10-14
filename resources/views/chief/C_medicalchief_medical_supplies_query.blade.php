@@ -26,6 +26,7 @@
                       <label>To:</label>
                       <input type="date" name="to" id="to" class="date-range-filter" style="height: 35px;">
                       <button type="button" class="btn btn-primary" id="filter">Apply</button>
+                      <button type="button" class="btn btn-warning" id="clearFilter">Clear Filter</button>
                     </center>
                     <div class="clearfix">
                     </div>
@@ -79,13 +80,14 @@
 
 <script>
   $(window).load(function(){
-        //Data Table
+    //Data Table
     var table = $('#medicineTable').dataTable({
         
        'sDom': '<"top">rt<"bottom"B><"clear">',
         "buttons": [
             {
                 extend: 'print',
+                text: 'Print List of Medical Supplies',
                 customize: function ( win ) {
                     $(win.document.body)
                         .css( 'background-color', 'white' )
@@ -93,9 +95,18 @@
                     $(win.document.body).find( 'table' )
                         .addClass( 'compact' )
                         .css( 'font-size', 'inherit' );
+                },
+                 exportOptions: {
+                  rows: ':visible'
                 }
             }
         ]
+    });
+
+    $('#clearFilter').on('click', function(e){
+      e.preventDefault();
+      $.fn.dataTableExt.afnFiltering.length = 0;
+      table.dataTable().fnDraw();
     });
 
     $('#filter').on('click', function(e){

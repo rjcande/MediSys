@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -261,7 +261,7 @@
               title: 'Success',
               text: 'Vital Signs Saved',
               icon: 'success',
-              button: 'confirm',
+              button: 'CONFIRM',
             })
             .then((willRoute)=>{
               if(willRoute){

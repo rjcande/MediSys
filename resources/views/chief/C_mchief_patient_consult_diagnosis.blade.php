@@ -411,7 +411,7 @@
                         <div style="float:left; margin-left:22%;">
                           <label style="font-size:13px; color: #ff3f34;"><em>if other, please specify</em></label>
                           <input type="text" name="referToOthers" data-parsley-group="referral" style="width:350px; border-radius:8px; margin-bottom:12px;
-                            margin-left: 20px; height: 25px; font-size: 18px">
+                            margin-left: 20px; height: 25px; font-size: 18px" disabled id="referToOthers">
                         </div>
                       </div>
 
@@ -915,10 +915,19 @@
        }
     });
 
-    //make remarks required in outside referral
+     //make remarks required in outside referral
     $('#referTo').on('change', function(){
       $('#remark').prop('required', true);
-    })
+
+      if ($('#referTo').val() == '3') {
+        $('#referToOthers').prop('disabled', false);
+        $('#referToOthers').prop('required', true);
+      }
+      else{
+        $('#referToOthers').prop('disabled', true);
+        $('#referToOthers').prop('required', false);
+      }
+    });
 
   });
 </script>

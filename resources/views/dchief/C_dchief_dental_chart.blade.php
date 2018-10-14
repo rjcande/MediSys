@@ -1396,11 +1396,18 @@
                         </div>
 
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
+<<<<<<< HEAD
                             <a href="{{URL::previous()}}"><button class="btn btn-primary">BACK</button></a>
                             <a href="{{url('/dchief/PatientRecord')}}"><button class="btn btn-danger">CLOSE</button></a>
                             <!-- <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>     -->
                             <!-- <a href="{{url('dchief/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a> -->
+=======
+                            <!-- <a href="C_dentist_dental_form.php"><button class="btn btn-primary">BACK</button></a> -->
+                            <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
+                        </form>
+                            <a href="{{url('dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CANCEL</button></a>
+>>>>>>> 75a1035a3547324ffe5050d8711cd20e4f6a4171
                         </div>
                     </div>
 

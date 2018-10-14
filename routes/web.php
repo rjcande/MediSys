@@ -263,6 +263,8 @@ Route::get('/physician/generate/outside/referral/{id}/{patientName}', 'OutsideRe
 
 
 
+
+
 /*
  * Chief Route
  *
@@ -351,9 +353,9 @@ Route::get('/mchief/generate/pdf/medical/cert/ojt/off_campus/{id}/{patientName}'
 
 Route::get('/mchief/generate/pdf/medical/cert/admin/{id}/{patientName}', 'LogReferralsController@generateMedCertAdminMChief')->name('mchief.generate.pdf.medical.cert.admin');
 
-Route::get('/mchief/generate/pdf/excuse/letter/{id}/{patientName}', 'LogReferralsController@generateExcuseLetterMChief')->name('physician.generate.pdf.excuse.letter');
+//Route::get('/mchief/generate/pdf/excuse/letter/{id}/{patientName}', 'LogReferralsController@generateExcuseLetterMChief')->name('physician.generate.pdf.excuse.letter');
 
-Route::get('/mchief/generate/pdf/waver/{id}/{patientName}', 'LogReferralsController@generateWaverMChief')->name('physician.generate.pdf.waver');
+//Route::get('/mchief/generate/pdf/waver/{id}/{patientName}', 'LogReferralsController@generateWaverMChief')->name('physician.generate.pdf.waver');
 
 Route::get('/mchief/update/log/referrals/{id}', 'LogReferralsController@mChiefUpdate');
 // -------------------------------------------------------------------------------------------------------------------------
@@ -721,7 +723,11 @@ Route::get('/dentalchief/accounts_maintenance_queries', 'DentalChiefController@a
 Route::get('/dentalchief/medicines_maintenance_queries', 'DentalChiefController@medicineQueries');
 
 Route::get('/dentalchief/medical_supplies_maintenance_queries', 'DentalChiefController@supplyQueries');
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 75a1035a3547324ffe5050d8711cd20e4f6a4171
 //===========================================================================================================================
 
 // Dental Chief Routes

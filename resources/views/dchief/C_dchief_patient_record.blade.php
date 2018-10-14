@@ -61,6 +61,10 @@
                               {{
                                   'Admin/Dept'
                               }}
+                              @elseif($patientRecords->patientType == 4)
+                              {{
+                                  'Visitor'
+                              }}
                               @endif
                               </td>
                               <td class=" last">

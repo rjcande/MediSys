@@ -125,9 +125,9 @@
                             @endif
                         </tbody>
                       </table>
-                      <a target="_blank" href="{{route('dchief.generate.medicineList')}}">
+                      {{-- <a target="_blank" href="{{route('dchief.generate.medicineList')}}"> --}}
                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medicineListModal"><i class="fa fa-print"></i> Print Medicine List</button> 
-                      </a>
+                      {{-- </a> --}}
                     </div>
                   </div>
                 </div>
@@ -211,51 +211,75 @@
       <form id="printMedicineList" action="{{route('dchief.generate.medicineList')}}" target="_blank" method="get">
         @csrf()
         <div class="modal-body">
-            <div class="col-md-4">
-                <input type="checkbox" name="monthly" id="monthly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+          <div style="float:left; margin-left: 5px">
+              <input type="checkbox" name="daily" id="daily" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Daily</label>
+          </div>
+          <div style="float:left; margin-left: 5px">
+              <input type="checkbox" name="weekly" id="weekly" value="1" data-parsley-multiple="choices" required data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Weekly</label>
+          </div>
+          <div style="float:left; margin-left: 5px">
+              <input type="checkbox" name="mon" id="mon" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Monthly</label>
+          </div>
+          <div style="float:left; margin-left: 5px">
+              <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
+          </div>
+          <div style="100%" id="error_container">
+          
+          </div>
+          <br><br>
+
+          <div style="width: 100%">
+            <div class="form-group">
+                <label style=" width: 50px">Date: </label>
+                <input type="date" name="date" style="width: 70%; border-radius: 5px" disabled id="date">
             </div>
-            <div class="col-md-4">
-                <input type="checkbox" name="yearly" id="yearly" value="1" data-parsley-multiple="choices" data-parsley-error-message="Please select at least 1 of the choices" data-parsley-errors-container="#error_container"><label style="margin-left: 5px;">Yearly</label>
-            </div>
-            <div style="100%" id="error_container">
+          </div>
+
+          <div style="width: 100%">
+            <div class="form-group">
+                <label style=" width: 50px">Week: </label>
+                <label style="margin-left: 4px; width: 50px">From: </label>
+                <input type="date" name="weekFrom" style="width: 49%; border-radius: 5px" disabled id="weekFrom"><br>
+                <label style="margin-left: 55px; width: 50px"> To: </label>
+                <input type="date" name="weekTo" style="width: 50%; border-radius: 5px" disabled id="weekTo">
 
             </div>
-            <br><br>
+          </div>
 
-            <div style="width: 100%">
-                <label style="margin-left: 5px; width: 50px">Month: </label>
-                <select name="mon" id="month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
-                    <option value="" selected></option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
+          <div style="width: 100%">
+              <label style="width: 50px">Month: </label>
+              <select name="month" id="month" style="border-radius: 5px; width: 50%" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+                  <option value="" selected></option>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+              </select>
 
-                <select name="yearMonth" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="100%" id="error_container_month">
-
-            </div>
-            <div style="width: 100%">
-                <label style="margin-left: 5px;  width: 50px">Year: </label>
-                <select name="year" class="year" id="year" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
-                    <option value="" selected disabled>Year</option>
-                </select>
-            </div>
-            <div style="width: 100%" id="error_container_year">
-
-            </div>
+              <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                  <option value="" selected disabled>Year</option>
+              </select>
+          </div>
+          <div style="100%" id="error_container_month">
+          
+          </div>
+          <div style="width: 100%">
+              <label >Year: </label>
+              <select name="year" class="year" id="year" style="margin-left:15px ;width: 70%; border-radius: 8%; text-align:center" disabled data-parsley-errors-container="#error_container_year" data-parsley-error-message="Year is required">
+                  <option value="" selected disabled>Year</option>
+              </select>
+          </div>
+          <div style="width: 100%" id="error_container_year">
+            
+          </div>
         </div>
 
         <div class="modal-footer">
@@ -290,7 +314,7 @@
         // var genericname = $('input[name=genericName]').val();
         // var brandname = $('input[name=brandName]').val();
         // var medunit = $('input[name=unit]').val();
-        var dosage = $('input[name=dosage]').val() + ' ' + $('#dosageUnit').val();
+        var dosage = $('input[name=dosage]').val();
 
         var id = {
           // _genericName: genericname,
@@ -352,7 +376,7 @@
     $('.medicine-details').on('click',function(){
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to .......!",
+        text: "Once deleted, you will not be able to view this record!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -402,7 +426,21 @@
         $('#date').prop('required', false);
       }
     });
-    $('#monthly').on('change', function(){
+    $('#weekly').on('change', function(){
+      if ($(this).is(':checked')) {
+        $('#weekFrom').prop('disabled', false);
+        $('#weekFrom').prop('required', true);
+        $('#weekTo').prop('disabled', false);
+        $('#weekTo').prop('required', true);
+      }
+      else{
+        $('#weekFrom').prop('disabled', true);
+        $('#weekFrom').prop('required', false);
+        $('#weekTo').prop('disabled', true);
+        $('#weekTo').prop('required', false);
+      }
+    });
+    $('#mon').on('change', function(){
       if ($(this).is(':checked')) {
         $('#month').prop('disabled', false);
         $('#month').prop('required', true);

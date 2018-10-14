@@ -30,7 +30,7 @@
                     
             <!--Content-->
                   <!-- SmartWizard html -->
-                   <form id="saveForm" data-id="{{ $patient['patientID'] }}" data-cliniclogid="{{ $clinicLogID }}" data-rec="@if($medicalHistory){{ '1' }}@else{{ '0' }}@endif">
+                   <form id="saveForm" data-id="{{ $patient['patientID'] }}" data-cliniclogid="{{ $clinicLogID }}" data-rec="@if($medicalHistory){{ '1' }}@else{{ '0' }}@endif" data-gender="{{ $patient['gender'] }}">
                     @csrf()
                     <div id="smartwizard">
                         <ul>
@@ -67,7 +67,7 @@
                                     <input type="checkbox" name="pastMedicalHistoryChickenPox" class="radio-past" style="margin-bottom:12px;" value="1" @if($medicalHistory) @if($medicalHistory->pastMedChickenPox == 1) {{ 'checked' }} @endif @endif> Chicken Pox<br>
                                     <input input type="checkbox" name="pastMedicalHistoryOther" class="radio-past" style="margin-bottom:12px;" value="1" @if($medicalHistory) @if($medicalHistory->pastMedOther == 1) {{ 'checked' }} @endif @endif> Other 
                                     <em>(please specify)</em>
-                                    <textarea style="height:50px; width:350px; border-radius:8px;" name="pastMedicalHistoryOtherTextArea" id="pastMedicalHistoryOtherTextArea" disabled>@if($medicalHistory) @if($medicalHistory->pastMedOtherDetails) {{ $medicalHistory->pastMedOtherDetails }} @endif @endif</textarea>
+                                    <textarea style="height:50px; width:350px; border-radius:8px;" name="pastMedicalHistoryOtherTextArea" id="pastMedicalHistoryOtherTextArea" disabled>@if($medicalHistory)@if($medicalHistory->pastMedOtherDetails) {{$medicalHistory->pastMedOtherDetails}}@endif @endif</textarea>
                                 </div>
 
                                 <div style="float: left;width:100%;">
@@ -438,13 +438,6 @@
         //bind the form for validation
         $('#saveForm').parsley();
         //
-        if ($('input[name=pastMedicalHistoryOtherTextArea]').val() !== null ) {
-            $('#pastMedicalHistoryOtherTextArea').prop('disabled', false);
-        }
-        if ($('input[name=pastMedicalHistoryOtherTextArea]').val() == null ) {
-            $('#pastMedicalHistoryOtherTextArea').prop('disabled', true);
-        }
-        
 
         // Get reference to checkbox, radio button, and textarea
         var pastMedicalHistoryOther = document.querySelector("input[name=pastMedicalHistoryOther]");
@@ -494,6 +487,50 @@
         xrayState[i].addEventListener("change", enable);
         }
 
+        // if (pastMedicalHistoryOtherTextArea.value != '') {
+        //     pastMedicalHistoryOtherTextArea.disabled = false;
+        //     pastMedicalHistoryOtherTextArea.required = true;
+        // }
+        // if (previousHospitalizationTextArea.value != '') {
+        //     previousHospitalizationTextArea.disabled = false;
+        //     previousHospitalizationTextArea.required = true;
+        // }
+        // if (operationSurgeryTextArea.value != '') {
+        //     operationSurgeryTextArea.disabled = false;
+        //     operationSurgeryTextArea.required = true;
+        // }
+        // if (currentMedicationsTextArea.value != '') {
+        //     currentMedicationsTextArea.disabled = false;
+        //     currentMedicationsTextArea.required = true;
+        // }
+        // if (famHistoryOtherTextArea.value != '') {
+        //     famHistoryOtherTextArea.disabled = false;
+        //     famHistoryOtherTextArea.required = true;
+        // }
+        // if (eyesWithGlassesTextArea.value != '') {
+        //     eyesWithGlassesTextArea.disabled = false;
+        //     eyesWithGlassesTextArea.required = true;
+        // }
+        // if (chestOtherTextArea.value != '') {
+        //     chestOtherTextArea.disabled = false;
+        //     chestOtherTextArea.required = true;
+        // }
+        // if (heartOtherTextArea.value != '') {
+        //     heartOtherTextArea.disabled = false;
+        //     heartOtherTextArea.required = true;
+        // }
+        // if (vcolumnWithDeformitiesTextArea.value != '') {
+        //     vcolumnWithDeformitiesTextArea.disabled = false;
+        //     vcolumnWithDeformitiesTextArea.required = true;
+        // }
+        // if (xrayWithDeformitiesTextArea.value != '') {
+        //     xrayWithDeformitiesTextArea.disabled = false;
+        //     xrayWithDeformitiesTextArea.required = true;
+        // }
+        // if (skinOtherTextArea.value != '') {
+        //     skinOtherTextArea.disabled = false;
+        //     skinOtherTextArea.required = true;
+        // }
         function enable(){
             //alert(this.name);
             var temp = "";
@@ -719,6 +756,13 @@
             }
 
          });
+           //Disable div base on patient's gender
+        if ($('#saveForm').data('gender') == 1) {
+            $('#menstrual-history').hide();
+        }
+        else if($('#saveForm').data('gender') == 0){
+            $('#circumcision-history').hide();
+        }
     });
     
 </script>
