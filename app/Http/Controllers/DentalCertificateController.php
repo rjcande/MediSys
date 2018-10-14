@@ -690,43 +690,94 @@ class DentalCertificateController extends Controller
         //                         ->where([['medicines.isDeleted', '<>', '1'], ['medicines.medType', '=', 'D']])
         //                         ->get();
 
-        if ($request->mon == 1 && $request->yearly == 1) {
+        $date = $request->all();
+        if ($request->daily == 1 && $request->yearly == '' && $request->mon == '' && $request->weekly == '') {
+            $medicineList = Medicine::select('medicines.*')
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->whereDate('medicines.created_at', '=', $request->date)
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
+        }
+        if ($request->daily == '' && $request->yearly == '' && $request->mon == '' && $request->weekly == 1){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. ' 23:59:59';
+            $medicineList = Medicine::select('medicines.*')
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->whereBetween('medicines.created_at', [$from, $to])
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
+        }
+        if ($request->mon == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
+            $medicineList = Medicine::select('medicines.*')
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->whereMonth('medicines.created_at', '=', $request->month)
+                        ->whereYear('medicines.created_at', '=', $request->year_month)
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->mon == '' && $request->daily == '' && $request->weekly == '') {
+            $medicineList = Medicine::select('medicines.*')
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->whereYear('medicines.created_at', '=', $request->year)
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == 1) {
      
             $medicineList = Medicine::select('medicines.*')
-                                    ->where('medicines.isDeleted', '=', '0')
-                                    ->where('medicines.medType','=', 'd')
-                                    ->where(function($query) use ($request){
-                                        $query->whereMonth('medicines.created_at', '=', $request->month)
-                                        ->whereYear('medicines.created_at', '=', $request->year_month)
-                                        ->orwhereYear('medicines.created_at', '=', $request->year);
-                                    })
-                                    ->orderBy('medicines.medicineID', 'DESC')
-                                    ->get();
-            
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medicines.created_at', '=', $request->date)
+                            ->orWhereMonth('medicines.created_at', '=', $request->month)
+                            ->whereYear('medicines.created_at', '=', $request->year_month)
+                            ->orwhereYear('medicines.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
         }
         
-        if ($request->mon == 1 && $request->yearly == '') {
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == '') {
             $medicineList = Medicine::select('medicines.*')
-                                        ->where('medicines.isDeleted', '=', '0')
-                                        ->where('medicines.medType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereMonth('medicines.created_at', '=', $request->month)
-                                            ->whereYear('medicines.created_at', '=', $request->year_month);
-                                        })
-                                        ->orderBy('medicines.medicineID', 'DESC')
-                                        ->get();
-
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medicines.created_at', '=', $request->date)
+                            ->orWhereMonth('medicines.created_at', '=', $request->month)
+                            ->whereYear('medicines.created_at', '=', $request->year_month);
+                        })
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
         }    
 
-        if ($request->mon == '' && $request->yearly == 1) {
+        if ($request->mon == 1 && $request->yearly == 1 && $request->daily == '') {
             $medicineList = Medicine::select('medicines.*')
-                                        ->where('medicines.isDeleted', '=', '0')
-                                        ->where('medicines.medType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereYear('medicines.created_at', '=', $request->year);
-                                        })
-                                        ->orderBy('medicines.medicineID', 'DESC')
-                                        ->get();
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('medicines.created_at', '=', $request->month)
+                            ->whereYear('medicines.created_at', '=', $request->year_month)
+                            ->orwhereYear('medicines.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
+        }
+
+        if ($request->mon == '' && $request->yearly == 1 && $request->daily == 1) {
+            $medicineList =Medicine::select('medicines.*')
+                        ->where('medicines.isDeleted', '=', '0')
+                        ->where('medicines.medType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medicines.created_at', '=', $request->date)
+                            ->orwhereYear('medicines.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medicines.medicineID', 'ASC')
+                        ->get();
         }
         
         $pdf = PDF::loadview('dchief.printables.medicinesList-pdf', compact('medicineList'));
@@ -740,43 +791,94 @@ class DentalCertificateController extends Controller
         //                                 ->where([['medsupplies.isDeleted', '<>', '1'], ['medsupplies.supType', '=', 'D']])
         //                                 ->get();
 
-        if ($request->mon == 1 && $request->yearly == 1) {
+        $date = $request->all();
+        if ($request->daily == 1 && $request->yearly == '' && $request->mon == '' && $request->weekly == '') {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->whereDate('medsupplies.created_at', '=', $request->date)
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
+        }
+        if ($request->daily == '' && $request->yearly == '' && $request->mon == '' && $request->weekly == 1){
+            $from = $request->weekFrom;
+            $to = $request->weekTo. ' 23:59:59';
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->whereBetween('medsupplies.created_at', [$from, $to])
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
+        }
+        if ($request->mon == 1 && $request->yearly == '' && $request->daily == '' && $request->weekly == '') {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->whereMonth('medsupplies.created_at', '=', $request->month)
+                        ->whereYear('medsupplies.created_at', '=', $request->year_month)
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
+        }
+        if ($request->yearly == 1 && $request->mon == '' && $request->daily == '' && $request->weekly == '') {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->whereYear('medsupplies.created_at', '=', $request->year)
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
+        }
+
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == 1) {
      
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
-                                    ->where('medsupplies.isDeleted', '=', '0')
-                                    ->where('medsupplies.supType','=', 'd')
-                                    ->where(function($query) use ($request){
-                                        $query->whereMonth('medsupplies.created_at', '=', $request->month)
-                                        ->whereYear('medsupplies.created_at', '=', $request->year_month)
-                                        ->orwhereYear('medsupplies.created_at', '=', $request->year);
-                                    })
-                                    ->orderBy('medsupplies.medSupID', 'DESC')
-                                    ->get();
-            
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medsupplies.created_at', '=', $request->date)
+                            ->orWhereMonth('medsupplies.created_at', '=', $request->month)
+                            ->whereYear('medsupplies.created_at', '=', $request->year_month)
+                            ->orwhereYear('medsupplies.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
         }
         
-        if ($request->mon == 1 && $request->yearly == '') {
+        if ($request->daily == 1 && $request->mon == 1 && $request->yearly == '') {
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
-                                        ->where('medsupplies.isDeleted', '=', '0')
-                                        ->where('medsupplies.supType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereMonth('medsupplies.created_at', '=', $request->month)
-                                            ->whereYear('medsupplies.created_at', '=', $request->year_month);
-                                        })
-                                        ->orderBy('medsupplies.medSupID', 'DESC')
-                                        ->get();
-
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medsupplies.created_at', '=', $request->date)
+                            ->orWhereMonth('medsupplies.created_at', '=', $request->month)
+                            ->whereYear('medsupplies.created_at', '=', $request->year_month);
+                        })
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
         }    
 
-        if ($request->mon == '' && $request->yearly == 1) {
+        if ($request->mon == 1 && $request->yearly == 1 && $request->daily == '') {
             $medicalSupplyList = MedicalSupply::select('medsupplies.*')
-                                        ->where('medsupplies.isDeleted', '=', '0')
-                                        ->where('medsupplies.supType','=', 'd')
-                                        ->where(function($query) use ($request){
-                                            $query->whereYear('medsupplies.created_at', '=', $request->year);
-                                        })
-                                        ->orderBy('medsupplies.medSupID', 'DESC')
-                                        ->get();
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereMonth('medsupplies.created_at', '=', $request->month)
+                            ->whereYear('medsupplies.created_at', '=', $request->year_month)
+                            ->orwhereYear('medsupplies.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
+        }
+
+        if ($request->mon == '' && $request->yearly == 1 && $request->daily == 1) {
+            $medicalSupplyList = MedicalSupply::select('medsupplies.*')
+                        ->where('medsupplies.isDeleted', '=', '0')
+                        ->where('medsupplies.supType','=', 'D')
+                        ->where(function($query) use ($request){
+                            $query->WhereDate('medsupplies.created_at', '=', $request->date)
+                            ->orwhereYear('medsupplies.created_at', '=', $request->year);
+                        })
+                        ->orderBy('medsupplies.medSupID', 'ASC')
+                        ->get();
         }
                                         
         $pdf = PDF::loadview('dchief.printables.medicalSupplyList-pdf', compact('medicalSupplyList'));

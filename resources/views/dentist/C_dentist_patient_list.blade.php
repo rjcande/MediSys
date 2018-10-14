@@ -247,7 +247,6 @@
       if ($(this).is(':checked')) {
         $('#year').prop('disabled', false);
         $('#year').prop('required', true);
-        alert();
       }
       else{
         $('#year').prop('disabled', true);
