@@ -57,6 +57,7 @@ class ClinicLogController extends Controller
                         ->where('cliniclogs.clinicType','=', 'M')
                         ->orderBy('cliniclogs.clinicLogID', 'DESC')
                         ->get();
+        
         return view('nurse.C_nurse_medical_log')->with(['clinicLogs' => $clinicLogs]);
        
     }
