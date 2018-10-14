@@ -248,6 +248,7 @@ class DentalChartsController extends Controller
                     }
                 }
                 $toothside = '';
+                $display = $display . '  |  ' . $x . '-' . $request->$left . '-' . $request->$top . '-' . $request->$right . '-' . $request->$bottom . '-' . $request->$middle;
             }
 
         }

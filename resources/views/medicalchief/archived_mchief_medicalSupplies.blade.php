@@ -103,9 +103,11 @@
                                   <i class="fa fa-pencil"></i>
                                 </button>  --}}
 
-                                <button type="button" class="btn btn-success">
-                                  <i class="fa fa-refresh"></i>
-                                </button>
+                                <a href="{{ url('/mchief/restore/medicalSupply',$supply->medSupID) }}">
+                                    <button type="button" class="btn btn-success">
+                                        <i class="fa fa-refresh"></i>
+                                      </button>
+                                </a>
 
 
 

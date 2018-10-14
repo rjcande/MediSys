@@ -14,6 +14,7 @@ use App\Accounts;
 use Session;
 use DB;
 
+use Redirect;
 class MedicalChiefArchivesController extends Controller
 {
     public function accounts(){
@@ -125,10 +126,11 @@ class MedicalChiefArchivesController extends Controller
     public function medicalLogs()
     {
         $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                        ->leftJoin('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                        ->leftjoin('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->where('cliniclogs.isDeleted', 1)
                         ->orderBy('cliniclogs.clinicLogID', 'DESC')
                         ->get();
+                        dd($clinicLogs);
 
         $attendingPhysician = logReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                         ->select('logreferrals.*', 'users.*')
@@ -138,5 +140,42 @@ class MedicalChiefArchivesController extends Controller
 
 
         return view('medicalchief.archived_mchief_medicalLogs')->with(['clinicLogs' => $clinicLogs, 'attendingPhysician' => $attendingPhysician, 'assistingNurse' => $assistingNurse]);
+    }
+    public function restore_account($id){
+        $account = Account::find($id);
+        $account->isActive = 1;
+        $account->deactivated_at = null;
+        $account->save();
+
+        return Redirect::to('/mchief/archived/accounts');
+    }
+    public function restore_medicine($id){
+        $med = Medicine::find($id);
+        $med->isDeleted = 0;
+        $med->deleted_at = null;
+        $med->save();
+        return Redirect::to('/mchief/archived/medicines');
+    }
+    public function restore_medicalSupply($id){
+        $medSup = MedicalSupply::find($id);
+        $medSup->isDeleted = 0;
+        $medSup->deleted_at = null;
+        $medSup->save();
+        return Redirect::to('/mchief/archived/medicalSupplies');
+    }
+    public function restore_medical_log($id){
+        $medLog = ClinicLog::find($id);
+        // $medLog->isDeleted = 0;
+        // $medLog->deleted_at = null;
+        // $medLog->save();
+        // return Redirect::to('/mchief/archived/medicalLogs');
+        dd($medLog);
+    }
+    public function restore_patient($id){
+        $patient = Patient::find($id);
+        $patient->isDeleted = 0;
+        $patient->deleted_at = null;
+        $patient->save();
+        return Redirect::to('/mchief/archived/patients');
     }
 }

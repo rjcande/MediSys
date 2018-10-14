@@ -402,6 +402,13 @@ Route::get('/mchief/archived/patients/viewMore/{id}', 'MedicalChiefArchivesContr
 Route::get('/mchief/archived/patients/viewMore/medicalLogs/{id}', 'MedicalChiefArchivesController@patients_viewMore_medicalLogs');
 Route::get('/mchief/archived/medicalLogs', 'MedicalChiefArchivesController@medicalLogs');
 
+
+Route::get('/mchief/restore/patient/{id}','MedicalChiefArchivesController@restore_patient');
+Route::get('/mchief/restore/medical/log/{id}','MedicalChiefArchivesController@restore_medical_log');
+Route::get('/mchief/restore/account/{id}','MedicalChiefArchivesController@restore_account');
+Route::get('/mchief/restore/medicine/{id}','MedicalChiefArchivesController@restore_medicine');
+Route::get('/mchief/restore/medicalSupply/{id}','MedicalChiefArchivesController@restore_medicalSupply');
+
 Route::get('/medicalchief/queries/accounts', 'MedicalChiefController@accountQueries');
 
 Route::get('/medicalchief/queries/medicines', 'MedicalChiefController@medicineQueries');
