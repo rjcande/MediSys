@@ -172,10 +172,12 @@
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Body Mass Index: </label>
                     <input type="text" name="bmi" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">BMI Range: </label>
-                    <input type="radio"  name ="bmi_range" required value="0">&nbsp Normal
-                    <input type="radio"  name ="bmi_range" value="1">&nbsp Underweight
-                    <input type="radio"  name ="bmi_range" value="2">&nbsp Obese Class I
-                    <input type="radio"  name ="bmi_range" value="3">&nbsp Obese Class II
+                    <input type="radio" name ="bmiRange" value="0" data-parsley-group="vitalSign">&nbsp Underweight
+                    <input type="radio" name ="bmiRange" value="1" data-parsley-group="vitalSign">&nbsp Normal
+                    <input type="radio" name ="bmiRange" value="2" data-parsley-group="vitalSign">&nbsp Overweight
+                    <input type="radio" name ="bmiRange" value="3" data-parsley-group="vitalSign">&nbsp Obese Class I
+                    <input type="radio" name ="bmiRange" value="4" data-parsley-group="vitalSign">&nbsp Obese Class II
+                    <input type="radio" name ="bmiRange" value="5" data-parsley-group="vitalSign">&nbsp Obese Class III
                 </div>
                 <div class="modal-footer" style="margin-right:0%">
                     <button class="btn btn-success" data-dismiss="modal">DONE</button>

@@ -98,7 +98,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <a href="{{ url('/dchief/medicine/reports') }}">
+                    <a href="{{ url('/dentist/medicine/reports') }}">
                       <button type="button" class="btn btn-primary btn-block">Medicine Report</button>
                     </a>
                     <a href="{{ url('/dentist/medical/supplies/reports') }}">
