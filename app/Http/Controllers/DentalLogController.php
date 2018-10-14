@@ -238,7 +238,7 @@ class DentalLogController extends Controller
 
             $date = $dentalLogInfo['date'];
             $time = $dentalLogInfo['time'];
-            $datetime = date('Y-m-d h:i:s');
+            $datetime = date('Y-m-d H:i:s');
 
             $logPatient = new DentalLog;
 
@@ -286,15 +286,20 @@ class DentalLogController extends Controller
                 $appointments->appointmentDate = $request->appointmentDate;
                 $appointments->save();
             }
-           
 
+            // $consultAppointment = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                                     // ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+            //                                     ->select('cliniclogs.*', 'patients.*', 'appointments.*')
+            //                                     ->where('cliniclogs','cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
+            //                                     ->where('cliniclogs', 'cliniclogs.patientID', '=')
+            //                                     // ->where('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+            //                                     ->first();
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')
                                     ->select('diagnoses.diagnosisID')
                                     ->where('diagnoses.isDeleted', '<>', '1')
                                     ->first();
-
             // SAVE TO TREATMENT
             $patientTreatment = new Treatment;
 
@@ -311,6 +316,7 @@ class DentalLogController extends Controller
             $patientTreatment->save();
             $patientTreatmentID = $patientTreatment->treatmentID;
 
+            
             $outsideReferral = OutsideReferrals::orderBy('created_at', 'desc')
                                                ->where('outsidereferrals.isDeleted', '<>', '1')
                                                ->first();
@@ -319,6 +325,8 @@ class DentalLogController extends Controller
             $outsideReferral->treatmentID = $patientTreatmentID;
             $outsideReferral->save();
             }
+            
+            
 
             for ($i=0; $i < count(Input::get('medArray')) ; $i++) {
 
@@ -362,7 +370,7 @@ class DentalLogController extends Controller
                 $usedMedSupply->suppliesUnit = Input::get('suppArray')[$i]['medicalSupplyUnit'];
                 $usedMedSupply->save();
             }
-
+            
             return Response::json(['message' => 'Successfully Added!']);
 
         } catch (Exception $e) {
@@ -721,60 +729,60 @@ class DentalLogController extends Controller
     public function dchiefUpdate(Request $request, $id)
     {
         try {
-          $dentalLog = DentalLog::find($id);
-
-          $dentalLog->symptoms = $request->symptoms;
-          $dentalLog->save();
-
-
-          $diagnosis = Diagnosis::where('clinicLogID', '=', $id)->first();
-
-          $diagnosis->diagnosisDescription = $request->diagnosisTextArea;
-          $diagnosis->save();
-
-          $treatment = Treatment::where('clinicLogID', '=', $id)
-                                ->where('diagnosisID', '=', $diagnosis['diagnosisID'])
-                                ->first();
-
-          $treatment->diagnosisID = $diagnosis['diagnosisID'];
-          $treatment->dentalExamination = $request->dentalExam;
-          $treatment->oralProphylaxis = $request->oralProphylaxis;
-          $treatment->restoration = $request->restorationChk;
-          $treatment->restorationTooth = $request->restorationTxt;
-          $treatment->extraction = $request->extractionChk;
-          $treatment->extractionTooth = $request->extractionTxt;
-          $treatment->othersTreatment = $request->othersTreatment;
-          $treatment->treatmentDescription = $request->treatment;
-          $treatment->save();
-
-
-          for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
-
-            $prescription = new Prescription;
-
-            $prescription->treatmentID = $treatment['treatmentID'];
-            $prescription->medicineID = Input::get('medicineID')[$i];
-            $prescription->quantity = Input::get('medQuantity')[$i];
-            $prescription->medicineUnit = Input::get('medicineUnit')[$i];
-            $prescription->medication = Input::get('medication')[$i];
-            $prescription->dosage = Input::get('dosage')[$i];
-            $prescription->isPrescribed = Input::get('isPrescribed')[$i];
-            $prescription->isGiven = Input::get('isGiven')[$i];
-            $prescription->save();
-        }
-
-        for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
-            $usedMedSupply = new UsedMedSupply;
-            $usedMedSupply->treatmentID =$treatment['treatmentID'];
-            $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
-            $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
-            $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
-            $usedMedSupply->save();
-        }
-
-        } catch (Exception $e) {
-
-        }
+            $dentalLog = DentalLog::find($id);
+  
+            $dentalLog->symptoms = $request->symptoms;
+            $dentalLog->save();
+  
+  
+            $diagnosis = Diagnosis::where('clinicLogID', '=', $id)->first();
+  
+            $diagnosis->diagnosisDescription = $request->diagnosisTextArea;
+            $diagnosis->save();
+  
+            $treatment = Treatment::where('clinicLogID', '=', $id)
+                                  ->where('diagnosisID', '=', $diagnosis['diagnosisID'])
+                                  ->first();
+  
+            $treatment->diagnosisID = $diagnosis['diagnosisID'];
+            $treatment->dentalExamination = $request->dentalExam;
+            $treatment->oralProphylaxis = $request->oralProphylaxis;
+            $treatment->restoration = $request->restorationChk;
+            $treatment->restorationTooth = $request->restorationTxt;
+            $treatment->extraction = $request->extractionChk;
+            $treatment->extractionTooth = $request->extractionTxt;
+            $treatment->othersTreatment = $request->othersTreatment;
+            $treatment->treatmentDescription = $request->treatment;
+            $treatment->save();
+  
+  
+            for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
+  
+              $prescription = new Prescription;
+  
+              $prescription->treatmentID = $treatment['treatmentID'];
+              $prescription->medicineID = Input::get('medicineID')[$i];
+              $prescription->quantity = Input::get('medQuantity')[$i];
+              $prescription->medicineUnit = Input::get('medicineUnit')[$i];
+              $prescription->medication = Input::get('medication')[$i];
+              $prescription->dosage = Input::get('dosage')[$i];
+              $prescription->isPrescribed = Input::get('isPrescribed')[$i];
+              $prescription->isGiven = Input::get('isGiven')[$i];
+              $prescription->save();
+          }
+  
+          for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
+              $usedMedSupply = new UsedMedSupply;
+              $usedMedSupply->treatmentID =$treatment['treatmentID'];
+              $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
+              $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
+              $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
+              $usedMedSupply->save();
+          }
+  
+          } catch (Exception $e) {
+  
+          }
 
     }
 

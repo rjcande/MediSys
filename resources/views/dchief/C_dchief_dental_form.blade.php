@@ -266,7 +266,7 @@
                       <!-- <button type="submit" id="btnSave" class="btn btn-success">SAVE</button>
                       <button class="btn btn-default" style="background-color:#00d2d3; color:white;">DENTAL CHART</button> -->
                     
-                    <!-- <a href="{{route('dentist.dentalchart')}}">
+                    <!-- <a href="{{route('dchief.dentalchart')}}">
                       <button class="btn btn-default" style="background-color:#00d2d3; color:white;">DENTAL CHART</button>
                     </a> --> <!-- NAKALAGAY DIN TONG <A> SA DENTAL CHART BUTTON PERO NGAYON PINASOK KO LANG SA FORM -->
                       {{-- <a href="{{url('/dentist/DentalLog')}}">

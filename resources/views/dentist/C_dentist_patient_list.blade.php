@@ -136,7 +136,7 @@
 
               <div style="width: 100%">
                   <label style="width: 50px">Month: </label>
-                  <select name="mon" id="month" style="border-radius: 5px; width: 50%" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
+                  <select name="month" id="month" style="border-radius: 5px; width: 50%" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Month is required">
                       <option value="" selected></option>
                       <option value="1">January</option>
                       <option value="2">February</option>
@@ -152,7 +152,7 @@
                       <option value="12">December</option>
                   </select>
 
-                  <select name="yearMonth" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
+                  <select name="year_month" class="year" id="year-month" disabled data-parsley-errors-container="#error_container_month" data-parsley-error-message="Year is required">
                       <option value="" selected disabled>Year</option>
                   </select>
               </div>
@@ -247,7 +247,6 @@
       if ($(this).is(':checked')) {
         $('#year').prop('disabled', false);
         $('#year').prop('required', true);
-        alert();
       }
       else{
         $('#year').prop('disabled', true);

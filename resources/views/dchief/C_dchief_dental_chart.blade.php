@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -1396,7 +1396,7 @@
                         </div>
 
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
-                            <!-- <a href="C_dchief_dental_form.php"><button class="btn btn-primary">BACK</button></a> -->
+                            <!-- <a href="C_dentist_dental_form.php"><button class="btn btn-primary">BACK</button></a> -->
                             <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>
                             <a href="{{url('dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CANCEL</button></a>
@@ -1408,22 +1408,106 @@
         </div>
     </div>
     <script>
+        var toothcons = {!! json_encode($toothconditions) !!};
 
+        function darkenToothSide($toothSide){
+            document.getElementById($toothSide).style.fill = "#222";
+        }
+        $(document).ready(function(){
+
+            for(i=0; i<toothcons.length; i++){
+                var toothNum = toothcons[i].toothNum;
+                var left = toothNum + 'l';
+                var top = toothNum + 't';
+                var right = toothNum + 'r';
+                var bottom = toothNum + 'b';
+                var middle = toothNum + 'm';
+                if(toothcons[i].leftSide == 1){
+                    document.getElementById(left).style.fill = "#222";
+                }
+                if(toothcons[i].topSide == 1){
+                    document.getElementById(top).style.fill = "#222";
+                }
+                if(toothcons[i].rightSide == 1){
+                    document.getElementById(right).style.fill = "#222";
+                }
+                if(toothcons[i].bottomSide == 1){
+                    document.getElementById(bottom).style.fill = "#222";
+                }
+                if(toothcons[i].middleSide == 1){
+                    document.getElementById(middle).style.fill = "#222";
+                }
+            }
+
+        });
         function isClicked($num){
             var tooth = document.getElementById($num);
-            var toothside = 'txt' + $num;
-            if(tooth.style.fill == 'white'){
-                tooth.style.fill = 'maroon';
-                document.getElementById(toothside).value = 1;
+            var numero = $num.substr(0,2);
+            var side = $num.substr(2,1);
+            var isDisabled = false;
+            var inDatabase = false;
+
+            var sideClicked = false;
+
+            for(i=0; i<toothcons.length; i++){
+                if(numero == toothcons[i].toothNum){
+                    isInDB = true;
+                    if(side == 'l'){
+                        if(toothcons[i].leftSide == 1){
+                            isDisabled = true;
+                        }
+                    }
+                    if(side == 't'){
+                        if(toothcons[i].topSide == 1){
+                            isDisabled = true;
+                        }
+                    }
+                    if(side == 'r'){
+                        if(toothcons[i].rightSide == 1){
+                            isDisabled = true;
+                        }
+                    }
+                    if(side == 'b'){
+                        if(toothcons[i].bottomSide == 1){
+                            isDisabled = true;
+                        }
+                    }
+                    if(side == 'm'){
+                        if(toothcons[i].middleSide == 1){
+                            isDisabled = true;
+                        }
+                    }
+                    if(isDisabled == true){
+                        alert('Already Disabled!');
+                    }
+                    else{
+                        var toothside = 'txt' + $num;
+                        if(inDatabase == true){
+                            if(tooth.style.fill == 'white'){
+                                tooth.style.fill = 'maroon';
+                                document.getElementById(toothside).value = 1;
+                            }
+                            else{
+                                tooth.style.fill = 'white';
+                                document.getElementById(toothside).value = 0;
+                            }
+                        }
+                    }
+                    break;
+                }
             }
-            else if(tooth.style.fill == 'gray'){
-                alert('already disabled!');
+            if(inDatabase == false && isDisabled == false){
+                if(tooth.style.fill == 'white'){
+                    tooth.style.fill = 'maroon';
+                    document.getElementById(toothside).value = 1;
+                }
+                else{
+                    tooth.style.fill = 'white';
+                    document.getElementById(toothside).value = 0;
+                }
             }
-            else{
-                tooth.style.fill = 'white';
-                document.getElementById(toothside).value = 0;
-            }
-            {{-- alert(toothside + ' = ' + document.getElementById(toothside).value); --}}
+            isDisabled = false;
+            isInDB = false;
         }
     </script>
 @endsection
