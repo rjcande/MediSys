@@ -176,7 +176,7 @@ class MedicineController extends Controller
     public function destroy()
     {
        try {
-            $prescriptonID = array();
+            $prescriptionID = array();
             foreach (Input::all() as $key) {
                 $prescriptionID = $key;
             }
