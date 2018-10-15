@@ -234,7 +234,7 @@
                             </div>
 
                             <div style="float: left;">
-                              <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third"><br>
+                              <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="third"><br>
                             </div>
                           </div>
                          
@@ -348,9 +348,7 @@
                         
                             </tbody>
                           </table>
-                         
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                        
                         </div>
                       </div>
 
@@ -516,7 +514,7 @@
         $('#medSuppBrand').empty();
         $('#medSuppUnit').empty();
         $('#medSuppBrand').prop('disabled', false);
-
+        $('#medSuppQuantity').prop('required', true);
         $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
         $.each(data, function(index, brandObj){
           $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
@@ -532,7 +530,9 @@
     
         $('#medSuppUnit').prop('disabled', false);
         $('#medSuppUnit').append('<option value="'+data[0].medSupID+'">'+data[0].unit+'</option>');
-        
+        if (data[0].unit.toLowerCase() == 'bottle') {
+          $('#medSuppQuantity').prop('required', false);
+        }
       });      
     });
 

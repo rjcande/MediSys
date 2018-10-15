@@ -411,9 +411,9 @@
 				
 							
 				 <div style="margin-top: 25px;margin-bottom: 30px;float: left;text-align: center;width: 100%">
-                	<a href="{{ route('physician.consult.diagnosis', [ 'id' => $clinicLogID, 'patientID' => $patient['patientID']]) }}">
+                	<!-- <a href="{{ route('physician.consult.diagnosis', [ 'id' => $clinicLogID, 'patientID' => $patient['patientID']]) }}">
                 		<button class="btn btn-default" type="button">DIAGNOSIS</button>
-                	</a>
+                	</a> -->
                     
                 	<a href="{{ route('physician.consult.diagnosis', [ 'id' => $clinicLogID, 'patientID' => $patient['patientID']]) }}">
                     	<button class="btn btn-primary" type="button">BACK</button>

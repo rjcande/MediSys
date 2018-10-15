@@ -221,7 +221,7 @@
                                     </div>
 
                                     <div style="float: left;">
-                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity" min='1' data-parsley-error-message="should be greater than or equal to 1">
+                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity" min='1' data-parsley-error-message="should be greater than or equal to 1">
                                     </div>
                                     
                                   </div>
@@ -891,6 +891,8 @@
         $.each(data, function(index, brandObj){
           $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
         });
+      
+        $('#medSuppQuantity').prop('required', true);
       });      
     });
 
@@ -902,7 +904,9 @@
     
         $('#medSuppUnit').prop('disabled', false);
         $('#medSuppUnit').append('<option value="'+data[0].medSupID+'">'+data[0].unit+'</option>');
-        
+        if (data[0].unit.toLowerCase() == 'bottle') {
+              $('#medSuppQuantity').prop('required', false);
+        }
       });      
     });
 
