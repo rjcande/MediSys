@@ -111,10 +111,20 @@
                   </ul>
                 </li>
 
-                {{-- <li role="presentation" class="dropdown">
+                <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
-                    <span class="badge bg-blue">6</span>
+                    <span class="badge bg-blue">
+                      {{-- @if(!empty($unverifiedAccounts))
+                        {{ 'count($unverifiedAccounts)' }}
+                      @endif --}}
+                      {{-- @php($ctr = sizeof($unverifiedAccounts))
+                      {{ Session::put('number', $ctr)}}
+                      @foreach($unverifiedAccounts as $notifCount)
+                      {{$ctr}}
+                      @endforeach
+                      @endphp --}}
+                    </span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
@@ -130,16 +140,16 @@
                       </a>
                     </li>
 
-                    <li>
+                    {{-- <li>
                       <div class="text-center">
                         <a>
                           <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>
-                    </li>
+                    </li> --}}
                   </ul>
-                </li> --}}
+                </li>
               </ul>
             </nav>
           </div>

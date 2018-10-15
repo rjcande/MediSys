@@ -116,6 +116,13 @@ class DashboardController extends Controller
         return Response::json(array('id' => $id_cliniclog));
     }
 
+    public function dchiefNotification()
+    {
+        $unverifiedAccounts = Account::leftJoin('userverifications', 'users.id', '=', 'userverifications.userID')->where('position',4)->where('users.isVerified', 0)->get();
+
+        return view('dentalchief.layout.side_and_top')->withUnverifiedAccounts($unverifiedAccounts);
+    }
+
     public function dashboard()
     {
         //dd(Session::get('notification'));
