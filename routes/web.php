@@ -723,11 +723,7 @@ Route::get('/dentalchief/accounts_maintenance_queries', 'DentalChiefController@a
 Route::get('/dentalchief/medicines_maintenance_queries', 'DentalChiefController@medicineQueries');
 
 Route::get('/dentalchief/medical_supplies_maintenance_queries', 'DentalChiefController@supplyQueries');
-<<<<<<< HEAD
-
-=======
  
->>>>>>> 7820a5dbeed021b35de46026477e6b8894e17b41
 //===========================================================================================================================
 
 // Dental Chief Routes
