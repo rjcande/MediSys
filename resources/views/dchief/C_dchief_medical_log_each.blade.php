@@ -297,7 +297,7 @@
       if ($(this).parsley().isValid()) {
         var hasRecord = { hasRecord: checkRecord };
         $.ajax({
-          url: '/dentist/select/concern',
+          url: '/dchief/select/concern',
           type: 'get',
           data: $(this).serialize() + '&' + $.param(hasRecord),
           success: function(output){
@@ -323,7 +323,7 @@
      .then((willDelete)=>{
         if (willDelete) {
           $.ajax({
-            url: '/dentist/delete/dental/log/' + $(this).data('id'),
+            url: '/dchief/delete/dental/log/' + $(this).data('id'),
             type: 'get',
             success: function(output){
               swal({
