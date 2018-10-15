@@ -314,7 +314,7 @@
       table.column(3).search('').draw();
     });
 
-    $('.delete-button').on('click', function(){
+    $('#patientTable').on('click', '.delete-button', function(){
      swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this record!",

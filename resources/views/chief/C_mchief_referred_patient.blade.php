@@ -104,7 +104,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @endif
@@ -113,7 +113,7 @@
                                 {{--  <button class="btn btn-info" data-toggle="tooltip" title="View More Info" id="btnViewMore">
                                   <i class="fa fa-angle-double-right"></i>
                                 </button>  --}}
-                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}"><i class="fa fa-trash"></i></button>
                               </td>
                             </tr>
                             @php($ctr--)
@@ -322,8 +322,37 @@
       table.column(4).search('').draw();
     });
 
+    //When delete button is clicked
+    $('#patientTable').on('click', '.btn-delete', function(){
+      swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this record!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                  $.ajax({
+                    url: '/nurse/delete/logReferral/' + $(this).data('id'),
+                    type: 'get',
+                    success: function(output){
+                      swal({
+                        title: "SUCCESS",
+                        text: output.message,
+                        icon: "success",
+                      })
+                      .then((value)=>{
+                        location.reload(true);
+                      });
+                    }
+                  });
+                }
+             })
+    });
+
     //on btn decline
-    $(".btn-delete").on('click', function(){
+    $("#patientTable").on('click', '.btn-decline', function(){
       swal({
         title: "WARNING",
         text: "Are you sure you want to decline the referral?",

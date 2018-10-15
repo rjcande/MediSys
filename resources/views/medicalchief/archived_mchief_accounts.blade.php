@@ -74,7 +74,7 @@
                                     @endif
                                   </span>
                                 </td>
-                                <td><button class="btn btn-success"><i class="fa fa-refresh"></i></button></td>
+                                <td><a href="{{ url('/mchief/restore/account',$staff->id) }}"><button class="btn btn-success"><i class="fa fa-refresh"></i></button><a/></td>
                               </tr>
                           @endforeach
                         </tbody>

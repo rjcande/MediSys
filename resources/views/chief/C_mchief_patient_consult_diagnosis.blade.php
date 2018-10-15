@@ -264,7 +264,7 @@
                             <thead>
                               <tr class="headings">
                                 <th>
-                                  <input type="checkbox" id="check-all" class="flat">
+                                 
                                 </th>
                                 <th class="column-title">Generic Name </th>
                                 <th class="column-title">Brand </th>
@@ -272,9 +272,7 @@
                                 <th class="column-title">Unit</th>
                                 <th class="column-title">Dosage</th>
                                 <th class="column-title no-link last"><span class="nobr">Medication</th>
-                                <th class="bulk-actions" colspan="5">
-                                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                </th>
+                             
                               </tr>
                             </thead>
 
@@ -282,7 +280,7 @@
                               @foreach($prescriptionInfo as $medicine)
                                 <tr class="even pointer">
                                   <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
+                                    <input type="checkbox" name="table_records">
                                   </td>
                                   <td class=" ">{{ $medicine->genericName }}</td>
                                   <td class=" ">{{ $medicine->brand }}</td>
@@ -306,16 +304,14 @@
                             <thead>
                               <tr class="headings">
                                 <th>
-                                  <input type="checkbox" id="check-all" class="flat">
+                                  
                                 </th>
                                 <th class="column-title">Supply Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used</th>
                                 <th class="column-title no-link last"><span class="nobr">Unit</span>
                                 </th>
-                                <th class="bulk-actions" colspan="8">
-                                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                </th>
+                               
                               </tr>
                             </thead>
 
@@ -323,7 +319,7 @@
                             @foreach($usedMedSupply as $medicalSupply)
                               <tr class="even pointer">
                                 <td class="a-center ">
-                                  <input type="checkbox" class="flat" name="table_records">
+                                  <input type="checkbox" name="table_records">
                                 </td>
                                 <td class=" ">{{ $medicalSupply->medSupName }}</td>
                                 <td class=" ">{{ $medicalSupply->brand }}</td>
@@ -347,7 +343,7 @@
                             <thead>
                               <tr class="headings">
                                 <th>
-                                <input type="checkbox" id="check-all" class="flat">
+                               
                                 </th>
                                 <th class="column-title">Generic Name </th>
                                 <th class="column-title" style="padding-right:50px;">Brand </th>
@@ -849,13 +845,12 @@
 
                         if ($('#saveForm').parsley().isValid("first") && $('#saveForm').parsley().validate("referral")) {
                             var data = {
-                              medicineID: medicineID,
-                              medQuantity: medQuantity,
-                              medication: medication,
-                              medSuppID: medSuppID,
-                              medSuppQuantity: medSuppQuantity,
+                              _medArray: array_med,
+                              _suppArray: array_supp,
+                              _medPrescribedArray: array_med_prescribed,
                               isPrescribed: isPrescribed,
-                              dosage: dosage
+                              isPrescribed_other: isPrescribed_other,
+                              patientID: '{{ $consultInfo->patientID }}'
                             };
                             $.ajax({
                               url: '/mchief/save/diagnosis',

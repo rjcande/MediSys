@@ -215,7 +215,7 @@
                                     <div style="float:left; font-size:15px; width:300px;">
                                         <input type="checkbox" name="eyesWithGlasses" class="radio-eyes" style="margin-bottom:12px;" value="1"
                                         @if($medicalHistory) @if($medicalHistory->eyesWithGlasses == 1) {{ 'checked' }} @endif @endif> With Glasses <em>(please specify grade)</em>
-                                        <input type="number" name="eyesWithGlassesTextArea" class="" style="width:350px; border-radius:8px;" disabled value="@if($medicalHistory){{ $medicalHistory->eyeGlassesGrade }}@endif">
+                                        <input type="text" name="eyesWithGlassesTextArea" class="" style="width:350px; border-radius:8px;" disabled value="@if($medicalHistory){{ $medicalHistory->eyeGlassesGrade }}@endif">
                                     </div>
 
                                     <div id="physical-examination-chest-heart">
@@ -623,7 +623,7 @@
         });
 
         // Toolbar extra buttons
-        var btnFinish = $('<button></button>').text('Finish')
+        var btnFinish = $('<button></button>').text('Done')
                             .addClass('btn btn-info')
                             .on('click', function(e){ 
                                 //When Save button is clicked   
@@ -644,7 +644,7 @@
                                                 var location = "/mchief/consult/diagnosis/";
                                                 var clinicLogID = $('#saveForm').data('cliniclogid')
                                                 var patientID = $('#saveForm').data('id');
-                                                window.location.href= location + clinicLogID + "/" + patientID ;
+                                                window.location.href= "/mchief/patient/record" ;
                                             });
                                         }
                                     });
@@ -664,7 +664,7 @@
                                                 var location = "/mchief/consult/diagnosis/";
                                                 var clinicLogID = $('#saveForm').data('cliniclogid')
                                                 var patientID = $('#saveForm').data('id');
-                                                window.location.href= location + clinicLogID + "/" + patientID ;
+                                                window.location.href= "/mchief/patient/record"  ;
                                             });
                                         }
                                     });

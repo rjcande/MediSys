@@ -62,6 +62,7 @@ class LogReferralsController extends Controller
                 ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                 ->select('patients.*', 'cliniclogs.*', 'logreferrals.*')
                 ->where('logreferrals.physicianID', '=', Session::get('accountInfo.id'))
+                ->where('logreferrals.isDeleted', '=', '0')
                 ->orderBy('logreferrals.logReferralStatus', 'asc')
                 ->orderBy('logreferrals.created_at', 'desc')
                 ->get(); 

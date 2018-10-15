@@ -338,7 +338,7 @@
       $('#saveMedForm')[0].reset();
     });
 
-    $('.medicine-details').on('click',function(){
+    $('#medicineTable').on('click', '.medicine-details', function(){
       swal({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover this record!",

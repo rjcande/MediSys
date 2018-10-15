@@ -69,7 +69,7 @@
                                 <a href="{{ url('/mchief/archived/patients/concerns', $patient->patientID) }}">
                                   <button type="button" class="btn btn-default" data-toggle="tooltip" title="Consultation">Concerns</button>
                                 </a>
-                                <a href="{{ route('mchief.patient.diagnoses', $patient->patientID) }}">
+                                <a href="{{ url('/mchief/restore/patient', $patient->patientID) }}">
                                   <button type="button" class="btn btn-success"title="Restore"><i class="fa fa-refresh"></i></button>
                                 </a>
                               </td>

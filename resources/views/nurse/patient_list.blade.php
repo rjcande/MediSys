@@ -220,7 +220,7 @@
       table.search($(this).val()).draw();
     });
     //Button clicks
-    $('.delete-button').on('click', function(e){
+    $('#patientTable').on('click', '.delete-button',  function(e){
       swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to view this record!",
