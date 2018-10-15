@@ -88,27 +88,39 @@ class BothChiefsController extends Controller
     public function store(Request $request)
     {
         try {
-            $account = new Account;
+            switch($request->position){
+                case 2:
+                    $acc = Account::where('position',2)->where('isActive',1)->get();
+                    if($acc){
+                        return redirect()->back()->withErrors(['register' => 'INVALID STAFF POSITION! DENTAL CHIEF ACCOUNT ALREADY EXISTING!']);
+                    } break;
+                case 3:
+                $acc = Account::where('position',3)->where('isActive',1)->get();
+                    if($acc){
+                        return redirect()->back()->withErrors(['register' => 'Account for Dental Chief already existing!'])->withInputs();
+                    } break;
+                default:
+                    $account = new Account;
+                    $account->firstName = $request->firstName;
+                    $account->middleName = $request->middleName;
+                    $account->lastName = $request->lastName;
+                    $account->quantifier = $request->quantifier;
+                    $account->position = $request->position;
+                    $account->licenseNumber = $request->licenseNumber;
+                    $account->specialization = $request->specialization;
+                    $account->email = $request->email;
+                    $account->contactNumber = $request->contactNumber;
+                    $account->username = $request->username;
+                    $account->password = $request->pw;
+                    if($request->position == 2 || $request->position == 3){
+                        $account->isVerified = 2;
+                    }
 
-            $account->firstName = $request->firstName;
-            $account->middleName = $request->middleName;
-            $account->lastName = $request->lastName;
-            $account->quantifier = $request->quantifier;
-            $account->position = $request->position;
-            $account->licenseNumber = $request->licenseNumber;
-            $account->specialization = $request->specialization;
-            $account->email = $request->email;
-            $account->contactNumber = $request->contactNumber;
-            $account->username = $request->username;
-            $account->password = $request->pw;
-            if($request->position == 2 || $request->position == 3){
-                $account->isVerified = 2;
+                    $account->save();
+
+                    return Redirect::to('/verifyAccount');
             }
 
-            $account->save();
-
-            return Redirect::to('/verifyAccount');
-            // Response::json(['message' => 'Successfully Created']);
         } catch (Exception $e) {
             alert($e.message);
         }

@@ -286,18 +286,14 @@
                                 <table class="table table-striped table-bordered jambo_table bulk_action" id="medTable">
                                   <thead>
                                     <tr class="headings">
-                                      <th>
-                                        
-                                      </th>
+                                      
                                       <th class="column-title">Generic Name </th>
                                       <th class="column-title">Brand </th>
                                       <th class="column-title">Quantity Used</th>
                                       <th class="column-title">Unit</th>
                                       <th class="column-title">Dosage</th>
                                       <th class="column-title no-link last"><span class="nobr">Medication</th>
-                                      <th class="bulk-actions" colspan="5">
-                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                      </th>
+                                    
                                     </tr>
                                   </thead>
 
@@ -305,7 +301,7 @@
                                    
                                   </tbody>
                                 </table>
-                                  <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;" id="deleteMed">DELETE</button>
+                                 
                                 </div>
                               </div>
 
@@ -315,17 +311,13 @@
                                 <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
                                   <thead>
                                     <tr class="headings">
-                                      <th>
                                       
-                                      </th>
                                       <th class="column-title">Supply Name </th>
                                       <th class="column-title">Brand </th>
                                       <th class="column-title">Quantity Used</th>
                                       <th class="column-title no-link last"><span class="nobr">Unit</span>
                                       </th>
-                                      <th class="bulk-actions" colspan="8">
-                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                      </th>
+                                      
                                     </tr>
                                   </thead>
 
@@ -333,7 +325,7 @@
                                    
                                   </tbody>
                                 </table>
-                                  <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                  
                               </div>
                             </div>
                             </div>
@@ -412,13 +404,26 @@
 
    var checkBoxMedID = new Array();
   
-  $('#medTable').on('change', '[name=table_records_medicine]', function(){
-        checkBoxMedID[checkBoxMedID.length] = $(this).val();
-        alert();
+  $('#medTable').on('change', '.check', function(e){
+       $('input[name="table_records_medicine"]:checked').each(function() {
+         checkBoxMedID[checkBoxMedID.length] = this.value;
+      });
   });
 
    $('#deleteMed').click(function(){
-    alert();
+      $('#medTable input[type="checkbox"]:checked').parent().parent().remove();
+      //console.log(checkBoxMedID);
+      for (var i = 0; i < checkBoxMedID.length; i++) {
+
+        if (checkBoxMedID[i] == i) {
+          delete array_med[i];
+          
+          alert();
+        }
+         
+      }
+      console.log(array_med);
+
    });
 
     $('#saveForm').parsley();
@@ -677,7 +682,7 @@
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even-pointer' data-id="+i+"><td class='a-center'><input type='checkbox' name='table_records_medicine'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even-pointer'><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 
@@ -758,7 +763,7 @@
     function displayTableRowSupp(){
       for (var i = 0; i < Object.keys(array_supp).length; i++) {
 
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+                var tr = "<tr class='even pointer'><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
 
                 $(tr).prependTo('#tbodyMedicalSupply');
                 console.log(array_supp);

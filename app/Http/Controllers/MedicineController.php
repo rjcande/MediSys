@@ -23,7 +23,9 @@ class MedicineController extends Controller
 
     public function brand(){
 
-        $brand = Medicine::where('genericName', '=', Input::get('mName'))->get();
+        $brand = Medicine::where('genericName', '=', Input::get('mName'))
+                            ->where('medType', '=', 'm')
+                            ->get();
 
         return Response::json($brand);
     }
@@ -285,14 +287,18 @@ class MedicineController extends Controller
 	// ***********************************************************************
     public function getBrandName()
     {
-        $medicine = Medicine::where('genericName', '=', Input::get('medicineName'))->get();
+        $medicine = Medicine::where('genericName', '=', Input::get('medicineName'))
+                                ->where('medType', '=', 'd')
+                                ->get();
 
         return response::json($medicine);
     }
 
     public function getBrandNameDChief()
     {
-        $medicine = Medicine::where('genericName', '=', Input::get('medicineName'))->get();
+        $medicine = Medicine::where('genericName', '=', Input::get('medicineName'))
+                            ->where('medType', '=', 'd')
+                            ->get();
 
         return response::json($medicine);
     }
