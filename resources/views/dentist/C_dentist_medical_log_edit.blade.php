@@ -309,7 +309,7 @@
                       </div>
                       
                       <!-- MEDICAL SUPPLIES GIVEN TABLE -->
-                      <div id="medicineTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
+                      <div id="medSupplyTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
                         <div class="table-responsive" style="width: 100%; float: left;">
                         
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
@@ -349,10 +349,10 @@
                     </div>
 
                       <!-- PRESCRIBED MEDICINE TABLE -->
-                    <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
+                    <div id="prescriptionTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
                         <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                         <div class="table-responsive">
-                          <table class="table table-striped table-bordered jambo_table bulk_action">
+                          <table class="table table-striped table-bordered jambo_table bulk_action" id="prescriptionTable">
                             <thead>
                               <tr class="headings">
                                 <th>
@@ -714,7 +714,7 @@ $(document).ready(function(){
                       icon: "success",
                   })
                   .then((value)=>{
-                      $('table tr').has('input[name="table_records_medicine"]:checked').remove();
+                      $('table tr').has('input[name="table_records_presc"]:checked').remove();
 
                   });
                 }
