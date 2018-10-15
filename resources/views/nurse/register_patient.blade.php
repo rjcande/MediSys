@@ -345,6 +345,7 @@
 
          $('input[name=studFacID]').prop('required', false);
          $('input[name=studFacID]').prop('disabled', true);
+         $('input[name=studFacID]').val('');
 
       }
     });

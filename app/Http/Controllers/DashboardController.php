@@ -392,7 +392,9 @@ class DashboardController extends Controller
         $id_for_month = array();
         $results_for_month = array();
         //get the medicineID of prescribed medicine
-        $medicineID_for_month = Prescription::select('medicineID')
+        $medicineID_for_month = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->select('medicines.medicineID')
+                            ->where('medicines.medType', '=', 'd')
                             ->groupBy('medicineID')
                             ->get();
 
