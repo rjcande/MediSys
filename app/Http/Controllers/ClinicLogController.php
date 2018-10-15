@@ -464,7 +464,7 @@ class ClinicLogController extends Controller
 
         $medicineList = Medicine::all();
         $medicineName = Medicine::where('isDeleted', '=', 0)->groupBy('genericName')->get();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)->where('supType', '=', 'm')->get();
 
         $vitalSigns = ClinicLog::join('vitalSigns', 'vitalSigns.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                 ->select('vitalSigns.*')
@@ -922,8 +922,12 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::where('isDeleted', '=', 0)->get();
-        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)->get();
+        $medicineList = Medicine::where('isDeleted', '=', 0)
+                                    ->where('medType', '=', 'm')
+                                    ->get();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
+                                        ->where('supType', '=', 'm')
+                                        ->get();
 
         return view('physician.C_physician_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
@@ -953,8 +957,12 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::all();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('isDeleted', '=', 0)
+                                    ->where('medType', '=', 'm')
+                                    ->get();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
+                                        ->where('supType', '=', 'm')
+                                        ->get();
 
         return view('chief.C_mchief_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
@@ -985,8 +993,9 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::all();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('medType', '=', 'm')->get();
+      
+        $medicalSupplyList = MedicalSupply::where('supType', '=', 'm')->get();
 
         return view('physician.C_physician_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
@@ -1017,8 +1026,12 @@ class ClinicLogController extends Controller
             ->where('medsuppliesused.isDeleted', '=', '0')
             ->get();
 
-        $medicineList = Medicine::all();
-        $medicalSupplyList = MedicalSupply::all();
+        $medicineList = Medicine::where('isDeleted', '=', 0)
+                                    ->where('medType', '=', 'm')
+                                    ->get();
+        $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
+                                        ->where('supType', '=', 'm')
+                                        ->get();
 
         return view('chief.C_mchief_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
     }
