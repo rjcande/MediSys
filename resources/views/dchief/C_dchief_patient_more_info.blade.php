@@ -183,10 +183,10 @@
                               </tbody>
                             @endforeach
                           </table>
-                          <button type="button" class="btn btn-default"
+                          {{-- <button type="button" class="btn btn-default"
                             style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
                           <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                         </div>
                       </div>
 

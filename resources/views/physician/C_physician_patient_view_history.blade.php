@@ -215,7 +215,7 @@
                                     <div style="float:left; font-size:15px; width:300px;">
                                         <input type="checkbox" name="eyesWithGlasses" class="radio-eyes" style="margin-bottom:12px;" value="1"
                                         @if($medicalHistory) @if($medicalHistory->eyesWithGlasses == 1) {{ 'checked' }} @endif @endif> With Glasses <em>(please specify grade)</em>
-                                        <input type="number" name="eyesWithGlassesTextArea" class="" style="width:350px; border-radius:8px;" disabled value="@if($medicalHistory){{ $medicalHistory->eyeGlassesGrade }}@endif">
+                                        <input type="text" name="eyesWithGlassesTextArea" class="" style="width:350px; border-radius:8px;" disabled value="@if($medicalHistory){{ $medicalHistory->eyeGlassesGrade }}@endif">
                                     </div>
 
                                     <div id="physical-examination-chest-heart">

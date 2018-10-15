@@ -28,7 +28,6 @@
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title">Student/Faculty Number</th>
                             <th class="column-title">Patient ID </th>
                             <th class="column-title">Patient Name </th>
                             <th class="column-title">Type </th>
@@ -45,7 +44,6 @@
                               <td class="a-center ">
                                 <input type="checkbox" class="flat" name="table_records">
                               </td>
-                              <td class=" ">{{$patientRecords->patientNumber}}</td>
                               <td class=" ">{{$patientRecords->patientID}}</td>
                               <td class="">{{$patientRecords->firstName}} {{$patientRecords->middleName}} {{$patientRecords->lastName}} {{$patientRecords->quantifier}}</td>
                               <td class=" ">

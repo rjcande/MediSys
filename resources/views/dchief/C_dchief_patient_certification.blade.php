@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -35,7 +35,7 @@
 
                   <div style="float:left; margin-left:50px; font-size:18px; width:50%;">
                     <input type="checkbox" name="dentalCertChk" class="radio-past" style="margin-bottom:12px;" value="1" /><label style="margin-left: 5px;">Dental Certificate</label>
-                    <button type="button" id="viewDocuBtn" style="margin-left: 45%" disabled data-target="#dentalCertModal" data-toggle="modal">View Document</button>
+                    <button type="button" id="viewDocuBtn" style="margin-left: 45%; border-radius: 8px" disabled data-target="#dentalCertModal" data-toggle="modal">View Document</button>
                     <br>
                     <!-- <input type="checkbox" name="outsideReferChk" class="radio-past" style="margin-bottom:12px;" value="1" /><label style="margin-left: 5px;">Outside Referral Slip</label>
                     <button id="viewReferBtn" style="margin-left: 40%" data-target="#outsideReferModal" data-toggle="modal">View Document</button> -->
@@ -73,7 +73,7 @@
       </div>
       <!-- Modal Body -->
       <div class="modal-body" id="">
-        <form method="get" target="_blank" action="{{route('dchief.dental.certification', ['patientID' => Session::get('patientInfo.patientID'), 'date' => Session::get('patientInfo.date')])}}">
+        <form method="get" id="dentalCertModalForm" target="_blank" action="{{route('dchief.dental.certification', ['patientID' => Session::get('patientInfo.patientID'), 'date' => Session::get('patientInfo.date')])}}">
           @csrf
         <div style="font-family: Arial; font-size: 20px; /*border: 1px solid black;*/">
           <center>
@@ -119,7 +119,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> SAVE AND PRINT</button></center>
+        <center><button type="submit" class="btn btn-primary btnSubmit"><i class="fa fa-print"></i> SAVE AND PRINT</button></center>
       </div>
       </form>
     </div>
@@ -148,6 +148,7 @@ $(document).ready(function(){
     }
     else{
       $('#certRestorationTxt').prop('disabled', true);
+      $('#certRestorationTxt').val('');
     }
   });
 
@@ -157,6 +158,7 @@ $(document).ready(function(){
     }
     else{
       $('#certExtractionTxt').prop('disabled', true);
+      $('#certExtractionTxt').val('');
     }
   });
 
@@ -166,7 +168,18 @@ $(document).ready(function(){
     }
     else{
       $('#certOthersTextArea').prop('disabled', true);
+      $('#certOthersTextArea').val('');
     }
+  });
+
+  $('.btnSubmit').click(function(){
+    $('#dentalCertModal').modal('hide');
+    // $('#dentalCertModalForm')[0].reset();
+  });
+
+
+  $(".modal").on("hidden.bs.modal", function(){
+    $('#dentalCertModalForm')[0].reset();
   });
 
 });

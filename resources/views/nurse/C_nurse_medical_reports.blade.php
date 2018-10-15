@@ -46,25 +46,25 @@
                                <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $top_weekly[0]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($top_weekly[0]['medSupName'])){{ $top_weekly[0]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top1_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($top_weekly[1]['medSupName'])){{ $top_weekly[1]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top2_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($top_weekly[2]['medSupName'])){{ $top_weekly[2]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top3_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($top_weekly[3]['medSupName'])){{ $top_weekly[3]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top4_weekly }}%</td>
                                  </tr>
@@ -112,25 +112,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_month[0]->medSupName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $percent_month[1]->medSupName }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top2_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $percent_month[2]->medSupName }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top3_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->medSupName }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top4_month }}%</td>
                                  </tr>
@@ -178,25 +178,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_year[0]->medSupName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_year[0]->medSupName)){{ $percent_year[0]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_year }}%</td>
                                  </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square green"></i>{{ $percent_year[1]->medSupName }} </p>
+                                    <p><i class="fa fa-square green"></i>@if(isset($percent_year[1]->medSupName)){{ $percent_year[1]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top2_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square purple"></i>{{ $percent_year[2]->medSupName }} </p>
+                                    <p><i class="fa fa-square purple"></i>@if(isset($percent_year[2]->medSupName)){{ $percent_year[2]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top3_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->medSupName }} </p>
+                                    <p><i class="fa fa-square aero"></i>@if(isset($percent_year[3]->medSupName)){{ $percent_year[3]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top4_year }}%</td>
                               </tr>
@@ -2172,7 +2172,7 @@
       //Chart for Most Common Medicine Prescribed within the Month
       function init_chartMonth_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_month").length)){
-            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->medSupName }}","{{ $percent_month[2]->medSupName }}","Other","{{ $percent_month[1]->medSupName }}","{{ $percent_month[0]->medSupName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
+            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif","@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif","Other","@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif","@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
             $("#medicalSupplies_month").each(function(){
                var b=$(this);new Chart(b,a)
             })
@@ -2183,7 +2183,7 @@
       function init_chartYear_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_year").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->medSupName }}","{{ $percent_year[2]->medSupName }}","Other","{{ $percent_year[1]->medSupName }}","{{ $percent_year[0]->medSupName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_year[3]->medSupName)){{ $percent_year[3]->medSupName }}@endif","@if(isset($percent_year[2]->medSupName)){{ $percent_year[2]->medSupName }}@endif","Other","@if(isset($percent_year[1]->medSupName)){{ $percent_year[1]->medSupName }}@endif","@if(isset($percent_year[0]->medSupName)){{ $percent_year[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicalSupplies_year").each(function(){
                var b=$(this);new Chart(b,a)
@@ -2195,7 +2195,7 @@
       function init_chartWeekly_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_weekly").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['medSupName'] }}","{{ $top_weekly[2]['medSupName'] }}","Other","{{ $top_weekly[1]['medSupName'] }}","{{ $top_weekly[0]['medSupName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif","@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif","Other","@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif","@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicalSupplies_weekly").each(function(){
                var b=$(this);new Chart(b,a)

@@ -490,7 +490,7 @@
         modal.find('.modal-body #genericName').val(genericName);
         modal.find('.modal-body #brandName').val(brand);
         modal.find('.modal-body #unit').val(unit);
-        modal.find('.modal-body #dosage').val(id);
+        modal.find('.modal-body #dosage').val(dosage);
         modal.find('.modal-body #medicineID').val(id);
         modal.find('.modal-footer input[name=medicineID]').val(id);
     });

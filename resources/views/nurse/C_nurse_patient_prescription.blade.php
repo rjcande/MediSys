@@ -305,7 +305,7 @@
                                    
                                   </tbody>
                                 </table>
-                                  <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                  <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;" id="deleteMed">DELETE</button>
                                 </div>
                               </div>
 
@@ -386,7 +386,8 @@
 @endif -->
 <script>
   $(document).ready(function(){
-    //variables to use for getting the medicine
+   $(document).ready(function(){
+       //variables to use for getting the medicine
    var _idMedBrand = new Array();
    var medQuantity = new Array();
    var _idMedSuppBrand = new Array();
@@ -408,6 +409,18 @@
    var weight;
    var bmi;
    var bmiRange;
+
+   var checkBoxMedID = new Array();
+  
+  $('#medTable').on('change', '[name=table_records_medicine]', function(){
+        checkBoxMedID[checkBoxMedID.length] = $(this).val();
+        alert();
+  });
+
+   $('#deleteMed').click(function(){
+    alert();
+   });
+
     $('#saveForm').parsley();
      // Step show event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
@@ -664,7 +677,7 @@
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even-pointer' data-id="+i+"><td class='a-center'><input type='checkbox' name='table_records_medicine'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 
@@ -822,5 +835,6 @@
     }
     
   });
+   });
 </script>
 @endsection

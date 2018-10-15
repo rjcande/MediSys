@@ -79,7 +79,7 @@
                 @if(empty($dentalLogs->timeOut))  
                   <td>NONE</td>
                 @else
-                  {{date("h:i a", strtotime($dentalLogsAll->timeOut))}}
+                  <td>{{date("h:i a", strtotime($dentalLogs->timeOut))}}</td>
                 @endif
               </tr>
               @php($ctr--)

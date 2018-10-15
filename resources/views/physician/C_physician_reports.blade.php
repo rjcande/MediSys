@@ -48,7 +48,7 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $top_weekly[0]['genericName'] }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($top_weekly[0]['genericName'])){{ $top_weekly[0]['genericName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top1_weekly }}%</td>
                                  </tr>
@@ -114,19 +114,19 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_month[0]->genericName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_month[0]->genericName)){{ $percent_month[0]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $percent_month[1]->genericName }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($percent_month[1]->genericName)){{ $percent_month[1]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top2_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $percent_month[2]->genericName }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($percent_month[2]->genericName)){{ $percent_month[2]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top3_month }}%</td>
                                  </tr>
@@ -180,19 +180,19 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_year[0]->genericName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_year[0]->genericName)){{ $percent_year[0]->genericName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_year }}%</td>
                                  </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square green"></i>{{ $percent_year[1]->genericName }} </p>
+                                    <p><i class="fa fa-square green"></i>@if(isset($percent_year[1]->genericName)){{ $percent_year[1]->genericName }}@endif </p>
                                  </td>
                                  <td>{{ $top2_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square purple"></i>{{ $percent_year[2]->genericName }} </p>
+                                    <p><i class="fa fa-square purple"></i>@if(isset($percent_year[2]->genericName)){{ $percent_year[2]->genericName }}@endif </p>
                                  </td>
                                  <td>{{ $top3_year }}%</td>
                               </tr>

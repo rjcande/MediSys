@@ -274,7 +274,7 @@
                                       </tbody>
                                     </table>
                                      {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                      <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                      <button type="button" class="btn btn-default" id="btnDeleteMed" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                   </div>
                                 </div>
                                 
@@ -303,7 +303,7 @@
                                       </tbody>
                                     </table>
                                     {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                    <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                    <button type="button" class="btn btn-default" id="btnDeleteSupp" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                   </div>
                                 </div>
                               </div>
@@ -333,8 +333,7 @@
                                   </table>
                                   {{-- <button type="button" class="btn btn-default"
                                     style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                  <button type="button" class="btn btn-default"
-                                    style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                  <button type="button" class="btn btn-default" id="btnDeletePres" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                                 </div>
                               </div>
 
@@ -856,7 +855,7 @@ $(document).ready(function(){
         }
     }
     function displaySuppliesRow(){
-      console.log(array_supp)
+      // console.log(array_supp)
         for(var i = 0; i < Object.keys(array_supp).length; i++){
           var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicalSupplyTable'></td><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
           $(tr).prependTo('#medSuppTableBody');
@@ -870,6 +869,11 @@ $(document).ready(function(){
           $(tr).prependTo('#prescribedMedTable');
         }
     }
+
+    $('#btnDeleteMed').on('click',function(){
+      array_med = [];
+      dataTable.clear().draw();
+    });
 
     function resetMedFields(){
       $('select#genericName').prop('selectedIndex', 0);
