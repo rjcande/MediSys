@@ -426,6 +426,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isGiven', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $prescribed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -435,6 +436,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isPrescribed', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $medSupp = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -443,6 +445,7 @@ class DentalLogController extends Controller
                             ->select('medsupplies.*', 'medsuppliesused.*')
                             ->where('treatments.clinicLogID', '=', $id)
                             ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('medsuppliesused.isDeleted' , '=', '0')
                             ->get();
 
         foreach($patientDentalLogs as $dentalLog)
@@ -493,6 +496,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isGiven', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $prescribed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -502,6 +506,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isPrescribed', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $medSupp = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -510,6 +515,7 @@ class DentalLogController extends Controller
                             ->select('medsupplies.*', 'medsuppliesused.*')
                             ->where('treatments.clinicLogID', '=', $id)
                             ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('medsuppliesused.isDeleted' , '=', '0')
                             ->get();
 
        foreach($patientDentalLogs as $dentalLog)
@@ -569,6 +575,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isGiven', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $prescribed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -578,6 +585,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isPrescribed', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $medSupp = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -586,6 +594,7 @@ class DentalLogController extends Controller
                             ->select('medsupplies.*', 'medsuppliesused.*')
                             ->where('treatments.clinicLogID', '=', $id)
                             ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('medsuppliesused.isDeleted' , '=', '0')
                             ->get();
 
         // $prescriptionID = Prescription::where('treatmentID', '=', $treatment['treatmentID'])->first();
@@ -634,6 +643,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isGiven', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $prescribed = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -643,6 +653,7 @@ class DentalLogController extends Controller
                                ->where('treatments.clinicLogID', '=', $id)
                                ->where('cliniclogs.clinicType', '=', 'D')
                                ->where('prescriptions.isPrescribed', '=', '1')
+                               ->where('prescriptions.isDeleted' , '=', '0')
                                ->get();
 
         $medSupp = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
@@ -651,6 +662,7 @@ class DentalLogController extends Controller
                             ->select('medsupplies.*', 'medsuppliesused.*')
                             ->where('treatments.clinicLogID', '=', $id)
                             ->where('cliniclogs.clinicType', '=', 'D')
+                            ->where('medsuppliesused.isDeleted' , '=', '0')
                             ->get();
 
         // $prescriptionID = Prescription::where('treatmentID', '=', $treatment['treatmentID'])->first();

@@ -558,6 +558,10 @@ Route::get('/dentist/vital/store', 'VitalSignsController@store')->name('dentist.
 
 Route::get('/dentist/show/consultations/{id}', 'DentalLogController@showAllConsultations')->name('dentist.show.all.consultations');
 
+Route::get('/dentist/delete/medicine', 'MedicineController@destroy');
+
+Route::get('/dentist/delete/medical/supply', 'MedicalSupplyController@destroy');
+
 
 
 Route::get('/dentist/generate/prescription/{id}', 'DentalCertificateController@generatePdf')->name('dentist.generate.prescription');

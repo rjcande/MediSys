@@ -141,7 +141,9 @@
 
                             @foreach($medsGiven as $meds)
                               <tbody>
-                                <td></td>
+                                <td class="a-center ">
+                                  <input type="checkbox" name="table_records_medicine" value="{{ $meds->prescriptionID }}" id="{{ $meds->prescriptionID }}">
+                                </td>
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
                                 <td>{{$meds->quantity}}</td>
@@ -151,6 +153,7 @@
                             </tbody>
                           @endforeach
                           </table>
+                          {{-- <button type="button" class="btn btn-default" id="btnDeleteMed" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                         </div>
                       </div>
                       
@@ -180,6 +183,7 @@
                               </tbody>
                             @endforeach
                           </table>
+                          {{-- <button type="button" class="btn btn-default" id="btnDeleteSupp" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                         </div>
                       </div>
 
@@ -215,9 +219,8 @@
                             @endforeach
                           </table>
                           {{-- <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
+                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
+                            {{-- <button type="button" class="btn btn-default" id="btnDeletePres" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                         </div>
                       </div>
 
