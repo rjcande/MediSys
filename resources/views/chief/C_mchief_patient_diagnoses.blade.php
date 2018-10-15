@@ -904,7 +904,7 @@
                 icon: 'success'
               })
               .then((value)=>{
-                window.location.href = '/mchief/referred/patient/diagnoses/' + '{{ $diagnosis["patientID"] }}';
+                window.location.href = '/mchief/patient/diagnoses/' + '{{ $diagnosis["patientID"] }}';
               });
             }
           });

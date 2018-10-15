@@ -570,7 +570,7 @@
     $('#logPatientForm').parsley();
 
     //delete button is clicked
-    $('.delete-button').on('click', function(){
+    $('#patientTable').on('click', '.delete-button', function(){
      swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this record!",

@@ -328,7 +328,7 @@
 
 
     //on btn decline
-    $(".btn-decline").on('click', function(){
+    $("#patientTable").on('click', '.btn-decline', function(){
       swal({
         title: "WARNING",
         text: "Are you sure you want to decline the referral?",
@@ -349,7 +349,7 @@
       });
     });
     //When delete button is clicked
-    $('.btn-delete').on('click', function(){
+    $('#patientTable').on('click', '.btn-delete', function(){
       swal({
               title: "Are you sure?",
               text: "Once deleted, you will not be able to recover this record!",

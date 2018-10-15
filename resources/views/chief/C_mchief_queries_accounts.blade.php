@@ -126,7 +126,8 @@
                         .css( 'font-size', 'inherit' );
                 },
                  exportOptions: {
-                  rows: ':visible'
+                  rows: ':visible',
+                  columns: [0,2,3,4,6],
                 }
             }
         ]

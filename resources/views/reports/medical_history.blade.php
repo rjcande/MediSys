@@ -225,15 +225,15 @@
             </tr>
             <tr>
               <td>
-                <header> First Day of Last Menstruation: {{ date('F d, Y',strtotime($medicalHistory->firstDayOfLastMens)) }}</header>
-                <header> Menarch: {{ date('F d, Y', strtotime($medicalHistory->menarche)) }}</header>
+                <header> First Day of Last Menstruation: @if(isset($medicalHistory->firstDayOfLastMens)){{ date('F d, Y',strtotime($medicalHistory->firstDayOfLastMens)) }}@endif</header>
+                <header> Menarch: @if(isset($medicalHistory->menarche)){{ date('F d, Y', strtotime($medicalHistory->menarche)) }}@endif</header>
                 <header> Duration(days): {{ $medicalHistory->mensDuration }}</header>
                 <header> Interval: {{ $medicalHistory->mensInterval }}</header>
                 <header> Amounts(soaked pads per day): {{ $medicalHistory->mensAmount }}</header>
                 <header> Symptoms: {{ $medicalHistory->mensSymptoms }}</header>
               </td>
               <td>
-                <header> Day of Circumcision: {{ date('F d, Y', strtotime($medicalHistory->circumcisionDate)) }}</header>
+                <header> Day of Circumcision: @if(isset($medicalHistory->circumcisionDate)){{ date('F d, Y', strtotime($medicalHistory->circumcisionDate)) }}@endif</header>
               </td>
             </tr>
             <tr>

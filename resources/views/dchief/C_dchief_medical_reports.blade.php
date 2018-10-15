@@ -12,7 +12,7 @@
 
     <div class="clearfix"></div>
       <div class="row">
-
+              
       <!-- form input mask -->
       <div style="margin-bottom: 25%">
          <div style="float: left; height: 25%; width: 32%; margin-left: 1%; border-radius: 20px; background-color: #ffeaa7; margin-top: 2%">
@@ -46,25 +46,25 @@
                                <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $top_weekly[0]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($top_weekly[0]['medSupName'])){{ $top_weekly[0]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top1_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $top_weekly[1]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($top_weekly[1]['medSupName'])){{ $top_weekly[1]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top2_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $top_weekly[2]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($top_weekly[2]['medSupName'])){{ $top_weekly[2]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top3_weekly }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $top_weekly[3]['medSupName'] }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($top_weekly[3]['medSupName'])){{ $top_weekly[3]['medSupName'] }}@endif </p>
                                     </td>
                                     <td>{{ $top4_weekly }}%</td>
                                  </tr>
@@ -112,25 +112,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_month[0]->medSupName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square green"></i>{{ $percent_month[1]->medSupName }} </p>
+                                       <p><i class="fa fa-square green"></i>@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top2_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square purple"></i>{{ $percent_month[2]->medSupName }} </p>
+                                       <p><i class="fa fa-square purple"></i>@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top3_month }}%</td>
                                  </tr>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square aero"></i>{{ $percent_month[3]->medSupName }} </p>
+                                       <p><i class="fa fa-square aero"></i>@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top4_month }}%</td>
                                  </tr>
@@ -178,25 +178,25 @@
                               <tbody>
                                  <tr>
                                     <td>
-                                       <p><i class="fa fa-square blue"></i>{{ $percent_year[0]->medSupName }} </p>
+                                       <p><i class="fa fa-square blue"></i>@if(isset($percent_year[0]->medSupName)){{ $percent_year[0]->medSupName }}@endif </p>
                                     </td>
                                     <td>{{ $top1_year }}%</td>
                                  </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square green"></i>{{ $percent_year[1]->medSupName }} </p>
+                                    <p><i class="fa fa-square green"></i>@if(isset($percent_year[1]->medSupName)){{ $percent_year[1]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top2_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square purple"></i>{{ $percent_year[2]->medSupName }} </p>
+                                    <p><i class="fa fa-square purple"></i>@if(isset($percent_year[2]->medSupName)){{ $percent_year[2]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top3_year }}%</td>
                               </tr>
                               <tr>
                                  <td>
-                                    <p><i class="fa fa-square aero"></i>{{ $percent_year[3]->medSupName }} </p>
+                                    <p><i class="fa fa-square aero"></i>@if(isset($percent_year[3]->medSupName)){{ $percent_year[3]->medSupName }}@endif </p>
                                  </td>
                                  <td>{{ $top4_year }}%</td>
                               </tr>
@@ -216,11 +216,11 @@
       </div>
 
       <!----------------------------------------------------COLLAPSIBLE---------------------------------------------------->
-      <div>
+      <div style="margin-top: 20px; float: left; width: 100%">
          <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
             <div class="panel">
                <a class="panel-heading collapsed" id="headingOne1" role="tab" aria-expanded="false" aria-controls="collapseOne" href="#collapseOne1" data-toggle="collapse" data-parent="#accordion1">
-                  <h4 class="panel-title">Weekly (As of Month, Year)</h4>
+                  <h4 class="panel-title">Weekly ({{ date('F, Y') }})</h4>
                </a>
                <div class="panel-collapse collapse" id="collapseOne1" role="tabpanel" aria-expanded="false" aria-labelledby="headingOne" style="height: 0px;">
                   <div class="panel-body">
@@ -343,10 +343,15 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-
+                                   
                                        @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medical/reports/week', 1) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -358,13 +363,13 @@
                                           <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                           <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                           <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
-                                          <th class="column-title">Day 4</th>
-                                          <th class="column-title">Day 5</th>
-                                          <th class="column-title">Day 6</th>
-                                          <th class="column-title">Day 7</th>
+                                          <th class="column-title">Day 8</th>
+                                          <th class="column-title">Day 9</th>
+                                          <th class="column-title">Day 10</th>
+                                          <th class="column-title">Day 11</th>
+                                          <th class="column-title">Day 12</th>
+                                          <th class="column-title">Day 13</th>
+                                          <th class="column-title">Day 14</th>
                                        </tr>
                                     </thead>
 
@@ -429,10 +434,15 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-
+                                   
                                        @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medical/reports/week', 2) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
@@ -444,13 +454,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 15</th>
+                                       <th class="column-title">Day 16</th>
+                                       <th class="column-title">Day 17</th>
+                                       <th class="column-title">Day 18</th>
+                                       <th class="column-title">Day 19</th>
+                                       <th class="column-title">Day 20</th>
+                                       <th class="column-title">Day 21</th>
                                     </tr>
                                  </thead>
 
@@ -515,10 +525,15 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-
+                                   
                                        @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports/week', 3) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -530,13 +545,13 @@
                                        <header style="display: inline;" class="col-md-6 col-sm-12 col-xs-12 form-group">Medical Supply</header>
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
-                                       <th class="column-title">Day 1</th>
-                                       <th class="column-title">Day 2</th>
-                                       <th class="column-title">Day 3</th>
-                                       <th class="column-title">Day 4</th>
-                                       <th class="column-title">Day 5</th>
-                                       <th class="column-title">Day 6</th>
-                                       <th class="column-title">Day 7</th>
+                                       <th class="column-title">Day 22</th>
+                                       <th class="column-title">Day 23</th>
+                                       <th class="column-title">Day 24</th>
+                                       <th class="column-title">Day 25</th>
+                                       <th class="column-title">Day 26</th>
+                                       <th class="column-title">Day 27</th>
+                                       <th class="column-title">Day 28</th>
                                     </tr>
                                  </thead>
 
@@ -601,10 +616,15 @@
                                                 @endforeach
                                              </td>
                                           </tr>
-
+                                   
                                        @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports/week', 4) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -617,16 +637,16 @@
                                        <header style="display: inline;">Number of Medical Supply Used a Day</header>
                                        <th class="column-title" style="width: 20%">Medical Supply Name</th>
                                         @if($maxDays == 29)
-                                          <th class="column-title">Day 1</th>
+                                          <th class="column-title">Day 29</th>
                                        @elseif($maxDays == 30)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
                                        @elseif($maxDays == 31)
-                                          <th class="column-title">Day 1</th>
-                                          <th class="column-title">Day 2</th>
-                                          <th class="column-title">Day 3</th>
+                                          <th class="column-title">Day 29</th>
+                                          <th class="column-title">Day 30</th>
+                                          <th class="column-title">Day 31</th>
                                        @endif
-
+                                   
                                  </thead>
 
                                  <tbody>
@@ -690,6 +710,11 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports/week', 5) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                              </a>
                            </div>
                         </div>
 
@@ -702,53 +727,62 @@
 
             <div class="panel">
                <a class="panel-heading collapsed" id="headingTwo1" role="tab" aria-expanded="false" aria-controls="collapseTwo" href="#collapseTwo1" data-toggle="collapse" data-parent="#accordion1">
-                  <h4 class="panel-title">Monthly (As of Year)</h4>
+                  <h4 class="panel-title">Monthly ({{ date('Y') }})</h4>
                </a>
                <div class="panel-collapse collapse" id="collapseTwo1" role="tabpanel" aria-expanded="false" aria-labelledby="headingTwo" style="height: 0px;">
                   <div class="panel-body">
                      <!--------------------------------------------MONTHLY TABS------------------------------------------->
+                     @php
+                        $months = [1,2,3,4,5,6,7,8,9,10,11,12];
+                        $activeMonth = 0;
+                        foreach($months as $month){
+                           if(date('m') == $month){
+                              $activeMonth = $month;
+                           }
+                        }
+                     @endphp
                      <div role="tabpanel" data-example-id="togglable-tabs">
                         <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                           <li class="active" role="presentation">
-                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">January</a>
+                           <li class="@if($activeMonth == 1){{ 'active' }}@endif" role="presentation">
+                              <a id="home-tab" role="tab" aria-expanded="true" href="#tab_content17" data-toggle="tab">Jan</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">February</a>
+                           <li class="@if($activeMonth == 2){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content13" data-toggle="tab">Feb</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">March</a>
+                           <li class="@if($activeMonth == 3){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content14" data-toggle="tab">Mar</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">April</a>
+                           <li class="@if($activeMonth == 4){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content15" data-toggle="tab">Apr</a>
                            </li>
-                           <li role="presentation">
+                           <li class="@if($activeMonth == 5){{ 'active' }}@endif" role="presentation">
                               <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content5" data-toggle="tab">May</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">June</a>
+                           <li class="@if($activeMonth == 6){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content6" data-toggle="tab">Jun</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">July</a>
+                           <li class="@if($activeMonth == 7){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content7" data-toggle="tab">Jul</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">August</a>
+                           <li class="@if($activeMonth == 8){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content8" data-toggle="tab">Aug</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">September</a>
+                           <li class="@if($activeMonth == 9){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content9" data-toggle="tab">Sept</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">October</a>
+                           <li class="@if($activeMonth == 10){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content10" data-toggle="tab">Oct</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">November</a>
+                           <li class="@if($activeMonth == 11){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content11" data-toggle="tab">Nov</a>
                            </li>
-                           <li role="presentation">
-                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">December</a>
+                           <li class="@if($activeMonth == 12){{ 'active' }}@endif" role="presentation">
+                              <a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content12" data-toggle="tab">Dec</a>
                            </li>
                         </ul>
 
                         <div class="tab-content" id="myTabContent">
-                           <div class="tab-pane fade active in" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
+                           <div class="tab-pane fade @if($activeMonth == 1){{ 'active in' }}@endif" id="tab_content17" role="tabpanel" aria-labelledby="home-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -761,7 +795,7 @@
                                           <th class="column-title">Week 3</th>
                                           <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-1-t');
+                                             $date = date('Y-1-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -848,16 +882,21 @@
                                                 {{ $sumJanuaryFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medical/reports', 1) }}" target="_blank">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                       <i class="fa fa-print"></i> Print Reports
+                                    </button>
+                                 </a>
                               </div>
                            </div>
 
-                          <div class="tab-pane fade" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade @if($activeMonth == 2){{ 'active in' }}@endif" id="tab_content13" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                  <table class="table table-striped table-bordered jambo_table bulk_action">
                                     <thead>
@@ -870,7 +909,7 @@
                                           <th class="column-title">Week 3</th>
                                           <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-2-t');
+                                             $date = date('Y-2-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -957,16 +996,21 @@
                                                 {{ $sumFebFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                     </tbody>
                                  </table>
+                                 <a href="{{ url('/print/medical/reports', 2) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                               </div>
                            </div>
 
-                          <div class="tab-pane fade" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
+                          <div class="tab-pane fade @if($activeMonth == 3){{ 'active in' }}@endif" id="tab_content14" role="tabpanel" aria-labelledby="profile-tab">
                               <div class="table-responsive">
                                 <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -979,7 +1023,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                       @php
-                                             $date = date('Y-3-t');
+                                             $date = date('Y-3-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1066,16 +1110,21 @@
                                                 {{ $sumMarFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 3) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                       <div class="tab-pane fade" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
+                       <div class="tab-pane fade @if($activeMonth == 4){{ 'active in' }}@endif" id="tab_content15" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1088,7 +1137,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-4-t');
+                                             $date = date('Y-4-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1175,16 +1224,21 @@
                                                 {{ $sumAprFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 4) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 5){{ 'active in' }}@endif" id="tab_content5" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1197,7 +1251,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-5-t');
+                                             $date = date('Y-5-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1284,16 +1338,21 @@
                                                 {{ $sumMayFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 5) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 6){{ 'active in' }}@endif" id="tab_content6" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1306,7 +1365,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-6-t');
+                                             $date = date('Y-6-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1393,16 +1452,21 @@
                                                 {{ $sumJunFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 6) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 7){{ 'active in' }}@endif" id="tab_content7" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1415,7 +1479,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                      @php
-                                             $date = date('Y-7-t');
+                                             $date = date('Y-7-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1502,16 +1566,21 @@
                                                 {{ $sumJulFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 7) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 8){{ 'active in' }}@endif" id="tab_content8" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1524,7 +1593,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-8-t');
+                                             $date = date('Y-8-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1611,16 +1680,21 @@
                                                 {{ $sumAugustFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 8) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 9){{ 'active in' }}@endif" id="tab_content9" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1633,7 +1707,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-9-t');
+                                             $date = date('Y-9-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1720,16 +1794,21 @@
                                                 {{ $sumSeptFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 9) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 10){{ 'active in' }}@endif" id="tab_content10" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1742,7 +1821,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-10-t');
+                                             $date = date('Y-10-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1829,16 +1908,21 @@
                                                 {{ $sumOctFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 10) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 11){{ 'active in' }}@endif" id="tab_content11" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1851,7 +1935,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('YDec-t');
+                                             $date = date('YDec-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -1938,16 +2022,21 @@
                                                 {{ $sumNovFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 11) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade @if($activeMonth == 12){{ 'active in' }}@endif" id="tab_content12" role="tabpanel" aria-labelledby="profile-tab">
                            <div class="table-responsive">
                               <table class="table table-striped table-bordered jambo_table bulk_action">
                                  <thead>
@@ -1960,7 +2049,7 @@
                                        <th class="column-title">Week 3</th>
                                        <th class="column-title">Week 4</th>
                                        @php
-                                             $date = date('Y-12-t');
+                                             $date = date('Y-12-t');   
                                        @endphp
                                        @if(($checkDate = date('t', strtotime($date))) == 31 || ($checkDate = date('t', strtotime($date))) == 30 || ($checkDate = date('t', strtotime($date))) == 29)
                                              <th class="column-title">Week 5</th>
@@ -2047,12 +2136,17 @@
                                                 {{ $sumDecFifthWeek }}
                                              </td>
                                           @endif
-
+                                          
                                        </tr>
-
+                                
                                     @endforeach
                                  </tbody>
                               </table>
+                              <a href="{{ url('/print/medical/reports', 12) }}" target="_blank">
+                                 <button type="button" class="btn btn-primary" style="margin-top: 10px;">
+                                    <i class="fa fa-print"></i> Print Reports
+                                 </button>
+                              </a>
                            </div>
                         </div>
 
@@ -2066,7 +2160,9 @@
       </div>
       <!--------------------------------------------------END COLLAPSIBLE-------------------------------------------------->
       <!-- /form input mask -->
-
+      <a href="{{ url('/dchief/dashboard') }}">
+         <button type="button" class="btn btn-primary" style="margin-top: 20px; float: right;">BACK</button>
+      </a>
     </div>
   </div>
 </div>
@@ -2076,7 +2172,7 @@
       //Chart for Most Common Medicine Prescribed within the Month
       function init_chartMonth_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_month").length)){
-            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_month[3]->medSupName }}","{{ $percent_month[2]->medSupName }}","Other","{{ $percent_month[1]->medSupName }}","{{ $percent_month[0]->medSupName }}"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
+            var a={type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif","@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif","Other","@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif","@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_month }}','{{ $top3_month }}','{{ $topOther_month }}','{{ $top2_month }}','{{ $top1_month }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}};
             $("#medicalSupplies_month").each(function(){
                var b=$(this);new Chart(b,a)
             })
@@ -2087,7 +2183,7 @@
       function init_chartYear_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_year").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $percent_year[3]->medSupName }}","{{ $percent_year[2]->medSupName }}","Other","{{ $percent_year[1]->medSupName }}","{{ $percent_year[0]->medSupName }}"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_year[3]->medSupName)){{ $percent_year[3]->medSupName }}@endif","@if(isset($percent_year[2]->medSupName)){{ $percent_year[2]->medSupName }}@endif","Other","@if(isset($percent_year[1]->medSupName)){{ $percent_year[1]->medSupName }}@endif","@if(isset($percent_year[0]->medSupName)){{ $percent_year[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_year }}','{{ $top3_year }}','{{ $topOther_year }}','{{ $top2_year }}','{{ $top1_year }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicalSupplies_year").each(function(){
                var b=$(this);new Chart(b,a)
@@ -2095,11 +2191,11 @@
          }
       }
 
-     //Chart for Most Common Medicine Prescribed Weekly
+      //Chart for Most Common Medicine Prescribed Weekly
       function init_chartWeekly_doughnut(){
          if("undefined"!=typeof Chart&&(console.log("init_chart_doughnut"),$("#medicalSupplies_weekly").length)){
             var a={
-               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["{{ $top_weekly[3]['medSupName'] }}","{{ $top_weekly[2]['medSupName'] }}","Other","{{ $top_weekly[1]['medSupName'] }}","{{ $top_weekly[0]['medSupName'] }}"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
+               type:"doughnut",tooltipFillColor:"rgba(51, 51, 51, 0.55)",data:{labels:["@if(isset($percent_month[3]->medSupName)){{ $percent_month[3]->medSupName }}@endif","@if(isset($percent_month[2]->medSupName)){{ $percent_month[2]->medSupName }}@endif","Other","@if(isset($percent_month[1]->medSupName)){{ $percent_month[1]->medSupName }}@endif","@if(isset($percent_month[0]->medSupName)){{ $percent_month[0]->medSupName }}@endif"],datasets:[{data:['{{ $top4_weekly }}','{{ $top3_weekly }}','{{ $topOther_weekly }}','{{ $top2_weekly }}','{{ $top1_weekly }}'],backgroundColor:["#BDC3C7","#9B59B6","#E74C3C","#26B99A","#3498DB"],hoverBackgroundColor:["#CFD4D8","#B370CF","#E95E4F","#36CAAB","#49A9EA"]}]},options:{legend:!1,responsive:!1}
             };
             $("#medicalSupplies_weekly").each(function(){
                var b=$(this);new Chart(b,a)

@@ -893,7 +893,7 @@
               isPrescribed: isPrescribed,
               isPrescribed_other: isPrescribed_other,
           };
-          //console.log($('#saveForm').serialize() + '&' + $.param(data));
+         // console.log($.param(data));
           $.ajax({
             url: '/mchief/referred/patient/diagnoses/edit/' + '{{ $diagnosis["clinicLogID"] }}',
             type: 'get',
