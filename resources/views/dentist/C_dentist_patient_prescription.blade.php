@@ -18,7 +18,7 @@
               <div class="x_panel">
                   <div class="x_title">
                     <h2>{{ Session::get('patientInfo.patientID') }}, {{ Session::get('patientInfo.patientName')}}</h2>
-                    <button class="btn btn-success btn-round" style="float: right;" data-toggle="modal" data-target="#uploadImageModal" id="btnUpload">Upload Image</button>
+                    {{-- <button class="btn btn-success btn-round" style="float: right;" data-toggle="modal" data-target="#uploadImageModal" id="btnUpload">Upload Image</button> --}}
                     {{-- <button class="btn btn-primary btn-round" style="float: right;" data-toggle="modal" data-target="#outsideReferModal" id="btnOutsideRefer">Refer Patient</button> --}}
                     <div class="clearfix"></div>
                   </div>
@@ -656,13 +656,18 @@ $(document).ready(function(){
           $('#medSuppBrand').empty();
           $('#medSuppUnit').empty();
           $('#medSuppBrand').prop("disabled", false);
-          $('#medSuppUnit').prop("disabled", false);
+          $('#medSuppUnit').prop("disabled", false);    
           
           $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
           $.each(data, function(index, suppBrand){
             $('#medSuppBrand').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.brand+'</option>');
             $('#medSuppUnit').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.unit+'</option>');
           });
+          //condition for not requiring quantity if supply unit is a bottle
+          if($('#medSuppUnit').find('option:selected').text() == 'bottle'){
+            $('#medSuppQuantity').attr('data-parsley-required', 'false');
+            $('#medSuppQuantity').attr('value', '1');
+          }
         });
       });
 

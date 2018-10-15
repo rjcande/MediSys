@@ -536,6 +536,11 @@ $(document).ready(function(){
           $('#medSuppBrand').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.brand+'</option>');
           $('#medSuppUnit').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.unit+'</option>');
         });
+        //condition for not requiring quantity if supply unit is a bottle
+        if($('#medSuppUnit').find('option:selected').text() == 'bottle'){
+            $('#medSuppQuantity').attr('data-parsley-required', 'false');
+            $('#medSuppQuantity').attr('value', '1');
+        }
       });
     });
 
