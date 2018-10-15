@@ -108,7 +108,7 @@ class ArchivesController extends Controller
         $patientDentalLog = DentalLog::find($id);
 
         $patientDentalLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                                    //   ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
+                                      ->join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                       ->select('patients.*', 'cliniclogs.*')
                                       ->where('cliniclogs.clinicLogID', '=', $id)
                                       ->get();

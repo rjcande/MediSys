@@ -69,13 +69,13 @@
                             <td><a href="{{ route('dchief.dentalchart.deleteToothCon',$toothcondition->toothConditionID) }}"><button class="btn btn-danger"><i class='fa fa-trash'></i></button></a></td>
                           </tr>
                           @endif
-                          
+
                           @if($toothcondition->toothStatusB != null)
                           <tr class="even pointer">
                             <td class="a-center">
                               <input type="checkbox" class="flat" name="table_records">
                             </td>
-                            <td>{{ $toothcondition->toothStatusB }}</td>                            
+                            <td>{{ $toothcondition->toothStatusB }}</td>
                             <td class=" ">@switch($toothcondition->toothStatusB)
                               @case('D') <span>Decayed (Caries Indicated Filling)</span> @break
                               @case('M') <span>Missing due to Caries</span> @break
@@ -103,7 +103,7 @@
                             <td><a href="{{ route('dchief.dentalchart.deleteToothCon',$toothcondition->toothConditionID) }}"><button class="btn btn-danger"><i class='fa fa-trash'></i></button></a></td>
                           </tr>
                           @endif
-                          
+
                         </tbody>
                         @endforeach
                         </table>
@@ -115,7 +115,7 @@
                   </div>
                 </div>
               </div>
-              <!-- /form input mask -->  
+              <!-- /form input mask -->
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
         <h4 class="modal-title">Medical Log Information</h4>
       </div>
       <!-- Modal Body -->
-        
+
       <div class="modal-body">
           <img src="{{ asset('images/sample.png') }}">
       </div>
@@ -141,7 +141,7 @@
         </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-      
+
     </div>
 
   </div>

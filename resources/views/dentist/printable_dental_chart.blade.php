@@ -453,7 +453,9 @@
                             <br>
                             {{-- 55 ~ 65 --}}
                             <div>
-                                <div>
+                                <label style="float:left;">STATUS RIGHT</label>
+                                <label style="float:right;">STATUS LEFT</label>
+                                <div style="margin-left:135px;">
                                     <table>
                                         <tr>
                                             <td><label style="text-align:center;font-size:15px;">55</label></td>
@@ -497,7 +499,7 @@
 
                                     </table>
                                 </div>
-                                <div style="padding-top: 5px;">
+                                <div style="padding-top: 5px;margin-left:135px;">
                                     {{-- TOOOOOOOOOTH --}}
                                     <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 55 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
                                     <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 55 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
@@ -931,7 +933,7 @@
 
                             {{--  75 ~ 85  --}}
                             <div>
-                                    <div style="padding-top: 5px;">
+                                    <div style="padding-top: 5px; margin-left:135px;">
                                             {{-- TOOOOOOOOOTH --}}
                                             <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 75 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
                                             <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 75 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
@@ -1002,7 +1004,9 @@
                                             <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 85 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
                                             <img src=@if(count($toothconditions) > 0)@foreach($toothconditions as $toothcondition)@if($toothcondition->toothNum == 85 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
                                         </div>
-                                <div>
+                                        <label style="float:left;padding-top:52px;">STATUS RIGHT</label>
+                                        <label style="float:right;padding-top:52px;">STATUS LEFT</label>
+                                <div style="margin-left:135px;">
                                     <table>
 
                                         <tr>
@@ -1045,10 +1049,12 @@
                                                 <td><label style="text-align:center;font-size:15px;">85</label></td>
                                             </tr>
                                     </table>
+
                                 </div>
+
                             </div>
                             <div>
-                                <div style="float:left; width:33.3%">
+                                <div style="float:left; width:33.3%; margin-top:20px;">
                                     <label style="font-size: 11px; font-weight:bold;">Legend Condition</label>
 
                                     <p style="font-size: 11px;"><i><b>D</b>- Decayed(Caries indicated for Filling)</i></p>
@@ -1083,8 +1089,8 @@
                                 </div>
                             </div>
                             <br>
-                            <h5 style="float:right;font-size:11px;margin-top:200px;">_______________________________</h5>
-                            <h5 style="float:right;font-size:11px;margin-top:215px;margin-right:50px;">Dentist Signature</h5>
+                            <h5 style="float:right;font-size:11px;margin-top:240px;">Dentist: <u>{{ Session::get('accountInfo.firstName') }} {{ Session::get('accountInfo.middleName') }} {{ Session::get('accountInfo.lastName') }} {{ Session::get('accountInfo.quantifier') }}</u></h5>
+                            <h5 style="float:right;font-size:11px;margin-top:255px;">License Number: <u>{{ Session::get('accountInfo.licenseNumber') }}</u></h5>
                         </div>
 
                     </div>

@@ -126,11 +126,12 @@ class MedicalChiefArchivesController extends Controller
     public function medicalLogs()
     {
         $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                        ->leftjoin('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                        ->leftJoin('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->where('cliniclogs.isDeleted', 1)
+                        ->where('cliniclogs.clinicType', 'M')
                         ->orderBy('cliniclogs.clinicLogID', 'DESC')
                         ->get();
-                        dd($clinicLogs);
+                        // dd($clinicLogs);
 
         $attendingPhysician = logReferrals::join('users', 'users.id', '=', 'logreferrals.physicianID')
                         ->select('logreferrals.*', 'users.*')
@@ -165,11 +166,10 @@ class MedicalChiefArchivesController extends Controller
     }
     public function restore_medical_log($id){
         $medLog = ClinicLog::find($id);
-        // $medLog->isDeleted = 0;
-        // $medLog->deleted_at = null;
-        // $medLog->save();
-        // return Redirect::to('/mchief/archived/medicalLogs');
-        dd($medLog);
+        $medLog->isDeleted = 0;
+        $medLog->deleted_at = null;
+        $medLog->save();
+        return Redirect::to('/mchief/archived/medicalLogs');
     }
     public function restore_patient($id){
         $patient = Patient::find($id);

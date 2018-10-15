@@ -51,7 +51,7 @@
                           @foreach($clinicLogs as $clinicLog)
                             <tr class="even pointer">
                               <td class=" ">{{ Session::get('number') }}</td>
-                              <td class=" ">{{ $clinicLog->lastName }}, {{ $clinicLog->firstName }} {{ $clinicLog->middleName }} {{ $clinicLog->quantifier }} {{ $clinicLog->clinicLogID }}</td>
+                              <td class=" ">{{ $clinicLog->lastName }}, {{ $clinicLog->firstName }} {{ $clinicLog->middleName }} {{ $clinicLog->quantifier }}</td>
                               <td class=" ">
                                 @if($clinicLog->patientType == 1)
                                   {{ "Student" }}
@@ -85,7 +85,6 @@
                               </td>
                               </td>
                               <td class="last">
-                                    {{ $clinicLog->clinicLogID }}
                                   <a href="{{ url('/mchief/restore/medical/log',$clinicLog->clinicLogID) }}">
                                     <button class="btn btn-success" title="Restore">
                                         <i class="fa fa-refresh"></i>

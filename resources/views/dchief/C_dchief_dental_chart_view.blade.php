@@ -597,16 +597,16 @@
                                     <input type="number" name="txt65m" id="txt65m" hidden/>
 
                             <div style="margin-top: 5px; margin-left: 180px">
-                                <a href="{{ route('dentist.dentalchart.each',55)}}"><button type="button" class="btn btn-warning">55</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',54)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">54</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',53)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">53</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',52)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">52</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',51)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">51</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',61)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px;">61</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',62)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">62</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',63)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">63</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',64)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">64</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',65)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">65</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button type="button" class="btn btn-warning">55</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',54)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">54</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',53)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">53</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',52)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">52</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',51)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">51</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',61)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px;">61</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',62)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">62</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',63)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">63</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',64)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">64</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',65)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">65</button></a>
                             </div>
 
                             <!--18 TO 11 A AND B-->
@@ -864,43 +864,43 @@
                                     <input type="number" name="txt28m" id="txt28m" hidden/>
 
                                 </div>
-                                <a href="{{ route('dentist.dentalchart.each',18)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">18</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',17)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">17</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',16)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">16</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',15)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">15</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',14)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">14</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',13)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">13</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',12)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">12</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',11)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">11</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',21)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px">21</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',22)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">22</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',23)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">23</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',24)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">24</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',25)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">25</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',26)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">26</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',27)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">27</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',28)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">28</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',18)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">18</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',17)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">17</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',16)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">16</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',15)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">15</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',14)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">14</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',13)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">13</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',12)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">12</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',11)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">11</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',21)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px">21</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',22)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">22</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',23)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">23</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',24)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">24</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',25)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">25</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',26)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">26</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',27)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">27</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',28)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">28</button></a>
                             </div>
 
                             <!--48 TO 41 AND 31 TO 38 A AND B-->
                             <div style="float: left;">
                                 <!-- <img src="{{ asset('images/part5_41-48.png') }}" width="470px"> -->
-                                <a href="{{ route('dentist.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">48</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">47</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">46</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',45)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">45</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',44)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">44</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',43)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">43</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',42)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">42</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',41)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">41</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',31)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 30px;">31</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',32)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">32</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',33)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">33</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',34)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">34</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',35)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">35</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',36)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">36</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',37)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">37</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',38)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">38</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">48</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">47</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">46</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',45)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">45</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',44)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">44</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',43)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">43</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',42)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">42</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',41)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">41</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',31)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 30px;">31</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',32)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">32</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',33)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">33</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',34)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">34</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',35)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">35</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',36)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">36</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',37)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">37</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',38)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">38</button></a>
                                 <br>
                                 <div style="margin-top: 3px;">
                                     <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
@@ -1159,16 +1159,16 @@
                             <!--71 TO 75 A AND B-->
                             <div style="float: left;margin-top: 25px;">
                                 <!-- <img src="{{ asset('images/part7_71-75.png') }}" width="300px" style="margin-left: 177px;"> -->
-                                <a href="{{ route('dentist.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="margin-left: 185px; margin-top: 5px;">71</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">72</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">73</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',74)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">74</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',75)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">75</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',85)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px;">85</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',84)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">84</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',83)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">83</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',82)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">82</button></a>
-                                <a href="{{ route('dentist.dentalchart.each',81)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">81</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="margin-left: 185px; margin-top: 5px;">71</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">72</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">73</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',74)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">74</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',75)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">75</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',85)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px;">85</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',84)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">84</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',83)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">83</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',82)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">82</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',81)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">81</button></a>
                                 <br>
                                 <div style="margin-top: 3px;">
                                         <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
