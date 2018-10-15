@@ -918,6 +918,7 @@ class DentalCertificateController extends Controller
                                    ->where('patients.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
                                    ->where('cliniclogs.isDeleted', '=', '0')
+                                   ->orderBy('cliniclogs.created_at', 'desc')
                                    ->get();
 
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')

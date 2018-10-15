@@ -935,6 +935,7 @@ class DentalLogController extends Controller
                                    ->where('patients.patientID', '=', $id)
                                    ->where('cliniclogs.clinicType', '=', 'D')
                                    ->where('cliniclogs.isDeleted', '=', '0')
+                                   ->orderBy('cliniclogs.created_at', 'desc')
                                    ->get();
 
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
@@ -973,16 +974,18 @@ class DentalLogController extends Controller
         $patientAllLogs = DentalLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
                                    ->join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                    ->select('patients.*', 'cliniclogs.*', 'treatments.*')
-                                   ->where('patients.patientID', '=', $id)
+                                   ->where('patients.patientID', '=', $id)                                   
                                    ->where('cliniclogs.clinicType', '=', 'D')
                                    ->where('cliniclogs.isDeleted', '=', '0')
+                                   ->orderBy('cliniclogs.created_at', 'desc')
                                    ->get();
 
         $attendingDentist = DentalLog::join('users', 'users.id', '=', 'cliniclogs.dentistID')
                                      ->select('users.*', 'cliniclogs.*')
                                      ->where('cliniclogs.patientID','=', $id)
                                      ->where('users.isActive', '=', '1')
-                                     ->first();
+                                     ->get();
+                                    //  ->first();
 
         $usedMedSupply = DentalLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
                                   ->join('medsuppliesused', 'medsuppliesused.treatmentID', '=', 'treatments.treatmentID')

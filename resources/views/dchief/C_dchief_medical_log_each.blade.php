@@ -1,4 +1,4 @@
-@extends('dchief.layout.dchief')
+@extends('dentalchief.layout.dentalchief')
 
 @section('content')
 
@@ -20,6 +20,8 @@
                     {{ "Faculty/College" }}
                   @elseif($patientInfo->patientType == 3)
                     {{ "Admin/Dept" }}
+                  @elseif($patientInfo->patientType == 4)
+                    {{ "Visitor" }}
                   @endif
                 </label>
               </div>
@@ -49,33 +51,75 @@
                             <thead>
                               <tr class="headings">
                                 <th class="column-title">No </th>
-                                <th class="column-title">Symptoms</th>
-                                <th class="column-title">Treatment</th>
+                                {{--<th class="column-title">Symptoms</th>
+                                <th class="column-title">Treatment</th> --}}
                                 {{-- <th class="column-title">Generic Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used </th>
                                 <th class="column-title">Supply Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used </th> --}}
+                                <th class="column-title">Concern</th>
                                 <th class="column-title">Attending Dentist </th>
                                 <th class="column-title">Date </th>
                                 <th class="column-title">Time In</th>
                                 <th class="column-title">Time Out</th>
+                                <th class="column-title">Action</th>
                               </tr>
                             </thead>
 
                             <tbody>
-                              @php($ctr = 1)
-
+                              @php($ctr = sizeof($patientAllLogs))
+                              {{ Session::put('number', $ctr)}}
                               @foreach($patientAllLogs as $dentalLogsAll)
                                 <tr class="even pointer">
                                   <td class="a-center">{{$ctr}}</td>
-                                  <td>{{$dentalLogsAll->symptoms}}</td>
-                                  <td class=" " style="text-align:center;">
+                                  @if($dentalLogsAll->concern == 0)
+                                    <td>{{'Consultation'}}</td>
+                                  @elseif($dentalLogsAll->concern == 1)
+                                    <td>{{'Certification'}}</td>  
+                                  @endif
+                                  <td>
+                                    @foreach($attendingDentist as $dentist)
+                                      @if($dentalLogsAll->clinicLogID == $dentist->clinicLogID)
+                                        {{$dentist->lastName}}, {{$dentist->firstName}} {{$dentist->middleName}} {{$dentist->quantifier}}
+                                      @endif
+                                    @endforeach
+                                  </td>
+                                  <td>
+                                    {{ date('F d, Y', strtotime($dentalLogsAll->clinicLogDateTime)) }}
+                                  </td>
+                                  <td>
+                                    {{ date('h:i a', strtotime($dentalLogsAll->clinicLogDateTime)) }}
+                                  </td>
+                                  @if(empty($dentalLogsAll->timeOut))
+                                    <td>NONE</td>
+                                  @else
+                                    <td>{{ date("h:i a", strtotime($dentalLogsAll->timeOut))}}</td>
+                                  @endif
+                                  <td class=" ">
+                                    <a href="{{ route('dchief.dentalLog.moreInfo', $dentalLogsAll->clinicLogID) }}">
+                                      <button type='submit' class='btn btn-info' name='btnViewMore' id="btnViewMore" title ='View More Info'>
+                                        <i class='fa fa-angle-double-right'></i>
+                                      </button>
+                                    </a>
+                                      @if($dentalLogsAll->concern == 1)                                
+                                        <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
+                                      @elseif($dentalLogsAll->concern == 0)
+                                        <a href="{{route('dchief.dentalLog.edit', $dentalLogsAll->clinicLogID)}}">
+                                          <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
+                                        </a>
+                                      @endif
+                                      <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLogsAll->clinicLogID}}">
+                                        <i class='fa fa-trash'></i>
+                                      </button>
+                                  </td>
+                                  {{-- <td>{{$dentalLogsAll->symptoms}}</td> --}}
+                                  {{-- <td class=" " style="text-align:center;">
                                       <a href="{{ route('dentist.dental.log.each.treatment', $dentalLogsAll->clinicLogID) }}">
                                           <button class="btn btn-default" style="background-color:#9AECDB; width:70%;">View </button>
                                       </a>
-                                  </td>
+                                  </td> --}}
                                   {{-- <td class=" ">{{$dentalLogsAll->treatmentDescription}}</td> --}}
                                   {{-- <td class=" ">
                                     @foreach($usedMed as $usedMeds)
@@ -131,24 +175,9 @@
                                     @endif
                                     @endforeach
                                   </td> --}}
-                                  <td>
-                                    @if($attendingDentist['lastName'])
-                                      {{$attendingDentist['lastName']}}, {{$attendingDentist['firstName']}} {{$attendingDentist['middleName']}} {{$attendingDentist['quantifier']}}
-                                    @endif
-                                  </td>
-                                  <td>
-                                    {{ date('F d, Y', strtotime($dentalLogsAll->clinicLogDateTime)) }}
-                                  </td>
-                                  <td >
-                                    {{ date('h:i a', strtotime($dentalLogsAll->clinicLogDateTime)) }}
-                                  </td>
-                                  @if(empty($dentalLog->timeOut))
-                                    <td>NONE</td>
-                                  @else
-                                    {{ date("h:i a", strtotime($dentalLog->timeOut))}}
-                                  @endif
+                                  
                                 </tr>
-                                @php($ctr++)
+                                @php($ctr--)
                               @endforeach
                             </tbody>
                         </table>
@@ -156,6 +185,9 @@
                 
                     <div style="float: right; margin-top:30px;">
                       <a href="{{ route('dchief.patientList.viewMore', $patientInfo->patientID) }}"> <button class="btn btn-primary">BACK</button></a>
+                      {{-- @foreach($patientAllLogs as $dentalLogsAll) --}}
+                      <a href="{{ route('dentist.generate.medicalLogEach', $patientInfo->patientID) }}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-print"></i> PRINT MEDICAL LOG</button></a>
+                      {{-- @endforeach --}}
                     </div>
             
                   <!-- /Content -->
@@ -188,6 +220,7 @@
             <div class="col-md-9 col-sm-9 col-xs-9">
               {{-- <input type="text" class="form-control" style="border-radius:8px;" id="patientID" name="patientID" required value="{{$patientInfo->patientID}}"> --}}
               <label class="control-label col-md-1 col-sm-3 col-xs-3" id="patientID" name="patientID" >{{$patientInfo->patientID}}</label>
+              <input type="hidden" value="{{$patientInfo->patientID}}" id="patientID" name="patientID">
             </div>
           </div>
 
@@ -264,7 +297,7 @@
       if ($(this).parsley().isValid()) {
         var hasRecord = { hasRecord: checkRecord };
         $.ajax({
-          url: '/dchief/select/concern',
+          url: '/dentist/select/concern',
           type: 'get',
           data: $(this).serialize() + '&' + $.param(hasRecord),
           success: function(output){
@@ -278,7 +311,40 @@
       }
     });
 
+    //delete button is clicked
+    $('.delete-button').on('click', function(){
+     swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+     .then((willDelete)=>{
+        if (willDelete) {
+          $.ajax({
+            url: '/dentist/delete/dental/log/' + $(this).data('id'),
+            type: 'get',
+            success: function(output){
+              swal({
+                title: "",
+                text: output.message,
+                icon: "success",
+              })
+              .then((value)=>{
+                location.reload(true);
+              });
+            }
+          });
+        }
+     })
+    });
+
     $('#logPatientForm').parsley();
+    
+    if({{$patientInfo->patientType}} == 4){
+      $('#patientNumber').prop('required', false);
+    }
 
   });
     

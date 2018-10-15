@@ -172,6 +172,11 @@ $(document).ready(function(){
 
   $('.btnSubmit').click(function(){
     $('#dentalCertModal').modal('hide');
+    // $('#dentalCertModalForm')[0].reset();
+  });
+
+
+  $(".modal").on("hidden.bs.modal", function(){
     $('#dentalCertModalForm')[0].reset();
   });
 });

@@ -84,7 +84,7 @@
 
             <div id="diagnoses-referrals" style="float:left; margin-top:5%; margin-left:20px; width:98%">
                 <p style="font-size: 20px; color:white; background:
-                    linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Medical Certifications</b>
+                    linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Dental Certifications</b>
                 </p>
 
                 <div style="float:left;margin-top: 10px; margin-left: 15px;width:98%;padding:5px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;">
@@ -94,7 +94,7 @@
                                 <th class="column-title">Date </th>
                                 <th class="column-title">Time</th>
                                 <th class="column-title">Attending Dentist</th>
-                                <th class="column-title">Medical Certificate</th>
+                                <th class="column-title">Dental Certificate</th>
                                 <th class="column-title" style="width:1%;">Action</th>
                             </tr>
                         </thead>
@@ -115,7 +115,7 @@
                                         <ul>
                                             @if($certificate->reqForDentalCert == '1')
                                                 <li>
-                                                    <p>{{ "Dental Certificate" }}</p>
+                                                    <a href="{{route('dchief.dentalLog.moreInfo', $certificate->clinicLogID)}}"><u><p>{{ "Dental Certificate" }}</p></u></a>
                                                 </li>
                                             @endif
                                         </ul>
@@ -158,26 +158,26 @@
                 </div>
                 <div class="modal-body" style="color:#192a56; font-size:15px;">
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Blood Pressure: </label>
-                    <input type="text" name="bloodPressure" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="bloodPressure" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Heart Rate: </label>
-                    <input type="text" name="heartRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="heartRate" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Respiratory Rate: </label>
-                    <input type="text" name="respiratoryRate" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="respiratoryRate" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Temperature: </label>
-                    <input type="text" name="temperature" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="temperature" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Height (cm): </label>
-                    <input type="text" name="height" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="height" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Weight (kg): </label>
-                    <input type="text" name="weight" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="weight" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">Body Mass Index: </label>
-                    <input type="text" name="bmi" style="border-radius:6px; width:455px;"><br>
+                    <input type="text" readonly name="bmi" style="border-radius:6px; width:455px;"><br>
                     <label style="display: inline-block;width: 170px; margin-bottom:10px;">BMI Range: </label>
-                    <input type="radio" name ="bmiRange" value="0" data-parsley-group="vitalSign">&nbsp Underweight
-                    <input type="radio" name ="bmiRange" value="1" data-parsley-group="vitalSign">&nbsp Normal
-                    <input type="radio" name ="bmiRange" value="2" data-parsley-group="vitalSign">&nbsp Overweight
-                    <input type="radio" name ="bmiRange" value="3" data-parsley-group="vitalSign">&nbsp Obese Class I
-                    <input type="radio" name ="bmiRange" value="4" data-parsley-group="vitalSign">&nbsp Obese Class II
-                    <input type="radio" name ="bmiRange" value="5" data-parsley-group="vitalSign">&nbsp Obese Class III
+                    <input type="radio" name ="bmiRange" value="0" readonly data-parsley-group="vitalSign">&nbsp Underweight
+                    <input type="radio" name ="bmiRange" value="1" readonly data-parsley-group="vitalSign">&nbsp Normal
+                    <input type="radio" name ="bmiRange" value="2" readonly data-parsley-group="vitalSign">&nbsp Overweight
+                    <input type="radio" name ="bmiRange" value="3" readonly data-parsley-group="vitalSign">&nbsp Obese Class I
+                    <input type="radio" name ="bmiRange" value="4" readonly data-parsley-group="vitalSign">&nbsp Obese Class II
+                    <input type="radio" name ="bmiRange" value="5" readonly data-parsley-group="vitalSign">&nbsp Obese Class III
                 </div>
                 <div class="modal-footer" style="margin-right:0%">
                     <button class="btn btn-success" data-dismiss="modal">DONE</button>

@@ -69,8 +69,8 @@
                             </thead>
 
                             <tbody>
-                              @php($ctr = 1)
-
+                              @php($ctr = sizeof($patientAllLogs))
+                              {{ Session::put('number', $ctr)}}
                               @foreach($patientAllLogs as $dentalLogsAll)
                                 <tr class="even pointer">
                                   <td class="a-center">{{$ctr}}</td>
@@ -95,7 +95,7 @@
                                   @if(empty($dentalLogsAll->timeOut))
                                     <td>NONE</td>
                                   @else
-                                    {{ date("h:i a", strtotime($dentalLogsAll->timeOut))}}
+                                    <td>{{ date("h:i a", strtotime($dentalLogsAll->timeOut))}}</td>
                                   @endif
                                   <td class=" ">
                                     <a href="{{ route('dentist.dentalLog.moreInfo', $dentalLogsAll->clinicLogID) }}">
@@ -177,7 +177,7 @@
                                   </td> --}}
                                   
                                 </tr>
-                                @php($ctr++)
+                                @php($ctr--)
                               @endforeach
                             </tbody>
                         </table>
