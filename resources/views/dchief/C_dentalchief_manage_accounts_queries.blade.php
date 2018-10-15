@@ -91,7 +91,7 @@
                                     @endif
                                   </span>
                                 </td>
-                                <td></td>
+                                <td>{{ date('Y-m-d', strtotime($staff->updated_at)) }}</td>
                               
                               </tr>
                           @endforeach

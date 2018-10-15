@@ -65,7 +65,7 @@ class ClinicLogController extends Controller
     public function indexOfPhysician()
     {
         $clinicLogs = ClinicLog::join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-                        ->leftJoin('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
+                        ->join('logreferrals', 'logreferrals.clinicLogID', '=', 'cliniclogs.clinicLogID')
                         ->where('cliniclogs.isDeleted', '=', '0')
                         ->orderBy('cliniclogs.clinicLogID', 'DESC')
                         ->get();
