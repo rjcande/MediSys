@@ -107,7 +107,7 @@ class DashboardController extends Controller
         }
 
         foreach ($accountNotif as $key => $value) {
-            $text =  "<li class='notification'><a><span></span><a href='/medicalchief/accounts_maintenance'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." created an account and needs verification"."</span></a></a></li>";
+            $text =  "<li class='notification'><a><span></span><a href='/medicalchief/accounts_maintenance'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." requests to make an account"."</span></a></a></li>";
             $array[$ctr] = $text; 
             $ctr++;
         }
@@ -134,20 +134,20 @@ class DashboardController extends Controller
     public function dchiefNotification()
     {
 
-        $unverifiedAccounts = Account::select('users.*')->where('users.position', 4)->where('users.isVerified', 0)->get();
-        $unverifiedAccountsCtr = Account::select('users.*')->where('users.position', 4)->where('users.isVerified', 0)->count('users.id');
+        $unverifiedAccounts = Accounts::select('users.*')->where('users.position', 4)->where('users.isVerified', 0)->get();
+        
         // dd($unverifiedAccounts);
 
         $array = [];
         $accountCtr = 0;
-        $notifCtr = 0;
         foreach($unverifiedAccounts as $key => $value){
             $message = "<li class='notification' data-id=".$value["userID"]."><a><span></span><a href='/dentalchief/accounts_maintenance'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." requests to make an account </span></a></a></li>";
+            $array[$accountCtr] = $message; 
+            $accountCtr++;
         }
-        $array[$ctr] = $text; 
-        $ctr++;
 
-        return Response::json(array('unverifiedAccounts' => $unverifiedAccounts, 'unverifiedAccountsCtr' => $unverifiedAccountsCtr));
+
+        return Response::json(array('unverifiedAccounts' => $unverifiedAccounts, 'message' => $array));
         // return view('dentalchief.layout.side_and_top')->with(['unverifiedAccounts'=>$unverifiedAccounts, 'unverifiedAccountsCtr'=>$unverifiedAccountsCtr]);
     }
 

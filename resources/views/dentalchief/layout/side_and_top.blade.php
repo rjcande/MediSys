@@ -114,31 +114,10 @@
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
-                    <span class="badge bg-blue">
-                    @if(empty($unverifiedAccountsCtr))
-                      <span class="badge bg-blue">0</span>
-                    @elseif(!empty($unverifiedAccountsCtr))
-                      <span class="badge bg-blue">{{ $unverifiedAccountsCtr }}</span>
-                    @endif
-
+                    <span class="badge bg-blue" id="notifNumber"></span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    {{-- @if(empty($unverifiedAccounts))
-                    @foreach($unverifiedAccounts as $notifAccount)
-                    <li>
-                      <a href="{{url('/dentalchief/accounts_maintenance')}}">
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span></span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    @endforeach
-                    @endif --}}
+
                   </ul>
                 </li>
               </ul>
@@ -149,17 +128,32 @@
 
 <script>
   $(document).ready(function(){
-    $.ajax({
-      url: 'dchief/get/notification',
+     $.ajax({
+      url: '/dchief/get/notification',
           type: 'get',
           success: function(output){
-              // $('#notifNumber').text(output.number);
-              // $('#menu1').empty();
-              // for (var i = 0; i <Object.keys(output.text).length ; i++) {
-              //   $('#menu1').append(output.text[i]);
-              // }
+              $('#notifNumber').text(Object.keys(output.unverifiedAccounts).length);
+              $('#menu1').empty();
+              for (var i = 0; i < Object.keys(output.message).length ; i++) {
+                $('#menu1').append(output.message[i]);
+              }
 
           }
     });
-  }
+
+    setInterval(function(){
+        $.ajax({
+          url: '/dchief/get/notification',
+          type: 'get',
+          success: function(output){
+              $('#notifNumber').text(Object.keys(output.unverifiedAccounts).length);
+              $('#menu1').empty();
+              for (var i = 0; i <Object.keys(output.message).length ; i++) {
+                $('#menu1').append(output.message[i]);
+              }
+
+          }
+        });
+    }, 2000);
+  });
 </script>
