@@ -46,30 +46,30 @@
                       <div id="diagnosis" style="float:left; margin-top: 10px; width: 100%">
                         <p style="font-size:20px; color:white; background: linear-gradient(to right, #d63031, white); height:30px; border-radius:8px;">&nbsp<b>Treatment Done</b></p>
                         <div style="display: inline-block;width: 95%;">
-                          <input style="margin-left: 6%;" type="checkbox" value="1" readonly data-parsley-group="first" name="dentalExam"
+                          <input style="margin-left: 6%;" type="checkbox" value="1" disabled data-parsley-group="first" name="dentalExam"
                             @if($treatment['dentalExamination'] == 1)
                             {{"checked"}}
                             @endif`
                           ><label>&nbspDental Examination</label>
-                          <input style="margin-left: 5%;" type="checkbox" value="1" readonly data-parsley-group="first" name="oralProphylaxis"
+                          <input style="margin-left: 5%;" type="checkbox" value="1" disabled data-parsley-group="first" name="oralProphylaxis"
                             @if($treatment['oralProphylaxis'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspOral Prophylaxis</label>
-                          <input style="margin-left: 5%" type="checkbox" value="1" readonly data-parsley-group="first" name="restorationChk"
+                          <input style="margin-left: 5%" type="checkbox" value="1" disabled data-parsley-group="first" name="restorationChk"
                             @if($treatment['restoration'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspRestoration(Filling Tooth):</label>
                           <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" readonly value="{{$treatment['restorationTooth']}}" data-parsley-group="first" readonly name="restorationTxt">
-                          <input style="margin-left: 5%" type="checkbox" value="1" readonly data-parsley-group="first" name="extractionChk"
+                          <input style="margin-left: 5%" type="checkbox" value="1" disabled data-parsley-group="first" name="extractionChk"
                             @if($treatment['extraction'] == 1)
                             {{"checked"}}
                             @endif
                           ><label>&nbspExtraction:</label>
                           <input style="width:150px; border-radius:8px; margin-left:1%;" type="text" value="{{$treatment['extractionTooth']}}" data-parsley-group="first" readonly name="extractionTxt">
                           <br>
-                          <input style="margin-left: 6%;" type="checkbox" value="1" readonly data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
+                          <input style="margin-left: 6%;" type="checkbox" value="1" disabled data-parsley-group="first" name="othersTreatment"><label>&nbspOthers:</label>
                           <textarea name="treatment" id="treatment" readonly rows="7" data-parsley-group="first" class="form-control" style="border-radius:12px; border: 1px solid gray; box-shadow:2px 3px; margin-left: 20px; width: 100%; height:100px;  margin-bottom: 20px">{{$treatment['treatmentDescription']}}</textarea>
                         </div>
                       </div>
@@ -110,7 +110,9 @@
 
                             @foreach($medsGiven as $meds)
                               <tbody>
-                                <td></td>
+                                <td class="a-center ">
+                                  <input type="checkbox" name="table_records_medicine" value="{{ $meds->prescriptionID }}" id="{{ $meds->prescriptionID }}">
+                                </td>
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
                                 <td>{{$meds->quantity}}</td>
@@ -120,6 +122,7 @@
                             </tbody>
                           @endforeach
                           </table>
+                          <button type="button" class="btn btn-default" id="btnDeleteMed" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
 
@@ -141,7 +144,9 @@
 
                             @foreach($medSupp as $medSupps)
                               <tbody>
-                                <td></td>
+                                <td>
+                                  <input type="checkbox" name="table_records_medSupp" value="{{ $medSupps->medSupplyUsedID }}" id="{{ $medSupps->medSupplyUsedID }}">  
+                                </td>
                                 <td>{{$medSupps->medSupName}}</td>
                                 <td>{{$medSupps->brand}}</td>
                                 <td>{{$medSupps->quantity}}</td>
@@ -149,6 +154,7 @@
                               </tbody>
                             @endforeach
                           </table>
+                          <button type="button" class="btn btn-default" id="btnDeleteSupp" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
 
@@ -173,7 +179,9 @@
 
                             @foreach($prescribed as $prescribedMeds)
                               <tbody>
-                                <td></td>
+                                <td>
+                                  <input type="checkbox" name="table_records_presc" value="{{ $prescribedMeds->prescriptionID }}" id="{{ $prescribedMeds->prescriptionID }}">  
+                                </td>
                                 <td>{{$prescribedMeds->genericName}}</td>
                                 <td>{{$prescribedMeds->brand}}</td>
                                 <td>{{$prescribedMeds->quantity}}</td>
@@ -184,9 +192,8 @@
                             @endforeach
                           </table>
                           {{-- <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button>
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
+                            style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
+                            <button type="button" class="btn btn-default" id="btnDeletePres" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
 
@@ -207,4 +214,120 @@
       </div>
     </div>
 
+
+<script>
+$(document).ready(function(){
+
+  //selected medicine
+    var checkBoxMedID = new Array();
+    var checkBoxPrescID = new Array();
+    var checkBoxMedSupID = new Array();
+
+  $('[name=table_records_medicine]').on('change', function(){
+      checkBoxMedID[checkBoxMedID.length] = $(this).val();
+  });
+
+  $('[name=table_records_medSupp]').on('change', function(){
+      checkBoxMedSupID[checkBoxMedSupID.length] = $(this).val();
+  });
+
+  $('[name=table_records_presc]').on('change', function(){
+      checkBoxPrescID[checkBoxPrescID.length] = $(this).val();
+  });
+
+  //If Medicine button delete is clicked
+  $('#btnDeleteMed').on('click', function(e){
+        swal({
+          title: "DELETE",
+          text: "Are you sure you want to delete this?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            
+            $.ajax({
+              url: '/dentist/delete/medicine',
+              type: 'get',
+              data: {medicineID: checkBoxMedID},
+              success:function(output){
+                swal("Successfully deleted!", {
+                    icon: "success",
+                })
+                .then((value)=>{
+                    $('table tr').has('input[name="table_records_medicine"]:checked').remove();
+
+                });
+              }
+            });
+          
+          }
+        });
+    });
+
+    //If Prescribe button delete is clicked
+    $('#btnDeletePresc').on('click', function(e){
+        swal({
+          title: "DELETE",
+          text: "Are you sure you want to delete this?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            
+            $.ajax({
+              url: '/dentist/delete/medicine',
+              type: 'get',
+              data: {medicineID: checkBoxPrescID},
+              success:function(output){
+                swal("Successfully deleted!", {
+                    icon: "success",
+                })
+                .then((value)=>{
+                    $('table tr').has('input[name="table_records_presc"]:checked').remove();
+
+                });
+              }
+            });
+          
+          }
+        });
+    });
+
+    //If Medical button delete is clicked
+    $('#btnDeleteSupp').on('click', function(e){
+        swal({
+          title: "DELETE",
+          text: "Are  you sure you want to delete this?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            
+            $.ajax({
+              url: '/dentist/delete/medical/supply',
+              type: 'get',
+              data: {medSupID: checkBoxMedSupID},
+              success:function(output){
+                swal("Successfully deleted!", {
+                    icon: "success",
+                })
+                .then((value)=>{
+                    $('table tr').has('input[name="table_records_medSupp"]:checked').remove();
+
+                });
+              }
+            });
+          
+          }
+        });
+    });
+
+});
+</script>
 @endsection

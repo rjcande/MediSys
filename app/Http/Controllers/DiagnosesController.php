@@ -152,6 +152,8 @@ class DiagnosesController extends Controller
 
                 $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
 
+                $prescription->givenBy = Session::get('accountInfo.id');
+
                 $prescription->save();
             }
 
@@ -174,6 +176,8 @@ class DiagnosesController extends Controller
                 $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
 
                 $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->givenBy = Session::get('accountInfo.id');
 
                 $prescription->save();
             }
@@ -304,6 +308,8 @@ class DiagnosesController extends Controller
 
                 $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
 
+                $prescription->givenBy = Session::get('accountInfo.id');
+
                 $prescription->save();
             }
 
@@ -326,6 +332,8 @@ class DiagnosesController extends Controller
                 $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
 
                 $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->givenBy = Session::get('accountInfo.id');
 
                 $prescription->save();
             }

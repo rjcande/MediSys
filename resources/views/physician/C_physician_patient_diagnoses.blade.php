@@ -197,7 +197,7 @@
               </div>
 
               <div style="float: left;">
-                <input type="number" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third" min='1' data-parsley-error-message = "should be greater than or equal to 1"><br>
+                <input type="number" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="third" min='1' data-parsley-error-message = "should be greater than or equal to 1"><br>
               </div>
             </div>
            
@@ -235,6 +235,7 @@
                   <th class="column-title">Unit </th>
                   <th class="column-title">Dosage</th>
                   <th class="column-title">Medication</th>
+                  <th>Given By</th>
                
                 </tr>
               </thead>
@@ -252,6 +253,13 @@
                     <td class=" ">{{ $medicine->unit }}</td>
                     <td class=" ">{{ $medicine->dosage }}</td>
                     <td class=" ">{{ $medicine->medication }}</td>
+                    <td>
+                      @foreach($accounts as $account)
+                        @if($account->id == $medicine->givenBy)
+                          {{ $account->lastName }}, {{ $account->firstName }} {{ $account->middleName[0] }}@if($account->middleName){{ '.' }}@endif
+                        @endif
+                      @endforeach
+                    </td>
                   </tr>
                   @endif
                 @endforeach
@@ -608,7 +616,8 @@
             $('#medSuppBrand').empty();
             $('#medSuppUnit').empty();
             $('#medSuppBrand').prop('disabled', false);
-
+            $('#medSuppQuantity').prop('required', true);
+            
             $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
             $.each(data, function(index, brandObj){
               $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
@@ -624,6 +633,9 @@
         
             $('#medSuppUnit').prop('disabled', false);
             $('#medSuppUnit').append('<option value="'+data[0].medSupID+'">'+data[0].unit+'</option>');
+            if (data[0].unit.toLowerCase() == 'bottle') {
+              $('#medSuppQuantity').prop('required', false);
+            }
             
           });      
       });
@@ -700,7 +712,7 @@
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td><td>"+'{{ Session::get('accountInfo.lastName') }}, {{Session::get('accountInfo.firstName')}}'+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 

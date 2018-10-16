@@ -234,7 +234,7 @@
                             </div>
 
                             <div style="float: left;">
-                              <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-group="third"><br>
+                              <input type="text" name="medSuppQuantity" id="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-group="third"><br>
                             </div>
                           </div>
                          
@@ -263,15 +263,14 @@
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="medTable">
                             <thead>
                               <tr class="headings">
-                                <th>
-                                 
-                                </th>
+                              
                                 <th class="column-title">Generic Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used</th>
                                 <th class="column-title">Unit</th>
                                 <th class="column-title">Dosage</th>
                                 <th class="column-title no-link last"><span class="nobr">Medication</th>
+                                <th>Given By</th>
                              
                               </tr>
                             </thead>
@@ -279,21 +278,25 @@
                             <tbody id="tbodyMedicine">
                               @foreach($prescriptionInfo as $medicine)
                                 <tr class="even pointer">
-                                  <td class="a-center ">
-                                    <input type="checkbox" name="table_records">
-                                  </td>
+                                
                                   <td class=" ">{{ $medicine->genericName }}</td>
                                   <td class=" ">{{ $medicine->brand }}</td>
                                   <td class=" ">{{ $medicine->quantity }}</td>
                                   <td class=" ">{{ $medicine->unit }}</td>
                                   <td class=" ">{{ $medicine->dosage }}</td>
                                   <td class=" ">{{ $medicine->medication }}</td>
-                                  
+                                  <td>
+                                    @foreach($accounts as $account)
+                                        @if($account->id == $medicine->givenBy)
+                                          {{ $account->lastName }}, {{ $account->firstName }} {{ $account->middleName[0] }}@if($account->middleName){{ '.' }}@endif
+                                        @endif
+                                      @endforeach
+                                  </td>
                                 </tr>
                               @endforeach
                             </tbody>
                           </table>
-                            <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                           
                         </div>
                       </div>
                        <div id="medicineTable"class="row"
@@ -303,9 +306,7 @@
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="suppTable">
                             <thead>
                               <tr class="headings">
-                                <th>
-                                  
-                                </th>
+                              
                                 <th class="column-title">Supply Name </th>
                                 <th class="column-title">Brand </th>
                                 <th class="column-title">Quantity Used</th>
@@ -318,9 +319,7 @@
                             <tbody id="tbodyMedicalSupply">
                             @foreach($usedMedSupply as $medicalSupply)
                               <tr class="even pointer">
-                                <td class="a-center ">
-                                  <input type="checkbox" name="table_records">
-                                </td>
+                               
                                 <td class=" ">{{ $medicalSupply->medSupName }}</td>
                                 <td class=" ">{{ $medicalSupply->brand }}</td>
                                 <td class=" ">{{ $medicalSupply->quantity }}</td>
@@ -330,7 +329,7 @@
                             </tbody>
                           </table>
                           
-                            <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                          
                         </div>
                       </div>
                       </div>
@@ -342,9 +341,7 @@
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="prescribeTable">
                             <thead>
                               <tr class="headings">
-                                <th>
-                               
-                                </th>
+                              
                                 <th class="column-title">Generic Name </th>
                                 <th class="column-title" style="padding-right:50px;">Brand </th>
                                 <th class="column-title">Quantity<br>Used </th>
@@ -358,9 +355,7 @@
                         
                             </tbody>
                           </table>
-                         
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                        
                         </div>
                       </div>
 
@@ -526,7 +521,7 @@
         $('#medSuppBrand').empty();
         $('#medSuppUnit').empty();
         $('#medSuppBrand').prop('disabled', false);
-
+        $('#medSuppQuantity').prop('required', true);
         $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
         $.each(data, function(index, brandObj){
           $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
@@ -542,7 +537,9 @@
     
         $('#medSuppUnit').prop('disabled', false);
         $('#medSuppUnit').append('<option value="'+data[0].medSupID+'">'+data[0].unit+'</option>');
-        
+        if (data[0].unit.toLowerCase() == 'bottle') {
+          $('#medSuppQuantity').prop('required', false);
+        }
       });      
     });
 
@@ -634,7 +631,7 @@
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td><td>"+'{{ Session::get('accountInfo.lastName') }}, {{Session::get('accountInfo.firstName')}}'+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 
@@ -723,7 +720,7 @@
     function displayTableRowPrescribed(){
         for (var i = 0; i < Object.keys(array_med_prescribed).length; i++) {
 
-            var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_med_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_med_prescribed[i].medicineBrand+"</td><td class=' '>"+array_med_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_med_prescribed[i].medicineUnit+"</td><td>"+array_med_prescribed[i].medicineDosage+"</td><td>"+array_med_prescribed[i].medicineMedication+"</td></tr>";
+            var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_med_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_med_prescribed[i].medicineBrand+"</td><td class=' '>"+array_med_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_med_prescribed[i].medicineUnit+"</td><td>"+array_med_prescribed[i].medicineDosage+"</td><td>"+array_med_prescribed[i].medicineMedication+"</td></tr>";
 
             $(tr).prependTo('#tbodyPrescribedMedicine');
 
@@ -797,7 +794,7 @@
     function displayTableRowSupp(){
       for (var i = 0; i < Object.keys(array_supp).length; i++) {
 
-                var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
+                var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_supp[i].suppGenericName+"</td><td class=' '>"+array_supp[i].suppBrand+"</td><td class=' '>"+array_supp[i].suppQuantity+"</td><td class=' '>"+array_supp[i].suppUnit+"</td>";
 
                 $(tr).prependTo('#tbodyMedicalSupply');
                 console.log(array_supp);

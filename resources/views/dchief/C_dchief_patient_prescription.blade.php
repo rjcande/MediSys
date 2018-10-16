@@ -18,7 +18,7 @@
               <div class="x_panel">
                   <div class="x_title">
                     <h2>{{ Session::get('patientInfo.patientID') }}, {{ Session::get('patientInfo.patientName')}}</h2>
-                    <button class="btn btn-success btn-round" style="float: right;" data-toggle="modal" data-target="#uploadImageModal" id="btnUpload">Upload Image</button>
+                    {{-- <button class="btn btn-success btn-round" style="float: right;" data-toggle="modal" data-target="#uploadImageModal" id="btnUpload">Upload Image</button> --}}
                     {{-- <button class="btn btn-primary btn-round" style="float: right;" data-toggle="modal" data-target="#outsideReferModal" id="btnOutsideRefer">Refer Patient</button> --}}
                     <div class="clearfix"></div>
                   </div>
@@ -261,8 +261,8 @@
                                           <th class="column-title">Brand </th>
                                           <th class="column-title">Quantity Used</th>
                                           <th class="column-title">Unit</th>
-                                          <th class="column-title no-link last"><span class="nobr">Medication (a day)</span></th>
                                           <th class="column-title">Dosage</th>
+                                          <th class="column-title no-link last"><span class="nobr">Medication (a day)</span></th>
                                           <th class="bulk-actions" colspan="5">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                           </th>
@@ -274,7 +274,7 @@
                                       </tbody>
                                     </table>
                                      {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                      <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                      {{-- <button type="button" class="btn btn-default" id="btnDeleteMed" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                                   </div>
                                 </div>
                                 
@@ -303,7 +303,7 @@
                                       </tbody>
                                     </table>
                                     {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                    <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                    {{-- <button type="button" class="btn btn-default" id="btnDeleteSupp" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                                   </div>
                                 </div>
                               </div>
@@ -322,8 +322,8 @@
                                         <th class="column-title" style="padding-right:50px;">Brand </th>
                                         <th class="column-title">Quantity<br>Used </th>
                                         <th class="column-title">Unit </th>
-                                        <th class="column-title">Medication<br>(a day)</th>
                                         <th class="column-title">Dosage</th>
+                                        <th class="column-title no-link last"><span class="nobr">Medication (a day)</span></th>
                                       </tr>
                                     </thead>
 
@@ -333,8 +333,7 @@
                                   </table>
                                   {{-- <button type="button" class="btn btn-default"
                                     style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                                  <button type="button" class="btn btn-default"
-                                    style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                                  {{-- <button type="button" class="btn btn-default" id="btnDeletePres" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button> --}}
                                 </div>
                               </div>
 
@@ -641,6 +640,7 @@ $(document).ready(function(){
             $('#dosageUnit').val("oz");
           }
 
+          $('#medicineBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
           $.each(data, function(index, medBrand){
             $('#medicineBrand').append('<option value="'+medBrand.medicineID+'">'+medBrand.brand+'</option>');
             $('#medicineUnit').append('<option value="'+ medBrand.medicineID+'">'+medBrand.unit+'</option>');
@@ -657,11 +657,18 @@ $(document).ready(function(){
           $('#medSuppUnit').empty();
           $('#medSuppBrand').prop("disabled", false);
           $('#medSuppUnit').prop("disabled", false);
-
+          
+          $('#medSuppBrand').append('<option value="" disabled selected hidden>Select Brand</option>');
           $.each(data, function(index, suppBrand){
             $('#medSuppBrand').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.brand+'</option>');
             $('#medSuppUnit').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.unit+'</option>');
+            // alert($('#medSuppUnit').find('option:selected').text())
           });
+          //condition for not requiring quantity if supply unit is a bottle
+          if($('#medSuppUnit').find('option:selected').text() == 'bottle'){
+            $('#medSuppQuantity').attr('data-parsley-required', 'false');
+            $('#medSuppQuantity').attr('value', '1');
+          }
         });
       });
 
@@ -676,7 +683,7 @@ $(document).ready(function(){
               medicineGenericName: $('select#genericName option:selected').text(),
               medicineBrandName: $('select#medicineBrand option:selected').text(),
               // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
-              medicineMedication: $('input[name=medication]').val(),
+              medicineMedication: $('#medication').val(),
               medicineUnit: $('select#medicineUnit option:selected').text(),
               medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
               medicineID: $('select#medicineBrand option:selected').val(),
@@ -684,7 +691,8 @@ $(document).ready(function(){
               isGiven: 1,
               isPrescribed: 0
             };
-            $('#medicineTable tbody').empty();
+            // $('#medicineTable tbody').empty();
+            removeItems();
             displayTableRow();
           }
           
@@ -693,7 +701,7 @@ $(document).ready(function(){
             var key;
             
             for(var i = 0; i < Object.keys(array_med).length; i++){
-              if(array_med[i].medicineID == $('select#medicineBrand').val()){
+              if(array_med[i].medicineID == $('select#medicineBrand').val() && array_med[i].medicineMedication == $('#medication').val() && array_med[i].medicineDosage == $('#dosage').val() + " " + $('#dosageUnit option:selected').val()){
                 isEqual = true;
                 key = i;
               }
@@ -701,7 +709,8 @@ $(document).ready(function(){
             
             if(isEqual == true){
               array_med[key].medicineQuantity = parseInt(array_med[key].medicineQuantity) + parseInt($('#medQuantity').val());
-              $('#medicineTable tbody').empty();
+              // $('#medicineTable tbody').empty();
+              removeItems();
               displayTableRow(); 
             }
             
@@ -711,7 +720,7 @@ $(document).ready(function(){
                 medicineGenericName: $('select#genericName option:selected').text(),
                 medicineBrandName: $('select#medicineBrand option:selected').text(),
                 // medicineMedication: "Every " + $('input[name=hrs_day]').val() + " hour/s a day for " + $('input[name=week]').val() + " week/s ",
-                medicineMedication: $('input[name=medication]').val(),
+                medicineMedication: $('#medication').val(),
                 medicineUnit: $('select#medicineUnit option:selected').text(),
                 medicineDosage: $('#dosage').val() + " " + $('#dosageUnit option:selected').val(),
                 medicineID: $('select#medicineBrand option:selected').val(),
@@ -719,11 +728,14 @@ $(document).ready(function(){
                 isGiven: 1,
                 isPrescribed: 0
               };
-              $('#medicineTable tbody').empty();
-              displayTableRow();
+              // $('#medicineTable tbody').empty();
+              removeItems();
+              displayTableRow(); 
             }
           
           }
+          console.log(ctr_med);
+          resetFields();
         }
         else{
           return false;
@@ -744,7 +756,8 @@ $(document).ready(function(){
               medicalSupplyUnit: $('#medSuppUnit option:selected').text(),
               medicalSupplyID: $('select#medSuppBrand option:selected').val(),
             };
-            $('#medSuppTable tbody').empty();
+            // $('#medSuppTable tbody').empty();
+            removeItemsSupp();
             displaySuppliesRow();
           }
 
@@ -761,7 +774,8 @@ $(document).ready(function(){
 
             if(isEqual == true){
               array_supp[key].medicalSupplyQuantity = parseInt(array_supp[key].medicalSupplyQuantity) + parseInt($('#medSuppQuantity').val());
-              $('#medSuppTable tbody').empty();
+              // $('#medSuppTable tbody').empty();
+              removeItemsSupp();
               displaySuppliesRow();
             }
 
@@ -774,10 +788,12 @@ $(document).ready(function(){
                 medicalSupplyUnit: $('#medSuppUnit option:selected').text(),
                 medicalSupplyID: $('select#medSuppBrand option:selected').val(),
               };
-              $('#medSuppTable tbody').empty();
+              // $('#medSuppTable tbody').empty();
+              removeItemsSupp();
               displaySuppliesRow();
             }
           }
+          resetSuppFields();
         }
         else{
           return false;
@@ -803,7 +819,8 @@ $(document).ready(function(){
               isGiven: 0,
               isPrescribed: 1
             };
-            $('#prescriptionTable tbody').empty();
+            // $('#prescriptionTable tbody').empty();
+            removeItemsPresc();
             displayPrescribedTableRow();
           }
           
@@ -812,7 +829,7 @@ $(document).ready(function(){
             var key;
             
             for(var i = 0; i < Object.keys(array_prescribed).length; i++){
-              if(array_prescribed[i].medicineID == $('select#medicineBrand').val()){
+              if(array_prescribed[i].medicineID == $('select#medicineBrand').val() && array_prescribed[i].medicineMedication == $('#medication').val() && array_prescribed[i].medicineDosage == $('#dosage').val() + " " + $('#dosageUnit option:selected').val()){
                 isEqual = true;
                 key = i;
               }
@@ -820,7 +837,8 @@ $(document).ready(function(){
             
             if(isEqual == true){
               array_prescribed[key].medicineQuantity = parseInt(array_prescribed[key].medicineQuantity) + parseInt($('#medQuantity').val());
-              $('#prescriptionTable tbody').empty();                                                                                                                                    
+              // $('#prescriptionTable tbody').empty();
+              removeItemsPresc();                                                                                                                                    
               displayPrescribedTableRow(); 
             }
             
@@ -838,27 +856,50 @@ $(document).ready(function(){
                 isGiven: 0,
                 isPrescribed: 1
               };
-              $('#prescriptionTable tbody').empty();
+              // $('#prescriptionTable tbody').empty();
+              removeItemsPresc();
               displayPrescribedTableRow();
             }
           
           }
+          resetFields();
         }
         else{
           return false;
         }
       });
+
+      function resetFields(){
+          $('select#genericName').prop('selectedIndex', 0);
+          $('select#medicineBrand').prop('selectedIndex', 0);
+          $('select#medicineUnit').prop('selectedIndex', 0);
+          $('select#medicineBrand').prop('disabled', true);
+          $('select#medicineUnit').prop('disabled', true);
+          $('select#dosageUnit').prop('disabled', true);
+          $('#medQuantity').val(this.defaultValue);
+          $('input[name=medication]').val(this.defaultValue);
+          $('input[name=dosage]').val(this.defaultValue);
+          $('select#dosageUnit').prop('selectedIndex',0);
+      }
+      
+      function resetSuppFields(){
+        $('#medSuppName').prop('selectedIndex', 0);
+        $('#medSuppBrand').prop('selectedIndex', 0);
+        $('#medSuppUnit').prop('selectedIndex', 0);
+        $('#medSuppQuantity').val(this.defaultValue);
+      };
     
     function displayTableRow(){
         for(var i = 0; i < Object.keys(array_med).length; i++){
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrandName+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td class= ' '>"+array_med[i].medicineDosage +"</td><td class=' '>"+array_med[i].medicineMedication+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrandName+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td class= ' '>"+array_med[i].medicineDosage +"</td><td class=' '>"+array_med[i].medicineMedication+"</td></tr>";
           $(tr).prependTo('#medicineTableBody');
         }
     }
+
     function displaySuppliesRow(){
-      console.log(array_supp)
+      // console.log(array_supp)
         for(var i = 0; i < Object.keys(array_supp).length; i++){
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='medicalSupplyTable'></td><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='medicalSupplyTable'></td><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
           $(tr).prependTo('#medSuppTableBody');
         }
     }
@@ -866,23 +907,22 @@ $(document).ready(function(){
     function displayPrescribedTableRow(){
       // console.log(array_prescribed)
         for(var i = 0; i < Object.keys(array_prescribed).length; i++){
-          var tr = "<tr class='even pointer'><td class='a-center'><input type='checkbox' class='flat' name='prescriptionTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='prescriptionTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
           $(tr).prependTo('#prescribedMedTable');
         }
     }
 
-    function resetMedFields(){
-      $('select#genericName').prop('selectedIndex', 0);
-      $('select#medicineBrand').prop('selectedIndex', 0);
-      $('select#medicineUnit').prop('selectedIndex', 0);
-      $('#dosage').prop('disabled', true);
-      $('select#dosageUnit').prop('selectedIndex',0);
-
+    function removeItems(){
+      $('#medicineTableBody .delete-row').remove();
     }
 
-    // $('#appointmentDate').datetimepicker({
-    //     minDate: moment()
-    // });
+    function removeItemsSupp(){
+      $('#medSuppTableBody .delete-row').remove();
+    }
+
+    function removeItemsPresc(){
+      $('#prescribedMedTable .delete-row').remove();
+    }
 
 });
 </script>

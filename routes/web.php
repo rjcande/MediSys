@@ -558,6 +558,10 @@ Route::get('/dentist/vital/store', 'VitalSignsController@store')->name('dentist.
 
 Route::get('/dentist/show/consultations/{id}', 'DentalLogController@showAllConsultations')->name('dentist.show.all.consultations');
 
+Route::get('/dentist/delete/medicine', 'MedicineController@destroy');
+
+Route::get('/dentist/delete/medical/supply', 'MedicalSupplyController@destroy');
+
 
 
 Route::get('/dentist/generate/prescription/{id}', 'DentalCertificateController@generatePdf')->name('dentist.generate.prescription');
@@ -624,6 +628,7 @@ Route::get('/dchief/medical/supplies/reports', 'DashboardController@dentistSuppl
 Route::get('/dchief/medicine/reports', 'DashboardController@dentistReports');
 
 
+Route::get('/dchief/get/notification', 'DashboardController@dchiefNotification');
 
 
 Route::get('/dchief/PatientRecord', 'DentalPatientController@dchiefDentalPatientRecords');
@@ -723,7 +728,11 @@ Route::get('/dentalchief/accounts_maintenance_queries', 'DentalChiefController@a
 Route::get('/dentalchief/medicines_maintenance_queries', 'DentalChiefController@medicineQueries');
 
 Route::get('/dentalchief/medical_supplies_maintenance_queries', 'DentalChiefController@supplyQueries');
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 478068e8c248f3c678abe27d07869ad460b61d72
 //===========================================================================================================================
 
 // Dental Chief Routes

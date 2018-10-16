@@ -290,7 +290,9 @@
                             <tbody id="medicineTableBody">
                               @foreach($medsGiven as $meds)
                               <tr class="even pointer">  
-                                <td></td>                               
+                                <td>
+                                    <input type="checkbox" name="table_records_medicine" value="{{ $meds->prescriptionID }}" id="{{ $meds->prescriptionID }}">  
+                                </td>                               
                                 <td>{{$meds->genericName}}</td>
                                 <td>{{$meds->brand}}</td>
                                 <td>{{$meds->quantity}}</td>
@@ -302,12 +304,12 @@
                             </tbody>
                           </table>
                            {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                            <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                            <button type="button" class="btn btn-default" id="btnDeleteMed" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
                       
                       <!-- MEDICAL SUPPLIES GIVEN TABLE -->
-                      <div id="medicineTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
+                      <div id="medSupplyTable" class="row" style="margin-top: 25px; border:2px solid #dd; border-radius: 3px; box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom: 10px; margin-left: 50px; width: 47%"><h4 style="margin-bottom:5px;">Used Medical Supply</h4>
                         <div class="table-responsive" style="width: 100%; float: left;">
                         
                           <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
@@ -329,7 +331,9 @@
                           <tbody id="medSuppTableBody">
                             @foreach($medSupp as $medSupps)
                             <tr class="even pointer">
-                              <td></td>
+                              <td>
+                                  <input type="checkbox" name="table_records_medSupp" value="{{ $medSupps->medSupplyUsedID }}" id="{{ $medSupps->medSupplyUsedID }}">  
+                              </td> 
                               <td>{{$medSupps->medSupName}}</td>
                               <td>{{$medSupps->brand}}</td>
                               <td>{{$medSupps->quantity}}</td>
@@ -339,16 +343,16 @@
                           </tbody>
                           </table>
                           {{-- <button type="button" class="btn btn-default" style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                          <button type="button" class="btn btn-default" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                          <button type="button" class="btn btn-default" id="btnDeleteSupp" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
                     </div>
 
                       <!-- PRESCRIBED MEDICINE TABLE -->
-                    <div id="medicineTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
+                    <div id="prescriptionTable"class="row" style="margin-top: 25px; margin-left: 30px;border:2px solid #dd; border-radius: 3px;box-shadow: 0 0 0 2px rgba(0,0,0,0.2); transition: all 200ms ease-out;background-color:white;float: left;margin-bottom:20px;width: 95%;">
                         <h4 style="margin-bottom:5px; margin-left:5px;"> Prescribed Medicine</h4>
                         <div class="table-responsive">
-                          <table class="table table-striped table-bordered jambo_table bulk_action">
+                          <table class="table table-striped table-bordered jambo_table bulk_action" id="prescriptionTable">
                             <thead>
                               <tr class="headings">
                                 <th>
@@ -366,7 +370,9 @@
                             <tbody id="prescribedMedTable">
                               @foreach($prescribed as $prescribedMeds)
                               <tr class="even pointer">
-                                <td></td>
+                                <td>
+                                    <input type="checkbox" name="table_records_presc" value="{{ $prescribedMeds->prescriptionID }}" id="{{ $prescribedMeds->prescriptionID }}">  
+                                </td>   
                                 <td>{{$prescribedMeds->genericName}}</td>
                                 <td>{{$prescribedMeds->brand}}</td>
                                 <td>{{$prescribedMeds->quantity}}</td>
@@ -379,8 +385,7 @@
                           </table>
                           {{-- <button type="button" class="btn btn-default"
                             style="float: right; background-color:#e77f67; color:white;">DELETE ALL</button> --}}
-                          <button type="button" class="btn btn-default"
-                            style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
+                          <button type="button" class="btn btn-default" id="btnDeletePresc" style="float: right; background-color:#fdcb6e; color:white;">DELETE</button>
                         </div>
                       </div>
 
@@ -420,6 +425,26 @@ $(document).ready(function(){
   var isPrescribed = new Array();
   var medicineUnit = new Array();
   var id_medicineUnit = new Array();
+
+      //selected medicine
+    var checkBoxMedID = new Array();
+    var checkBoxPrescID = new Array();
+    var checkBoxMedSupID = new Array();
+
+  //checkbox Medicine and Medical Supply
+   
+  $('[name=table_records_medicine]').on('change', function(){
+      checkBoxMedID[checkBoxMedID.length] = $(this).val();
+  });
+
+  $('[name=table_records_medSupp]').on('change', function(){
+      checkBoxMedSupID[checkBoxMedSupID.length] = $(this).val();
+  });
+
+  $('[name=table_records_presc]').on('change', function(){
+      checkBoxPrescID[checkBoxPrescID.length] = $(this).val();
+  });
+
 
   $('#saveForm').parsley();
 
@@ -511,6 +536,11 @@ $(document).ready(function(){
           $('#medSuppBrand').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.brand+'</option>');
           $('#medSuppUnit').append('<option value="'+ suppBrand.medSupID +'">'+suppBrand.unit+'</option>');
         });
+        //condition for not requiring quantity if supply unit is a bottle
+        if($('#medSuppUnit').find('option:selected').text() == 'bottle'){
+            $('#medSuppQuantity').attr('data-parsley-required', 'false');
+            $('#medSuppQuantity').attr('value', '1');
+        }
       });
     });
 
@@ -636,6 +666,99 @@ $(document).ready(function(){
         
         }///////////////
       });///////////////
+
+      //If Medicine button delete is clicked
+      $('#btnDeleteMed').on('click', function(e){
+          swal({
+            title: "DELETE",
+            text: "Are you sure you want to delete this?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              
+              $.ajax({
+                url: '/dentist/delete/medicine',
+                type: 'get',
+                data: {medicineID: checkBoxMedID},
+                success:function(output){
+                  swal("Successfully deleted!", {
+                      icon: "success",
+                  })
+                  .then((value)=>{
+                      $('table tr').has('input[name="table_records_medicine"]:checked').remove();
+
+                  });
+                }
+              });
+            
+            }
+          });
+      });
+
+      //If Prescribe button delete is clicked
+      $('#btnDeletePresc').on('click', function(e){
+          swal({
+            title: "DELETE",
+            text: "Are you sure you want to delete this?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              
+              $.ajax({
+                url: '/dentist/delete/medicine',
+                type: 'get',
+                data: {medicineID: checkBoxPrescID},
+                success:function(output){
+                  swal("Successfully deleted!", {
+                      icon: "success",
+                  })
+                  .then((value)=>{
+                      $('table tr').has('input[name="table_records_presc"]:checked').remove();
+
+                  });
+                }
+              });
+            
+            }
+          });
+      });
+
+      //If Medical button delete is clicked
+      $('#btnDeleteSupp').on('click', function(e){
+          swal({
+            title: "DELETE",
+            text: "Are  you sure you want to delete this?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              
+              $.ajax({
+                url: '/dentist/delete/medical/supply',
+                type: 'get',
+                data: {medSupID: checkBoxMedSupID},
+                success:function(output){
+                  swal("Successfully deleted!", {
+                      icon: "success",
+                  })
+                  .then((value)=>{
+                      $('table tr').has('input[name="table_records_medSupp"]:checked').remove();
+
+                  });
+                }
+              });
+            
+            }
+          });
+      });
 
     
 

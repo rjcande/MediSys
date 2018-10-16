@@ -193,7 +193,9 @@ class MedicalSupplyController extends Controller
     //Get Medical Spply Brand
     public function brand(){
 
-        $brand = MedicalSupply::where('medSupName', '=', Input::get('mName'))->get();
+        $brand = MedicalSupply::where('medSupName', '=', Input::get('mName'))
+                                ->where('supType', '=', 'm')
+                                ->get();
 
         return Response::json($brand);
     }
@@ -203,6 +205,7 @@ class MedicalSupplyController extends Controller
 
         $unit = MedicalSupply::where('medSupName', '=', Input::get('mName'))
                 ->where('brand', '=', Input::get('mBrand'))
+                ->where('supType', '=', 'm')
                 ->get();
 
         return Response::json($unit);

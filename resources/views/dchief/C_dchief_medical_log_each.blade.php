@@ -103,13 +103,13 @@
                                         <i class='fa fa-angle-double-right'></i>
                                       </button>
                                     </a>
-                                      @if($dentalLogsAll->concern == 1)                                
+                                      {{-- @if($dentalLogsAll->concern == 1)                                
                                         <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                                       @elseif($dentalLogsAll->concern == 0)
                                         <a href="{{route('dchief.dentalLog.edit', $dentalLogsAll->clinicLogID)}}">
                                           <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                                         </a>
-                                      @endif
+                                      @endif --}}
                                       <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLogsAll->clinicLogID}}">
                                         <i class='fa fa-trash'></i>
                                       </button>

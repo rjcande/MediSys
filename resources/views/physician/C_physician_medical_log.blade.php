@@ -50,6 +50,7 @@
                         <tbody>
                            @php($ctr = sizeof($clinicLogs))
                            {{ Session::put('number', $ctr) }}
+                      
                           @foreach($clinicLogs as $clinicLog)
                             <tr class="even pointer">
                               <td class=" ">{{ Session::get('number') }}</td>

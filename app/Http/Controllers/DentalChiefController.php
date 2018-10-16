@@ -50,9 +50,11 @@ class DentalChiefController extends Controller
     }
     public function maintainAccounts(){
         $medicalstaff = Account::leftJoin('userverifications','users.id','=','userverifications.userID')->where('position',4)->where('isActive',1)->get();
+        // $unverifiedAccounts = Account::leftJoin('userverifications', 'users.id', '=', 'userverifications.userID')->where('position',4)->where('users.isVerified', 0)->get();
 
         $lastUserID = Account::orderBy('created_at','desc')->first();
         Session::put('lastUserID',$lastUserID['id']);
+        // return view('dentalchief.C_dentalchief_manage_accounts')->with(['medicalStaff'=>]);
         return view('dentalchief.C_dentalchief_manage_accounts')->withMedicalStaff($medicalstaff);
     }
 

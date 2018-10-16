@@ -221,7 +221,7 @@
                                     </div>
 
                                     <div style="float: left;">
-                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-required="true" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity" min='1' data-parsley-error-message="should be greater than or equal to 1">
+                                      <input type="number" name="medSuppQuantity" style="width:250px; border-radius:8px; margin-bottom:13px; 172px;height: 25px;" data-parsley-type="integer" data-parsley-group="third" id="medSuppQuantity" min='1' data-parsley-error-message="should be greater than or equal to 1">
                                     </div>
                                     
                                   </div>
@@ -265,12 +265,10 @@
                                           <th class="column-title">Unit</th>
                                           <th class="column-title">Dosage</th>
                                           <th class="column-title no-link last"><span class="nobr">Medication</span></th>
-                                          <th class="bulk-actions" colspan="6">
-                                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                          </th>
+                                          <th>Given By</th>
                                         </tr>
                                       </thead> 
-
+                                      
                                       <tbody id="tbodyMedicine">
                                           @foreach($prescriptionInfo as $prescription)
                                             <tr class="even pointer">
@@ -283,6 +281,14 @@
                                               <td class=" ">{{ $prescription->unit }}</td>
                                               <td class=" ">{{ $prescription->dosage }}</td>
                                               <td class="last">{{ $prescription->medication }}</td>
+                                              <td>
+                                                  @foreach($accounts as $account)
+                                                    @if($account->id == $prescription->givenBy)
+                                                      {{ $account->lastName }}, {{ $account->firstName }} {{ $account->middleName[0] }}@if($account->middleName){{ '.' }}@endif
+                                                    @endif
+                                                  @endforeach
+                                               
+                                              </td>
                                             </tr>
                                           @endforeach
                                       </tbody>
@@ -891,6 +897,8 @@
         $.each(data, function(index, brandObj){
           $('#medSuppBrand').append('<option value="'+ brandObj.medSupID +'">'+brandObj.brand+'</option>');
         });
+      
+        $('#medSuppQuantity').prop('required', true);
       });      
     });
 
@@ -902,7 +910,9 @@
     
         $('#medSuppUnit').prop('disabled', false);
         $('#medSuppUnit').append('<option value="'+data[0].medSupID+'">'+data[0].unit+'</option>');
-        
+        if (data[0].unit.toLowerCase() == 'bottle') {
+              $('#medSuppQuantity').prop('required', false);
+        }
       });      
     });
 

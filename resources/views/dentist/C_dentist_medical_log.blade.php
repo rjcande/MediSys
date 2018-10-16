@@ -114,13 +114,13 @@
                                 <i class='fa fa-angle-double-right'></i>
                               </button>
                             </a>
-                              @if($dentalLog->concern == 1)                                
+                              {{-- @if($dentalLog->concern == 1)                                
                                 <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                               @elseif($dentalLog->concern == 0)
                                 <a href="{{route('dentist.dentalLog.edit', $dentalLog->clinicLogID)}}">
                                   <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                                 </a>
-                              @endif
+                              @endif --}}
                               <button name=btnDelete class='btn btn-danger delete-button' data-toggle="tooltip" title="Delete" data-id="{{$dentalLog->clinicLogID}}">
                                 <i class='fa fa-trash'></i>
                               </button>
@@ -504,7 +504,7 @@
     $('#logPatientForm').parsley();
 
     //delete button is clicked
-    $('.delete-button').on('click', function(){
+    $('#patientTable').on('click','.delete-button', function(){
      swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this!",
