@@ -46,99 +46,44 @@ class DentalChartsController extends Controller
     {
         for ($x = 11; $x <= 85; $x++) {
             if (($x >= 11 && $x <= 18) || ($x >= 21 && $x <= 28) || ($x >= 31 && $x <= 38) || ($x >= 41 && $x <= 48) || ($x >= 51 && $x <= 55) || ($x >= 61 && $x <= 65) || ($x >= 71 && $x <= 75) || ($x >= 81 && $x <= 85)) {
-                $txtbox = 'txtBox' . $x;
-                $txtboxa = $txtbox . 'a';
-                $txtboxb = $txtbox . 'b';
-
-                if ($request->$txtboxa != '' && $request->$txtboxb != '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusA = $request->$txtboxa;
-                    $toothcondition->toothStatusB = $request->$txtboxb;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                else if ($request->$txtboxa != '' && $request->$txtboxb == '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusA = $request->$txtboxa;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                else if ($request->$txtboxb != '' && $request->$txtboxa == '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusB = $request->$txtboxb;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                $txtbox = '';
-            }
-        }
-        $display = '';
-        for ($x = 11; $x <= 85; $x++) {
-            if (($x >= 11 && $x <= 18) || ($x >= 21 && $x <= 28) || ($x >= 31 && $x <= 38) || ($x >= 41 && $x <= 48) || ($x >= 51 && $x <= 55) || ($x >= 61 && $x <= 65) || ($x >= 71 && $x <= 75) || ($x >= 81 && $x <= 85)) {
-                $toothside = 'txt' . $x;
+                $txtboxa = 'a' . $x;
+                $txtboxb = 'b' . $x;
+                $toothside = 'c' . $x;
                 $left = $toothside .'l';
                 $top = $toothside .'t';
                 $right = $toothside .'r';
                 $bottom = $toothside .'b';
                 $middle = $toothside .'m';
-
-                $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->where('isRecent',1)->orderBy('created_at','desc')->first();
-
-                if($request->$left != 0){
+                if ($request->$txtboxa != '') {
+                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
                     if ($hasRecord) {
-                        $hasRecord->leftSide = "1";
+                        $hasRecord->isRecent = "0";
                         $hasRecord->save();
                     }
-                }
-                if($request->$top != 0){
-                    if ($hasRecord) {
-                        $hasRecord->topSide = "1";
-                        $hasRecord->save();
+                    $toothcondition = new ToothCondition;
+                    $toothcondition->dentalchartid = $dentalchartid;
+                    $toothcondition->toothNum = $x;
+                    $toothcondition->toothStatusA = $request->$txtboxa;
+                    $toothcondition->toothStatusB = $request->$txtboxb;
+                    if($request->$left == 1){
+                        $toothcondition->leftSide = 1;
                     }
-                }
-                if($request->$right != 0){
-                    if ($hasRecord) {
-                        $hasRecord->rightSide = "1";
-                        $hasRecord->save();
+                    if($request->$top == 1){
+                        $toothcondition->topSide = 1;
                     }
-                }
-                if($request->$bottom != 0){
-                    if ($hasRecord) {
-                        $hasRecord->bottomSide = "1";
-                        $hasRecord->save();
+                    if($request->$right == 1){
+                        $toothcondition->rightSide = 1;
                     }
-                }
-                if($request->$middle != 0){
-                    if ($hasRecord) {
-                        $hasRecord->middleSide = "1";
-                        $hasRecord->save();
+                    if($request->$bottom == 1){
+                        $toothcondition->bottomSide = 1;
                     }
+                    if($request->$middle == 1){
+                        $toothcondition->middleSide = 1;
+                    }
+                    $toothcondition->isRecent = "1";
+                    $toothcondition->save();
                 }
-                $toothside = '';
-                $display = $display . '  |  ' . $x . '-' . $request->$left . '-' . $request->$top . '-' . $request->$right . '-' . $request->$bottom . '-' . $request->$middle;
             }
-
         }
 
         Session::put('diagnosis', $request->diagnosisTextArea);
@@ -158,99 +103,44 @@ class DentalChartsController extends Controller
     {
         for ($x = 11; $x <= 85; $x++) {
             if (($x >= 11 && $x <= 18) || ($x >= 21 && $x <= 28) || ($x >= 31 && $x <= 38) || ($x >= 41 && $x <= 48) || ($x >= 51 && $x <= 55) || ($x >= 61 && $x <= 65) || ($x >= 71 && $x <= 75) || ($x >= 81 && $x <= 85)) {
-                $txtbox = 'txtBox' . $x;
-                $txtboxa = $txtbox . 'a';
-                $txtboxb = $txtbox . 'b';
-
-                if ($request->$txtboxa != '' && $request->$txtboxb != '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusA = $request->$txtboxa;
-                    $toothcondition->toothStatusB = $request->$txtboxb;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                else if ($request->$txtboxa != '' && $request->$txtboxb == '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusA = $request->$txtboxa;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                else if ($request->$txtboxb != '' && $request->$txtboxa == '') {
-                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
-                    if (!empty($hasRecord)) {
-                        $hasRecord->isRecent = "0";
-                        $hasRecord->save();
-                    }
-                    $toothcondition = new ToothCondition;
-                    $toothcondition->dentalchartid = $dentalchartid;
-                    $toothcondition->toothNum = $x;
-                    $toothcondition->toothStatusB = $request->$txtboxb;
-                    $toothcondition->isRecent = "1";
-                    $toothcondition->save();
-                }
-                $txtbox = '';
-            }
-        }
-        $display = '';
-        for ($x = 11; $x <= 85; $x++) {
-            if (($x >= 11 && $x <= 18) || ($x >= 21 && $x <= 28) || ($x >= 31 && $x <= 38) || ($x >= 41 && $x <= 48) || ($x >= 51 && $x <= 55) || ($x >= 61 && $x <= 65) || ($x >= 71 && $x <= 75) || ($x >= 81 && $x <= 85)) {
-                $toothside = 'txt' . $x;
+                $txtboxa = 'a' . $x;
+                $txtboxb = 'b' . $x;
+                $toothside = 'c' . $x;
                 $left = $toothside .'l';
                 $top = $toothside .'t';
                 $right = $toothside .'r';
                 $bottom = $toothside .'b';
                 $middle = $toothside .'m';
-
-                $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->where('isRecent',1)->orderBy('created_at','desc')->first();
-
-                if($request->$left != 0){
+                if ($request->$txtboxa != '') {
+                    $hasRecord = ToothCondition::where('dentalchartID', $dentalchartid)->where('toothNum', $x)->orderBy('created_at','desc')->first();
                     if ($hasRecord) {
-                        $hasRecord->leftSide = "1";
+                        $hasRecord->isRecent = "0";
                         $hasRecord->save();
                     }
-                }
-                if($request->$top != 0){
-                    if ($hasRecord) {
-                        $hasRecord->topSide = "1";
-                        $hasRecord->save();
+                    $toothcondition = new ToothCondition;
+                    $toothcondition->dentalchartid = $dentalchartid;
+                    $toothcondition->toothNum = $x;
+                    $toothcondition->toothStatusA = $request->$txtboxa;
+                    $toothcondition->toothStatusB = $request->$txtboxb;
+                    if($request->$left == 1){
+                        $toothcondition->leftSide = 1;
                     }
-                }
-                if($request->$right != 0){
-                    if ($hasRecord) {
-                        $hasRecord->rightSide = "1";
-                        $hasRecord->save();
+                    if($request->$top == 1){
+                        $toothcondition->topSide = 1;
                     }
-                }
-                if($request->$bottom != 0){
-                    if ($hasRecord) {
-                        $hasRecord->bottomSide = "1";
-                        $hasRecord->save();
+                    if($request->$right == 1){
+                        $toothcondition->rightSide = 1;
                     }
-                }
-                if($request->$middle != 0){
-                    if ($hasRecord) {
-                        $hasRecord->middleSide = "1";
-                        $hasRecord->save();
+                    if($request->$bottom == 1){
+                        $toothcondition->bottomSide = 1;
                     }
+                    if($request->$middle == 1){
+                        $toothcondition->middleSide = 1;
+                    }
+                    $toothcondition->isRecent = "1";
+                    $toothcondition->save();
                 }
-                $toothside = '';
-                $display = $display . '  |  ' . $x . '-' . $request->$left . '-' . $request->$top . '-' . $request->$right . '-' . $request->$bottom . '-' . $request->$middle;
             }
-
         }
 
         Session::put('diagnosis', $request->diagnosisTextArea);
@@ -275,6 +165,7 @@ class DentalChartsController extends Controller
             ->orderBy('created_at','desc')
             ->get();
         $data = array(
+            'dchart' => $dchart,
             'toothNum' => $toothNum,
             'toothconditions' => $toothconditions
         );
@@ -291,6 +182,7 @@ class DentalChartsController extends Controller
             ->orderBy('created_at','desc')
             ->get();
         $data = array(
+            'dchart' => $dchart,
             'toothNum' => $toothNum,
             'toothconditions' => $toothconditions
         );

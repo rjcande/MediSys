@@ -1,37 +1,15 @@
 @extends('dentalchief.layout.dentalchief')
 
 @section('content')
-
 <style>
-    svg {
-        width: 55px;
-        height: 55px;
-    }
-    svg polyline,
-    svg line,
-    svg path,
-    svg circle{
-        fill: white;
-        stroke: black;
-    }
-    .btnTeeth
-    {
-        border-radius: 500px;
-        width: 45px;
-        height: 45px;
-    }
-    .imgTeeth
-    {
-        width: 50px;
-        height: 50px;
-    }
-    .imgMidTeeth
-    {
-        width: 51px;
-        height: 51px;
-    }
-
-</style>
+        svg{
+            width: 57px;
+        }
+        svg path, svg circle{
+            fill: white;
+            stroke: black;
+        }
+    </style>
     <div class="right_col" role="main">
         <div class="">
           <div class="page-title">
@@ -42,7 +20,7 @@
 
             <div class="clearfix"></div>
 
-          <div class="row">
+            <div class="row">
             <!-- form input mask -->
             <div class="col-md-12 col-sm-6 col-xs-12">
               <div class="x_panel">
@@ -54,1337 +32,2129 @@
                 @csrf
                 <div class="x_content">
                    <!-- Content -->
-                    @php
-                        $status55a = '';
-                        $status55b = '';
-                        $status54a = '';
-                        $status54b = '';
-                        $status53a = '';
-                        $status53b = '';
-                        $status52a = '';
-                        $status52b = '';
-                        $status51a = '';
-                        $status51b = '';
+                    <div>
+                        <h1 style="text-align: center;">DENTAL RECORD CHART</h1>
+                        <h2>INTRAORAL EXAMINATION</h2>
+                        <!--55 TO 51 A AND B-->
+                        <div style="float: left;margin-top: 25px;">
+                            <label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
+                            <select name="a55" id="a55" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(55)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m55" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo55" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                        $status65a = '';
-                        $status65b = '';
-                        $status64a = '';
-                        $status64b = '';
-                        $status63a = '';
-                        $status63b = '';
-                        $status62a = '';
-                        $status62b = '';
-                        $status61a = '';
-                        $status61b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                        $status75a = '';
-                        $status75b = '';
-                        $status74a = '';
-                        $status74b = '';
-                        $status73a = '';
-                        $status73b = '';
-                        $status72a = '';
-                        $status72b = '';
-                        $status71a = '';
-                        $status71b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 55 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a54" id="a54" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(54)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m54" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo54" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                        $status85a = '';
-                        $status85b = '';
-                        $status84a = '';
-                        $status84b = '';
-                        $status83a = '';
-                        $status83b = '';
-                        $status82a = '';
-                        $status82b = '';
-                        $status81a = '';
-                        $status81b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                        $status11a = '';
-                        $status11b = '';
-                        $status12a = '';
-                        $status12b = '';
-                        $status13a = '';
-                        $status13b = '';
-                        $status14a = '';
-                        $status14b = '';
-                        $status15a = '';
-                        $status15b = '';
-                        $status16a = '';
-                        $status16b = '';
-                        $status17a = '';
-                        $status17b = '';
-                        $status18a = '';
-                        $status18b = '';
-                        $status11a = '';
-                        $status11b = '';
-                        $status12a = '';
-                        $status12b = '';
-                        $status13a = '';
-                        $status13b = '';
-                        $status14a = '';
-                        $status14b = '';
-                        $status15a = '';
-                        $status15b = '';
-                        $status16a = '';
-                        $status16b = '';
-                        $status17a = '';
-                        $status17b = '';
-                        $status18a = '';
-                        $status18b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 54 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a53" id="a53" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(53)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m53" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo53" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                        $status21a = '';
-                        $status21b = '';
-                        $status22a = '';
-                        $status22b = '';
-                        $status23a = '';
-                        $status23b = '';
-                        $status24a = '';
-                        $status24b = '';
-                        $status25a = '';
-                        $status25b = '';
-                        $status26a = '';
-                        $status26b = '';
-                        $status27a = '';
-                        $status27b = '';
-                        $status28a = '';
-                        $status28b = '';
-                        $status21a = '';
-                        $status21b = '';
-                        $status22a = '';
-                        $status22b = '';
-                        $status23a = '';
-                        $status23b = '';
-                        $status24a = '';
-                        $status24b = '';
-                        $status25a = '';
-                        $status25b = '';
-                        $status26a = '';
-                        $status26b = '';
-                        $status27a = '';
-                        $status27b = '';
-                        $status28a = '';
-                        $status28b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                        $status31a = '';
-                        $status31b = '';
-                        $status32a = '';
-                        $status32b = '';
-                        $status33a = '';
-                        $status33b = '';
-                        $status34a = '';
-                        $status34b = '';
-                        $status35a = '';
-                        $status35b = '';
-                        $status36a = '';
-                        $status36b = '';
-                        $status37a = '';
-                        $status37b = '';
-                        $status38a = '';
-                        $status38b = '';
-                        $status31a = '';
-                        $status31b = '';
-                        $status32a = '';
-                        $status32b = '';
-                        $status33a = '';
-                        $status33b = '';
-                        $status34a = '';
-                        $status34b = '';
-                        $status35a = '';
-                        $status35b = '';
-                        $status36a = '';
-                        $status36b = '';
-                        $status37a = '';
-                        $status37b = '';
-                        $status38a = '';
-                        $status38b = '';
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 53 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a52" id="a52" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(52)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m52" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo52" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                        $status41a = '';
-                        $status41b = '';
-                        $status42a = '';
-                        $status42b = '';
-                        $status43a = '';
-                        $status43b = '';
-                        $status44a = '';
-                        $status44b = '';
-                        $status45a = '';
-                        $status45b = '';
-                        $status46a = '';
-                        $status46b = '';
-                        $status47a = '';
-                        $status47b = '';
-                        $status48a = '';
-                        $status48b = '';
-                        $status41a = '';
-                        $status41b = '';
-                        $status42a = '';
-                        $status42b = '';
-                        $status43a = '';
-                        $status43b = '';
-                        $status44a = '';
-                        $status44b = '';
-                        $status45a = '';
-                        $status45b = '';
-                        $status46a = '';
-                        $status46b = '';
-                        $status47a = '';
-                        $status47b = '';
-                        $status48a = '';
-                        $status48b = '';
-                    @endphp
-                   @if(count($toothconditions) > 0)
-                        @foreach($toothconditions as $toothcondition)
-                        {{--  55 TO 51  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 55)
-                                @php $status55a = $toothcondition->toothStatusA;
-                                $status55b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 54)
-                                @php $status54a = $toothcondition->toothStatusA;
-                                $status54b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 53)
-                            @php $status53a = $toothcondition->toothStatusA;
-                                $status53b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 52)
-                            @php $status52a = $toothcondition->toothStatusA;
-                                $status52b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 51)
-                            @php $status51a = $toothcondition->toothStatusA;
-                                $status51b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                        {{--  65 TO 61  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 65)
-                                @php $status65a = $toothcondition->toothStatusA;
-                                $status65b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 64)
-                                @php $status64a = $toothcondition->toothStatusA;
-                                $status64b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 63)
-                            @php $status63a = $toothcondition->toothStatusA;
-                                $status63b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 62)
-                            @php $status62a = $toothcondition->toothStatusA;
-                                $status62b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 61)
-                            @php $status61a = $toothcondition->toothStatusA;
-                                $status61b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                        {{--  75 TO 71  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 75)
-                                @php $status75a = $toothcondition->toothStatusA;
-                                $status75b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 74)
-                                @php $status74a = $toothcondition->toothStatusA;
-                                $status74b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 73)
-                            @php $status73a = $toothcondition->toothStatusA;
-                                $status73b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 72)
-                            @php $status72a = $toothcondition->toothStatusA;
-                                $status72b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 71)
-                            @php $status71a = $toothcondition->toothStatusA;
-                                $status71b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                        {{--  85 TO 81  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 85)
-                                @php $status85a = $toothcondition->toothStatusA;
-                                $status85b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 84)
-                                @php $status84a = $toothcondition->toothStatusA;
-                                $status84b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 83)
-                            @php $status83a = $toothcondition->toothStatusA;
-                                $status83b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 82)
-                            @php $status82a = $toothcondition->toothStatusA;
-                                $status82b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 81)
-                            @php $status81a = $toothcondition->toothStatusA;
-                                $status81b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            {{--  18 to 11  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 18)
-                                @php $status18a = $toothcondition->toothStatusA;
-                                $status18b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 17)
-                                @php $status17a = $toothcondition->toothStatusA;
-                                $status17b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 16)
-                            @php $status16a = $toothcondition->toothStatusA;
-                                $status16b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 15)
-                                @php $status15a = $toothcondition->toothStatusA;
-                                $status15b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 14)
-                                @php $status14a = $toothcondition->toothStatusA;
-                                $status14b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 13)
-                            @php $status13a = $toothcondition->toothStatusA;
-                                $status13b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 12)
-                            @php $status12a = $toothcondition->toothStatusA;
-                                $status12b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 11)
-                            @php $status11a = $toothcondition->toothStatusA;
-                                $status11b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            {{--  28 to 21  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 28)
-                                @php $status28a = $toothcondition->toothStatusA;
-                                $status28b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 27)
-                                @php $status27a = $toothcondition->toothStatusA;
-                                $status27b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 26)
-                            @php $status26a = $toothcondition->toothStatusA;
-                                $status26b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 25)
-                                @php $status25a = $toothcondition->toothStatusA;
-                                $status25b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 24)
-                                @php $status24a = $toothcondition->toothStatusA;
-                                $status24b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 23)
-                            @php $status23a = $toothcondition->toothStatusA;
-                                $status23b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 22)
-                            @php $status22a = $toothcondition->toothStatusA;
-                                $status22b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 21)
-                            @php $status21a = $toothcondition->toothStatusA;
-                                $status21b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            {{--  38 to 31  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 38)
-                                @php $status38a = $toothcondition->toothStatusA;
-                                $status38b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 37)
-                                @php $status37a = $toothcondition->toothStatusA;
-                                $status37b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 36)
-                            @php $status36a = $toothcondition->toothStatusA;
-                                $status36b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 35)
-                                @php $status35a = $toothcondition->toothStatusA;
-                                $status35b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 34)
-                                @php $status34a = $toothcondition->toothStatusA;
-                                $status34b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 33)
-                            @php $status33a = $toothcondition->toothStatusA;
-                                $status33b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 32)
-                            @php $status32a = $toothcondition->toothStatusA;
-                                $status32b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 31)
-                            @php $status31a = $toothcondition->toothStatusA;
-                                $status31b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            {{--  48 to 41  --}}
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 48)
-                                @php $status48a = $toothcondition->toothStatusA;
-                                $status48b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 47)
-                                @php $status47a = $toothcondition->toothStatusA;
-                                $status47b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 46)
-                            @php $status46a = $toothcondition->toothStatusA;
-                                $status46b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 45)
-                                @php $status45a = $toothcondition->toothStatusA;
-                                $status45b = $toothcondition->toothStatusB; @endphp
-                              @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 44)
-                                @php $status44a = $toothcondition->toothStatusA;
-                                $status44b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 43)
-                            @php $status43a = $toothcondition->toothStatusA;
-                                $status43b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 42)
-                            @php $status42a = $toothcondition->toothStatusA;
-                                $status42b = $toothcondition->toothStatusB; @endphp
-                            @endif
-                            @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 41)
-                            @php $status41a = $toothcondition->toothStatusA;
-                                $status41b = $toothcondition->toothStatusB; @endphp
-                            @endif
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                        @endforeach
-                    @endif
-                            <div>
-                                <h1 style="text-align: center;">DENTAL RECORD CHART</h1>
-                                <h2>INTRAORAL EXAMINATION</h2>
-                                <!--55 TO 51 A AND B-->
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 52 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a51" id="a51" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(51)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m51" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo51" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                <div style="float: left;margin-top: 25px;">
-                                    <label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                    <input placeholder="{{ $status55a }}" type="text"  name="txtBox55a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status54a }}" type="text"  name="txtBox54a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status53a }}" type="text"  name="txtBox53a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status52a }}" type="text"  name="txtBox52a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status51a }}" type="text"  name="txtBox51a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status61a }}" type="text"  name="txtBox61a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status62a }}" type="text"  name="txtBox62a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status63a }}" type="text"  name="txtBox63a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status64a }}" type="text"  name="txtBox64a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status65a }}" type="text"  name="txtBox65a" class="text-input" style="width:55px;">
-                                    <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
-                                    <br>
-                                    <input placeholder="{{ $status55b }}" type="text"  name="txtBox55b" class="text-input" style="width:55px;margin-left: 179px;">
-                                    <input placeholder="{{ $status54b }}" type="text"  name="txtBox54b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status53b }}" type="text"  name="txtBox53b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status52b }}" type="text"  name="txtBox52b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status51b }}" type="text"  name="txtBox51b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status61b }}" type="text"  name="txtBox61b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status62b }}" type="text"  name="txtBox62b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status63b }}" type="text"  name="txtBox63b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status64b }}" type="text"  name="txtBox64b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status65b }}" type="text"  name="txtBox65b" class="text-input" style="width:55px;">
-                                    <br>
-                                    <div style="margin-top: 5px;">
-                                        <!--TOOTH NUMBER 55--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 178px;">
-                                            <path    id="55l" onclick="isClicked('55l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="55t" onclick="isClicked('55t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="55r" onclick="isClicked('55r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="55b" onclick="isClicked('55b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="55m" onclick="isClicked('55m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-										<input type="number" name="txt55l" id="txt55l" hidden/>
-                                        <input type="number" name="txt55t" id="txt55t" hidden/>
-                                        <input type="number" name="txt55r" id="txt55r" hidden/>
-                                        <input type="number" name="txt55b" id="txt55b" hidden/>
-                                        <input type="number" name="txt55m" id="txt55m" hidden/>
-                                        <!--TOOTH NUMBER 54--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="54l" onclick="isClicked('54l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="54t" onclick="isClicked('54t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="54r" onclick="isClicked('54r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="54b" onclick="isClicked('54b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="54m" onclick="isClicked('54m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt54l" id="txt54l" hidden/>
-                                        <input type="number" name="txt54t" id="txt54t" hidden/>
-                                        <input type="number" name="txt54r" id="txt54r" hidden/>
-                                        <input type="number" name="txt54b" id="txt54b" hidden/>
-                                        <input type="number" name="txt54m" id="txt54m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="53l" onclick="isClicked('53l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="53t" onclick="isClicked('53t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="53r" onclick="isClicked('53r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="53b" onclick="isClicked('53b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="53m" onclick="isClicked('53m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt53l" id="txt53l" hidden/>
-                                        <input type="number" name="txt53t" id="txt53t" hidden/>
-                                        <input type="number" name="txt53r" id="txt53r" hidden/>
-                                        <input type="number" name="txt53b" id="txt53b" hidden/>
-                                        <input type="number" name="txt53m" id="txt53m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="52l" onclick="isClicked('52l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="52t" onclick="isClicked('52t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="52r" onclick="isClicked('52r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="52b" onclick="isClicked('52b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="52m" onclick="isClicked('52m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt52l" id="txt52l" hidden/>
-                                        <input type="number" name="txt52t" id="txt52t" hidden/>
-                                        <input type="number" name="txt52r" id="txt52r" hidden/>
-                                        <input type="number" name="txt52b" id="txt52b" hidden/>
-                                        <input type="number" name="txt52m" id="txt52m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="51l" onclick="isClicked('51l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="51t" onclick="isClicked('51t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="51r" onclick="isClicked('51r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="51b" onclick="isClicked('51b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="51m" onclick="isClicked('51m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt51l" id="txt51l" hidden/>
-                                        <input type="number" name="txt51t" id="txt51t" hidden/>
-                                        <input type="number" name="txt51r" id="txt51r" hidden/>
-                                        <input type="number" name="txt51b" id="txt51b" hidden/>
-                                        <input type="number" name="txt51m" id="txt51m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="61l" onclick="isClicked('61l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="61t" onclick="isClicked('61t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="61r" onclick="isClicked('61r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="61b" onclick="isClicked('61b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="61m" onclick="isClicked('61m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt61l" id="txt61l" hidden/>
-                                        <input type="number" name="txt61t" id="txt61t" hidden/>
-                                        <input type="number" name="txt61r" id="txt61r" hidden/>
-                                        <input type="number" name="txt61b" id="txt61b" hidden/>
-                                        <input type="number" name="txt61m" id="txt61m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="62l" onclick="isClicked('62l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="62t" onclick="isClicked('62t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="62r" onclick="isClicked('62r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="62b" onclick="isClicked('62b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="62m" onclick="isClicked('62m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt62l" id="txt62l" hidden/>
-                                        <input type="number" name="txt62t" id="txt62t" hidden/>
-                                        <input type="number" name="txt62r" id="txt62r" hidden/>
-                                        <input type="number" name="txt62b" id="txt62b" hidden/>
-                                        <input type="number" name="txt62m" id="txt62m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="63l" onclick="isClicked('63l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="63t" onclick="isClicked('63t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="63r" onclick="isClicked('63r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="63b" onclick="isClicked('63b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="63m" onclick="isClicked('63m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt63l" id="txt63l" hidden/>
-                                        <input type="number" name="txt63t" id="txt63t" hidden/>
-                                        <input type="number" name="txt63r" id="txt63r" hidden/>
-                                        <input type="number" name="txt63b" id="txt63b" hidden/>
-                                        <input type="number" name="txt63m" id="txt63m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="64l" onclick="isClicked('64l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="64t" onclick="isClicked('64t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="64r" onclick="isClicked('64r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="64b" onclick="isClicked('64b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="64m" onclick="isClicked('64m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt64l" id="txt64l" hidden/>
-                                        <input type="number" name="txt64t" id="txt64t" hidden/>
-                                        <input type="number" name="txt64r" id="txt64r" hidden/>
-                                        <input type="number" name="txt64b" id="txt64b" hidden/>
-                                        <input type="number" name="txt64m" id="txt64m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="65l" onclick="isClicked('65l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="65t" onclick="isClicked('65t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="65r" onclick="isClicked('65r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="65b" onclick="isClicked('65b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="65m" onclick="isClicked('65m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt65l" id="txt65l" hidden/>
-                                        <input type="number" name="txt65t" id="txt65t" hidden/>
-                                        <input type="number" name="txt65r" id="txt65r" hidden/>
-                                        <input type="number" name="txt65b" id="txt65b" hidden/>
-                                        <input type="number" name="txt65m" id="txt65m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 51 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a61" id="a61" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(61)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m61" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo61" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                <div style="margin-top: 5px; margin-left: 180px">
-                                    <a href="{{ route('dchief.dentalchart.each',55)}}"><button type="button" class="btn btn-warning">55</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',54)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">54</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',53)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">53</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',52)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">52</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',51)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">51</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',61)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px;">61</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',62)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">62</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',63)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">63</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',64)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">64</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',65)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;">65</button></a>
-                                </div>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                <!--18 TO 11 A AND B-->
-                                <div style="float: left;margin-top: 25px;">
-                                    <input placeholder="{{ $status18a }}" type="text"  name="txtBox18a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status17a }}" type="text"  name="txtBox17a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status16a }}" type="text"  name="txtBox16a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status15a }}" type="text"  name="txtBox15a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status14a }}" type="text"  name="txtBox14a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status13a }}" type="text"  name="txtBox13a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status12a }}" type="text"  name="txtBox12a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status11a }}" type="text"  name="txtBox11a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status28a }}" type="text"  name="txtBox21a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status27a }}" type="text"  name="txtBox22a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status26a }}" type="text"  name="txtBox23a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status25a }}" type="text"  name="txtBox24a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status24a }}" type="text"  name="txtBox25a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status23a }}" type="text"  name="txtBox26a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status22a }}" type="text"  name="txtBox27a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status21a }}" type="text"  name="txtBox28a" class="text-input" style="width:55px;">
-                                    <br>
-                                    <input placeholder="{{ $status18b }}" type="text"  name="txtBox18b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status17b }}" type="text"  name="txtBox17b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status16b }}" type="text"  name="txtBox16b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status15b }}" type="text"  name="txtBox15b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status14b }}" type="text"  name="txtBox14b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status13b }}" type="text"  name="txtBox13b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status12b }}" type="text"  name="txtBox12b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status11b }}" type="text"  name="txtBox11b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status28b }}" type="text"  name="txtBox21b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status27b }}" type="text"  name="txtBox22b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status26b }}" type="text"  name="txtBox23b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status25b }}" type="text"  name="txtBox24b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status24b }}" type="text"  name="txtBox25b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status23b }}" type="text"  name="txtBox26b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status22b }}" type="text"  name="txtBox27b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status21b }}" type="text"  name="txtBox28b" class="text-input" style="width:55px;"><br>
-                                    <!-- <img src="{{ asset('images/part3_12-18.png') }}" width="470px"> -->
-                                    <div style="margin-top: 3px;">
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="18l" onclick="isClicked('18l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="18t" onclick="isClicked('18t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="18r" onclick="isClicked('18r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="18b" onclick="isClicked('18b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="18m" onclick="isClicked('18m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt18l" id="txt18l" hidden/>
-                                        <input type="number" name="txt18t" id="txt18t" hidden/>
-                                        <input type="number" name="txt18r" id="txt18r" hidden/>
-                                        <input type="number" name="txt18b" id="txt18b" hidden/>
-                                        <input type="number" name="txt18m" id="txt18m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="17l" onclick="isClicked('17l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="17t" onclick="isClicked('17t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="17r" onclick="isClicked('17r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="17b" onclick="isClicked('17b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="17m" onclick="isClicked('17m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt17l" id="txt17l" hidden/>
-                                        <input type="number" name="txt17t" id="txt17t" hidden/>
-                                        <input type="number" name="txt17r" id="txt17r" hidden/>
-                                        <input type="number" name="txt17b" id="txt17b" hidden/>
-                                        <input type="number" name="txt17m" id="txt17m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="16l" onclick="isClicked('16l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="16t" onclick="isClicked('16t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="16r" onclick="isClicked('16r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="16b" onclick="isClicked('16b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="16m" onclick="isClicked('16m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt16l" id="txt16l" hidden/>
-                                        <input type="number" name="txt16t" id="txt16t" hidden/>
-                                        <input type="number" name="txt16r" id="txt16r" hidden/>
-                                        <input type="number" name="txt16b" id="txt16b" hidden/>
-                                        <input type="number" name="txt16m" id="txt16m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="15l" onclick="isClicked('15l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="15t" onclick="isClicked('15t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="15r" onclick="isClicked('15r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="15b" onclick="isClicked('15b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="15m" onclick="isClicked('15m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt15l" id="txt15l" hidden/>
-                                        <input type="number" name="txt15t" id="txt15t" hidden/>
-                                        <input type="number" name="txt15r" id="txt15r" hidden/>
-                                        <input type="number" name="txt15b" id="txt15b" hidden/>
-                                        <input type="number" name="txt15m" id="txt15m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="14l" onclick="isClicked('14l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="14t" onclick="isClicked('14t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="14r" onclick="isClicked('14r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="14b" onclick="isClicked('14b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="14m" onclick="isClicked('14m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt14l" id="txt14l" hidden/>
-                                        <input type="number" name="txt14t" id="txt14t" hidden/>
-                                        <input type="number" name="txt14r" id="txt14r" hidden/>
-                                        <input type="number" name="txt14b" id="txt14b" hidden/>
-                                        <input type="number" name="txt14m" id="txt14m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="13l" onclick="isClicked('13l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="13t" onclick="isClicked('13t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="13r" onclick="isClicked('13r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="13b" onclick="isClicked('13b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="13m" onclick="isClicked('13m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt13l" id="txt13l" hidden/>
-                                        <input type="number" name="txt13t" id="txt13t" hidden/>
-                                        <input type="number" name="txt13r" id="txt13r" hidden/>
-                                        <input type="number" name="txt13b" id="txt13b" hidden/>
-                                        <input type="number" name="txt13m" id="txt13m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="12l" onclick="isClicked('12l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="12t" onclick="isClicked('12t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="12r" onclick="isClicked('12r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="12b" onclick="isClicked('12b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="12m" onclick="isClicked('12m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt12l" id="txt12l" hidden/>
-                                        <input type="number" name="txt12t" id="txt12t" hidden/>
-                                        <input type="number" name="txt12r" id="txt12r" hidden/>
-                                        <input type="number" name="txt12b" id="txt12b" hidden/>
-                                        <input type="number" name="txt12m" id="txt12m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="11l" onclick="isClicked('11l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="11t" onclick="isClicked('11t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="11r" onclick="isClicked('11r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="11b" onclick="isClicked('11b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="11m" onclick="isClicked('11m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt11l" id="txt11l" hidden/>
-                                        <input type="number" name="txt11t" id="txt11t" hidden/>
-                                        <input type="number" name="txt11r" id="txt11r" hidden/>
-                                        <input type="number" name="txt11b" id="txt11b" hidden/>
-                                        <input type="number" name="txt11m" id="txt11m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 61 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a62" id="a62" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(62)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m62" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo62" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="21l" onclick="isClicked('21l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="21t" onclick="isClicked('21t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="21r" onclick="isClicked('21r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="21b" onclick="isClicked('21b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="21m" onclick="isClicked('21m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt21l" id="txt21l" hidden/>
-                                        <input type="number" name="txt21t" id="txt21t" hidden/>
-                                        <input type="number" name="txt21r" id="txt21r" hidden/>
-                                        <input type="number" name="txt21b" id="txt21b" hidden/>
-                                        <input type="number" name="txt21m" id="txt21m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="22l" onclick="isClicked('22l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="22t" onclick="isClicked('22t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="22r" onclick="isClicked('22r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="22b" onclick="isClicked('22b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="22m" onclick="isClicked('22m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt22l" id="txt22l" hidden/>
-                                        <input type="number" name="txt22t" id="txt22t" hidden/>
-                                        <input type="number" name="txt22r" id="txt22r" hidden/>
-                                        <input type="number" name="txt22b" id="txt22b" hidden/>
-                                        <input type="number" name="txt22m" id="txt22m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 62 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a63" id="a63" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(63)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m63" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo63" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="23l" onclick="isClicked('23l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="23t" onclick="isClicked('23t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="23r" onclick="isClicked('23r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="23b" onclick="isClicked('23b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="23m" onclick="isClicked('23m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt23l" id="txt23l" hidden/>
-                                        <input type="number" name="txt23t" id="txt23t" hidden/>
-                                        <input type="number" name="txt23r" id="txt23r" hidden/>
-                                        <input type="number" name="txt23b" id="txt23b" hidden/>
-                                        <input type="number" name="txt23m" id="txt23m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="24l" onclick="isClicked('24l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="24t" onclick="isClicked('24t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="24r" onclick="isClicked('24r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="24b" onclick="isClicked('24b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="24m" onclick="isClicked('24m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt24l" id="txt24l" hidden/>
-                                        <input type="number" name="txt24t" id="txt24t" hidden/>
-                                        <input type="number" name="txt24r" id="txt24r" hidden/>
-                                        <input type="number" name="txt24b" id="txt24b" hidden/>
-                                        <input type="number" name="txt24m" id="txt24m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 63 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a64" id="a64" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(64)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m64" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo64" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="25l" onclick="isClicked('25l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="25t" onclick="isClicked('25t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="25r" onclick="isClicked('25r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="25b" onclick="isClicked('25b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="25m" onclick="isClicked('25m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt25l" id="txt25l" hidden/>
-                                        <input type="number" name="txt25t" id="txt25t" hidden/>
-                                        <input type="number" name="txt25r" id="txt25r" hidden/>
-                                        <input type="number" name="txt25b" id="txt25b" hidden/>
-                                        <input type="number" name="txt25m" id="txt25m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="26l" onclick="isClicked('26l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="26t" onclick="isClicked('26t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="26r" onclick="isClicked('26r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="26b" onclick="isClicked('26b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="26m" onclick="isClicked('26m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt26l" id="txt26l" hidden/>
-                                        <input type="number" name="txt26t" id="txt26t" hidden/>
-                                        <input type="number" name="txt26r" id="txt26r" hidden/>
-                                        <input type="number" name="txt26b" id="txt26b" hidden/>
-                                        <input type="number" name="txt26m" id="txt26m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 64 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a65" id="a65" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(65)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m65" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo65" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="27l" onclick="isClicked('27l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="27t" onclick="isClicked('27t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="27r" onclick="isClicked('27r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="27b" onclick="isClicked('27b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="27m" onclick="isClicked('27m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt27l" id="txt27l" hidden/>
-                                        <input type="number" name="txt27t" id="txt27t" hidden/>
-                                        <input type="number" name="txt27r" id="txt27r" hidden/>
-                                        <input type="number" name="txt27b" id="txt27b" hidden/>
-                                        <input type="number" name="txt27m" id="txt27m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="28l" onclick="isClicked('28l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="28t" onclick="isClicked('28t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="28r" onclick="isClicked('28r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="28b" onclick="isClicked('28b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="28m" onclick="isClicked('28m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt28l" id="txt28l" hidden/>
-                                        <input type="number" name="txt28t" id="txt28t" hidden/>
-                                        <input type="number" name="txt28r" id="txt28r" hidden/>
-                                        <input type="number" name="txt28b" id="txt28b" hidden/>
-                                        <input type="number" name="txt28m" id="txt28m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 65 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
+                            <br>
+                            <input readonly value="" type="text"  name="b55" id="b55" class="text-input" style="width:60px;margin-left: 179px;color:black;">
+                            <input readonly value="" type="text"  name="b54" id="b54" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b53" id="b53" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b52" id="b52" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b51" id="b51" class="text-input" style="width:60px;color:black;">
 
-                                    </div>
-                                    <a href="{{ route('dchief.dentalchart.each',18)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">18</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',17)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">17</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',16)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">16</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',15)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">15</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',14)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">14</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',13)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">13</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',12)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">12</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',11)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">11</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',21)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px">21</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',22)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">22</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',23)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">23</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',24)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">24</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',25)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">25</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',26)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">26</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',27)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">27</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',28)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 5px">28</button></a>
-                                </div>
+                            <input readonly value="" type="text"  name="b61" id="b61" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b62" id="b62" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b63" id="b63" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b64" id="b64" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b65" id="b65" class="text-input" style="width:60px;color:black;">
+                            <br>
+                            <div style="margin-top: 5px;">
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 178px;">
+                                    <path    id="55l" onclick="isClicked('55l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="55t" onclick="isClicked('55t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="55r" onclick="isClicked('55r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="55b" onclick="isClicked('55b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="55m" onclick="isClicked('55m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c55l" id="c55l" hidden/>
+                                <input type="number" name="c55t" id="c55t" hidden/>
+                                <input type="number" name="c55r" id="c55r" hidden/>
+                                <input type="number" name="c55b" id="c55b" hidden/>
+                                <input type="number" name="c55m" id="c55m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="54l" onclick="isClicked('54l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="54t" onclick="isClicked('54t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="54r" onclick="isClicked('54r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="54b" onclick="isClicked('54b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="54m" onclick="isClicked('54m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c54l" id="c54l" hidden/>
+                                <input type="number" name="c54t" id="c54t" hidden/>
+                                <input type="number" name="c54r" id="c54r" hidden/>
+                                <input type="number" name="c54b" id="c54b" hidden/>
+                                <input type="number" name="c54m" id="c54m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="53l" onclick="isClicked('53l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="53t" onclick="isClicked('53t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="53r" onclick="isClicked('53r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="53b" onclick="isClicked('53b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="53m" onclick="isClicked('53m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c53l" id="c53l" hidden/>
+                                <input type="number" name="c53t" id="c53t" hidden/>
+                                <input type="number" name="c53r" id="c53r" hidden/>
+                                <input type="number" name="c53b" id="c53b" hidden/>
+                                <input type="number" name="c53m" id="c53m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="52l" onclick="isClicked('52l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="52t" onclick="isClicked('52t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="52r" onclick="isClicked('52r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="52b" onclick="isClicked('52b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="52m" onclick="isClicked('52m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c52l" id="c52l" hidden/>
+                                <input type="number" name="c52t" id="c52t" hidden/>
+                                <input type="number" name="c52r" id="c52r" hidden/>
+                                <input type="number" name="c52b" id="c52b" hidden/>
+                                <input type="number" name="c52m" id="c52m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="51l" onclick="isClicked('51l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="51t" onclick="isClicked('51t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="51r" onclick="isClicked('51r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="51b" onclick="isClicked('51b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="51m" onclick="isClicked('51m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c51l" id="c51l" hidden/>
+                                <input type="number" name="c51t" id="c51t" hidden/>
+                                <input type="number" name="c51r" id="c51r" hidden/>
+                                <input type="number" name="c51b" id="c51b" hidden/>
+                                <input type="number" name="c51m" id="c51m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="61l" onclick="isClicked('61l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="61t" onclick="isClicked('61t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="61r" onclick="isClicked('61r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="61b" onclick="isClicked('61b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="61m" onclick="isClicked('61m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c61l" id="c61l" hidden/>
+                                <input type="number" name="c61t" id="c61t" hidden/>
+                                <input type="number" name="c61r" id="c61r" hidden/>
+                                <input type="number" name="c61b" id="c61b" hidden/>
+                                <input type="number" name="c61m" id="c61m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="62l" onclick="isClicked('62l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="62t" onclick="isClicked('62t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="62r" onclick="isClicked('62r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="62b" onclick="isClicked('62b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="62m" onclick="isClicked('62m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c62l" id="c62l" hidden/>
+                                <input type="number" name="c62t" id="c62t" hidden/>
+                                <input type="number" name="c62r" id="c62r" hidden/>
+                                <input type="number" name="c62b" id="c62b" hidden/>
+                                <input type="number" name="c62m" id="c62m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="63l" onclick="isClicked('63l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="63t" onclick="isClicked('63t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="63r" onclick="isClicked('63r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="63b" onclick="isClicked('63b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="63m" onclick="isClicked('63m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c63l" id="c63l" hidden/>
+                                <input type="number" name="c63t" id="c63t" hidden/>
+                                <input type="number" name="c63r" id="c63r" hidden/>
+                                <input type="number" name="c63b" id="c63b" hidden/>
+                                <input type="number" name="c63m" id="c63m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="64l" onclick="isClicked('64l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="64t" onclick="isClicked('64t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="64r" onclick="isClicked('64r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="64b" onclick="isClicked('64b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="64m" onclick="isClicked('64m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c64l" id="c64l" hidden/>
+                                <input type="number" name="c64t" id="c64t" hidden/>
+                                <input type="number" name="c64r" id="c64r" hidden/>
+                                <input type="number" name="c64b" id="c64b" hidden/>
+                                <input type="number" name="c64m" id="c64m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="65l" onclick="isClicked('65l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="65t" onclick="isClicked('65t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="65r" onclick="isClicked('65r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="65b" onclick="isClicked('65b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="65m" onclick="isClicked('65m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c65l" id="c65l" hidden/>
+                                <input type="number" name="c65t" id="c65t" hidden/>
+                                <input type="number" name="c65r" id="c65r" hidden/>
+                                <input type="number" name="c65b" id="c65b" hidden/>
+                                <input type="number" name="c65m" id="c65m" hidden/>
+                            </div>
 
-                                <!--48 TO 41 AND 31 TO 38 A AND B-->
-                                <div style="float: left;">
-                                    <!-- <img src="{{ asset('images/part5_41-48.png') }}" width="470px"> -->
-                                    <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">48</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">47</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">46</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',45)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">45</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',44)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">44</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',43)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">43</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',42)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">42</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',41)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 30px;">41</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',31)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 30px;">31</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',32)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">32</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',33)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">33</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',34)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">34</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',35)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">35</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',36)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">36</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',37)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">37</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',38)}}"><button type="button" class="btn btn-warning" style="margin-left: 10px;margin-top: 30px;">38</button></a>
-                                    <br>
-                                    <div style="margin-top: 3px;">
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="48l" onclick="isClicked('48l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="48t" onclick="isClicked('48t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="48r" onclick="isClicked('48r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="48b" onclick="isClicked('48b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="48m" onclick="isClicked('48m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt48l" id="txt48l" hidden/>
-                                        <input type="number" name="txt48t" id="txt48t" hidden/>
-                                        <input type="number" name="txt48r" id="txt48r" hidden/>
-                                        <input type="number" name="txt48b" id="txt48b" hidden/>
-                                        <input type="number" name="txt48m" id="txt48m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="47l" onclick="isClicked('47l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="47t" onclick="isClicked('47t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="47r" onclick="isClicked('47r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="47b" onclick="isClicked('47b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="47m" onclick="isClicked('47m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt47l" id="txt47l" hidden/>
-                                        <input type="number" name="txt47t" id="txt47t" hidden/>
-                                        <input type="number" name="txt47r" id="txt47r" hidden/>
-                                        <input type="number" name="txt47b" id="txt47b" hidden/>
-                                        <input type="number" name="txt47m" id="txt47m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="46l" onclick="isClicked('46l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="46t" onclick="isClicked('46t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="46r" onclick="isClicked('46r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="46b" onclick="isClicked('46b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="46m" onclick="isClicked('46m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt46l" id="txt46l" hidden/>
-                                        <input type="number" name="txt46t" id="txt46t" hidden/>
-                                        <input type="number" name="txt46r" id="txt46r" hidden/>
-                                        <input type="number" name="txt46b" id="txt46b" hidden/>
-                                        <input type="number" name="txt46m" id="txt46m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="45l" onclick="isClicked('45l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="45t" onclick="isClicked('45t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="45r" onclick="isClicked('45r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="45b" onclick="isClicked('45b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="45m" onclick="isClicked('45m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt45l" id="txt45l" hidden/>
-                                        <input type="number" name="txt45t" id="txt45t" hidden/>
-                                        <input type="number" name="txt45r" id="txt45r" hidden/>
-                                        <input type="number" name="txt45b" id="txt45b" hidden/>
-                                        <input type="number" name="txt45m" id="txt45m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="44l" onclick="isClicked('44l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="44t" onclick="isClicked('44t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="44r" onclick="isClicked('44r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="44b" onclick="isClicked('44b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="44m" onclick="isClicked('44m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt44l" id="txt44l" hidden/>
-                                        <input type="number" name="txt44t" id="txt44t" hidden/>
-                                        <input type="number" name="txt44r" id="txt44r" hidden/>
-                                        <input type="number" name="txt44b" id="txt44b" hidden/>
-                                        <input type="number" name="txt44m" id="txt44m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="43l" onclick="isClicked('43l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="43t" onclick="isClicked('43t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="43r" onclick="isClicked('43r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="43b" onclick="isClicked('43b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="43m" onclick="isClicked('43m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt43l" id="txt43l" hidden/>
-                                        <input type="number" name="txt43t" id="txt43t" hidden/>
-                                        <input type="number" name="txt43r" id="txt43r" hidden/>
-                                        <input type="number" name="txt43b" id="txt43b" hidden/>
-                                        <input type="number" name="txt43m" id="txt43m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="42l" onclick="isClicked('42l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="42t" onclick="isClicked('42t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="42r" onclick="isClicked('42r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="42b" onclick="isClicked('42b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="42m" onclick="isClicked('42m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt42l" id="txt42l" hidden/>
-                                        <input type="number" name="txt42t" id="txt42t" hidden/>
-                                        <input type="number" name="txt42r" id="txt42r" hidden/>
-                                        <input type="number" name="txt42b" id="txt42b" hidden/>
-                                        <input type="number" name="txt42m" id="txt42m" hidden/>
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="41l" onclick="isClicked('41l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="41t" onclick="isClicked('41t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="41r" onclick="isClicked('41r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="41b" onclick="isClicked('41b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="41m" onclick="isClicked('41m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt41l" id="txt41l" hidden/>
-                                        <input type="number" name="txt41t" id="txt41t" hidden/>
-                                        <input type="number" name="txt41r" id="txt41r" hidden/>
-                                        <input type="number" name="txt41b" id="txt41b" hidden/>
-                                        <input type="number" name="txt41m" id="txt41m" hidden/>
+                            <div style="margin-top: 5px; margin-left: 178px">
+                                <a href="{{ route('dchief.dentalchart.each',55)}}"><button type="button" class="btn btn-warning" style="width:55px;">55</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',54)}}"><button type="button" class="btn btn-warning" style="width:55px;">54</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',53)}}"><button type="button" class="btn btn-warning" style="width:55px;">53</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',52)}}"><button type="button" class="btn btn-warning" style="width:55px;">52</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',51)}}"><button type="button" class="btn btn-warning" style="width:55px;">51</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',61)}}"><button type="button" class="btn btn-warning" style="width:55px;">61</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',62)}}"><button type="button" class="btn btn-warning" style="width:55px;">62</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',63)}}"><button type="button" class="btn btn-warning" style="width:55px;">63</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',64)}}"><button type="button" class="btn btn-warning" style="width:55px;">64</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',65)}}"><button type="button" class="btn btn-warning" style="width:55px;">65</button></a>
+                            </div>
+                        </div>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="31l" onclick="isClicked('31l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="31t" onclick="isClicked('31t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="31r" onclick="isClicked('31r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="31b" onclick="isClicked('31b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="31m" onclick="isClicked('31m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt31l" id="txt31l" hidden/>
-                                        <input type="number" name="txt31t" id="txt31t" hidden/>
-                                        <input type="number" name="txt31r" id="txt31r" hidden/>
-                                        <input type="number" name="txt31b" id="txt31b" hidden/>
-                                        <input type="number" name="txt31m" id="txt31m" hidden/>
+						<div style="float: left;margin-top: 25px;">
+                            <select name="a18" id="a18" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(18)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m18" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo18" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="32l" onclick="isClicked('32l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="32t" onclick="isClicked('32t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="32r" onclick="isClicked('32r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="32b" onclick="isClicked('32b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="32m" onclick="isClicked('32m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt32l" id="txt32l" hidden/>
-                                        <input type="number" name="txt32t" id="txt32t" hidden/>
-                                        <input type="number" name="txt32r" id="txt32r" hidden/>
-                                        <input type="number" name="txt32b" id="txt32b" hidden/>
-                                        <input type="number" name="txt32m" id="txt32m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="33l" onclick="isClicked('33l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="33t" onclick="isClicked('33t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="33r" onclick="isClicked('33r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="33b" onclick="isClicked('33b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="33m" onclick="isClicked('33m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt33l" id="txt33l" hidden/>
-                                        <input type="number" name="txt33t" id="txt33t" hidden/>
-                                        <input type="number" name="txt33r" id="txt33r" hidden/>
-                                        <input type="number" name="txt33b" id="txt33b" hidden/>
-                                        <input type="number" name="txt33m" id="txt33m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 18 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a17" id="a17" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(17)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m17" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo17" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="34l" onclick="isClicked('34l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="34t" onclick="isClicked('34t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="34r" onclick="isClicked('34r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="34b" onclick="isClicked('34b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="34m" onclick="isClicked('34m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt34l" id="txt34l" hidden/>
-                                        <input type="number" name="txt34t" id="txt34t" hidden/>
-                                        <input type="number" name="txt34r" id="txt34r" hidden/>
-                                        <input type="number" name="txt34b" id="txt34b" hidden/>
-                                        <input type="number" name="txt34m" id="txt34m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="35l" onclick="isClicked('35l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="35t" onclick="isClicked('35t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="35r" onclick="isClicked('35r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="35b" onclick="isClicked('35b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="35m" onclick="isClicked('35m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt35l" id="txt35l" hidden/>
-                                        <input type="number" name="txt35t" id="txt35t" hidden/>
-                                        <input type="number" name="txt35r" id="txt35r" hidden/>
-                                        <input type="number" name="txt35b" id="txt35b" hidden/>
-                                        <input type="number" name="txt35m" id="txt35m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 17 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a16" id="a16" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(16)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m16" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo16" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="36l" onclick="isClicked('36l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="36t" onclick="isClicked('36t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="36r" onclick="isClicked('36r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="36b" onclick="isClicked('36b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="36m" onclick="isClicked('36m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt36l" id="txt36l" hidden/>
-                                        <input type="number" name="txt36t" id="txt36t" hidden/>
-                                        <input type="number" name="txt36r" id="txt36r" hidden/>
-                                        <input type="number" name="txt36b" id="txt36b" hidden/>
-                                        <input type="number" name="txt36m" id="txt36m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="37l" onclick="isClicked('37l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="37t" onclick="isClicked('37t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="37r" onclick="isClicked('37r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="37b" onclick="isClicked('37b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="37m" onclick="isClicked('37m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt37l" id="txt37l" hidden/>
-                                        <input type="number" name="txt37t" id="txt37t" hidden/>
-                                        <input type="number" name="txt37r" id="txt37r" hidden/>
-                                        <input type="number" name="txt37b" id="txt37b" hidden/>
-                                        <input type="number" name="txt37m" id="txt37m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 16 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a15" id="a15" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(15)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m15" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo15" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                        <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                        <svg viewBox="0 0 25 25" class="tooth">
-                                            <path    id="38l" onclick="isClicked('38l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                            <path    id="38t" onclick="isClicked('38t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                            <path    id="38r" onclick="isClicked('38r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                            <path    id="38b" onclick="isClicked('38b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                            <circle  id="38m" onclick="isClicked('38m')" cx="12.5" cy="12.5" r="4"                          />
-                                        </svg>
-                                        <input type="number" name="txt38l" id="txt38l" hidden/>
-                                        <input type="number" name="txt38t" id="txt38t" hidden/>
-                                        <input type="number" name="txt38r" id="txt38r" hidden/>
-                                        <input type="number" name="txt38b" id="txt38b" hidden/>
-                                        <input type="number" name="txt38m" id="txt38m" hidden/>
-                                    </div>
-                                    <input placeholder="{{ $status48a }}" type="text"  name="txtBox48a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status47a }}" type="text"  name="txtBox47a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status46a }}" type="text"  name="txtBox46a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status45a }}" type="text"  name="txtBox45a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status44a }}" type="text"  name="txtBox44a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status43a }}" type="text"  name="txtBox43a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status42a }}" type="text"  name="txtBox42a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status41a }}" type="text"  name="txtBox41a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status31a }}" type="text"  name="txtBox31a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status32a }}" type="text"  name="txtBox32a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status33a }}" type="text"  name="txtBox33a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status34a }}" type="text"  name="txtBox34a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status35a }}" type="text"  name="txtBox35a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status36a }}" type="text"  name="txtBox36a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status37a }}" type="text"  name="txtBox37a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status38a }}" type="text"  name="txtBox38a" class="text-input" style="width:55px;">
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                    <br>
-                                    <input placeholder="{{ $status48b }}" type="text"  name="txtBox48b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status47b }}" type="text"  name="txtBox47b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status46b }}" type="text"  name="txtBox46b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status45b }}" type="text"  name="txtBox45b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status44b }}" type="text"  name="txtBox44b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status43b }}" type="text"  name="txtBox43b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status42b }}" type="text"  name="txtBox42b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status41b }}" type="text"  name="txtBox41b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status31b }}" type="text"  name="txtBox31b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status32b }}" type="text"  name="txtBox32b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status33b }}" type="text"  name="txtBox33b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status34b }}" type="text"  name="txtBox34b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status35b }}" type="text"  name="txtBox35b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status36b }}" type="text"  name="txtBox36b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status37b }}" type="text"  name="txtBox37b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status38b }}" type="text"  name="txtBox38b" class="text-input" style="width:55px;">
-                                </div>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 15 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a14" id="a14" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(14)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m14" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo14" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                <!--71 TO 75 A AND B-->
-                                <div style="float: left;margin-top: 25px;">
-                                    <!-- <img src="{{ asset('images/part7_71-75.png') }}" width="300px" style="margin-left: 177px;"> -->
-                                    <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="margin-left: 185px; margin-top: 5px;">71</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">72</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">73</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',74)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">74</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',75)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">75</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',85)}}"><button type="button" class="btn btn-warning" style="margin-left: 5px; margin-top: 5px;">85</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',84)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">84</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',83)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">83</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',82)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">82</button></a>
-                                    <a href="{{ route('dchief.dentalchart.each',81)}}"><button type="button" class="btn btn-warning" style="margin-left: 9px; margin-top: 5px;">81</button></a>
-                                    <br>
-                                    <div style="margin-top: 3px;">
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth" style="margin-left:180px;">
-                                                <path    id="71l" onclick="isClicked('71l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="71t" onclick="isClicked('71t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="71r" onclick="isClicked('71r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="71b" onclick="isClicked('71b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="71m" onclick="isClicked('71m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt71l" id="txt71l" hidden/>
-                                            <input type="number" name="txt71t" id="txt71t" hidden/>
-                                            <input type="number" name="txt71r" id="txt71r" hidden/>
-                                            <input type="number" name="txt71b" id="txt71b" hidden/>
-                                            <input type="number" name="txt71m" id="txt71m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="72l" onclick="isClicked('72l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="72t" onclick="isClicked('72t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="72r" onclick="isClicked('72r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="72b" onclick="isClicked('72b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="72m" onclick="isClicked('72m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt72l" id="txt72l" hidden/>
-                                            <input type="number" name="txt72t" id="txt72t" hidden/>
-                                            <input type="number" name="txt72r" id="txt72r" hidden/>
-                                            <input type="number" name="txt72b" id="txt72b" hidden/>
-                                            <input type="number" name="txt72m" id="txt72m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="73l" onclick="isClicked('73l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="73t" onclick="isClicked('73t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="73r" onclick="isClicked('73r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="73b" onclick="isClicked('73b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="73m" onclick="isClicked('73m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt73l" id="txt73l" hidden/>
-                                            <input type="number" name="txt73t" id="txt73t" hidden/>
-                                            <input type="number" name="txt73r" id="txt73r" hidden/>
-                                            <input type="number" name="txt73b" id="txt73b" hidden/>
-                                            <input type="number" name="txt73m" id="txt73m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="74l" onclick="isClicked('74l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="74t" onclick="isClicked('74t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="74r" onclick="isClicked('74r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="74b" onclick="isClicked('74b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="74m" onclick="isClicked('74m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt74l" id="txt74l" hidden/>
-                                            <input type="number" name="txt74t" id="txt74t" hidden/>
-                                            <input type="number" name="txt74r" id="txt74r" hidden/>
-                                            <input type="number" name="txt74b" id="txt74b" hidden/>
-                                            <input type="number" name="txt74m" id="txt74m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="75l" onclick="isClicked('75l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="75t" onclick="isClicked('75t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="75r" onclick="isClicked('75r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="75b" onclick="isClicked('75b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="75m" onclick="isClicked('75m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt75l" id="txt75l" hidden/>
-                                            <input type="number" name="txt75t" id="txt75t" hidden/>
-                                            <input type="number" name="txt75r" id="txt75r" hidden/>
-                                            <input type="number" name="txt75b" id="txt75b" hidden/>
-                                            <input type="number" name="txt75m" id="txt75m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="85l" onclick="isClicked('85l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="85t" onclick="isClicked('85t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="85r" onclick="isClicked('85r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="85b" onclick="isClicked('85b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="85m" onclick="isClicked('85m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt85l" id="txt85l" hidden/>
-                                            <input type="number" name="txt85t" id="txt85t" hidden/>
-                                            <input type="number" name="txt85r" id="txt85r" hidden/>
-                                            <input type="number" name="txt85b" id="txt85b" hidden/>
-                                            <input type="number" name="txt85m" id="txt85m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="84l" onclick="isClicked('84l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="84t" onclick="isClicked('84t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="84r" onclick="isClicked('84r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="84b" onclick="isClicked('84b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="84m" onclick="isClicked('84m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt84l" id="txt84l" hidden/>
-                                            <input type="number" name="txt84t" id="txt84t" hidden/>
-                                            <input type="number" name="txt84r" id="txt84r" hidden/>
-                                            <input type="number" name="txt84b" id="txt84b" hidden/>
-                                            <input type="number" name="txt84m" id="txt84m" hidden/>
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="83l" onclick="isClicked('83l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="83t" onclick="isClicked('83t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="83r" onclick="isClicked('83r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="83b" onclick="isClicked('83b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="83m" onclick="isClicked('83m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt83l" id="txt83l" hidden/>
-                                            <input type="number" name="txt83t" id="txt83t" hidden/>
-                                            <input type="number" name="txt83r" id="txt83r" hidden/>
-                                            <input type="number" name="txt83b" id="txt83b" hidden/>
-                                            <input type="number" name="txt83m" id="txt83m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="82l" onclick="isClicked('82l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="82t" onclick="isClicked('82t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="82r" onclick="isClicked('82r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="82b" onclick="isClicked('82b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="82m" onclick="isClicked('82m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt82l" id="txt82l" hidden/>
-                                            <input type="number" name="txt82t" id="txt82t" hidden/>
-                                            <input type="number" name="txt82r" id="txt82r" hidden/>
-                                            <input type="number" name="txt82b" id="txt82b" hidden/>
-                                            <input type="number" name="txt82m" id="txt82m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 14 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a13" id="a13" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(13)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m13" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo13" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                            <!--TOOTH NUMBER 53--------------------------------------------------------------------------->
-                                            <svg viewBox="0 0 25 25" class="tooth">
-                                                <path    id="81l" onclick="isClicked('81l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
-                                                <path    id="81t" onclick="isClicked('81t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
-                                                <path    id="81r" onclick="isClicked('81r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
-                                                <path    id="81b" onclick="isClicked('81b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
-                                                <circle  id="81m" onclick="isClicked('81m')" cx="12.5" cy="12.5" r="4"                          />
-                                            </svg>
-                                            <input type="number" name="txt81l" id="txt81l" hidden/>
-                                            <input type="number" name="txt81t" id="txt81t" hidden/>
-                                            <input type="number" name="txt81r" id="txt81r" hidden/>
-                                            <input type="number" name="txt81b" id="txt81b" hidden/>
-                                            <input type="number" name="txt81m" id="txt81m" hidden/>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
 
-                                        </div>
-                                    <label style="display: inline-block;width:100px;font-size: 12px; margin-left:75px;">STATUS RIGHT</label>
-                                    <input placeholder="{{ $status71a }}"  type="text"    name="txtBox71a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status72a }}"  type="text"    name="txtBox72a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status73a }}"  type="text"    name="txtBox73a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status74a }}"  type="text"    name="txtBox74a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status75a }}"  type="text"    name="txtBox75a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status85a }}"  type="text"    name="txtBox85a" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                    <input placeholder="{{ $status84a }}"  type="text"    name="txtBox84a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status83a }}"  type="text"    name="txtBox83a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status82a }}"  type="text"    name="txtBox82a" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status81a }}"  type="text"    name="txtBox81a" class="text-input" style="width:55px;">
-                                    <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
-                                    <br>
-                                    <input placeholder="{{ $status71b }}"  type="text"    name="txtBox71b" class="text-input" style="width:55px;margin-left:179px">
-                                    <input placeholder="{{ $status72b }}"  type="text"    name="txtBox72b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status73b }}"  type="text"    name="txtBox73b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status74b }}"  type="text"    name="txtBox74b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status75b }}"  type="text"    name="txtBox75b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status85b }}"  type="text"    name="txtBox85b" class="text-input" style="width:55px;" style="margin-left: 54px;">
-                                    <input placeholder="{{ $status84b }}"  type="text"    name="txtBox84b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status83b }}"  type="text"    name="txtBox83b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status82b }}"  type="text"    name="txtBox82b" class="text-input" style="width:55px;">
-                                    <input placeholder="{{ $status81b }}"  type="text"    name="txtBox81b" class="text-input" style="width:55px;">
-                                    <br>
-                                </div>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 13 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a12" id="a12" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(12)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m12" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo12" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 12 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a11" id="a11" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(11)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m11" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo11" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 11 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a21" id="a21" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(21)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m21" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo21" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 21 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a22" id="a22" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(22)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m22" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo22" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 22 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a23" id="a23" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(23)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m23" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo23" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 23 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a24" id="a24" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(24)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m24" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo24" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 24 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a25" id="a25" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(25)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m25" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo25" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 25 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a26" id="a26" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(26)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m26" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo26" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 26 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a27" id="a27" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(27)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m27" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo27" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 27 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a28" id="a28" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(28)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m28" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo28" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 28 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <br>
+                            <input readonly value="" type="text"  name="b18" id="b18" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b17" id="b17" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b16" id="b16" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b15" id="b15" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b14" id="b14" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b13" id="b13" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b12" id="b12" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b11" id="b11" class="text-input" style="width:60px;color:black;">
+
+                            <input readonly value="" type="text"  name="b21" id="b21" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b22" id="b22" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b23" id="b23" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b24" id="b24" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b25" id="b25" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b26" id="b26" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b27" id="b27" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b28" id="b28" class="text-input" style="width:60px;color:black;">
+                            <br>
+                            <div style="margin-top: 5px;">
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px;">
+                                    <path    id="18l" onclick="isClicked('18l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="18t" onclick="isClicked('18t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="18r" onclick="isClicked('18r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="18b" onclick="isClicked('18b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="18m" onclick="isClicked('18m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c18l" id="c18l" hidden/>
+                                <input type="number" name="c18t" id="c18t" hidden/>
+                                <input type="number" name="c18r" id="c18r" hidden/>
+                                <input type="number" name="c18b" id="c18b" hidden/>
+                                <input type="number" name="c18m" id="c18m" hidden/>
+
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="17l" onclick="isClicked('17l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="17t" onclick="isClicked('17t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="17r" onclick="isClicked('17r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="17b" onclick="isClicked('17b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="17m" onclick="isClicked('17m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c17l" id="c17l" hidden/>
+                                <input type="number" name="c17t" id="c17t" hidden/>
+                                <input type="number" name="c17r" id="c17r" hidden/>
+                                <input type="number" name="c17b" id="c17b" hidden/>
+                                <input type="number" name="c17m" id="c17m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="16l" onclick="isClicked('16l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="16t" onclick="isClicked('16t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="16r" onclick="isClicked('16r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="16b" onclick="isClicked('16b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="16m" onclick="isClicked('16m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c16l" id="c16l" hidden/>
+                                <input type="number" name="c16t" id="c16t" hidden/>
+                                <input type="number" name="c16r" id="c16r" hidden/>
+                                <input type="number" name="c16b" id="c16b" hidden/>
+                                <input type="number" name="c16m" id="c16m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="15l" onclick="isClicked('15l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="15t" onclick="isClicked('15t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="15r" onclick="isClicked('15r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="15b" onclick="isClicked('15b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="15m" onclick="isClicked('15m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c15l" id="c15l" hidden/>
+                                <input type="number" name="c15t" id="c15t" hidden/>
+                                <input type="number" name="c15r" id="c15r" hidden/>
+                                <input type="number" name="c15b" id="c15b" hidden/>
+                                <input type="number" name="c15m" id="c15m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="15l" onclick="isClicked('15l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="15t" onclick="isClicked('15t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="15r" onclick="isClicked('15r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="15b" onclick="isClicked('15b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="15m" onclick="isClicked('15m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c14l" id="c14l" hidden/>
+                                <input type="number" name="c14t" id="c14t" hidden/>
+                                <input type="number" name="c14r" id="c14r" hidden/>
+                                <input type="number" name="c14b" id="c14b" hidden/>
+                                <input type="number" name="c14m" id="c14m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="13l" onclick="isClicked('13l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="13t" onclick="isClicked('13t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="13r" onclick="isClicked('13r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="13b" onclick="isClicked('13b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="13m" onclick="isClicked('13m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c13l" id="c13l" hidden/>
+                                <input type="number" name="c13t" id="c13t" hidden/>
+                                <input type="number" name="c13r" id="c13r" hidden/>
+                                <input type="number" name="c13b" id="c13b" hidden/>
+                                <input type="number" name="c13m" id="c13m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="12l" onclick="isClicked('12l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="12t" onclick="isClicked('12t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="12r" onclick="isClicked('12r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="12b" onclick="isClicked('12b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="12m" onclick="isClicked('12m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c12l" id="c12l" hidden/>
+                                <input type="number" name="c12t" id="c12t" hidden/>
+                                <input type="number" name="c12r" id="c12r" hidden/>
+                                <input type="number" name="c12b" id="c12b" hidden/>
+                                <input type="number" name="c12m" id="c12m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="11l" onclick="isClicked('11l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="11t" onclick="isClicked('11t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="11r" onclick="isClicked('11r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="11b" onclick="isClicked('11b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="11m" onclick="isClicked('11m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c11l" id="c11l" hidden/>
+                                <input type="number" name="c11t" id="c11t" hidden/>
+                                <input type="number" name="c11r" id="c11r" hidden/>
+                                <input type="number" name="c11b" id="c11b" hidden/>
+                                <input type="number" name="c11m" id="c11m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="21l" onclick="isClicked('21l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="21t" onclick="isClicked('21t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="21r" onclick="isClicked('21r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="21b" onclick="isClicked('21b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="21m" onclick="isClicked('21m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c21l" id="c21l" hidden/>
+                                <input type="number" name="c21t" id="c21t" hidden/>
+                                <input type="number" name="c21r" id="c21r" hidden/>
+                                <input type="number" name="c21b" id="c21b" hidden/>
+                                <input type="number" name="c21m" id="c21m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="22l" onclick="isClicked('22l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="22t" onclick="isClicked('22t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="22r" onclick="isClicked('22r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="22b" onclick="isClicked('22b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="22m" onclick="isClicked('22m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c22l" id="c22l" hidden/>
+                                <input type="number" name="c22t" id="c22t" hidden/>
+                                <input type="number" name="c22r" id="c22r" hidden/>
+                                <input type="number" name="c22b" id="c22b" hidden/>
+                                <input type="number" name="c22m" id="c22m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="23l" onclick="isClicked('23l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="23t" onclick="isClicked('23t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="23r" onclick="isClicked('23r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="23b" onclick="isClicked('23b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="23m" onclick="isClicked('23m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c23l" id="c23l" hidden/>
+                                <input type="number" name="c23t" id="c23t" hidden/>
+                                <input type="number" name="c23r" id="c23r" hidden/>
+                                <input type="number" name="c23b" id="c23b" hidden/>
+                                <input type="number" name="c23m" id="c23m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="24l" onclick="isClicked('24l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="24t" onclick="isClicked('24t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="24r" onclick="isClicked('24r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="24b" onclick="isClicked('24b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="24m" onclick="isClicked('24m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c24l" id="c24l" hidden/>
+                                <input type="number" name="c24t" id="c24t" hidden/>
+                                <input type="number" name="c24r" id="c24r" hidden/>
+                                <input type="number" name="c24b" id="c24b" hidden/>
+                                <input type="number" name="c24m" id="c24m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="25l" onclick="isClicked('25l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="25t" onclick="isClicked('25t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="25r" onclick="isClicked('25r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="25b" onclick="isClicked('25b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="25m" onclick="isClicked('25m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c25l" id="c25l" hidden/>
+                                <input type="number" name="c25t" id="c25t" hidden/>
+                                <input type="number" name="c25r" id="c25r" hidden/>
+                                <input type="number" name="c25b" id="c25b" hidden/>
+                                <input type="number" name="c25m" id="c25m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="26l" onclick="isClicked('26l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="26t" onclick="isClicked('26t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="26r" onclick="isClicked('26r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="26b" onclick="isClicked('26b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="26m" onclick="isClicked('26m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c26l" id="c26l" hidden/>
+                                <input type="number" name="c26t" id="c26t" hidden/>
+                                <input type="number" name="c26r" id="c26r" hidden/>
+                                <input type="number" name="c26b" id="c26b" hidden/>
+                                <input type="number" name="c26m" id="c26m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="27l" onclick="isClicked('27l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="27t" onclick="isClicked('27t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="27r" onclick="isClicked('27r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="27b" onclick="isClicked('27b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="27m" onclick="isClicked('27m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c27l" id="c27l" hidden/>
+                                <input type="number" name="c27t" id="c27t" hidden/>
+                                <input type="number" name="c27r" id="c27r" hidden/>
+                                <input type="number" name="c27b" id="c27b" hidden/>
+                                <input type="number" name="c27m" id="c27m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="28l" onclick="isClicked('28l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="28t" onclick="isClicked('28t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="28r" onclick="isClicked('28r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="28b" onclick="isClicked('28b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="28m" onclick="isClicked('28m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c28l" id="c28l" hidden/>
+                                <input type="number" name="c28t" id="c28t" hidden/>
+                                <input type="number" name="c28r" id="c28r" hidden/>
+                                <input type="number" name="c28b" id="c28b" hidden/>
+                                <input type="number" name="c28m" id="c28m" hidden/>
+
+                            </div>
+
+                            <div style="margin-top: 5px;">
+                                <a href="{{ route('dchief.dentalchart.each',18)}}"><button type="button" class="btn btn-warning" style="width:55px;">18</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',17)}}"><button type="button" class="btn btn-warning" style="width:55px;">17</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',16)}}"><button type="button" class="btn btn-warning" style="width:55px;">16</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',15)}}"><button type="button" class="btn btn-warning" style="width:55px;">15</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',14)}}"><button type="button" class="btn btn-warning" style="width:55px;">14</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',13)}}"><button type="button" class="btn btn-warning" style="width:55px;">13</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',12)}}"><button type="button" class="btn btn-warning" style="width:55px;">12</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',11)}}"><button type="button" class="btn btn-warning" style="width:55px;">11</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',21)}}"><button type="button" class="btn btn-warning" style="width:55px;">21</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',22)}}"><button type="button" class="btn btn-warning" style="width:55px;">22</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',23)}}"><button type="button" class="btn btn-warning" style="width:55px;">23</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',24)}}"><button type="button" class="btn btn-warning" style="width:55px;">24</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',25)}}"><button type="button" class="btn btn-warning" style="width:55px;">25</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',26)}}"><button type="button" class="btn btn-warning" style="width:55px;">26</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',27)}}"><button type="button" class="btn btn-warning" style="width:55px;">27</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',28)}}"><button type="button" class="btn btn-warning" style="width:55px;">28</button></a>
+                            </div>
+                        </div>
 
 
-                            <div style="float: left; margin-top: 30px; margin-left: 70px;">
-                                <div style="float: left; margin-top: 25px;">
-                                    <label style="font-size: 14px;margin-bottom: 15px;">Legend Condition</label>
 
-                                    <p><i><b>D</b>- Decayed(Caries indicated for Filling)</i></p>
-                                    <p><i><b>M</b>- Missing due to Caries</i></p>
-                                    <p><i><b>F</b>- Filled</i></p>
-                                    <p><i><b>I</b>- Caries Indicated for Extraction</i></p>
-                                    <p><i><b>RF</b>- Root Fragment</i></p>
-                                    <p><i><b>MO</b>- Missing</i></p>
-                                    <p><i><b>Im</b>- Impacted Tooth</i></p>
-                                </div>
+						<div style="float: left;margin-top: 25px;">
+							<div style="margin-top: 5px;">
+                                <a href="{{ route('dchief.dentalchart.each',48)}}"><button type="button" class="btn btn-warning" style="width:55px;">48</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',47)}}"><button type="button" class="btn btn-warning" style="width:55px;">47</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',46)}}"><button type="button" class="btn btn-warning" style="width:55px;">46</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',45)}}"><button type="button" class="btn btn-warning" style="width:55px;">45</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',44)}}"><button type="button" class="btn btn-warning" style="width:55px;">44</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',43)}}"><button type="button" class="btn btn-warning" style="width:55px;">43</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',42)}}"><button type="button" class="btn btn-warning" style="width:55px;">42</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',41)}}"><button type="button" class="btn btn-warning" style="width:55px;">41</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',31)}}"><button type="button" class="btn btn-warning" style="width:55px;">31</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',32)}}"><button type="button" class="btn btn-warning" style="width:55px;">32</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',33)}}"><button type="button" class="btn btn-warning" style="width:55px;">33</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',34)}}"><button type="button" class="btn btn-warning" style="width:55px;">34</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',35)}}"><button type="button" class="btn btn-warning" style="width:55px;">35</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',36)}}"><button type="button" class="btn btn-warning" style="width:55px;">36</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',37)}}"><button type="button" class="btn btn-warning" style="width:55px;">37</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',38)}}"><button type="button" class="btn btn-warning" style="width:55px;">38</button></a>
+                            </div>
+							<div style="margin-top: 5px;">
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px;">
+                                    <path    id="48l" onclick="isClicked('48l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="48t" onclick="isClicked('48t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="48r" onclick="isClicked('48r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="48b" onclick="isClicked('48b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="48m" onclick="isClicked('48m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c48l" id="c48l" hidden/>
+                                <input type="number" name="c48t" id="c48t" hidden/>
+                                <input type="number" name="c48r" id="c48r" hidden/>
+                                <input type="number" name="c48b" id="c48b" hidden/>
+                                <input type="number" name="c48m" id="c48m" hidden/>
 
-                                <div style="float: left; margin-top: 25px;margin-left: 100px;">
-                                    <label style="font-size: 14px;margin-bottom: 15px;">Restorations and Prosthetics</label>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="47l" onclick="isClicked('47l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="47t" onclick="isClicked('47t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="47r" onclick="isClicked('47r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="47b" onclick="isClicked('47b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="47m" onclick="isClicked('47m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c47l" id="c47l" hidden/>
+                                <input type="number" name="c47t" id="c47t" hidden/>
+                                <input type="number" name="c47r" id="c47r" hidden/>
+                                <input type="number" name="c47b" id="c47b" hidden/>
+                                <input type="number" name="c47m" id="c47m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="46l" onclick="isClicked('46l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="46t" onclick="isClicked('46t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="46r" onclick="isClicked('46r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="46b" onclick="isClicked('46b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="46m" onclick="isClicked('46m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c46l" id="c46l" hidden/>
+                                <input type="number" name="c46t" id="c46t" hidden/>
+                                <input type="number" name="c46r" id="c46r" hidden/>
+                                <input type="number" name="c46b" id="c46b" hidden/>
+                                <input type="number" name="c46m" id="c46m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="45l" onclick="isClicked('45l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="45t" onclick="isClicked('45t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="45r" onclick="isClicked('45r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="45b" onclick="isClicked('45b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="45m" onclick="isClicked('45m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c45l" id="c45l" hidden/>
+                                <input type="number" name="c45t" id="c45t" hidden/>
+                                <input type="number" name="c45r" id="c45r" hidden/>
+                                <input type="number" name="c45b" id="c45b" hidden/>
+                                <input type="number" name="c45m" id="c45m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="45l" onclick="isClicked('45l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="45t" onclick="isClicked('45t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="45r" onclick="isClicked('45r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="45b" onclick="isClicked('45b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="45m" onclick="isClicked('45m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c44l" id="c44l" hidden/>
+                                <input type="number" name="c44t" id="c44t" hidden/>
+                                <input type="number" name="c44r" id="c44r" hidden/>
+                                <input type="number" name="c44b" id="c44b" hidden/>
+                                <input type="number" name="c44m" id="c44m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="43l" onclick="isClicked('43l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="43t" onclick="isClicked('43t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="43r" onclick="isClicked('43r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="43b" onclick="isClicked('43b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="43m" onclick="isClicked('43m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c43l" id="c43l" hidden/>
+                                <input type="number" name="c43t" id="c43t" hidden/>
+                                <input type="number" name="c43r" id="c43r" hidden/>
+                                <input type="number" name="c43b" id="c43b" hidden/>
+                                <input type="number" name="c43m" id="c43m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="42l" onclick="isClicked('42l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="42t" onclick="isClicked('42t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="42r" onclick="isClicked('42r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="42b" onclick="isClicked('42b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="42m" onclick="isClicked('42m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c42l" id="c42l" hidden/>
+                                <input type="number" name="c42t" id="c42t" hidden/>
+                                <input type="number" name="c42r" id="c42r" hidden/>
+                                <input type="number" name="c42b" id="c42b" hidden/>
+                                <input type="number" name="c42m" id="c42m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="41l" onclick="isClicked('41l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="41t" onclick="isClicked('41t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="41r" onclick="isClicked('41r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="41b" onclick="isClicked('41b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="41m" onclick="isClicked('41m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c41l" id="c41l" hidden/>
+                                <input type="number" name="c41t" id="c41t" hidden/>
+                                <input type="number" name="c41r" id="c41r" hidden/>
+                                <input type="number" name="c41b" id="c41b" hidden/>
+                                <input type="number" name="c41m" id="c41m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="31l" onclick="isClicked('31l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="31t" onclick="isClicked('31t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="31r" onclick="isClicked('31r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="31b" onclick="isClicked('31b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="31m" onclick="isClicked('31m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c31l" id="c31l" hidden/>
+                                <input type="number" name="c31t" id="c31t" hidden/>
+                                <input type="number" name="c31r" id="c31r" hidden/>
+                                <input type="number" name="c31b" id="c31b" hidden/>
+                                <input type="number" name="c31m" id="c31m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="32l" onclick="isClicked('32l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="32t" onclick="isClicked('32t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="32r" onclick="isClicked('32r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="32b" onclick="isClicked('32b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="32m" onclick="isClicked('32m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c32l" id="c32l" hidden/>
+                                <input type="number" name="c32t" id="c32t" hidden/>
+                                <input type="number" name="c32r" id="c32r" hidden/>
+                                <input type="number" name="c32b" id="c32b" hidden/>
+                                <input type="number" name="c32m" id="c32m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="33l" onclick="isClicked('33l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="33t" onclick="isClicked('33t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="33r" onclick="isClicked('33r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="33b" onclick="isClicked('33b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="33m" onclick="isClicked('33m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c33l" id="c33l" hidden/>
+                                <input type="number" name="c33t" id="c33t" hidden/>
+                                <input type="number" name="c33r" id="c33r" hidden/>
+                                <input type="number" name="c33b" id="c33b" hidden/>
+                                <input type="number" name="c33m" id="c33m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="34l" onclick="isClicked('34l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="34t" onclick="isClicked('34t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="34r" onclick="isClicked('34r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="34b" onclick="isClicked('34b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="34m" onclick="isClicked('34m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c34l" id="c34l" hidden/>
+                                <input type="number" name="c34t" id="c34t" hidden/>
+                                <input type="number" name="c34r" id="c34r" hidden/>
+                                <input type="number" name="c34b" id="c34b" hidden/>
+                                <input type="number" name="c34m" id="c34m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="35l" onclick="isClicked('35l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="35t" onclick="isClicked('35t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="35r" onclick="isClicked('35r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="35b" onclick="isClicked('35b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="35m" onclick="isClicked('35m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c35l" id="c35l" hidden/>
+                                <input type="number" name="c35t" id="c35t" hidden/>
+                                <input type="number" name="c35r" id="c35r" hidden/>
+                                <input type="number" name="c35b" id="c35b" hidden/>
+                                <input type="number" name="c35m" id="c35m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="36l" onclick="isClicked('36l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="36t" onclick="isClicked('36t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="36r" onclick="isClicked('36r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="36b" onclick="isClicked('36b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="36m" onclick="isClicked('36m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c36l" id="c36l" hidden/>
+                                <input type="number" name="c36t" id="c36t" hidden/>
+                                <input type="number" name="c36r" id="c36r" hidden/>
+                                <input type="number" name="c36b" id="c36b" hidden/>
+                                <input type="number" name="c36m" id="c36m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="37l" onclick="isClicked('37l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="37t" onclick="isClicked('37t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="37r" onclick="isClicked('37r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="37b" onclick="isClicked('37b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="37m" onclick="isClicked('37m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c37l" id="c37l" hidden/>
+                                <input type="number" name="c37t" id="c37t" hidden/>
+                                <input type="number" name="c37r" id="c37r" hidden/>
+                                <input type="number" name="c37b" id="c37b" hidden/>
+                                <input type="number" name="c37m" id="c37m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 3px; ">
+                                    <path    id="38l" onclick="isClicked('38l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="38t" onclick="isClicked('38t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="38r" onclick="isClicked('38r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="38b" onclick="isClicked('38b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="38m" onclick="isClicked('38m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c38l" id="c38l" hidden/>
+                                <input type="number" name="c38t" id="c38t" hidden/>
+                                <input type="number" name="c38r" id="c38r" hidden/>
+                                <input type="number" name="c38b" id="c38b" hidden/>
+                                <input type="number" name="c38m" id="c38m" hidden/>
 
-                                    <p><b>J</b><i>- Jacket Crown</i></p>
-                                    <p><b>A</b><i>- Amalgam Filling</i></p>
-                                    <p><b>AB</b><i>- Abutment</i></p>
-                                    <p><b>P</b><i>- Pontic</i></p>
-                                    <p><b>In</b><i>- Inlay</i></p>
-                                    <p><b>LC</b><i>- Light Cure Composite</i></p>
-                                    <p><b>S</b><i>- Sealants</i></p>
-                                    <p><b>Rm</b><i>- Removable Denture</i></p>
-                                </div>
+                            </div>
+                            <select name="a48" id="a48" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(48)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m48" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo48" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
 
-                                <div style="float: left; margin-top: 25px;margin-left: 100px;">
-                                    <label style="font-size: 14px;margin-bottom: 15px;">Surgery</label>
-                                    <p><b>X</b><i>- Extraction due to Caries</i></p>
-                                    <p><b>XO</b><i>- Extraction due to Other Causes</i></p>
-                                    <p><b><i class="fa fa-check"></i></b><i>- Present Teeth</i></p>
-                                    <p><b>Cm</b><i>- Congenitally Missing</i></p>
-                                    <p><b>Sp</b><i>- Supernumerary</i></p>
-                                </div>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 48 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a47" id="a47" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(47)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m47" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo47" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 47 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a46" id="a46" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(46)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m46" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo46" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 46 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a45" id="a45" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(45)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m45" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo45" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 45 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a44" id="a44" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(44)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m44" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo44" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 44 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a43" id="a43" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(43)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m43" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo43" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 43 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a42" id="a42" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(42)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m42" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo42" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 42 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a41" id="a41" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(41)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m41" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo41" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 41 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a31" id="a31" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(31)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m31" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo31" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 31 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a32" id="a32" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(32)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m32" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo32" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 32 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a33" id="a33" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(33)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m33" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo33" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 33 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a34" id="a34" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(34)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m34" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo34" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 34 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a35" id="a35" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(35)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m35" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo35" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 35 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a36" id="a36" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(36)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m36" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo36" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 36 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a37" id="a37" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(37)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m37" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo37" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 37 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a38" id="a38" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(38)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m38" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo38" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 38 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <br>
+                            <input readonly value="" type="text"  name="b48" id="b48" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b47" id="b47" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b46" id="b46" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b45" id="b45" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b44" id="b44" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b43" id="b43" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b42" id="b42" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b41" id="b41" class="text-input" style="width:60px;color:black;">
+
+                            <input readonly value="" type="text"  name="b31" id="b31" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b32" id="b32" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b33" id="b33" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b34" id="b34" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b35" id="b35" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b36" id="b36" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b37" id="b37" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b38" id="b38" class="text-input" style="width:60px;color:black;">
+
+                        </div>
+
+
+
+
+
+
+
+						<div style="float: left;margin-top: 25px;">
+
+                            <div style="margin-top: 5px; margin-left: 178px">
+                                <a href="{{ route('dchief.dentalchart.each',75)}}"><button type="button" class="btn btn-warning" style="width:55px;">75</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',74)}}"><button type="button" class="btn btn-warning" style="width:55px;">74</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',73)}}"><button type="button" class="btn btn-warning" style="width:55px;">73</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',72)}}"><button type="button" class="btn btn-warning" style="width:55px;">72</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',71)}}"><button type="button" class="btn btn-warning" style="width:55px;">71</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',81)}}"><button type="button" class="btn btn-warning" style="width:55px;">81</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',82)}}"><button type="button" class="btn btn-warning" style="width:55px;">82</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',83)}}"><button type="button" class="btn btn-warning" style="width:55px;">83</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',84)}}"><button type="button" class="btn btn-warning" style="width:55px;">84</button></a>
+                                <a href="{{ route('dchief.dentalchart.each',85)}}"><button type="button" class="btn btn-warning" style="width:55px;">85</button></a>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 178px;">
+                                    <path    id="75l" onclick="isClicked('75l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="75t" onclick="isClicked('75t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="75r" onclick="isClicked('75r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="75b" onclick="isClicked('75b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="75m" onclick="isClicked('75m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c75l" id="c75l" hidden/>
+                                <input type="number" name="c75t" id="c75t" hidden/>
+                                <input type="number" name="c75r" id="c75r" hidden/>
+                                <input type="number" name="c75b" id="c75b" hidden/>
+                                <input type="number" name="c75m" id="c75m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="74l" onclick="isClicked('74l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="74t" onclick="isClicked('74t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="74r" onclick="isClicked('74r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="74b" onclick="isClicked('74b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="74m" onclick="isClicked('74m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c74l" id="c74l" hidden/>
+                                <input type="number" name="c74t" id="c74t" hidden/>
+                                <input type="number" name="c74r" id="c74r" hidden/>
+                                <input type="number" name="c74b" id="c74b" hidden/>
+                                <input type="number" name="c74m" id="c74m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="73l" onclick="isClicked('73l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="73t" onclick="isClicked('73t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="73r" onclick="isClicked('73r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="73b" onclick="isClicked('73b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="73m" onclick="isClicked('73m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c73l" id="c73l" hidden/>
+                                <input type="number" name="c73t" id="c73t" hidden/>
+                                <input type="number" name="c73r" id="c73r" hidden/>
+                                <input type="number" name="c73b" id="c73b" hidden/>
+                                <input type="number" name="c73m" id="c73m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="72l" onclick="isClicked('72l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="72t" onclick="isClicked('72t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="72r" onclick="isClicked('72r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="72b" onclick="isClicked('72b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="72m" onclick="isClicked('72m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c72l" id="c72l" hidden/>
+                                <input type="number" name="c72t" id="c72t" hidden/>
+                                <input type="number" name="c72r" id="c72r" hidden/>
+                                <input type="number" name="c72b" id="c72b" hidden/>
+                                <input type="number" name="c72m" id="c72m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="71l" onclick="isClicked('71l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="71t" onclick="isClicked('71t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="71r" onclick="isClicked('71r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="71b" onclick="isClicked('71b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="71m" onclick="isClicked('71m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c71l" id="c71l" hidden/>
+                                <input type="number" name="c71t" id="c71t" hidden/>
+                                <input type="number" name="c71r" id="c71r" hidden/>
+                                <input type="number" name="c71b" id="c71b" hidden/>
+                                <input type="number" name="c71m" id="c71m" hidden/>
+								<svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="81l" onclick="isClicked('81l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="81t" onclick="isClicked('81t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="81r" onclick="isClicked('81r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="81b" onclick="isClicked('81b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="81m" onclick="isClicked('81m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c81l" id="c81l" hidden/>
+                                <input type="number" name="c81t" id="c81t" hidden/>
+                                <input type="number" name="c81r" id="c81r" hidden/>
+                                <input type="number" name="c81b" id="c81b" hidden/>
+                                <input type="number" name="c81m" id="c81m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="82l" onclick="isClicked('82l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="82t" onclick="isClicked('82t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="82r" onclick="isClicked('82r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="82b" onclick="isClicked('82b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="82m" onclick="isClicked('82m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c82l" id="c82l" hidden/>
+                                <input type="number" name="c82t" id="c82t" hidden/>
+                                <input type="number" name="c82r" id="c82r" hidden/>
+                                <input type="number" name="c82b" id="c82b" hidden/>
+                                <input type="number" name="c82m" id="c82m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="83l" onclick="isClicked('83l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="83t" onclick="isClicked('83t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="83r" onclick="isClicked('83r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="83b" onclick="isClicked('83b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="83m" onclick="isClicked('83m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c83l" id="c83l" hidden/>
+                                <input type="number" name="c83t" id="c83t" hidden/>
+                                <input type="number" name="c83r" id="c83r" hidden/>
+                                <input type="number" name="c83b" id="c83b" hidden/>
+                                <input type="number" name="c83m" id="c83m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="84l" onclick="isClicked('84l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="84t" onclick="isClicked('84t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="84r" onclick="isClicked('84r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="84b" onclick="isClicked('84b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="84m" onclick="isClicked('84m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c84l" id="c84l" hidden/>
+                                <input type="number" name="c84t" id="c84t" hidden/>
+                                <input type="number" name="c84r" id="c84r" hidden/>
+                                <input type="number" name="c84b" id="c84b" hidden/>
+                                <input type="number" name="c84m" id="c84m" hidden/>
+                                <svg viewBox="0 0 25 25" class="tooth" style="margin-left: 2px; margin-right:2px;">
+                                    <path    id="85l" onclick="isClicked('85l')" d="M5,5 Q-1.5,12.5 5,20 L10,15 Q8,12.5 10,10 Z"    />
+                                    <path    id="85t" onclick="isClicked('85t')" d="M5,5 Q12.5,-1.5 20,5 L15,10 Q12.5,8 10,10 Z"    />
+                                    <path    id="85r" onclick="isClicked('85r')" d="M20,5 Q26.5,12.5 20,20 L15,15 Q17,12.5 15,10 Z" />
+                                    <path    id="85b" onclick="isClicked('85b')" d="M20,20 Q12.5,26.5 5,20 L10,15 Q12.5,17 15,15 Z" />
+                                    <circle  id="85m" onclick="isClicked('85m')" cx="12.5" cy="12.5" r="4"                          />
+                                </svg>
+                                <input type="number" name="c85l" id="c85l" hidden/>
+                                <input type="number" name="c85t" id="c85t" hidden/>
+                                <input type="number" name="c85r" id="c85r" hidden/>
+                                <input type="number" name="c85b" id="c85b" hidden/>
+                                <input type="number" name="c85m" id="c85m" hidden/>
+                            </div>
+							<label style="display: inline-block;width:100px;font-size: 12px;margin-left:75px">STATUS RIGHT</label>
+							<select name="a75" id="a75" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(75)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m75" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo75" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 75 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a74" id="a74" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(74)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m74" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo74" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 74 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a73" id="a73" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(73)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m73" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo73" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 73 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a72" id="a72" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(72)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m72" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo72" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 72 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a71" id="a71" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(71)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m71" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo71" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 71 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+							<select name="a81" id="a81" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(81)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m81" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo81" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 81 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a82" id="a82" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(82)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m82" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo82" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 82 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a83" id="a83" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(83)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m83" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo83" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 83 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a84" id="a84" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(84)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m84" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo84" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 84 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <select name="a85" id="a85" style="width:60px; height:27px; color:black;font-weight:bold; text-align:center;">
+                                <option onclick="revert(85)" selected value=""></option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Decayed (Caries indicated for Filling)" value="D">D</option>
+                                <option id="m85" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing due to Caries" value="M">M</option>
+                                <option title="Filled" value="F">F</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Caries Indicated for Extraction" value="I">I</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Root Fragment" value="RF">RF</option>
+                                <option id="mo85" @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "selected"}} {{ "disabled" }} @endif @endforeach @endif title="Missing" value="MO">MO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Impacted Tooth" value="Im">Im</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Jacket Crown" value="J">J</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Amalgam Filling" value="A">A</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Abutment" value="AB">AB</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Pontic" value="P">P</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Inlay" value="In">In</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Light Cure Composite" value="LC">LC</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Sealants" value="S">S</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Removable Denture" value="Rm">Rm</option>
+
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Caries" value="X">X</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Extraction due to Other Causes" value="XO">XO</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Present Teeth" value="PT">PT</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Congenitally Missing" value="Cm">Cm</option>
+                                <option @if(count($toothconditions) >0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'MO' || $toothcondition->toothNum == 85 && $toothcondition->toothStatusA == 'M'){{ "disabled"}} @endif @endforeach @endif title="Supernumerary" value="Sp">Sp</option>
+                            </select>
+                            <label style="display: inline-block;width:100px;font-size: 12px; text-align:right;">STATUS LEFT</label>
+                            <br>
+                            <input readonly value="" type="text"  name="b75" id="b75" class="text-input" style="width:60px;margin-left: 179px;color:black;">
+                            <input readonly value="" type="text"  name="b74" id="b74" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b73" id="b73" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b72" id="b72" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b71" id="b71" class="text-input" style="width:60px;color:black;">
+
+                            <input readonly value="" type="text"  name="b81" id="b81" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b82" id="b82" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b83" id="b83" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b84" id="b84" class="text-input" style="width:60px;color:black;">
+                            <input readonly value="" type="text"  name="b85" id="b85" class="text-input" style="width:60px;color:black;">
+                        </div>
+
+                        <div style="float: left; margin-top: 30px; margin-left: 70px;">
+                            <div style="float: left; margin-top: 25px;">
+                                <label style="font-size: 14px;margin-bottom: 15px;">Legend Condition</label>
+
+                                <p><i><b>D</b> - Decayed (Caries indicated for Filling)</i></p>
+                                <p><i><b>M</b> - Missing due to Caries</i></p>
+                                <p><i><b>F</b> - Filled</i></p>
+                                <p><i><b>I</b> - Caries Indicated for Extraction</i></p>
+                                <p><i><b>RF</b> - Root Fragment</i></p>
+                                <p><i><b>MO</b> - Missing</i></p>
+                                <p><i><b>Im</b> - Impacted Tooth</i></p>
+                            </div>
+
+                            <div style="float: left; margin-top: 25px;margin-left: 100px;">
+                                <label style="font-size: 14px;margin-bottom: 15px;">Restorations and Prosthetics</label>
+
+                                <p><b>J</b><i> - Jacket Crown</i></p>
+                                <p><b>A</b><i> - Amalgam Filling</i></p>
+                                <p><b>AB</b><i> - Abutment</i></p>
+                                <p><b>P</b><i> - Pontic</i></p>
+                                <p><b>In</b><i> - Inlay</i></p>
+                                <p><b>LC</b><i> - Light Cure Composite</i></p>
+                                <p><b>S</b><i> - Sealants</i></p>
+                                <p><b>Rm</b><i> - Removable Denture</i></p>
+                            </div>
+
+                            <div style="float: left; margin-top: 25px;margin-left: 100px;">
+                                <label style="font-size: 14px;margin-bottom: 15px;">Surgery</label>
+                                <p><b>X</b><i> - Extraction due to Caries</i></p>
+                                <p><b>XO</b><i> - Extraction due to Other Causes</i></p>
+                                <p><b>PT</i></b><i> - Present Teeth</i></p>
+                                <p><b>Cm</b><i> - Congenitally Missing</i></p>
+                                <p><b>Sp</b><i> - Supernumerary</i></p>
                             </div>
                         </div>
 
@@ -1396,25 +2166,18 @@
                         </div>
 
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
-                            <!-- <a href="C_dentist_dental_form.php"><button class="btn btn-primary">BACK</button></a> -->
                             <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>
                             <a href="{{url('dchief/DentalLog')}}"><button type="button" class="btn btn-danger">CANCEL</button></a>
                         </div>
                     </div>
-
-                   <!-- /Content -->
-            <!-- /form input mask -->
+                </div>
+            </div>
         </div>
     </div>
     <script>
-        var toothcons = {!! json_encode($toothconditions) !!};
-
-        function darkenToothSide($toothSide){
-            document.getElementById($toothSide).style.fill = "#222";
-        }
-        $(document).ready(function(){
-
+        $('document').ready(function(){
+            var toothcons = {!! json_encode($toothconditions) !!};
             for(i=0; i<toothcons.length; i++){
                 var toothNum = toothcons[i].toothNum;
                 var left = toothNum + 'l';
@@ -1422,92 +2185,163 @@
                 var right = toothNum + 'r';
                 var bottom = toothNum + 'b';
                 var middle = toothNum + 'm';
-                if(toothcons[i].leftSide == 1){
-                    document.getElementById(left).style.fill = "#222";
-                }
-                if(toothcons[i].topSide == 1){
-                    document.getElementById(top).style.fill = "#222";
-                }
-                if(toothcons[i].rightSide == 1){
-                    document.getElementById(right).style.fill = "#222";
-                }
-                if(toothcons[i].bottomSide == 1){
-                    document.getElementById(bottom).style.fill = "#222";
-                }
-                if(toothcons[i].middleSide == 1){
-                    document.getElementById(middle).style.fill = "#222";
+                var b = 'b' + toothNum;
+                if(toothcons[i].toothStatusA == 'M' || toothcons[i].toothStatusA == 'MO'){
+                    document.getElementById(b).value = toothcons[i].toothStatusB;
+                    if(toothcons[i].leftSide == 1){
+                        document.getElementById(left).style.fill = "black";
+                    }
+                    if(toothcons[i].topSide == 1){
+                        document.getElementById(top).style.fill = "black";
+                    }
+                    if(toothcons[i].rightSide == 1){
+                        document.getElementById(right).style.fill = "black";
+                    }
+                    if(toothcons[i].bottomSide == 1){
+                        document.getElementById(bottom).style.fill = "black";
+                    }
+                    if(toothcons[i].middleSide == 1){
+                        document.getElementById(middle).style.fill = "black";
+                    }
                 }
             }
-
         });
-        function isClicked($num){
-            var tooth = document.getElementById($num);
-            var numero = $num.substr(0,2);
-            var side = $num.substr(2,1);
-            var isDisabled = false;
-            var inDatabase = false;
-
-            var sideClicked = false;
-
+        function revert($num){
+            var toothcons = {!! json_encode($toothconditions) !!};
             for(i=0; i<toothcons.length; i++){
-                if(numero == toothcons[i].toothNum){
-                    isInDB = true;
-                    if(side == 'l'){
+                var toothNum = toothcons[i].toothNum;
+                var left = toothNum + 'l';
+                var top = toothNum + 't';
+                var right = toothNum + 'r';
+                var bottom = toothNum + 'b';
+                var middle = toothNum + 'm';
+                var m = '#m' + toothNum;
+                var mo = '#mo' + toothNum;
+                var a = 'a' + toothNum;
+                var b = 'b' + toothNum;
+                if(toothNum == $num){
+                    if(toothcons[i].toothStatusA == 'M' || toothcons[i].toothStatusA == 'MO'){
+                        document.getElementById(a).value = toothcons[i].toothStatusA;
+                        document.getElementById(b).value = toothcons[i].toothStatusB;
+
                         if(toothcons[i].leftSide == 1){
-                            isDisabled = true;
+                            document.getElementById(left).style.fill = "black";
                         }
-                    }
-                    if(side == 't'){
                         if(toothcons[i].topSide == 1){
-                            isDisabled = true;
+                            document.getElementById(top).style.fill = "black";
                         }
-                    }
-                    if(side == 'r'){
                         if(toothcons[i].rightSide == 1){
-                            isDisabled = true;
+                            document.getElementById(right).style.fill = "black";
                         }
-                    }
-                    if(side == 'b'){
                         if(toothcons[i].bottomSide == 1){
-                            isDisabled = true;
+                            document.getElementById(bottom).style.fill = "black";
                         }
-                    }
-                    if(side == 'm'){
                         if(toothcons[i].middleSide == 1){
-                            isDisabled = true;
+                            document.getElementById(middle).style.fill = "black";
                         }
                     }
-                    if(isDisabled == true){
-                        alert('Already Disabled!');
+                }
+            }
+        }
+        function isClicked($num){
+            var surface = document.getElementById($num);
+            var toothnum = $num.substr(0,2);
+            var side = $num.charAt(2);
+            var con = document.getElementById('a'+toothnum);
+            var srfno = document.getElementById('b' + toothnum);
+            var left = document.getElementById('c' + toothnum + 'l');
+            var top = document.getElementById('c' + toothnum + 't');
+            var right = document.getElementById('c' + toothnum + 'r');
+            var bottom = document.getElementById('c' + toothnum + 'b');
+            var middle = document.getElementById('c' + toothnum + 'm');
+            var valueB = '';
+            if(con.value == ''){
+                swal("Ooops!", "Please choose value from the dropdown first!", "warning");
+                valueB = '';
+                top.value = 0;
+                right.value = 0;
+                bottom.value = 0;
+                left.value = 0;
+                middle.value = 0;
+            }
+            else if(surface.style.fill == 'black' && con.value != 'F'){
+                swal("Ooops!", "Cannot input to Missing Tooth!", "error");
+                valueB = '';
+                top.value = 0;
+                right.value = 0;
+                bottom.value = 0;
+                left.value = 0;
+                middle.value = 0;
+            }
+
+            else{
+                srfno.value = '';
+                switch(side){
+                    case 't': if(top.value == 1){top.value = 0; surface.style.fill = 'white';} else{ top.value = 1; surface.style.fill = 'maroon';} break;
+                    case 'r': if(right.value == 1){right.value = 0; surface.style.fill = 'white';} else{ right.value = 1; surface.style.fill = 'maroon';} break;
+                    case 'b': if(bottom.value == 1){bottom.value = 0; surface.style.fill = 'white';} else{ bottom.value = 1; surface.style.fill = 'maroon';} break;
+                    case 'l': if(left.value == 1){left.value = 0; surface.style.fill = 'white';} else{ left.value = 1; surface.style.fill = 'maroon';} break;
+                    case 'm': if(middle.value == 1){middle.value = 0; surface.style.fill = 'white';} else{ middle.value = 1; surface.style.fill = 'maroon';} break;
+                }
+                if(top.value == 1){
+                    if(valueB != ''){
+                        valueB = valueB + '1';
                     }
                     else{
-                        var toothside = 'txt' + $num;
-                        if(inDatabase == true){
-                            if(tooth.style.fill == 'white'){
-                                tooth.style.fill = 'maroon';
-                                document.getElementById(toothside).value = 1;
-                            }
-                            else{
-                                tooth.style.fill = 'white';
-                                document.getElementById(toothside).value = 0;
-                            }
-                        }
+                        valueB = '1';
                     }
-                    break;
-                }
-            }
-            if(inDatabase == false && isDisabled == false){
-                if(tooth.style.fill == 'white'){
-                    tooth.style.fill = 'maroon';
-                    document.getElementById(toothside).value = 1;
                 }
                 else{
-                    tooth.style.fill = 'white';
-                    document.getElementById(toothside).value = 0;
+                    valueB = valueB.replace('1','');
                 }
+                if(right.value == 1){
+                    if(valueB != ''){
+                        valueB = valueB + '2';
+                    }
+                    else{
+                        valueB = '2';
+                    }
+                }
+                else{
+                    valueB = valueB.replace('2','');
+                }
+                if(bottom.value == 1){
+                    if(valueB != ''){
+                        valueB = valueB + '3';
+                    }
+                    else{
+                        valueB = '3';
+                    }
+                }
+                else{
+                    valueB = valueB.replace('3','');
+                }
+                if(left.value == 1){
+                    if(valueB != ''){
+                        valueB = valueB + '4';
+                    }
+                    else{
+                        valueB = '4';
+                    }
+                }
+                else{
+                    valueB = valueB.replace('4','');
+                }
+                if(middle.value == 1){
+                    if(valueB != ''){
+                        valueB = valueB + '5';
+                    }
+                    else{
+                        valueB = '5';
+                    }
+                }
+                else{
+                    valueB = valueB.replace('5','');
+                }
+                {{--  alert(valueB);  --}}
+                srfno.value = valueB;
+                valueB = '';
             }
-            isDisabled = false;
-            isInDB = false;
-        }
+            }
     </script>
 @endsection
