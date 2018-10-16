@@ -488,7 +488,7 @@
                                           <td class=" ">
                                              @foreach($medicine as $index => $value)
                                                 @if($value['day'] == 16 && $value['month'] == date('m') && $value['year'] == date('Y'))
-                                                   {{ $value['total'] }}
+                                                   {{ ($value['total']) }}
                                                 @endif
                                              @endforeach
                                           </td>
