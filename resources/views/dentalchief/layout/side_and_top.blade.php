@@ -105,7 +105,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="{{ url('/dchief/profile') }}"> Profile</a></li>
 
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
@@ -115,23 +115,21 @@
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
                     <span class="badge bg-blue">
-                      {{-- @if(!empty($unverifiedAccounts))
-                        {{ 'count($unverifiedAccounts)' }}
-                      @endif --}}
-                      {{-- @php($ctr = sizeof($unverifiedAccounts))
-                      {{ Session::put('number', $ctr)}}
-                      @foreach($unverifiedAccounts as $notifCount)
-                      {{$ctr}}
-                      @endforeach
-                      @endphp --}}
-                    </span>
+                    @if(empty($unverifiedAccountsCtr))
+                      <span class="badge bg-blue">0</span>
+                    @elseif(!empty($unverifiedAccountsCtr))
+                      <span class="badge bg-blue">{{ $unverifiedAccountsCtr }}</span>
+                    @endif
+
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    {{-- @if(empty($unverifiedAccounts))
+                    @foreach($unverifiedAccounts as $notifAccount)
                     <li>
-                      <a>
+                      <a href="{{url('/dentalchief/accounts_maintenance')}}">
                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
+                          <span></span>
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
@@ -139,15 +137,8 @@
                         </span>
                       </a>
                     </li>
-
-                    {{-- <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li> --}}
+                    @endforeach
+                    @endif --}}
                   </ul>
                 </li>
               </ul>
@@ -155,3 +146,20 @@
           </div>
         </div>
         <!-- /top navigation -->
+
+<script>
+  $(document).ready(function(){
+    $.ajax({
+      url: 'dchief/get/notification',
+          type: 'get',
+          success: function(output){
+              // $('#notifNumber').text(output.number);
+              // $('#menu1').empty();
+              // for (var i = 0; i <Object.keys(output.text).length ; i++) {
+              //   $('#menu1').append(output.text[i]);
+              // }
+
+          }
+    });
+  }
+</script>
