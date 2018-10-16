@@ -265,12 +265,10 @@
                                           <th class="column-title">Unit</th>
                                           <th class="column-title">Dosage</th>
                                           <th class="column-title no-link last"><span class="nobr">Medication</span></th>
-                                          <th class="bulk-actions" colspan="6">
-                                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                          </th>
+                                          <th>Given By</th>
                                         </tr>
                                       </thead> 
-
+                                      
                                       <tbody id="tbodyMedicine">
                                           @foreach($prescriptionInfo as $prescription)
                                             <tr class="even pointer">
@@ -283,6 +281,14 @@
                                               <td class=" ">{{ $prescription->unit }}</td>
                                               <td class=" ">{{ $prescription->dosage }}</td>
                                               <td class="last">{{ $prescription->medication }}</td>
+                                              <td>
+                                                  @foreach($accounts as $account)
+                                                    @if($account->id == $prescription->givenBy)
+                                                      {{ $account->lastName }}, {{ $account->firstName }} {{ $account->middleName[0] }}@if($account->middleName){{ '.' }}@endif
+                                                    @endif
+                                                  @endforeach
+                                               
+                                              </td>
                                             </tr>
                                           @endforeach
                                       </tbody>

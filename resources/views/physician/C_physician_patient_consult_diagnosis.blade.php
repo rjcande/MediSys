@@ -270,6 +270,7 @@
                                 <th class="column-title">Unit</th>
                                 <th class="column-title">Dosage</th>
                                 <th class="column-title no-link last"><span class="nobr">Medication</th>
+                                <th>Given By</th>
                                 
                               </tr>
                             </thead>
@@ -284,7 +285,13 @@
                                   <td class=" ">{{ $medicine->unit }}</td>
                                   <td class=" ">{{ $medicine->dosage }}</td>
                                   <td class=" ">{{ $medicine->medication }}</td>
-                                  
+                                  <td>
+                                      @foreach($accounts as $account)
+                                        @if($account->id == $medicine->givenBy)
+                                          {{ $account->lastName }}, {{ $account->firstName }} {{ $account->middleName[0] }}@if($account->middleName){{ '.' }}@endif
+                                        @endif
+                                      @endforeach
+                                  </td>
                                 </tr>
                               @endforeach
                             </tbody>
@@ -627,7 +634,7 @@
         function displayTableRow(){
             for (var i = 0; i < Object.keys(array_med).length; i++) {
 
-                var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td></tr>";
+                var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrand+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td>"+array_med[i].medicineDosage+"</td><td>"+array_med[i].medicineMedication+"</td><td>"+'{{ Session::get('accountInfo.lastName') }}, {{Session::get('accountInfo.firstName')}}'+"</td></tr>";
 
                 $(tr).prependTo('#tbodyMedicine');
 

@@ -234,6 +234,7 @@ class ClinicLogController extends Controller
                 $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
                 $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
                 $prescription->isGiven = '1';
+                $prescription->givenBy = Session::get('accountInfo.id');
                 $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
 
                 $prescription->save();
@@ -450,9 +451,11 @@ class ClinicLogController extends Controller
             ->where('treatments.clinicLogID', '=', $id)
             ->get();
 
+    
          $prescriptionID = Prescription::select('prescriptionID')
             ->orderBy('prescriptionID', 'desc')
             ->first();
+        $accounts = Accounts::all();
 
         $usedMedSupply = ClinicLog::join('treatments', 'treatments.clinicLogID', '=', 'cliniclogs.clinicLogID')
             ->join('medsuppliesused', 'medsuppliesused.treatmentID', '=', 'treatments.treatmentID')
@@ -480,7 +483,7 @@ class ClinicLogController extends Controller
         }
         else{
             
-            return view('nurse.C_nurse_patient_medical_log_edit')->with(['clinicLogInfo' => $clinicLogInfo, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'attendingPhysician' => $attendingPhysician, 'physicians' => $physicians, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'vitalSign' => $vitalSigns, 'recommendation' => $recommendations, 'medicineName' => $medicineName, 'prescription' => $prescriptionID]);
+            return view('nurse.C_nurse_patient_medical_log_edit')->with(['clinicLogInfo' => $clinicLogInfo, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'attendingPhysician' => $attendingPhysician, 'physicians' => $physicians, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'vitalSign' => $vitalSigns, 'recommendation' => $recommendations, 'medicineName' => $medicineName, 'prescription' => $prescriptionID, 'logreferrals' => $logReferral, 'accounts' => $accounts]);
         }
        
     }
@@ -541,6 +544,8 @@ class ClinicLogController extends Controller
 
                 $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
 
+                $prescription->givenBy = Session::get('accountInfo.id');
+
                 $prescription->save();
             }
 
@@ -563,6 +568,7 @@ class ClinicLogController extends Controller
                 $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
 
                 $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+                $prescription->givenBy = Session::get('accountInfo.id');
 
                 $prescription->save();
             }
@@ -634,6 +640,8 @@ class ClinicLogController extends Controller
 
                 $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
 
+                $prescription->givenBy = Session::get('accountInfo.id');
+
                 $prescription->save();
             }
 
@@ -657,6 +665,8 @@ class ClinicLogController extends Controller
                 $prescription->dosage = Input::get('_medPrescribedArray')[$i]['medicineDosage'];
 
                 $prescription->medication = Input::get('_medPrescribedArray')[$i]['medicineMedication'];
+
+                $prescription->givenBy = Session::get('accountInfo.id');
 
                 $prescription->save();
             }
@@ -928,8 +938,9 @@ class ClinicLogController extends Controller
         $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
                                         ->where('supType', '=', 'm')
                                         ->get();
+        $accounts = Accounts::all();
 
-        return view('physician.C_physician_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
+        return view('physician.C_physician_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'accounts' => $accounts]);
     }
 
     public function showPhysicianPatientDiagnosisMChief($id)
@@ -963,8 +974,9 @@ class ClinicLogController extends Controller
         $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
                                         ->where('supType', '=', 'm')
                                         ->get();
+        $accounts = Accounts::all();
 
-        return view('chief.C_mchief_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
+        return view('chief.C_mchief_referred_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'accounts' => $accounts]);
     }
 
     public function showPatientDiagnosis($id)
@@ -997,7 +1009,9 @@ class ClinicLogController extends Controller
       
         $medicalSupplyList = MedicalSupply::where('supType', '=', 'm')->get();
 
-        return view('physician.C_physician_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
+        $accounts = Accounts::all();
+
+        return view('physician.C_physician_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'accounts' => $accounts]);
     }
 
     public function showPatientDiagnosisMChief($id)
@@ -1032,8 +1046,9 @@ class ClinicLogController extends Controller
         $medicalSupplyList = MedicalSupply::where('isDeleted', '=', 0)
                                         ->where('supType', '=', 'm')
                                         ->get();
+        $accounts = Accounts::all();
 
-        return view('chief.C_mchief_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList]);
+        return view('chief.C_mchief_patient_diagnoses')->with(['diagnosis' => $diagnosis, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'accounts' => $accounts]);
     }
 
     public function consultationPhysician($id)

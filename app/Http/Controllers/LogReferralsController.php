@@ -18,6 +18,8 @@ use App\Patient;
 
 use App\Treatments;
 
+use App\Accounts;
+
 use Response;
 
 use Session;
@@ -244,10 +246,11 @@ class LogReferralsController extends Controller
         $treatment = Treatments::where('clinicLogID', '=', $id)->first();
 
         $medicalHistory = MedicalHistories::where('patientID', '=', $patientID)->first();
+        $accounts = Accounts::all();
 
         if (!empty($medicalHistory)) {
                 //dd($consultInfo);
-          return view('physician.C_physician_patient_consult_diagnosis')->with(['consultInfo' => $consultInfo, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineName, 'clinicLogInfo' => $clinicLogInfo, 'treatment' => $treatment, 'medicalHistory' => $medicalHistory]);
+          return view('physician.C_physician_patient_consult_diagnosis')->with(['consultInfo' => $consultInfo, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineName, 'clinicLogInfo' => $clinicLogInfo, 'treatment' => $treatment, 'medicalHistory' => $medicalHistory, 'accounts' => $accounts]);
         }
         else{
             $medicalHistory = MedicalHistories::where('patientID', '=', $patientID)->first();
@@ -302,9 +305,11 @@ class LogReferralsController extends Controller
 
         $medicalHistory = MedicalHistories::where('patientID', '=', $patientID)->first();
 
+        $accounts = Accounts::all();
+
         if (!empty($medicalHistory)) {
                 //dd($consultInfo);
-          return view('chief.C_mchief_patient_consult_diagnosis')->with(['consultInfo' => $consultInfo, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineName, 'clinicLogInfo' => $clinicLogInfo, 'treatment' => $treatment, 'medicalHistory' => $medicalHistory]);
+          return view('chief.C_mchief_patient_consult_diagnosis')->with(['consultInfo' => $consultInfo, 'medicineList' => $medicineList, 'medicalSupplyList' => $medicalSupplyList, 'prescriptionInfo' => $prescriptionInfo, 'usedMedSupply' => $usedMedSupply, 'medicineName' => $medicineName, 'clinicLogInfo' => $clinicLogInfo, 'treatment' => $treatment, 'medicalHistory' => $medicalHistory, 'accounts' => $accounts]);
         }
         else{
             $medicalHistory = MedicalHistories::where('patientID', '=', $patientID)->first();

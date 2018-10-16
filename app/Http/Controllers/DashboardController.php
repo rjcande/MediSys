@@ -18,6 +18,8 @@ use App\MedicalSupply;
 
 use App\Medicine;
 
+use App\Accounts;
+
 use DB;
 
 use Carbon\Carbon;
@@ -75,6 +77,13 @@ class DashboardController extends Controller
                                     ->where('logreferrals.isDeleted', '=', 0)
                                     ->orderBy('logreferrals.created_at', 'desc')
                                     ->get();
+        $accountNotif = Accounts::where('isVerified', '=', '0')
+                                ->where(function ($query) {
+                                    $query->where('position', '=', '6')
+                                          ->orWhere('position', '=', '5');
+                                })
+                                ->get();
+
 
         $array = [];
         $ctr = 0;
@@ -93,6 +102,12 @@ class DashboardController extends Controller
                 $text =  "<li class='notification' data-id=".$value["logReferralID"]."><a><span></span><a href='/mchief/referred/patients'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." referred a patient for ". $concern ."</span></a></a></li>";
             }
             
+            $array[$ctr] = $text; 
+            $ctr++;
+        }
+
+        foreach ($accountNotif as $key => $value) {
+            $text =  "<li class='notification'><a><span></span><a href='/medicalchief/accounts_maintenance'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." created an account and needs verification"."</span></a></a></li>";
             $array[$ctr] = $text; 
             $ctr++;
         }
@@ -2211,6 +2226,7 @@ class DashboardController extends Controller
                         ->groupBy('day', 'month', 'year')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->get();
         //percentage month
         $percentagePrescription = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
@@ -2218,10 +2234,13 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->limit(4)
                         ->get();
-        $totalPrescription =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->first();
 
         if (isset($percentagePrescription[0]->total)) {
@@ -2268,10 +2287,13 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'm')
                         ->limit(4)
                         ->get();
-        $totalPrescription_year =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription_year =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'm')
                         ->first();
 
         $percentTopOne_year = 0;
@@ -2320,9 +2342,11 @@ class DashboardController extends Controller
 
         $maxDays = date('t');
         //get the medicineID of prescribed medicine
-        $medicineID = Prescription::select('medicineID')
-                            ->groupBy('medicineID')
+        $medicineID = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->select('prescriptions.medicineID')
+                            ->groupBy('prescriptions.medicineID')
                             ->whereMonth('prescriptions.created_at', '=', $month)
+                            ->where('medicines.medType', '=', 'm')
                             ->get();
         $results = array();
         $id = array();
@@ -2347,13 +2371,16 @@ class DashboardController extends Controller
                         ->groupBy('month', 'year')
                         ->orderBy('total', 'desc')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->get();
 
         $id_for_month = array();
         $results_for_month = array();
         //get the medicineID of prescribed medicine
-        $medicineID_for_month = Prescription::select('medicineID')
-                            ->groupBy('medicineID')
+        $medicineID_for_month = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->select('prescriptions.medicineID')
+                            ->groupBy('prescriptions.medicineID')
+                            ->where('medicines.medType', '=', 'm')
                             ->get();
 
         foreach ($medicineID_for_month as $key) {
@@ -2464,6 +2491,7 @@ class DashboardController extends Controller
                         ->groupBy('day', 'month', 'year')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->get();
         //percentage month
         $percentagePrescription = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
@@ -2471,10 +2499,13 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->limit(4)
                         ->get();
-        $totalPrescription =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->first();
 
         if (isset($percentagePrescription[0]->total)) {
@@ -2520,10 +2551,13 @@ class DashboardController extends Controller
                         ->orderBy('total', 'desc')
                         ->groupBy('prescriptions.medicineID')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'm')
                         ->limit(4)
                         ->get();
-        $totalPrescription_year =  Prescription::select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
+        $totalPrescription_year =  Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                        ->select(DB::raw("SUM(quantity) as total"), 'prescriptions.*')
                         ->whereYear('prescriptions.created_at', '=', $year)
+                        ->where('medicines.medType', '=', 'm')
                         ->first();
 
         $percentTopOne_year = 0;
@@ -2572,8 +2606,9 @@ class DashboardController extends Controller
 
         $numberOfDays = date('t');
         //get the medicineID of prescribed medicine
-        $medicineID = Prescription::select('medicineID')
-                            ->groupBy('medicineID')
+        $medicineID = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->select('prescriptions.medicineID')
+                            ->groupBy('prescriptions.medicineID')
                             ->whereMonth('prescriptions.created_at', '=', $month)
                             ->get();
         $results = array();
@@ -2599,13 +2634,16 @@ class DashboardController extends Controller
                         ->groupBy('month', 'year')
                         ->orderBy('total', 'desc')
                         ->whereMonth('prescriptions.created_at', '=', $month)
+                        ->where('medicines.medType', '=', 'm')
                         ->get();
 
         $id_for_month = array();
         $results_for_month = array();
         //get the medicineID of prescribed medicine
-        $medicineID_for_month = Prescription::select('medicineID')
-                            ->groupBy('medicineID')
+        $medicineID_for_month = Prescription::join('medicines', 'medicines.medicineID', '=', 'prescriptions.medicineID')
+                            ->select('prescriptions.medicineID')
+                            ->groupBy('prescriptions.medicineID')
+                            ->where('medicines.medType', '=', 'm')
                             ->get();
 
         foreach ($medicineID_for_month as $key) {
