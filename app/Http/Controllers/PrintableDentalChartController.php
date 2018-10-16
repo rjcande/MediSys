@@ -35,7 +35,6 @@ class PrintableDentalChartController extends Controller
         $pdf->set_option('no-stop-slow-scripts', true);
         $pdf->set_option('enable_php', true);
         $pdf = PDF::loadView('dentist.printable_dental_chart',compact('dentalchart','toothconditions','patient'));
-        $pdf->PDF::render();
         return $pdf->stream('dentist.printable_dental_chart');
     }
 }
