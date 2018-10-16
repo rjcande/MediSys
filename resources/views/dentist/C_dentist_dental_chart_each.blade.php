@@ -98,7 +98,7 @@
                         </table>
                       </div>
                       <div>
-                        <a href="{{ url('/dentist/dentalchart/view',$dchart->dentalChartID)}}"><button type="button" class="btn btn-default" data-dismiss="modal" style="float: right">BACK</button></a>
+                        <a href="{{ url('/dentist/dentalchart/view',$dchart->patientID)}}"><button type="button" class="btn btn-default" data-dismiss="modal" style="float: right">BACK</button></a>
                       </div>
                     <!-- /Content -->
                   </div>

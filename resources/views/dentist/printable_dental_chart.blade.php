@@ -217,220 +217,220 @@
                             @foreach($toothconditions as $toothcondition)
 
                             {{--  55 TO 51  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 55)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 55)
                                     @php
                                     $status55a = $toothcondition->toothStatusA;
                                     $status55b = $toothcondition->toothStatusB;
                                     @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 54)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 54)
                                     @php $status54a = $toothcondition->toothStatusA;
                                     $status54b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 53)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 53)
                                 @php $status53a = $toothcondition->toothStatusA;
                                     $status53b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 52)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 52)
                                 @php $status52a = $toothcondition->toothStatusA;
                                     $status52b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 51)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 51)
                                 @php $status51a = $toothcondition->toothStatusA;
                                     $status51b = $toothcondition->toothStatusB; @endphp
                                 @endif
                             {{--  65 TO 61  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 65)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 65)
                                     @php $status65a = $toothcondition->toothStatusA;
                                     $status65b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 64)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 64)
                                     @php $status64a = $toothcondition->toothStatusA;
                                     $status64b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 63)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 63)
                                 @php $status63a = $toothcondition->toothStatusA;
                                     $status63b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 62)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 62)
                                 @php $status62a = $toothcondition->toothStatusA;
                                     $status62b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 61)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 61)
                                 @php $status61a = $toothcondition->toothStatusA;
                                     $status61b = $toothcondition->toothStatusB; @endphp
                                 @endif
                             {{--  75 TO 71  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 75)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 75)
                                     @php $status75a = $toothcondition->toothStatusA;
                                     $status75b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 74)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 74)
                                     @php $status74a = $toothcondition->toothStatusA;
                                     $status74b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 73)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 73)
                                 @php $status73a = $toothcondition->toothStatusA;
                                     $status73b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 72)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 72)
                                 @php $status72a = $toothcondition->toothStatusA;
                                     $status72b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 71)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 71)
                                 @php $status71a = $toothcondition->toothStatusA;
                                     $status71b = $toothcondition->toothStatusB; @endphp
                                 @endif
                             {{--  85 TO 81  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 85)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 85)
                                     @php $status85a = $toothcondition->toothStatusA;
                                     $status85b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 84)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 84)
                                     @php $status84a = $toothcondition->toothStatusA;
                                     $status84b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 83)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 83)
                                 @php $status83a = $toothcondition->toothStatusA;
                                     $status83b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 82)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 82)
                                 @php $status82a = $toothcondition->toothStatusA;
                                     $status82b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 81)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 81)
                                 @php $status81a = $toothcondition->toothStatusA;
                                     $status81b = $toothcondition->toothStatusB; @endphp
                                 @endif
                                 {{--  18 to 11  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 18)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 18)
                                     @php $status18a = $toothcondition->toothStatusA;
                                     $status18b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 17)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 17)
                                     @php $status17a = $toothcondition->toothStatusA;
                                     $status17b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 16)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 16)
                                 @php $status16a = $toothcondition->toothStatusA;
                                     $status16b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 15)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 15)
                                     @php $status15a = $toothcondition->toothStatusA;
                                     $status15b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 14)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 14)
                                     @php $status14a = $toothcondition->toothStatusA;
                                     $status14b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 13)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 13)
                                 @php $status13a = $toothcondition->toothStatusA;
                                     $status13b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 12)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 12)
                                 @php $status12a = $toothcondition->toothStatusA;
                                     $status12b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 11)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 11)
                                 @php $status11a = $toothcondition->toothStatusA;
                                     $status11b = $toothcondition->toothStatusB; @endphp
                                 @endif
                                 {{--  28 to 21  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 28)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 28)
                                     @php $status28a = $toothcondition->toothStatusA;
                                     $status28b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 27)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 27)
                                     @php $status27a = $toothcondition->toothStatusA;
                                     $status27b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 26)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 26)
                                 @php $status26a = $toothcondition->toothStatusA;
                                     $status26b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 25)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 25)
                                     @php $status25a = $toothcondition->toothStatusA;
                                     $status25b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 24)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 24)
                                     @php $status24a = $toothcondition->toothStatusA;
                                     $status24b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 23)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 23)
                                 @php $status23a = $toothcondition->toothStatusA;
                                     $status23b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 22)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 22)
                                 @php $status22a = $toothcondition->toothStatusA;
                                     $status22b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 21)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 21)
                                 @php $status21a = $toothcondition->toothStatusA;
                                     $status21b = $toothcondition->toothStatusB; @endphp
                                 @endif
                                 {{--  38 to 31  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 38)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 38)
                                     @php $status38a = $toothcondition->toothStatusA;
                                     $status38b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 37)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 37)
                                     @php $status37a = $toothcondition->toothStatusA;
                                     $status37b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 36)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 36)
                                 @php $status36a = $toothcondition->toothStatusA;
                                     $status36b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 35)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 35)
                                     @php $status35a = $toothcondition->toothStatusA;
                                     $status35b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 34)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 34)
                                     @php $status34a = $toothcondition->toothStatusA;
                                     $status34b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 33)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 33)
                                 @php $status33a = $toothcondition->toothStatusA;
                                     $status33b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 32)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 32)
                                 @php $status32a = $toothcondition->toothStatusA;
                                     $status32b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 31)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 31)
                                 @php $status31a = $toothcondition->toothStatusA;
                                     $status31b = $toothcondition->toothStatusB; @endphp
                                 @endif
                                 {{--  48 to 41  --}}
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 48)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 48)
                                     @php $status48a = $toothcondition->toothStatusA;
                                     $status48b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 47)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 47)
                                     @php $status47a = $toothcondition->toothStatusA;
                                     $status47b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 46)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 46)
                                 @php $status46a = $toothcondition->toothStatusA;
                                     $status46b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 45)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 45)
                                     @php $status45a = $toothcondition->toothStatusA;
                                     $status45b = $toothcondition->toothStatusB; @endphp
                                     @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 44)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 44)
                                     @php $status44a = $toothcondition->toothStatusA;
                                     $status44b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 43)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 43)
                                 @php $status43a = $toothcondition->toothStatusA;
                                     $status43b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 42)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 42)
                                 @php $status42a = $toothcondition->toothStatusA;
                                     $status42b = $toothcondition->toothStatusB; @endphp
                                 @endif
-                                @if($toothcondition->isRecent == 1 && $toothcondition->isRecent == 1 && $toothcondition->toothNum == 41)
+                                @if($toothcondition->isRecent == 1 && $toothcondition->toothNum == 41)
                                 @php $status41a = $toothcondition->toothStatusA;
                                     $status41b = $toothcondition->toothStatusB; @endphp
                                 @endif
@@ -439,13 +439,11 @@
                         @endif
                         <div>
                             <div>
-                                <span><img style="float:left; padding-right:100px;" src="{{ asset('images/pup-logo.png') }}" width="100px"></span>
-                                <div style="margin-left:50px;">
-                                    <h6 style="padding:0; margin:0;">Republic of the Philippines</h6>
-                                    <h6 style="padding:0; margin:0;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</h6>
-                                    <h6 style="padding:0; margin:0;">Medical Services Department</h6>
-                                    <h6 style="padding:0; margin:0;"><b>DENTAL SERVICES</b></h6>
-                                </div>
+                                <img style="float:left;" src="{{ asset('images/pup-logo.png') }}" width="100px">
+                                <h6 style="padding:0; margin:0;">Republic of the Philippines</h6>
+                                <h6 style="padding:0; margin:0;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</h6>
+                                <h6 style="padding:0; margin:0;">Medical Services Department</h6>
+                                <h6 style="padding:0; margin:0;"><b>DENTAL SERVICES</b></h6>
                                 <hr>
                             </div>
                             <h3 style="text-align: center;padding:0; margin:0;">DENTAL RECORD CHART</h3>
@@ -455,7 +453,7 @@
                             <br>
                             {{-- 55 ~ 65 --}}
                             <div>
-                                <div>
+                                <div >
                                     <table>
                                         <tr>
                                             <td><label style="text-align:center;font-size:15px;">55</label></td>
@@ -488,7 +486,8 @@
                                             <td><label style="text-align:center;font-size:10px;">{{ $status54b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status53b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status52b }}</label></td>
-                                            <td><label style="text-align:center;font-size:10px;">{{ $status51b }}</label></td>0
+                                            <td><label style="text-align:center;font-size:10px;">{{ $status51b }}</label></td>
+
                                             <td><label style="text-align:center;font-size:10px;">{{ $status61b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status62b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status63b }}</label></td>
@@ -499,75 +498,72 @@
                                     </table>
                                 </div>
                                 <div style="padding-top: 5px;">
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 55 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status55b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status55b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status55b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status55b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status55b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img id="54l" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img id="54t" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="54r" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="54b" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="54m" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 54 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status54b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status54b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status54b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status54b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status54b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img id="53l" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img id="53t" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="53r" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="53b" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="53m" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 53 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img id="52l" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img id="52t" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="52r" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="52b" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="52m" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 52 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status53b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status53b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status53b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status53b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status53b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img id="51l" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img id="51t" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="51r" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="51b" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img id="51m" src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 51 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 61 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status52b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status52b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status52b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status52b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status52b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 62 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 63 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status51b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status51b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status51b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status51b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status51b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 64 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status61b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status61b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status61b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status61b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status61b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 65 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status62b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status62b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status62b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status62b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status62b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status63b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status63b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status63b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status63b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status63b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status64b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status64b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status64b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status64b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status64b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status65b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status65b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status65b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status65b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status65b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
                                 </div>
                             </div>
 
@@ -621,7 +617,8 @@
                                             <td><label style="text-align:center;font-size:10px;">{{ $status14b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status13b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status12b }}</label></td>
-                                            <td><label style="text-align:center;font-size:10px;">{{ $status11b }}</label></td>0
+                                            <td><label style="text-align:center;font-size:10px;">{{ $status11b }}</label></td>
+
                                             <td><label style="text-align:center;font-size:10px;">{{ $status21b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status22b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status23b }}</label></td>
@@ -635,234 +632,214 @@
                                     </table>
                                 </div>
                                 <div style="padding-top: 5px;">
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 18 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status48b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status18b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status18b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status18b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status18b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 17 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status17b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status17b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status17b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status17b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status17b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 16 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status16b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status16b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status16b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status16b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status16b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 15 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status15b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status15b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status15b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status15b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status15b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 14 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status14b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status14b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status14b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status14b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status14b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 13 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 12 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status13b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status13b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status13b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status13b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status13b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 11 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 21 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status12b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status12b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status12b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status12b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status12b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 22 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 23 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status11b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status11b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status11b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status11b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status11b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 24 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status21b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status21b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status21b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status21b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status21b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 25 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status22b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status22b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status22b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status22b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status22b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 26 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 27 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status23b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status23b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status23b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status23b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status23b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                    {{-- TOOOOOOOOOTH --}}
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                    <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 28 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                </div>
+
+                                    <img src=@if(strpos($status24b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status24b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status24b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status24b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status24b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status25b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status25b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status25b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status25b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status25b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status26b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status26b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status26b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status26b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status26b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status27b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status27b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status27b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status27b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status27b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status28b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status28b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status28b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status28b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status28b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        </div>
                             </div>
 
                             {{--  38 ~ 48  --}}
                             <div>
                                     <div style="padding-top: 5px;">
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 48 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status48b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status48b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status48b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status48b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status48b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 47 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status47b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status47b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status47b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status47b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status47b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 46 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status46b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status46b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status46b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status46b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status46b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 45 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+										<img src=@if(strpos($status45b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status45b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status45b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status45b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status45b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 44 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status44b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status44b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status44b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status44b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status44b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 43 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 42 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status43b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status43b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status43b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status43b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status43b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 41 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 31 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status42b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status42b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status42b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status42b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status42b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 32 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 33 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status41b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                        <img src=@if(strpos($status41b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status41b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status41b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status41b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 34 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status31b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status31b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status31b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status31b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status31b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 35 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status32b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status32b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status32b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status32b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status32b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 36 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 37 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status33b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status33b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status33b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status33b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status33b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 38 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+
+                                    <img src=@if(strpos($status34b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status34b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status34b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status34b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status34b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status35b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status35b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status35b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status35b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status35b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status36b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status36b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status36b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status36b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status36b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status37b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status37b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status37b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status37b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status37b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+									<img src=@if(strpos($status38b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:1px;margin-top:3px;">
+                                    <img src=@if(strpos($status38b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status38b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status38b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status38b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
                                         </div>
                                 <div>
                                     <table>
@@ -894,7 +871,8 @@
                                             <td><label style="text-align:center;font-size:10px;">{{ $status44b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status43b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status42b }}</label></td>
-                                            <td><label style="text-align:center;font-size:10px;">{{ $status41b }}</label></td>0
+                                            <td><label style="text-align:center;font-size:10px;">{{ $status41b }}</label></td>
+
                                             <td><label style="text-align:center;font-size:10px;">{{ $status31b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status32b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status33b }}</label></td>
@@ -930,78 +908,74 @@
 
                             {{--  75 ~ 85  --}}
                             <div>
-                                    <div style="padding-top: 5px;">
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 75 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <div style="padding-top: 5px; ">
+                                        <img src=@if(strpos($status75b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status75b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status75b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status75b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status75b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 74 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status74b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status74b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status74b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status74b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status74b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 73 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 72 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status73b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status73b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status73b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status73b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status73b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 71 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:2.5px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 81 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status72b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status72b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status72b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status72b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status72b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 82 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 83 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status71b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                        <img src=@if(strpos($status71b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status71b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status71b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                        <img src=@if(strpos($status71b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 84 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status81b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status81b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status81b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status81b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status81b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
 
-                                            {{-- TOOOOOOOOOTH --}}
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->isRecent == 1 && $toothcondition->leftSide   == 1){{ asset('images/leftToothDis.png')   }} @break @else {{ asset('images/leftTooth.png')   }} @endif @endforeach @endif style="margin-left:1px;margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->isRecent == 1 && $toothcondition->topSide    == 1){{ asset('images/topToothDis.png')    }} @break @else {{ asset('images/topTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->isRecent == 1 && $toothcondition->rightSide  == 1){{ asset('images/rightToothDis.png')  }} @break @else {{ asset('images/rightTooth.png')  }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->isRecent == 1 && $toothcondition->bottomSide == 1){{ asset('images/bottomToothDis.png') }} @break @else {{ asset('images/bottomTooth.png') }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                            <img src=@if(count($toothconditions) > 0) @foreach($toothconditions as $toothcondition) @if($toothcondition->toothNum == 85 && $toothcondition->isRecent == 1 && $toothcondition->middleSide == 1){{ asset('images/midToothDis.png')    }} @break @else {{ asset('images/midTooth.png')    }} @endif @endforeach @endif style="margin-left:-44px; margin-top:3px;">
-                                        </div>
-                                <div>
+                                    <img src=@if(strpos($status82b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status82b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status82b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status82b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status82b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status83b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status83b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status83b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status83b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status83b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status84b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status84b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status84b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status84b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status84b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+
+
+                                    <img src=@if(strpos($status85b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
+                                    <img src=@if(strpos($status85b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status85b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status85b,'3') !== false){{ asset('images/bottomToothDis.png') }} @else {{ asset('images/bottomTooth.png') }} @endif style="margin-left:-44px; margin-top:3px;">
+                                    <img src=@if(strpos($status85b,'5') !== false){{ asset('images/midToothDis.png')    }} @else {{ asset('images/midTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
+								</div>
+                                <div >
                                     <table>
 
                                         <tr>
@@ -1022,7 +996,8 @@
                                             <td><label style="text-align:center;font-size:10px;">{{ $status74b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status73b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status72b }}</label></td>
-                                            <td><label style="text-align:center;font-size:10px;">{{ $status71b }}</label></td>0
+                                            <td><label style="text-align:center;font-size:10px;">{{ $status71b }}</label></td>
+
                                             <td><label style="text-align:center;font-size:10px;">{{ $status81b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status82b }}</label></td>
                                             <td><label style="text-align:center;font-size:10px;">{{ $status83b }}</label></td>
@@ -1083,8 +1058,8 @@
                                 </div>
                             </div>
                             <br>
-                            <h5 style="float:right;font-size:11px;margin-top:200px;">___________________________________</u></h5>
-                            <h5 style="float:right;font-size:11px;margin-top:215px; margin-right:50px;">Dentist Signature</u></h5>
+                            <h5 style="float:right;font-size:11px;margin-top:240px;">______________________________________</u></h5>
+                            <h5 style="float:right;font-size:11px;margin-top:255px;margin-right:50px;">Dentist Signature</u></h5>
                         </div>
 
                     </div>
@@ -1093,5 +1068,4 @@
         </div>
     </div>
 </body>
-
 </html>
