@@ -628,6 +628,7 @@ Route::get('/dchief/medical/supplies/reports', 'DashboardController@dentistSuppl
 Route::get('/dchief/medicine/reports', 'DashboardController@dentistReports');
 
 
+Route::get('/dchief/get/notification', 'DashboardController@dchiefNotification');
 
 
 Route::get('/dchief/PatientRecord', 'DentalPatientController@dchiefDentalPatientRecords');

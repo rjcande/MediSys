@@ -133,9 +133,22 @@ class DashboardController extends Controller
 
     public function dchiefNotification()
     {
-        $unverifiedAccounts = Account::leftJoin('userverifications', 'users.id', '=', 'userverifications.userID')->where('position',4)->where('users.isVerified', 0)->get();
 
-        return view('dentalchief.layout.side_and_top')->withUnverifiedAccounts($unverifiedAccounts);
+        $unverifiedAccounts = Account::select('users.*')->where('users.position', 4)->where('users.isVerified', 0)->get();
+        $unverifiedAccountsCtr = Account::select('users.*')->where('users.position', 4)->where('users.isVerified', 0)->count('users.id');
+        // dd($unverifiedAccounts);
+
+        $array = [];
+        $accountCtr = 0;
+        $notifCtr = 0;
+        foreach($unverifiedAccounts as $key => $value){
+            $message = "<li class='notification' data-id=".$value["userID"]."><a><span></span><a href='/dentalchief/accounts_maintenance'><span class='message'>". $value['firstName'].' '.$value['middleName']{0}.'. '. $value['lastName'] ." requests to make an account </span></a></a></li>";
+        }
+        $array[$ctr] = $text; 
+        $ctr++;
+
+        return Response::json(array('unverifiedAccounts' => $unverifiedAccounts, 'unverifiedAccountsCtr' => $unverifiedAccountsCtr));
+        // return view('dentalchief.layout.side_and_top')->with(['unverifiedAccounts'=>$unverifiedAccounts, 'unverifiedAccountsCtr'=>$unverifiedAccountsCtr]);
     }
 
     public function dashboard()

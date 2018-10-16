@@ -1,4 +1,4 @@
-@extends('dentalchief.layout.dentalchief')
+@extends('dentist.layout.dentist')
 
 @section('content')
 
@@ -136,7 +136,7 @@
                     <div style="text-align: center;">
                     <button type="submit" class="btn btn-success" name="btnSave">Save</button>
                     </form>
-                    <a href="{{ url('/dchief/dashboard') }}"><button class="btn btn-danger">Cancel</button></a>
+                    <a href="{{ url('/dentist/dashboard') }}"><button class="btn btn-danger">Cancel</button></a>
                     </div>
                     </div>
                   
