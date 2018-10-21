@@ -97,7 +97,7 @@
 
 					<div style="float:left; margin-left:25px; font-size:18px; width:100%;">
 
-		                <input type="checkbox" name="chestXrayPA" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+		                <input type="checkbox" name="chestXrayPA" class="radio-past" style="margin-bottom:12px;" value="1"
 		                @if($details['chestXrayPA'] == 1)
 		                	{{ "checked" }}
 		                @endif
@@ -119,43 +119,43 @@
 						@if($details['fecalysis'] == 1)
 		                	{{ "checked" }}
 		                @endif> Fecalysis<br>
-						<input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px;" value="1"
 						@if($details['cbc'] == 1)
 		                	{{ "checked" }}
 		                @endif> Complete Blood Count (CBC)<br>
-						<input type="checkbox" name="fbs" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="fbs" class="radio-past" style="margin-bottom:12px;" value="1"
 						@if($details['fbs'] == 1)
 		                	{{ "checked" }}
 		                @endif> Fasting Blood Sugar (FBS)<br>
-						<input type="checkbox" name="bun" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="bun" class="radio-past" style="margin-bottom:12px;" value="1"
 						@if($details['bun'] == 1)
 		                	{{ "checked" }}
 		                @endif> Blood Urea Nitrogen (BUN)<br>
-						<input type="checkbox" name="creatinine" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="creatinine" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['creatinine'] == 1)
 		                	{{ "checked" }}
 		                @endif> Creatinine<br>
-						<input type="checkbox" name="cholesterol" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="cholesterol" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['cholesterol'] == 1)
 		                	{{ "checked" }}
 		                @endif> Total Cholesterol<br>
-						<input type="checkbox" name="triglycerides" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="triglycerides" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['triglycerides'] == 1)
 		                	{{ "checked" }}
 		                @endif> Triglycerides<br>
-						<input type="checkbox" name="hdl" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="hdl" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['hdl'] == 1)
 		                	{{ "checked" }}
 		                @endif> High-Density Lipoprotein (HDL)<br>
-						<input type="checkbox" name="ldl" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="ldl" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['ldl'] == 1)
 		                	{{ "checked" }}
 		                @endif> Low-Density Lipoprotein (LDL)<br>
-						<input type="checkbox" name="uricAcid" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="uricAcid" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['uricAcid'] == 1)
 		                	{{ "checked" }}
 		                @endif> Uric Acid<br>
-						<input type="checkbox" name="sgpt" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+						<input type="checkbox" name="sgpt" class="radio-past" style="margin-bottom:12px" value="1"
 						@if($details['sgpt'] == 1)
 		                	{{ "checked" }}
 		                @endif> Serum Glutamic-Pyruvic Transaminase (SGPT)<br><br>
