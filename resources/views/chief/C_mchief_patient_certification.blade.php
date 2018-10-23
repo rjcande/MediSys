@@ -61,7 +61,7 @@
 					@if($logReferral['reqForWaver'] == 1)
 						{{ "checked" }}
 					@endif>
-						<label style="margin-left: 5px;">Waver</label> 
+						<label style="margin-left: 5px;">Waiver</label> 
 					<br>
 					
 				</div>

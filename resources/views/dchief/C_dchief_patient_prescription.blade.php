@@ -254,9 +254,7 @@
                                     <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                                       <thead>
                                         <tr class="headings">
-                                          <th>
-                                            <input type="checkbox" id="check-all" class="flat">
-                                          </th>
+                                       
                                           <th class="column-title">Generic Name </th>
                                           <th class="column-title">Brand </th>
                                           <th class="column-title">Quantity Used</th>
@@ -285,9 +283,7 @@
                                     <table class="table table-striped table-bordered jambo_table bulk_action" id="medSuppTable">
                                       <thead>
                                         <tr class="headings">
-                                          <th>
-                                            <input type="checkbox" id="check-all" class="flat">
-                                          </th>
+                                         
                                           <th class="column-title">Supply Name </th>
                                           <th class="column-title">Brand </th>
                                           <th class="column-title">Quantity Used</th>
@@ -315,9 +311,7 @@
                                   <table class="table table-striped table-bordered jambo_table bulk_action" id="prescriptionTable">
                                     <thead>
                                       <tr class="headings">
-                                        <th>
-                                        <input type="checkbox" id="check-all" class="flat">
-                                        </th>
+                                      
                                         <th class="column-title">Generic Name </th>
                                         <th class="column-title" style="padding-right:50px;">Brand </th>
                                         <th class="column-title">Quantity<br>Used </th>
@@ -891,7 +885,7 @@ $(document).ready(function(){
     
     function displayTableRow(){
         for(var i = 0; i < Object.keys(array_med).length; i++){
-          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='medicineTable'></td><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrandName+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td class= ' '>"+array_med[i].medicineDosage +"</td><td class=' '>"+array_med[i].medicineMedication+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_med[i].medicineGenericName+"</td><td class=' '>"+array_med[i].medicineBrandName+"</td><td class=' '>"+array_med[i].medicineQuantity+"</td><td class=' '>"+array_med[i].medicineUnit+"</td><td class= ' '>"+array_med[i].medicineDosage +"</td><td class=' '>"+array_med[i].medicineMedication+"</td></tr>";
           $(tr).prependTo('#medicineTableBody');
         }
     }
@@ -899,7 +893,7 @@ $(document).ready(function(){
     function displaySuppliesRow(){
       // console.log(array_supp)
         for(var i = 0; i < Object.keys(array_supp).length; i++){
-          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='medicalSupplyTable'></td><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_supp[i].medicalSupplyName+"</td><td class=' '>"+array_supp[i].medicalSupplyBrand+"</td><td class=' '>"+array_supp[i].medicalSupplyQuantity+"</td><td class=' '>"+array_supp[i].medicalSupplyUnit+"</td></tr>";
           $(tr).prependTo('#medSuppTableBody');
         }
     }
@@ -907,7 +901,7 @@ $(document).ready(function(){
     function displayPrescribedTableRow(){
       // console.log(array_prescribed)
         for(var i = 0; i < Object.keys(array_prescribed).length; i++){
-          var tr = "<tr class='even pointer delete-row'><td class='a-center'><input type='checkbox' class='flat' name='prescriptionTable'></td><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
+          var tr = "<tr class='even pointer delete-row'><td class=' '>"+array_prescribed[i].medicineGenericName+"</td><td class=' '>"+array_prescribed[i].medicineBrandName+"</td><td class=' '>"+array_prescribed[i].medicineQuantity+"</td><td class=' '>"+array_prescribed[i].medicineUnit+"</td><td class= ' '>"+array_prescribed[i].medicineDosage +"</td><td class=' '>"+array_prescribed[i].medicineMedication+"</td></tr>";
           $(tr).prependTo('#prescribedMedTable');
         }
     }

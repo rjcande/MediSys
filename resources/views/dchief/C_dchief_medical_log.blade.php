@@ -39,7 +39,7 @@
                     <table class="table table-striped table-bordered jambo_table bulk_action" style="width:100%" id="patientTable">
                       <thead>
                         <tr class="headings">
-                            <th class="column-title"></th>
+                            
                             <th class="column-title">No </th>
                             <th class="column-title">Patient ID </th>
                             <th class="column-title">Patient Name </th>
@@ -58,9 +58,7 @@
                         {{ Session::put('number', $ctr)}}
                         @foreach ($dentalLogs as $dentalLog)
                         <tr class="even pointer">
-                          <td class="a-center">
-                            <input type="checkbox" class="flat" name="table_records">
-                          </td>
+                         
                           <td class=" ">{{$ctr}}</td>
                           <td class=" ">{{$dentalLog->patientID}}</td>
                           <td class=" ">{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>

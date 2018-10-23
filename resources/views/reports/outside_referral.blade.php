@@ -41,7 +41,7 @@
       <br><br>
       <label>Chest X-Ray</label>
       <br>
-            <input type="checkbox" name="chestXrayPA" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <input type="checkbox" name="chestXrayPA" class="radio-past" style=" value="1"
                     @if($outsideReferral['chestXrayPA'] == 1)
                       {{ "checked" }}
                     @endif
@@ -64,23 +64,23 @@
                       {{ "checked" }}
                     @endif> Fecalysis<br>
             <div style="float: left; width: 50%">
-                 <input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+                 <input type="checkbox" name="cbc" class="radio-past" style="margin-bottom:12px" value="1"
             @if($outsideReferral['cbc'] == 1)
                       {{ "checked" }}
                     @endif> Complete Blood Count (CBC)<br>
-            <input type="checkbox" name="fbs" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <input type="checkbox" name="fbs" class="radio-past" style="margin-bottom:12px" value="1"
             @if($outsideReferral['fbs'] == 1)
                       {{ "checked" }}
                     @endif> Fasting Blood Sugar (FBS)<br>
-            <input type="checkbox" name="bun" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <input type="checkbox" name="bun" class="radio-past" style="margin-bottom:12px" value="1"
             @if($outsideReferral['bun'] == 1)
                       {{ "checked" }}
                     @endif> Blood Urea Nitrogen (BUN)<br>
-            <input type="checkbox" name="creatinine" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <input type="checkbox" name="creatinine" class="radio-past" style="margin-bottom:12px;" value="1"
             @if($outsideReferral['creatinine'] == 1)
                       {{ "checked" }}
                     @endif> Creatinine<br>
-            <input type="checkbox" name="cholesterol" class="radio-past" style="margin-bottom:12px; margin-left: 20px" value="1"
+            <input type="checkbox" name="cholesterol" class="radio-past" style="margin-bottom:12px;" value="1"
             @if($outsideReferral['cholesterol'] == 1)
                       {{ "checked" }}
                     @endif> Total Cholesterol<br>

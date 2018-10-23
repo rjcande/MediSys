@@ -17,6 +17,9 @@
               <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
+                    <div class="col-md-2 col-sm-12 col-xs-12" style="width: 350px; float: right;">
+                      <input type="text" placeholder="Search" id="search" class="form-control" style="height: 32px; font-size:15px; border-radius: 12px; border: 1.5px solid gray;">
+                    </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -25,7 +28,7 @@
                       <table class="table table-striped table-bordered jambo_table bulk_action" style="width:100%" id="patientTable">
                         <thead>
                             <tr class="headings">
-                              <th class="column-title"></th>
+                              
                               {{-- <th class="column-title">Student/Faculty Number</th> --}}
                               <th class="column-title">Patient ID </th>
                               <th class="column-title">Patient Name </th>
@@ -36,9 +39,7 @@
                       <tbody>
                         @foreach ($patient as $patients)
                           <tr class="even pointer">
-                            <td class="a-center">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
+                            
                             {{-- <td class=" ">{{$patients->patientNumber}}</td> --}}
                             <td class=" ">{{$patients->patientID}}</td>
                             <td class=" ">{{$patients->lastName}}, {{$patients->firstName}} {{$patients->middleName}} {{$patients->quantifier}}</td>
@@ -183,12 +184,17 @@
         
 <script>
   $(document).ready(function(){
+     //Data Table
     var table = $('#patientTable').DataTable({
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
         "bAutoWidth": false,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        "dom": '<"top"i>rt<"bottom"p><"clear">'  
+    });
+
+    $('#search').keyup(function(){
+      table.search($(this).val()).draw();
     });
 
     //drop down of year

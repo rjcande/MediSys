@@ -86,7 +86,7 @@
                                     </button>
                                   </a>
 
-                                  <button class="btn btn-danger btn-delete" data-id="{{ $referral->logReferralID }}">
+                                  <button class="btn btn-danger btn-decline" data-id="{{ $referral->logReferralID }}">
                                     <i class="fa fa-close"></i>
                                   </button>
                                 @elseif($referral->logReferralStatus == 2 && $referral->concern == 0)
