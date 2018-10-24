@@ -65,7 +65,7 @@
                                     
                                     </div>
 
-                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> SAVE & PRINT</button></a>
+                                    <a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-primary"><i class="fa fa-print"></i> SAVE & GENERATE MEDICAL CERTIFICATE</button></a>
                                   </div>
                                 </div>
                               </div>
@@ -105,7 +105,7 @@
                                       </div>
                                     
                                     </div>
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & PRINT</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & GENERATE MEDICAL CERTIFICATE</button>
                                   </div>
                                 </div>
                               </div>
@@ -144,7 +144,7 @@
                                       </div>
                                     
                                     </div>
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & PRINT</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & GENERATE MEDICAL CERTIFICATE</button>
                                   </div>
                                 </div>
                               </div>
@@ -183,7 +183,7 @@
                                       </div>
                                     
                                     </div>
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & PRINT</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & GENERATE EXCUSE LETTER</button>
                                   </div>
                                 </div>
                               </div>
@@ -221,7 +221,7 @@
                                       </div>
                                     
                                     </div>
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & PRINT</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i> SAVE & GENERATE WAIVER</button>
                                   </div>
                                 </div>
                               </div>
