@@ -450,7 +450,7 @@
                     </div>
 
                     <div style="margin-top: 25px;margin-bottom: 30px;float: left;text-align: center;width: 100%">
-                      <a href="{{route('dchief.generate.dentalHistory', $patientInfo['patientID'])}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE PDF</button></a>
+                      <a href="{{route('dchief.generate.dentalHistory', $patientInfo['patientID'])}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-download"></i> GENERATE DENTAL HISTORY</button></a>
                       <a href="{{url('/dchief/PatientRecord')}}"><button class="btn btn-primary">BACK</button></a>
                       <a href="{{route('dchief.dentalchart.view', $patientInfo['patientID'])}}"><button class="btn btn-default" style="background-color:#00d2d3; color:white;">VIEW DENTAL CHART</button></a>
                       <a href="{{route('dchief.HistoryForm.edit', $patientInfo['dentalHistoryID'])}}"><button class="btn btn-warning">EDIT</button></a>

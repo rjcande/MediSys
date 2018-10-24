@@ -82,7 +82,7 @@
 
                   </div>
                   <div>
-                    <a target="_blank" href="{{route('dchief.view.dental.certificate', $treatment['treatmentID'])}}" ><button type="button" class="btn btn-primary"><i class="fa fa-print"></i> PRINT</button></a>
+                    <a target="_blank" href="{{route('dchief.view.dental.certificate', $treatment['treatmentID'])}}" ><button type="button" class="btn btn-primary"><i class="fa fa-print"></i> PRINT DENTAL CERTIFICATE</button></a>
                     <a href="javascript:history.go(-1)"><button type="button" class="btn btn-danger">BACK</button></a>
                   </div>
 

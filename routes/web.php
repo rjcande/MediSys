@@ -467,7 +467,7 @@ Route::get('/dentist/medical/supplies/reports', 'DashboardController@dentistSupp
 
 Route::get('/dentist/medicine/reports', 'DashboardController@dentistReports');
 
-Route::get('/dentist/delete/appointment/{id}', 'DashboardController@dentistDestroy');
+Route::get('/dentist/delete/appointment/{id}/{status}', 'DashboardController@dentistDestroy');
 
 Route::get('/dentist/profile', function(){
 	return view('dentist.C_dentist_profile');

@@ -1372,7 +1372,7 @@
                         <div style="float: left;width: 100%;text-align: center;margin-top: 10px;">
                             <a href="{{URL::previous()}}"><button class="btn btn-primary">BACK</button></a>
                             <a href="{{url('/dentist/PatientRecord')}}"><button class="btn btn-danger">CLOSE</button></a>
-                            <a target="_blank" href="{{url('/dentist/dentalchart/print',$dentalchart['patientID'])}}"><button class="btn btn-secondary">PRINT</button></a>
+                            <a target="_blank" href="{{url('/dentist/dentalchart/print',$dentalchart['patientID'])}}"><button class="btn btn-secondary">PRINT DENTAL CHART</button></a>
                             <!-- <button type="submit" name="btnSave" class="btn btn-success">SAVE</button>
                         </form>     -->
                             <!-- <a href="{{url('dentist/DentalLog')}}"><button class="btn btn-danger">CANCEL</button></a> -->

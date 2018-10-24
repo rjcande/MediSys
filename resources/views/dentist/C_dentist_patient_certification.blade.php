@@ -117,7 +117,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><button type="submit" class="btn btn-primary btnSubmit"><i class="fa fa-print"></i> SAVE AND PRINT</button></center>
+        <center><button type="submit" class="btn btn-primary btnSubmit"><i class="fa fa-print"></i> SAVE AND GENERATE DENTAL CERTIFICATE</button></center>
       </div>
       </form>
     </div>

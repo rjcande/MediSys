@@ -262,7 +262,7 @@ class DashboardController extends Controller
         return Response::json(array('message' => 'Success'));
     }
 
-    public function dentistDestroy($id)
+    public function dentistDestroy($id, $status)
     {
         $delete = Appointments::find($id);
 

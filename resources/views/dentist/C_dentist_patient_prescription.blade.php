@@ -421,7 +421,7 @@
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <center><button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> Save And Print</button></center>
+        <center><button type="submit" class="btn btn-primary"><i class="fa fa-print"></i> SAVE AND GENERATE REFERRAL SLIP</button></center>
       </div>
       </form>
     </div>
