@@ -292,13 +292,17 @@ class DentalLogController extends Controller
                 $appointments->save();
             }
 
-            // $consultAppointment = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-            //                                     // ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-            //                                     ->select('cliniclogs.*', 'patients.*', 'appointments.*')
-            //                                     ->where('cliniclogs','cliniclogs.clinicLogID', '=', 'appointments.clinicLogID')
-            //                                     ->where('cliniclogs', 'cliniclogs.patientID', '=')
-            //                                     // ->where('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
-            //                                     ->first();
+            $consultAppointment = Appointments::join('cliniclogs', 'cliniclogs.clinicLogID', '=', 'appointments.appointmentLogID')
+                                                ->join('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                                                ->select('cliniclogs.*', 'patients.*', 'appointments.*')
+                                                // ->where('cliniclogs','cliniclogs.clinicLogID', '=', 'appointments.appointmentLogID')
+                                                // ->where('cliniclogs', 'cliniclogs.patientID', '=', 'patients.patientID')
+                                                ->orderBy('appointments.created_at', 'desc')
+                                                // ->where('patients', 'patients.patientID', '=', 'cliniclogs.patientID')
+                                                ->first();
+                
+            $consultAppointment->isAppointed = 3;
+            $consultAppointment->save();
 
             //TAKING RECENTLY ADDED DIAGNOSIS FOR DIAGNOSIS ID INSERTION IN TREATMENT TABLE.
             $diagnosisID = Diagnosis::orderBy('created_at', 'desc')

@@ -616,7 +616,7 @@ Route::get('/dchief/restore/medicalSupply/{id}','ArchivesController@restore_medi
 
 Route::get('/dchief/dashboard', 'DashboardController@dashboard');
 
-Route::get('/dchief/delete/appointment/{id}', 'DashboardController@dChiefDestroy');
+Route::get('/dchief/delete/appointment/{id}/{status}', 'DashboardController@dChiefDestroy');
 
 Route::get('/dchief/profile', function(){
 	return view('dchief.C_dchief_profile');
