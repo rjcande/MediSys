@@ -180,7 +180,24 @@
         "bInfo": false,
         "bAutoWidth": false,
         "pageLength": 5,
-        "dom": '<"top"i>rt<"bottom"p><"clear">' 
+        'sDom': '<"top">rt<"bottom"Bp><"clear">',
+        "buttons": [
+            {
+                extend: 'print',
+                text: 'Print Appointment Schedule',
+                customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'background-color', 'white' )
+                        
+                    $(win.document.body).find( 'table' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                },
+                exportOptions: {
+                  rows: ':visible'
+                }
+            }
+        ]
     });
 
     $('#search').keyup(function(){

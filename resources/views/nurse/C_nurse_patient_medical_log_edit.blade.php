@@ -338,7 +338,7 @@
                               </div>
                              <div style="float: left;width: 100%; margin-top: 20px; text-align: center">
                               <a href="{{ route('nurse.generate.pdf.prescription', $clinicLogInfo->clinicLogID) }}" target="_blank">
-                                <button type="button" class="btn btn-primary" id="printPrescription"><i class="fa fa-download"></i> GENERATE PDF</button>
+                                <button type="button" class="btn btn-primary" id="printPrescription"><i class="fa fa-download"></i> GENERATE PRESCRIPTION</button>
                               </a>
                               <button type="button" class="btn btn-success btn-save" name="btnSave">SAVE</button>         
                               <a href="{{url('/nurse/medical/log')}}"><button class="btn btn-danger" type="button">CLOSE</button></a>

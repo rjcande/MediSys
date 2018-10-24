@@ -167,7 +167,7 @@
 				<div style="margin-top: 25px;float: left;text-align: center;width: 100%">
 
 					<a href="{{ route('physician.generate.outside.referral', [ 'id' => $details['outsideReferralID'], 'patientName' => $patientName])}}" target="_blank">
-						<button type="button" class="btn btn-primary" id="btnPrint"><i class="fa fa-download"></i> GENERATE PDF</button>
+						<button type="button" class="btn btn-primary" id="btnPrint"><i class="fa fa-download"></i> GENERATE REFERRAL</button>
 					</a>
 					<button class="btn btn-success" type="submit">SAVE</button>
 					<a href="{{ URL::previous() }}">

@@ -61,7 +61,7 @@
 					@if($logReferral['reqForWaver'] == 1)
 						{{ "checked" }}
 					@endif>
-						<label style="margin-left: 5px;">Waver</label> 
+						<label style="margin-left: 5px;">Waiver</label> 
 					<br>
 					
 				</div>
@@ -125,7 +125,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-success">SAVE & PRINT</button></a>
+					<a href="{{ route('physician.generate.pdf.medical.cert.enrollment', [$logReferral['logReferralID'], $patientName]) }}" target="_blank"><button class="btn btn-success">SAVE & GENERATE MEDICAL CERTIFICATE</button></a>
 					<button class="btn btn-danger" data-dismiss="modal">DONE</button>
 				</div>
             </div>
@@ -172,7 +172,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<button class="btn btn-success" type="submit">SAVE & PRINT</button>
+					<button class="btn btn-success" type="submit">SAVE & GENERATE MEDICAL CERTIFICATE</button>
 					<button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
 				</div>
             </div>
@@ -218,7 +218,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<button class="btn btn-success">SAVE & PRINT</button>
+					<button class="btn btn-success">SAVE & GENERATE MEDICAL CERTIFICATE</button>
 					<button class="btn btn-danger" data-dismiss="modal">CLOSE</button>
 				</div>
             </div>
@@ -264,7 +264,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<button class="btn btn-success">SAVE & PRINT</button>
+					<button class="btn btn-success">SAVE & GENERATE EXCUSE LETTER</button>
 					<button class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
             </div>
@@ -308,7 +308,7 @@
 	        	</div>
 
 				<div class="modal-footer" style="margin-right:0%">
-					<button class="btn btn-success" type="submit">SAVE & PRINT</button>
+					<button class="btn btn-success" type="submit">SAVE & GENERATE WAIVER</button>
 					<button class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
             </div>
