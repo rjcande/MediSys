@@ -204,7 +204,8 @@
                         <header style="width: 120px;"> Mobile No</header>
                       </div>
                       <div style="float: left;">
-                        <input type="text" name="mobileNo" style="width:300px; border-radius:8px; margin-bottom:12px;" value="{{ $patientInfo->mobileNo }}" data-parsley-type="digits" readonly>
+                        <label>+63</label>
+                        <input type="text" name="mobileNo" style="width:264px; border-radius:8px; margin-bottom:12px;" value="{{ $patientInfo->mobileNo }}" data-parsley-type="digits" readonly>
                       </div>
                     </div>
 
