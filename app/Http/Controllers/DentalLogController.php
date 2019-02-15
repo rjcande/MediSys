@@ -690,7 +690,7 @@ class DentalLogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
+        try { 
           $dentalLog = DentalLog::find($id);
 
           $dentalLog->symptoms = $request->symptoms;
@@ -718,18 +718,43 @@ class DentalLogController extends Controller
           $treatment->save();
 
 
-          for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
+        // for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
 
+        //     $prescription = new Prescription;
+
+        //     $prescription->treatmentID = $treatment['treatmentID'];
+        //     $prescription->medicineID = Input::get('medicineID')[$i];
+        //     $prescription->quantity = Input::get('medQuantity')[$i];
+        //     $prescription->medicineUnit = Input::get('medicineUnit')[$i];
+        //     $prescription->medication = Input::get('medication')[$i];
+        //     $prescription->dosage = Input::get('dosage')[$i];
+        //     $prescription->isPrescribed = Input::get('isPrescribed')[$i];
+        //     $prescription->isGiven = Input::get('isGiven')[$i];
+        //     $prescription->save();
+        // }
+        for ($i = 0; $i< sizeOf(Input::get('_medArray')); $i++){
             $prescription = new Prescription;
-
             $prescription->treatmentID = $treatment['treatmentID'];
-            $prescription->medicineID = Input::get('medicineID')[$i];
-            $prescription->quantity = Input::get('medQuantity')[$i];
-            $prescription->medicineUnit = Input::get('medicineUnit')[$i];
-            $prescription->medication = Input::get('medication')[$i];
-            $prescription->dosage = Input::get('dosage')[$i];
-            $prescription->isPrescribed = Input::get('isPrescribed')[$i];
-            $prescription->isGiven = Input::get('isGiven')[$i];
+            $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+            $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+            $prescription->medicineUnit = Input::get('_medArray')[$i]['medicineUnit'];
+            $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+            $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
+            $prescription->isPrescribed = Input::get('_medArray')[$i]['isPrescribed'];
+            $prescription->isGiven = Input::get('_medArray')[$i]['isGiven'];
+            $prescription->save();
+        }
+
+        for ($i = 0; $i< sizeOf(Input::get('_prescArray')); $i++){
+            $prescription = new Prescription;
+            $prescription->treatmentID = $treatment['treatmentID'];
+            $prescription->medicineID = Input::get('_prescArray')[$i]['medicineID'];
+            $prescription->quantity = Input::get('_prescArray')[$i]['medicineQuantity'];
+            $prescription->medicineUnit = Input::get('_prescArray')[$i]['medicineUnit'];
+            $prescription->medication = Input::get('_prescArray')[$i]['medicineMedication'];
+            $prescription->dosage = Input::get('_prescArray')[$i]['medicineDosage'];
+            $prescription->isPrescribed = Input::get('_prescArray')[$i]['isPrescribed'];
+            $prescription->isGiven = Input::get('_prescArray')[$i]['isGiven'];
             $prescription->save();
         }
 
@@ -777,29 +802,40 @@ class DentalLogController extends Controller
             $treatment->save();
   
   
-            for ($i=0; $i < count(Input::get('medicineID')) ; $i++) {
-  
-              $prescription = new Prescription;
-  
-              $prescription->treatmentID = $treatment['treatmentID'];
-              $prescription->medicineID = Input::get('medicineID')[$i];
-              $prescription->quantity = Input::get('medQuantity')[$i];
-              $prescription->medicineUnit = Input::get('medicineUnit')[$i];
-              $prescription->medication = Input::get('medication')[$i];
-              $prescription->dosage = Input::get('dosage')[$i];
-              $prescription->isPrescribed = Input::get('isPrescribed')[$i];
-              $prescription->isGiven = Input::get('isGiven')[$i];
-              $prescription->save();
-          }
-  
-          for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
-              $usedMedSupply = new UsedMedSupply;
-              $usedMedSupply->treatmentID =$treatment['treatmentID'];
-              $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
-              $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
-              $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
-              $usedMedSupply->save();
-          }
+            for ($i = 0; $i< sizeOf(Input::get('_medArray')); $i++){
+                $prescription = new Prescription;
+                $prescription->treatmentID = $treatment['treatmentID'];
+                $prescription->medicineID = Input::get('_medArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_medArray')[$i]['medicineQuantity'];
+                $prescription->medicineUnit = Input::get('_medArray')[$i]['medicineUnit'];
+                $prescription->medication = Input::get('_medArray')[$i]['medicineMedication'];
+                $prescription->dosage = Input::get('_medArray')[$i]['medicineDosage'];
+                $prescription->isPrescribed = Input::get('_medArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('_medArray')[$i]['isGiven'];
+                $prescription->save();
+            }
+    
+            for ($i = 0; $i< sizeOf(Input::get('_prescArray')); $i++){
+                $prescription = new Prescription;
+                $prescription->treatmentID = $treatment['treatmentID'];
+                $prescription->medicineID = Input::get('_prescArray')[$i]['medicineID'];
+                $prescription->quantity = Input::get('_prescArray')[$i]['medicineQuantity'];
+                $prescription->medicineUnit = Input::get('_prescArray')[$i]['medicineUnit'];
+                $prescription->medication = Input::get('_prescArray')[$i]['medicineMedication'];
+                $prescription->dosage = Input::get('_prescArray')[$i]['medicineDosage'];
+                $prescription->isPrescribed = Input::get('_prescArray')[$i]['isPrescribed'];
+                $prescription->isGiven = Input::get('_prescArray')[$i]['isGiven'];
+                $prescription->save();
+            }
+    
+            for ($i=0; $i < count(Input::get('medSupplyID')) ; $i++){
+                $usedMedSupply = new UsedMedSupply;
+                $usedMedSupply->treatmentID =$treatment['treatmentID'];
+                $usedMedSupply->medSupplyID = Input::get('medSupplyID')[$i];
+                $usedMedSupply->quantity = Input::get('medSupplyQuantity')[$i];
+                $usedMedSupply->suppliesUnit = Input::get('medSuppUnit')[$i];
+                $usedMedSupply->save();
+            }
   
           } catch (Exception $e) {
   

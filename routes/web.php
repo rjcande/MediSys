@@ -704,6 +704,10 @@ Route::get('/dchief/dental/HistoryForm/edit/{id}', 'DentalHistoryController@dchi
 
 Route::get('/dchief/dental/HistoryForm/update/{id}', 'DentalHistoryController@dchiefUpdate')->name('dchief.HistoryForm.update');
 
+Route::get('/dchief/delete/medicine', 'MedicineController@destroy');
+
+Route::get('/dchief/delete/medical/supply', 'MedicalSupplyController@destroy');
+
 
 Route::get('/dchief/generate/prescription/{id}', 'DentalCertificateController@dchiefGeneratePdf')->name('dchief.generate.prescription');
 

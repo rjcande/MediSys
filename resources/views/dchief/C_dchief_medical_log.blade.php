@@ -39,7 +39,7 @@
                     <table class="table table-striped table-bordered jambo_table bulk_action" style="width:100%" id="patientTable">
                       <thead>
                         <tr class="headings">
-                            
+                            <th class="column-title"></th>
                             <th class="column-title">No </th>
                             <th class="column-title">Patient ID </th>
                             <th class="column-title">Patient Name </th>
@@ -58,7 +58,9 @@
                         {{ Session::put('number', $ctr)}}
                         @foreach ($dentalLogs as $dentalLog)
                         <tr class="even pointer">
-                         
+                          <td class="a-center">
+                            <input type="checkbox" class="flat" name="table_records">
+                          </td>
                           <td class=" ">{{$ctr}}</td>
                           <td class=" ">{{$dentalLog->patientID}}</td>
                           <td class=" ">{{$dentalLog->firstName}} {{$dentalLog->middleName}} {{$dentalLog->lastName}} {{$dentalLog->quantifier}}</td>
@@ -115,7 +117,7 @@
                               {{-- @if($dentalLog->concern == 1)                                
                                 <button type='submit' name='btnEdit' disabled id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                               @elseif($dentalLog->concern == 0)
-                                <a href="{{route('dchief.dentalLog.edit', $dentalLog->clinicLogID)}}">
+                                <a href="{{route('dentist.dentalLog.edit', $dentalLog->clinicLogID)}}">
                                   <button type='submit' name='btnEdit' id="btnEdit" class='btn btn-primary'><i class='fa fa-pencil'></i></button>
                                 </a>
                               @endif --}}
@@ -502,7 +504,7 @@
     $('#logPatientForm').parsley();
 
     //delete button is clicked
-    $('#patientTable').on('click', '.delete-button',function(){
+    $('#patientTable').on('click','.delete-button', function(){
      swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this!",
