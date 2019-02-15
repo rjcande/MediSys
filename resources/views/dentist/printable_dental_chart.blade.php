@@ -438,14 +438,17 @@
                             @endforeach
                         @endif
                         <div>
-                            <div>
-                                <img style="float:left;" src="{{ asset('images/pup-logo.png') }}" width="100px">
+                            <div style="height:70px">
+                                <div class="col-md-3" style="float:left"><img src={{asset("images/pup-logo.png")}} style="width: 65px; height: 65px;"></div>
+                                <div class="col-md-8" style="margin-left:15px; margin-top:8px; float:left">
                                 <h6 style="padding:0; margin:0;">Republic of the Philippines</h6>
                                 <h6 style="padding:0; margin:0;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</h6>
                                 <h6 style="padding:0; margin:0;">Medical Services Department</h6>
                                 <h6 style="padding:0; margin:0;"><b>DENTAL SERVICES</b></h6>
-                                <hr>
                             </div>
+                                
+                            </div>
+                            <hr>
                             <h3 style="text-align: center;padding:0; margin:0;">DENTAL RECORD CHART</h3>
                             <h4 style="text-align:center;padding:0; margin:0;">INTRAORAL EXAMINATION</h4>
                             <h5 style="padding:0; margin:0;">Patient Name: <u>{{ $patient->firstName }} {{ $patient->middleName }} {{ $patient->lastName }} {{ $patient->quantifier }}</u></h5>
@@ -453,7 +456,7 @@
                             <br>
                             {{-- 55 ~ 65 --}}
                             <div>
-                                <div >
+                                <div style="margin-left: 135px;">
                                     <table>
                                         <tr>
                                             <td><label style="text-align:center;font-size:15px;">55</label></td>
@@ -497,7 +500,8 @@
 
                                     </table>
                                 </div>
-                                <div style="padding-top: 5px;">
+
+                                <div style="margin-left:135px; padding-top: 5px;">
                                         <img src=@if(strpos($status55b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
                                         <img src=@if(strpos($status55b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
                                         <img src=@if(strpos($status55b,'2') !== false){{ asset('images/rightToothDis.png')  }} @else {{ asset('images/rightTooth.png')  }} @endif style="margin-left:-44px; margin-top:3px;">
@@ -907,7 +911,7 @@
                             </div>
 
                             {{--  75 ~ 85  --}}
-                            <div>
+                            <div style="margin-left:135px">
                                     <div style="padding-top: 5px; ">
                                         <img src=@if(strpos($status75b,'4') !== false){{ asset('images/leftToothDis.png')   }} @else {{ asset('images/leftTooth.png')   }} @endif style="margin-left:2.5px;margin-top:3px;">
                                         <img src=@if(strpos($status75b,'1') !== false){{ asset('images/topToothDis.png')    }} @else {{ asset('images/topTooth.png')    }} @endif style="margin-left:-44px; margin-top:3px;">
@@ -1052,14 +1056,14 @@
                                     <label style="font-size: 11px; font-weight:bold;">Surgery</label>
                                     <p style="font-size: 11px;"><b>X</b><i>- Extraction due to Caries</i></p>
                                     <p style="font-size: 11px;"><b>XO</b><i>- Extraction due to Other Causes</i></p>
-                                    <p style="font-size: 11px;"><b>/</b><i>- Present Teeth</i></p>
+                                    <p style="font-size: 11px;"><b>PT</b><i>- Present Teeth</i></p>
                                     <p style="font-size: 11px;"><b>Cm</b><i>- Congenitally Missing</i></p>
                                     <p style="font-size: 11px;"><b>Sp</b><i>- Supernumerary</i></p>
                                 </div>
                             </div>
                             <br>
-                            <h5 style="float:right;font-size:11px;margin-top:240px;">______________________________________</u></h5>
-                            <h5 style="float:right;font-size:11px;margin-top:255px;margin-right:50px;">Dentist Signature</u></h5>
+                            <h5 style="float:right;font-size:11px;margin-top:240px;">Dentist: <u>{{Session::get('accountInfo.firstName')}} {{Session::get('accountInfo.middleName')}} {{Session::get('accountInfo.lastName')}} {{Session::get('accountInfo.quantifier')}}</u></h5>
+                            <h5 style="float:right;font-size:11px;margin-top:255px;">License Number: <u>{{Session::get('accountInfo.licenseNumber')}}</u></h5>
                         </div>
 
                     </div>

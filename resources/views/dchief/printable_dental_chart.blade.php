@@ -453,7 +453,9 @@
                             <br>
                             {{-- 55 ~ 65 --}}
                             <div>
-                                <div>
+                                <label class="float-left">STATUS RIGHT</label>
+                                <label class="float-right">STATUS LEFT</label>
+                                <div style="margin-left: 135px;">
                                     <table>
                                         <tr>
                                             <td><label style="text-align:center;font-size:15px;">55</label></td>
