@@ -116,7 +116,7 @@
         "buttons": [
             {
                 extend: 'print',
-                text: 'Print List of Medical Supplies',
+                text: 'Print List of Accounts',
                 customize: function ( win ) {
                     $(win.document.body)
                         .css( 'background-color', 'white' )

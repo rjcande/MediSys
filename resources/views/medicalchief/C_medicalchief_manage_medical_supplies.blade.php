@@ -75,11 +75,8 @@
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
                             <th class="column-title">Medical Supply Name</th>
-                          <th class="column-title">Brand Name</th>
+                            <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
                             <th class="column-title no-link last"><span class="nobr">Action</span>
                             </th>
@@ -92,9 +89,6 @@
                         <tbody>
                           @foreach($supplies as $supply)
                             <tr class="even pointer">
-                              <td class="a-center ">
-                                <input type="checkbox" class="flat" name="table_records">
-                              </td>
                               <td class=" ">{{ $supply->medSupName }}</td>
                               <td class=" ">{{ $supply->brand }}</td>
                               <td class=" ">{{ $supply->unit }}</td>

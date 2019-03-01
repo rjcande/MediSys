@@ -6,7 +6,7 @@
   <title>Medical Supply List</title>
   <link rel="stylesheet" href="">
   <style type="text/css" media="screen">
-    table{
+     table{
       font-family: verdana,arial;
       border-collapse: collapse;
       width: 100%;
@@ -28,14 +28,14 @@
 </head>
 <body>
     <div>
+      <img src={{asset("images/pup-logo.png")}} align="left" width="120px" height="120px">
       <center>
-        <header style="font-size: 15px;">Republic of the Philippines</header><br>
-        <header style="font-size: 15px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header><br>
-        <header style="font-size: 15px;">MEDICAL SERVICES DEPARTMENT</header><br>
-        <header style="font-size: 15px;">Sta. Mesa, Manila</header><br>
+        <header style="font-size: 20px;">Republic of the Philippines</header>
+        <header style="font-size: 20px;">POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</header>
+        <header style="font-size: 20px;">MEDICAL SERVICES DEPARTMENT</header>
+        <header style="font-size: 20px;">Sta. Mesa, Manila</header>
         <h1>Medical Supply List</h1>
       </center>
-      <caption></caption>
       <table style = "width:100%; margin-bottom: 50px;">
           <tr>
             <th>Medical Supply Name</th>

@@ -34,9 +34,6 @@
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="patientTable">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
                             <th class="column-title">Patient ID </th>
                             <th class="column-title">Patient Name </th>
                             <th class="column-title">Type </th>
@@ -51,9 +48,6 @@
                         <tbody>
                           @foreach($patientList as $patient)
                             <tr class="even pointer">
-                              <td class="a-center ">
-                                <input type="checkbox" class="flat" name="table_records">
-                              </td>
                               <td class=" ">{{ $patient->patientID }}</td>
                               <td class=" ">{{$patient->lastName}}, {{$patient->firstName}} {{ $patient->middleName{0} }}@if($patient->middleName){{ '.' }}@endif {{ $patient->quantifier }}</td>
                               <td class=" ">

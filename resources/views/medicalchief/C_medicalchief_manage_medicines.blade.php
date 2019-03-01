@@ -90,9 +90,6 @@
                       <table class="table table-striped table-bordered jambo_table bulk_action" id="medicineTable">
                         <thead>
                           <tr class="headings">
-                            <th>
-                              <input type="checkbox" id="check-all" class="flat">
-                            </th>
                             <th class="column-title">Generic Name</th>
                             <th class="column-title">Brand Name</th>
                             <th class="column-title">Unit</th>
@@ -108,9 +105,6 @@
                         <tbody>
                           @foreach($medicines as $medicine)
                             <tr class="even pointer">
-                              <td class="a-center ">
-                                <input type="checkbox" class="flat" name="table_records">
-                              </td>
                               <td class=" ">{{ $medicine->genericName }}</td>
                               <td class=" ">{{ $medicine->brand }}</td>
                               <td class=" ">{{ $medicine->unit }}</td>
