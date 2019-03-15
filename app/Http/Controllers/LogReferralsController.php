@@ -386,9 +386,9 @@ class LogReferralsController extends Controller
         
         $logreferrals = LogReferrals::find($id);
         
-        dd($logreferrals);
-      /*  $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose', 'logreferrals'));
-        return $pdf->stream('reports.medical_certificate_for_ojt_or_off_campus_activity');*/
+      
+        $pdf = PDF::loadView('reports.medical_certificate_for_ojt_or_off_campus_activity', compact('name', 'physicianDetails', 'purpose', 'logreferrals'));
+        return $pdf->stream('reports.medical_certificate_for_ojt_or_off_campus_activity');
     }
 
     public function generateMedCertOjtOffCampusMChief($id, $patientName)
